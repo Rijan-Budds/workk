@@ -11,5 +11,14 @@
     "react/jsx-filename-extension": [
       "error",
       { "extensions": [".tsx", ".ts"] }
-    ]}
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": ["function", "variable"],
+        "format": ["StrictPascalCase", "strictCamelCase"]
+      }
+    ]
+  }
+
 }

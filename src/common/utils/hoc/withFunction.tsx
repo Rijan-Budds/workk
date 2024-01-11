@@ -1,1 +1,1 @@
-export default function withHOC() {}
+export default function withHoc() {}
