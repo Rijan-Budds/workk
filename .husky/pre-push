@@ -4,3 +4,7 @@
 added_files=$(git diff --name-only --cached --diff-filter=d)
 npx validate-branch-name
 git add ${added_files}
+
+pnpm typecheck
+
+
