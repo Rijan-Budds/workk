@@ -12,7 +12,8 @@ const config: Config = {
     },
     fontFamily: {
       workSans: ['var(--font-workSans)'],
-      poppins: ['var(--font-poppins)']
+      poppins: ['var(--font-poppins)'],
+      inter: ['var(--font-inter)']
     }
   },
   plugins: [],
