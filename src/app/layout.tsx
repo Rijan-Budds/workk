@@ -1,4 +1,4 @@
-import { poppins, workSans } from '@/common/utils/font'
+import { inter, poppins, workSans } from '@/common/utils/font'
 import './globals.css'
 export default function RootLayout({
   children,
@@ -6,7 +6,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${workSans.variable} ${poppins.variable}`}>
+    <html
+      lang="en"
+      className={`${workSans.variable} ${poppins.variable} ${inter.variable}`}
+    >
       <body>{children}</body>
     </html>
   )

@@ -35,7 +35,7 @@ export const Navbar = () => {
   ]
   return (
     <div className="py-4">
-      <HomeWrapper>
+      <HomeWrapper className="py-0">
         <div className="flex justify-between">
           <div className="flex items-center gap-x-6">
             <Image

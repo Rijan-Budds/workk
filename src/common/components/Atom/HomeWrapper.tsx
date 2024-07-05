@@ -1,5 +1,22 @@
+import { cn } from '@/common/utils/utils'
 import React, { ReactNode } from 'react'
 
-export const HomeWrapper = ({ children }: { children: ReactNode }) => {
-  return <div className="w-full px-12  2xl:px-[340px]">{children}</div>
+export const HomeWrapper = ({
+  children,
+  className,
+  isBg = false,
+}: {
+  children: ReactNode
+  className?: string
+  isBg?: boolean
+}) => {
+  return (
+    <div
+      className={cn('w-full px-12  2xl:px-[340px] py-[112px]', className, {
+        'bg-[#F8FAFD]': isBg,
+      })}
+    >
+      {children}
+    </div>
+  )
 }

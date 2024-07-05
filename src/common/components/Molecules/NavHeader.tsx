@@ -5,7 +5,7 @@ import Image from 'next/image'
 export const NavHeader = () => {
   return (
     <div className="py-3 bg-[#F8FAFD]">
-      <HomeWrapper>
+      <HomeWrapper className="py-0">
         <div className="flex justify-between">
           <div className="flex gap-x-8 ">
             <div className="flex items-center gap-x-2">
