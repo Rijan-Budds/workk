@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { AcademicCards } from './AcademicCards'
 import { academicCardsDataOne, academicCardsDataTwo } from './constant/data'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
+import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 
 export const AcademicSection = () => {
   return (
@@ -11,9 +12,7 @@ export const AcademicSection = () => {
       <div className=" flex justify-between">
         <div className="flex flex-col gap-y-2">
           <MiniHeading>Program</MiniHeading>
-          <span className="font-poppins text-[38px] leading-[49.4px] font-medium">
-            Academic Program
-          </span>
+          <SectionHeading>Academic Program</SectionHeading>
           <p className="font-normal text-[16px] font-workSans mt-2 text-[#313131]">
             As you begin to consider your career goals
             <br />
