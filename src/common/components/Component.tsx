@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 const Component: () => React.JSX.Element = () => {
-  return <div>Component</div>;
-};
+  return <div>Component</div>
+}
 
-export default Component;
+export default Component

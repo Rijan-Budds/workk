@@ -5,11 +5,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '',
-        secondary: '',
+        primary: '#E0630A',
+        secondary: '#FFFFFF',
         tertiary: '',
       },
     },
+    fontFamily: {
+      workSans: ['var(--font-workSans)'],
+      poppins: ['var(--font-poppins)']
+    }
   },
   plugins: [],
 }
