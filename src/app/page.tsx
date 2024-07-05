@@ -1,10 +1,10 @@
-import { NavHeader } from '@/common/components/Molecules/NavHeader'
 import { HeroSection } from './(home)/_components/Hero/HeroSection'
+import { NavSection } from './(home)/_components/NavSection'
 
 export default function Home() {
   return (
     <>
-      <NavHeader />
+      <NavSection />
       <HeroSection />
     </>
   )
