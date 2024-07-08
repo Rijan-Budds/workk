@@ -5,6 +5,7 @@ import { NavSection } from './(home)/_components/NavSection'
 import { ReasonsToStudy } from './(home)/_components/ReasonsToStudy/ReasonsToStudy'
 import AboutusWrapper from './(home)/_components/Aboutus/AboutusWrapper'
 import ProcessSection from './(home)/_components/Process/ProcessSection'
+import { GallerySection } from './(home)/_components/Gallery/GallerySection'
 
 export default function Home() {
   return (
@@ -13,9 +14,10 @@ export default function Home() {
       <HeroSection />
       <AcademicSection />
       <ReasonsToStudy />
-      <ContactSection />
       <ProcessSection />
       <AboutusWrapper />
+      <GallerySection />
+      <ContactSection />
     </>
   )
 }
