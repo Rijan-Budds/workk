@@ -4,6 +4,7 @@ import { NavSection } from './(home)/_components/NavSection'
 import { ReasonsToStudy } from './(home)/_components/ReasonsToStudy/ReasonsToStudy'
 import AboutusWrapper from './(home)/_components/Aboutus/AboutusWrapper'
 import ProcessSection from './(home)/_components/Process/ProcessSection'
+import TestimonialsSection from './(home)/_components/Testimonials/TestimonialsSection'
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <ReasonsToStudy />
       <ProcessSection />
       <AboutusWrapper />
+      <TestimonialsSection />
     </>
   )
 }
