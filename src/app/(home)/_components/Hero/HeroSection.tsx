@@ -4,18 +4,18 @@ import { HeroBgWrapper } from './HeroBgWrapper'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import Image from 'next/image'
 import { HeroImageSection } from './HeroImageSection'
+import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 
 export const HeroSection = () => {
   return (
     <HeroBgWrapper>
-      <HomeWrapper>
+      <HomeWrapper className="py-[97px]">
         <div className="flex items-center w-full ">
-          <div className="flex justify-start items-center w-full min-h-[700px]  ">
+          <div className="flex justify-start items-center w-full  ">
             <div className="flex flex-col gap-y-24 mt-16">
               <div className="flex flex-col gap-y-2">
-                <span className="text-[#F58534] text-[14px] leading-[21px] tracking-[2px]  font-medium font-workSans uppercase">
-                  Welcome to Pawan prakriti school
-                </span>
+                <MiniHeading>Welcome to Pawan prakriti school</MiniHeading>
+
                 <h1 className="text-[42px] leading-[54.6px] font-semibold text-white font-poppins">
                   Be An Achiever With Good
                   <br />

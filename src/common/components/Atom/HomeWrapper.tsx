@@ -3,22 +3,18 @@ import React, { ReactNode } from 'react'
 
 export const HomeWrapper = ({
   children,
-  isBg,
   className,
+  isBg = false,
 }: {
   children: ReactNode
-  isBg?: boolean
   className?: string
+  isBg?: boolean
 }) => {
   return (
     <div
-      className={cn(
-        'w-full px-12  2xl:px-[340px] py-[48px]  md:py-[100px]',
-        {
-          'bg-[#F8FAFD] py-[40px]  md:py-[100px]': isBg,
-        },
-        className
-      )}
+      className={cn('w-full px-12  2xl:px-[340px] py-[112px]', className, {
+        'bg-[#F8FAFD] py-[40px]  md:py-[100px]': isBg,
+      })}
     >
       {children}
     </div>
