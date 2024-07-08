@@ -19,10 +19,10 @@ export default function Home() {
       <ReasonsToStudy />
       <ProcessSection />
       <AboutusWrapper />
+      <TestimonialsSection />
       <GallerySection />
       <NewsAndEvents />
       <ContactSection />
-      <TestimonialsSection />
       <NoticeModal />
     </>
   )

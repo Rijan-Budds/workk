@@ -30,9 +30,9 @@ export const ReasonsToStudy = () => {
       <div className="flex flex-col">
         <div className="flex justify-between items-center">
           <SectionHeading>
-            Inspiring Educational
+            Your Overall Great
             <br />
-            Vision and Goals
+            Academic Organization
           </SectionHeading>
 
           <p className="font-workSans font-normal text-[16px] leading-[27.2px]">
