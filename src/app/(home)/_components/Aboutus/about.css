@@ -1,0 +1,28 @@
+.blue-bg {
+  width: 320px;
+  height: 258px;
+  padding: 40px;
+
+  border-radius: 12px 12px 12px 12px;
+  opacity: 0px;
+  background: linear-gradient(270deg, #187ec0 -3.39%, #005296 112.11%);
+}
+/* teacherStaff.css */
+.custom-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-list li {
+  position: relative;
+  padding-left: 24px; /* Adjust this based on the width of your icon */
+}
+
+.custom-list li::before {
+  content: url('/home/check.svg'); /* Path to your SVG icon */
+  position: absolute;
+  left: 0;
+  top: 60%;
+  transform: translateY(-50%);
+}
