@@ -1,5 +1,6 @@
 import React from 'react'
 import './process.css'
+import Image from 'next/image'
 
 const steps = [
   {
@@ -38,7 +39,9 @@ const ProcessCards = () => {
       {steps.map((step, index) => (
         <div key={index} className="process-card">
           <div className="absolute -top-6 -right-6 w-[82px] h-[82px] bg-[#CDDFED] rounded-full flex items-center justify-center">
-            <img
+            <Image
+              width={32}
+              height={32}
               src={step.icon}
               alt={`${step.title} icon`}
               className="w-[32px] h-[32px] mt-5 mr-5"
