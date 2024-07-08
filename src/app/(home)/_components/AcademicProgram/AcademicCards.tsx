@@ -1,6 +1,7 @@
 import React from 'react'
 import { GoArrowRight } from 'react-icons/go'
 import { academicCardsDataOne } from './constant/data'
+import { cn } from '@/common/utils/utils'
 
 export const AcademicCards = ({
   title,
@@ -22,8 +23,8 @@ export const AcademicCards = ({
         {description}
       </p>
       <div className="mt-4 flex flex-col gap-y-8">
-        {list.map((list) => (
-          <AcademicList key={list.id} title={list.title} />
+        {list.map((list, index) => (
+          <AcademicList key={list.id} title={list.title} index={index} />
         ))}
       </div>
       <div
@@ -33,13 +34,26 @@ export const AcademicCards = ({
   )
 }
 
-const AcademicList = ({ title }: { title: string }) => {
+const AcademicList = ({ title, index }: { title: string; index: number }) => {
   return (
     <div className="flex items-center gap-x-2  group cursor-default ">
-      <span className="font-workSans font-normal text-[16px] leading-4 group-hover:text-[#187EC0] transition-all duration-500">
+      <span
+        className={cn(
+          'font-workSans font-normal text-[16px] leading-4  transition-all duration-500 ',
+          {
+            'text-[#187EC0] group-hover:text-black':
+              index === 0 && title === 'Management',
+          }
+        )}
+      >
         {title}
       </span>
-      <GoArrowRight className="group-hover:text-[#187EC0] transition-all duration-500 w-4" />
+      <GoArrowRight
+        className={cn(' transition-all duration-500 w-4', {
+          'text-[#187EC0] group-hover:text-black':
+            index === 0 && title === 'Management',
+        })}
+      />
     </div>
   )
 }

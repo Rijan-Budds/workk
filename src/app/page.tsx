@@ -1,4 +1,5 @@
 import { AcademicSection } from './(home)/_components/AcademicProgram/AcademicSection'
+import { ContactSection } from './(home)/_components/Contact/ContactSection'
 import { HeroSection } from './(home)/_components/Hero/HeroSection'
 import { NavSection } from './(home)/_components/NavSection'
 import { ReasonsToStudy } from './(home)/_components/ReasonsToStudy/ReasonsToStudy'
@@ -14,6 +15,7 @@ export default function Home() {
       <HeroSection />
       <AcademicSection />
       <ReasonsToStudy />
+      <ContactSection />
       <ProcessSection />
       <AboutusWrapper />
       <TestimonialsSection />
