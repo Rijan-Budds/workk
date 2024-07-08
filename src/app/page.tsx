@@ -7,6 +7,7 @@ import AboutusWrapper from './(home)/_components/Aboutus/AboutusWrapper'
 import ProcessSection from './(home)/_components/Process/ProcessSection'
 import { GallerySection } from './(home)/_components/Gallery/GallerySection'
 import TestimonialsSection from './(home)/_components/Testimonials/TestimonialsSection'
+import { NoticeModal } from './(home)/_components/Notice/NoticeModal'
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <GallerySection />
       <ContactSection />
       <TestimonialsSection />
+      <NoticeModal />
     </>
   )
 }
