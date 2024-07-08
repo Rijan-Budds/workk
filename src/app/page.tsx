@@ -7,19 +7,22 @@ import AboutusWrapper from './(home)/_components/Aboutus/AboutusWrapper'
 import ProcessSection from './(home)/_components/Process/ProcessSection'
 import TestimonialsSection from './(home)/_components/Testimonials/TestimonialsSection'
 import NewsAndEvents from './(home)/_components/News/NewsAndEvents'
+import Footer from '@/common/components/Molecules/Footer/Footer'
 
 export default function Home() {
   return (
     <>
+      {/* <AdPopup /> */}
       <NavSection />
       <HeroSection />
       <AcademicSection />
       <ReasonsToStudy />
-      <ContactSection />
       <ProcessSection />
       <AboutusWrapper />
       <TestimonialsSection />
       <NewsAndEvents />
+      <ContactSection />
+      <Footer />
     </>
   )
 }
