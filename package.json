@@ -24,6 +24,7 @@
     "react-modal": "^3.16.1",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.1.4",
+    "reactjs-popup": "^2.0.6",
     "tailwind-merge": "^2.3.0",
     "yup": "^1.4.0"
   },

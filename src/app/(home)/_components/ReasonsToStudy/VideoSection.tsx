@@ -6,7 +6,7 @@ import { VideoHeader } from './VideoHeader'
 
 export const VideoSection = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true)
 
   const handlePlayPause = (): void => {
     if (videoRef && videoRef?.current!.paused) {
@@ -45,6 +45,7 @@ export const VideoSection = () => {
         preload="auto"
         playsInline
         muted
+        autoPlay
       >
         <source src={'/home/video/school-promo.mov'} type="video/mp4" />
       </video>

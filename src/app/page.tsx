@@ -9,10 +9,12 @@ import { GallerySection } from './(home)/_components/Gallery/GallerySection'
 import TestimonialsSection from './(home)/_components/Testimonials/TestimonialsSection'
 import { NoticeModal } from './(home)/_components/Notice/NoticeModal'
 import NewsAndEvents from './(home)/_components/News/NewsAndEvents'
+import Footer from '@/common/components/Molecules/Footer/Footer'
 
 export default function Home() {
   return (
     <>
+      {/* <AdPopup /> */}
       <NavSection />
       <HeroSection />
       <AcademicSection />
@@ -24,6 +26,7 @@ export default function Home() {
       <NewsAndEvents />
       <ContactSection />
       <NoticeModal />
+      <Footer />
     </>
   )
 }
