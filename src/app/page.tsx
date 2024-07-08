@@ -8,6 +8,7 @@ import ProcessSection from './(home)/_components/Process/ProcessSection'
 import { GallerySection } from './(home)/_components/Gallery/GallerySection'
 import TestimonialsSection from './(home)/_components/Testimonials/TestimonialsSection'
 import { NoticeModal } from './(home)/_components/Notice/NoticeModal'
+import NewsAndEvents from './(home)/_components/News/NewsAndEvents'
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <ProcessSection />
       <AboutusWrapper />
       <GallerySection />
+      <NewsAndEvents />
       <ContactSection />
       <TestimonialsSection />
       <NoticeModal />

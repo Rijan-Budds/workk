@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base  {
-    .bdr {
-        @apply border-2 border-red-500
-    }
+@layer base {
+  .bdr {
+    @apply border-2 border-red-500;
+  }
 }
 
 /* .slick-center {
