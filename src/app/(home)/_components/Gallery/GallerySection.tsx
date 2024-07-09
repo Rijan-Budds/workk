@@ -6,9 +6,9 @@ import { GallerySlider } from './GallerySlider'
 
 export const GallerySection = () => {
   return (
-    <div className="bg-[url('/home/gallery-bg.svg')] ">
+    <div className="bg-[url('/home/gallery-bg.svg')] 2xl:min-h-[802px]">
       <HomeWrapper>
-        <div className="flex flex-col gap-y-10 min-h-[75vh]">
+        <div className="flex flex-col gap-y-10 ">
           <div className="flex flex-col justify-center items-center gap-y-2">
             <MiniHeading>galleries</MiniHeading>
             <SectionHeading>Our Galleries</SectionHeading>

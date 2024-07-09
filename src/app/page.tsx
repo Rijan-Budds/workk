@@ -14,7 +14,6 @@ import Footer from '@/common/components/Molecules/Footer/Footer'
 export default function Home() {
   return (
     <>
-      {/* <AdPopup /> */}
       <NavSection />
       <HeroSection />
       <AcademicSection />
