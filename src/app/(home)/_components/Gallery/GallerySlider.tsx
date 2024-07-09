@@ -41,7 +41,6 @@ export const GallerySlider = () => {
       <Swiper
         spaceBetween={24}
         slidesPerView={3}
-        onSlideChange={() => console.log('slide change')}
         autoplay={{
           delay: 3000,
           disableOnInteraction: true,

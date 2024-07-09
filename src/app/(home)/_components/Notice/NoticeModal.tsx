@@ -3,11 +3,28 @@
 import { Button } from '@/common/components/Atom/Button'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoClose } from 'react-icons/io5'
 
 export const NoticeModal = () => {
   const [openModal, setOpenModal] = useState<boolean>(true)
+
+  useEffect(() => {
+    if (openModal) {
+      sessionStorage.setItem('showAnnouncement', 'true')
+    }
+  }, [])
+
+  useEffect(() => {
+    const isModalAlreadyShown =
+      sessionStorage.getItem('showAnnouncement') === 'true'
+    if (isModalAlreadyShown) {
+      setOpenModal(false)
+    } else {
+      setOpenModal(true)
+    }
+  }, [])
+
   return (
     <CustomModal isOpen={openModal}>
       <div className="bg-white p-6 flex flex-col gap-y-6 rounded-[12px] relative">

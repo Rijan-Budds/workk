@@ -25,7 +25,7 @@ export const ContactForm = () => {
       </p>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => console.error(values)}
         // validationSchema={Yup.object().shape({
         //   fullName: fullNameValidation,
         //   email: emailValidation,

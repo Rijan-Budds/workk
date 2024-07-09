@@ -8,8 +8,6 @@ export const isVideo = (name: string) => {
     "wmv",
     "flv"]
     const extension = name.split('.').pop()?.toLocaleLowerCase();
-
-    console.log('extension', extension)
     const videoExists = allowedVideoExten.includes(extension || '')
 
     return videoExists
