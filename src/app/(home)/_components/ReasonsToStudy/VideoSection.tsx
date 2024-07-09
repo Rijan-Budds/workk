@@ -41,9 +41,10 @@ export const VideoSection = () => {
       <CustomVideo
         height="423"
         width="819"
-        className="rounded-x z-[5]"
+        className="rounded-[12px] z-[5]"
         videoRef={videoRef}
         src="/home/video/school-promo.mov"
+        fallbackThumb="/home/video-thumb.png"
       />
       <button
         onClick={handlePlayPause}

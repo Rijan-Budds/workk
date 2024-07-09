@@ -7,6 +7,7 @@ interface ICustomVideoProps {
   height: string
   className?: string
   videoRef?: LegacyRef<HTMLVideoElement> | undefined
+  fallbackThumb?: string
 }
 
 export const CustomVideo = ({
@@ -15,6 +16,7 @@ export const CustomVideo = ({
   height,
   className,
   videoRef,
+  fallbackThumb,
 }: ICustomVideoProps) => {
   return (
     <video
@@ -26,6 +28,7 @@ export const CustomVideo = ({
       playsInline
       muted
       autoPlay
+      poster={fallbackThumb}
     >
       <source src={src} type="video/mp4" />
     </video>

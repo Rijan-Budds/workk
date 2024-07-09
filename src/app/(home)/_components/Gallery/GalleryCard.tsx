@@ -16,7 +16,7 @@ export const GalleryCard = ({
 }) => {
   const isVideoExists = isVideo(data.src)
   return (
-    <div className="flex flex-col gap-y-4 will-change-transform">
+    <div className="flex flex-col gap-y-4 will-change-transform ">
       <div
         className={cn(
           ' rounded-[8px] gallery-card w-[292px] h-[219px]  gallery-transition-all duration-500',
@@ -32,6 +32,7 @@ export const GalleryCard = ({
             width="580"
             src={data.src}
             className="rounded-[8px]"
+            fallbackThumb="/home/video-thumb.png"
           />
         ) : (
           <Image
