@@ -15,7 +15,7 @@ export const ContactForm = () => {
   }
 
   return (
-    <div className="relative z-10 w-full  bg-[url('/home/contact-bg.svg')] bg-no-repeat p-8  rounded-[12px]">
+    <div className="relative z-10 w-full bg-cover  bg-[url('/home/contact-bg.svg')] bg-no-repeat p-8  rounded-[12px]">
       <h1 className=" text-white font-poppins text-[28px] leading-[36.4px]  ">
         Get in touch with Us
       </h1>
@@ -25,7 +25,7 @@ export const ContactForm = () => {
       </p>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => console.error(values)}
         // validationSchema={Yup.object().shape({
         //   fullName: fullNameValidation,
         //   email: emailValidation,
