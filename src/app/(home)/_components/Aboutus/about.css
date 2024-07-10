@@ -2,9 +2,8 @@
   width: 320px;
   height: 258px;
   padding: 40px;
-
   border-radius: 12px 12px 12px 12px;
-  opacity: 0px;
+  opacity: 1;
   background: linear-gradient(270deg, #187ec0 -3.39%, #005296 112.11%);
 }
 /* teacherStaff.css */

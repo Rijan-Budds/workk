@@ -7,7 +7,7 @@ const NewsAndEvents = () => {
   return (
     <HomeWrapper isBg>
       <div className="flex gap-[25px]">
-        <div>
+        <div className="relative">
           <h3 className="text-[#F58534] text-[14px] leading-[21px] tracking-[2px]  font-semibold font-workSans uppercase">
             News and Events
           </h3>
