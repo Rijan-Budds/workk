@@ -37,3 +37,8 @@
 
     animation: fill 3s linear forwards;
   }
+
+  .ReactModal__Overlay--after-open {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    z-index: 99999999 !important;
+  }

@@ -44,19 +44,19 @@ export const HeroImageSection = () => {
     )
   })
   return (
-    <div className="flex gap-x-5  h-[506px] hover:-translate-y-2 transition-all duration-500 ">
+    <div className="flex gap-x-5  h-[506px]  transition-all duration-500 group ">
       <div
         ref={firstImageContainerRef}
-        className="bg-[url('/home/hero-image-1.png')] bg-cover w-[186px] h-[180px] rounded-xl mb-[146px] mt-[180px]"
+        className="bg-[url('/home/hero-images-1.png')] bg-cover w-[186px] h-[180px] rounded-xl mb-[146px] mt-[180px] group-hover:!-translate-y-2 transition-all duration-500 "
       />
 
       <div
         ref={secondImageContainerRef}
-        className="bg-[url('/home/hero-image-2.png')] w-[186px] h-[180px] rounded-xl  mb-[100px] mt-[226px]"
+        className="bg-[url('/home/hero-images-2.png')] w-[186px] h-[180px] rounded-xl  mb-[100px] mt-[226px] group-hover:!translate-y-2 transition-all duration-500"
       />
       <div
         ref={thirdImageContainerRef}
-        className="bg-[url('/home/hero-image-3.png')] w-[186px] h-[180px] rounded-xl mb-[146px] mt-[180px]"
+        className="bg-[url('/home/hero-images-3.png')] w-[186px] h-[180px] rounded-xl mb-[146px] mt-[180px] group-hover:!-translate-y-2 transition-all duration-500 "
       />
     </div>
   )

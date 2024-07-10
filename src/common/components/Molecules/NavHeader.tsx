@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export const NavHeader = () => {
   return (
-    <div className="py-3 bg-[#F8FAFD]">
+    <div className="py-3 bg-[#F8FAFD] border-b-[1px] border-[#E7EEF8]">
       <HomeWrapper className="py-0">
         <div className="flex justify-between">
           <div className="flex gap-x-8 ">

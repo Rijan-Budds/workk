@@ -1,6 +1,6 @@
 export interface IGalleryItem {
     id: number;
-    serialNo: number;
+    serialNo: string;
     title: string;
     src: string;
 }
