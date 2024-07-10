@@ -37,7 +37,7 @@ export const GallerySlider = () => {
   }, [])
 
   return (
-    <div className="w-full h-full ">
+    <div className="w-full h-full  ">
       <Swiper
         spaceBetween={24}
         slidesPerView={3}
@@ -52,7 +52,7 @@ export const GallerySlider = () => {
           setActiveSlide(swiper.activeIndex)
           swiper.on('slideChange', handleSlideChange)
         }}
-        className=" w-full !pl-[79px] relative mx-auto"
+        className=" !pl-[100px] 2xl:!pl-[4vw]"
       >
         {galleriesCarouselData.map((d, index) => (
           <SwiperSlide className=" my-auto" key={index}>
