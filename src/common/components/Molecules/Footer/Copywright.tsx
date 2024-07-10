@@ -1,8 +1,9 @@
 import React from 'react'
+import { HomeWrapper } from '../../Atom/HomeWrapper'
 
 const Copywright = () => {
   return (
-    <div className="w-full px-12  2xl:px-[340px] py-4">
+    <HomeWrapper className="py-4">
       <div className="flex justify-between">
         <h1 className="font-workSans font-light text-[16px] leading-[27.2px] text-white">
           Copyright ©2024. All Rights Reserved by Pawan Prakriti Secondary
@@ -12,7 +13,7 @@ const Copywright = () => {
           Terms and Conditions / Privacy
         </h1>
       </div>
-    </div>
+    </HomeWrapper>
   )
 }
 

@@ -1,8 +1,9 @@
 import React from 'react'
+import { HomeWrapper } from '../../Atom/HomeWrapper'
 
 const FooterLinks = () => {
   return (
-    <div className="w-full px-12  2xl:px-[340px] py-14">
+    <HomeWrapper className="py-14">
       <div className="flex justify-between">
         <div>
           <h1 className="font-poppins text-xl font-medium leading-[26px] text-white">
@@ -65,7 +66,7 @@ const FooterLinks = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </HomeWrapper>
   )
 }
 

@@ -9,6 +9,9 @@ const config: Config = {
         secondary: '#FFFFFF',
         tertiary: '',
       },
+      screens: {
+        '3xl': '1700px'
+      }
     },
     fontFamily: {
       workSans: ['var(--font-workSans)'],
