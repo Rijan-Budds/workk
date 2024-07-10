@@ -3,10 +3,11 @@
 import Image from 'next/image'
 import React, { useRef, useState } from 'react'
 import { VideoHeader } from './VideoHeader'
+import { CustomVideo } from '@/common/components/Atom/CustomVideo'
 
 export const VideoSection = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true)
 
   const handlePlayPause = (): void => {
     if (videoRef && videoRef?.current!.paused) {
@@ -37,17 +38,14 @@ export const VideoSection = () => {
   }
   return (
     <div className="relative mt-[97px]">
-      <video
-        ref={videoRef}
-        width="819"
+      <CustomVideo
         height="423"
-        className="rounded-xl z-[5] "
-        preload="auto"
-        playsInline
-        muted
-      >
-        <source src={'/home/video/school-promo.mov'} type="video/mp4" />
-      </video>
+        width="819"
+        className="rounded-[12px] z-[5]"
+        videoRef={videoRef}
+        src="/home/video/school-promo.mov"
+        fallbackThumb="/home/video-thumb.png"
+      />
       <button
         onClick={handlePlayPause}
         className="absolute bottom-[2.5rem] right-[1.5rem] bg-white  rounded-full  size-[32px] flex justify-center items-center"

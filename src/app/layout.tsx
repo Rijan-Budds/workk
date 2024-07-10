@@ -10,7 +10,9 @@ export default function RootLayout({
       lang="en"
       className={`${workSans.variable} ${poppins.variable} ${inter.variable}`}
     >
-      <body>{children}</body>
+      <title>Pawan Prakriti</title>
+
+      <body className="overflow-x-hidden">{children}</body>
     </html>
   )
 }
