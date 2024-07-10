@@ -7,7 +7,7 @@ import { Button } from '@/common/components/Atom/Button'
 const Aboutus = () => {
   return (
     <HomeWrapper>
-      <div className="flex gap-[80px] ">
+      <div className="flex gap-[80px] justify-between">
         <div className="max-w-[503px] flex flex-col justify-center">
           <h3 className="text-[#F58534] text-[14px] leading-[21px] tracking-[2px]  font-semibold font-workSans uppercase">
             about pawan prakriti
@@ -35,7 +35,7 @@ const Aboutus = () => {
             <Button>About us</Button>
           </div>
         </div>
-        <div className="flex gap-[16px] ">
+        <div className="flex gap-[16px] max-w-[657px]">
           <div className="flex flex-col gap-[16px]">
             <Image
               src="/home/about1.png"
@@ -58,7 +58,7 @@ const Aboutus = () => {
             width={320}
             height={610}
             alt="ab"
-            className="w-[320px] h-[610] rounded-xl"
+            className="w-[321px] h-[610] rounded-xl object-cover"
           />
         </div>
       </div>

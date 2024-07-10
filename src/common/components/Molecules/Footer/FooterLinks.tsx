@@ -9,10 +9,23 @@ const FooterLinks = () => {
             Contact Information
           </h1>
           <div className="mt-6 space-y-4 text-base leading-4 text-white font-workSans font-light">
-            <p>Mobile : +977-9843589375 / +977-9843201703</p>
-            <p>Telephone : 01-5007259 / 01-5007275</p>
-            <p>Email : pawanprakriti2048@gmail.com</p>
-            <p>Time : Sun - Fri 6:00 AM - 5:00 PM. Sat Closed</p>
+            <p>
+              <span className="font-medium">Mobile </span> : +977-9843589375 /
+              +977-9843201703
+            </p>
+
+            <p>
+              <span className="font-medium">Telephone </span> : 01-5007259 /
+              01-5007275
+            </p>
+            <p>
+              <span className="font-medium">Email </span> :
+              pawanprakriti2048@gmail.com
+            </p>
+            <p>
+              <span className="font-medium">Time </span> : Sun - Fri 6:00 AM -
+              5:00 PM. Sat Closed
+            </p>
           </div>
         </div>
         <div>

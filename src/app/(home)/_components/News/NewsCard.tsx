@@ -19,42 +19,64 @@ const newsandevent = [
 
 const NewsCard = () => {
   return (
-    <div className="flex gap-6 mt-[40px]">
-      {newsandevent.map((news) => (
-        <div className="relative" key={news.id}>
+    <>
+      <div className="absolute right-0 top-[50px]">
+        <button>
           <Image
-            src={news.img}
-            width={447}
-            height={298}
-            alt="news"
-            className="relative w-[446px] h-[298px] object-cover rounded-xl"
+            src="/home/buttonleft.svg"
+            width={32}
+            height={32}
+            alt="left"
+            className="w-8 h-8"
           />
-          <div className="absolute w-[94%] h-[98px] bg-white top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">
-            <div className="p-6">
-              <p className="text-[#5D5F69] text-sm font-workSans font-normal leading-4">
-                {news.date}
-              </p>
-              <h2 className="text-gradient text-xl font-poppins font-medium leading-7">
-                8{news.title}
-              </h2>
+        </button>
+        <button>
+          <Image
+            src="/home/buttonright.svg"
+            width={32}
+            height={32}
+            alt="left"
+            className="w-8 h-8"
+          />
+        </button>
+      </div>
+      <div className="flex gap-6 mt-[40px]">
+        {newsandevent.map((news) => (
+          <div className="relative" key={news.id}>
+            <Image
+              src={news.img}
+              width={447}
+              height={298}
+              alt="news"
+              className="relative w-[446px] h-[298px] object-cover rounded-xl"
+            />
+            <div className="absolute w-[94%] h-[98px] bg-white top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">
+              <div className="p-6">
+                <p className="text-[#5D5F69] text-sm font-workSans font-normal leading-4">
+                  {news.date}
+                </p>
+                <h2 className="text-gradient text-xl font-poppins font-medium leading-7">
+                  8{news.title}
+                </h2>
+              </div>
+              <Link
+                href={'/'}
+                className="bg-[#CDDFED] w-[82px] h-[82px] absolute -right-[20px] top-[55px] rounded-full"
+              >
+                <Image
+                  src="/home/newsarrow.png"
+                  width={21}
+                  height={14}
+                  alt="arrow"
+                  className="ml-[25px] mt-[18px]"
+                />
+              </Link>
+              -
             </div>
-            <Link
-              href={'/'}
-              className="bg-[#CDDFED] w-[82px] h-[82px] absolute -right-[20px] top-[55px] rounded-full"
-            >
-              <Image
-                src="/home/newsarrow.png"
-                width={21}
-                height={14}
-                alt="arrow"
-                className="ml-[25px] mt-[18px]"
-              />
-            </Link>
-            -
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   )
 }
 

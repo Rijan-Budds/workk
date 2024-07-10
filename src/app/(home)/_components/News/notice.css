@@ -4,15 +4,11 @@
 }
 
 .notice-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
+  /* background: transparent; */
   border-radius: 10px;
 }
 
 .notice-scrollbar::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #e7eef8;
   border-radius: 10px;
-}
-
-.notice-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }
