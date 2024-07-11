@@ -21,7 +21,7 @@ export const GalleryCard = ({
         className={cn(
           ' rounded-[8px] gallery-card w-[292px] h-[219px]  gallery-transition-all duration-500',
           {
-            'w-[580px] h-[400px]  ': isActive,
+            'w-[430px] h-[300px]  2xl:w-[580px] 2xl:h-[400px]  ': isActive,
             'mt-auto': !isActive,
           }
         )}

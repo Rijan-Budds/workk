@@ -8,28 +8,13 @@
   }
 }
 
-/* .slick-center {
-    border: 1px solid red;
-    width: '608px' !important;
-    height: '456px' !important
-} */
-
-  
-
  .swiper-slide {
     width: auto !important;
  }
 
  .swiper-wrapper {
-  border: '1px solid red';
-  display: flex;
-  flex-direction: row !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  /* transform: translate(-50%, -50%); */
     will-change: transform;
-    /* transform: translate3d(0px, 0px, 0px) !important; */
-    transition: all 2s ease-in;
+    transition: all 3s ease-in;
   }
 
   @keyframes fill {
@@ -49,3 +34,4 @@
     background-color: rgba(0, 0, 0, 0.5) !important;
     z-index: 99999999 !important;
   }
+ 
