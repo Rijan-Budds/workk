@@ -18,14 +18,15 @@ export const GalleryCard = ({
   return (
     <div
       className={cn('flex flex-col gap-y-4 will-change-transform', {
-        'ml-[18px]': isActive,
+        'ml-[5px]': isActive,
       })}
     >
       <div
         className={cn(
           ' rounded-[8px] gallery-card w-[292px] h-[235px]  relative  transition-all duration-500 clip-image',
           {
-            'scaleUp-image rounded': isActive,
+            'rounded xl:scale-x-[1.8] xl:scale-y-[1.7]  3xl:scale-x-[1.982] 3xl:scale-y-[1.840] transition-all duration-500':
+              isActive,
           }
         )}
       >

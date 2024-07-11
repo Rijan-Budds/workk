@@ -10,8 +10,10 @@ const config: Config = {
         tertiary: '',
       },
       screens: {
-        '3xl': '1700px',
-        '4xl': '1900px'
+        '2xl_lg': '1700px',
+        '3xl': '1800px',
+        '4xl': '1900px',
+        '5xl': '2000px'
       }
     },
     fontFamily: {

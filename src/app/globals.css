@@ -31,22 +31,6 @@
   .swiper-slide-active {
     transform: none !important;
   }
-
-  @keyframes scaleUp {
-    from {
-      transform: scaleX(1) scaleY(1);
-    }
-    to {
-      transform: scaleX(1.982) scaleY(1.840);
-    }
-  }
-
-  
-  .scaleUp-image {
-    transition: all;
-    transition-delay: 500ms;
-    animation: scaleUp 0.7s forwards;
-  }
   
   @keyframes fill {
     0% {

@@ -12,23 +12,23 @@ import { GalleryCard } from './GalleryCard'
 
 export const GalleryNewSlider = () => {
   return (
-    <div className="mt-32">
+    <div>
       <Swiper
-        spaceBetween={20}
+        spaceBetween={50}
         slidesPerView={3}
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
         coverflowEffect={{
-          rotate: 50,
+          rotate: 40,
           stretch: 0,
-          depth: 10,
+          depth: 100,
           modifier: 1,
           slideShadows: false,
           scale: 1,
         }}
         autoplay={{
-          delay: 2800,
+          delay: 3000,
           disableOnInteraction: true,
         }}
         loop
