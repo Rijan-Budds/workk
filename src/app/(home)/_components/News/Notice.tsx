@@ -6,42 +6,52 @@ const notices = [
   {
     title: 'Awards and Achievement',
     date: 'July 19, 2024',
+    isHoliday: false,
   },
   {
     title: 'Happy Holi',
     date: 'July 19, 2024',
+    isHoliday: true,
   },
   {
     title: 'Admission opens for academy',
     date: 'July 19, 2024',
+    isHoliday: false,
   },
   {
     title: 'Inter-school Dance Competion',
     date: 'July 19, 2024',
+    isHoliday: false,
   },
   {
     title: 'Confralutations to the team',
     date: 'July 19, 2024',
+    isHoliday: false,
   },
   {
     title: 'Awards and Achievement',
     date: 'July 19, 2024',
+    isHoliday: false,
   },
   {
     title: 'Awards and Achievement',
     date: 'July 19, 2024',
+    isHoliday: false,
   },
   {
     title: 'Awards and Achievement',
     date: 'July 19, 2024',
+    isHoliday: false,
   },
   {
     title: 'Awards and Achievement',
     date: 'July 19, 2024',
+    isHoliday: false,
   },
   {
     title: 'Awards and Achievement',
     date: 'July 19, 2024',
+    isHoliday: false,
   },
 ]
 
@@ -59,8 +69,10 @@ const Notice = () => {
                 className="py-3 flex justify-between border-b-[1px]"
                 key={notice.title}
               >
-                <div className="">
-                  <h1 className="text-gradient text-sm leading-4 font-medium">
+                <div>
+                  <h1
+                    className={`text-sm leading-4 font-medium ${notice.isHoliday ? 'text-[#E0240A]' : 'text-gradient'}`}
+                  >
                     {notice.title}
                   </h1>
                   <p className="text-[#5D5F69] text-sm font-workSans font-normal">
