@@ -30,7 +30,7 @@ export const HeroSection = () => {
                 </p>
                 <div className="flex flex-row  mt-[32px] items-center gap-x-4">
                   <Button className="w-fit ">Apply Now</Button>
-                  <button className="bg-white pr-6 pl-[10px] py-1 rounded-[8px] text-[#187EC0] leading-4 font-medium flex items-center gap-x-1">
+                  <button className="bg-white pr-6 pl-[10px] py-1 rounded-[8px] text-primary leading-4 font-medium flex items-center gap-x-1">
                     <Image
                       width={40}
                       height={40}

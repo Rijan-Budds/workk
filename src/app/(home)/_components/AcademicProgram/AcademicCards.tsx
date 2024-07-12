@@ -16,19 +16,19 @@ export const AcademicCards = ({
 }) => {
   return (
     <div className="bg-white p-8 rounded-[12px] flex flex-col gap-y-4 relative group overflow-hidden">
-      <span className="text-[#187EC0] font-poppins font-semibold text-[20px] leading-[26px]">
+      <span className="text-primary font-poppins font-semibold text-[20px] leading-[26px] z-10">
         {title}
       </span>
-      <p className="font-workSans font-normal text-[16px] leading-[27.2px] max-w-[333px]">
+      <p className="font-workSans font-normal text-[16px] leading-[27.2px] max-w-[333px] z-10">
         {description}
       </p>
-      <div className="mt-4 flex flex-col gap-y-8">
+      <div className="mt-4 flex flex-col gap-y-8 z-10">
         {list.map((list, index) => (
           <AcademicList key={list.id} title={list.title} index={index} />
         ))}
       </div>
       <div
-        className={`size-[259px] rounded-full ${color} absolute bottom-[-11.25rem] -right-[9.75rem] group-hover:scale-[500%] transition-all duration-500`}
+        className={`size-[259px] rounded-full ${color} absolute bottom-[-11.25rem] -right-[9.75rem] group-hover:scale-[500%] transition-all duration-500 z-[1]`}
       />
     </div>
   )
@@ -41,7 +41,7 @@ const AcademicList = ({ title, index }: { title: string; index: number }) => {
         className={cn(
           'font-workSans font-normal text-[16px] leading-4  transition-all duration-500 ',
           {
-            'text-[#187EC0] group-hover:text-black':
+            'text-primary group-hover:text-black':
               index === 0 && title === 'Management',
           }
         )}
@@ -50,7 +50,7 @@ const AcademicList = ({ title, index }: { title: string; index: number }) => {
       </span>
       <GoArrowRight
         className={cn(' transition-all duration-500 w-4', {
-          'text-[#187EC0] group-hover:text-black':
+          'text-primary group-hover:text-black':
             index === 0 && title === 'Management',
         })}
       />

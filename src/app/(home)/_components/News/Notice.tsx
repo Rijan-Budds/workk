@@ -75,7 +75,7 @@ const Notice = () => {
                   >
                     {notice.title}
                   </h1>
-                  <p className="text-[#5D5F69] text-sm font-workSans font-normal">
+                  <p className="text-body text-sm font-workSans font-normal">
                     {notice.date}
                   </p>
                 </div>

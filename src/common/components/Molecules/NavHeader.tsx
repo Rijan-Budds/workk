@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export const NavHeader = () => {
   return (
-    <div className="py-3 bg-[#F8FAFD] border-b-[1px] border-[#E7EEF8]">
+    <div className="py-3 bg-background border-b-[1px] border-border">
       <HomeWrapper className="py-0">
         <div className="flex justify-between">
           <div className="flex gap-x-8 ">
@@ -32,8 +32,8 @@ export const NavHeader = () => {
             </div>
           </div>
           <div className="flex items-center gap-x-6 justify-between">
-            <div className="flex gap-x-6  pr-6 border-r-[1px] border-[#E7EEF8]">
-              <span className="flex gap-x-[6.67px] items-center font-medium text-[12px] leading-4 tracking-wide uppercase text-[#313131]">
+            <div className="flex gap-x-6  pr-6 border-r-[1px] border-border">
+              <span className="flex gap-x-[6.67px] items-center font-medium text-[12px] leading-4 tracking-wide uppercase text-heading cursor-default hover:text-primary transition-all duration-500">
                 Brochure
                 <Image
                   width={6}
@@ -42,7 +42,7 @@ export const NavHeader = () => {
                   src={'/home/arrow.svg'}
                 />
               </span>
-              <span className="flex gap-x-[6.67px]  items-center font-medium text-[12px] leading-4 tracking-wide uppercase text-[#313131]">
+              <span className="flex gap-x-[6.67px]  items-center font-medium text-[12px] leading-4 tracking-wide uppercase text-heading cursor-default hover:text-primary transition-all duration-500">
                 Apply now
                 <Image
                   width={6}
@@ -51,7 +51,7 @@ export const NavHeader = () => {
                   src={'/home/arrow.svg'}
                 />
               </span>
-              <span className="flex gap-x-[6.67px]  items-center font-medium text-[12px] leading-4 tracking-wide uppercase text-[#313131]">
+              <span className="flex gap-x-[6.67px]  items-center font-medium text-[12px] leading-4 tracking-wide uppercase text-heading cursor-default hover:text-primary transition-all duration-500">
                 Result
                 <Image
                   width={6}

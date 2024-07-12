@@ -6,7 +6,7 @@ const TestimonialsSection = () => {
   return (
     <HomeWrapper isBg>
       <div className="relative">
-        <h3 className="text-[#F58534] text-[14px] leading-[21px] tracking-[2px]  font-semibold font-workSans uppercase">
+        <h3 className="text-secondary text-[14px] leading-[21px] tracking-[2px]  font-semibold font-workSans uppercase">
           Testimonials
         </h3>
         <h1 className="font-poppins font-medium text-[38px] leading-[49.4px] mt-2">

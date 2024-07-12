@@ -34,7 +34,7 @@ export const Navbar = () => {
     },
   ]
   return (
-    <div className="py-4   sticky top-0 bg-white z-[999] border-b-[1px] border-[#E7EEF8]">
+    <div className="py-4   sticky top-0 bg-white z-[999] border-b-[1px] border-border">
       <HomeWrapper className="py-0">
         <div className="flex justify-between">
           <div className="flex items-center gap-x-6">
@@ -45,7 +45,7 @@ export const Navbar = () => {
               alt="School logo"
             />
             <div className="">
-              <h2 className="font-poppins font-semibold text-[20px] leading-6 text-[#1B1B1B]">
+              <h2 className="font-poppins font-semibold text-[20px] leading-6 text-heading">
                 Pawan Prakritischool.
               </h2>
               <p className="text-[14px] leading-4 font-workSans font-normal mt-1">
@@ -86,15 +86,15 @@ const NavLinksUi = ({
       <div className="flex flex-col gap-y-1 ">
         <Link
           href={'#'}
-          className="text-[14px] leading-4 font-workSans font-medium group-hover:text-[#187EC0] transition-all duration-500 "
+          className="text-[14px] leading-4 font-workSans font-medium group-hover:text-primary transition-all duration-500 "
         >
           {links}
         </Link>
-        <span className="w-1/3 h-[1px] bg-[#187EC0] opacity-0 rounded  group-hover:opacity-100 transition-all duration-500" />
+        <span className="w-1/3 h-[1px] bg-primary opacity-0 rounded  group-hover:opacity-100 transition-all duration-500" />
       </div>
 
       {isDropdown && (
-        <FiChevronDown className="w-[14px] mb-[3px]  group-hover:text-[#187EC0] transition-all duration-500" />
+        <FiChevronDown className="w-[14px] mb-[3px]  group-hover:text-primary transition-all duration-500" />
       )}
     </div>
   )

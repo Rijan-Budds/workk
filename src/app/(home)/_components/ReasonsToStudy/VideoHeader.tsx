@@ -3,7 +3,7 @@ import React from 'react'
 
 export const VideoHeader = () => {
   return (
-    <div className="p-6 bg-[#187EC0] flex items-center gap-x-6  rounded-[8px]">
+    <div className="p-6 bg-primary flex items-center gap-x-6  rounded-[8px]">
       <div className="flex items-center gap-x-6">
         <Image
           src={'/home/course.svg'}
@@ -12,7 +12,7 @@ export const VideoHeader = () => {
           alt="Trending course icon"
         />
         <div className="flex flex-col  w-[166px]">
-          <span className="font-workSans text-[20px] leading-[30px] text-white">
+          <span className="font-workSans text-[20px] font-semibold leading-[30px] text-white">
             400 +
           </span>
           <p className="text-[14px] leading-[21px] font-normal font-workSans text-white">

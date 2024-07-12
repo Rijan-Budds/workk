@@ -37,7 +37,7 @@ export const NoticeModal = () => {
 
       <button
         onClick={handleCloseModal}
-        className="absolute top-1 right-1 bg-[#187EC0] size-[32px] rounded-full flex justify-center items-center"
+        className="absolute top-1 right-1 bg-primary size-[32px] rounded-full flex justify-center items-center"
       >
         <IoClose className="text-white size-5" />
       </button>
