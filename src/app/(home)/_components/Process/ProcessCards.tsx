@@ -63,7 +63,7 @@ const ProcessCards = () => {
             key={index}
             className="process-card hover:shadow-md transition-all duration-500"
           >
-            <div className="absolute -top-6 -right-6 w-[82px] h-[82px] bg-[#CDDFED] rounded-full flex items-center justify-center">
+            <div className="absolute -top-6 -right-6 w-[82px] h-[82px] bg-primaryLight rounded-full flex items-center justify-center">
               <Image
                 width={32}
                 height={32}
@@ -72,13 +72,13 @@ const ProcessCards = () => {
                 className="w-[32px] h-[32px] mt-5 mr-5"
               />
             </div>
-            <h1 className="text-[48px] font-poppins leading-[62.4px] text-[#DBDBDB]">
+            <h1 className="text-[48px] font-poppins leading-[62.4px] text-primaryLight">
               {step.number}
             </h1>
             <h2 className="font-poppins text-xl font-semibold text-gradient">
               {step.title}
             </h2>
-            <p className="text-[16px] font-workSans font-normal leading-[27.2px] text-[#5D5F69]">
+            <p className="text-[16px] font-workSans font-normal leading-[27.2px] text-body">
               {step.description}
             </p>
           </div>

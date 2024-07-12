@@ -52,8 +52,8 @@ export const GalleryCard = ({
       {isActive && (
         <>
           <div className="absolute -left-36 -bottom-48 flex flex-col gap-y-10 w-[578px] ">
-            <p className="font-workSans font-normal text-[16px] leading-[16px] text-[#313131]">
-              <span className="font-poppins font-medium text-[20px] leading-[26px] text-center text-[#187EC0]">
+            <p className="font-workSans font-normal text-[16px] leading-[16px] text-heading">
+              <span className="font-poppins font-medium text-[20px] leading-[26px] text-center text-primary">
                 {data.serialNo}
                 {'   '}
               </span>
@@ -69,8 +69,8 @@ export const GalleryCard = ({
 
 const GalleryLoader = () => {
   return (
-    <div className="bg-[#E7EEF8] w-full">
-      <div className="w-[608px] bg-[#187EC0] rounded-xl h-[1px] animate-fill " />
+    <div className="bg-border w-full">
+      <div className="w-[608px] bg-primary rounded-xl h-[1px] animate-fill " />
     </div>
   )
 }

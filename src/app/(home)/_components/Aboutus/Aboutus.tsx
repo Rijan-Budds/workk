@@ -9,23 +9,23 @@ const Aboutus = () => {
     <HomeWrapper>
       <div className="flex gap-[80px] justify-between">
         <div className="max-w-[503px] flex flex-col justify-center">
-          <h3 className="text-[#F58534] text-[14px] leading-[21px] tracking-[2px]  font-semibold font-workSans uppercase">
+          <h3 className="text-secondary text-[14px] leading-[21px] tracking-[2px]  font-semibold font-workSans uppercase">
             about pawan prakriti
           </h3>
           <h1 className="font-poppins font-medium text-[38px] leading-[49.4px] mt-2">
             Skilled Teachers And Support Staff
           </h1>
-          <p className="font-workSans text-[#5D5F69] font-normal text-[16px] leading-[27.2px] my-6">
+          <p className="font-workSans text-body font-normal text-[16px] leading-[27.2px] my-6">
             As you begin to consider your career goals choices may appear
             confusing. Go with Modern Technology.
           </p>
           <div className="flex gap-[24px]">
-            <ul className="custom-list text-[#313131] font-normal text-[16px] leading-[27.2px] space-y-[16px]">
+            <ul className="custom-list text-heading font-normal text-[16px] leading-[27.2px] space-y-[16px]">
               <li>Popular Online Courses</li>
               <li>Guaranted Career Security</li>
               <li>Books and Library</li>
             </ul>
-            <ul className="custom-list text-[#313131] font-normal text-[16px] leading-[27.2px] space-y-[16px]">
+            <ul className="custom-list text-heading font-normal text-[16px] leading-[27.2px] space-y-[16px]">
               <li>Easy to learn every time</li>
               <li>Experienced Faculty</li>
               <li>Flexible Payment Methods</li>

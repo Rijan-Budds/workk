@@ -52,7 +52,7 @@ const NewsCard = () => {
             />
             <div className="absolute w-[94%] h-[98px] bg-white top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">
               <div className="p-6">
-                <p className="text-[#5D5F69] text-sm font-workSans font-normal leading-4">
+                <p className="text-body text-sm font-workSans font-normal leading-4">
                   {news.date}
                 </p>
                 <h2 className="text-gradient text-xl font-poppins font-medium leading-7">
@@ -61,7 +61,7 @@ const NewsCard = () => {
               </div>
               <Link
                 href={'/'}
-                className="bg-[#CDDFED] w-[82px] h-[82px] absolute -right-[20px] top-[55px] rounded-full"
+                className="bg-primaryLight w-[82px] h-[82px] absolute -right-[20px] top-[55px] rounded-full"
               >
                 <Image
                   src="/home/newsarrow.png"
