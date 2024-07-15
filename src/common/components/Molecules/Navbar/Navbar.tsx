@@ -4,35 +4,9 @@ import Image from 'next/image'
 import { Button } from '../../Atom/Button'
 import Link from 'next/link'
 import { FiChevronDown } from 'react-icons/fi'
+import { navLinks } from '@/common/constant/data'
 
 export const Navbar = () => {
-  const navLinks = [
-    {
-      id: 1,
-      title: 'About Us',
-      isDropDown: true,
-    },
-    {
-      id: 2,
-      title: 'Academics',
-      isDropDown: true,
-    },
-    {
-      id: 3,
-      title: 'Admission',
-      isDropDown: true,
-    },
-    {
-      id: 4,
-      title: 'Gallery',
-      isDropDown: false,
-    },
-    {
-      id: 5,
-      title: 'News & Events',
-      isDropDown: false,
-    },
-  ]
   return (
     <div className="py-4   sticky top-0 bg-white z-[999] border-b-[1px] border-border hidden 2lg:block">
       <HomeWrapper className="py-0">

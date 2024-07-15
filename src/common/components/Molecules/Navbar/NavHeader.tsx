@@ -1,6 +1,7 @@
 import React from 'react'
 import { HomeWrapper } from '../../Atom/HomeWrapper'
 import Image from 'next/image'
+import { NavHeaderLink } from './NavHeaderLink'
 
 export const NavHeader = () => {
   return (
@@ -32,65 +33,42 @@ export const NavHeader = () => {
             </div>
           </div>
           <div className="flex items-center gap-x-6 justify-between">
-            <div className="flex gap-x-6  pr-6 border-r-[1px] border-border">
-              <span className="flex gap-x-[6.67px] items-center font-medium text-[12px] leading-4 tracking-wide uppercase text-heading cursor-default hover:text-primary transition-all duration-500">
-                Brochure
-                <Image
-                  width={6}
-                  height={7}
-                  alt="arrow right"
-                  src={'/home/arrow.svg'}
-                />
-              </span>
-              <span className="flex gap-x-[6.67px]  items-center font-medium text-[12px] leading-4 tracking-wide uppercase text-heading cursor-default hover:text-primary transition-all duration-500">
-                Apply now
-                <Image
-                  width={6}
-                  height={7}
-                  alt="arrow right"
-                  src={'/home/arrow.svg'}
-                />
-              </span>
-              <span className="flex gap-x-[6.67px]  items-center font-medium text-[12px] leading-4 tracking-wide uppercase text-heading cursor-default hover:text-primary transition-all duration-500">
-                Result
-                <Image
-                  width={6}
-                  height={7}
-                  alt="arrow right"
-                  src={'/home/arrow.svg'}
-                />
-              </span>
-            </div>
-
-            <div className="flex gap-x-4 items-center">
-              <Image
-                width={14}
-                height={14}
-                src={'/home/twitter.svg'}
-                alt="Twitter logo"
-              />
-              <Image
-                width={8}
-                height={14}
-                src={'/home/facebook.svg'}
-                alt="Twitter logo"
-              />
-              <Image
-                width={14}
-                height={14}
-                src={'/home/instagram.svg'}
-                alt="Twitter logo"
-              />
-              <Image
-                width={14}
-                height={14}
-                src={'/home/youtube.svg'}
-                alt="Twitter logo"
-              />
-            </div>
+            <NavHeaderLink />
+            <NavHeaderSocialMedia />
           </div>
         </div>
       </HomeWrapper>
+    </div>
+  )
+}
+
+export const NavHeaderSocialMedia = () => {
+  return (
+    <div className="flex gap-x-4 items-center">
+      <Image
+        width={14}
+        height={14}
+        src={'/home/twitter.svg'}
+        alt="Twitter logo"
+      />
+      <Image
+        width={8}
+        height={14}
+        src={'/home/facebook.svg'}
+        alt="Twitter logo"
+      />
+      <Image
+        width={14}
+        height={14}
+        src={'/home/instagram.svg'}
+        alt="Twitter logo"
+      />
+      <Image
+        width={14}
+        height={14}
+        src={'/home/youtube.svg'}
+        alt="Twitter logo"
+      />
     </div>
   )
 }
