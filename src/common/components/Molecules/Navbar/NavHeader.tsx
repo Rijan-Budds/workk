@@ -1,10 +1,10 @@
 import React from 'react'
-import { HomeWrapper } from '../Atom/HomeWrapper'
+import { HomeWrapper } from '../../Atom/HomeWrapper'
 import Image from 'next/image'
 
 export const NavHeader = () => {
   return (
-    <div className="py-3 bg-background border-b-[1px] border-border">
+    <div className="py-3 bg-background border-b-[1px] border-border hidden 2lg:block ">
       <HomeWrapper className="py-0">
         <div className="flex justify-between">
           <div className="flex gap-x-8 ">

@@ -1,7 +1,7 @@
 import React from 'react'
-import { HomeWrapper } from '../Atom/HomeWrapper'
+import { HomeWrapper } from '../../Atom/HomeWrapper'
 import Image from 'next/image'
-import { Button } from '../Atom/Button'
+import { Button } from '../../Atom/Button'
 import Link from 'next/link'
 import { FiChevronDown } from 'react-icons/fi'
 
@@ -34,7 +34,7 @@ export const Navbar = () => {
     },
   ]
   return (
-    <div className="py-4   sticky top-0 bg-white z-[999] border-b-[1px] border-border">
+    <div className="py-4   sticky top-0 bg-white z-[999] border-b-[1px] border-border hidden 2lg:block">
       <HomeWrapper className="py-0">
         <div className="flex justify-between">
           <div className="flex items-center gap-x-6">

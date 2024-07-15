@@ -1,5 +1,6 @@
-import { Navbar } from '@/common/components/Molecules/Navbar'
-import { NavHeader } from '@/common/components/Molecules/NavHeader'
+import { MobileNav } from '@/common/components/Molecules/Navbar/MobileNav'
+import { NavHeader } from '@/common/components/Molecules/Navbar/NavHeader'
+import { Navbar } from '@/common/components/Molecules/Navbar/Navbar'
 import React from 'react'
 
 export const NavSection = () => {
@@ -7,6 +8,7 @@ export const NavSection = () => {
     <>
       <NavHeader />
       <Navbar />
+      <MobileNav />
     </>
   )
 }
