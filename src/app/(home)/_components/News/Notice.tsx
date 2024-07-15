@@ -66,16 +66,16 @@ const Notice = () => {
           <div className="w-[332px] pt-[24px]">
             {notices.map((notice) => (
               <div
-                className="py-3 flex justify-between border-b-[1px]"
+                className="py-3 flex justify-between border-b-[1px] group"
                 key={notice.title}
               >
                 <div>
                   <h1
-                    className={`text-sm leading-4 font-medium ${notice.isHoliday ? 'text-[#E0240A]' : 'text-gradient'}`}
+                    className={`text-sm leading-4 font-medium transition-all duration-500 ${notice.isHoliday ? 'text-[#E0240A]' : 'text-primary group-hover:text-secondary'}`}
                   >
                     {notice.title}
                   </h1>
-                  <p className="text-body text-sm font-workSans font-normal">
+                  <p className="text-[#5D5F69] text-sm font-workSans font-normal">
                     {notice.date}
                   </p>
                 </div>
