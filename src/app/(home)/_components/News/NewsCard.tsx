@@ -43,13 +43,13 @@ const NewsCard = () => {
       <div className="flex gap-6 mt-[40px]">
         {newsandevent.map((news) => (
           <div className="relative group cursor-pointer" key={news.id}>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden  rounded-xl ">
               <Image
                 src={news.img}
                 width={447}
                 height={298}
                 alt="news"
-                className="relative w-[446px] h-[298px] object-cover rounded-xl group-hover:scale-110 transition-all duration-500"
+                className="relative w-[446px] h-[298px] object-cover  group-hover:scale-110 transition-all duration-500"
               />
             </div>
 
