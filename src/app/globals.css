@@ -8,15 +8,30 @@
   }
 }
 
- .swiper-slide {
+
+
+ /* .swiper-slide {
     width: auto !important;
+ } */
+
+ .swiper {
+  overflow: visible !important;
+  min-height: 498px  ;
+
  }
 
  .swiper-wrapper {
     will-change: transform;
     transition: all 3s ease-in;
+    min-height: 498px  !important ;
+    display: flex !important;
+    column-gap: 25px;
   }
 
+  .swiper-slide-active {
+    transform: none !important;
+  }
+  
   @keyframes fill {
     0% {
       width: 0%;
@@ -26,7 +41,6 @@
     }
   }
   .animate-fill {
-
     animation: fill 3s linear forwards;
   }
 

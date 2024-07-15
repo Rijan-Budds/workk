@@ -6,7 +6,7 @@ import { ContactForm } from './ContactForm'
 export const ContactSection = () => {
   return (
     <HomeWrapper>
-      <div className="flex  flex-row gap-x-6">
+      <div className="flex  flex-row gap-x-6 justify-center">
         <ContactLocation />
         <ContactForm />
       </div>

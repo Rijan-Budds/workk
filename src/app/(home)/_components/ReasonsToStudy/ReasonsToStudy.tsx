@@ -87,10 +87,10 @@ const MissionTimeline = ({
         )}
       </div>
       <div>
-        <span className="text-[20px] leading-[26px] font-poppins text-[#313131] font-medium">
+        <span className="text-[20px] leading-[26px] font-poppins text-heading font-medium">
           {title}
         </span>
-        <p className="font-workSans text-[14px] leading-[21px] text-[#5D5F69] max-w-[285px]">
+        <p className="font-workSans text-[14px] leading-[21px] text-body max-w-[285px]">
           {description}
         </p>
       </div>

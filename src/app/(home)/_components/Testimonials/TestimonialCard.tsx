@@ -64,7 +64,7 @@ const TestimonialCard = () => {
             <p className="p-[40px] font-workSans font-[400] text-base leading-[27.2px] tracking-tight">
               {card.desc}
             </p>
-            <div className="px-10 py-6 flex gap-4 border-[#E7EEF8]-2 border-t-[1px]">
+            <div className="px-10 py-6 flex gap-4 border-border-2 border-t-[1px]">
               <Image
                 src={card.img}
                 width={56}
@@ -73,10 +73,10 @@ const TestimonialCard = () => {
                 className="rounded-full w-14 h-14 object-cover"
               />
               <div className="flex flex-col justify-center space-y-[8px]">
-                <h1 className="font-inter font-medium text-base leading-4 text-[#313131]">
+                <h1 className="font-inter font-medium text-base leading-4 text-heading">
                   {card.name}
                 </h1>
-                <p className="text-sm font-workSans font-[400] text-[#5D5F69] leading-4">
+                <p className="text-sm font-workSans font-[400] text-body leading-4">
                   {card.position}
                 </p>
               </div>
