@@ -1,10 +1,10 @@
 'use client'
 
 import { Button } from '@/common/components/Atom/Button'
+import { CloseButton } from '@/common/components/Atom/CloseButton'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import { IoClose } from 'react-icons/io5'
 
 export const NoticeModal = () => {
   const [openModal, setOpenModal] = useState<boolean>(true)
@@ -34,13 +34,7 @@ export const NoticeModal = () => {
         />
         <Button onClick={handleCloseModal}>Online Registration Form</Button>
       </div>
-
-      <button
-        onClick={handleCloseModal}
-        className="absolute top-1 right-1 bg-primary size-[32px] rounded-full flex justify-center items-center"
-      >
-        <IoClose className="text-white size-5" />
-      </button>
+      <CloseButton handleClick={handleCloseModal} />
     </CustomModal>
   )
 }
