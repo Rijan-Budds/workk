@@ -10,53 +10,56 @@ export const HeroImageSection = () => {
   const thirdImageContainerRef = useRef(null)
 
   useGSAP(() => {
-    const tl = gsap.timeline()
+    const mm = gsap.matchMedia()
+    mm.add('(min-width: 1300px)', () => {
+      const tl = gsap.timeline()
 
-    tl.to(
-      firstImageContainerRef.current,
-      {
-        height: 400,
-        transformOrigin: 'top',
-        marginTop: 0,
-        marginBottom: 106,
-      },
-      'a'
-    )
-    tl.to(
-      secondImageContainerRef.current,
-      {
-        height: 400,
-        transformOrigin: 'bottom',
-        marginTop: 106,
-        marginBottom: 0,
-      },
-      'a'
-    )
-    tl.to(
-      thirdImageContainerRef.current,
-      {
-        height: 400,
-        transformOrigin: 'bottom',
-        marginTop: 0,
-        marginBottom: 106,
-      },
-      'a'
-    )
+      tl.to(
+        firstImageContainerRef.current,
+        {
+          height: 400,
+          transformOrigin: 'top',
+          marginTop: 0,
+          marginBottom: 106,
+        },
+        'a'
+      )
+      tl.to(
+        secondImageContainerRef.current,
+        {
+          height: 400,
+          transformOrigin: 'bottom',
+          marginTop: 106,
+          marginBottom: 0,
+        },
+        'a'
+      )
+      tl.to(
+        thirdImageContainerRef.current,
+        {
+          height: 400,
+          transformOrigin: 'bottom',
+          marginTop: 0,
+          marginBottom: 106,
+        },
+        'a'
+      )
+    })
   })
   return (
-    <div className="flex gap-x-5  h-[506px]  transition-all duration-500 group ">
+    <div className="flex gap-x-5 h-[286px]  2lg:h-[506px]  transition-all duration-500 group ">
       <div
         ref={firstImageContainerRef}
-        className="bg-[url('/home/hero-images-1.png')] bg-cover w-[186px] h-[180px] rounded-xl mb-[146px] mt-[180px] group-hover:!-translate-y-2 transition-all duration-500 "
+        className="bg-[url('/home/hero-images-1.png')] bg-cover w-[100px] h-[213.9px]  2lg:w-[186px] 2lg:h-[180px] rounded-xl mb-[65.75px]  2lg:mb-[146px] 2lg:mt-[180px] group-hover:!-translate-y-2 transition-all duration-500 "
       />
 
       <div
         ref={secondImageContainerRef}
-        className="bg-[url('/home/hero-images-2.png')] w-[186px] h-[180px] rounded-xl  mb-[100px] mt-[226px] group-hover:!translate-y-2 transition-all duration-500"
+        className="bg-[url('/home/hero-images-2.png')] bg-cover  w-[100px] h-[213.9px]  2lg:w-[186px] 2lg:h-[180px] rounded-xl 2lg: mb-[100px] mt-14 2lg:mt-[226px] group-hover:!translate-y-2 transition-all duration-500"
       />
       <div
         ref={thirdImageContainerRef}
-        className="bg-[url('/home/hero-images-3.png')] w-[186px] h-[180px] rounded-xl mb-[146px] mt-[180px] group-hover:!-translate-y-2 transition-all duration-500 "
+        className="bg-[url('/home/hero-images-3.png')] bg-cover w-[100px] h-[213.9px]  2lg:w-[186px] 2lg:h-[180px] rounded-xl mb-[65.75px] 2xl:mb-[146px] 2lg:mt-[180px] group-hover:!-translate-y-2 transition-all duration-500 "
       />
     </div>
   )
