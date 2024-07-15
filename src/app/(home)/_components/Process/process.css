@@ -30,3 +30,13 @@
 .process-card:nth-child(4) {
   margin-top: 83px;
 }
+
+.process-card-mbl {
+  width: 292px;
+  height: 276px;
+  border-radius: 16px;
+  padding: 24px;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+}
