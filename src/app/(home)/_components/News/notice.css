@@ -1,14 +1,15 @@
+/* styles/globals.css */
 .notice-scrollbar::-webkit-scrollbar {
   width: 4px;
   height: 4px;
 }
 
 .notice-scrollbar::-webkit-scrollbar-track {
-  /* background: transparent; */
   border-radius: 10px;
 }
 
 .notice-scrollbar::-webkit-scrollbar-thumb {
+  padding-top: 2px;
   background: #e7eef8;
   border-radius: 10px;
 }
