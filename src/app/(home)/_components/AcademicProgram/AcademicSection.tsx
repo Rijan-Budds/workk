@@ -8,8 +8,8 @@ import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 
 export const AcademicSection = () => {
   return (
-    <HomeWrapper isBg>
-      <div className="pt-[80px]  2lg:pt-0  flex flex-col  2lg:flex-row justify-between">
+    <HomeWrapper isBg className=" ">
+      <div className="pt-[13.6rem] 2lg:pt-0  flex flex-col  2lg:flex-row justify-between">
         <div className="flex flex-col gap-y-2">
           <MiniHeading>Program</MiniHeading>
           <SectionHeading>Academic Program</SectionHeading>
