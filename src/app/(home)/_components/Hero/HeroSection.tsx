@@ -9,8 +9,8 @@ import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 export const HeroSection = () => {
   return (
     <HeroBgWrapper>
-      <HomeWrapper className="pt-[35px] pb-20 2lg:py-[97px]  ">
-        <div className="flex items-center flex-col  2lg:flex-row  w-full ">
+      <HomeWrapper className="py-[35px]  2lg:py-[97px]">
+        <div className="flex items-center flex-col  2lg:flex-row  w-full  ">
           <div className="flex justify-start items-center w-full  ">
             <div className="flex flex-col gap-y-24 2lg:mt-16">
               <div className="flex flex-col gap-y-2">
@@ -24,9 +24,9 @@ export const HeroSection = () => {
                   leading educational and residential school, situated at
                   Tikathali, Lalitpur.
                 </p>
-                <div className="flex flex-col 2lg:flex-row gap-y-4  mt-[32px] sm:items-center 2lg:gap-x-4">
-                  <Button className="sm:w-fit ">Apply Now</Button>
-                  <button className="sm:w-fit bg-white pr-6 pl-[10px] py-1 rounded-[8px] text-primary leading-4 font-medium flex items-center justify-center 2lg:justify-start gap-x-1">
+                <div className="flex flex-col md:flex-row gap-y-4 justify-center 2lg:justify-start  mt-[32px]  md:gap-x-4">
+                  <Button className=" ">Apply Now</Button>
+                  <button className=" bg-white pr-6 pl-[10px] py-1 rounded-[8px] text-primary leading-4 font-medium flex items-center justify-center 2lg:justify-start gap-x-1">
                     <Image
                       width={40}
                       height={40}
@@ -55,7 +55,7 @@ export const HeroSection = () => {
               </div>
             </div>
           </div>
-          <div className="mt-16 2lg:mt-0 ">
+          <div className=" -mb-[12rem] mt-14  2lg:mt-0 2lg:mb-0 ">
             <HeroImageSection />
           </div>
         </div>
