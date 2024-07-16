@@ -9,7 +9,7 @@ import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 export const AcademicSection = () => {
   return (
     <HomeWrapper isBg>
-      <div className=" flex justify-between">
+      <div className=" flex flex-col  2lg:flex-row justify-between">
         <div className="flex flex-col gap-y-2">
           <MiniHeading>Program</MiniHeading>
           <SectionHeading>Academic Program</SectionHeading>
