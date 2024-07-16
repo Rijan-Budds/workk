@@ -5,20 +5,21 @@ import { AcademicCards } from './AcademicCards'
 import { academicCardsDataOne, academicCardsDataTwo } from './constant/data'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
+import { AcademicSwipeCard } from './AcademicSwipeCard'
 
 export const AcademicSection = () => {
   return (
     <HomeWrapper isBg className=" ">
-      <div className="pt-[13.6rem] 2lg:pt-0  flex flex-col  2lg:flex-row justify-between">
+      <div className="pt-[13.6rem] 2lg:pt-0  flex flex-col  2lg:flex-row justify-between gap-x-6">
         <div className="flex flex-col gap-y-2">
           <MiniHeading>Program</MiniHeading>
           <SectionHeading>Academic Program</SectionHeading>
-          <p className="font-normal text-[16px] font-workSans mt-2 text-heading">
+          <p className="font-normal text-[16px] font-workSans mt-2 text-heading text-center 2lg:text-left">
             As you begin to consider your career goals
             <br />
             choices may appear confusing.
           </p>
-          <div className="flex items-center gap-x-2 mt-2">
+          <div className="flex items-center justify-center 2lg:justify-start gap-x-2 mt-2">
             <Image
               width={112}
               height={40}
@@ -34,9 +35,11 @@ export const AcademicSection = () => {
               </p>
             </div>
           </div>
-          <Button className="mt-6 w-fit">Our Success</Button>
+          <Button className="mt-6 w-full  md:w-fit mx-auto 2lg:mx-0">
+            Contact Us
+          </Button>
         </div>
-        <div className="flex gap-x-4 ">
+        <div className="hidden 2lg:flex   flex-row  gap-x-4  ">
           <AcademicCards
             title={'Plus Two'}
             description={
@@ -54,6 +57,7 @@ export const AcademicSection = () => {
             list={academicCardsDataTwo}
           />
         </div>
+        <AcademicSwipeCard />
       </div>
     </HomeWrapper>
   )

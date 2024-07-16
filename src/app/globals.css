@@ -8,44 +8,40 @@
   }
 }
 
-
-
- /* .swiper-slide {
+/* .swiper-slide {
     width: auto !important;
  } */
 
- .swiper {
+.gallery__slider .swiper {
   overflow: visible !important;
-  min-height: 498px  ;
+  min-height: 498px;
+}
 
- }
+.gallery__slider .swiper-wrapper {
+  will-change: transform;
+  transition: all 3s ease-in;
+  min-height: 498px !important ;
+  display: flex !important;
+  column-gap: 25px;
+}
 
- .swiper-wrapper {
-    will-change: transform;
-    transition: all 3s ease-in;
-    min-height: 498px  !important ;
-    display: flex !important;
-    column-gap: 25px;
-  }
+.gallery__slider .swiper-slide-active {
+  transform: none !important;
+}
 
-  .swiper-slide-active {
-    transform: none !important;
+@keyframes fill {
+  0% {
+    width: 0%;
   }
-  
-  @keyframes fill {
-    0% {
-      width: 0%;
-    }
-    100% {
-      width: 100%;
-    }
+  100% {
+    width: 100%;
   }
-  .animate-fill {
-    animation: fill 3s linear forwards;
-  }
+}
+.animate-fill {
+  animation: fill 3s linear forwards;
+}
 
-  .ReactModal__Overlay--after-open {
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    z-index: 99999999 !important;
-  }
- 
+.ReactModal__Overlay--after-open {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  z-index: 99999999 !important;
+}
