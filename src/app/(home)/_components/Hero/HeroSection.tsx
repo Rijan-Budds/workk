@@ -9,7 +9,7 @@ import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 export const HeroSection = () => {
   return (
     <HeroBgWrapper>
-      <HomeWrapper className="pt-[35px] pb-20 2lg:py-[97px]  ">
+      <HomeWrapper className="pt-[35px]  2lg:py-[97px]  ">
         <div className="flex items-center flex-col  2lg:flex-row  w-full ">
           <div className="flex justify-start items-center w-full  ">
             <div className="flex flex-col gap-y-24 2lg:mt-16">
