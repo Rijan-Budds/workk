@@ -28,23 +28,23 @@ export const ReasonsToStudy = () => {
   return (
     <HomeWrapper>
       <div className="flex flex-col">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col 2lg:flex-row justify-between items-center gap-y-6">
           <SectionHeading>
             Your Overall Great
             <br />
             Academic Organization
           </SectionHeading>
 
-          <p className="font-workSans font-normal text-[16px] leading-[27.2px]">
+          <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center">
             As you begin to consider your career goals choices may
-            <br />
+            <br className="hidden 2lg:block" />
             appear confusing. Go with Modern Technology. Through the
-            <br />
+            <br className="hidden 2lg:block" />
             use of learning management systems.
           </p>
         </div>
-        <div className="flex justify-between items-center mt-4 ">
-          <div className="mt-[123px]">
+        <div className="flex flex-col-reverse 2lg:flex-row justify-between 2lg:items-center mt-4">
+          <div className="mt-14 2lg:mt-[123px]">
             {missionData.map((d, index) => (
               <MissionTimeline
                 key={index}
@@ -76,10 +76,16 @@ const MissionTimeline = ({
   return (
     <div className="flex gap-x-6">
       <div className="flex flex-col  items-center">
-        <Image width={64} height={64} src={src} alt="mission icon" />
+        <Image
+          width={64}
+          height={64}
+          className="size-24 2lg:size-16"
+          src={src}
+          alt="timeline icon"
+        />
         {showLine && (
           <Image
-            width={2}
+            width={1}
             height={100}
             src={'/home/line.svg'}
             alt="mission icon"

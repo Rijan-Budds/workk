@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import React, { useRef, useState } from 'react'
-import { VideoHeader } from './VideoHeader'
+import { VideoHeader, VideoHeaderMobile } from './VideoHeader'
 import { CustomVideo } from '@/common/components/Atom/CustomVideo'
 
 export const VideoSection = () => {
@@ -41,7 +41,7 @@ export const VideoSection = () => {
       <CustomVideo
         height="423"
         width="819"
-        className="rounded-[12px] z-[5]"
+        className="rounded-[12px] z-[5] w-full 2lg:w-[819px]"
         videoRef={videoRef}
         src="/home/video/school-promo.mov"
         fallbackThumb="/home/video-thumb.png"
@@ -78,8 +78,9 @@ export const VideoSection = () => {
           src={'/home/fullscreen.svg'}
         />
       </button>
-      <div className="absolute -top-[5.25rem] right-[1.75rem]">
+      <div className="absolute -top-[3.5rem]  2lg:-top-[5.25rem] right-[1.75rem]">
         <VideoHeader />
+        <VideoHeaderMobile />
       </div>
     </div>
   )
