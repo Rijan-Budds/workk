@@ -6,11 +6,10 @@ import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import 'swiper/css'
-import 'swiper/css/effect-fade'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
-import { Pagination, Autoplay, Navigation } from 'swiper/modules'
+import { Pagination, Navigation } from 'swiper/modules'
 
 import './process.css'
 
@@ -100,26 +99,20 @@ const ProcessCards = () => {
       </div>
       <div className="sm:hidden">
         <Swiper
-          // style={{
-          //   '--swiper-navigation-size': '20px',
-          // }}
           id="hero"
-          spaceBetween={30}
-          // effect={'fade'}
           centeredSlides={true}
-          autoplay={{ delay: 2000, disableOnInteraction: true }}
-          modules={[Pagination, Autoplay, Navigation]}
+          modules={[Pagination, Navigation]}
           className="mySwiper"
           loop={true}
         >
           {steps.map((step, index) => (
             <SwiperSlide key={index}>
-              <div className="mx-auto">
+              <div className="mt-10">
                 <div
                   key={index}
-                  className="process-card-mbl hover:shadow-md transition-all duration-500"
+                  className="process-card-mbl hover:shadow-md transition-all duration-500 mx-auto"
                 >
-                  <div className="absolute -top-6 -right-6 w-[82px] h-[82px] bg-[#CDDFED] rounded-full flex items-center justify-center">
+                  <div className="absolute -top-6 -right-6 w-[82px] h-[82px] bg-primaryLight rounded-full flex items-center justify-center">
                     <Image
                       width={32}
                       height={32}
@@ -134,7 +127,7 @@ const ProcessCards = () => {
                   <h2 className="font-poppins text-xl font-semibold text-gradient">
                     {step.title}
                   </h2>
-                  <p className="text-[16px] font-workSans font-normal leading-[27.2px] text-[#5D5F69]">
+                  <p className="text-[16px] font-workSans font-normal leading-[27.2px] text-body">
                     {step.description}
                   </p>
                 </div>

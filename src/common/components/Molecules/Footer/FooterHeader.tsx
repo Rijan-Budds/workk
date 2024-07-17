@@ -1,9 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
+import { HomeWrapper } from '../../Atom/HomeWrapper'
 
 const FooterHeader = () => {
   return (
-    <div className="w-full px-12  2xl:px-[340px] py-8">
+    <HomeWrapper className="py-8">
       <div className="flex justify-between items-center">
         <div className="flex justify-start items-center gap-x-6">
           <div className="bg-white w-[80px] h-[80px] rounded-full flex justify-center items-center">
@@ -65,7 +66,7 @@ const FooterHeader = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </HomeWrapper>
   )
 }
 

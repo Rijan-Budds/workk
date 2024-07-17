@@ -5,9 +5,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#E0630A',
-        secondary: '#FFFFFF',
-        tertiary: '',
+        primary: '#187EC0',
+        secondary: '#E0630A',
+        heading: '#313131',
+        body: '#5D5F69',
+        background: '#F8FAFD ',
+        border: '#E7EEF8',
+        primaryLighter: '#F1F7FB',
+        primaryLight: '#CDDFED',
+        primaryDark: '#1A86CC',
+        secondaryLighter: '#FDF6F0',
+      },
+      screens: {
+        '2lg': '1300px',
+        '2xl_lg': '1700px',
+        '3xl': '1800px',
+        '4xl': '1900px',
+        '5xl': '2000px',
       },
     },
     fontFamily: {

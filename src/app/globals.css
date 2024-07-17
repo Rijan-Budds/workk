@@ -7,21 +7,23 @@
     @apply border-2 border-red-500;
   }
 }
-
-/* .slick-center {
-    border: 1px solid red;
-    width: '608px' !important;
-    height: '456px' !important
-} */
-
-.swiper-slide {
-  width: auto !important;
+/* 
+.swiper {
+  overflow: visible !important;
+  min-height: 498px;
 }
 
 .swiper-wrapper {
   will-change: transform;
-  transition: all 2s ease-in;
+  transition: all 3s ease-in;
+  min-height: 498px !important ;
+  display: flex !important;
+  column-gap: 25px;
 }
+
+.swiper-slide-active {
+  transform: none !important;
+} */
 
 @keyframes fill {
   0% {

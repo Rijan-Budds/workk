@@ -12,9 +12,13 @@ export const HomeWrapper = ({
 }) => {
   return (
     <div
-      className={cn('w-full px-4  2xl:px-[340px] py-[112px]', className, {
-        'bg-[#F8FAFD] py-[40px]  md:py-[112px]': isBg,
-      })}
+      className={cn(
+        'w-full px-4 lg:px-[60px] 2xl:[200px] 2xl_lg:px-[240px]  3xl:px-[340px] py-[112px] 5xl:px-[540px] ',
+        className,
+        {
+          'bg-background py-[40px]  md:py-[112px]': isBg,
+        }
+      )}
     >
       {children}
     </div>

@@ -13,7 +13,7 @@ export const AcademicSection = () => {
         <div className="flex flex-col gap-y-2">
           <MiniHeading>Program</MiniHeading>
           <SectionHeading>Academic Program</SectionHeading>
-          <p className="font-normal text-[16px] font-workSans mt-2 text-[#313131]">
+          <p className="font-normal text-[16px] font-workSans mt-2 text-heading">
             As you begin to consider your career goals
             <br />
             choices may appear confusing.
@@ -26,10 +26,10 @@ export const AcademicSection = () => {
               alt="list of user profiles"
             />
             <div className="flex flex-col gap-y-1">
-              <span className="font-workSans font-semibold text-[14px] leading-4 text-[#313131]">
+              <span className="font-workSans font-semibold text-[14px] leading-4 text-heading">
                 15000 +
               </span>
-              <p className="font-workSans text-[12px] leading-[18px] text-[#5D5F69]">
+              <p className="font-workSans text-[12px] leading-[18px] text-body">
                 Satisfied Students
               </p>
             </div>
@@ -42,7 +42,7 @@ export const AcademicSection = () => {
             description={
               'As you begin to consider your career goals choices may appear confusing.'
             }
-            color={'bg-[#0661A70F]'}
+            color={'bg-primaryLighter'}
             list={academicCardsDataOne}
           />
           <AcademicCards
@@ -50,7 +50,7 @@ export const AcademicSection = () => {
             description={
               'As you begin to consider your career goals choices may appear confusing.'
             }
-            color={'bg-[#E0630A0F]'}
+            color={'bg-secondaryLighter'}
             list={academicCardsDataTwo}
           />
         </div>
