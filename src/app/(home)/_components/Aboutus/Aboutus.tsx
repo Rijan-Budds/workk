@@ -7,19 +7,19 @@ import { Button } from '@/common/components/Atom/Button'
 const Aboutus = () => {
   return (
     <HomeWrapper>
-      <div className="flex gap-[80px] justify-between">
+      <div className="flex flex-col sm:flex-row gap-[40px] sm:gap-[80px] justify-between">
         <div className="max-w-[503px] flex flex-col justify-center">
-          <h3 className="text-secondary text-[14px] leading-[21px] tracking-[2px]  font-semibold font-workSans uppercase">
+          <h3 className="text-secondary text-[12px] sm:text-[14px] leading-4 sm:leading-[21px] tracking-[2px]  font-semibold font-workSans uppercase">
             about pawan prakriti
           </h3>
-          <h1 className="font-poppins font-medium text-[38px] leading-[49.4px] mt-2">
+          <h1 className="font-poppins font-medium text-[28px] sm:text-[38px] leading-9 sm:leading-[49.4px] mt-2">
             Skilled Teachers And Support Staff
           </h1>
           <p className="font-workSans text-body font-normal text-[16px] leading-[27.2px] my-6">
             As you begin to consider your career goals choices may appear
             confusing. Go with Modern Technology.
           </p>
-          <div className="flex gap-[24px]">
+          <div className="flex flex-col sm:flex-row gap-y-[16px] sm:gap-[24px]">
             <ul className="custom-list text-heading font-normal text-[16px] leading-[27.2px] space-y-[16px]">
               <li>Popular Online Courses</li>
               <li>Guaranted Career Security</li>
@@ -35,16 +35,16 @@ const Aboutus = () => {
             <Button>About us</Button>
           </div>
         </div>
-        <div className="flex gap-[16px] max-w-[657px]">
+        <div className="flex flex-col sm:flex-row gap-[16px] max-w-[657px] justify-center items-center">
           <div className="flex flex-col gap-[16px]">
             <Image
               src="/home/about1.png"
               width={320}
               height={335}
               alt="ab"
-              className="w-[320px] h-[335px] object-cover rounded-xl"
+              className="w-full h-[360px] sm:w-[321px] sm:h-[335px] object-cover rounded-xl"
             />
-            <div className="blue-bg text-white space-y-[72px]">
+            <div className="hidden sm:block blue-bg text-white space-y-[72px]">
               <h2 className="font-poppins text-[20px] font-medium leading-[26px]">
                 Get guidance from our team of teacgers
               </h2>
@@ -58,7 +58,7 @@ const Aboutus = () => {
             width={320}
             height={610}
             alt="ab"
-            className="w-[321px] h-[610] rounded-xl object-cover"
+            className="w-[343px] sm:w-[321px] h-[610] rounded-xl object-cover"
           />
         </div>
       </div>
