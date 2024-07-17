@@ -1,15 +1,16 @@
 'use client'
 
-import React, { ReactNode } from 'react'
+import React from 'react'
 import 'swiper/css'
 import { AcademicCards } from './AcademicCards'
 import { academicCardsDataOne, academicCardsDataTwo } from './constant/data'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { SwiperSlide } from 'swiper/react'
 import {
   SwiperButtonNext,
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
+import { SwiperWrapper } from '@/common/components/Atom/SwiperWrapper'
 
 export const AcademicSwipeCard = () => {
   return (
@@ -47,27 +48,5 @@ export const AcademicSwipeCard = () => {
         </div>
       </SwiperWrapper>
     </div>
-  )
-}
-
-const SwiperWrapper = ({ children }: { children: ReactNode }) => {
-  return (
-    <Swiper
-      breakpoints={{
-        400: {
-          slidesPerView: 1,
-        },
-        700: {
-          slidesPerView: 2,
-        },
-        1000: {
-          slidesPerView: 3,
-        },
-      }}
-      spaceBetween={15}
-      slidesPerView={1}
-    >
-      {children}
-    </Swiper>
   )
 }
