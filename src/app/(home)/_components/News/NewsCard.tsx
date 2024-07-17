@@ -1,86 +1,114 @@
+'use client'
+
+import React, { ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import 'swiper/css'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination, Navigation } from 'swiper/modules'
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
+import {
+  SwiperButtonNext,
+  SwiperButtonPrevious,
+} from '@/common/components/Atom/SwiperButton'
 
 const newsandevent = [
   {
     id: 1,
     date: 'July 19, 2024',
-    title: 'Co-currircular Activties',
+    title: 'Co-curricular Activities',
     img: '/home/news1.png',
   },
   {
     id: 2,
     date: 'July 19, 2024',
-    title: 'Co-currircular Activties',
+    title: 'Co-curricular Activities',
+    img: '/home/news2.png',
+  },
+  {
+    id: 3,
+    date: 'July 19, 2024',
+    title: 'Co-curricular Activities',
+    img: '/home/news1.png',
+  },
+  {
+    id: 4,
+    date: 'July 19, 2024',
+    title: 'Co-curricular Activities',
     img: '/home/news2.png',
   },
 ]
 
-const NewsCard = () => {
+export const NewsCard = () => {
   return (
-    <>
-      <div className="absolute right-0 top-[50px]">
-        <button>
-          <Image
-            src="/home/buttonleft.svg"
-            width={32}
-            height={32}
-            alt="left"
-            className="w-8 h-8"
-          />
-        </button>
-        <button>
-          <Image
-            src="/home/buttonright.svg"
-            width={32}
-            height={32}
-            alt="left"
-            className="w-8 h-8"
-          />
-        </button>
-      </div>
-      <div className="flex gap-6 mt-[40px]">
+    <div className="relative">
+      <SwiperWrapper>
         {newsandevent.map((news) => (
-          <div className="relative group cursor-pointer" key={news.id}>
-            <div className="overflow-hidden  rounded-xl ">
-              <Image
-                src={news.img}
-                width={447}
-                height={298}
-                alt="news"
-                className="relative w-[446px] h-[298px] object-cover  group-hover:scale-110 transition-all duration-500"
-              />
-            </div>
-
-            <div className="absolute w-[94%] h-[98px] bg-white top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">
-              <div className="p-6">
-                <p className="text-body text-sm font-workSans font-normal leading-4">
-                  {news.date}
-                </p>
-                <h2 className="text-primary text-xl font-poppins font-medium leading-7 group-hover:text-secondary transition-all duration-500">
-                  8{news.title}
-                </h2>
-              </div>
-              <Link
-                href={'/'}
-                className="bg-primaryLight w-[82px] h-[82px] absolute -right-[20px] top-[55px] rounded-full"
-              >
+          <SwiperSlide key={news.id} className="mt-10">
+            <div className="relative max-w-[397px] group cursor-pointer">
+              <div className="overflow-hidden rounded-xl max-w-[397px]">
                 <Image
-                  src="/home/newsarrow.png"
-                  width={21}
-                  height={14}
-                  alt="arrow"
-                  className="ml-[25px] mt-[18px]"
+                  src={news.img}
+                  width={447}
+                  height={298}
+                  alt="news"
+                  className="relative max-w-[397px] h-[298px] object-cover group-hover:scale-110 transition-all duration-500"
                 />
-              </Link>
-              -
+              </div>
+              <div className="absolute w-[94%] h-[98px] bg-white top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">
+                <div className="p-6">
+                  <p className="text-body text-sm font-workSans font-normal leading-4">
+                    {news.date}
+                  </p>
+                  <h2 className="text-primary text-xl font-poppins font-medium leading-7 group-hover:text-secondary transition-all duration-500">
+                    {news.title}
+                  </h2>
+                </div>
+                <Link
+                  href="/"
+                  className="bg-primaryLight w-[82px] h-[82px] absolute -right-[20px] top-[55px] rounded-full"
+                >
+                  <Image
+                    src="/home/newsarrow.png"
+                    width={21}
+                    height={14}
+                    alt="arrow"
+                    className="ml-[25px] mt-[18px]"
+                  />
+                </Link>
+              </div>
             </div>
-          </div>
+          </SwiperSlide>
         ))}
-      </div>
-    </>
+        <div className="flex justify-center mt-10 gap-x-4 sm:hidden">
+          <SwiperButtonPrevious>
+            <IoIosArrowRoundBack className="text-body text-2xl font-light" />
+          </SwiperButtonPrevious>
+          <SwiperButtonNext>
+            <IoIosArrowRoundForward className="text-body text-2xl font-light" />
+          </SwiperButtonNext>
+        </div>
+      </SwiperWrapper>
+    </div>
   )
 }
 
-export default NewsCard
+const SwiperWrapper = ({ children }: { children: ReactNode }) => {
+  return (
+    <Swiper
+      breakpoints={{
+        528: { slidesPerView: 1 },
+        728: { slidesPerView: 2 },
+        992: { slidesPerView: 2 },
+        1200: { slidesPerView: 2 },
+      }}
+      spaceBetween={25}
+      slidesPerView={1}
+      modules={[Pagination, Navigation]}
+      loop={true}
+      className="!h-[475px] sm:h-auto"
+    >
+      {children}
+    </Swiper>
+  )
+}
