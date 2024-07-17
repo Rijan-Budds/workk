@@ -22,6 +22,7 @@
   transition: all 3s ease-in;
   min-height: 498px !important ;
   display: flex !important;
+  justify-content: start;
   column-gap: 25px;
 }
 
