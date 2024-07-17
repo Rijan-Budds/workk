@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { GoArrowRight } from 'react-icons/go'
 import { academicCardsDataOne } from './constant/data'
@@ -28,7 +30,7 @@ export const AcademicCards = ({
         ))}
       </div>
       <div
-        className={`size-[259px] rounded-full ${color} absolute bottom-[-11.25rem] -right-[9.75rem] group-hover:scale-[500%] transition-all duration-500 z-[1]`}
+        className={` size-[259px] rounded-full ${color} absolute bottom-[-11.25rem] -right-[9.75rem] group-hover:scale-[600%] transition-all duration-500 z-[1]`}
       />
     </div>
   )

@@ -12,7 +12,7 @@ import { GalleryCard } from './GalleryCard'
 
 export const GalleryNewSlider = () => {
   return (
-    <div className="">
+    <div className="gallery__slider">
       <Swiper
         spaceBetween={50}
         slidesPerView={3}

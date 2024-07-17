@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -9,6 +9,11 @@ import 'swiper/css/navigation'
 import { Pagination, Navigation } from 'swiper/modules'
 
 import './testimonial.css'
+import {
+  SwiperButtonNext,
+  SwiperButtonPrevious,
+} from '@/common/components/Atom/SwiperButton'
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 
 const cardData = [
   {
@@ -53,29 +58,15 @@ export const swiperParams = {
     prevEl: '.swiper-button-prev',
   },
 }
-const TestimonialCard = () => {
+export const TestimonialCard = () => {
   return (
     <>
       <div className="">
-        <Swiper
-          id="testimonial"
-          breakpoints={{
-            528: { slidesPerView: 1 },
-            728: { slidesPerView: 2 },
-            992: { slidesPerView: 2, spaceBetween: 10 },
-            1200: { slidesPerView: 3 },
-          }}
-          slidesPerView={1}
-          spaceBetween={65}
-          modules={[Pagination, Navigation]}
-          className="!h-[475px] sm:h-auto"
-          {...swiperParams}
-          loop={true}
-        >
+        <SwiperWrapper>
           <div className="flex justify-between gap-[24px]">
             {cardData.map((card) => (
-              <SwiperSlide key={card.id} className="!mt-[40px]">
-                <div className="bg-white max-w-[397px] rounded-[12px] relative">
+              <SwiperSlide key={card.id} className="!mt-[40px] mx-auto">
+                <div className="bg-white max-w-[397px] rounded-[12px] relative mx-auto">
                   <Image
                     src="/home/quote.svg"
                     width={60}
@@ -107,16 +98,39 @@ const TestimonialCard = () => {
               </SwiperSlide>
             ))}
           </div>
-          {/* <div className="swiper-navigation-container sm:hidden">
-            <div className="swiper-navigation absolute w-28 h-12 bottom-0 mx-auto sm:hidden">
-              <div className="swiper-button-prev "></div>
-              <div className="swiper-button-next "></div>
-            </div>
-          </div> */}
-        </Swiper>
+          <div className="flex justify-center gap-x-4 mt-10 sm:hidden">
+            <SwiperButtonPrevious>
+              <IoIosArrowRoundBack className="text-body text-2xl font-light " />
+            </SwiperButtonPrevious>
+
+            <SwiperButtonNext>
+              <IoIosArrowRoundForward className="text-body text-2xl font-light" />
+            </SwiperButtonNext>
+          </div>
+        </SwiperWrapper>
       </div>
     </>
   )
 }
 
-export default TestimonialCard
+const SwiperWrapper = ({ children }: { children: ReactNode }) => {
+  return (
+    <Swiper
+      id="testimonial"
+      breakpoints={{
+        528: { slidesPerView: 1 },
+        728: { slidesPerView: 2 },
+        992: { slidesPerView: 2, spaceBetween: 10 },
+        1200: { slidesPerView: 3 },
+      }}
+      slidesPerView={1}
+      spaceBetween={65}
+      modules={[Pagination, Navigation]}
+      // className="!h-[475px] sm:h-auto"
+      {...swiperParams}
+      loop={true}
+    >
+      {children}
+    </Swiper>
+  )
+}

@@ -1,8 +1,9 @@
 import React from 'react'
-import TestimonialCard from './TestimonialCard'
+
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 
 import './testimonial.css'
+import { TestimonialCard } from './TestimonialCard'
 
 const TestimonialsSection = () => {
   return (

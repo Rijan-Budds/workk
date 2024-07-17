@@ -13,7 +13,7 @@
   min-height: 498px;
 }
 
-.swiper-wrapper {
+.gallery__slider .swiper-wrapper {
   will-change: transform;
   transition: all 3s ease-in;
   min-height: 498px !important ;
@@ -21,9 +21,9 @@
   column-gap: 25px;
 }
 
-.swiper-slide-active {
+.gallery__slider .swiper-slide-active {
   transform: none !important;
-} */
+}
 
 @keyframes fill {
   0% {
@@ -40,4 +40,4 @@
 .ReactModal__Overlay--after-open {
   background-color: rgba(0, 0, 0, 0.5) !important;
   z-index: 99999999 !important;
-}
+} */
