@@ -9,7 +9,6 @@
 }
 
 .notice-scrollbar::-webkit-scrollbar-thumb {
-  padding-top: 2px;
   background: #e7eef8;
   border-radius: 10px;
 }

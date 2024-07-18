@@ -22,7 +22,7 @@ export const Navbar = () => {
               <h2 className="font-poppins font-semibold text-[20px] leading-6 text-heading">
                 Pawan Prakritischool.
               </h2>
-              <p className="text-[14px] leading-4 font-workSans font-normal mt-1">
+              <p className="text-[14px] leading-4 font-workSans font-normal  mt-1">
                 Mahalaxmi Municipality-5, Tikathali, Lalitpur
               </p>
             </div>

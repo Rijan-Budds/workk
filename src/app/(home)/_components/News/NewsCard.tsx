@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import 'swiper/css'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, Navigation } from 'swiper/modules'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import {
   SwiperButtonNext,
@@ -45,7 +44,7 @@ export const NewsCard = () => {
       <SwiperWrapper>
         {newsandevent.map((news) => (
           <SwiperSlide key={news.id} className="mt-10">
-            <div className="relative max-w-[397px] group cursor-pointer">
+            <div className="relative max-w-[397px] group cursor-pointer mx-auto ">
               <div className="overflow-hidden rounded-xl max-w-[397px]">
                 <Image
                   src={news.img}
@@ -80,12 +79,12 @@ export const NewsCard = () => {
             </div>
           </SwiperSlide>
         ))}
-        <div className="flex justify-center mt-10 gap-x-4 sm:hidden">
+        <div className="justify-center mt-10 gap-x-4  absolute bottom-0 left-1/2 -translate-x-1/2 z-50 flex 2lg:top-[-2.5rem] 2lg:left-[48.5rem]  w-fit h-fit ">
           <SwiperButtonPrevious>
-            <IoIosArrowRoundBack className="text-body text-2xl font-light" />
+            <IoIosArrowRoundBack className="text-body text-2xl font-light 2lg:bg-white rounded-full size-7 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
           </SwiperButtonPrevious>
           <SwiperButtonNext>
-            <IoIosArrowRoundForward className="text-body text-2xl font-light" />
+            <IoIosArrowRoundForward className="text-body text-2xl font-light 2lg:bg-white rounded-full size-7 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
           </SwiperButtonNext>
         </div>
       </SwiperWrapper>
@@ -98,15 +97,13 @@ const SwiperWrapper = ({ children }: { children: ReactNode }) => {
     <Swiper
       breakpoints={{
         528: { slidesPerView: 1 },
-        728: { slidesPerView: 2 },
-        992: { slidesPerView: 2 },
+        855: { slidesPerView: 2 },
         1200: { slidesPerView: 2 },
       }}
       spaceBetween={25}
       slidesPerView={1}
-      modules={[Pagination, Navigation]}
-      loop={true}
-      className="!h-[475px] sm:h-auto"
+      loop
+      className="!h-[475px] sm:h-auto relative"
     >
       {children}
     </Swiper>

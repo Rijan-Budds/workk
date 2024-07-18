@@ -7,8 +7,12 @@
     @apply border-2 border-red-500;
   }
 }
-/* 
-.swiper {
+
+/* .swiper-slide {
+    width: auto !important;
+ } */
+
+.gallery__slider .swiper {
   overflow: visible !important;
   min-height: 498px;
 }
@@ -41,4 +45,4 @@
 .ReactModal__Overlay--after-open {
   background-color: rgba(0, 0, 0, 0.5) !important;
   z-index: 99999999 !important;
-} */
+}

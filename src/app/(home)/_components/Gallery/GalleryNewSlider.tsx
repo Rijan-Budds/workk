@@ -68,6 +68,7 @@ export const GalleryMobileSlider = () => {
         }}
         spaceBetween={20}
         slidesPerView={1}
+        loop
       >
         {galleriesCarouselData.map((d, index) => (
           <SwiperSlide key={index} className="">

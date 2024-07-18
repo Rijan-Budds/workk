@@ -7,7 +7,7 @@ import ProcessSection from './_components/Process/ProcessSection'
 import { GallerySection } from './_components/Gallery/GallerySection'
 import TestimonialsSection from './_components/Testimonials/TestimonialsSection'
 import { NoticeModal } from './_components/Notice/NoticeModal'
-// import NewsAndEvents from './_components/News/NewsAndEvents'
+import NewsAndEvents from './_components/News/NewsAndEvents'
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
       <AboutusWrapper />
       <TestimonialsSection />
       <GallerySection />
-      {/* <NewsAndEvents /> */}
+      <NewsAndEvents />
       <ContactSection />
       <NoticeModal />
     </>
