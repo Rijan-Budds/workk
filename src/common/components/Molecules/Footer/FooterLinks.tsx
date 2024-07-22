@@ -1,6 +1,6 @@
 import React from 'react'
 import { HomeWrapper } from '../../Atom/HomeWrapper'
-import { FooterLink } from './footer'
+import { FooterLink } from './interface/footer'
 
 const FooterLinksData: FooterLink[] = [
   {
