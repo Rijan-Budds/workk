@@ -6,14 +6,14 @@ import FooterLinks from './FooterLinks'
 
 const Footer = () => {
   return (
-    <footer className="h-[570px] relative">
-      <div className="bg-primary w-full h-[144px]">
+    <footer className="h-fit relative">
+      <div className="bg-primary w-full">
         <FooterHeader />
       </div>
-      <div className="w-full h-[368px]">
+      <div className="w-full">
         <FooterLinks />
       </div>
-      <div className="bg-primary w-full h-[59px]">
+      <div className="bg-primary w-full">
         <Copywright />
       </div>
     </footer>

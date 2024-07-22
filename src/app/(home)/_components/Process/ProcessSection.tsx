@@ -1,6 +1,6 @@
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import React from 'react'
-import ProcessCards from './ProcessCards'
+import { ProcessCards } from './ProcessCards'
 
 const ProcessSection = () => {
   return (

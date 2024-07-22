@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 import Image from 'next/image'
 
@@ -12,6 +12,11 @@ import 'swiper/css/navigation'
 import { Pagination, Navigation } from 'swiper/modules'
 
 import './process.css'
+import {
+  SwiperButtonNext,
+  SwiperButtonPrevious,
+} from '@/common/components/Atom/SwiperButton'
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 
 const steps = [
   {
@@ -44,10 +49,10 @@ const steps = [
   },
 ]
 
-const ProcessCards = () => {
+export const ProcessCards = () => {
   return (
     <>
-      <div className="relative hidden sm:block">
+      <div className="relative hidden 2lg:block">
         <Image
           src="/home/processline1.svg"
           width={173}
@@ -97,14 +102,8 @@ const ProcessCards = () => {
           ))}
         </div>
       </div>
-      <div className="sm:hidden">
-        <Swiper
-          id="hero"
-          centeredSlides={true}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
-          loop={true}
-        >
+      <div className="2lg:hidden">
+        <SwiperWrapper>
           {steps.map((step, index) => (
             <SwiperSlide key={index}>
               <div className="mt-10">
@@ -134,10 +133,44 @@ const ProcessCards = () => {
               </div>
             </SwiperSlide>
           ))}
-        </Swiper>
+          <div className="flex justify-center gap-x-4 mt-10 2lg:hidden">
+            <SwiperButtonPrevious>
+              <IoIosArrowRoundBack className="text-body text-2xl font-light " />
+            </SwiperButtonPrevious>
+
+            <SwiperButtonNext>
+              <IoIosArrowRoundForward className="text-body text-2xl font-light" />
+            </SwiperButtonNext>
+          </div>
+        </SwiperWrapper>
       </div>
     </>
   )
 }
 
-export default ProcessCards
+const SwiperWrapper = ({ children }: { children: ReactNode }) => {
+  return (
+    <Swiper
+      id="hero"
+      breakpoints={{
+        400: {
+          slidesPerView: 1,
+        },
+        700: {
+          slidesPerView: 2,
+        },
+        1000: {
+          slidesPerView: 3,
+        },
+      }}
+      spaceBetween={15}
+      slidesPerView={1}
+      // centeredSlides={true}
+      modules={[Pagination, Navigation]}
+      className="mySwiper"
+      loop={true}
+    >
+      {children}
+    </Swiper>
+  )
+}
