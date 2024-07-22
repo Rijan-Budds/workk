@@ -17,12 +17,16 @@ export const HeroSection = () => {
                 <MiniHeading>Welcome to Pawan prakriti school</MiniHeading>
 
                 <h1 className="text-[32px] 2lg:text-[42px] leading-[41.6px] 2lg:leading-[54.6px] text-center 2lg:text-left font-medium 2lg:font-semibold text-white font-poppins">
-                  Be An Achiever With Good Education
+                  Be An Achiever With Good
+                  <br className="hidden 2lg:block" />
+                  Education
                 </h1>
                 <p className="font-workSans text-[16px] leading-[27.2px] text-white font-normal mt-2 text-center 2lg:text-left">
                   Pawan Prakriti English Secondary School (PPESS), one of the
-                  leading educational and residential school, situated at
-                  Tikathali, Lalitpur.
+                  leading
+                  <br className="hidden 2lg:block" />
+                  educational and residential school, situated at Tikathali,
+                  Lalitpur.
                 </p>
                 <div className="flex flex-col md:flex-row gap-y-4 justify-center 2lg:justify-start  mt-[32px]  md:gap-x-4">
                   <Button className=" ">Apply Now</Button>

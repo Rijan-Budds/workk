@@ -17,7 +17,7 @@ const config: Config = {
         secondaryLighter: '#FDF6F0',
       },
       screens: {
-        '2lg': '1300px',
+        '2lg': '1270px',
         '2xl_lg': '1700px',
         '3xl': '1800px',
         '4xl': '1900px',
