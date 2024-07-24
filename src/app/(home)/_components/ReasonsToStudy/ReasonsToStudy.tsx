@@ -28,14 +28,14 @@ export const ReasonsToStudy = () => {
   return (
     <HomeWrapper>
       <div className="flex flex-col">
-        <div className="flex flex-col 2lg:flex-row justify-between items-center gap-y-6">
-          <SectionHeading>
+        <div className="flex flex-col 2lg:flex-row justify-between items-center md:items-start 2lg:items-center gap-y-6">
+          <SectionHeading isMd>
             Your Overall Great
             <br />
             Academic Organization
           </SectionHeading>
 
-          <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center">
+          <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center md:text-start 2lg:text-center">
             As you begin to consider your career goals choices may
             <br className="hidden 2lg:block" />
             appear confusing. Go with Modern Technology. Through the

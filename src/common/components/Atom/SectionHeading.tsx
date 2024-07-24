@@ -1,8 +1,25 @@
+import { cn } from '@/common/utils/utils'
 import React, { ReactNode } from 'react'
 
-export const SectionHeading = ({ children }: { children: ReactNode }) => {
+export const SectionHeading = ({
+  children,
+  className,
+  isMd = false,
+}: {
+  children: ReactNode
+  className?: string
+  isMd?: boolean
+}) => {
   return (
-    <span className="font-poppins text-[28px]  2lg:text-[38px] leading-[36.4px]  2lg:leading-[49.4px] font-medium text-center 2lg:text-left">
+    <span
+      className={cn(
+        'font-poppins text-[28px]  2lg:text-[38px] leading-[36.4px]  2lg:leading-[49.4px] font-medium text-center 2lg:text-left',
+        className,
+        {
+          'md:text-left md:text-[38px]': isMd,
+        }
+      )}
+    >
       {children}
     </span>
   )

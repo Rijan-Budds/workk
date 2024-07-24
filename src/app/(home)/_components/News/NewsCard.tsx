@@ -79,7 +79,7 @@ export const NewsCard = () => {
             </div>
           </SwiperSlide>
         ))}
-        <div className="justify-center mt-10 gap-x-4  absolute bottom-0 left-1/2 -translate-x-1/2 z-50 flex 2lg:top-[-2.5rem] 2lg:left-[48.5rem]  w-fit h-fit ">
+        <div className="justify-center mt-10 gap-x-4 absolute bottom-0 left-1/2 -translate-x-1/2 z-50 flex md:left-auto md:translate-x-0 md:top-[-2.5rem] 2lg:left-[46.5rem] w-fit h-fit">
           <SwiperButtonPrevious>
             <IoIosArrowRoundBack className="text-body text-2xl font-light 2lg:bg-white rounded-full size-7 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
           </SwiperButtonPrevious>
@@ -97,8 +97,8 @@ const SwiperWrapper = ({ children }: { children: ReactNode }) => {
     <Swiper
       breakpoints={{
         528: { slidesPerView: 1 },
-        855: { slidesPerView: 2 },
-        1200: { slidesPerView: 2 },
+        728: { slidesPerView: 2 },
+        992: { slidesPerView: 2, spaceBetween: 10 },
       }}
       spaceBetween={25}
       slidesPerView={1}
