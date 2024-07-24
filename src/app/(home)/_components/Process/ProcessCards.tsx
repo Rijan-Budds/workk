@@ -74,11 +74,11 @@ export const ProcessCards = () => {
           alt="line 3"
           className="absolute top-0 left-[898px]"
         />
-        <div className="process-cards-container mt-[40px] relative">
+        <div className="process-cards-container mt-[40px] relative ">
           {steps.map((step, index) => (
             <div
               key={index}
-              className="process-card hover:shadow-md transition-all duration-500"
+              className="process-card hover:shadow-md transition-all duration-500 hover:-translate-y-2"
             >
               <div className="absolute -top-6 -right-6 w-[82px] h-[82px] bg-[#CDDFED] rounded-full flex items-center justify-center">
                 <Image

@@ -10,6 +10,7 @@ import {
   SwiperButtonNext,
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
+import { GoArrowRight } from 'react-icons/go'
 
 const newsandevent = [
   {
@@ -55,26 +56,21 @@ export const NewsCard = () => {
                 />
               </div>
               <div className="absolute w-[94%] h-[98px] bg-white top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">
-                <div className="p-6">
-                  <p className="text-body text-sm font-workSans font-normal leading-4">
+                <div className="p-6 z-10 relative">
+                  <p className="text-body text-sm font-workSans font-normal leading-4 z-20">
                     {news.date}
                   </p>
-                  <h2 className="text-primary text-xl font-poppins font-medium leading-7 group-hover:text-secondary transition-all duration-500">
+                  <h2 className="text-primary text-xl font-poppins font-medium leading-7  transition-all duration-500">
                     {news.title}
                   </h2>
                 </div>
-                <Link
-                  href="/"
-                  className="bg-primaryLight w-[82px] h-[82px] absolute -right-[20px] top-[55px] rounded-full"
-                >
-                  <Image
-                    src="/home/newsarrow.png"
-                    width={21}
-                    height={14}
-                    alt="arrow"
-                    className="ml-[25px] mt-[18px]"
-                  />
-                </Link>
+                <div>
+                  <Link
+                    href="/"
+                    className="bg-primaryLighter will-change-transform  w-[82px] h-[82px] absolute -right-[20px] group-hover:scale-[10] transition-transform duration-700 top-[55px] rounded-full z-0"
+                  ></Link>
+                  <GoArrowRight className=" absolute right-3 top-1/2 -translate-y-1/2 mt-8  z-20  text-2xl text-primary " />
+                </div>
               </div>
             </div>
           </SwiperSlide>
