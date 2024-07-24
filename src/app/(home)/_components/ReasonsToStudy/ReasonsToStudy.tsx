@@ -35,7 +35,7 @@ export const ReasonsToStudy = () => {
             Academic Organization
           </SectionHeading>
 
-          <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center">
+          <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center xl:text-left">
             As you begin to consider your career goals choices may
             <br className="hidden 2lg:block" />
             appear confusing. Go with Modern Technology. Through the
@@ -44,7 +44,7 @@ export const ReasonsToStudy = () => {
           </p>
         </div>
         <div className="flex flex-col-reverse 2lg:flex-row justify-between 2lg:items-center mt-4">
-          <div className="mt-14 2lg:mt-[123px]">
+          <div className="mt-14 2lg:mt-[123px] flex flex-col gap-y-4">
             {missionData.map((d, index) => (
               <MissionTimeline
                 key={index}
@@ -88,6 +88,7 @@ const MissionTimeline = ({
             width={1}
             height={100}
             src={'/home/line.svg'}
+            className="mt-2"
             alt="mission icon"
           />
         )}
