@@ -5,7 +5,11 @@ import React, { useState } from 'react'
 
 type ITitle = 'photo' | 'video'
 
-export const GalleryTab = () => {
+export const GalleryTab = ({
+  handleDynamicData,
+}: {
+  handleDynamicData: (type: ITitle) => void
+}) => {
   const [isActive, setActive] = useState({
     photo: true,
     video: false,
@@ -13,9 +17,11 @@ export const GalleryTab = () => {
 
   const handleTabClick = (title: ITitle) => {
     if (title === 'photo') {
+      handleDynamicData('photo')
       setActive({ photo: true, video: false })
     } else {
       setActive({ photo: false, video: true })
+      handleDynamicData('video')
     }
   }
 

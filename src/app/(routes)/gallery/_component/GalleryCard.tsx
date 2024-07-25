@@ -32,7 +32,7 @@ export const GalleryCard = ({
           src={gallery.src}
           width="397"
           height="265"
-          className="w-full h-full"
+          className="w-full h-full rounded-[12px]  object-cover"
         />
       ) : (
         <>
@@ -44,7 +44,7 @@ export const GalleryCard = ({
             alt="students studying on class"
           />
 
-          <div className="bg-white absolute -bottom-20 left-1/2 -translate-x-1/2 rounded-[12px] text-nowrap group-hover:bottom-6 transition-all duration-500 will-change-transform ">
+          <div className="bg-white absolute -bottom-20 lef t-1/2 -translate-x-1/2 rounded-[12px] text-nowrap group-hover:bottom-6 transition-all duration-500 will-change-transform ">
             <p className="text-[18px] font-workSans leading-6 font-medium text-heading px-4 py-3">
               {gallery.title}
             </p>

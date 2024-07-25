@@ -41,11 +41,11 @@ export const galleriesCarouselData = [
     type: 'image',
     src: '/home/gallery-6.png',
   },
-  //   {
-  //     id: 7,
-  //     serialNo: '07',
-  //     title: 'Expert Level Class',
-  //     type: 'video',
-  //     src: '/home/video/school-promo.mov',
-  //   },
+  {
+    id: 7,
+    serialNo: '07',
+    title: 'Expert Level Class',
+    type: 'video',
+    src: '/home/video/school-promo.mov',
+  },
 ]
