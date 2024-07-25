@@ -7,7 +7,7 @@ import React from 'react'
 
 export const GalleryCard = ({ gallery }: { gallery: IGalleryItem }) => {
   return (
-    <div className="w-[343px] h-[229px] md:w-[326px] md:h-[218px] 2lg:w-[397px] 2lg:h-[265px]  rounded-[12px] relative overflow-hidden group">
+    <div className="w-[343px] h-[229px] md:w-[326px] md:h-[218px] 2lg:w-[390px] 2lg:h-[265px]  rounded-[12px] relative overflow-hidden group">
       {gallery.type === 'video' ? (
         <CustomVideo
           src={gallery.src}
