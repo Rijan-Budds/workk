@@ -9,20 +9,23 @@ export const GalleryCard = ({
   gallery,
   setSrc,
   setModalOpen,
+  setActiveImage,
 }: {
   gallery: IGalleryItem
   setSrc: Dispatch<string>
   setModalOpen: Dispatch<boolean>
+  setActiveImage: Dispatch<number>
 }) => {
   const handleClick = () => {
     setSrc(gallery.src)
     setModalOpen(true)
+    setActiveImage(gallery.id)
   }
 
   return (
     <div
       onClick={() => handleClick()}
-      className="w-[343px] h-[229px] md:w-[326px] md:h-[218px] 2lg:w-[390px] 2lg:h-[265px]  rounded-[12px] relative overflow-hidden group"
+      className="w-[343px] h-[229px] md:w-[326px] md:h-[218px] 2lg:w-[390px] 2lg:h-[265px]  rounded-[12px] relative overflow-hidden group cursor-pointer"
     >
       {gallery.type === 'video' ? (
         <CustomVideo

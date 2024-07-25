@@ -11,6 +11,7 @@ import { GalleryModal } from './GalleryModal'
 export const GallerySection = () => {
   const [src, setSrc] = useState<string>('')
   const [isModalOpen, setModalOpen] = useState<boolean>(false)
+  const [activeImage, setActiveImage] = useState<number | null>(null)
 
   const renderGalleryCardsUi = () => {
     return galleriesCarouselData.map((gallery) => {
@@ -20,6 +21,7 @@ export const GallerySection = () => {
           gallery={gallery}
           setSrc={setSrc}
           setModalOpen={setModalOpen}
+          setActiveImage={setActiveImage}
         />
       )
     })
@@ -36,7 +38,17 @@ export const GallerySection = () => {
 
       {src.length > 0 && (
         <CustomModal isOpen={isModalOpen}>
-          <GalleryModal src={src} setModalOpen={setModalOpen} setSrc={setSrc} />
+          <GalleryModal
+            src={
+              activeImage
+                ? galleriesCarouselData[activeImage].src
+                : galleriesCarouselData[0].src
+            }
+            setModalOpen={setModalOpen}
+            setSrc={setSrc}
+            setActiveImage={setActiveImage}
+            length={galleriesCarouselData.length - 1}
+          />
         </CustomModal>
       )}
     </HomeWrapper>
