@@ -1,4 +1,5 @@
 import { CloseButton } from '@/common/components/Atom/CloseButton'
+import { CustomVideo } from '@/common/components/Atom/CustomVideo'
 import { cn } from '@/common/utils/utils'
 import Image from 'next/image'
 import React, { Dispatch, SetStateAction } from 'react'
@@ -15,6 +16,7 @@ export const GalleryModal = ({
   setActiveImage,
   length,
   type,
+  showSwipe,
 }: {
   src: string
   setModalOpen: Dispatch<SetStateAction<boolean>>
@@ -22,6 +24,7 @@ export const GalleryModal = ({
   setActiveImage: Dispatch<SetStateAction<number | null>>
   length: number
   type: IType
+  showSwipe: boolean
 }) => {
   const handleSwipe = (direction: IDirection) => {
     if (direction === 'next') {
@@ -42,11 +45,25 @@ export const GalleryModal = ({
           className="object-contain pointer-events-none selection:bg-transparent transition-all duration-1000  w-[343px] h-[229px] border-white border-2 md:border-transparent rounded-[12px] md:w-[700px] md:h-[467px] 2lg:w-[1280px] 2lg:h-[90vh] z-10"
         />
       ) : (
-        <></>
+        <>
+          <CustomVideo
+            width="1280"
+            height="853"
+            src={src}
+            className="w-full h-full object-cover rounded-[12px]"
+            autoPlay={true}
+            controls={true}
+          />
+        </>
       )}
 
       <CloseButton
-        className="absolute -top-3 -right-4 2lg:right-16  2xl_lg:right-32 z-10"
+        className={cn(
+          'absolute -top-3 -right-4 2lg:right-16  2xl_lg:right-32 z-10',
+          {
+            '2xl_lg:right-0': type === 'video',
+          }
+        )}
         handleClick={() => {
           setModalOpen(false)
           setSrc('')
@@ -54,14 +71,18 @@ export const GalleryModal = ({
         }}
       />
 
-      <SwipeArrow
-        onClick={() => handleSwipe('next')}
-        className="bg-white rounded-full size-[40px] p-2 -right-4 2xl_lg:right-4  cursor-pointer  "
-      />
-      <SwipeArrow
-        onClick={() => handleSwipe('prev')}
-        className="bg-white rounded-full size-[40px] p-2 -left-4 2xl_lg:left-4  rotate-180 cursor-pointer "
-      />
+      {showSwipe && (
+        <>
+          <SwipeArrow
+            onClick={() => handleSwipe('next')}
+            className="bg-white rounded-full size-[40px] p-2 -right-4 2xl_lg:right-4  cursor-pointer  "
+          />
+          <SwipeArrow
+            onClick={() => handleSwipe('prev')}
+            className="bg-white rounded-full size-[40px] p-2 -left-4 2xl_lg:left-4  rotate-180 cursor-pointer "
+          />
+        </>
+      )}
     </div>
   )
 }

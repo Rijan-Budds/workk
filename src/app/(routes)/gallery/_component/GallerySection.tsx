@@ -21,8 +21,6 @@ export const GallerySection = () => {
   const [dynamicCardsData, setDynamicCardsData] = useState(filterImageData)
   const [type, setType] = useState<IType>('photo')
 
-  console.log('active gallery ::::::', activeImage)
-
   const handleDynamicData = (type: IType) => {
     setType(type)
     if (type === 'video') {
@@ -36,7 +34,7 @@ export const GallerySection = () => {
   }
 
   const renderGalleryCardsUi = () => {
-    return dynamicCardsData.map((gallery) => {
+    return dynamicCardsData.map((gallery, index) => {
       return (
         <GalleryCard
           key={gallery.id}
@@ -44,6 +42,7 @@ export const GallerySection = () => {
           setSrc={setSrc}
           setModalOpen={setModalOpen}
           setActiveImage={setActiveImage}
+          index={index}
         />
       )
     })
@@ -71,6 +70,7 @@ export const GallerySection = () => {
             setActiveImage={setActiveImage}
             length={dynamicCardsData.length - 1}
             type={type}
+            showSwipe={dynamicCardsData.length > 1}
           />
         </CustomModal>
       )}
