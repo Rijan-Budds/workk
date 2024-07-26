@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
 import { NavSection } from '../(home)/_components/NavSection'
-
 import Footer from '@/common/components/Molecules/Footer/Footer'
 
 export default async function HomeLayout({
