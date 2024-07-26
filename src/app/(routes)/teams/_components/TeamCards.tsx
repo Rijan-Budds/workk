@@ -1,48 +1,17 @@
+'use client'
 import Image from 'next/image'
 import React from 'react'
 import './teams.css'
+import { ITeamsData } from '../_interface/Teams'
 
-const teams = [
-  {
-    image: '/home/teams1.jpg',
-    name: 'Man Kumar Rai',
-    position: 'Founder',
-  },
-  {
-    image: '/home/teams2.jpg',
-    name: 'Amar Kumar Rai',
-    position: 'Chairman',
-  },
-  {
-    image: '/home/teams3.jpg',
-    name: 'Bishan Rai',
-    position: 'Founder',
-  },
-  {
-    image: '/home/director 1.png',
-    name: 'Uttar Kumar Rai',
-    position: 'Principal',
-  },
-  {
-    image: '/home/director 2.png',
-    name: 'Bigyan Deu Rai',
-    position: 'Managing Director',
-  },
-  {
-    image: '/home/director3.jpg',
-    name: 'Bhuwan Singh Rai',
-    position: 'Founder',
-  },
-]
-
-const TeamCards = () => {
+const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
   return (
     <>
       <div className="flex flex-col gap-2 md:hidden">
         {teams.map((team, index) => (
           <div
             key={index}
-            className="flex bg-[#F8FAFD] gap-4 py-[22px] rounded-xl"
+            className="flex bg-[#F8FAFD] gap-4 py-[22px] rounded-xl w-full"
           >
             <div className="pl-[16px]">
               <Image
