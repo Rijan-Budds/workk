@@ -7,6 +7,7 @@ import { GalleryCard } from './GalleryCard'
 import { galleriesCarouselData } from '@/app/(home)/_components/Gallery/constant/data'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { GalleryModal } from './GalleryModal'
+import { CoverImage } from '@/common/components/Molecules/CoverImage'
 
 type IType = 'photo' | 'video'
 
@@ -49,31 +50,34 @@ export const GallerySection = () => {
   }
 
   return (
-    <HomeWrapper>
-      <div className="flex flex-col items-center gap-y-10 2lg:gap-y-14">
-        <GalleryTab handleDynamicData={handleDynamicData} />
-        <div className="flex flex-row flex-wrap justify-center  gap-6 md:gap-x-5 md:gap-y-6 2lg:gap-6 ">
-          {renderGalleryCardsUi()}
+    <>
+      <CoverImage title="Gallery" />
+      <HomeWrapper>
+        <div className="flex flex-col items-center gap-y-10 2lg:gap-y-14">
+          <GalleryTab handleDynamicData={handleDynamicData} />
+          <div className="flex flex-row flex-wrap justify-center  gap-6 md:gap-x-5 md:gap-y-6 2lg:gap-6 ">
+            {renderGalleryCardsUi()}
+          </div>
         </div>
-      </div>
 
-      {src.length > 0 && (
-        <CustomModal isOpen={isModalOpen}>
-          <GalleryModal
-            src={
-              activeImage
-                ? dynamicCardsData[activeImage].src
-                : dynamicCardsData[0].src
-            }
-            setModalOpen={setModalOpen}
-            setSrc={setSrc}
-            setActiveImage={setActiveImage}
-            length={dynamicCardsData.length - 1}
-            type={type}
-            showSwipe={dynamicCardsData.length > 1}
-          />
-        </CustomModal>
-      )}
-    </HomeWrapper>
+        {src.length > 0 && (
+          <CustomModal isOpen={isModalOpen}>
+            <GalleryModal
+              src={
+                activeImage
+                  ? dynamicCardsData[activeImage].src
+                  : dynamicCardsData[0].src
+              }
+              setModalOpen={setModalOpen}
+              setSrc={setSrc}
+              setActiveImage={setActiveImage}
+              length={dynamicCardsData.length - 1}
+              type={type}
+              showSwipe={dynamicCardsData.length > 1}
+            />
+          </CustomModal>
+        )}
+      </HomeWrapper>
+    </>
   )
 }

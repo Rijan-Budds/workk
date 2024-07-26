@@ -39,7 +39,7 @@ export const navLinks = [
   {
     id: 4,
     title: 'Gallery',
-    link: '/',
+    link: '/gallery',
     isDropDown: false,
     sublink: null,
   },
