@@ -98,7 +98,7 @@ export const TestimonialCard = () => {
               </SwiperSlide>
             ))}
           </div>
-          <div className="flex justify-center gap-x-4 mt-10 sm:hidden">
+          <div className="flex justify-center gap-x-4 mt-10 md:hidden">
             <SwiperButtonPrevious>
               <IoIosArrowRoundBack className="text-body text-2xl font-light " />
             </SwiperButtonPrevious>
