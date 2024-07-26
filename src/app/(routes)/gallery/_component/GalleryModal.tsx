@@ -1,35 +1,103 @@
 import { CloseButton } from '@/common/components/Atom/CloseButton'
+import { CustomVideo } from '@/common/components/Atom/CustomVideo'
+import { cn } from '@/common/utils/utils'
 import Image from 'next/image'
-import React, { Dispatch } from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
+import { IconBaseProps } from 'react-icons'
+import { BsArrowRight } from 'react-icons/bs'
+
+type IDirection = 'next' | 'prev'
+type IType = 'photo' | 'video'
 
 export const GalleryModal = ({
   src,
   setModalOpen,
   setSrc,
+  setActiveImage,
+  length,
+  type,
+  showSwipe,
 }: {
   src: string
-  setModalOpen: Dispatch<boolean>
-  setSrc: Dispatch<string>
+  setModalOpen: Dispatch<SetStateAction<boolean>>
+  setSrc: Dispatch<SetStateAction<string>>
+  setActiveImage: Dispatch<SetStateAction<number | null>>
+  length: number
+  type: IType
+  showSwipe: boolean
 }) => {
+  const handleSwipe = (direction: IDirection) => {
+    if (direction === 'next') {
+      setActiveImage((prev) => (prev! + 1) % length)
+    } else {
+      setActiveImage((prev) => (prev! - 1 + length) % length)
+    }
+  }
+
   return (
-    <div className="w-full h-full relative">
-      <Image
-        src={src}
-        alt="zoom gallery image"
-        width={1280}
-        height={854}
-        className="object-contain  w-[343px] h-[229px] border-white rounded-[12px] md:w-[700px] md:h-[467px] 2lg:w-[1280px] 2lg:h-[90vh]"
+    <div className="2lg:w-[80vw] 2lg:h-[90vh] flex justify-center items-center 2lg:items-start  relative  ">
+      {type === 'photo' ? (
+        <Image
+          src={src}
+          alt="zoom gallery image"
+          width={1280}
+          height={854}
+          className="object-contain pointer-events-none selection:bg-transparent transition-all duration-1000  w-[343px] h-[229px] border-white border-2 md:border-transparent rounded-[12px] md:w-[700px] md:h-[467px] 2lg:w-[1280px] 2lg:h-[90vh] z-10"
+        />
+      ) : (
+        <>
+          <CustomVideo
+            width="1280"
+            height="853"
+            src={src}
+            className="w-full h-full object-cover rounded-[12px]"
+            autoPlay={true}
+            controls={true}
+          />
+        </>
+      )}
+
+      <CloseButton
+        className={cn(
+          'absolute -top-3 -right-4 2lg:right-16  2xl_lg:right-32 z-10',
+          {
+            '2xl_lg:right-0': type === 'video',
+          }
+        )}
+        handleClick={() => {
+          setModalOpen(false)
+          setSrc('')
+          setActiveImage(null)
+        }}
       />
 
-      <div>
-        <CloseButton
-          className="absolute -top-3 -right-4 2lg:right-11 2xl_lg:-right-4"
-          handleClick={() => {
-            setModalOpen(false)
-            setSrc('')
-          }}
-        />
-      </div>
+      {showSwipe && (
+        <>
+          <SwipeArrow
+            onClick={() => handleSwipe('next')}
+            className="bg-white rounded-full size-[40px] p-2 -right-4 2xl_lg:right-4  cursor-pointer  "
+          />
+          <SwipeArrow
+            onClick={() => handleSwipe('prev')}
+            className="bg-white rounded-full size-[40px] p-2 -left-4 2xl_lg:left-4  rotate-180 cursor-pointer "
+          />
+        </>
+      )}
     </div>
+  )
+}
+
+export const SwipeArrow = ({
+  className,
+  ...props
+}: { className?: string } & IconBaseProps) => {
+  return (
+    <BsArrowRight
+      className={cn(
+        'text-xl bg-red-500 absolute top-1/2 -translate-y-1/2 text-heading z-10',
+        className
+      )}
+      {...props}
+    />
   )
 }
