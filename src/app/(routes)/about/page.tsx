@@ -1,9 +1,11 @@
-import Component from "@/common/components/Component";
+import AboutComponent from './_component/AboutComponent'
+import VoiceOfDirector from './_component/VoiceOfDirector'
 
 export default function About() {
   return (
     <>
-      <Component />
+      <AboutComponent />
+      <VoiceOfDirector />
     </>
-  );
+  )
 }

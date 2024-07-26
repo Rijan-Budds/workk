@@ -4,6 +4,7 @@ import React from 'react'
 import Notice from './Notice'
 import './notice.css'
 import { NewsCard } from './NewsCard'
+import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 
 const NewsAndEvents = () => {
   return (
@@ -15,10 +16,8 @@ const NewsAndEvents = () => {
         >
           <div className="relative">
             <div>
-              <h3 className="text-secondary text-[14px] leading-[21px] tracking-[2px] font-semibold font-workSans uppercase text-center 2lg:text-left">
-                News and Events
-              </h3>
-              <h1 className="font-poppins font-medium text-[28px] leading-[36.4px] mt-2 text-center 2lg:text-left">
+              <MiniHeading isMd>News and Events</MiniHeading>
+              <h1 className="font-poppins font-medium text-[28px] leading-[36.4px] mt-2 text-center md:text-left">
                 News and Events
               </h1>
             </div>

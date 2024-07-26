@@ -1,0 +1,57 @@
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr); */
+  /* margin-top: 20px; */
+}
+
+.custom-card {
+  width: 292px;
+  height: 72px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  text-align: start;
+  justify-content: start;
+  cursor: pointer;
+  gap: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .custom-card {
+    width: 158px;
+  }
+}
+
+.custom-card-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.custom-card-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.custom-card-info h4 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.custom-card-info p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #5d5f69;
+}
+
+.custom-card.swiper-pagination-bullet-active {
+  border-bottom: 2px solid #007aff;
+}

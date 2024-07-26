@@ -9,7 +9,7 @@ import { navLinks } from '@/common/constant/data'
 export const Navbar = () => {
   return (
     <div className="py-4   sticky top-0 bg-white z-[999] border-b-[1px] border-border hidden 2lg:block">
-      <HomeWrapper className="py-0">
+      <HomeWrapper className="!py-0">
         <div className="flex justify-between">
           <div className="flex items-center gap-x-6">
             <Image
@@ -32,9 +32,10 @@ export const Navbar = () => {
             <div className="flex gap-x-6">
               {navLinks.map((links) => (
                 <NavLinksUi
-                  links={links.title}
                   key={links.id}
+                  links={links.title}
                   isDropdown={links.isDropDown}
+                  link={links.link}
                 />
               ))}
             </div>
@@ -51,15 +52,17 @@ export const Navbar = () => {
 const NavLinksUi = ({
   links,
   isDropdown,
+  link,
 }: {
   links: string
   isDropdown: boolean
+  link?: string
 }) => {
   return (
     <div className="flex items-center gap-x-2 group ">
       <div className="flex flex-col gap-y-1 ">
         <Link
-          href={'#'}
+          href={link || '/'}
           className="text-[14px] leading-4 font-workSans font-medium group-hover:text-primary transition-all duration-500 "
         >
           {links}

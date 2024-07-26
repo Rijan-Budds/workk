@@ -42,3 +42,23 @@
   background-color: rgba(0, 0, 0, 0.5) !important;
   z-index: 99999999 !important;
 }
+
+/* teacherStaff.css */
+.custom-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-list li {
+  position: relative;
+  padding-left: 24px; /* Adjust this based on the width of your icon */
+}
+
+.custom-list li::before {
+  content: url('/home/check.svg'); /* Path to your SVG icon */
+  position: absolute;
+  left: 0;
+  top: 60%;
+  transform: translateY(-50%);
+}

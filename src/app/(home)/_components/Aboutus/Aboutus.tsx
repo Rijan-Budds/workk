@@ -3,18 +3,20 @@ import Image from 'next/image'
 import React from 'react'
 import './about.css'
 import { Button } from '@/common/components/Atom/Button'
+import { MiniHeading } from '@/common/components/Atom/MiniHeading'
+import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 
 const Aboutus = () => {
   return (
     <HomeWrapper>
-      <div className="flex flex-col md:flex-row gap-[40px] justify-between 2lg:gap-[80px]">
-        <div className="w-full md:max-w-[333px] 2lg:max-w-[503px] flex flex-col justify-center">
-          <h3 className="text-secondary text-[12px] 2lg:text-[14px] leading-4 2lg:leading-[21px] tracking-[2px] font-semibold font-workSans uppercase">
+      <div className="flex flex-col lg:flex-row gap-[40px] justify-between 2lg:gap-[80px]">
+        <div className="w-full 2lg:max-w-[503px] flex flex-col justify-center mx-auto">
+          <MiniHeading isMd className="text-start">
             about pawan prakriti
-          </h3>
-          <h1 className="font-poppins font-medium text-[28px] 2lg:text-[38px] leading-9 2lg:leading-[49.4px] mt-2">
+          </MiniHeading>
+          <SectionHeading isMd className="mt-2 text-start">
             Skilled Teachers And Support Staff
-          </h1>
+          </SectionHeading>
           <p className="font-workSans text-body font-normal text-[16px] leading-[27.2px] my-6">
             As you begin to consider your career goals choices may appear
             confusing. Go with Modern Technology.
@@ -35,7 +37,7 @@ const Aboutus = () => {
             <Button>About us</Button>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col md:flex-row gap-4 justify-center">
           <div className="gap-4 flex flex-col">
             <div>
               <Image
@@ -65,32 +67,6 @@ const Aboutus = () => {
             />
           </div>
         </div>
-        {/* <div className="flex flex-col sm:flex-row gap-[16px] max-w-[657px] justify-center items-center">
-          <div className="flex flex-col gap-[16px]">
-            <Image
-              src="/home/about1.png"
-              width={320}
-              height={335}
-              alt="ab"
-              className="w-full h-[360px] sm:w-[321px] sm:h-[335px] object-cover rounded-xl"
-            />
-            <div className="hidden sm:block blue-bg text-white space-y-[72px]">
-              <h2 className="font-poppins text-[20px] font-medium leading-[26px]">
-                Get guidance from our team of teacgers
-              </h2>
-              <p className="text-[16px] font-workSans font-normal leading-[27.2px]">
-                Teachers are the heart and soul of our daily operations.
-              </p>
-            </div>
-          </div>
-          <Image
-            src="/home/about2.png"
-            width={320}
-            height={610}
-            alt="ab"
-            className="w-[343px] sm:w-[321px] h-[610] rounded-xl object-cover"
-          />
-        </div> */}
       </div>
     </HomeWrapper>
   )
