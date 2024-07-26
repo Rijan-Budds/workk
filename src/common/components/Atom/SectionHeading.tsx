@@ -16,7 +16,7 @@ export const SectionHeading = ({
         'font-poppins text-[28px]  2lg:text-[38px] leading-[36.4px]  2lg:leading-[49.4px] font-medium text-center 2lg:text-left',
         className,
         {
-          'md:text-left md:text-[38px]': isMd,
+          'md:text-left md:text-[38px] md:leading-[49.4px]': isMd,
         }
       )}
     >
