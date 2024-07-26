@@ -16,7 +16,7 @@ const FooterHeader = () => {
               className="w-[56px] h-[56px]"
             />
           </div>
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <h1 className="font-poppins text-white text-[18px]">
               Pawan Prakriti School
             </h1>

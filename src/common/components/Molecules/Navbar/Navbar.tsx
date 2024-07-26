@@ -12,12 +12,15 @@ export const Navbar = () => {
       <HomeWrapper className="!py-0">
         <div className="flex justify-between">
           <div className="flex items-center gap-x-6">
-            <Image
-              width={56}
-              height={56}
-              src={'/home/logo.svg'}
-              alt="School logo"
-            />
+            <Link href={'/'}>
+              <Image
+                width={56}
+                height={56}
+                src={'/home/logo.svg'}
+                alt="School logo"
+              />
+            </Link>
+
             <div className="">
               <h2 className="font-poppins font-semibold text-[20px] leading-6 text-heading">
                 Pawan Prakritischool.
