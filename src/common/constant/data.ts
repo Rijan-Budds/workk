@@ -46,7 +46,7 @@ export const navLinks = [
   {
     id: 5,
     title: 'News & Events',
-    link: '/',
+    link: '/news',
     isDropDown: false,
     sublink: null,
   },
