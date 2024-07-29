@@ -7,8 +7,8 @@ import { CircleCardWrapper } from '@/common/components/Atom/CircleCardWrapper'
 
 export const DownloadUi = () => {
   return (
-    <CircleCardWrapper>
-      <div className=" border border-border rounded-lg p-6 flex flex-col gap-y-6">
+    <CircleCardWrapper className="bg-cover">
+      <div className=" border border-border rounded-lg p-6 flex flex-col gap-y-6 md:w-[349px] lg:w-full">
         <h3 className="font-poppins text-[20px] leading-[26px] font-medium text-heading">
           Download
         </h3>
@@ -25,7 +25,7 @@ const DownloadListUi = () => {
       href={`/news/sample.pdf`}
       download={'news-sample.pdf'}
       target="_blank"
-      className="flex gap-x-3 "
+      className="flex gap-x-3 items-center "
     >
       <Image src={'/news/pdf-icon.svg'} width={20} height={20} alt="pdf icon" />
       <span className="text-body text-[16px] leading-4 font-workSans text-center font-medium">
@@ -37,7 +37,7 @@ const DownloadListUi = () => {
 
 export const RecentPostUi = () => {
   return (
-    <CircleCardWrapper>
+    <CircleCardWrapper className="bg-contain md:bg-cover">
       <div className="flex flex-col gap-y-6">
         <h1
           className="font-poppins font-medium text-[20px] leading-[26px]  
@@ -68,9 +68,12 @@ const RecentPostCard = ({
 }) => {
   return (
     <div
-      className={cn('flex items-center gap-x-6 pb-6 border-b border-border', {
-        ' border-transparent ': hideBorder,
-      })}
+      className={cn(
+        'flex items-center gap-x-3 2lg:gap-x-6 pb-6 border-b border-border',
+        {
+          ' border-transparent ': hideBorder,
+        }
+      )}
     >
       <Image
         src={post.src}
