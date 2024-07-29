@@ -9,6 +9,7 @@ export const SidebarAd = () => {
         height={397}
         alt="advertisement banner"
         src={'/news/banner-ad.png'}
+        className="2lg:size-[397px] size-[345px]"
       />
     </div>
   )
