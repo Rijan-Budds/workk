@@ -31,8 +31,8 @@ export const navLinks = [
   },
   {
     id: 3,
-    title: 'Admission',
-    link: '/',
+    title: 'Our facilities',
+    link: '/facilities',
     isDropDown: true,
     sublink: null,
   },
