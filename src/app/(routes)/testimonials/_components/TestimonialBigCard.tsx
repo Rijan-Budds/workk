@@ -1,13 +1,15 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import './testimonial.css'
 import { ITestimonialData } from '@/app/(routes)/testimonials/_interface/testimonial'
 
-export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
+export const TestimonailBigCard = ({ card }: { card: ITestimonialData }) => {
   return (
     <>
-      <div className="bg-white max-w-[397px] rounded-[12px] relative mx-auto">
+      <div
+        className="bg-white max-w-[608px] rounded-[12px] relative mx-auto "
+        style={{ boxShadow: '4px 4px 0 0 #FAFAFA' }}
+      >
         <Image
           src="/home/quote.svg"
           width={60}
