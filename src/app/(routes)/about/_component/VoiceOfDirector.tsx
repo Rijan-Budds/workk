@@ -41,22 +41,22 @@ const VoiceOfDirector = () => {
   return (
     <>
       <HomeWrapper isBg>
-        <div className="mt-[56px] w-full max-w-[1230px]">
-          <SwiperWrapper>
+        <div className="mt-[56px]  max-w-[1230px] mx-auto">
+          <SwiperWrapper className="flex flex-col-reverse md:flex-col  gap-[110px]">
             {voices.map((voice, index) => (
               <SwiperSlide key={index}>
-                <div className="relative p-4 w-full flex flex-col lg:flex-row-reverse">
-                  <div className="relative max-w-[552px]">
+                <div className="relative justify-between md:gap-[40px] lg:gap-[80px] p-4 w-full flex flex-col md:flex-row-reverse">
+                  <div className="relative lg:max-w-[552px]">
                     <div className="absolute bg-[#187EC0] w-[289px] h-[226px] right-0 -top-4 rounded-tr-3xl" />
                     <Image
                       src={voice.image}
                       width={528}
                       height={693}
                       alt="director"
-                      className="w-[95%] h-[382px] lg:h-[726px] rounded-xl relative"
+                      className="w-[95%] h-[382px] md:h-[462px] lg:h-[726px] object-cover rounded-xl relative"
                     />
                   </div>
-                  <div className="max-w-[608px]">
+                  <div className="max-w-[304px] lg:max-w-[608px]">
                     <h1 className="font-poppins text-[28px] font-medium mt-11">
                       Voice Of Director
                     </h1>
@@ -88,7 +88,12 @@ const VoiceOfDirector = () => {
 
 export default VoiceOfDirector
 
-const SwiperWrapper = ({ children }: { children: ReactNode }) => {
+interface SwiperWrapperProps {
+  children: ReactNode
+  className?: string
+}
+
+const SwiperWrapper = ({ children, className }: SwiperWrapperProps) => {
   const slides = [
     { name: 'Bigyan Deu Rai', role: 'Director', img: '/home/director 1.png' },
     { name: 'Uttar Kumar Rai', role: 'Principal', img: '/home/director 2.png' },
@@ -122,7 +127,7 @@ const SwiperWrapper = ({ children }: { children: ReactNode }) => {
             </div>`
         },
       }}
-      className="w-full"
+      className={`w-full ${className} !flex`}
     >
       {children}
       {/* <div className="swiper-pagination"></div> */}
