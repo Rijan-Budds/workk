@@ -17,9 +17,9 @@ import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 
 export const GallerySlider = () => {
   return (
-    <div className="gallery__slider hidden 2lg:block ">
+    <div className="gallery__slider hidden 2lg:block">
       <Swiper
-        spaceBetween={50}
+        spaceBetween={70}
         slidesPerView={3}
         effect={'coverflow'}
         grabCursor={true}

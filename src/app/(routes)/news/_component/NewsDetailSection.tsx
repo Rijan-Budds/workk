@@ -6,7 +6,7 @@ import React from 'react'
 export const NewsDetailSection = () => {
   return (
     <>
-      <div className="flex flex-col gap-y-2  items-start  2lg:max-w-[787px]">
+      <div className="flex flex-col gap-y-2  items-start   2lg:max-w-[787px]  ">
         <MiniHeading>July 19, 2024</MiniHeading>
         <SectionHeading isMd>Co-currircular Activties</SectionHeading>
         <div className="flex flex-col gap-y-10 mt-8">
