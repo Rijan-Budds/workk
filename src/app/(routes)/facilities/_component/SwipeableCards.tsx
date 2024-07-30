@@ -13,8 +13,19 @@ import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 
 export const SwipeableCards = () => {
   return (
-    <div className="relative">
-      <Swiper spaceBetween={5} slidesPerView={3} loop>
+    <div className="2lg:overflow-x-hidden md:max-w-[324px]   2lg:max-w-[503px]  ">
+      <Swiper
+        breakpoints={{
+          300: { slidesPerView: 2, spaceBetween: 10 },
+          600: { slidesPerView: 3 },
+          768: { slidesPerView: 2, spaceBetween: 10 },
+          1280: { slidesPerView: 3, spaceBetween: 10 },
+        }}
+        spaceBetween={5}
+        slidesPerView={3}
+        loop
+        className="relative "
+      >
         {facilitiesCardsData.map((d) => (
           <SwiperSlide key={d.id}>
             <Image
@@ -26,14 +37,14 @@ export const SwipeableCards = () => {
             />
           </SwiperSlide>
         ))}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10">
+        <div className="absolute right-[3px] top-1/2 -translate-y-1/2 z-10">
           <SwiperButtonNext>
-            <IoIosArrowRoundForward className="text-body text-2xl font-light 2lg:bg-white rounded-full size-7 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+            <IoIosArrowRoundForward className="text-body text-2xl font-light bg-white rounded-full size-7" />
           </SwiperButtonNext>
         </div>
         <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 ">
           <SwiperButtonPrevious>
-            <IoIosArrowRoundBack className="text-body text-2xl font-light 2lg:bg-white rounded-full size-7 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+            <IoIosArrowRoundBack className="text-body text-2xl font-light bg-white rounded-full size-7" />
           </SwiperButtonPrevious>
         </div>
       </Swiper>
