@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { HomeWrapper } from '../../Atom/HomeWrapper'
 import Image from 'next/image'

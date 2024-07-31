@@ -17,3 +17,19 @@
     height: 304px;
   }
 }
+
+.group:hover .diagonal-border {
+  transform: rotate(-45deg);
+}
+
+.group:hover .object-cover {
+  opacity: 0.5;
+}
+
+.group:hover .overlay {
+  opacity: 1;
+}
+
+.group:hover .icons {
+  opacity: 1;
+}

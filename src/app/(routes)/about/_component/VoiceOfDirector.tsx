@@ -47,7 +47,7 @@ const VoiceOfDirector = () => {
               <SwiperSlide key={index}>
                 <div className="relative justify-between md:gap-[40px] lg:gap-[80px] p-4 w-full flex flex-col md:flex-row-reverse">
                   <div className="relative lg:max-w-[552px]">
-                    <div className="absolute bg-[#187EC0] w-[289px] h-[226px] right-0 -top-4 rounded-tr-3xl" />
+                    <div className="absolute bg-[#187EC0] w-[200px] 2lg:w-[289px] h-[226px] right-0 -top-4 rounded-tr-3xl" />
                     <Image
                       src={voice.image}
                       width={528}
@@ -56,7 +56,7 @@ const VoiceOfDirector = () => {
                       className="w-[95%] h-[382px] md:h-[462px] lg:h-[726px] object-cover rounded-xl relative"
                     />
                   </div>
-                  <div className="max-w-[304px] lg:max-w-[608px]">
+                  <div className="max-w-[304px] lg:max-w-[500px] 2lg:max-w-[608px]">
                     <h1 className="font-poppins text-[28px] font-medium mt-11">
                       Voice Of Director
                     </h1>
