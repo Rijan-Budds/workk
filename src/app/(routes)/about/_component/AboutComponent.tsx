@@ -9,7 +9,7 @@ import React from 'react'
 const AboutComponent = () => {
   return (
     <>
-      <CoverImage title="About Us" />
+      <CoverImage title="About Us" list={[{ link: 'about', title: 'About' }]} />
       <HomeWrapper>
         <div className="flex flex-col md:flex-row gap-10 md:gap-8 lg:gap-[81px]">
           <div className="flex gap-6 max-w-[656px]">

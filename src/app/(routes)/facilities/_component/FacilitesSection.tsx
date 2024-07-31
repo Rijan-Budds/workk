@@ -6,7 +6,10 @@ import { FacilitesTabSection } from './FacilitesTabSection'
 export const FacilitesSection = () => {
   return (
     <div className="min-h-screen ">
-      <CoverImage title="Science Lab" />
+      <CoverImage
+        title="Science Lab"
+        list={[{ link: null, title: 'facilites' }]}
+      />
       <HomeWrapper>
         <FacilitesTabSection />
       </HomeWrapper>

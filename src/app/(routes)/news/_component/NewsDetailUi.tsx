@@ -5,10 +5,20 @@ import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { MobileSidebar } from './MobileSidebar'
 
-export const NewsDetailUi = () => {
+export const NewsDetailUi = ({ slug }: { slug: string }) => {
+  const BreadCrumbList = [
+    {
+      title: 'News',
+      link: '/news',
+    },
+    {
+      title: slug,
+      link: null,
+    },
+  ]
   return (
     <>
-      <CoverImage title="News & Events" />
+      <CoverImage title="News & Events" list={BreadCrumbList} />
       <HomeWrapper>
         <div className="flex flex-col gap-y-20 2lg:gap-y-0  2lg:flex-row justify-between gap-x-12">
           <NewsDetailSection />
