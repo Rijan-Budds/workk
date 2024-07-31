@@ -4,7 +4,6 @@ import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
-import 'swiper/css/pagination'
 
 import { Autoplay, EffectCoverflow } from 'swiper/modules'
 import { galleriesCarouselData } from './constant/data'
@@ -17,20 +16,18 @@ import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 
 export const GallerySlider = () => {
   return (
-    <div className="gallery__slider hidden 2lg:block">
+    <div className="gallery__slider hidden 2lg:flex 2lg:h-[600px]   justify-center items-center">
       <Swiper
-        spaceBetween={70}
+        spaceBetween={180}
         slidesPerView={3}
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
         coverflowEffect={{
-          rotate: 40,
+          rotate: 30,
           stretch: 0,
           depth: 100,
-          modifier: 1,
           slideShadows: false,
-          scale: 1,
         }}
         autoplay={{
           delay: 3000,
@@ -38,14 +35,13 @@ export const GallerySlider = () => {
         }}
         loop
         modules={[EffectCoverflow, Autoplay]}
+        className="w-full h-full !pt-32"
       >
-        <div className="">
-          {galleriesCarouselData.map((d, index) => (
-            <SwiperSlide key={index}>
-              {({ isActive }) => <GalleryCard data={d} isActive={isActive} />}
-            </SwiperSlide>
-          ))}
-        </div>
+        {galleriesCarouselData.map((d, index) => (
+          <SwiperSlide key={index}>
+            {({ isActive }) => <GalleryCard data={d} isActive={isActive} />}
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   )
@@ -53,7 +49,7 @@ export const GallerySlider = () => {
 
 export const GalleryMobileSlider = () => {
   return (
-    <div className="flex justify-center items-center w-full  2lg:hidden ">
+    <div className="flex justify-center items-center w-full  2lg:hidden">
       <Swiper
         breakpoints={{
           400: {

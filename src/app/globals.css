@@ -8,24 +8,6 @@
   }
 }
 
-.gallery__slider .swiper {
-  overflow: visible !important;
-  min-height: 498px;
-}
-
-.gallery__slider .swiper-wrapper {
-  will-change: transform;
-  transition: all 3s ease-in;
-  min-height: 498px !important ;
-  display: flex !important;
-  justify-content: start;
-  column-gap: 25px;
-}
-
-.gallery__slider .swiper-slide-active {
-  transform: none !important;
-}
-
 @keyframes fill {
   0% {
     width: 0%;
