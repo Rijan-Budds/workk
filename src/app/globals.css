@@ -6,9 +6,15 @@
   .bdr {
     @apply border-2 border-red-500;
   }
+  .bdr-b {
+    @apply border-2 border-blue-500;
+  }
+  .bdr-g {
+    @apply border-2 border-green-500;
+  }
 }
 
-.gallery__slider .swiper {
+/* .gallery__slider .swiper {
   overflow: visible !important;
   min-height: 498px;
 }
@@ -24,7 +30,7 @@
 
 .gallery__slider .swiper-slide-active {
   transform: none !important;
-}
+} */
 
 @keyframes fill {
   0% {

@@ -18,7 +18,7 @@ export const GalleryCard = ({
   return (
     <div
       className={cn('flex flex-col gap-y-4 will-change-transform ', {
-        'ml-[5px]': isActive,
+        'm-0 ': isActive,
       })}
     >
       <div
