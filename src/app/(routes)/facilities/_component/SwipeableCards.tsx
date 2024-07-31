@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { facilitiesCardsData } from '../constant/data'
 import Image from 'next/image'
 import { SwiperSlide, Swiper } from 'swiper/react'
@@ -11,13 +11,17 @@ import {
 } from '@/common/components/Atom/SwiperButton'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 
-export const SwipeableCards = () => {
+export const SwipeableCards = ({
+  setActiveSrc,
+}: {
+  setActiveSrc: Dispatch<SetStateAction<string | null>>
+}) => {
   return (
     <div className="2lg:overflow-x-hidden md:max-w-[324px]   2lg:max-w-[503px]  ">
       <Swiper
         breakpoints={{
           300: { slidesPerView: 2, spaceBetween: 10 },
-          600: { slidesPerView: 3 },
+          600: { slidesPerView: 3, spaceBetween: 10 },
           768: { slidesPerView: 2, spaceBetween: 10 },
           1280: { slidesPerView: 3, spaceBetween: 10 },
         }}
@@ -29,6 +33,7 @@ export const SwipeableCards = () => {
         {facilitiesCardsData.map((d) => (
           <SwiperSlide key={d.id}>
             <Image
+              onClick={() => setActiveSrc(d.src)}
               src={d.src}
               width={152}
               height={152}
