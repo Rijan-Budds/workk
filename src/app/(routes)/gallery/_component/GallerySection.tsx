@@ -8,10 +8,15 @@ import { galleriesCarouselData } from '@/app/(home)/_components/Gallery/constant
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { GalleryModal } from './GalleryModal'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
+import { usePathname } from 'next/navigation'
+import { useBreadCrumbPath } from '@/common/hook/useBreadCrumbPath'
 
 type IType = 'photo' | 'video'
 
 export const GallerySection = () => {
+  const pathname = usePathname()
+  const getPaths = useBreadCrumbPath(pathname)
+
   const filterImageData = galleriesCarouselData.filter(
     (d) => d.type === 'image'
   )
@@ -51,7 +56,7 @@ export const GallerySection = () => {
 
   return (
     <>
-      <CoverImage title="Gallery" />
+      <CoverImage title="Gallery" list={getPaths} />
       <HomeWrapper>
         <div className="flex flex-col items-center gap-y-10 2lg:gap-y-14">
           <GalleryTab handleDynamicData={handleDynamicData} />

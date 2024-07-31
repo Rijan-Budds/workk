@@ -11,7 +11,10 @@ import { GoArrowRight } from 'react-icons/go'
 export const NewsSection = () => {
   return (
     <>
-      <CoverImage title="News & Events" />
+      <CoverImage
+        title="News & Events"
+        list={[{ link: null, title: 'News & Events' }]}
+      />
       <HomeWrapper>
         <div className="flex flex-row flex-wrap justify-center md:justify-between  gap-x-4 gap-y-28  ">
           {newsandevent.map((news) => (
