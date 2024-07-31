@@ -15,6 +15,7 @@ const config: Config = {
         primaryLight: '#CDDFED',
         primaryDark: '#1A86CC',
         secondaryLighter: '#FDF6F0',
+        shadowBorder: '#FAFAFA',
       },
       screens: {
         '2lg': '1270px',
