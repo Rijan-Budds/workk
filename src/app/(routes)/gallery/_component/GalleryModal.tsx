@@ -59,7 +59,7 @@ export const GalleryModal = ({
 
       <CloseButton
         className={cn(
-          'absolute -top-3 -right-4 2lg:right-16  2xl_lg:right-32 z-10',
+          'absolute -top-3 -right-4 2lg:right-16  2xl_lg:right-28 z-10',
           {
             '2xl_lg:right-0': type === 'video',
           }

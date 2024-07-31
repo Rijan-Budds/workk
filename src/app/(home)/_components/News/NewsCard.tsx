@@ -12,7 +12,7 @@ import {
 } from '@/common/components/Atom/SwiperButton'
 import { GoArrowRight } from 'react-icons/go'
 
-const newsandevent = [
+export const newsandevent = [
   {
     id: 1,
     date: 'July 19, 2024',
