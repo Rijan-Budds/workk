@@ -45,34 +45,36 @@ export const NewsCard = () => {
       <SwiperWrapper>
         {newsandevent.map((news) => (
           <SwiperSlide key={news.id} className="mt-10">
-            <div className="relative max-w-[397px] group cursor-pointer mx-auto ">
-              <div className="overflow-hidden rounded-xl max-w-[397px]">
-                <Image
-                  src={news.img}
-                  width={447}
-                  height={298}
-                  alt="news"
-                  className="relative max-w-[397px] h-[298px] object-cover group-hover:scale-110 transition-all duration-500"
-                />
-              </div>
-              <div className="absolute w-[94%] h-[98px] bg-white top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">
-                <div className="p-6 z-10 relative">
-                  <p className="text-body text-sm font-workSans font-normal leading-4 z-20">
-                    {news.date}
-                  </p>
-                  <h2 className="text-primary text-xl font-poppins font-medium leading-7  transition-all duration-500">
-                    {news.title}
-                  </h2>
+            <Link href={'/news/detail'}>
+              <div className="relative max-w-[397px] group cursor-pointer mx-auto ">
+                <div className="overflow-hidden rounded-xl max-w-[397px]">
+                  <Image
+                    src={news.img}
+                    width={447}
+                    height={298}
+                    alt="news"
+                    className="relative max-w-[397px] h-[298px] object-cover group-hover:scale-110 transition-all duration-500"
+                  />
                 </div>
-                <div>
-                  <Link
-                    href="/"
-                    className="bg-primaryLighter will-change-transform  w-[82px] h-[82px] absolute -right-[20px] group-hover:scale-[10] transition-transform duration-700 top-[55px] rounded-full z-0"
-                  ></Link>
-                  <GoArrowRight className=" absolute right-3 top-1/2 -translate-y-1/2 mt-8  z-20  text-2xl text-primary " />
+                <div className="absolute w-[94%] h-[98px] bg-white top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">
+                  <div className="p-6 z-10 relative">
+                    <p className="text-body text-sm font-workSans font-normal leading-4 z-20">
+                      {news.date}
+                    </p>
+                    <h2 className="text-primary text-xl font-poppins font-medium leading-7  transition-all duration-500">
+                      {news.title}
+                    </h2>
+                  </div>
+                  <div>
+                    <Link
+                      href="/"
+                      className="bg-primaryLighter will-change-transform  w-[82px] h-[82px] absolute -right-[20px] group-hover:scale-[10] transition-transform duration-700 top-[55px] rounded-full z-0"
+                    ></Link>
+                    <GoArrowRight className=" absolute right-3 top-1/2 -translate-y-1/2 mt-8  z-20  text-2xl text-primary " />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </SwiperSlide>
         ))}
         <div className="justify-center mt-10 gap-x-4 absolute bottom-0 left-1/2 -translate-x-1/2 z-50 flex md:left-auto md:translate-x-0 md:top-[-2.5rem] 2lg:left-[46.5rem] w-fit h-fit">
