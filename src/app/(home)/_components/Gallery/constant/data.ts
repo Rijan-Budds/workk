@@ -11,7 +11,7 @@ export const galleriesCarouselData = [
     serialNo: '02',
     title: 'Basic Level Class',
     type: 'image',
-    src: '/home/gallery-2.png',
+    src: '/home/landscape.png',
   },
   {
     id: 2,
@@ -39,7 +39,7 @@ export const galleriesCarouselData = [
     serialNo: '06',
     title: 'Expert Level Class',
     type: 'image',
-    src: '/home/gallery-6.png',
+    src: '/home/portrait.png',
   },
   {
     id: 7,
