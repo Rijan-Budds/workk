@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { FiChevronDown } from 'react-icons/fi'
 import { Sidebar } from './Sidebar'
 import { navLinks } from '@/common/constant/data'
@@ -6,8 +6,13 @@ import { Button } from '../../Atom/Button'
 import { NavHeaderLink } from './NavHeaderLink'
 import { NavHeaderSocialMedia } from './NavHeader'
 import { INavSubLink } from '@/common/interface/type'
+import Link from 'next/link'
 
-export const SidebarContainer = () => {
+export const SidebarContainer = ({
+  setOpenMainSidebar,
+}: {
+  setOpenMainSidebar: Dispatch<SetStateAction<boolean>>
+}) => {
   const [openDropDown, setOpenDropdown] = useState<boolean>(false)
   const [navDropdown, setNavDropDown] = useState<INavSubLink[] | []>([])
 
@@ -31,9 +36,19 @@ export const SidebarContainer = () => {
               }
             }}
           >
-            <span className="font-workSans font-medium text-[14px] leading-4 text-heading">
-              {link.title}
-            </span>
+            <Link
+              href={!link.isDropDown ? link.link : ''}
+              onClick={() => {
+                if (!link.isDropDown) {
+                  setOpenMainSidebar(false)
+                }
+              }}
+            >
+              <span className="font-workSans font-medium text-[14px] leading-4 text-heading">
+                {link.title}
+              </span>
+            </Link>
+
             {link.isDropDown && (
               <FiChevronDown className="w-[14px]   group-hover:text-primary transition-all duration-500 -rotate-90" />
             )}
@@ -50,7 +65,11 @@ export const SidebarContainer = () => {
           <div className="p-4 flex flex-col gap-y-6">
             {navDropdown.length &&
               navDropdown?.map((dropdown) => (
-                <NavDropDown link={dropdown} key={dropdown.id} />
+                <NavDropDown
+                  link={dropdown}
+                  key={dropdown.id}
+                  setClose={setOpenMainSidebar}
+                />
               ))}
           </div>
         </Sidebar>
@@ -59,10 +78,18 @@ export const SidebarContainer = () => {
   )
 }
 
-const NavDropDown = ({ link }: { link: INavSubLink }) => {
+const NavDropDown = ({
+  link,
+  setClose,
+}: {
+  link: INavSubLink
+  setClose: Dispatch<SetStateAction<boolean>>
+}) => {
   return (
-    <span className="font-workSans font-medium text-[14px] leading-4 ">
-      {link.title}
-    </span>
+    <Link href={link.link} onClick={() => setClose(false)}>
+      <span className="font-workSans font-medium text-[14px] leading-4">
+        {link.title}
+      </span>
+    </Link>
   )
 }
