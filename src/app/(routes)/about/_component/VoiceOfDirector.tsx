@@ -9,6 +9,7 @@ import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import './about.css'
+import Link from 'next/link'
 
 const voices = [
   {
@@ -47,7 +48,7 @@ const VoiceOfDirector = () => {
               <SwiperSlide key={index}>
                 <div className="relative justify-between md:gap-[40px] lg:gap-[80px] p-4 w-full flex flex-col md:flex-row-reverse">
                   <div className="relative lg:max-w-[552px]">
-                    <div className="absolute bg-[#187EC0] w-[289px] h-[226px] right-0 -top-4 rounded-tr-3xl" />
+                    <div className="absolute bg-[#187EC0] w-[200px] 2lg:w-[289px] h-[226px] right-0 -top-4 rounded-tr-3xl" />
                     <Image
                       src={voice.image}
                       width={528}
@@ -55,9 +56,49 @@ const VoiceOfDirector = () => {
                       alt="director"
                       className="w-[95%] h-[382px] md:h-[462px] lg:h-[726px] object-cover rounded-xl relative"
                     />
+                    <div className="absolute bottom-8 left-8 bg-secondary rounded-xl">
+                      <ul className="flex gap-4 p-4">
+                        <Link
+                          href="/"
+                          className="flex justify-center items-center"
+                        >
+                          <Image
+                            src="/home/twitter1.svg"
+                            width={100}
+                            height={100}
+                            alt="social"
+                            className="w-[14px] h-[14px]"
+                          />
+                        </Link>
+                        <Link
+                          href="/"
+                          className="flex justify-center items-center"
+                        >
+                          <Image
+                            src="/home/facebook (1).svg"
+                            width={100}
+                            height={100}
+                            alt="social"
+                            className="w-[14px] h-[14px]"
+                          />
+                        </Link>
+                        <Link
+                          href="/"
+                          className=" flex justify-center items-center"
+                        >
+                          <Image
+                            src="/home/insta.svg"
+                            width={100}
+                            height={100}
+                            alt="social"
+                            className="w-[14px] h-[14px]"
+                          />
+                        </Link>
+                      </ul>
+                    </div>
                   </div>
-                  <div className="max-w-[304px] lg:max-w-[608px]">
-                    <h1 className="font-poppins text-[28px] font-medium mt-11">
+                  <div className="max-w-[304px] lg:max-w-[500px] 2lg:max-w-[608px]">
+                    <h1 className="font-poppins text-[28px] lg:text-[38px] font-medium mt-11 leading-[49px]">
                       Voice Of Director
                     </h1>
                     {voice.paragraph.split('\n\n').map((paragraph, idx) => (
@@ -130,7 +171,6 @@ const SwiperWrapper = ({ children, className }: SwiperWrapperProps) => {
       className={`w-full ${className} !flex`}
     >
       {children}
-      {/* <div className="swiper-pagination"></div> */}
     </Swiper>
   )
 }

@@ -2,12 +2,12 @@ export const navLinks = [
   {
     id: 1,
     title: 'About Us',
-    link: '/about',
+    link: '',
     sublink: [
       {
         id: 1,
         title: 'Introduction',
-        link: '/introduction',
+        link: '/about',
       },
       {
         id: 2,
@@ -17,7 +17,7 @@ export const navLinks = [
       {
         id: 3,
         title: 'Our Success',
-        link: '/success',
+        link: '/testimonials',
       },
     ],
     isDropDown: true,
@@ -25,16 +25,65 @@ export const navLinks = [
   {
     id: 2,
     title: 'Academics',
-    link: '/',
+    link: '',
     isDropDown: true,
-    sublink: null,
+    sublink: [
+      {
+        id: 1,
+        title: 'Overview',
+        link: '/',
+      },
+      {
+        id: 2,
+        title: 'Plus Two',
+        link: '/',
+        subsublink: [
+          {
+            id: 1,
+            title: 'Management',
+            link: '/',
+          },
+          {
+            id: 2,
+            title: 'Humanities',
+            link: '/',
+          },
+          {
+            id: 3,
+            title: 'Law',
+            link: '/',
+          },
+        ],
+      },
+      {
+        id: 3,
+        title: 'School Level',
+        link: '/',
+      },
+    ],
   },
   {
     id: 3,
     title: 'Our facilities',
-    link: '/facilities',
+    link: '',
     isDropDown: true,
-    sublink: null,
+    sublink: [
+      {
+        id: 1,
+        title: 'Science Lab',
+        link: '/',
+      },
+      {
+        id: 2,
+        title: 'School Canteen',
+        link: '/',
+      },
+      {
+        id: 3,
+        title: 'Library',
+        link: '/',
+      },
+    ],
   },
   {
     id: 4,
