@@ -11,7 +11,7 @@ export const HeroImageSection = () => {
 
   useGSAP(() => {
     const mm = gsap.matchMedia()
-    mm.add('(min-width: 1300px)', () => {
+    mm.add('(min-width: 1270px)', () => {
       const tl = gsap.timeline()
 
       tl.to(
