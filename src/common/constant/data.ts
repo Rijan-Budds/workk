@@ -65,23 +65,43 @@ export const navLinks = [
   {
     id: 3,
     title: 'Our facilities',
-    link: '',
+    link: '/facilities',
     isDropDown: true,
     sublink: [
       {
         id: 1,
         title: 'Science Lab',
-        link: '/',
+        link: '/facilities',
       },
       {
         id: 2,
         title: 'School Canteen',
-        link: '/',
+        link: '/facilities',
       },
       {
         id: 3,
         title: 'Library',
+        link: '/facilities',
+      },
+      {
+        id: 4,
+        title: 'Computer Lab',
         link: '/',
+      },
+      {
+        id: 5,
+        title: 'Transportation',
+        link: '/facilities',
+      },
+      {
+        id: 6,
+        title: 'School-Hostel',
+        link: '/facilities',
+      },
+      {
+        id: 7,
+        title: 'Sports',
+        link: '/facilities',
       },
     ],
   },
@@ -96,7 +116,23 @@ export const navLinks = [
     id: 5,
     title: 'News & Events',
     link: '/news',
-    isDropDown: false,
-    sublink: null,
+    isDropDown: true,
+    sublink: [
+      {
+        id: 1,
+        title: 'News & Events',
+        link: '/news',
+      },
+      {
+        id: 2,
+        title: 'Notices',
+        link: '/notice',
+      },
+      {
+        id: 3,
+        title: 'Downloads',
+        link: '/brochure',
+      },
+    ],
   },
 ]
