@@ -59,6 +59,23 @@ export const navLinks = [
         id: 3,
         title: 'School Level',
         link: '/',
+        subsublink: [
+          {
+            id: 1,
+            title: 'Management',
+            link: '/',
+          },
+          {
+            id: 2,
+            title: 'Humanities',
+            link: '/',
+          },
+          {
+            id: 3,
+            title: 'Law',
+            link: '/',
+          },
+        ],
       },
     ],
   },
@@ -110,7 +127,7 @@ export const navLinks = [
     title: 'Gallery',
     link: '/gallery',
     isDropDown: false,
-    sublink: null,
+    sublink: [],
   },
   {
     id: 5,
