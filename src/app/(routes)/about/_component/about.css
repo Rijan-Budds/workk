@@ -1,17 +1,25 @@
 .custom-pagination {
   display: flex;
   justify-content: center;
-  /* display: grid;
-  grid-template-columns: repeat(4, 1fr); */
-  /* margin-top: 20px; */
+  gap: 24px;
+}
+
+@media screen and (max-width: 1200px) {
+  .custom-pagination {
+    gap: 12px;
+  }
 }
 
 .custom-card {
+  position: relative;
   width: 292px;
   height: 72px;
   padding: 10px;
   background: #fff;
-  border-radius: 5px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: row;
@@ -20,7 +28,34 @@
   cursor: pointer;
   gap: 16px;
 }
+.custom-card-timer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: #007aff;
+  border-radius: 4px;
+}
 
+#director .swiper-pagination-bullet {
+  opacity: 1;
+  border-bottom: #e7eef8 2px solid;
+}
+
+#director .swiper-pagination-bullet-active .custom-card-timer {
+  animation: fill 2s linear forwards;
+  border-bottom: transparent;
+}
+
+@keyframes fill {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
 .custom-card-image {
   width: 50px;
   height: 50px;
@@ -46,9 +81,9 @@
   color: #5d5f69;
 }
 
-.custom-card.swiper-pagination-bullet-active {
+/* .custom-card.swiper-pagination-bullet-active {
   border-bottom: 2px solid #007aff;
-}
+} */
 
 @media screen and (max-width: 768px) {
   .custom-pagination {

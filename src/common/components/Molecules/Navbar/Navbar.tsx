@@ -10,11 +10,13 @@ import { usePathname } from 'next/navigation'
 
 export const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [activeSublink, setActiveSublink] = useState<number | null>(null)
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
   const pathname = usePathname()
 
   useEffect(() => {
     setActiveDropdown(null)
+    setActiveSublink(null)
   }, [pathname])
 
   const handleMouseEnter = (label: string) => {
@@ -29,9 +31,14 @@ export const Navbar = () => {
     const id = setTimeout(() => {
       if (activeDropdown === label) {
         setActiveDropdown(null)
+        setActiveSublink(null)
       }
     }, 200)
     setTimeoutId(id)
+  }
+
+  const handleSublinkClick = (id: number) => {
+    setActiveSublink(activeSublink === id ? null : id)
   }
 
   return (
@@ -67,14 +74,18 @@ export const Navbar = () => {
                   link={links.link}
                   sublinks={links.sublink || undefined}
                   activeDropdown={activeDropdown}
+                  activeSublink={activeSublink}
                   handleMouseEnter={handleMouseEnter}
                   handleMouseLeave={handleMouseLeave}
+                  handleSublinkClick={handleSublinkClick}
                 />
               ))}
             </div>
-            <Button variant={'default'} className="h-fit">
-              Contact Us
-            </Button>
+            <Link href="/contact">
+              <Button variant={'default'} className="h-fit">
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
       </HomeWrapper>
@@ -88,16 +99,25 @@ const NavLinksUi = ({
   link,
   sublinks,
   activeDropdown,
+  activeSublink,
   handleMouseEnter,
   handleMouseLeave,
+  handleSublinkClick,
 }: {
   links: string
   isDropdown: boolean
   link?: string
-  sublinks?: { id: number; title: string; link: string }[]
+  sublinks?: {
+    id: number
+    title: string
+    link: string
+    subsublink?: { id: number; title: string; link: string }[]
+  }[]
   activeDropdown: string | null
+  activeSublink: number | null
   handleMouseEnter: (label: string) => void
   handleMouseLeave: (label: string) => void
+  handleSublinkClick: (id: number) => void
 }) => {
   return (
     <div
@@ -121,13 +141,34 @@ const NavLinksUi = ({
             <div className="absolute top-full left-0 mt-1 bg-white shadow-md rounded-md p-2 z-50 w-[240px]">
               <div className="flex flex-col py-4 px-6 space-y-5">
                 {sublinks?.map((sublink) => (
-                  <Link
-                    key={sublink.id}
-                    href={sublink.link}
-                    className="text-[14px] leading-4 font-workSans font-medium hover:text-primary transition-all duration-500 "
-                  >
-                    {sublink.title}
-                  </Link>
+                  <div key={sublink.id} className="relative group">
+                    <Link href={sublink.link}>
+                      <div
+                        className="text-[14px] leading-4 font-workSans font-medium hover:text-primary transition-all duration-500 cursor-pointer"
+                        onClick={() => handleSublinkClick(sublink.id)}
+                      >
+                        {sublink.title}
+                        {sublink.subsublink && (
+                          <FiChevronDown className="ml-2 w-[14px] mb-[3px] inline-block group-hover:text-primary transition-all duration-500 -rotate-90" />
+                        )}
+                      </div>
+                    </Link>
+                    {sublink.subsublink && activeSublink === sublink.id && (
+                      <div className="absolute top-0 left-full mt-0 bg-white shadow-md rounded-md p-2 z-50 w-[240px]">
+                        <div className="flex flex-col py-2 px-4 space-y-3">
+                          {sublink.subsublink.map((subsublink) => (
+                            <Link
+                              key={subsublink.id}
+                              href={subsublink.link}
+                              className="text-[14px] leading-4 font-workSans font-medium hover:text-primary transition-all duration-500"
+                            >
+                              {subsublink.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>
