@@ -38,7 +38,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           className="text-white font-medium text-[14px]  leading-4 "
           htmlFor={label}
         >
-          {label} {!isRequired && '(वैकल्पिक)'}
+          {label} {!isRequired && '*'}
         </label>
         <Field
           autoComplete="off"

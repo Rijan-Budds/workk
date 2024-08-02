@@ -41,6 +41,7 @@ export const GalleryCard = ({
             className="w-[397px] h-[265px] rounded-[12px]  object-cover"
             videoRef={videoRef}
             autoPlay={false}
+            fallbackThumb="/home/gallery-5.png"
           />
           <button className="absolute bottom-[1.5rem] right-[1.5rem] bg-white  rounded-full  size-[32px] flex justify-center items-center">
             <Image

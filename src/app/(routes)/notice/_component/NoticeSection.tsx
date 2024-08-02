@@ -1,12 +1,11 @@
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import React from 'react'
-import { NoticeCardData } from '../constant/data'
-import { NoticeCard } from './NoticeCard'
+import { NoticeClientSection } from './NoticeClientSection'
 
 export const NoticeSection = () => {
   return (
-    <div>
+    <>
       <CoverImage title="Notices" />
       <HomeWrapper>
         <div className="flex flex-col  gap-y-10 2lg:items-center">
@@ -15,13 +14,9 @@ export const NoticeSection = () => {
             Secondary School. Discover student achievements, sporting highlights
             and other event stories.
           </p>
-          <div className="grid  2lg:grid-cols-3 gap-6">
-            {NoticeCardData.map((notice) => (
-              <NoticeCard key={notice.id} notice={notice} />
-            ))}
-          </div>
+          <NoticeClientSection />
         </div>
       </HomeWrapper>
-    </div>
+    </>
   )
 }

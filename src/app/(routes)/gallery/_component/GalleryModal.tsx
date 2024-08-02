@@ -20,66 +20,73 @@ export const GalleryModal = ({
 }: {
   src: string
   setModalOpen: Dispatch<SetStateAction<boolean>>
-  setSrc: Dispatch<SetStateAction<string>>
-  setActiveImage: Dispatch<SetStateAction<number | null>>
+  setSrc?: Dispatch<SetStateAction<string>>
+  setActiveImage?: Dispatch<SetStateAction<number | null>>
   length: number
   type: IType
   showSwipe: boolean
 }) => {
   const handleSwipe = (direction: IDirection) => {
-    if (direction === 'next') {
+    if (direction === 'next' && setActiveImage) {
       setActiveImage((prev) => (prev! + 1) % length)
-    } else {
+    } else if (setActiveImage) {
       setActiveImage((prev) => (prev! - 1 + length) % length)
     }
   }
 
   return (
-    <div className="2lg:w-[80vw] 2lg:h-[90vh] flex justify-center items-center 2lg:items-start  relative  ">
-      {type === 'photo' ? (
-        <Image
-          src={src}
-          alt="zoom gallery image"
-          width={1280}
-          height={854}
-          className="object-contain pointer-events-none selection:bg-transparent transition-all duration-1000  w-[343px] h-[229px] border-white border-2 md:border-transparent rounded-[12px] md:w-[700px] md:h-[467px] 2lg:w-[1280px] 2lg:h-[90vh] z-10"
-        />
-      ) : (
-        <>
-          <CustomVideo
-            width="1280"
-            height="853"
-            src={src}
-            className="w-full h-full object-cover rounded-[12px]"
-            autoPlay={true}
-            controls={true}
-          />
-        </>
-      )}
+    <div className=" flex flex-col justify-center items-center 2lg:items-start   relative  bg-white rounded-xl overflow-hidden  2lg:w-[1085px]">
+      <div className="flex justify-between w-full p-6 bg-background rounded-xl">
+        <h2 className="font-poppins font-semibold text-[28px] leading-[36.4px]">
+          A Student’s Life
+        </h2>
+        <CloseButton
+          className="relative mb-2"
+          handleClick={() => {
+            if (setSrc && setActiveImage) {
+              setSrc('')
+              setActiveImage(null)
+            }
 
-      <CloseButton
-        className={cn(
-          'absolute -top-3 -right-4 2lg:right-16  2xl_lg:right-28 z-10',
-          {
-            '2xl_lg:right-0': type === 'video',
-          }
+            if (setModalOpen) {
+              setModalOpen(false)
+            }
+          }}
+        />
+      </div>
+      <div className="w-full h-full bg-white p-6 rounded-xl  ">
+        {type === 'photo' ? (
+          <Image
+            src={src}
+            alt="zoom gallery image"
+            width={1280}
+            height={854}
+            className="object-contain pointer-events-none selection:bg-transparent transition-all duration-1000  w-[90vw] max-h-[60vh] min-h-[20vh]   md:w-[80vw]   md:min-h-[60vh] md:max-h-[65vh]  2lg:min-h-[70vh] 2lg:max-h-[74vh] mx-auto"
+          />
+        ) : (
+          <>
+            <CustomVideo
+              width="1280"
+              height="853"
+              src={src}
+              className="w-full h-full object-cover rounded-[12px] 2lg:max-h-[70vh]"
+              autoPlay={true}
+              controls={true}
+              fallbackThumb="/home/gallery-5.png"
+            />
+          </>
         )}
-        handleClick={() => {
-          setModalOpen(false)
-          setSrc('')
-          setActiveImage(null)
-        }}
-      />
+      </div>
 
       {showSwipe && (
         <>
           <SwipeArrow
             onClick={() => handleSwipe('next')}
-            className="bg-white rounded-full size-[40px] p-2 -right-4 2xl_lg:right-4  cursor-pointer  "
+            className="bg-white rounded-full size-[40px] p-2 right-12  cursor-pointer  absolute top-[60%] -translate-y-1/2 "
           />
           <SwipeArrow
             onClick={() => handleSwipe('prev')}
-            className="bg-white rounded-full size-[40px] p-2 -left-4 2xl_lg:left-4  rotate-180 cursor-pointer "
+            className="bg-white rounded-full size-[40px] p-2 left-12  rotate-180 absolute top-[60%] -translate-y-1/2 cursor-pointer "
           />
         </>
       )}
