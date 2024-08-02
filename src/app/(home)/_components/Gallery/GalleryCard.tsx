@@ -32,7 +32,7 @@ export const GalleryCard = ({
       >
         {isVideoExists ? (
           <CustomVideo
-            autoPlay={isActive ? true : false}
+            autoPlay
             height="827"
             width="578"
             src={data.src}

@@ -20,16 +20,16 @@ export const GalleryModal = ({
 }: {
   src: string
   setModalOpen: Dispatch<SetStateAction<boolean>>
-  setSrc: Dispatch<SetStateAction<string>>
-  setActiveImage: Dispatch<SetStateAction<number | null>>
+  setSrc?: Dispatch<SetStateAction<string>>
+  setActiveImage?: Dispatch<SetStateAction<number | null>>
   length: number
   type: IType
   showSwipe: boolean
 }) => {
   const handleSwipe = (direction: IDirection) => {
-    if (direction === 'next') {
+    if (direction === 'next' && setActiveImage) {
       setActiveImage((prev) => (prev! + 1) % length)
-    } else {
+    } else if (setActiveImage) {
       setActiveImage((prev) => (prev! - 1 + length) % length)
     }
   }
@@ -43,9 +43,14 @@ export const GalleryModal = ({
         <CloseButton
           className="relative mb-2"
           handleClick={() => {
-            setModalOpen(false)
-            setSrc('')
-            setActiveImage(null)
+            if (setSrc && setActiveImage) {
+              setSrc('')
+              setActiveImage(null)
+            }
+
+            if (setModalOpen) {
+              setModalOpen(false)
+            }
           }}
         />
       </div>
