@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import './notice.css'
+import Link from 'next/link'
 
 const notices = [
   {
@@ -64,9 +65,12 @@ const Notice = () => {
             <h1 className="text-xl font-poppins font-medium leading-6 ">
               Notices
             </h1>
-            <button className="text-primary font-workSans font-normal text-[14px] leading-4">
+            <Link
+              href={'/notice'}
+              className="text-primary font-workSans font-normal text-[14px] leading-4"
+            >
               View All
-            </button>
+            </Link>
           </div>
 
           <div className="w-full   overflow-y-auto notice-scrollbar max-h-[376px] px-8  ">
