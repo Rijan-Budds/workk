@@ -58,12 +58,17 @@ const notices = [
 const Notice = () => {
   return (
     <>
-      {/* <div className="bdr  bg-white rounded-xl w-auto  max-w-[396px] max-h-[465px] overflow-y-auto notice-scrollbar"> */}
       <div className="  bg-white rounded-xl w-full md:w-[80%] 2lg:min-w-[320px] 2xl_lg:w-[396px]   2lg:max-w-[396px] 2lg:h-[465px] overflow-hidden  ">
         <div className="py-8 pb-2 w-full">
-          <h1 className="text-xl font-poppins font-medium leading-6 px-8 pb-6">
-            Notices
-          </h1>
+          <div className="flex justify-between  px-8 pb-6 items-center">
+            <h1 className="text-xl font-poppins font-medium leading-6 ">
+              Notices
+            </h1>
+            <button className="text-primary font-workSans font-normal text-[14px] leading-4">
+              View All
+            </button>
+          </div>
+
           <div className="w-full   overflow-y-auto notice-scrollbar max-h-[376px] px-8  ">
             {notices.map((notice) => (
               <div
