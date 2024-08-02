@@ -55,7 +55,11 @@ export const VideoSection = () => {
         </button>
 
         <button
-          onClick={() => setModalOpen(true)}
+          onClick={() => {
+            videoRef.current!.pause()
+            setIsPlaying(false)
+            setModalOpen(true)
+          }}
           className="absolute bottom-[2.5rem] right-[4.5rem] bg-white text-white p-2 rounded-full  size-[32px] flex justify-center items-center"
         >
           <Image

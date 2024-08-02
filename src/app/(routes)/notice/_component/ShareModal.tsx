@@ -51,7 +51,7 @@ export const ShareModal = ({
   }
 
   return (
-    <div className="bg-white rounded-xl p-6 flex flex-col gap-y-6  relative ">
+    <div className="bg-white rounded-xl p-6 flex flex-col gap-y-6  relative">
       <span className="font-poppins text-[20px] leading-6  font-medium">
         Share
       </span>
@@ -100,10 +100,9 @@ export const ShareModal = ({
 
         <div
           className={cn(
-            ' bg-primaryLight text-body font-workSans text-sm opacity-0 h-0 mt-0 p-0   transition-all duration-500 will-change-transform ',
+            ' bg-primaryLight text-body font-workSans text-sm opacity-0  mt-0 p-0 h-0  transition-all duration-700 will-change-transform ',
             {
-              'opacity-100 transition-all duration-500 h-full mt-2 p-4 rounded-md':
-                copied,
+              'opacity-100  h-full p-4 mt-2  rounded-md': copied,
             }
           )}
         >
