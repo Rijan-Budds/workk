@@ -44,11 +44,7 @@ export const ContactForm = () => {
         })}
       >
         {(formik) => {
-          const { errors, touched, setFieldValue, values } = formik
-
-          console.log('values', values)
-          console.log('Errr', errors)
-
+          const { errors, touched, setFieldValue } = formik
           return (
             <Form>
               <div className="flex flex-col gap-y-6  mt-[32px]   ">
