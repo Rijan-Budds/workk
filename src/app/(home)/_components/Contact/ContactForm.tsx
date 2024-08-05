@@ -43,10 +43,7 @@ export const ContactForm = () => {
         })}
       >
         {(formik) => {
-          const { errors, touched, values } = formik
-
-          console.log('errors 😂😂', errors)
-          console.log('values 😂😂', values)
+          const { errors, touched } = formik
 
           return (
             <Form>
