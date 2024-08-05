@@ -32,8 +32,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
-    console.log('error :::', error)
-
     return (
       <div className="flex flex-col  items-start gap-y-[6px] w-full relative  ">
         <label
