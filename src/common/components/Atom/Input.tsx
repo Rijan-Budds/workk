@@ -59,14 +59,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <FiChevronDown className="absolute right-6 -translate-y-1/2 w-4  text-black top-[65%] " />
         )}
 
-        {isError && (
-          <div className="flex items-center gap-x-1">
-            <CircleAlert className="size-4 text-white" />
-            <span className="font-workSans font-normal text-[14px] leading-4 text-white ">
-              {error}
-            </span>
-          </div>
-        )}
+        {isError && <ErrorComponent error={error} />}
       </div>
     )
   }
@@ -74,3 +67,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 Input.displayName = 'Input'
 
 export { Input }
+
+export const ErrorComponent = ({ error }: { error: string }) => {
+  return (
+    <div className="flex items-center gap-x-1">
+      <CircleAlert className="size-4 text-white" />
+      <span className="font-workSans font-normal text-[14px] leading-4 text-white ">
+        {error}
+      </span>
+    </div>
+  )
+}
