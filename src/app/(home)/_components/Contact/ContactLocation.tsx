@@ -8,6 +8,7 @@ export const ContactLocation = () => {
         width="608"
         height="748"
         className="rounded-[12px] w-full"
+        loading="eager"
       ></iframe>
     </div>
   )
