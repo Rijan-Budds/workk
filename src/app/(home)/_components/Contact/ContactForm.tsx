@@ -10,11 +10,22 @@ import {
   phoneNumberValidation,
 } from '@/common/utils/validation'
 import { Form, Formik } from 'formik'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import * as Yup from 'yup'
 import { ContactDropdown } from './ContactDropdown'
+import { SuccessMessageUi } from '@/common/components/Molecules/SuccessMessageUi'
 
 export const ContactForm = () => {
+  const [message, setMessage] = useState<string>('')
+
+  useEffect(() => {
+    if (message.length > 1) {
+      setTimeout(() => {
+        setMessage('')
+      }, 3000)
+    }
+  }, [message])
+
   const initialValues = {
     fullName: '',
     email: '',
@@ -95,7 +106,11 @@ export const ContactForm = () => {
                   error={errors.message!}
                   isError={!!errors.message && touched.message}
                 />
-                <Button type="submit" className="w-fit mt-[8px]">
+                <Button
+                  type="submit"
+                  className="w-fit mt-[8px]"
+                  onClick={() => setMessage('Form Submitted Successfully !')}
+                >
                   Submit
                 </Button>
               </div>
@@ -103,6 +118,7 @@ export const ContactForm = () => {
           )
         }}
       </Formik>
+      {message.length > 1 && <SuccessMessageUi showMessage={message} />}
     </div>
   )
 }
