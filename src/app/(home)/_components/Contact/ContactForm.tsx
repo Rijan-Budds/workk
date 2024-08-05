@@ -12,6 +12,7 @@ import {
 import { Form, Formik } from 'formik'
 import React from 'react'
 import * as Yup from 'yup'
+import { ContactDropdown } from './ContactDropdown'
 
 export const ContactForm = () => {
   const initialValues = {
@@ -43,8 +44,7 @@ export const ContactForm = () => {
         })}
       >
         {(formik) => {
-          const { errors, touched } = formik
-
+          const { errors, touched, setFieldValue } = formik
           return (
             <Form>
               <div className="flex flex-col gap-y-6  mt-[32px]   ">
@@ -78,15 +78,10 @@ export const ContactForm = () => {
                   error={errors.phone!}
                   isError={!!errors.phone && touched.phone}
                 />
-                <Input
-                  type="text"
-                  label="Level"
-                  isRequired
-                  placeholder="Select level"
-                  name="level"
-                  className="bg-white w-full "
+                <ContactDropdown
+                  setFieldValue={setFieldValue}
                   error={errors.level!}
-                  isError={!!errors.level && touched.level}
+                  isError={!!errors.level}
                 />
                 <Input
                   isMessage
