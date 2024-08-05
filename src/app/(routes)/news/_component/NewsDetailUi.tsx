@@ -8,7 +8,7 @@ import { MobileSidebar } from './MobileSidebar'
 export const NewsDetailUi = ({ slug }: { slug: string }) => {
   const BreadCrumbList = [
     {
-      title: 'News',
+      title: 'News & Events',
       link: '/news',
     },
     {

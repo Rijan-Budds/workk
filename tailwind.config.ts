@@ -30,6 +30,7 @@ const config = {
         primaryDark: '#1A86CC',
         secondaryLighter: '#FDF6F0',
         shadowBorder: '#FAFAFA',
+        error: '#B91C1C',
       },
       screens: {
         '2lg': '1270px',
