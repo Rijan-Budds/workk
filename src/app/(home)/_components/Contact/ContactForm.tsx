@@ -2,15 +2,23 @@
 
 import { Button } from '@/common/components/Atom/Button'
 import { Input } from '@/common/components/Atom/Input'
+import {
+  emailValidation,
+  fullNameValidation,
+  levelValidation,
+  messageValidation,
+  phoneNumberValidation,
+} from '@/common/utils/validation'
 import { Form, Formik } from 'formik'
 import React from 'react'
+import * as Yup from 'yup'
 
 export const ContactForm = () => {
   const initialValues = {
     fullName: '',
     email: '',
     phone: '',
-    address: '',
+    level: '',
     message: '',
   }
 
@@ -26,16 +34,20 @@ export const ContactForm = () => {
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => console.error(values)}
-        // validationSchema={Yup.object().shape({
-        //   fullName: fullNameValidation,
-        //   email: emailValidation,
-        //   phone: phoneNumberValidation,
-        //   address: addressValidation,
-        //   message: messageValidation,
-        // })}
+        validationSchema={Yup.object().shape({
+          fullName: fullNameValidation,
+          email: emailValidation,
+          phone: phoneNumberValidation,
+          level: levelValidation,
+          message: messageValidation,
+        })}
       >
         {(formik) => {
-          const { errors, touched } = formik
+          const { errors, touched, values } = formik
+
+          console.log('errors 😂😂', errors)
+          console.log('values 😂😂', values)
+
           return (
             <Form>
               <div className="flex flex-col gap-y-6  mt-[32px]   ">
@@ -44,7 +56,7 @@ export const ContactForm = () => {
                   label="Name"
                   isRequired
                   placeholder="Your name"
-                  name="name"
+                  name="fullName"
                   className="bg-white w-full "
                   error={errors.fullName!}
                   isError={!!errors.fullName && touched.fullName}
@@ -56,18 +68,18 @@ export const ContactForm = () => {
                   placeholder="you@company.com"
                   name="email"
                   className="bg-white w-full "
-                  error={errors.fullName!}
-                  isError={!!errors.fullName && touched.fullName}
+                  error={errors.email!}
+                  isError={!!errors.email && touched.email}
                 />
                 <Input
                   type="text"
                   label="Your Phone"
-                  isRequired
-                  placeholder="+977 - 9876543213"
-                  name="email"
+                  isRequired={false}
+                  placeholder="+9779876543213"
+                  name="phone"
                   className="bg-white w-full "
-                  error={errors.fullName!}
-                  isError={!!errors.fullName && touched.fullName}
+                  error={errors.phone!}
+                  isError={!!errors.phone && touched.phone}
                 />
                 <Input
                   type="text"
@@ -76,8 +88,8 @@ export const ContactForm = () => {
                   placeholder="Select level"
                   name="level"
                   className="bg-white w-full "
-                  error={errors.fullName!}
-                  isError={!!errors.fullName && touched.fullName}
+                  error={errors.level!}
+                  isError={!!errors.level && touched.level}
                 />
                 <Input
                   isMessage
@@ -86,12 +98,14 @@ export const ContactForm = () => {
                   label="Message"
                   isRequired
                   placeholder="Hello there!"
-                  name="Hello there!"
+                  name="message"
                   className="bg-white w-full "
-                  error={errors.fullName!}
-                  isError={!!errors.fullName && touched.fullName}
+                  error={errors.message!}
+                  isError={!!errors.message && touched.message}
                 />
-                <Button className="w-fit mt-[8px]">Submit</Button>
+                <Button type="submit" className="w-fit mt-[8px]">
+                  Submit
+                </Button>
               </div>
             </Form>
           )
