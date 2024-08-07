@@ -33,7 +33,7 @@ export const ContactDropdown = ({
 
   return (
     <div className="flex flex-col gap-y-2">
-      <Select onValueChange={(value) => setFieldValue('level', value)}>
+      <Select onValueChange={(value: string) => setFieldValue('level', value)}>
         <SelectTrigger className="rounded-lg p-4 text-body">
           <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
