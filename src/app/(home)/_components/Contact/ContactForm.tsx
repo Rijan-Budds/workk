@@ -3,9 +3,11 @@
 import { Button } from '@/common/components/Atom/Button'
 import { Input } from '@/common/components/Atom/Input'
 import { Form, Formik } from 'formik'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 
 export const ContactForm = () => {
+  const pathname = usePathname()
   const initialValues = {
     fullName: '',
     email: '',
@@ -14,14 +16,22 @@ export const ContactForm = () => {
     message: '',
   }
 
+  const isContactPage = pathname === '/contact'
+
   return (
-    <div className="relative z-10 w-full bg-cover  bg-[url('/home/contact-bg.svg')] bg-no-repeat p-8  rounded-[12px]">
-      <h1 className=" text-white font-poppins text-[28px] leading-[36.4px]  ">
+    <div
+      className={`relative z-10 w-full bg-cover p-8 rounded-[12px] ${isContactPage ? "bg-[url('/home/alt-contact-bg.svg')] text-black" : "bg-[url('/home/contact-bg.svg')] text-white"}`}
+    >
+      <h1 className="font-poppins text-[28px] leading-[36.4px]">
         Get in touch with Us
       </h1>
-      <p className="font-workSans font-light text-[16px] leading-[27.2px] text-white mt-4">
+      <p className="font-workSans font-light text-[16px] leading-[27.2px] mt-4">
         You can reach us anytime via{' '}
-        <span className="underline">pawanprakriti2048@gmail.com</span>
+        <span
+          className={`underline ${isContactPage ? 'text-secondary' : 'text-white'}`}
+        >
+          pawanprakriti2048@gmail.com
+        </span>
       </p>
       <Formik
         initialValues={initialValues}
@@ -38,7 +48,7 @@ export const ContactForm = () => {
           const { errors, touched } = formik
           return (
             <Form>
-              <div className="flex flex-col gap-y-6  mt-[32px]   ">
+              <div className="flex flex-col gap-y-6  mt-[32px]">
                 <Input
                   type="text"
                   label="Name"
@@ -48,6 +58,7 @@ export const ContactForm = () => {
                   className="bg-white w-full "
                   error={errors.fullName!}
                   isError={!!errors.fullName && touched.fullName}
+                  labelColor={isContactPage ? 'text-black' : 'text-white'}
                 />
                 <Input
                   type="text"
@@ -58,6 +69,7 @@ export const ContactForm = () => {
                   className="bg-white w-full "
                   error={errors.fullName!}
                   isError={!!errors.fullName && touched.fullName}
+                  labelColor={isContactPage ? 'text-black' : 'text-white'}
                 />
                 <Input
                   type="text"
@@ -68,6 +80,7 @@ export const ContactForm = () => {
                   className="bg-white w-full "
                   error={errors.fullName!}
                   isError={!!errors.fullName && touched.fullName}
+                  labelColor={isContactPage ? 'text-black' : 'text-white'}
                 />
                 <Input
                   type="text"
@@ -78,6 +91,7 @@ export const ContactForm = () => {
                   className="bg-white w-full "
                   error={errors.fullName!}
                   isError={!!errors.fullName && touched.fullName}
+                  labelColor={isContactPage ? 'text-black' : 'text-white'}
                 />
                 <Input
                   isMessage
@@ -90,6 +104,7 @@ export const ContactForm = () => {
                   className="bg-white w-full "
                   error={errors.fullName!}
                   isError={!!errors.fullName && touched.fullName}
+                  labelColor={isContactPage ? 'text-black' : 'text-white'}
                 />
                 <Button className="w-fit mt-[8px]">Submit</Button>
               </div>
