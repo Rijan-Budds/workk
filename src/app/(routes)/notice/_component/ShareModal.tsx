@@ -35,19 +35,21 @@ export const ShareModal = ({
   const link =
     'https://pawanprakritischool.edu.np/event/Awards%20and%20Achievementss'
 
-  const handleCopyClick = () => {
-    navigator.clipboard.writeText(link).then(() => {
-      setCopied(true)
-      if (timeoutId) {
-        clearTimeout(timeoutId)
-      }
+  const handleCopyClick = async () => {
+    if (navigator.clipboard && window.isSecureContext)
+      await navigator.clipboard.writeText(link).then(() => {
+        navigator.vibrate(300)
+        setCopied(true)
+        if (timeoutId) {
+          clearTimeout(timeoutId)
+        }
 
-      const id = setTimeout(() => {
-        setCopied(false)
-      }, 2000)
+        const id = setTimeout(() => {
+          setCopied(false)
+        }, 2000)
 
-      setTimeoutId(id)
-    })
+        setTimeoutId(id)
+      })
   }
 
   return (
