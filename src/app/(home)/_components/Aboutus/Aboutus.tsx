@@ -5,6 +5,7 @@ import './about.css'
 import { Button } from '@/common/components/Atom/Button'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
+import Link from 'next/link'
 
 const Aboutus = () => {
   return (
@@ -34,7 +35,9 @@ const Aboutus = () => {
             </ul>
           </div>
           <div className="mt-[40px]">
-            <Button>About us</Button>
+            <Link href={'/about'}>
+              <Button>About us</Button>
+            </Link>
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-4 justify-center">

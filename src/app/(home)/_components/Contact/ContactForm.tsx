@@ -2,17 +2,37 @@
 
 import { Button } from '@/common/components/Atom/Button'
 import { Input } from '@/common/components/Atom/Input'
+import {
+  emailValidation,
+  fullNameValidation,
+  levelValidation,
+  messageValidation,
+  phoneNumberValidation,
+} from '@/common/utils/validation'
 import { Form, Formik } from 'formik'
 import { usePathname } from 'next/navigation'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import * as Yup from 'yup'
+import { ContactDropdown } from './ContactDropdown'
+import { SuccessMessageUi } from '@/common/components/Molecules/SuccessMessageUi'
 
 export const ContactForm = () => {
+  const [message, setMessage] = useState<string>('')
+
+  useEffect(() => {
+    if (message.length > 1) {
+      setTimeout(() => {
+        setMessage('')
+      }, 3000)
+    }
+  }, [message])
+
   const pathname = usePathname()
   const initialValues = {
     fullName: '',
     email: '',
     phone: '',
-    address: '',
+    level: '',
     message: '',
   }
 
@@ -36,16 +56,16 @@ export const ContactForm = () => {
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => console.error(values)}
-        // validationSchema={Yup.object().shape({
-        //   fullName: fullNameValidation,
-        //   email: emailValidation,
-        //   phone: phoneNumberValidation,
-        //   address: addressValidation,
-        //   message: messageValidation,
-        // })}
+        validationSchema={Yup.object().shape({
+          fullName: fullNameValidation,
+          email: emailValidation,
+          phone: phoneNumberValidation,
+          level: levelValidation,
+          message: messageValidation,
+        })}
       >
         {(formik) => {
-          const { errors, touched } = formik
+          const { errors, touched, setFieldValue } = formik
           return (
             <Form>
               <div className="flex flex-col gap-y-6  mt-[32px]">
@@ -54,7 +74,7 @@ export const ContactForm = () => {
                   label="Name"
                   isRequired
                   placeholder="Your name"
-                  name="name"
+                  name="fullName"
                   className="bg-white w-full "
                   error={errors.fullName!}
                   isError={!!errors.fullName && touched.fullName}
@@ -67,31 +87,25 @@ export const ContactForm = () => {
                   placeholder="you@company.com"
                   name="email"
                   className="bg-white w-full "
-                  error={errors.fullName!}
-                  isError={!!errors.fullName && touched.fullName}
+                  error={errors.email!}
+                  isError={!!errors.email && touched.email}
                   labelColor={isContactPage ? 'text-black' : 'text-white'}
                 />
                 <Input
                   type="text"
                   label="Your Phone"
-                  isRequired
-                  placeholder="+977 - 9876543213"
-                  name="email"
+                  isRequired={false}
+                  placeholder="+9779876543213"
+                  name="phone"
                   className="bg-white w-full "
-                  error={errors.fullName!}
-                  isError={!!errors.fullName && touched.fullName}
+                  error={errors.phone!}
+                  isError={!!errors.phone && touched.phone}
                   labelColor={isContactPage ? 'text-black' : 'text-white'}
                 />
-                <Input
-                  type="text"
-                  label="Level"
-                  isRequired
-                  placeholder="Select level"
-                  name="level"
-                  className="bg-white w-full "
-                  error={errors.fullName!}
-                  isError={!!errors.fullName && touched.fullName}
-                  labelColor={isContactPage ? 'text-black' : 'text-white'}
+                <ContactDropdown
+                  setFieldValue={setFieldValue}
+                  error={errors.level!}
+                  isError={!!errors.level}
                 />
                 <Input
                   isMessage
@@ -100,18 +114,25 @@ export const ContactForm = () => {
                   label="Message"
                   isRequired
                   placeholder="Hello there!"
-                  name="Hello there!"
+                  name="message"
                   className="bg-white w-full "
-                  error={errors.fullName!}
-                  isError={!!errors.fullName && touched.fullName}
+                  error={errors.message!}
+                  isError={!!errors.message && touched.message}
                   labelColor={isContactPage ? 'text-black' : 'text-white'}
                 />
-                <Button className="w-fit mt-[8px]">Submit</Button>
+                <Button
+                  type="submit"
+                  className="w-fit mt-[8px]"
+                  onClick={() => setMessage('Form Submitted Successfully !')}
+                >
+                  Submit
+                </Button>
               </div>
             </Form>
           )
         }}
       </Formik>
+      {message.length > 1 && <SuccessMessageUi showMessage={message} />}
     </div>
   )
 }

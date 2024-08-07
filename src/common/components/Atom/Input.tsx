@@ -4,6 +4,7 @@ import * as React from 'react'
 import { Field } from 'formik'
 import { cn } from '@/common/utils/utils'
 import { FiChevronDown } from 'react-icons/fi'
+import { CircleAlert } from 'lucide-react'
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -32,7 +33,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
-    console.error(error)
     return (
       <div className="flex flex-col  items-start gap-y-[6px] w-full relative">
         <label
@@ -59,6 +59,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label === 'Level' && (
           <FiChevronDown className="absolute right-6 -translate-y-1/2 w-4 text-black top-[65%]" />
         )}
+
+        {isError && <ErrorComponent error={error} />}
       </div>
     )
   }
@@ -66,3 +68,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 Input.displayName = 'Input'
 
 export { Input }
+
+export const ErrorComponent = ({ error }: { error: string }) => {
+  return (
+    <div className="flex items-center gap-x-1">
+      <CircleAlert className="size-4 text-white" />
+      <span className="font-workSans font-normal text-[14px] leading-4 text-white ">
+        {error}
+      </span>
+    </div>
+  )
+}
