@@ -4,6 +4,7 @@ import { CloseButton } from '@/common/components/Atom/CloseButton'
 import { cn } from '@/common/utils/utils'
 import Image from 'next/image'
 import React, { Dispatch, SetStateAction, useState } from 'react'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 export const ShareModal = ({
   setOpen,
@@ -35,21 +36,20 @@ export const ShareModal = ({
   const link =
     'https://pawanprakritischool.edu.np/event/Awards%20and%20Achievementss'
 
-  const handleCopyClick = async () => {
-    if (navigator.clipboard && window.isSecureContext)
-      await navigator.clipboard.writeText(link).then(() => {
-        navigator.vibrate(300)
-        setCopied(true)
-        if (timeoutId) {
-          clearTimeout(timeoutId)
-        }
+  const handleCopyClick = () => {
+    if (navigator.vibrate) {
+      navigator.vibrate(300)
+    }
+    setCopied(true)
+    if (timeoutId) {
+      clearTimeout(timeoutId)
+    }
 
-        const id = setTimeout(() => {
-          setCopied(false)
-        }, 2000)
+    const id = setTimeout(() => {
+      setCopied(false)
+    }, 2000)
 
-        setTimeoutId(id)
-      })
+    setTimeoutId(id)
   }
 
   return (
@@ -84,15 +84,17 @@ export const ShareModal = ({
           <span className="font-workSans font-normal text-[14px] leading-4 text-body  line-clamp-1 break-all w-full md:max-w-[325px] ">
             {link}
           </span>
-          <button onClick={handleCopyClick}>
-            <Image
-              width={16}
-              height={16}
-              className="size-4"
-              alt="clipboard icon"
-              src={'/news/copy.svg'}
-            />
-          </button>
+          <CopyToClipboard text={link}>
+            <button onClick={handleCopyClick}>
+              <Image
+                width={16}
+                height={16}
+                className="size-4"
+                alt="clipboard icon"
+                src={'/news/copy.svg'}
+              />
+            </button>
+          </CopyToClipboard>
         </div>
 
         <CloseButton
