@@ -6,6 +6,7 @@ import { academicCardsDataOne, academicCardsDataTwo } from './constant/data'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import { AcademicSwipeCard } from './AcademicSwipeCard'
+import Link from 'next/link'
 
 export const AcademicSection = () => {
   return (
@@ -35,9 +36,11 @@ export const AcademicSection = () => {
               </p>
             </div>
           </div>
-          <Button className="mt-6 w-full  md:w-fit mx-auto md:mx-0">
-            Contact Us
-          </Button>
+          <Link href={'/contact'}>
+            <Button className="mt-6 w-full  md:w-fit mx-auto md:mx-0">
+              Contact Us
+            </Button>
+          </Link>
         </div>
         <div className="hidden 2lg:flex   flex-row  gap-x-4  ">
           <AcademicCards
