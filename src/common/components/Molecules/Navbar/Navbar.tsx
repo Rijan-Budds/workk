@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { FiChevronDown } from 'react-icons/fi'
 import { navLinks } from '@/common/constant/data'
 import { usePathname } from 'next/navigation'
+import { cn } from '@/lib/utils'
 
 export const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
@@ -78,6 +79,7 @@ export const Navbar = () => {
                   handleMouseEnter={handleMouseEnter}
                   handleMouseLeave={handleMouseLeave}
                   handleSublinkClick={handleSublinkClick}
+                  pathname={pathname}
                 />
               ))}
             </div>
@@ -103,6 +105,7 @@ const NavLinksUi = ({
   handleMouseEnter,
   handleMouseLeave,
   handleSublinkClick,
+  pathname,
 }: {
   links: string
   isDropdown: boolean
@@ -118,6 +121,7 @@ const NavLinksUi = ({
   handleMouseEnter: (label: string) => void
   handleMouseLeave: (label: string) => void
   handleSublinkClick: (id: number) => void
+  pathname: string
 }) => {
   return (
     <div
@@ -144,7 +148,12 @@ const NavLinksUi = ({
                   <div key={sublink.id} className="relative group">
                     <Link href={sublink.link}>
                       <div
-                        className="text-[14px] leading-4 font-workSans font-medium hover:text-primary transition-all duration-500 cursor-pointer"
+                        className={cn(
+                          'text-[14px] leading-4 font-workSans font-medium hover:text-primary transition-all duration-500 cursor-pointer',
+                          pathname === sublink.link
+                            ? 'text-primary'
+                            : 'text-black'
+                        )}
                         onClick={() => handleSublinkClick(sublink.id)}
                       >
                         {sublink.title}
@@ -154,7 +163,7 @@ const NavLinksUi = ({
                       </div>
                     </Link>
                     {sublink.subsublink && activeSublink === sublink.id && (
-                      <div className="absolute top-0 left-full mt-0 bg-white shadow-md rounded-md p-2 z-50 w-[240px]">
+                      <div className="absolute -top-[50px] left-full mt-0 bg-white shadow-md rounded-md p-2 z-50 w-[240px]">
                         <div className="flex flex-col py-2 px-4 space-y-3">
                           {sublink.subsublink.map((subsublink) => (
                             <Link
