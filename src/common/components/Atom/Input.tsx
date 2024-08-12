@@ -1,7 +1,6 @@
 'use client'
 
 import * as React from 'react'
-
 import { Field } from 'formik'
 import { cn } from '@/common/utils/utils'
 import { FiChevronDown } from 'react-icons/fi'
@@ -15,6 +14,7 @@ export interface InputProps
   rows?: number
   error: string
   isError?: boolean
+  labelColor: string
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -28,14 +28,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       isMessage = false,
       rows,
       isError,
+      labelColor,
       ...props
     },
     ref
   ) => {
     return (
-      <div className="flex flex-col  items-start gap-y-[6px] w-full relative  ">
+      <div className="flex flex-col  items-start gap-y-[6px] w-full relative">
         <label
-          className="text-white font-medium text-[14px]  leading-4 "
+          className={`font-medium text-[14px] leading-4 ${labelColor}`}
           htmlFor={label}
         >
           {label} {isRequired && '*'}
@@ -45,7 +46,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           name={props.name}
           type={type}
           className={cn(
-            'flex min-h-[48px]   text-black bg-white text-[16px]  max-h-[200px] w-full  rounded-[8px] border-stone-100   px-4 py-3  ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-body  focus:outline-none disabled:cursor-not-allowed disabled:opacity-50  font-workSans placeholder:font-workSans ',
+            'flex min-h-[48px] text-black bg-white text-[16px] max-h-[200px] w-full rounded-[8px] border-stone-100 px-4 py-3 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-body focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 font-workSans placeholder:font-workSans',
             className,
             {
               'border-red-300': isError,
@@ -56,7 +57,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {label === 'Level' && (
-          <FiChevronDown className="absolute right-6 -translate-y-1/2 w-4  text-black top-[65%] " />
+          <FiChevronDown className="absolute right-6 -translate-y-1/2 w-4 text-black top-[65%]" />
         )}
 
         {isError && <ErrorComponent error={error} />}
