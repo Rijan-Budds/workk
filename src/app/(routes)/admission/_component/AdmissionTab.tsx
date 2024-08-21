@@ -17,7 +17,7 @@ export const AdmissionTab = () => {
   }
 
   return (
-    <div className="flex flex-col  justify-center items-center">
+    <div className="flex flex-col  justify-center items-center gap-y-10">
       <div className="w-fit flex flex-col justify-center items-center gap-y-10">
         <TabSwitch
           tabs={[
