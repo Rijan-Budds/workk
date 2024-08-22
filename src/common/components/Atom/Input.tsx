@@ -79,7 +79,7 @@ export { Input }
 export const ErrorComponent = ({ error }: { error: string }) => {
   const pathname = usePathname()
 
-  const isContactPage = pathname === '/contact'
+  const isContactPage = pathname === '/contact' || '/admission'
 
   return (
     <div className="flex items-center gap-x-1">
