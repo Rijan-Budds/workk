@@ -15,3 +15,10 @@ export interface IDropdownList {
   title: string
   value: string
 }
+
+export interface IFileMetadata {
+  name: string
+  size: string
+  type: string
+  src: string
+}
