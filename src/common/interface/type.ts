@@ -19,6 +19,6 @@ export interface IDropdownList {
 export interface IFileMetadata {
   name: string
   size: string
-  type: string
+  type: 'image' | 'pdf' | 'other'
   src: string
 }

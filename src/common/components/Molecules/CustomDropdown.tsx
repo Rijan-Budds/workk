@@ -12,11 +12,12 @@ import { IDropdownList } from '@/common/interface/type'
 
 interface ICustomDropdownProps {
   setFieldValue: (field: string, value: string) => void
-  error: string
+  error: string | undefined
   isError: boolean
   list: IDropdownList[]
   placeHolder: string
   label: string
+  field: string
 }
 
 export const CustomDropdown = ({
@@ -26,6 +27,7 @@ export const CustomDropdown = ({
   list,
   placeHolder,
   label,
+  field,
 }: ICustomDropdownProps) => {
   return (
     <div className="flex flex-col gap-y-2 w-full">
@@ -35,7 +37,7 @@ export const CustomDropdown = ({
       >
         {label}
       </label>
-      <Select onValueChange={(value: string) => setFieldValue('level', value)}>
+      <Select onValueChange={(value: string) => setFieldValue(field, value)}>
         <SelectTrigger className="rounded-lg p-4 text-body">
           <SelectValue placeholder={placeHolder} />
         </SelectTrigger>
@@ -49,7 +51,7 @@ export const CustomDropdown = ({
           </SelectGroup>
         </SelectContent>
       </Select>
-      {isError && <ErrorComponent error={error} />}
+      {isError && <ErrorComponent error={error ? error : ''} />}
     </div>
   )
 }

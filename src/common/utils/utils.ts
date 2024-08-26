@@ -6,8 +6,19 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const byteToMb = (bytes: number) => (bytes / (1024 * 1024)).toFixed(2)
-
-export const checkFileType = (file: string) =>
-  file.startsWith('image/') ? 'image' : 'pdf'
+/**
+ * Checks the file type based on its MIME type.
+ * @param fileType - The MIME type of the file (e.g., 'image/jpeg', 'application/pdf').
+ * @returns A string indicating the type of file ('image', 'pdf', or 'other').
+ */
+export const checkFileType = (fileType: string): 'image' | 'pdf' | 'other' => {
+  if (fileType.startsWith('image/')) {
+    return 'image'
+  } else if (fileType === 'application/pdf') {
+    return 'pdf'
+  } else {
+    return 'other'
+  }
+}
 
 export const convertFileToSrc = (file: File) => URL.createObjectURL(file)

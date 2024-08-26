@@ -13,7 +13,7 @@ export interface InputProps
   isRequired: boolean
   isMessage?: boolean
   rows?: number
-  error: string
+  error: string | undefined
   isError?: boolean
   labelColor?: string
   isPage?: boolean
@@ -67,7 +67,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <FiChevronDown className="absolute right-6 -translate-y-1/2 w-4 text-black top-[65%]" />
         )}
 
-        {isError && <ErrorComponent error={error} />}
+        {isError && <ErrorComponent error={error ? error : ''} />}
       </div>
     )
   }
@@ -79,20 +79,23 @@ export { Input }
 export const ErrorComponent = ({ error }: { error: string }) => {
   const pathname = usePathname()
 
-  const isContactPage = pathname === '/contact' || '/admission'
+  const isContactPage = pathname === '/contact'
+  const isAdmission = pathname === '/admission'
+
+  console.log('isContactPage', pathname)
 
   return (
     <div className="flex items-center gap-x-1">
       <CircleAlert
         className={cn('size-4 text-white', {
-          'text-red-500': isContactPage,
+          'text-red-500': isContactPage || isAdmission,
         })}
       />
       <span
         className={cn(
           'font-workSans font-normal text-[14px] leading-4 text-white ',
           {
-            'text-red-500': isContactPage,
+            'text-red-500': isContactPage || isAdmission,
           }
         )}
       >
