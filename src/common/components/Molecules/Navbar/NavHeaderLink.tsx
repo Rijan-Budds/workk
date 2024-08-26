@@ -16,11 +16,18 @@ export const NavHeaderLink = () => {
           />
         </span>
       </Link>
+      <Link href={'/admission'} className="">
+        <span className="flex gap-x-[6.67px]  items-center cursor-pointer font-medium text-[12px] leading-4 tracking-wide uppercase text-heading  hover:text-primary transition-all duration-500">
+          Apply now
+          <Image
+            width={6}
+            height={7}
+            alt="arrow right"
+            src={'/home/arrow.svg'}
+          />
+        </span>
+      </Link>
 
-      <span className="flex gap-x-[6.67px]  items-center font-medium text-[12px] leading-4 tracking-wide uppercase text-heading cursor-default hover:text-primary transition-all duration-500">
-        Apply now
-        <Image width={6} height={7} alt="arrow right" src={'/home/arrow.svg'} />
-      </span>
       <span className="flex gap-x-[6.67px]  items-center font-medium text-[12px] leading-4 tracking-wide uppercase text-heading cursor-default hover:text-primary transition-all duration-500">
         Result
         <Image width={6} height={7} alt="arrow right" src={'/home/arrow.svg'} />

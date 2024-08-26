@@ -5,6 +5,7 @@ import { Field } from 'formik'
 import { cn } from '@/common/utils/utils'
 import { FiChevronDown } from 'react-icons/fi'
 import { CircleAlert } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -15,6 +16,7 @@ export interface InputProps
   error: string
   isError?: boolean
   labelColor: string
+  isPage?: boolean
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -70,10 +72,25 @@ Input.displayName = 'Input'
 export { Input }
 
 export const ErrorComponent = ({ error }: { error: string }) => {
+  const pathname = usePathname()
+
+  const isContactPage = pathname === '/contact'
+
   return (
     <div className="flex items-center gap-x-1">
-      <CircleAlert className="size-4 text-white" />
-      <span className="font-workSans font-normal text-[14px] leading-4 text-white ">
+      <CircleAlert
+        className={cn('size-4 text-white', {
+          'text-red-500': isContactPage,
+        })}
+      />
+      <span
+        className={cn(
+          'font-workSans font-normal text-[14px] leading-4 text-white ',
+          {
+            'text-red-500': isContactPage,
+          }
+        )}
+      >
         {error}
       </span>
     </div>
