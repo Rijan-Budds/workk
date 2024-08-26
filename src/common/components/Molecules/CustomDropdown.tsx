@@ -17,6 +17,7 @@ interface ICustomDropdownProps {
   list: IDropdownList[]
   placeHolder: string
   label: string
+  field: string
 }
 
 export const CustomDropdown = ({
@@ -26,6 +27,7 @@ export const CustomDropdown = ({
   list,
   placeHolder,
   label,
+  field,
 }: ICustomDropdownProps) => {
   return (
     <div className="flex flex-col gap-y-2 w-full">
@@ -35,7 +37,7 @@ export const CustomDropdown = ({
       >
         {label}
       </label>
-      <Select onValueChange={(value: string) => setFieldValue('level', value)}>
+      <Select onValueChange={(value: string) => setFieldValue(field, value)}>
         <SelectTrigger className="rounded-lg p-4 text-body">
           <SelectValue placeholder={placeHolder} />
         </SelectTrigger>

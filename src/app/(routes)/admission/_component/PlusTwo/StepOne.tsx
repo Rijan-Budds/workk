@@ -2,14 +2,23 @@ import { Button } from '@/common/components/Atom/Button'
 import { Input } from '@/common/components/Atom/Input'
 import { CustomDropdown } from '@/common/components/Molecules/CustomDropdown'
 import { ImageDropZone } from '@/common/components/Molecules/ImageDropZone'
+import { FormikErrors, FormikTouched } from 'formik'
 import React, { MouseEventHandler } from 'react'
+import { IStepOneError, IStepOneTouched } from '../../interface/type'
+import { provinces } from '../../constant/data'
 
 export const StepOne = ({
   setFieldValue,
   handleNext,
+  errors,
+  touched,
+  setFieldError,
 }: {
   setFieldValue(field: string, value: string): void
   handleNext: MouseEventHandler<HTMLButtonElement>
+  errors: FormikErrors<IStepOneError>
+  touched: FormikTouched<IStepOneTouched>
+  setFieldError: (field: string, message: string | undefined) => void
 }) => {
   const inputStyle = {
     input: 'border-[1px] border-border shadow-sm placeholder:text-[14px] ',
@@ -24,28 +33,30 @@ export const StepOne = ({
           labelClass={inputStyle.label}
           placeholder="Your name"
           name="firstName"
-          error="Pease enter first name"
+          error={errors!.firstName}
           className={inputStyle.input}
           isPage
-          isError
+          isError={!!errors!.firstName && touched.firstName}
         />
         <Input
           label="Middle Name"
           isRequired={false}
           labelClass={inputStyle.label}
           placeholder="Your middle name"
-          name="middle name"
-          error="Pease enter MiddleName"
+          name="middleName"
+          error={errors.middleName}
           className={inputStyle.input}
+          isError={!!errors.middleName && touched.middleName}
         />
         <Input
           label="Last Name"
           isRequired={false}
           labelClass={inputStyle.label}
           placeholder="Your last name"
-          name="last name"
-          error="Pease enter last name"
+          name="lastName"
+          error={errors.lastName}
           className={inputStyle.input}
+          isError={!!errors.lastName && touched.lastName}
         />
       </div>
       <div className="flex flex-col gap-y-4  lg:flex-row gap-x-6">
@@ -54,41 +65,45 @@ export const StepOne = ({
           isRequired
           labelClass={inputStyle.label}
           placeholder="Your Street Address"
-          name="Street Address"
-          error="Pease enter Street Address"
+          name="street"
+          error={errors.street}
           className={inputStyle.input}
+          isError={!!errors.street && touched.street}
         />
         <Input
           label="City"
           isRequired={false}
           labelClass={inputStyle.label}
           placeholder="Your City"
-          name="City"
-          error="Pease enter City"
+          name="city"
+          error={errors.city}
           className={inputStyle.input}
+          isError={!!errors.city && touched.city}
         />
-        <Input
+
+        <CustomDropdown
+          setFieldValue={setFieldValue}
+          isError={!!errors.province}
+          error={errors.province}
+          list={provinces}
+          placeHolder={'Your Province No'}
           label="Province No"
-          isRequired={false}
-          labelClass={inputStyle.label}
-          placeholder="Your Province No"
-          name="Province No"
-          error="Pease enter Province No"
-          className={inputStyle.input}
+          field={'province'}
         />
       </div>
 
       <div className="flex flex-col gap-y-4  lg:flex-row gap-x-6">
         <CustomDropdown
           setFieldValue={setFieldValue}
-          isError={false}
-          error="Please choose option"
+          isError={!!errors.gender}
+          error={errors.gender}
           list={[
             { title: 'Male', value: 'male' },
             { title: 'Female', value: 'female' },
           ]}
           placeHolder={'Select gender'}
           label="Gender"
+          field="gender"
         />
         <Input
           label="Date Of Birth (AD)"
@@ -104,9 +119,10 @@ export const StepOne = ({
           isRequired={false}
           labelClass={inputStyle.label}
           placeholder="Your mobile no"
-          name="mobile"
-          error="Pease enter mobile"
+          name="mobileNumber"
+          error={errors.mobileNumber}
           className={inputStyle.input}
+          isError={!!errors.mobileNumber && touched.mobileNumber}
         />
       </div>
       <Input
@@ -115,11 +131,17 @@ export const StepOne = ({
         labelClass={inputStyle.label}
         placeholder="Your Email"
         name="email"
-        error="Pease enter email"
+        error={errors.email}
         className={inputStyle.input}
+        isError={!!errors.email && touched.email}
       />
-      <ImageDropZone />
-      <Button type="button" onClick={handleNext}>
+      <ImageDropZone
+        isError={!!errors.document}
+        error={errors.document}
+        setValue={setFieldValue}
+        setError={setFieldError}
+      />
+      <Button type="submit" onClick={handleNext} className="w-fit ml-auto">
         Next
       </Button>
     </div>
