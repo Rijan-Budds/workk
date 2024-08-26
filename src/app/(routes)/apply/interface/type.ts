@@ -9,6 +9,7 @@ export interface IStepOneError {
   city: string
   email: string
   gender: string
+  dateOfBirth: string
   mobileNumber: string
   province: string
   document: File[]

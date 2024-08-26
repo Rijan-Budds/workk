@@ -10,7 +10,7 @@ import {
 import React, { useState } from 'react'
 import { ErrorComponent } from '../Atom/Input'
 import { FormikErrors } from 'formik'
-import { IStepFields } from '@/app/(routes)/admission/interface/type'
+import { IStepFields } from '@/app/(routes)/apply/interface/type'
 import { UploadedFileUi } from './UploadFileUi'
 
 interface IDropZoneProps {

@@ -56,7 +56,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             'flex min-h-[48px] text-black bg-white text-[16px] max-h-[200px] w-full rounded-[8px] border-stone-100 px-4 py-3 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-body focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 font-workSans placeholder:font-workSans',
             className,
             {
-              'border-red-300': isError,
+              'border-error': isError,
             }
           )}
           ref={ref}
@@ -80,7 +80,7 @@ export const ErrorComponent = ({ error }: { error: string }) => {
   const pathname = usePathname()
 
   const isContactPage = pathname === '/contact'
-  const isAdmission = pathname === '/admission'
+  const isAdmission = pathname === '/apply'
 
   console.log('isContactPage', pathname)
 

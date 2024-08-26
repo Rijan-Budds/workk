@@ -145,3 +145,7 @@ export const fileValidation = Yup.array()
       .nullable()
   )
   .nullable()
+
+export const dateOfBirthValidation = Yup.string().required(
+  'Date of Birth is a required field'
+)

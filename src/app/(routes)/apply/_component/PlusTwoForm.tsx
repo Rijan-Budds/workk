@@ -8,6 +8,7 @@ import { StepTwo } from './PlusTwo/StepTwo'
 import * as Yup from 'yup'
 import {
   cityValidation,
+  dateOfBirthValidation,
   emailValidation,
   fileValidation,
   firstNameValidation,
@@ -45,6 +46,7 @@ export const PlusTwoForm = () => {
     city: '',
     province: '',
     gender: '',
+    dateOfBirth: '',
     mobileNumber: '',
     email: '',
     document: undefined,
@@ -64,6 +66,7 @@ export const PlusTwoForm = () => {
     city: cityValidation,
     province: provinceNumberValidation,
     gender: genderValidation,
+    dateOfBirth: dateOfBirthValidation,
     mobileNumber: mobileNumberValidation,
     email: emailValidation,
     document: fileValidation,
