@@ -1,0 +1,48 @@
+import Image from 'next/image'
+import React from 'react'
+
+const MiddleBanner = () => {
+  return (
+    <div className="w-full h-[566px] md:h-[480px] lg:h-[322px] relative flex items-center justify-center">
+      <Image
+        src="/home/CTA.svg"
+        alt="Banner"
+        width={1920}
+        height={235}
+        className={`w-full h-full object-cover md:hidden lg:block`}
+      />
+      <Image
+        src="/home/CTA1.svg"
+        alt="Banner"
+        width={1920}
+        height={235}
+        className={`w-full h-full object-cover hidden md:block lg:hidden`}
+      />
+      <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center gap-6 lg:px-6">
+        <div className="w-[292px] md:w-[608px]">
+          <h1 className="text-white font-poppins text-[32px] font-medium leading-10">
+            Fostering a Community of Learning
+          </h1>
+          <p className="text-white font-workSans text-base leading-7 font-normal">
+            When reading an application, we get to know the person behind the
+            numbers.{' '}
+          </p>
+        </div>
+        <div className="md:w-[608px] flex flex-col md:flex-row gap-6">
+          <div className="w-[292px] bg-white rounded-xl">
+            <div className="pt-[56px] pl-[24px] pb-[24px] pr-[118px] leading-7 text-base font-workSans font-normal text-primary">
+              <h1>Apply to Plus Two Programs</h1>
+            </div>
+          </div>
+          <div className="w-[292px] bg-transparent border-[1px] border-white rounded-xl">
+            <div className="pt-[56px] pl-[24px] pb-[24px] pr-[90px]  leading-7 text-base font-workSans font-normal text-white">
+              <h1>Apply to School Level Programs</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default MiddleBanner

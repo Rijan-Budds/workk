@@ -1,11 +1,11 @@
 #testimonial .swiper-button-prev {
-  background-image: url('/home/buttonleft.svg') !important;
+  /* background-image: url('/home/buttonleft.svg') !important; */
   width: 40px !important;
   height: 40px !important;
 }
 
 #testimonial .swiper-button-next {
-  background-image: url('/home/buttonright.svg') !important;
+  /* background-image: url('/home/buttonright.svg') !important; */
   width: 40px !important;
   height: 40px !important;
 }
