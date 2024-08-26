@@ -78,7 +78,6 @@ export const ImageDropZone = ({
     if (typeof errorMessage === 'string') {
       return errorMessage
     }
-    // Handle FormikErrors<File> type here if needed
     return undefined
   }
 
