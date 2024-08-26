@@ -28,8 +28,6 @@ export const ImageDropZone = ({
   setValue,
   setError,
 }: IDropZoneProps) => {
-  console.log('error', error)
-
   const [isDragging, setDragging] = useState<boolean>(false)
   const [uploadedFile, setUploadedFile] = useState<IFileMetadata[] | null>(null)
 
@@ -142,7 +140,7 @@ const UploadedFileUi = ({
   index: number
   onDelete: () => void
   isError: boolean
-  message?: string
+  message?: string | undefined
 }) => {
   const content = (
     <div

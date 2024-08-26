@@ -6,6 +6,7 @@ import { FormikErrors, FormikTouched } from 'formik'
 import React, { MouseEventHandler } from 'react'
 import { IStepOneError, IStepOneTouched } from '../../interface/type'
 import { provinces } from '../../constant/data'
+import { IFileMetadata } from '@/common/interface/type'
 
 export const StepOne = ({
   setFieldValue,
@@ -14,7 +15,7 @@ export const StepOne = ({
   touched,
   setFieldError,
 }: {
-  setFieldValue(field: string, value: string): void
+  setFieldValue(field: string, value: string | IFileMetadata[]): void
   handleNext: MouseEventHandler<HTMLButtonElement>
   errors: FormikErrors<IStepOneError>
   touched: FormikTouched<IStepOneTouched>
