@@ -73,6 +73,15 @@ export const ImageDropZone = ({
     }
   }
 
+  const getErrorMessage = (index: number): string | undefined => {
+    const errorMessage = error[index]
+    if (typeof errorMessage === 'string') {
+      return errorMessage
+    }
+    // Handle FormikErrors<File> type here if needed
+    return undefined
+  }
+
   return (
     <>
       <label
@@ -109,6 +118,7 @@ export const ImageDropZone = ({
       <div className="flex w-full flex-wrap gap-4 ">
         {uploadedFile &&
           uploadedFile.map((file, index) => {
+            const errorMessage = getErrorMessage(index)
             return (
               <UploadedFileUi
                 key={index}
@@ -119,7 +129,7 @@ export const ImageDropZone = ({
                 index={index}
                 onDelete={() => handleDelete(index)}
                 isError={!!error[index]}
-                message={error[index] || undefined}
+                message={errorMessage}
               />
             )
           })}
@@ -140,7 +150,7 @@ const UploadedFileUi = ({
   index: number
   onDelete: () => void
   isError: boolean
-  message?: string | undefined
+  message?: string
 }) => {
   const content = (
     <div
