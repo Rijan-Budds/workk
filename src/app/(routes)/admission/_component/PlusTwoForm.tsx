@@ -21,6 +21,10 @@ import {
 
 export const PlusTwoForm = () => {
   const [currentStep, setCurrentStep] = useState<number>(0)
+  const inputStyle = {
+    input: 'border-[1px] border-border shadow-sm placeholder:text-[14px] ',
+    label: 'text-body font-normal',
+  }
 
   const handleNext = () => {
     setCurrentStep((prev) => prev + 1)
@@ -43,7 +47,13 @@ export const PlusTwoForm = () => {
     gender: '',
     mobileNumber: '',
     email: '',
-    document: null,
+    document: undefined,
+    fatherName: '',
+    fatherProfession: '',
+    fatherMobileNumber: '',
+    localGuardainName: '',
+    localGuardianProfesstion: '',
+    localGuardianPhoneNumber: '',
   }
 
   const validationSchema = {
@@ -63,28 +73,34 @@ export const PlusTwoForm = () => {
     <div className=" bg-background w-full rounded-xl p-6 flex flex-col gap-y-10">
       <MultipleSteps activeIndex={currentStep} />
 
-      <h1 className="text-heading font-poppins text-[20px] leading-[26px] font-medium">
-        Personal Information
-      </h1>
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => handleSubmit(values)}
         validationSchema={Yup.object().shape(validationSchema)}
       >
         {(formik) => {
-          const { setFieldValue, setFieldError, errors, touched } = formik
+          const { setFieldValue, setFieldError, errors, touched, values } =
+            formik
           return (
             <Form>
               {currentStep === 0 ? (
                 <StepOne
                   setFieldValue={setFieldValue}
-                  handleNext={handleNext}
                   errors={errors}
                   touched={touched}
                   setFieldError={setFieldError}
+                  inputStyle={inputStyle}
+                  values={values}
                 />
               ) : (
-                <StepTwo />
+                <StepTwo
+                  errors={errors}
+                  touched={touched}
+                  setFieldError={setFieldError}
+                  setStep={setCurrentStep}
+                  inputStyle={inputStyle}
+                  setFieldValue={setFieldValue}
+                />
               )}
             </Form>
           )
