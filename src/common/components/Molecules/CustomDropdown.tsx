@@ -12,7 +12,7 @@ import { IDropdownList } from '@/common/interface/type'
 
 interface ICustomDropdownProps {
   setFieldValue: (field: string, value: string) => void
-  error: string
+  error: string | undefined
   isError: boolean
   list: IDropdownList[]
   placeHolder: string
@@ -51,7 +51,7 @@ export const CustomDropdown = ({
           </SelectGroup>
         </SelectContent>
       </Select>
-      {isError && <ErrorComponent error={error} />}
+      {isError && <ErrorComponent error={error ? error : ''} />}
     </div>
   )
 }

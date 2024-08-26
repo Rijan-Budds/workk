@@ -13,11 +13,12 @@ import { PiTrashSimpleFill } from 'react-icons/pi'
 import { ErrorComponent } from '../Atom/Input'
 import { CircleAlert } from 'lucide-react'
 import { ActionToolTips } from '../Atom/CustomToolTip'
+import { FormikErrors } from 'formik'
 
 interface IDropZoneProps {
   isError: boolean
-  error: []
-  setValue(field: string, value: IFileMetadata[]): void
+  error: string | string[] | FormikErrors<File>[] | undefined
+  setValue: (field: string, value: IFileMetadata[]) => void
   setError: (field: string, message: string | undefined) => void
 }
 
