@@ -12,7 +12,7 @@ export default function RootLayout({
     >
       <title>Pawan Prakriti</title>
 
-      <body className="overflow-x-hidden">{children}</body>
+      <body className="overflow-x-hidden overflow-y-hidden">{children}</body>
     </html>
   )
 }

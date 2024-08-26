@@ -7,7 +7,7 @@ import { MobileSidebar } from '../../news/_component/MobileSidebar'
 
 export const NoticeDetail = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden  2lg:overflow-visible">
       <CoverImage title="Notices" />
       <HomeWrapper>
         <div className="flex flex-col gap-y-20 2lg:gap-y-0  2lg:flex-row justify-between gap-x-12">

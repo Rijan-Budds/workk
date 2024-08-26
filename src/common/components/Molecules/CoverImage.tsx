@@ -23,7 +23,7 @@ export const CoverImage = ({
   list?: IBreadCrumbList[]
 }) => {
   return (
-    <div className="w-full h-[142px] md:h-[235px] relative flex items-center justify-center">
+    <div className="w-full h-[142px] md:h-[171px] relative   flex items-center justify-center ">
       <Image
         src="/home/coverimage.svg"
         alt="Banner"

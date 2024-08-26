@@ -5,6 +5,7 @@ import { Field } from 'formik'
 import { cn } from '@/common/utils/utils'
 import { FiChevronDown } from 'react-icons/fi'
 import { CircleAlert } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -14,7 +15,9 @@ export interface InputProps
   rows?: number
   error: string
   isError?: boolean
-  labelColor: string
+  labelColor?: string
+  isPage?: boolean
+  labelClass?: string
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -29,6 +32,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       rows,
       isError,
       labelColor,
+      labelClass,
       ...props
     },
     ref
@@ -36,7 +40,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="flex flex-col  items-start gap-y-[6px] w-full relative">
         <label
-          className={`font-medium text-[14px] leading-4 ${labelColor}`}
+          className={cn(
+            `font-medium text-[14px] leading-4 ${labelColor}`,
+            labelClass
+          )}
           htmlFor={label}
         >
           {label} {isRequired && '*'}
@@ -70,10 +77,25 @@ Input.displayName = 'Input'
 export { Input }
 
 export const ErrorComponent = ({ error }: { error: string }) => {
+  const pathname = usePathname()
+
+  const isContactPage = pathname === '/contact' || '/admission'
+
   return (
     <div className="flex items-center gap-x-1">
-      <CircleAlert className="size-4 text-white" />
-      <span className="font-workSans font-normal text-[14px] leading-4 text-white ">
+      <CircleAlert
+        className={cn('size-4 text-white', {
+          'text-red-500': isContactPage,
+        })}
+      />
+      <span
+        className={cn(
+          'font-workSans font-normal text-[14px] leading-4 text-white ',
+          {
+            'text-red-500': isContactPage,
+          }
+        )}
+      >
         {error}
       </span>
     </div>
