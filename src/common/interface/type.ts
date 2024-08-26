@@ -10,3 +10,8 @@ export interface INavLink {
   sublink: INavSubLink[]
   isDropDown: boolean
 }
+
+export interface IDropdownList {
+  title: string
+  value: string
+}

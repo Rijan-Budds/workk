@@ -15,8 +15,9 @@ export interface InputProps
   rows?: number
   error: string
   isError?: boolean
-  labelColor: string
+  labelColor?: string
   isPage?: boolean
+  labelClass?: string
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -31,6 +32,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       rows,
       isError,
       labelColor,
+      labelClass,
       ...props
     },
     ref
@@ -38,7 +40,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="flex flex-col  items-start gap-y-[6px] w-full relative">
         <label
-          className={`font-medium text-[14px] leading-4 ${labelColor}`}
+          className={cn(
+            `font-medium text-[14px] leading-4 ${labelColor}`,
+            labelClass
+          )}
           htmlFor={label}
         >
           {label} {isRequired && '*'}
