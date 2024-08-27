@@ -48,3 +48,19 @@
 .image-dropzone-border {
   border-image: url('/admission/border.svg') 2 round;
 }
+
+.rdp-vhidden {
+  display: none;
+}
+
+.rdp-caption_dropdowns {
+  display: flex;
+  column-gap: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.rdp-dropdown {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}

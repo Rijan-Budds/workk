@@ -1,5 +1,6 @@
 import { IFileMetadata } from '@/common/interface/type'
 import { FormikErrors, FormikTouched } from 'formik'
+import { MouseEventHandler } from 'react'
 
 export interface IStepOneError {
   firstName: string
@@ -70,4 +71,5 @@ export interface IStepProps {
   setFieldError: (field: string, message: string | undefined) => void
   inputStyle: InputStyle
   values?: IStepFields | undefined
+  handleClick: MouseEventHandler<HTMLButtonElement>
 }

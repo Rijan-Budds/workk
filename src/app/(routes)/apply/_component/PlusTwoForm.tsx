@@ -27,6 +27,7 @@ import {
 
 export const PlusTwoForm = () => {
   const [currentStep, setCurrentStep] = useState<number>(0)
+
   const inputStyle = {
     input: 'border-[1px] border-border shadow-sm placeholder:text-[14px] ',
     label: 'text-body font-normal',
@@ -93,8 +94,16 @@ export const PlusTwoForm = () => {
         validationSchema={Yup.object().shape(validationSchema)}
       >
         {(formik) => {
-          const { setFieldValue, setFieldError, errors, touched, values } =
-            formik
+          const {
+            setFieldValue,
+            setFieldError,
+            errors,
+            touched,
+            values,
+            validateForm,
+          } = formik
+
+          console.log('errrors', errors)
           return (
             <Form>
               {currentStep === 0 ? (
@@ -105,6 +114,7 @@ export const PlusTwoForm = () => {
                   setFieldError={setFieldError}
                   inputStyle={inputStyle}
                   values={values}
+                  handleClick={() => validateForm()}
                 />
               ) : (
                 <StepTwo
@@ -114,6 +124,7 @@ export const PlusTwoForm = () => {
                   setStep={setCurrentStep}
                   inputStyle={inputStyle}
                   setFieldValue={setFieldValue}
+                  handleClick={() => validateForm()}
                 />
               )}
             </Form>
