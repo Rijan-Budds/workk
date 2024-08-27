@@ -67,7 +67,7 @@ export const InputWithDate = ({
           />
         </PopoverContent>
       </Popover>
-      {isError && <ErrorComponent error={error} />}
+      {isError && <ErrorComponent error={error ? error : ''} />}
     </div>
   )
 }
