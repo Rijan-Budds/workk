@@ -9,10 +9,10 @@ import { InputWithDate } from '@/common/components/Atom/InputWithDate'
 export const StepOne = ({
   setFieldValue,
   errors,
-  touched,
   setFieldError,
   inputStyle,
   values,
+  handleClick,
 }: IStepProps) => {
   return (
     <div className="flex flex-col gap-6 ">
@@ -29,7 +29,7 @@ export const StepOne = ({
           error={errors!.firstName}
           className={inputStyle.input}
           isPage
-          isError={!!errors!.firstName && touched.firstName}
+          isError={!!errors!.firstName}
         />
         <Input
           label="Middle Name"
@@ -39,7 +39,7 @@ export const StepOne = ({
           name="middleName"
           error={errors.middleName}
           className={inputStyle.input}
-          isError={!!errors.middleName && touched.middleName}
+          isError={!!errors.middleName}
         />
         <Input
           label="Last Name"
@@ -49,7 +49,7 @@ export const StepOne = ({
           name="lastName"
           error={errors.lastName}
           className={inputStyle.input}
-          isError={!!errors.lastName && touched.lastName}
+          isError={!!errors.lastName}
         />
       </div>
       <div className="flex flex-col gap-y-4  lg:flex-row gap-x-6">
@@ -61,7 +61,7 @@ export const StepOne = ({
           name="street"
           error={errors.street}
           className={inputStyle.input}
-          isError={!!errors.street && touched.street}
+          isError={!!errors.street}
         />
         <Input
           label="City"
@@ -71,7 +71,7 @@ export const StepOne = ({
           name="city"
           error={errors.city}
           className={inputStyle.input}
-          isError={!!errors.city && touched.city}
+          isError={!!errors.city}
         />
 
         <CustomDropdown
@@ -124,7 +124,7 @@ export const StepOne = ({
         name="email"
         error={errors.email}
         className={inputStyle.input}
-        isError={!!errors.email && touched.email}
+        isError={!!errors.email}
       />
       <ImageDropZone
         isError={!!errors.document}
@@ -134,7 +134,7 @@ export const StepOne = ({
         values={values}
       />
 
-      <Button type="button" className="w-fit ml-auto">
+      <Button onClick={handleClick} type="button" className="w-fit ml-auto">
         Next
       </Button>
     </div>

@@ -28,7 +28,6 @@ export const ImageDropZone = ({
   setError,
   values,
 }: IDropZoneProps) => {
-  console.log('values', values)
   const [isDragging, setDragging] = useState<boolean>(false)
 
   const handleMetaData = (files: File[]) => {
@@ -108,7 +107,7 @@ export const ImageDropZone = ({
               type="file"
               title="document"
               onChange={handleInputChange}
-              className="w-full bdr h-full absolute top-0 left-0 opacity-0"
+              className="w-full  h-full absolute top-0 left-0 opacity-0"
             />
             <span className="text-secondary font-workSans">browse</span>
           </p>
