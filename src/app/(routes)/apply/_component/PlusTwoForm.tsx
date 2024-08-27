@@ -124,6 +124,7 @@ export const PlusTwoForm = () => {
                   setStep={setCurrentStep}
                   inputStyle={inputStyle}
                   setFieldValue={setFieldValue}
+                  handleClick={() => validateForm()}
                 />
               )}
             </Form>
