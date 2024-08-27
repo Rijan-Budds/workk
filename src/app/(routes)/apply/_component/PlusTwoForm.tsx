@@ -8,11 +8,17 @@ import { StepTwo } from './PlusTwo/StepTwo'
 import * as Yup from 'yup'
 import {
   cityValidation,
+  dateOfBirthValidation,
   emailValidation,
+  fatherNameValidation,
+  fatherProfessionValidation,
   fileValidation,
   firstNameValidation,
   genderValidation,
+  guardianProfessionValidation,
+  gurdianMobileNumber,
   lastNameValidation,
+  localGuardianNameValidation,
   middleNameValidation,
   mobileNumberValidation,
   provinceNumberValidation,
@@ -45,6 +51,7 @@ export const PlusTwoForm = () => {
     city: '',
     province: '',
     gender: '',
+    dateOfBirth: '',
     mobileNumber: '',
     email: '',
     document: undefined,
@@ -52,7 +59,7 @@ export const PlusTwoForm = () => {
     fatherProfession: '',
     fatherMobileNumber: '',
     localGuardainName: '',
-    localGuardianProfesstion: '',
+    localGuardianProfession: '',
     localGuardianPhoneNumber: '',
   }
 
@@ -64,9 +71,16 @@ export const PlusTwoForm = () => {
     city: cityValidation,
     province: provinceNumberValidation,
     gender: genderValidation,
+    dateOfBirth: dateOfBirthValidation,
     mobileNumber: mobileNumberValidation,
     email: emailValidation,
     document: fileValidation,
+    fatherName: fatherNameValidation,
+    fatherProfession: fatherProfessionValidation,
+    fatherMobileNumber: mobileNumberValidation,
+    localGuardainName: localGuardianNameValidation,
+    localGuardianProfession: guardianProfessionValidation,
+    localGuardianPhoneNumber: gurdianMobileNumber,
   }
 
   return (

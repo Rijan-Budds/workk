@@ -16,7 +16,7 @@ export const NavHeaderLink = () => {
           />
         </span>
       </Link>
-      <Link href={'/admission'} className="">
+      <Link href={'/apply'} className="">
         <span className="flex gap-x-[6.67px]  items-center cursor-pointer font-medium text-[12px] leading-4 tracking-wide uppercase text-heading  hover:text-primary transition-all duration-500">
           Apply now
           <Image

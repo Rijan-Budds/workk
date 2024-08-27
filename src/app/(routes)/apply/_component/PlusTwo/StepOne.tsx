@@ -4,6 +4,7 @@ import { CustomDropdown } from '@/common/components/Molecules/CustomDropdown'
 import { ImageDropZone } from '@/common/components/Molecules/ImageDropZone'
 import { IStepProps } from '../../interface/type'
 import { provinces } from '../../constant/data'
+import { InputWithDate } from '@/common/components/Atom/InputWithDate'
 
 export const StepOne = ({
   setFieldValue,
@@ -97,15 +98,13 @@ export const StepOne = ({
           label="Gender"
           field="gender"
         />
-        <Input
+        <InputWithDate
           label="Date Of Birth (AD)"
-          isRequired={false}
-          labelClass={inputStyle.label}
-          placeholder="Your D.O.B"
-          name="date-of-birth"
-          error="Pease enter Date"
-          className={inputStyle.input}
+          setValue={setFieldValue}
+          error={errors.dateOfBirth}
+          isError={!!errors.dateOfBirth}
         />
+
         <Input
           label="Mobile No"
           isRequired={false}
@@ -114,7 +113,7 @@ export const StepOne = ({
           name="mobileNumber"
           error={errors.mobileNumber}
           className={inputStyle.input}
-          isError={!!errors.mobileNumber && touched.mobileNumber}
+          isError={!!errors.mobileNumber}
         />
       </div>
       <Input
@@ -134,7 +133,8 @@ export const StepOne = ({
         setError={setFieldError}
         values={values}
       />
-      <Button type="submit" className="w-fit ml-auto">
+
+      <Button type="button" className="w-fit ml-auto">
         Next
       </Button>
     </div>

@@ -9,6 +9,7 @@ export interface IStepOneError {
   city: string
   email: string
   gender: string
+  dateOfBirth: string
   mobileNumber: string
   province: string
   document: File[]
@@ -16,7 +17,7 @@ export interface IStepOneError {
   fatherProfession: string
   fatherMobileNumber: string
   localGuardainName: string
-  localGuardianProfesstion: string
+  localGuardianProfession: string
   localGuardianPhoneNumber: string
 }
 export interface IStepFields {
@@ -34,7 +35,7 @@ export interface IStepFields {
   fatherProfession: string
   fatherMobileNumber: string
   localGuardainName: string
-  localGuardianProfesstion: string
+  localGuardianProfession: string
   localGuardianPhoneNumber: string
 }
 
@@ -53,7 +54,7 @@ export interface IStepOneTouched {
   fatherProfession: boolean
   fatherMobileNumber: boolean
   localGuardainName: boolean
-  localGuardianProfesstion: boolean
+  localGuardianProfession: boolean
   localGuardianPhoneNumber: boolean
 }
 
