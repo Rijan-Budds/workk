@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation'
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string
-  isRequired: boolean
+  isRequired?: boolean
   isMessage?: boolean
   rows?: number
   error: string | undefined
@@ -26,7 +26,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       className,
       type,
       label,
-      isRequired,
+      isRequired = false,
       error,
       isMessage = false,
       rows,

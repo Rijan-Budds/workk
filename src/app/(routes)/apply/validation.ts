@@ -149,3 +149,73 @@ export const fileValidation = Yup.array()
 export const dateOfBirthValidation = Yup.string().required(
   'Date of Birth is a required field'
 )
+
+export const fatherNameValidation = Yup.string()
+  .test(
+    'no-leading-space',
+    'Space at beginning is not allowed',
+    function (value) {
+      if (value) {
+        return !/^\s/.test(value)
+      }
+      return true
+    }
+  )
+  .max(50, 'Father name must be at most 50 characters')
+  .min(4, 'Father name must be at least 4 characters')
+  .typeError('Please enter a valid name')
+  .required('Father name is a required field')
+  .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
+
+export const fatherProfessionValidation = Yup.string()
+  .test(
+    'no-leading-space',
+    'Space at beginning is not allowed',
+    function (value) {
+      if (value) {
+        return !/^\s/.test(value)
+      }
+      return true
+    }
+  )
+  .max(50, 'Father profession must be at most 50 characters')
+  .min(2, 'Father profession must be at least 2 characters')
+  .typeError('Please enter a valid profession')
+  .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
+
+export const localGuardianNameValidation = Yup.string()
+  .test(
+    'no-leading-space',
+    'Space at beginning is not allowed',
+    function (value) {
+      if (value) {
+        return !/^\s/.test(value)
+      }
+      return true
+    }
+  )
+  .max(50, 'Guardian name must be at most 50 characters')
+  .min(4, 'Guardian name must be at least 2 characters')
+  .typeError('Please enter a  valid name')
+  .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
+
+export const guardianProfessionValidation = Yup.string()
+  .test(
+    'no-leading-space',
+    'Space at beginning is not allowed',
+    function (value) {
+      if (value) {
+        return !/^\s/.test(value)
+      }
+      return true
+    }
+  )
+  .max(50, 'Guardian profession must be at most 50 characters')
+  .min(2, 'Guardian profession must be at least 2 characters')
+  .typeError('Please enter a  valid profession')
+  .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
+
+export const gurdianMobileNumber = Yup.string()
+  .matches(/^(?!\s+$)[0-9+ ]+$/, 'Please enter a valid mobile number')
+  .min(10, 'Mobile number must be at least 10 characters')
+  .max(14, 'Mobile number must be at most 14 characters')

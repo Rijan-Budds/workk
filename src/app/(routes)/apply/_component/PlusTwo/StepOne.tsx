@@ -102,7 +102,7 @@ export const StepOne = ({
           label="Date Of Birth (AD)"
           setValue={setFieldValue}
           error={errors.dateOfBirth}
-          isError={!!errors.dateOfBirth && touched.dateOfBirth}
+          isError={!!errors.dateOfBirth}
         />
 
         <Input
@@ -134,7 +134,7 @@ export const StepOne = ({
         values={values}
       />
 
-      <Button type="submit" className="w-fit ml-auto">
+      <Button type="button" className="w-fit ml-auto">
         Next
       </Button>
     </div>

@@ -27,7 +27,6 @@ export const StepTwo = ({ setStep, errors, inputStyle, touched }: IStepTwo) => {
         />
         <Input
           label="Father's Profession"
-          isRequired
           labelClass={inputStyle.label}
           placeholder="Your father's profession"
           name="fatherProfession"
@@ -51,7 +50,6 @@ export const StepTwo = ({ setStep, errors, inputStyle, touched }: IStepTwo) => {
       <div className="flex flex-col gap-y-4  lg:flex-row gap-x-6">
         <Input
           label="Local Guardian's Name"
-          isRequired
           labelClass={inputStyle.label}
           placeholder="Your local guardian's name"
           name="localGuardainName"
@@ -62,24 +60,21 @@ export const StepTwo = ({ setStep, errors, inputStyle, touched }: IStepTwo) => {
         />
         <Input
           label="Local Guardian's Profession"
-          isRequired
           labelClass={inputStyle.label}
           placeholder="Your local guardian's profession"
-          name="localGuardianProfesstion"
-          error={errors!.localGuardianProfesstion}
+          name="localGuardianProfession"
+          error={errors!.localGuardianProfession}
           className={inputStyle.input}
           isPage
           isError={
-            !!errors!.localGuardianProfesstion &&
-            touched.localGuardianProfesstion
+            !!errors!.localGuardianProfession && touched.localGuardianProfession
           }
         />
         <Input
           label="Local Guardian's Phone No"
-          isRequired
           labelClass={inputStyle.label}
           placeholder="Your local guardian's phone no"
-          name="localGuardainName"
+          name="localGuardianPhoneNumber"
           error={errors!.localGuardianPhoneNumber}
           className={inputStyle.input}
           isPage
@@ -91,6 +86,7 @@ export const StepTwo = ({ setStep, errors, inputStyle, touched }: IStepTwo) => {
       </div>
       <div className="flex gap-x-3 justify-end">
         <Button
+          type="button"
           variant={'outline'}
           onClick={() => setStep((prev) => prev - 1)}
           className="w-fit"
@@ -98,6 +94,7 @@ export const StepTwo = ({ setStep, errors, inputStyle, touched }: IStepTwo) => {
           Previous
         </Button>
         <Button
+          type="submit"
           variant={'default'}
           onClick={() => setStep((prev) => prev - 1)}
           className="w-fit"

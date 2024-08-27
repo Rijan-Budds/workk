@@ -22,8 +22,6 @@ export const InputWithDate = ({
   const [date, setDate] = React.useState<Date | undefined>(new Date())
   const [selected, setSelected] = useState<boolean>(false)
 
-  console.log('date ::::', date)
-
   return (
     <div className="w-full flex flex-col gap-y-1">
       <Popover>
@@ -65,7 +63,7 @@ export const InputWithDate = ({
             disabled={(date: Date) =>
               date > new Date() || date < new Date('1900-01-01')
             }
-            className="rounded-md border font-workSans "
+            className="rounded-md border font-workSans"
           />
         </PopoverContent>
       </Popover>
