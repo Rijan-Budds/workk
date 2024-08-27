@@ -16,7 +16,7 @@ export const InputWithDate = ({
 }: {
   label: string
   setValue: (field: string, value: string) => void
-  error: string
+  error: string | undefined
   isError: boolean
 }) => {
   const [date, setDate] = React.useState<Date | undefined>(new Date())
@@ -55,7 +55,7 @@ export const InputWithDate = ({
           <Calendar
             mode="single"
             selected={date}
-            onSelect={(date: Date) => {
+            onSelect={(date: Date | undefined) => {
               setSelected(true)
               setDate(date)
               setValue('dateOfBirth', format(date!, 'PPP'))
