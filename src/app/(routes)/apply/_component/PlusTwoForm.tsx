@@ -3,27 +3,13 @@
 import React, { useState } from 'react'
 import { MultipleSteps } from './StepUi'
 import { Form, Formik, FormikValues } from 'formik'
-import { StepOne } from './PlusTwo/StepOne'
-import { StepTwo } from './PlusTwo/StepTwo'
 import * as Yup from 'yup'
 import {
-  cityValidation,
-  dateOfBirthValidation,
-  emailValidation,
-  fatherNameValidation,
-  fatherProfessionValidation,
-  fileValidation,
-  firstNameValidation,
-  genderValidation,
-  guardianProfessionValidation,
-  gurdianMobileNumber,
-  lastNameValidation,
-  localGuardianNameValidation,
-  middleNameValidation,
-  mobileNumberValidation,
-  provinceNumberValidation,
-  streetValidation,
-} from '../validation'
+  initialValues,
+  StepComponent,
+  ValidationSchemas,
+} from '../constant/data'
+import { Button } from '@/common/components/Atom/Button'
 
 export const PlusTwoForm = () => {
   const [currentStep, setCurrentStep] = useState<number>(0)
@@ -34,64 +20,30 @@ export const PlusTwoForm = () => {
   }
 
   const handleNext = () => {
-    setCurrentStep((prev) => prev + 1)
+    setCurrentStep((prev) => Math.min(prev + 1, StepComponent.length - 1))
+  }
+
+  const handlePrev = () => {
+    setCurrentStep((prev) => Math.max(prev - 1, 0))
   }
 
   const handleSubmit = (values: FormikValues) => {
-    console.info(values)
-    if (currentStep !== 2) {
+    if (currentStep < StepComponent.length - 1) {
       handleNext()
+    } else {
+      console.info('Final Values:', values)
+      // Submit final form data here
     }
-  }
-
-  const initialValues = {
-    firstName: '',
-    middleName: '',
-    lastName: '',
-    street: '',
-    city: '',
-    province: '',
-    gender: '',
-    dateOfBirth: '',
-    mobileNumber: '',
-    email: '',
-    document: undefined,
-    fatherName: '',
-    fatherProfession: '',
-    fatherMobileNumber: '',
-    localGuardainName: '',
-    localGuardianProfession: '',
-    localGuardianPhoneNumber: '',
-  }
-
-  const validationSchema = {
-    firstName: firstNameValidation,
-    middleName: middleNameValidation,
-    lastName: lastNameValidation,
-    street: streetValidation,
-    city: cityValidation,
-    province: provinceNumberValidation,
-    gender: genderValidation,
-    dateOfBirth: dateOfBirthValidation,
-    mobileNumber: mobileNumberValidation,
-    email: emailValidation,
-    document: fileValidation,
-    fatherName: fatherNameValidation,
-    fatherProfession: fatherProfessionValidation,
-    fatherMobileNumber: mobileNumberValidation,
-    localGuardainName: localGuardianNameValidation,
-    localGuardianProfession: guardianProfessionValidation,
-    localGuardianPhoneNumber: gurdianMobileNumber,
   }
 
   return (
     <div className=" bg-background w-full rounded-xl p-6 flex flex-col gap-y-10">
-      <MultipleSteps activeIndex={currentStep} />
+      <MultipleSteps activeIndex={currentStep} steps={StepComponent.length} />
 
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => handleSubmit(values)}
-        validationSchema={Yup.object().shape(validationSchema)}
+        validationSchema={Yup.object().shape(ValidationSchemas[currentStep])}
       >
         {(formik) => {
           const {
@@ -103,30 +55,34 @@ export const PlusTwoForm = () => {
             validateForm,
           } = formik
 
-          console.log('errrors', errors)
+          const StepComponents = StepComponent[currentStep]
           return (
             <Form>
-              {currentStep === 0 ? (
-                <StepOne
-                  setFieldValue={setFieldValue}
-                  errors={errors}
-                  touched={touched}
-                  setFieldError={setFieldError}
-                  inputStyle={inputStyle}
-                  values={values}
-                  handleClick={() => validateForm()}
-                />
-              ) : (
-                <StepTwo
-                  errors={errors}
-                  touched={touched}
-                  setFieldError={setFieldError}
-                  setStep={setCurrentStep}
-                  inputStyle={inputStyle}
-                  setFieldValue={setFieldValue}
-                  handleClick={() => validateForm()}
-                />
-              )}
+              <StepComponents
+                setFieldValue={setFieldValue}
+                errors={errors}
+                touched={touched}
+                setFieldError={setFieldError}
+                inputStyle={inputStyle}
+                values={values}
+                handleClick={() => validateForm()}
+              />
+
+              <div className="flex justify-between gap-x-3 mt-10">
+                {currentStep > 0 && (
+                  <Button
+                    onClick={handlePrev}
+                    type="button"
+                    variant={'outline'}
+                    className="w-fit"
+                  >
+                    Previous
+                  </Button>
+                )}
+                <Button type="submit" className="ml-auto">
+                  {currentStep < StepComponent.length - 1 ? 'Next' : 'Submit'}
+                </Button>
+              </div>
             </Form>
           )
         }}

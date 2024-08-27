@@ -219,3 +219,67 @@ export const gurdianMobileNumber = Yup.string()
   .matches(/^(?!\s+$)[0-9+ ]+$/, 'Please enter a valid mobile number')
   .min(10, 'Mobile number must be at least 10 characters')
   .max(14, 'Mobile number must be at most 14 characters')
+
+export const schoolNameValidation = Yup.string()
+  .required('Previous school’s name is required')
+  .min(3, 'School name must be at least 3 characters')
+  .max(150, 'School name must be at most 150 characters')
+  .test(
+    'no-leading-space',
+    'Space at beginning is not allowed',
+    (value) => !/^\s/.test(value)
+  )
+  .matches(
+    /^[A-Za-z0-9\s.-]+$/,
+    'School name can only contain letters, numbers, spaces, hyphens, and periods'
+  )
+  .typeError('Please enter a valid school name')
+
+export const schoolAddressValidation = Yup.string()
+  .required('Previous school address is required')
+  .min(5, 'School address must be at least 5 characters')
+  .max(200, 'School address must be at most 200 characters')
+  .matches(
+    /^[A-Za-z0-9\s,.]+$/,
+    'School address can only contain letters, numbers, spaces, commas, and periods'
+  )
+  .typeError('Please enter a valid school address')
+
+export const schoolBoardValidation = Yup.string()
+  .required('Previous school board is required')
+  .min(5, 'School board must be at least 5 characters')
+  .max(80, 'School board must be at most 80 characters')
+  .matches(
+    /^[A-Za-z\s.-]+$/,
+    'School board can only contain letters, spaces, hyphens, and periods'
+  )
+
+export const seeSymbolNumberValidation = Yup.string()
+  .required('SEE symbol number is required')
+  .length(9, 'SEE symbol number must be exactly 9 characters')
+  .matches(
+    /^[A-Za-z0-9]+$/,
+    'SEE symbol number can only contain letters and numbers'
+  )
+
+export const seeGpaPointValidation = Yup.number()
+  .required('SEE GPA point is required')
+  .min(0, 'SEE GPA point must be at least 0.0')
+  .max(4, 'SEE GPA point must be at most 4.0')
+  .typeError('SEE GPA point must be a numeric value')
+  .integer('SEE GPA point must be a numeric value')
+  .test(
+    'length',
+    'SEE GPA point length must be between 3 and 5 characters',
+    (value) => {
+      const valueStr = value?.toString() || ''
+      return valueStr.length >= 3 && valueStr.length <= 5
+    }
+  )
+
+export const seeGpaGradeValidation = Yup.string()
+  .required('SEE GPA Grade is required')
+  .oneOf(
+    ['A+', 'A', 'B+', 'B', 'C+', 'C', 'D'],
+    'SEE GPA Grade must be one of the predefined grades'
+  )

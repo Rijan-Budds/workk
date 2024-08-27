@@ -1,4 +1,3 @@
-import { Button } from '@/common/components/Atom/Button'
 import { Input } from '@/common/components/Atom/Input'
 import { CustomDropdown } from '@/common/components/Molecules/CustomDropdown'
 import { ImageDropZone } from '@/common/components/Molecules/ImageDropZone'
@@ -12,7 +11,7 @@ export const StepOne = ({
   setFieldError,
   inputStyle,
   values,
-  handleClick,
+  touched,
 }: IStepProps) => {
   return (
     <div className="flex flex-col gap-6 ">
@@ -28,8 +27,7 @@ export const StepOne = ({
           name="firstName"
           error={errors!.firstName}
           className={inputStyle.input}
-          isPage
-          isError={!!errors!.firstName}
+          isError={!!errors!.firstName && touched.firstName}
         />
         <Input
           label="Middle Name"
@@ -39,17 +37,17 @@ export const StepOne = ({
           name="middleName"
           error={errors.middleName}
           className={inputStyle.input}
-          isError={!!errors.middleName}
+          isError={!!errors.middleName && touched.middleName}
         />
         <Input
           label="Last Name"
-          isRequired={false}
+          isRequired
           labelClass={inputStyle.label}
           placeholder="Your last name"
           name="lastName"
           error={errors.lastName}
           className={inputStyle.input}
-          isError={!!errors.lastName}
+          isError={!!errors.lastName && touched.lastName}
         />
       </div>
       <div className="flex flex-col gap-y-4  lg:flex-row gap-x-6">
@@ -61,34 +59,36 @@ export const StepOne = ({
           name="street"
           error={errors.street}
           className={inputStyle.input}
-          isError={!!errors.street}
+          isError={!!errors.street && touched.street}
         />
         <Input
           label="City"
-          isRequired={false}
+          isRequired
           labelClass={inputStyle.label}
           placeholder="Your City"
           name="city"
           error={errors.city}
           className={inputStyle.input}
-          isError={!!errors.city}
+          isError={!!errors.city && touched.city}
         />
 
         <CustomDropdown
           setFieldValue={setFieldValue}
-          isError={!!errors.province}
+          isError={!!errors.province && touched.province}
           error={errors.province}
           list={provinces}
           placeHolder={'Your Province No'}
           label="Province No"
           field={'province'}
+          isRequired
         />
       </div>
 
       <div className="flex flex-col gap-y-4  lg:flex-row gap-x-6">
         <CustomDropdown
+          isRequired
           setFieldValue={setFieldValue}
-          isError={!!errors.gender}
+          isError={!!errors.gender && touched.gender}
           error={errors.gender}
           list={[
             { title: 'Male', value: 'male' },
@@ -103,40 +103,37 @@ export const StepOne = ({
           setValue={setFieldValue}
           error={errors.dateOfBirth}
           isError={!!errors.dateOfBirth}
+          isRequired
         />
 
         <Input
           label="Mobile No"
-          isRequired={false}
+          isRequired
           labelClass={inputStyle.label}
           placeholder="Your mobile no"
           name="mobileNumber"
           error={errors.mobileNumber}
           className={inputStyle.input}
-          isError={!!errors.mobileNumber}
+          isError={!!errors.mobileNumber && touched.mobileNumber}
         />
       </div>
       <Input
         label="Email"
-        isRequired={false}
+        isRequired
         labelClass={inputStyle.label}
         placeholder="Your Email"
         name="email"
         error={errors.email}
         className={inputStyle.input}
-        isError={!!errors.email}
+        isError={!!errors.email && touched.email}
       />
       <ImageDropZone
-        isError={!!errors.document}
+        isError={!!errors.document && touched.document}
         error={errors.document}
         setValue={setFieldValue}
         setError={setFieldError}
         values={values}
       />
-
-      <Button onClick={handleClick} type="button" className="w-fit ml-auto">
-        Next
-      </Button>
     </div>
   )
 }

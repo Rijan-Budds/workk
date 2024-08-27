@@ -1,13 +1,7 @@
-import { Button } from '@/common/components/Atom/Button'
 import { Input } from '@/common/components/Atom/Input'
-import React, { Dispatch, SetStateAction } from 'react'
 import { IStepProps } from '../../interface/type'
 
-interface IStepTwo extends IStepProps {
-  setStep: Dispatch<SetStateAction<number>>
-}
-
-export const StepTwo = ({ setStep, errors, inputStyle, touched }: IStepTwo) => {
+export const StepTwo = ({ errors, inputStyle, touched }: IStepProps) => {
   return (
     <div className="flex flex-col gap-6 ">
       <h1 className="text-heading font-poppins text-[20px] leading-[26px] font-medium">
@@ -22,7 +16,6 @@ export const StepTwo = ({ setStep, errors, inputStyle, touched }: IStepTwo) => {
           name="fatherName"
           error={errors!.fatherName}
           className={inputStyle.input}
-          isPage
           isError={!!errors!.fatherName && touched.fatherName}
         />
         <Input
@@ -32,7 +25,6 @@ export const StepTwo = ({ setStep, errors, inputStyle, touched }: IStepTwo) => {
           name="fatherProfession"
           error={errors!.fatherProfession}
           className={inputStyle.input}
-          isPage
           isError={!!errors!.fatherProfession && touched.fatherProfession}
         />
         <Input
@@ -43,7 +35,6 @@ export const StepTwo = ({ setStep, errors, inputStyle, touched }: IStepTwo) => {
           name="fatherMobileNumber"
           error={errors!.fatherMobileNumber}
           className={inputStyle.input}
-          isPage
           isError={!!errors!.fatherMobileNumber && touched.fatherMobileNumber}
         />
       </div>
@@ -55,7 +46,6 @@ export const StepTwo = ({ setStep, errors, inputStyle, touched }: IStepTwo) => {
           name="localGuardainName"
           error={errors!.localGuardainName}
           className={inputStyle.input}
-          isPage
           isError={!!errors!.localGuardainName && touched.localGuardainName}
         />
         <Input
@@ -65,7 +55,6 @@ export const StepTwo = ({ setStep, errors, inputStyle, touched }: IStepTwo) => {
           name="localGuardianProfession"
           error={errors!.localGuardianProfession}
           className={inputStyle.input}
-          isPage
           isError={
             !!errors!.localGuardianProfession && touched.localGuardianProfession
           }
@@ -77,30 +66,11 @@ export const StepTwo = ({ setStep, errors, inputStyle, touched }: IStepTwo) => {
           name="localGuardianPhoneNumber"
           error={errors!.localGuardianPhoneNumber}
           className={inputStyle.input}
-          isPage
           isError={
             !!errors!.localGuardianPhoneNumber &&
             touched.localGuardianPhoneNumber
           }
         />
-      </div>
-      <div className="flex gap-x-3 justify-end">
-        <Button
-          type="button"
-          variant={'outline'}
-          onClick={() => setStep((prev) => prev - 1)}
-          className="w-fit"
-        >
-          Previous
-        </Button>
-        <Button
-          type="submit"
-          variant={'default'}
-          onClick={() => setStep((prev) => prev - 1)}
-          className="w-fit"
-        >
-          Next
-        </Button>
       </div>
     </div>
   )

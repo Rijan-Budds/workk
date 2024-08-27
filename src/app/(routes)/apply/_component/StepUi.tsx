@@ -1,10 +1,16 @@
 import { cn } from '@/lib/utils'
 import React from 'react'
 
-export const MultipleSteps = ({ activeIndex }: { activeIndex: number }) => {
+export const MultipleSteps = ({
+  activeIndex,
+  steps,
+}: {
+  activeIndex: number
+  steps: number
+}) => {
   return (
     <div className="flex gap-x-3 w-full justify-center ">
-      {Array.from({ length: 3 }).map((_, i) => (
+      {Array.from({ length: steps }).map((_, i) => (
         <StepUi key={i} isActive={i === activeIndex} />
       ))}
     </div>

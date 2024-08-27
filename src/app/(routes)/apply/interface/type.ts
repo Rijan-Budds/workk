@@ -20,6 +20,12 @@ export interface IStepOneError {
   localGuardainName: string
   localGuardianProfession: string
   localGuardianPhoneNumber: string
+  schoolName: string
+  schoolAddress: string
+  schoolBoard: string
+  seeSybmolNum: string
+  seeGpaPoint: string
+  seeGpaGrade: string
 }
 export interface IStepFields {
   firstName: string
@@ -38,6 +44,12 @@ export interface IStepFields {
   localGuardainName: string
   localGuardianProfession: string
   localGuardianPhoneNumber: string
+  schoolName: string
+  schoolAddress: string
+  schoolBoard: string
+  seeSybmolNum: string
+  seeGpaPoint: string
+  seeGpaGrade: string
 }
 
 export interface IStepOneTouched {
@@ -57,6 +69,12 @@ export interface IStepOneTouched {
   localGuardainName: boolean
   localGuardianProfession: boolean
   localGuardianPhoneNumber: boolean
+  schoolName: boolean
+  schoolAddress: boolean
+  schoolBoard: boolean
+  seeSybmolNum: boolean
+  seeGpaPoint: boolean
+  seeGpaGrade: boolean
 }
 
 export interface InputStyle {
