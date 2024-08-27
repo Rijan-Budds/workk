@@ -2,31 +2,22 @@ import { Button } from '@/common/components/Atom/Button'
 import { Input } from '@/common/components/Atom/Input'
 import { CustomDropdown } from '@/common/components/Molecules/CustomDropdown'
 import { ImageDropZone } from '@/common/components/Molecules/ImageDropZone'
-import { FormikErrors, FormikTouched } from 'formik'
-import React, { MouseEventHandler } from 'react'
-import { IStepOneError, IStepOneTouched } from '../../interface/type'
+import { IStepProps } from '../../interface/type'
 import { provinces } from '../../constant/data'
-import { IFileMetadata } from '@/common/interface/type'
 
 export const StepOne = ({
   setFieldValue,
-  handleNext,
   errors,
   touched,
   setFieldError,
-}: {
-  setFieldValue(field: string, value: string | IFileMetadata[]): void
-  handleNext: MouseEventHandler<HTMLButtonElement>
-  errors: FormikErrors<IStepOneError>
-  touched: FormikTouched<IStepOneTouched>
-  setFieldError: (field: string, message: string | undefined) => void
-}) => {
-  const inputStyle = {
-    input: 'border-[1px] border-border shadow-sm placeholder:text-[14px] ',
-    label: 'text-body font-normal',
-  }
+  inputStyle,
+  values,
+}: IStepProps) => {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 ">
+      <h1 className="text-heading font-poppins text-[20px] leading-[26px] font-medium">
+        Personal Information
+      </h1>
       <div className="flex flex-col gap-y-4  lg:flex-row gap-x-6">
         <Input
           label="First Name"
@@ -141,8 +132,9 @@ export const StepOne = ({
         error={errors.document}
         setValue={setFieldValue}
         setError={setFieldError}
+        values={values}
       />
-      <Button type="submit" onClick={handleNext} className="w-fit ml-auto">
+      <Button type="submit" className="w-fit ml-auto">
         Next
       </Button>
     </div>
