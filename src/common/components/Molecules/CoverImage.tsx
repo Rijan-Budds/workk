@@ -58,7 +58,7 @@ const CustomBreadCrumb = ({ list }: { list: IBreadCrumbList[] }) => {
         {list.map((link) => (
           <>
             <BreadcrumbSeparator className="text-white  [&>svg]:size-4" />
-            <BreadcrumbItem>
+            <BreadcrumbItem key={link.link}>
               {link.link ? (
                 <Link href={link.link}>
                   <span className="font-workSans text-white font-medium text-[14px] leading-4 capitalize">

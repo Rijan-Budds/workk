@@ -1,10 +1,10 @@
 import React from 'react'
-import { Admission } from './_component/Admission'
+import ResultUI from './_components/ResultUI'
 
 const page = () => {
   return (
     <div>
-      <Admission />
+      <ResultUI />
     </div>
   )
 }
