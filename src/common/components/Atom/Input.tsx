@@ -10,13 +10,12 @@ import { usePathname } from 'next/navigation'
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string
-  isRequired: boolean
+  isRequired?: boolean
   isMessage?: boolean
   rows?: number
-  error: string
+  error: string | undefined
   isError?: boolean
   labelColor?: string
-  isPage?: boolean
   labelClass?: string
 }
 
@@ -26,7 +25,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       className,
       type,
       label,
-      isRequired,
+      isRequired = false,
       error,
       isMessage = false,
       rows,
@@ -56,7 +55,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             'flex min-h-[48px] text-black bg-white text-[16px] max-h-[200px] w-full rounded-[8px] border-stone-100 px-4 py-3 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-body focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 font-workSans placeholder:font-workSans',
             className,
             {
-              'border-red-300': isError,
+              'border-error': isError,
             }
           )}
           ref={ref}
@@ -67,7 +66,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <FiChevronDown className="absolute right-6 -translate-y-1/2 w-4 text-black top-[65%]" />
         )}
 
-        {isError && <ErrorComponent error={error} />}
+        {isError && <ErrorComponent error={error ? error : ''} />}
       </div>
     )
   }
@@ -79,20 +78,23 @@ export { Input }
 export const ErrorComponent = ({ error }: { error: string }) => {
   const pathname = usePathname()
 
-  const isContactPage = pathname === '/contact' || '/admission'
+  const isContactPage = pathname === '/contact'
+  const isAdmission = pathname === '/apply'
+
+  console.log('isContactPage', pathname)
 
   return (
     <div className="flex items-center gap-x-1">
       <CircleAlert
         className={cn('size-4 text-white', {
-          'text-red-500': isContactPage,
+          'text-red-500': isContactPage || isAdmission,
         })}
       />
       <span
         className={cn(
           'font-workSans font-normal text-[14px] leading-4 text-white ',
           {
-            'text-red-500': isContactPage,
+            'text-red-500': isContactPage || isAdmission,
           }
         )}
       >

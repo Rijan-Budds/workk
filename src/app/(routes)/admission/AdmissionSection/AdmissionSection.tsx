@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react'
 import AdmissionDetail from './AdmissionDetail'
 import AdmissionSideBar from './AdmissionSideBar'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
-import AdmissionFilter from '../_component/AdmissionFilter'
 import { ITeamsData } from '../../teams/_interface/Teams'
 import { TeamsData } from '../../teams/constants/data'
+import AdmissionFilter from '../_components/AdmissionFilter'
 
 type ITitle =
   | 'Our Board Members'

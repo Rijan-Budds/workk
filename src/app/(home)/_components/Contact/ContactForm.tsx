@@ -79,7 +79,6 @@ export const ContactForm = () => {
                   error={errors.fullName!}
                   isError={!!errors.fullName && touched.fullName}
                   labelColor={isContactPage ? 'text-black' : 'text-white'}
-                  isPage={isContactPage}
                 />
                 <Input
                   type="text"
@@ -91,7 +90,6 @@ export const ContactForm = () => {
                   error={errors.email!}
                   isError={!!errors.email && touched.email}
                   labelColor={isContactPage ? 'text-black' : 'text-white'}
-                  isPage={isContactPage}
                 />
                 <Input
                   type="text"
@@ -103,7 +101,6 @@ export const ContactForm = () => {
                   error={errors.phone!}
                   isError={!!errors.phone && touched.phone}
                   labelColor={isContactPage ? 'text-black' : 'text-white'}
-                  isPage={isContactPage}
                 />
                 <ContactDropdown
                   setFieldValue={setFieldValue}
@@ -122,7 +119,6 @@ export const ContactForm = () => {
                   error={errors.message!}
                   isError={!!errors.message && touched.message}
                   labelColor={isContactPage ? 'text-black' : 'text-white'}
-                  isPage={isContactPage}
                 />
                 <Button
                   type="submit"

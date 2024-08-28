@@ -16,7 +16,7 @@ export const MiniHeading = ({
         'text-secondary text-[12px] 2lg:text-[14px] leading-[21px] tracking-[2px] font-medium font-workSans uppercase text-center',
         className,
         {
-          'md:text-left md:text-[14px]': isMd,
+          'md:text-left md:text-[14px] focus:outline-none': isMd,
         }
       )}
     >

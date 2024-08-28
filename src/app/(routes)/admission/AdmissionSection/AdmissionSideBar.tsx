@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
 import { DownloadUi } from '../../news/_component/DownloadUi'
-import AdmissionForm from '../_component/AdmissionForm'
-import AdmissionFilterTwo from '../_component/AdmissionFilterTwo'
+import AdmissionFilterTwo from '../_components/AdmissionFilterTwo'
+import AdmissionForm from '../_components/AdmissionForm'
 
 const AdmissionSideBar = () => {
   return (

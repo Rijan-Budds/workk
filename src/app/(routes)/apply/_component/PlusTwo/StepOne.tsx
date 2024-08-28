@@ -1,22 +1,23 @@
-import { Button } from '@/common/components/Atom/Button'
 import { Input } from '@/common/components/Atom/Input'
 import { CustomDropdown } from '@/common/components/Molecules/CustomDropdown'
 import { ImageDropZone } from '@/common/components/Molecules/ImageDropZone'
-import React, { MouseEventHandler } from 'react'
+import { IStepProps } from '../../interface/type'
+import { provinces } from '../../constant/data'
+import { InputWithDate } from '@/common/components/Atom/InputWithDate'
 
 export const StepOne = ({
   setFieldValue,
-  handleNext,
-}: {
-  setFieldValue(field: string, value: string): void
-  handleNext: MouseEventHandler<HTMLButtonElement>
-}) => {
-  const inputStyle = {
-    input: 'border-[1px] border-border shadow-sm placeholder:text-[14px] ',
-    label: 'text-body font-normal',
-  }
+  errors,
+  setFieldError,
+  inputStyle,
+  values,
+  touched,
+}: IStepProps) => {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 ">
+      <h1 className="text-heading font-poppins text-[20px] leading-[26px] font-medium">
+        Personal Information
+      </h1>
       <div className="flex flex-col gap-y-4  lg:flex-row gap-x-6">
         <Input
           label="First Name"
@@ -24,28 +25,29 @@ export const StepOne = ({
           labelClass={inputStyle.label}
           placeholder="Your name"
           name="firstName"
-          error="Pease enter first name"
+          error={errors!.firstName}
           className={inputStyle.input}
-          isPage
-          isError
+          isError={!!errors!.firstName && touched.firstName}
         />
         <Input
           label="Middle Name"
           isRequired={false}
           labelClass={inputStyle.label}
           placeholder="Your middle name"
-          name="middle name"
-          error="Pease enter MiddleName"
+          name="middleName"
+          error={errors.middleName}
           className={inputStyle.input}
+          isError={!!errors.middleName && touched.middleName}
         />
         <Input
           label="Last Name"
-          isRequired={false}
+          isRequired
           labelClass={inputStyle.label}
           placeholder="Your last name"
-          name="last name"
-          error="Pease enter last name"
+          name="lastName"
+          error={errors.lastName}
           className={inputStyle.input}
+          isError={!!errors.lastName && touched.lastName}
         />
       </div>
       <div className="flex flex-col gap-y-4  lg:flex-row gap-x-6">
@@ -54,74 +56,84 @@ export const StepOne = ({
           isRequired
           labelClass={inputStyle.label}
           placeholder="Your Street Address"
-          name="Street Address"
-          error="Pease enter Street Address"
+          name="street"
+          error={errors.street}
           className={inputStyle.input}
+          isError={!!errors.street && touched.street}
         />
         <Input
           label="City"
-          isRequired={false}
+          isRequired
           labelClass={inputStyle.label}
           placeholder="Your City"
-          name="City"
-          error="Pease enter City"
+          name="city"
+          error={errors.city}
           className={inputStyle.input}
+          isError={!!errors.city && touched.city}
         />
-        <Input
+
+        <CustomDropdown
+          setFieldValue={setFieldValue}
+          isError={!!errors.province && touched.province}
+          error={errors.province}
+          list={provinces}
+          placeHolder={'Your Province No'}
           label="Province No"
-          isRequired={false}
-          labelClass={inputStyle.label}
-          placeholder="Your Province No"
-          name="Province No"
-          error="Pease enter Province No"
-          className={inputStyle.input}
+          field={'province'}
+          isRequired
         />
       </div>
 
       <div className="flex flex-col gap-y-4  lg:flex-row gap-x-6">
         <CustomDropdown
+          isRequired
           setFieldValue={setFieldValue}
-          isError={false}
-          error="Please choose option"
+          isError={!!errors.gender && touched.gender}
+          error={errors.gender}
           list={[
             { title: 'Male', value: 'male' },
             { title: 'Female', value: 'female' },
           ]}
           placeHolder={'Select gender'}
           label="Gender"
+          field="gender"
         />
-        <Input
+        <InputWithDate
           label="Date Of Birth (AD)"
-          isRequired={false}
-          labelClass={inputStyle.label}
-          placeholder="Your D.O.B"
-          name="date-of-birth"
-          error="Pease enter Date"
-          className={inputStyle.input}
+          setValue={setFieldValue}
+          error={errors.dateOfBirth}
+          isError={!!errors.dateOfBirth}
+          isRequired
         />
+
         <Input
           label="Mobile No"
-          isRequired={false}
+          isRequired
           labelClass={inputStyle.label}
           placeholder="Your mobile no"
-          name="mobile"
-          error="Pease enter mobile"
+          name="mobileNumber"
+          error={errors.mobileNumber}
           className={inputStyle.input}
+          isError={!!errors.mobileNumber && touched.mobileNumber}
         />
       </div>
       <Input
         label="Email"
-        isRequired={false}
+        isRequired
         labelClass={inputStyle.label}
         placeholder="Your Email"
         name="email"
-        error="Pease enter email"
+        error={errors.email}
         className={inputStyle.input}
+        isError={!!errors.email && touched.email}
       />
-      <ImageDropZone />
-      <Button type="button" onClick={handleNext}>
-        Next
-      </Button>
+      <ImageDropZone
+        isError={!!errors.document && touched.document}
+        error={errors.document}
+        setValue={setFieldValue}
+        setError={setFieldError}
+        values={values}
+      />
     </div>
   )
 }
