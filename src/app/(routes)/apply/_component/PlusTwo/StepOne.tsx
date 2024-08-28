@@ -2,7 +2,7 @@ import { Input } from '@/common/components/Atom/Input'
 import { CustomDropdown } from '@/common/components/Molecules/CustomDropdown'
 import { ImageDropZone } from '@/common/components/Molecules/ImageDropZone'
 import { IStepProps } from '../../interface/type'
-import { provinces } from '../../constant/data'
+import { genderList, provinces } from '../../constant/data'
 import { InputWithDate } from '@/common/components/Atom/InputWithDate'
 
 export const StepOne = ({
@@ -81,6 +81,7 @@ export const StepOne = ({
           label="Province No"
           field={'province'}
           isRequired
+          value={values!.province}
         />
       </div>
 
@@ -90,13 +91,11 @@ export const StepOne = ({
           setFieldValue={setFieldValue}
           isError={!!errors.gender && touched.gender}
           error={errors.gender}
-          list={[
-            { title: 'Male', value: 'male' },
-            { title: 'Female', value: 'female' },
-          ]}
+          list={genderList}
           placeHolder={'Select gender'}
           label="Gender"
           field="gender"
+          value={values!.gender}
         />
         <InputWithDate
           label="Date Of Birth (AD)"
@@ -104,6 +103,7 @@ export const StepOne = ({
           error={errors.dateOfBirth}
           isError={!!errors.dateOfBirth}
           isRequired
+          value={values!.dateOfBirth}
         />
 
         <Input

@@ -46,7 +46,7 @@ export const initialValues = {
   city: '',
   province: '',
   gender: '',
-  dateOfBirth: '',
+  dateOfBirth: undefined,
   mobileNumber: '',
   email: '',
   document: undefined,
@@ -110,4 +110,10 @@ export const gpaDropdownList = [
   { title: 'C+', value: 'c+' },
   { title: 'C', value: 'c' },
   { title: 'D', value: 'd' },
+]
+
+export const genderList = [
+  { title: 'Male', value: 'male' },
+  { title: 'Female', value: 'female' },
+  { title: 'Others', value: 'others' },
 ]

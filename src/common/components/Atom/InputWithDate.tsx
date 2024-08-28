@@ -14,16 +14,16 @@ export const InputWithDate = ({
   error,
   isError,
   isRequired = false,
+  value,
 }: {
   label: string
   setValue: (field: string, value: string) => void
   error: string | undefined
   isError: boolean
   isRequired: boolean
+  value: Date | undefined
 }) => {
-  const [selectedDate, setSelectDate] = React.useState<Date | undefined>(
-    undefined
-  )
+  const [selectedDate, setSelectDate] = React.useState<Date | undefined>(value)
 
   const [open, setOpen] = useState<boolean>(false)
 
@@ -46,7 +46,7 @@ export const InputWithDate = ({
             )}
           >
             <span className="text-body ">
-              {selectedDate ? format(selectedDate, 'PPP') : 'Pick a date'}
+              {selectedDate && value ? <>{value}</> : 'Pick a date'}
             </span>
             <Image
               src={'/admission/calender.svg'}
