@@ -16,7 +16,6 @@ export interface InputProps
   error: string | undefined
   isError?: boolean
   labelColor?: string
-  isPage?: boolean
   labelClass?: string
 }
 

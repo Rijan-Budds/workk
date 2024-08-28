@@ -14,7 +14,7 @@ import { IStepFields } from '@/app/(routes)/apply/interface/type'
 import { UploadedFileUi } from './UploadFileUi'
 
 interface IDropZoneProps {
-  isError: boolean
+  isError: boolean | undefined
   error: string | string[] | FormikErrors<File>[] | undefined
   setValue: (field: string, value: IFileMetadata[]) => void
   setError: (field: string, message: string | undefined) => void

@@ -13,11 +13,13 @@ export const InputWithDate = ({
   setValue,
   error,
   isError,
+  isRequired = false,
 }: {
   label: string
   setValue: (field: string, value: string) => void
   error: string | undefined
   isError: boolean
+  isRequired: boolean
 }) => {
   const [selectedDate, setSelectDate] = React.useState<Date | undefined>(
     undefined
@@ -32,7 +34,7 @@ export const InputWithDate = ({
           htmlFor={label}
           className="text-body font-normal text-[14px] leading-4 font-workSans mb-[6px]"
         >
-          {label}
+          {label} {isRequired && '*'}
         </label>
         <PopoverTrigger asChild onClick={() => setOpen((prev) => !prev)}>
           <div
