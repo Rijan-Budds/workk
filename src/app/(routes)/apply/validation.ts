@@ -267,19 +267,18 @@ export const seeGpaPointValidation = Yup.number()
   .min(0, 'SEE GPA point must be at least 0.0')
   .max(4, 'SEE GPA point must be at most 4.0')
   .typeError('SEE GPA point must be a numeric value')
-  .integer('SEE GPA point must be a numeric value')
   .test(
     'length',
-    'SEE GPA point length must be between 3 and 5 characters',
+    'SEE GPA point length must be between 3 and 4 characters',
     (value) => {
       const valueStr = value?.toString() || ''
-      return valueStr.length >= 3 && valueStr.length <= 5
+      return valueStr.length >= 3 && valueStr.length <= 4
     }
   )
 
 export const seeGpaGradeValidation = Yup.string()
   .required('SEE GPA Grade is required')
   .oneOf(
-    ['A+', 'A', 'B+', 'B', 'C+', 'C', 'D'],
+    ['a+', 'a', 'b+', 'b', 'c+', 'c', 'd'],
     'SEE GPA Grade must be one of the predefined grades'
   )

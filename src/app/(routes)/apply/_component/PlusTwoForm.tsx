@@ -54,7 +54,6 @@ export const PlusTwoForm = () => {
             values,
             validateForm,
           } = formik
-
           const StepComponents = StepComponent[currentStep]
           return (
             <Form>
@@ -68,7 +67,7 @@ export const PlusTwoForm = () => {
                 handleClick={() => validateForm()}
               />
 
-              <div className="flex justify-between gap-x-3 mt-10">
+              <div className="flex justify-end  gap-x-3 mt-10 ml-auto">
                 {currentStep > 0 && (
                   <Button
                     onClick={handlePrev}
@@ -79,7 +78,7 @@ export const PlusTwoForm = () => {
                     Previous
                   </Button>
                 )}
-                <Button type="submit" className="ml-auto">
+                <Button type="submit" className="w-fit">
                   {currentStep < StepComponent.length - 1 ? 'Next' : 'Submit'}
                 </Button>
               </div>

@@ -67,14 +67,14 @@ export const StepThree = ({
           isError={!!errors!.seeGpaPoint && touched.seeGpaPoint}
         />
         <CustomDropdown
-          field="gpaGrade"
+          field="seeGpaGrade"
           isRequired
           label="See SEE GPA Grade"
           list={gpaDropdownList}
           placeHolder="Select SEE GPA Grade"
           setFieldValue={setFieldValue}
           error={errors!.seeGpaGrade}
-          isError={!!errors.seeGpaGrade}
+          isError={!!errors.seeGpaGrade && touched.seeGpaGrade}
         />
       </div>
     </div>
