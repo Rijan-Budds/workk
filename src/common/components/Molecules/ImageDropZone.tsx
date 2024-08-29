@@ -112,10 +112,14 @@ export const ImageDropZone = ({
             <span className="text-secondary font-workSans">browse</span>
           </p>
           <p className="text-body font-workSans text-[14px] leading-4">
-            Max File 1OMB
+            Max File 1OMB (.pdf/.doc/.docx)
           </p>
         </div>
       </label>
+      <span className="font-workSans font-normal text-[14px] leading-4 text-body -mt-4">
+        *Note : Include birth certificate. Character Certificate , Report card
+        of last class & Parent Citizenship
+      </span>
       {isError && !Array.isArray(error) && <ErrorComponent error={error} />}
       <div className="flex w-full flex-wrap gap-4 ">
         {values &&
