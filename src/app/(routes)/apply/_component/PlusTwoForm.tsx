@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { MultipleSteps } from './StepUi'
 import { Form, Formik, FormikValues } from 'formik'
 import * as Yup from 'yup'
@@ -14,8 +14,6 @@ import { Button } from '@/common/components/Atom/Button'
 export const PlusTwoForm = () => {
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [completedSteps] = useState<number[]>([])
-
-  useEffect(() => {}, [])
 
   const inputStyle = {
     input: 'border-[1px] border-border shadow-sm placeholder:text-[14px] ',

@@ -26,6 +26,10 @@ export interface IStepOneError {
   seeSybmolNum: string
   seeGpaPoint: string
   seeGpaGrade: string
+  stream: string
+  shift: string
+  hostel: string
+  transportation: string
 }
 export interface IStepFields {
   firstName: string
@@ -51,6 +55,10 @@ export interface IStepFields {
   seeSybmolNum: string
   seeGpaPoint: string
   seeGpaGrade: string
+  stream: string
+  shift: string
+  hostel: string
+  transportation: string
 }
 
 export interface IStepOneTouched {
@@ -77,6 +85,10 @@ export interface IStepOneTouched {
   seeSybmolNum: boolean
   seeGpaPoint: boolean
   seeGpaGrade: boolean
+  stream: boolean
+  shift: boolean
+  hostel: boolean
+  transportation: boolean
 }
 
 export interface InputStyle {
