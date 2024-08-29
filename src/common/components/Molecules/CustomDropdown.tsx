@@ -11,7 +11,7 @@ import { ErrorComponent } from '../Atom/Input'
 import { IDropdownList } from '@/common/interface/type'
 
 interface ICustomDropdownProps {
-  setFieldValue: (field: string, value: string) => void
+  setFieldValue?: (field: string, value: string) => void
   error: string | undefined
   isError: boolean | undefined
   list: IDropdownList[]
@@ -43,7 +43,9 @@ export const CustomDropdown = ({
       </label>
       <Select
         value={value}
-        onValueChange={(value: string) => setFieldValue(field, value)}
+        onValueChange={(value: string) =>
+          setFieldValue && setFieldValue(field, value)
+        }
       >
         <SelectTrigger className="rounded-lg p-4 text-body">
           <SelectValue defaultValue={'hello'} placeholder={placeHolder} />
