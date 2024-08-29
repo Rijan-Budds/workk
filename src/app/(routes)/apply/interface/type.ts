@@ -10,7 +10,7 @@ export interface IStepOneError {
   city: string
   email: string
   gender: string
-  dateOfBirth: string
+  dateOfBirth: Date | undefined
   mobileNumber: string
   province: string
   document: File[]
@@ -35,6 +35,7 @@ export interface IStepFields {
   city: string
   email: string
   gender: string
+  dateOfBirth: Date | undefined
   mobileNumber: string
   province: string
   document?: IFileMetadata[]
@@ -60,6 +61,7 @@ export interface IStepOneTouched {
   city: boolean
   email: boolean
   gender: boolean
+  dateOfBirth: boolean
   mobileNumber: boolean
   province: boolean
   document: boolean

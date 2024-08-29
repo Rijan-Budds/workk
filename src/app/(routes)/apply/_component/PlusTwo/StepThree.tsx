@@ -9,6 +9,7 @@ export const StepThree = ({
   inputStyle,
   touched,
   setFieldValue,
+  values,
 }: IStepProps) => {
   return (
     <div className="flex flex-col gap-6 ">
@@ -75,6 +76,7 @@ export const StepThree = ({
           setFieldValue={setFieldValue}
           error={errors!.seeGpaGrade}
           isError={!!errors.seeGpaGrade && touched.seeGpaGrade}
+          value={values!.seeGpaGrade}
         />
       </div>
     </div>
