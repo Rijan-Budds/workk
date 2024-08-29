@@ -41,7 +41,12 @@ export const provinces = [
   { title: 'Sudurpashchim Province', value: 'sudurpashchim-province' },
 ]
 
-export const StepComponent = [StepOne, StepTwo, StepThree, StepFour]
+export const StepComponentPlusTwo = [StepOne, StepTwo, StepThree, StepFour]
+
+export const MultiStepFormInputStyle = {
+  input: 'border-[1px] border-border shadow-sm placeholder:text-[14px] ',
+  label: 'text-body font-normal',
+}
 
 export const initialValues = {
   firstName: '',
@@ -73,7 +78,7 @@ export const initialValues = {
   transportation: '',
 }
 
-const stepOneValidationSchema = {
+export const stepOneValidationSchema = {
   firstName: firstNameValidation,
   middleName: middleNameValidation,
   lastName: lastNameValidation,
@@ -87,7 +92,7 @@ const stepOneValidationSchema = {
   document: fileValidation,
 }
 
-const stepTwoValidationSchema = {
+export const stepTwoValidationSchema = {
   fatherName: fatherNameValidation,
   fatherProfession: fatherProfessionValidation,
   fatherMobileNumber: mobileNumberValidation,
