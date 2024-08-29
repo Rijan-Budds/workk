@@ -282,3 +282,16 @@ export const seeGpaGradeValidation = Yup.string()
     ['a+', 'a', 'b+', 'b', 'c+', 'c', 'd'],
     'SEE GPA Grade must be one of the predefined grades'
   )
+export const streamValidation = Yup.string().required('Please select stream.')
+
+export const shiftValidation = Yup.string().required(
+  'Please select one option.'
+)
+
+export const hostelValidation = Yup.string().required(
+  'Please select one option.'
+)
+
+export const transportationValidation = Yup.string().required(
+  'Please select one option. '
+)

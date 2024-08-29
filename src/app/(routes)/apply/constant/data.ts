@@ -1,3 +1,4 @@
+import { StepFour } from '../_component/PlusTwo/StepFour'
 import { StepOne } from '../_component/PlusTwo/StepOne'
 import { StepThree } from '../_component/PlusTwo/StepThree'
 import { StepTwo } from '../_component/PlusTwo/StepTwo'
@@ -12,6 +13,7 @@ import {
   genderValidation,
   guardianProfessionValidation,
   gurdianMobileNumber,
+  hostelValidation,
   lastNameValidation,
   localGuardianNameValidation,
   middleNameValidation,
@@ -23,7 +25,10 @@ import {
   seeGpaGradeValidation,
   seeGpaPointValidation,
   seeSymbolNumberValidation,
+  shiftValidation,
+  streamValidation,
   streetValidation,
+  transportationValidation,
 } from '../validation'
 
 export const provinces = [
@@ -36,7 +41,7 @@ export const provinces = [
   { title: 'Sudurpashchim Province', value: 'sudurpashchim-province' },
 ]
 
-export const StepComponent = [StepOne, StepTwo, StepThree]
+export const StepComponent = [StepOne, StepTwo, StepThree, StepFour]
 
 export const initialValues = {
   firstName: '',
@@ -62,6 +67,10 @@ export const initialValues = {
   seeSybmolNum: '',
   seeGpaPoint: '',
   seeGpaGrade: '',
+  stream: '',
+  shift: '',
+  hostel: '',
+  transportation: '',
 }
 
 const stepOneValidationSchema = {
@@ -96,10 +105,18 @@ const stepThreeValidationSchema = {
   seeGpaGrade: seeGpaGradeValidation,
 }
 
+export const stepFourValidationSchema = {
+  stream: streamValidation,
+  shift: shiftValidation,
+  hostel: hostelValidation,
+  transportation: transportationValidation,
+}
+
 export const ValidationSchemas = [
   stepOneValidationSchema,
   stepTwoValidationSchema,
   stepThreeValidationSchema,
+  stepFourValidationSchema,
 ]
 
 export const gpaDropdownList = [
@@ -113,7 +130,29 @@ export const gpaDropdownList = [
 ]
 
 export const genderList = [
-  { title: 'Male', value: 'male' },
-  { title: 'Female', value: 'female' },
-  { title: 'Others', value: 'others' },
+  { title: 'Male', value: 'MALE' },
+  { title: 'Female', value: 'FEMALE' },
+  { title: 'Others', value: 'OTHERS' },
+]
+
+export const streamList = [
+  { title: 'Education', value: 'EDUCATION' },
+  { title: 'Management', value: 'MANAGEMENT' },
+  { title: 'Humanities', value: 'HUMANITIES' },
+  { title: 'Law', value: 'LAW' },
+]
+
+export const shiftList = [
+  { title: 'Morning', value: 'MORNING' },
+  { title: 'Day', value: 'DAY' },
+]
+
+export const hostelList = [
+  { title: 'yes', value: 'YES' },
+  { title: 'no', value: 'NO' },
+]
+
+export const transportationList = [
+  { title: 'yes', value: 'YES' },
+  { title: 'no', value: 'NO' },
 ]
