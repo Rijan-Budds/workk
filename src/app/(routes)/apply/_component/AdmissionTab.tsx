@@ -4,15 +4,43 @@ import { TabSwitch } from '@/common/components/Atom/TabSwitch'
 import React, { useState } from 'react'
 import { PlusTwoForm } from './PlusTwoForm'
 import { SchoolForm } from './SchoolForm'
+import { CustomModal } from '@/common/components/Molecules/Modal'
+import { UnSaveChange } from './UnSaveChange'
 
 export const AdmissionTab = () => {
-  const [active, setActiveTab] = useState<string>('')
+  const tabs = [
+    { key: 'plus-two', title: '+2 Registration Form' },
+    { key: 'school', title: 'School Registration Form' },
+  ]
+
+  const [active, setActiveTab] = useState<string>(tabs[0]?.key)
+  const [triggerModal, setTriggerModal] = useState<boolean>(false)
+  const [clickedTab, setClickedTab] = useState<string>('')
+  const [isFieldChange, setIsFieldChange] = useState<boolean>(false)
+
+  const handleConfirm = () => {
+    setActiveTab(clickedTab)
+    setTriggerModal(false)
+  }
 
   const renderFormUi = () => {
-    if (active === 'plus-two') {
-      return <PlusTwoForm />
-    } else if (active === 'school') {
-      return <SchoolForm />
+    switch (active) {
+      case 'plus-two':
+        return <PlusTwoForm onFormChange={setIsFieldChange} />
+      case 'school':
+        return <SchoolForm onFormChange={setIsFieldChange} />
+      default:
+        return null
+    }
+  }
+
+  const handleTabClick = (key: string) => {
+    if (isFieldChange && key !== active) {
+      setTriggerModal(true)
+
+      setClickedTab(key)
+    } else {
+      setActiveTab(key)
     }
   }
 
@@ -20,12 +48,12 @@ export const AdmissionTab = () => {
     <div className="flex flex-col  justify-center items-center gap-y-10">
       <div className="w-fit flex flex-col justify-center items-center gap-y-10">
         <TabSwitch
-          tabs={[
-            { key: 'plus-two', title: '+2 Registration Form' },
-            { key: 'school', title: 'School Registration Form' },
-          ]}
+          activeTab={active}
+          tabs={tabs}
           setActive={setActiveTab}
           className="w-fit text-sm"
+          isFieldChange={true}
+          handleDynamicData={handleTabClick}
         />
         <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center text-body">
           When reading an application, we get to know the person behind the
@@ -36,6 +64,14 @@ export const AdmissionTab = () => {
         </p>
       </div>
       {renderFormUi()}
+      {triggerModal && (
+        <CustomModal isOpen={triggerModal}>
+          <UnSaveChange
+            setOpen={setTriggerModal}
+            handleConfirm={handleConfirm}
+          />
+        </CustomModal>
+      )}
     </div>
   )
 }
