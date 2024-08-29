@@ -17,7 +17,7 @@ interface IDropZoneProps {
   isError: boolean | undefined
   error: string | string[] | FormikErrors<File>[] | undefined
   setValue: (field: string, value: IFileMetadata[]) => void
-  setError: (field: string, message: string | undefined) => void
+  setError?: (field: string, message: string | undefined) => void
   values: IStepFields | undefined
 }
 
@@ -43,7 +43,9 @@ export const ImageDropZone = ({
       if (files.length < 6) {
         setValue('document', filterMetaData)
       } else {
-        setError('document', 'You can upload a maximum of 5 files')
+        if (setError) {
+          setError('document', 'You can upload a maximum of 5 files')
+        }
       }
     }
   }
@@ -72,7 +74,9 @@ export const ImageDropZone = ({
         'document',
         values.document.filter((_, i) => i !== index)
       )
-      setError(`document[${index}]`, undefined)
+      if (setError) {
+        setError(`document[${index}]`, undefined)
+      }
     }
   }
 
