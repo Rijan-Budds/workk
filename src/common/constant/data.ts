@@ -31,34 +31,34 @@ export const navLinks = [
       {
         id: 1,
         title: 'Overview',
-        link: '/',
+        link: '/academics',
       },
       {
         id: 2,
         title: 'Plus Two',
-        link: '/',
+        link: '',
         subsublink: [
           {
             id: 1,
             title: 'Management',
-            link: '/',
+            link: '/academics/management',
           },
           {
             id: 2,
             title: 'Humanities',
-            link: '/',
+            link: '/academics/humanities',
           },
           {
             id: 3,
             title: 'Law',
-            link: '/',
+            link: '/academics/law',
           },
         ],
       },
       {
         id: 3,
         title: 'School Level',
-        link: '/',
+        link: '',
         subsublink: [
           {
             id: 1,
@@ -76,6 +76,11 @@ export const navLinks = [
             link: '/',
           },
         ],
+      },
+      {
+        id: 4,
+        title: 'Admission',
+        link: '/admission',
       },
     ],
   },
@@ -103,7 +108,7 @@ export const navLinks = [
       {
         id: 4,
         title: 'Computer Lab',
-        link: '/',
+        link: '/facilities',
       },
       {
         id: 5,

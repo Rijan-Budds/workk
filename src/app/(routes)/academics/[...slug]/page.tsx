@@ -1,10 +1,10 @@
 import React from 'react'
-import { Admission } from './_component/Admission'
+import AcademicDetail from './AcademicDetailPage/AcademicDetail'
 
 const page = () => {
   return (
     <div>
-      <Admission />
+      <AcademicDetail />
     </div>
   )
 }
