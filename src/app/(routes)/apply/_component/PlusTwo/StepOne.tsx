@@ -101,7 +101,7 @@ export const StepOne = ({
           label="Date Of Birth (AD)"
           setValue={setFieldValue}
           error={errors.dateOfBirth}
-          isError={!!errors.dateOfBirth}
+          isError={!!errors.dateOfBirth && touched.dateOfBirth}
           isRequired
           value={values!.dateOfBirth}
         />

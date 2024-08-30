@@ -59,9 +59,12 @@ export const StepUi = ({
         </div>
       </div>
       <span
-        className={cn('min-w-[62px] w-full  h-1 bg-primaryLight rounded-full', {
-          'bg-primary transition-all duration-500': isActive,
-        })}
+        className={cn(
+          'md:min-w-[62px] w-full  h-1 bg-primaryLight rounded-full',
+          {
+            'bg-primary transition-all duration-500': isActive,
+          }
+        )}
       />
     </div>
   )

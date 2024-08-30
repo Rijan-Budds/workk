@@ -19,7 +19,7 @@ export const InputWithDate = ({
   label: string
   setValue: (field: string, value: string) => void
   error: string | undefined
-  isError: boolean
+  isError: boolean | undefined
   isRequired: boolean
   value: Date | undefined
 }) => {
