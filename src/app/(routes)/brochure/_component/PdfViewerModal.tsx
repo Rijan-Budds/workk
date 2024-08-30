@@ -68,7 +68,7 @@ const NavigatePdfUi = ({
   isMouseOver,
 }: {
   pageNumber: number
-  totalPage: number
+  totalPage: number | undefined
   setPageNumber: Dispatch<SetStateAction<number>>
   isMouseOver: boolean
 }) => {
@@ -79,7 +79,7 @@ const NavigatePdfUi = ({
   }
 
   const handleNextPage = () => {
-    if (pageNumber < totalPage) {
+    if (pageNumber < totalPage!) {
       setPageNumber((prev) => prev + 1)
     }
   }
