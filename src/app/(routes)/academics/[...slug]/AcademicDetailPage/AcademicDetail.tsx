@@ -9,7 +9,10 @@ const AcademicDetail = () => {
     <>
       <CoverImage
         title="Academics"
-        list={[{ link: 'academic', title: 'Academic' }]}
+        list={[
+          { link: 'academic', title: 'Academic' },
+          { link: '', title: 'PLus Two' },
+        ]}
       />
       <HomeWrapper>
         <div className="flex flex-col gap-[80px] lg:flex-row 2lg:gap-[56px]">
