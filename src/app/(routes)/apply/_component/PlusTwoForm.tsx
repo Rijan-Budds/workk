@@ -6,29 +6,34 @@ import { Form, Formik, FormikValues } from 'formik'
 import * as Yup from 'yup'
 import {
   initialValues,
-  StepComponent,
+  MultiStepFormInputStyle,
+  StepComponentPlusTwo,
   ValidationSchemas,
 } from '../constant/data'
 import { Button } from '@/common/components/Atom/Button'
 
-export const PlusTwoForm = () => {
-  const [currentStep, setCurrentStep] = useState<number>(0)
+interface IPlusTwoFormProps {
+  onFormChange: (isDirty: boolean) => void
+}
 
-  const inputStyle = {
-    input: 'border-[1px] border-border shadow-sm placeholder:text-[14px] ',
-    label: 'text-body font-normal',
-  }
+export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
+  const [currentStep, setCurrentStep] = useState<number>(0)
+  const [completedSteps] = useState<number[]>([])
 
   const handleNext = () => {
-    setCurrentStep((prev) => Math.min(prev + 1, StepComponent.length - 1))
+    completedSteps.push(currentStep)
+    setCurrentStep((prev) =>
+      Math.min(prev + 1, StepComponentPlusTwo.length - 1)
+    )
   }
 
   const handlePrev = () => {
+    completedSteps.pop()
     setCurrentStep((prev) => Math.max(prev - 1, 0))
   }
 
   const handleSubmit = (values: FormikValues) => {
-    if (currentStep < StepComponent.length - 1) {
+    if (currentStep < StepComponentPlusTwo.length - 1) {
       handleNext()
     } else {
       console.info('Final Values:', values)
@@ -38,7 +43,11 @@ export const PlusTwoForm = () => {
 
   return (
     <div className=" bg-background w-full rounded-xl p-6 flex flex-col gap-y-10">
-      <MultipleSteps activeIndex={currentStep} steps={StepComponent.length} />
+      <MultipleSteps
+        activeIndex={currentStep}
+        steps={StepComponentPlusTwo.length}
+        completedIndex={completedSteps}
+      />
 
       <Formik
         initialValues={initialValues}
@@ -52,23 +61,24 @@ export const PlusTwoForm = () => {
             errors,
             touched,
             values,
-            validateForm,
+            dirty,
           } = formik
 
-          const StepComponents = StepComponent[currentStep]
+          const StepComponentsPlusTwo = StepComponentPlusTwo[currentStep]
+
+          onFormChange(dirty)
           return (
             <Form>
-              <StepComponents
+              <StepComponentsPlusTwo
                 setFieldValue={setFieldValue}
                 errors={errors}
                 touched={touched}
                 setFieldError={setFieldError}
-                inputStyle={inputStyle}
+                inputStyle={MultiStepFormInputStyle}
                 values={values}
-                handleClick={() => validateForm()}
               />
 
-              <div className="flex justify-between gap-x-3 mt-10">
+              <div className="flex justify-end  gap-x-3 mt-10 ml-auto">
                 {currentStep > 0 && (
                   <Button
                     onClick={handlePrev}
@@ -79,8 +89,10 @@ export const PlusTwoForm = () => {
                     Previous
                   </Button>
                 )}
-                <Button type="submit" className="ml-auto">
-                  {currentStep < StepComponent.length - 1 ? 'Next' : 'Submit'}
+                <Button type="submit" className="w-fit">
+                  {currentStep < StepComponentPlusTwo.length - 1
+                    ? 'Next'
+                    : 'Submit'}
                 </Button>
               </div>
             </Form>

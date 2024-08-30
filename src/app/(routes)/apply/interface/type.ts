@@ -1,6 +1,5 @@
 import { IFileMetadata } from '@/common/interface/type'
 import { FormikErrors, FormikTouched } from 'formik'
-import { MouseEventHandler } from 'react'
 
 export interface IStepOneError {
   firstName: string
@@ -10,7 +9,7 @@ export interface IStepOneError {
   city: string
   email: string
   gender: string
-  dateOfBirth: string
+  dateOfBirth: Date | undefined
   mobileNumber: string
   province: string
   document: File[]
@@ -26,6 +25,10 @@ export interface IStepOneError {
   seeSybmolNum: string
   seeGpaPoint: string
   seeGpaGrade: string
+  stream: string
+  shift: string
+  hostel: string
+  transportation: string
 }
 export interface IStepFields {
   firstName: string
@@ -35,6 +38,7 @@ export interface IStepFields {
   city: string
   email: string
   gender: string
+  dateOfBirth: Date | undefined
   mobileNumber: string
   province: string
   document?: IFileMetadata[]
@@ -50,6 +54,10 @@ export interface IStepFields {
   seeSybmolNum: string
   seeGpaPoint: string
   seeGpaGrade: string
+  stream: string
+  shift: string
+  hostel: string
+  transportation: string
 }
 
 export interface IStepOneTouched {
@@ -60,6 +68,7 @@ export interface IStepOneTouched {
   city: boolean
   email: boolean
   gender: boolean
+  dateOfBirth: boolean
   mobileNumber: boolean
   province: boolean
   document: boolean
@@ -75,6 +84,10 @@ export interface IStepOneTouched {
   seeSybmolNum: boolean
   seeGpaPoint: boolean
   seeGpaGrade: boolean
+  stream: boolean
+  shift: boolean
+  hostel: boolean
+  transportation: boolean
 }
 
 export interface InputStyle {
@@ -86,8 +99,7 @@ export interface IStepProps {
   setFieldValue(field: string, value: string | IFileMetadata[]): void
   errors: FormikErrors<IStepOneError>
   touched: FormikTouched<IStepOneTouched>
-  setFieldError: (field: string, message: string | undefined) => void
+  setFieldError?: (field: string, message: string | undefined) => void
   inputStyle: InputStyle
   values?: IStepFields | undefined
-  handleClick: MouseEventHandler<HTMLButtonElement>
 }

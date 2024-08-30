@@ -11,7 +11,7 @@ import { ErrorComponent } from '../Atom/Input'
 import { IDropdownList } from '@/common/interface/type'
 
 interface ICustomDropdownProps {
-  setFieldValue: (field: string, value: string) => void
+  setFieldValue?: (field: string, value: string) => void
   error: string | undefined
   isError: boolean | undefined
   list: IDropdownList[]
@@ -19,6 +19,7 @@ interface ICustomDropdownProps {
   label: string
   field: string
   isRequired: boolean
+  value: string
 }
 
 export const CustomDropdown = ({
@@ -30,6 +31,7 @@ export const CustomDropdown = ({
   label,
   field,
   isRequired,
+  value,
 }: ICustomDropdownProps) => {
   return (
     <div className="flex flex-col gap-y-2 w-full">
@@ -39,9 +41,14 @@ export const CustomDropdown = ({
       >
         {label} {isRequired && '*'}
       </label>
-      <Select onValueChange={(value: string) => setFieldValue(field, value)}>
+      <Select
+        value={value}
+        onValueChange={(value: string) =>
+          setFieldValue && setFieldValue(field, value)
+        }
+      >
         <SelectTrigger className="rounded-lg p-4 text-body">
-          <SelectValue placeholder={placeHolder} />
+          <SelectValue defaultValue={'hello'} placeholder={placeHolder} />
         </SelectTrigger>
         <SelectContent className="border-b-2 border-border">
           <SelectGroup>
