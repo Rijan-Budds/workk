@@ -43,7 +43,7 @@ export const Navbar = () => {
   }
 
   return (
-    <div className="py-4 sticky top-0 bg-white z-[999] border-b-[1px] border-border hidden 2lg:block">
+    <div className="py-4 sticky top-0 bg-white/85 backdrop-blur-xl z-[999]  hidden 2lg:block shadow-sm ">
       <HomeWrapper className="!py-0">
         <div className="flex justify-between">
           <div className="flex items-center gap-x-6">
