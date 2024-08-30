@@ -50,7 +50,7 @@ export const CustomDropdown = ({
         <SelectTrigger className="rounded-lg p-4 text-body">
           <SelectValue
             placeholder={placeHolder}
-            className="text-body text-[14px] leading-4 font-workSans"
+            className="text-body text-[16px] leading-4 font-workSans"
           />
         </SelectTrigger>
         <SelectContent className="border-b-2 border-border">
