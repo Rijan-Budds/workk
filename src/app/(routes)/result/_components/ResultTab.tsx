@@ -17,7 +17,7 @@ const ResultTab = ({
   }
 
   return (
-    <div className="hidden bg-primaryLighter md:flex justify-between items-center rounded-[100px] p-2 max-w-[300px] h-[72px] shadow">
+    <div className="bg-primaryLighter flex justify-between items-center rounded-[100px] p-2 max-w-[300px] h-[72px] shadow mx-auto">
       {(['Plus Two', 'School Level'] as ITitle[]).map((title) => (
         <button
           key={title}
