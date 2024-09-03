@@ -22,7 +22,7 @@ export const UploadedFileUi = ({
   const content = (
     <div
       className={cn(
-        'relative border-border border rounded-[12px] py-2 px-4 flex justify-between items-center gap-x-12 w-full md:w-[520px]  2xl:w-[560px] ',
+        'relative border-border border rounded-[12px] p-2 flex justify-between items-center gap-x-12 w-full md:w-[520px]  2xl:w-[560px] ',
         {
           'border-error border ': isError,
         }
