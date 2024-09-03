@@ -8,33 +8,46 @@ import { IResultData } from '../_interface/Reslut'
 import { ResultData } from '../_constants/data'
 
 type ITitle = 'Plus Two' | 'School Level'
+type ICategory = 'All' | 'Management' | 'Humanities'
 
 const ResultUi = () => {
   const [title, setTitle] = useState<ITitle>('Plus Two')
+  const [category, setCategory] = useState<ICategory>('All')
   const [filteredTeams, setFilteredTeams] = useState<IResultData[]>([]) // eslint-disable-line
 
   useEffect(() => {
-    let filteredData: IResultData[] = []
-    if (title === 'Plus Two') {
-      filteredData = ResultData.filter((result) => result.type === 'Plus Two')
-    } else if (title === 'School Level') {
-      filteredData = ResultData.filter(
-        (result) => result.type === 'School Level'
+    // Filter data by title
+    let filteredData = ResultData.filter((result) => result.type === title)
+
+    // Further filter data by category if not 'All'
+    if (category !== 'All') {
+      filteredData = filteredData.filter(
+        (result) => result.category === category
       )
     }
+
     setFilteredTeams(filteredData)
-  }, [title])
+  }, [title, category])
 
   const handleDynamicData = (type: ITitle) => {
     setTitle(type)
   }
 
+  const handleCategoryChange = (selectedCategory: ICategory) => {
+    setCategory(selectedCategory)
+  }
   return (
     <div>
       <CoverImage title="Result" />
       <HomeWrapper>
-        <ResultTab handleDynamicData={handleDynamicData} />
-        <ResultSection />
+        <div className="">
+          <ResultTab handleDynamicData={handleDynamicData} />
+          <ResultSection
+            teams={filteredTeams}
+            title={title}
+            handleCategoryChange={handleCategoryChange}
+          />
+        </div>
       </HomeWrapper>
     </div>
   )
