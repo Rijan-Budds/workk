@@ -7,7 +7,7 @@ import { PdfViewerModal } from './PdfViewerModal'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 
 export const BrochureUi = () => {
-  const [openModal] = useState<boolean>(false)
+  const [openModal] = useState<boolean>(true)
   return (
     <>
       <div className="flex flex-col  gap-y-10 2lg:items-center">
