@@ -2,15 +2,16 @@ import Image from 'next/image'
 import React from 'react'
 import { FaDownload } from 'react-icons/fa6'
 import { INotice } from '../../notice/_interface/type'
-import Link from 'next/link'
 
-export const BrochureCardUi = ({ data }: { data: INotice }) => {
+export const BrochureCardUi = ({
+  data,
+  handleBrochureClick,
+}: {
+  data: INotice
+  handleBrochureClick: React.MouseEventHandler<HTMLButtonElement> | undefined
+}) => {
   return (
-    <Link
-      download={'brochure-sample.pdf'}
-      target="_blank"
-      href={`/news/sample.pdf`}
-    >
+    <button onClick={handleBrochureClick}>
       <div className="p-5 rounded-xl bg-white flex items-center justify-between gap-4  border-b-[4px] border-r-[4px] border-shadowBorder group hover:bg-primary transition-all duration-500 cursor-pointer 2lg:max-w-[397px] 2lg:max-h-[104px]">
         <Image
           src={data.src}
@@ -29,6 +30,6 @@ export const BrochureCardUi = ({ data }: { data: INotice }) => {
         </div>
         <FaDownload className="text-[25px] text-body group-hover:text-white transition-all duration-500" />
       </div>
-    </Link>
+    </button>
   )
 }

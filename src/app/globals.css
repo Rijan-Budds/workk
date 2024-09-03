@@ -65,25 +65,26 @@
   outline-offset: 2px;
 }
 
-/* Style the entire scrollbar */
 .pdf-scrollbar::-webkit-scrollbar {
-  width: 4px; /* Width of the scrollbar */
-  height: 12px; /* Height of the scrollbar (horizontal scrollbar) */
+  width: 4px; 
+  height: 12px; 
 }
 
-/* Style the thumb (the draggable part of the scrollbar) */
 .pdf-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #5d5f69; /* Color of the thumb */
-  border-radius: 10px; /* Roundness of the thumb */
+  background-color: #5d5f69; 
+  border-radius: 10px; 
 }
 
 /* Style the thumb on hover */
 .pdf-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #555; /* Color of the thumb when hovered */
+  background-color: #555; 
+  padding-top: 30px;
 }
 
-/* Style the track (the part the thumb slides within) */
 .pdf-scrollbar::-webkit-scrollbar-track {
-  background-color: #f1f1f1; /* Color of the track */
-  border-radius: 10px; /* Roundness of the track */
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
 }

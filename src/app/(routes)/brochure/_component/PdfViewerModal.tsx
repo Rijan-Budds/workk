@@ -6,14 +6,15 @@ import React, { Dispatch, SetStateAction, useState } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { Document, Page, pdfjs } from 'react-pdf'
 import { PdfLoader } from './PdfLoader'
-
+import { CloseButton } from '@/common/components/Atom/CloseButton'
 
 type IScaleProps = 'plus' | 'minus'
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+export const PdfViewerModal = ({setOpen, src}: {setOpen: Dispatch<SetStateAction<boolean>>; src: string | null}) => {
+  pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
-export const PdfViewerModal = () => {
-  const [numPages, setNumPages] = useState<number>()
+
+  const [numPages, setNumPages] = useState<number | null>(null)
   const [pageNumber, setPageNumber] = useState<number>(1)
   const [onMouseOver, SetMouseOver] = useState<boolean>(false)
   const [scale, setScale] = useState<number>(1)
@@ -25,9 +26,9 @@ export const PdfViewerModal = () => {
 
   const handleZoom = (direction: IScaleProps) => {
     if (direction === 'plus') {
-      setScale((prevScale) => Math.min(prevScale + 0.1, 3)) // Max zoom level of 3
+      setScale((prevScale) => Math.min(prevScale + 0.1, 2))
     } else if (direction === 'minus') {
-      setScale((prevScale) => Math.max(prevScale - 0.1, 0.5)) // Min zoom level of 0.5
+      setScale((prevScale) => Math.max(prevScale - 0.1, 0.5))
     }
   }
 
@@ -35,21 +36,34 @@ export const PdfViewerModal = () => {
     setRotate((prev) => Math.min(prev + 90))
   }
 
+  const handleDownload = () => {
+    const link = document.createElement('a')
+    link.href = '/downloads/threejs.pdf'
+    link.download = 'threejs.pdf' 
+    link.click()
+  }
+
   return (
-    <div className="w-[90vw] 2lg:max-w-[45vw] overflow-x-clip  p-6 bg-white 2lg:min-h-[860px] ">
+    <div className="w-[90vw] 2lg:max-w-[45vw] overflow-x-clip  p-6 bg-white 2lg:min-h-[80vh]">
+      <CloseButton handleClick={() => setOpen(false) } />
       <div className="bg-background px-3 py-[17px] shadow z-10 relative flex items-center justify-between gap-x-3">
         <span className="text-heading text-[14px] leading-6 font-medium">
-          assessment
+          Assessment
         </span>
         <div className="flex gap-x-4 items-center">
           <div className="flex gap-x-2 items-center">
-            <div className="bg-primary px-[15px] py-[5px] text-[14px] leading-6 font-workSans font-medium w-fit rounded text-white ">
+            {numPages &&
+            <>
+              <div className="bg-primary px-[15px] py-[5px] text-[14px] leading-6 font-workSans font-medium w-fit rounded text-white ">
               {pageNumber}
             </div>
             /
             <div className=" py-[5px] text-[14px] leading-6 font-workSans font-medium w-fit rounded text-black ">
               {numPages}
             </div>
+            </>
+            }
+          
           </div>
           {/* zoom ui */}
           <div className="flex items-center gap-x-4 font-workSans selection:bg-none ">
@@ -81,11 +95,14 @@ export const PdfViewerModal = () => {
 
         {/* right container */}
         <div className="flex gap-x-4">
+          {/* download pdf icon */}
           <Image
+          onClick={handleDownload}
             src={'/downloads/download.svg'}
             width={20}
             height={20}
             alt="rotate icon"
+            className='cursor-pointer'
           />
         </div>
       </div>
@@ -94,29 +111,37 @@ export const PdfViewerModal = () => {
         onMouseEnter={() => SetMouseOver(true)}
         onMouseLeave={() => SetMouseOver(false)}
         onMouseOver={() => SetMouseOver(true)}
-        className="p-6  w-full max-h-[80vh] overflow-y-auto pdf-scrollbar flex flex-col items-center relative rounded pt-6 bg-grayBackground z-0"
+        className="p-6  w-full h-[80vh] overflow-y-auto flex  pdf-scrollbar flex-col items-center relative rounded pt-6 bg-grayBackground z-0"
       >
-        <Document
-          file={'/downloads/sample-1.pdf'}
-          onLoadSuccess={onDocumentLoadSuccess}
-          className={''}
-          renderMode="canvas"
-          loading={<PdfLoader />}
-          rotate={rotate}
-        >
-          <Page
-            pageNumber={pageNumber}
-            scale={scale}
-            className={'text-center'}
-            loading={<PdfLoader />}
-          />
-        </Document>
-        <NavigatePdfUi
-          pageNumber={pageNumber}
-          totalPage={numPages}
-          isMouseOver={onMouseOver}
-          setPageNumber={setPageNumber}
-        />
+        {src &&
+        <>
+           <Document
+             file={src}
+             onLoadSuccess={onDocumentLoadSuccess}
+             className={'w-fit '}
+             renderMode="canvas"
+             loading={<PdfLoader />}
+             rotate={rotate}
+             
+           >
+             <Page
+               pageNumber={pageNumber}
+               scale={scale}
+               className={'text-center'}
+               loading={<PdfLoader />}
+             />
+           </Document>
+             <NavigatePdfUi
+             pageNumber={pageNumber}
+             totalPage={numPages ? numPages : 1}
+             isMouseOver={onMouseOver}
+             setPageNumber={setPageNumber}
+           />
+        </>
+          
+        }
+   
+      
       </div>
     </div>
   )

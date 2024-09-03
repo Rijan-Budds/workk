@@ -7,7 +7,9 @@ import { PdfViewerModal } from './PdfViewerModal'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 
 export const BrochureUi = () => {
-  const [openModal] = useState<boolean>(true)
+  const [openModal, setOpenModal] = useState<boolean>(false)
+  const [pdfSrc, setPdfSrc] = useState<string | null>(null)
+  
   return (
     <>
       <div className="flex flex-col  gap-y-10 2lg:items-center">
@@ -18,13 +20,16 @@ export const BrochureUi = () => {
         </p>
         <div className="grid  2lg:grid-cols-3 gap-6">
           {NoticeCardData.map((notice) => (
-            <BrochureCardUi data={notice} key={notice.id} />
+            <BrochureCardUi data={notice} key={notice.id} handleBrochureClick={() => {
+              setOpenModal(true)
+              setPdfSrc(notice.pdfSrc)
+            }} />
           ))}
         </div>
       </div>
       {openModal && (
         <CustomModal isOpen={openModal}>
-          <PdfViewerModal />
+          <PdfViewerModal setOpen={setOpenModal} src={pdfSrc} />
         </CustomModal>
       )}
     </>
