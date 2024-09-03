@@ -4,17 +4,13 @@ import { cn } from '@/common/utils/utils'
 import Image from 'next/image'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
-import { Document, Page } from 'react-pdf'
-
-import { pdfjs } from 'react-pdf'
+import { Document, Page, pdfjs } from 'react-pdf'
 import { PdfLoader } from './PdfLoader'
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url
-).toString()
 
 type IScaleProps = 'plus' | 'minus'
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 export const PdfViewerModal = () => {
   const [numPages, setNumPages] = useState<number>()
