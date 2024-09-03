@@ -29,7 +29,14 @@ const FooterLinksData: FooterLink[] = [
   },
   {
     title: 'Quick Links',
-    content: [{ text: 'Introduction' }, { text: 'Our Success' }],
+    content: [
+      { text: 'Introduction' },
+      { text: 'Our Success' },
+      { text: 'Our Team' },
+      { text: 'Gallery' },
+      { text: 'Admission' },
+      { text: 'Contact' },
+    ],
   },
   {
     title: '  Plus Two',
