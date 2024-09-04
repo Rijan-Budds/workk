@@ -12,6 +12,7 @@ const AcademicDetail = () => {
         list={[
           { link: 'academic', title: 'Academic' },
           { link: '', title: 'PLus Two' },
+          { link: '', title: 'Management' },
         ]}
       />
       <HomeWrapper>

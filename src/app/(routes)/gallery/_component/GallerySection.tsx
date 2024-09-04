@@ -64,25 +64,24 @@ export const GallerySection = () => {
             {renderGalleryCardsUi()}
           </div>
         </div>
-
-        {src.length > 0 && (
-          <CustomModal isOpen={isModalOpen}>
-            <GalleryModal
-              src={
-                activeImage
-                  ? dynamicCardsData[activeImage].src
-                  : dynamicCardsData[0].src
-              }
-              setModalOpen={setModalOpen}
-              setSrc={setSrc}
-              setActiveImage={setActiveImage}
-              length={dynamicCardsData.length - 1}
-              type={type}
-              showSwipe={dynamicCardsData.length > 1}
-            />
-          </CustomModal>
-        )}
       </HomeWrapper>
+      {src.length > 0 && (
+        <CustomModal isOpen={isModalOpen}>
+          <GalleryModal
+            src={
+              activeImage
+                ? dynamicCardsData[activeImage].src
+                : dynamicCardsData[0].src
+            }
+            setModalOpen={setModalOpen}
+            setSrc={setSrc}
+            setActiveImage={setActiveImage}
+            length={dynamicCardsData.length - 1}
+            type={type}
+            showSwipe={dynamicCardsData.length > 1}
+          />
+        </CustomModal>
+      )}
     </>
   )
 }

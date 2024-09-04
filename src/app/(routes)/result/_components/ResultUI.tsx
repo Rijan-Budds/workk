@@ -38,7 +38,11 @@ const ResultUi = () => {
   }
   return (
     <div>
-      <CoverImage title="Result" />
+      <CoverImage
+        title="Result"
+        list={[{ link: '', title: 'Result' }]}
+        key={title}
+      />
       <HomeWrapper>
         <div className="">
           <ResultTab handleDynamicData={handleDynamicData} />

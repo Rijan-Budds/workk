@@ -40,7 +40,7 @@ export const ContactForm = () => {
 
   return (
     <div
-      className={`relative z-10 w-full bg-cover p-8 rounded-[12px] ${isContactPage ? "bg-[url('/home/alt-contact-bg.svg')] text-black" : "bg-[url('/home/contact-bg.svg')] text-white"}`}
+      className={`relative z-10 w-full bg-cover p-8 rounded-[12px] ${isContactPage ? "bg-[url('/home/alt-contact-bg.svg')] text-black bg-right" : "bg-[url('/home/contact-bg.svg')] text-white"}`}
     >
       <h1 className="font-poppins text-[28px] leading-[36.4px]">
         Get in touch with Us

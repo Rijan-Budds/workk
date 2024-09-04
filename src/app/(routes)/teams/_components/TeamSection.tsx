@@ -34,7 +34,11 @@ const TeamSection = () => {
 
   return (
     <>
-      <CoverImage title="Our Team" />
+      <CoverImage
+        title="Our Team"
+        list={[{ link: '', title: 'Our Team' }]}
+        key={title}
+      />
       <HomeWrapper>
         <div className="flex flex-col md:items-center gap-y-10 2lg:gap-y-14">
           <div>

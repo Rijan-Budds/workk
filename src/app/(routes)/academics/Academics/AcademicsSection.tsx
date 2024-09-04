@@ -4,13 +4,15 @@ import React from 'react'
 import PlusTwoSection from './PlusTwoSection'
 import MiddleBanner from './MiddleBanner'
 import SchoolSection from './SchoolSection'
+import { title } from 'process'
 
 const AcademicsSection = () => {
   return (
     <>
       <CoverImage
         title="Academics"
-        list={[{ link: 'academic', title: 'Academic' }]}
+        list={[{ link: 'academics', title: 'Academic' }]}
+        key={title}
       />
       <HomeWrapper>
         <PlusTwoSection />
