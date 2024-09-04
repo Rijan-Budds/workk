@@ -16,11 +16,7 @@ const ApplyPage = () => {
       window.removeEventListener('beforeunload', handleBeforeReload)
     }
   }, [])
-  return (
-    <div>
-      <Admission />
-    </div>
-  )
+  return <Admission />
 }
 
 export default ApplyPage
