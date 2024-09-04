@@ -8,7 +8,10 @@ import { Button } from '@/common/components/Atom/Button'
 const TestimonialsSection = () => {
   return (
     <>
-      <CoverImage title="Testimonials" />
+      <CoverImage
+        title="Testimonial"
+        list={[{ link: '', title: 'Testimonial' }]}
+      />
       <HomeWrapper>
         <div className="grid md:grid-cols-2 gap-6">
           {cardData.map((card) => (

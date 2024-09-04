@@ -34,7 +34,11 @@ const AdmissionSection = () => {
   }
   return (
     <div>
-      <CoverImage title="Admission" />
+      <CoverImage
+        title="Admission"
+        list={[{ link: '', title: 'Admission' }]}
+        key={title}
+      />
 
       <HomeWrapper>
         <div className="flex flex-col lg:flex-row gap-[80px] lg:gap-[56px]">

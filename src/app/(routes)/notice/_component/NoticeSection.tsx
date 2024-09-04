@@ -6,7 +6,7 @@ import { NoticeClientSection } from './NoticeClientSection'
 export const NoticeSection = () => {
   return (
     <>
-      <CoverImage title="Notices" />
+      <CoverImage title="Notices" list={[{ link: '', title: 'Notices' }]} />
       <HomeWrapper>
         <div className="flex flex-col  gap-y-10 2lg:items-center">
           <p className="text-body font-workSans text-[16px] leading-[27.2px] font-normal text-center 2lg:max-w-[713px] ">

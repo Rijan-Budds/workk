@@ -35,13 +35,10 @@ export const GalleryModal = ({
   }
 
   return (
-    <div className=" flex flex-col justify-center items-center 2lg:items-start   relative  bg-white rounded-xl overflow-hidden  2lg:w-[1085px]">
-      <div className="flex justify-between w-full p-6 bg-background rounded-xl">
-        <h2 className="font-poppins font-semibold text-[28px] leading-[36.4px]">
-          A Student’s Life
-        </h2>
+    <div className=" flex flex-col justify-center items-center 2lg:items-start relative rounded-xl overflow-hidden 2lg:w-full h-[90vh]">
+      <div className="flex justify-end w-full p-6 rounded-xl">
         <CloseButton
-          className="relative mb-2"
+          className="absolute mb-2 right-4 top-0"
           handleClick={() => {
             if (setSrc && setActiveImage) {
               setSrc('')
@@ -54,14 +51,14 @@ export const GalleryModal = ({
           }}
         />
       </div>
-      <div className="w-full h-full bg-white p-6 rounded-xl  ">
+      <div className="w-[100vw] p-6 rounded-xl">
         {type === 'photo' ? (
           <Image
             src={src}
             alt="zoom gallery image"
             width={1280}
             height={854}
-            className="object-contain pointer-events-none selection:bg-transparent transition-all duration-1000  w-[90vw] max-h-[60vh] min-h-[20vh]   md:w-[80vw]   md:min-h-[60vh] md:max-h-[65vh]  2lg:min-h-[70vh] 2lg:max-h-[74vh] mx-auto"
+            className="object-cover pointer-events-none selection:bg-transparent transition-all duration-1000 mx-auto w-[1053px] h-[610px] rounded-xl"
           />
         ) : (
           <>

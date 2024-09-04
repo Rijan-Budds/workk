@@ -2,7 +2,6 @@ export const navLinks = [
   {
     id: 1,
     title: 'About Us',
-    link: '',
     sublink: [
       {
         id: 1,
@@ -25,7 +24,6 @@ export const navLinks = [
   {
     id: 2,
     title: 'Academics',
-    link: '',
     isDropDown: true,
     sublink: [
       {

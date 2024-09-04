@@ -36,18 +36,18 @@ export const SidebarContainer = ({
               }
             }}
           >
-            <Link
-              href={!link.isDropDown ? link.link : ''}
-              onClick={() => {
-                if (!link.isDropDown) {
+            {!link.isDropDown && link.link && (
+              <Link
+                href={link.link}
+                onClick={() => {
                   setOpenMainSidebar(false)
-                }
-              }}
-            >
-              <span className="font-workSans font-medium text-[14px] leading-4 text-heading">
-                {link.title}
-              </span>
-            </Link>
+                }}
+              >
+                <span className="font-workSans font-medium text-[14px] leading-4 text-heading">
+                  {link.title}
+                </span>
+              </Link>
+            )}
 
             {link.isDropDown && (
               <FiChevronDown className="w-[14px]   group-hover:text-primary transition-all duration-500 -rotate-90" />
