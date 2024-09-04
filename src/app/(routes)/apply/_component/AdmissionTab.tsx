@@ -1,13 +1,16 @@
 'use client'
 
 import { TabSwitch } from '@/common/components/Atom/TabSwitch'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PlusTwoForm } from './PlusTwoForm'
 import { SchoolForm } from './SchoolForm'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { UnSaveChange } from './UnSaveChange'
+import { useSearchParams } from 'next/navigation'
 
 export const AdmissionTab = () => {
+  const params = useSearchParams()
+
   const tabs = [
     { key: 'plus-two', title: '+2 Registration Form' },
     { key: 'school', title: 'School Registration Form' },
@@ -43,6 +46,13 @@ export const AdmissionTab = () => {
       setActiveTab(key)
     }
   }
+
+  useEffect(() => {
+    const getFormType = params.get('form')
+    if (getFormType) {
+      setActiveTab(getFormType)
+    }
+  }, [params])
 
   return (
     <div className="flex flex-col  justify-center items-center gap-y-10">

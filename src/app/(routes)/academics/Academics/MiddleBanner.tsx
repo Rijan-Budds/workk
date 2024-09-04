@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const MiddleBanner = () => {
@@ -29,16 +30,23 @@ const MiddleBanner = () => {
           </p>
         </div>
         <div className="md:w-[608px] flex flex-col md:flex-row gap-6">
-          <div className="w-[292px] bg-white rounded-xl">
-            <div className="pt-[56px] pl-[24px] pb-[24px] pr-[118px] leading-7 text-base font-workSans font-normal text-primary">
-              <h1>Apply to Plus Two Programs</h1>
-            </div>
+          <div className="w-[292px] bg-white rounded-xl transition-all duration-500 hover:-translate-y-1">
+            <Link href={'/apply?form=plus-two'}>
+              <div className="pt-[56px] pl-[24px] pb-[24px] pr-[118px] leading-7 text-base font-workSans font-normal text-primary">
+                <h1>Apply to Plus Two Programs</h1>
+              </div>
+            </Link>
           </div>
-          <div className="w-[292px] bg-transparent border-[1px] border-white rounded-xl">
-            <div className="pt-[56px] pl-[24px] pb-[24px] pr-[90px]  leading-7 text-base font-workSans font-normal text-white">
-              <h1>Apply to School Level Programs</h1>
+          <Link
+            href={'/apply?form=school'}
+            className="transition-all duration-500 hover:-translate-y-1"
+          >
+            <div className="w-[292px] bg-transparent border-[1px] border-white rounded-xl">
+              <div className="pt-[56px] pl-[24px] pb-[24px] pr-[90px]  leading-7 text-base font-workSans font-normal text-white">
+                <h1>Apply to School Level Programs</h1>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

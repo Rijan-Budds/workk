@@ -15,7 +15,7 @@ export const NewsSection = () => {
         title="News & Events"
         list={[{ link: null, title: 'News & Events' }]}
       />
-      <HomeWrapper>
+      <HomeWrapper className="2lg:pb-32">
         <div className="flex flex-row flex-wrap justify-center md:justify-between  gap-x-4 gap-y-28  ">
           {newsandevent.map((news) => (
             <Link href={`/news/ffff`} key={news.id}>

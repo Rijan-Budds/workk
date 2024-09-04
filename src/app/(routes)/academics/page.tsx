@@ -2,11 +2,7 @@ import React from 'react'
 import AcademicsSection from './Academics/AcademicsSection'
 
 const page = () => {
-  return (
-    <div>
-      <AcademicsSection />
-    </div>
-  )
+  return <AcademicsSection />
 }
 
 export default page

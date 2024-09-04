@@ -140,13 +140,13 @@ export const navLinks = [
     sublink: [
       {
         id: 1,
-        title: 'News & Events',
+        title: 'News & Notices',
         link: '/news',
       },
       {
         id: 2,
-        title: 'Notices',
-        link: '/notice',
+        title: 'Events',
+        link: '/events',
       },
       {
         id: 3,
