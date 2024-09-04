@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { FaDownload } from 'react-icons/fa6'
-import { INotice } from '../../notice/_interface/type'
+import { INotice } from '../../events/_interface/type'
 
 export const BrochureCardUi = ({
   data,

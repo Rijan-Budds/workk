@@ -13,8 +13,8 @@ import { Form, Formik } from 'formik'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import * as Yup from 'yup'
-import { ContactDropdown } from './ContactDropdown'
 import { SuccessMessageUi } from '@/common/components/Molecules/SuccessMessageUi'
+import { CustomDropdown } from '@/common/components/Molecules/CustomDropdown'
 
 export const ContactForm = () => {
   const [message, setMessage] = useState<string>('')
@@ -38,9 +38,23 @@ export const ContactForm = () => {
 
   const isContactPage = pathname === '/contact'
 
+  const dropDownList = [
+    {
+      title: 'School',
+      value: 'school',
+    },
+    {
+      title: 'Plus Two',
+      value: 'plus-two',
+    },
+  ]
   return (
     <div
-      className={`relative z-10 w-full bg-cover p-8 rounded-[12px] ${isContactPage ? "bg-[url('/home/alt-contact-bg.svg')] text-black bg-right" : "bg-[url('/home/contact-bg.svg')] text-white"}`}
+      className={`relative z-10 w-full bg-cover p-8 rounded-[12px] ${
+        isContactPage
+          ? "bg-[url('/home/alt-contact-bg.svg')] text-black bg-right"
+          : "bg-[url('/home/contact-bg.svg')] text-white"
+      }`}
     >
       <h1 className="font-poppins text-[28px] leading-[36.4px]">
         Get in touch with Us
@@ -48,7 +62,9 @@ export const ContactForm = () => {
       <p className="font-workSans font-light text-[16px] leading-[27.2px] mt-4">
         You can reach us anytime via{' '}
         <span
-          className={`underline ${isContactPage ? 'text-secondary' : 'text-white'}`}
+          className={`underline ${
+            isContactPage ? 'text-secondary' : 'text-white'
+          }`}
         >
           pawanprakriti2048@gmail.com
         </span>
@@ -65,7 +81,7 @@ export const ContactForm = () => {
         })}
       >
         {(formik) => {
-          const { errors, touched, setFieldValue } = formik
+          const { errors, touched, setFieldValue, values } = formik
           return (
             <Form>
               <div className="flex flex-col gap-y-6  mt-[32px]">
@@ -102,10 +118,18 @@ export const ContactForm = () => {
                   isError={!!errors.phone && touched.phone}
                   labelColor={isContactPage ? 'text-black' : 'text-white'}
                 />
-                <ContactDropdown
+
+                <CustomDropdown
                   setFieldValue={setFieldValue}
-                  error={errors.level!}
                   isError={!!errors.level}
+                  error={errors.level!}
+                  list={dropDownList}
+                  placeHolder={'Select level'}
+                  label="Level"
+                  field={'level'}
+                  isRequired
+                  value={values.level}
+                  classNameLabel="text-white"
                 />
                 <Input
                   isMessage
