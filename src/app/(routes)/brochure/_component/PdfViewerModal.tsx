@@ -4,23 +4,20 @@ import { cn } from '@/common/utils/utils'
 import Image from 'next/image'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
-import { Document, Page } from 'react-pdf'
-
-import { pdfjs } from 'react-pdf'
+import { Document, Page, pdfjs } from 'react-pdf'
 import { PdfLoader } from './PdfLoader'
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url
-).toString()
 
 type IScaleProps = 'plus' | 'minus'
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 export const PdfViewerModal = () => {
   const [numPages, setNumPages] = useState<number>()
   const [pageNumber, setPageNumber] = useState<number>(1)
   const [onMouseOver, SetMouseOver] = useState<boolean>(false)
   const [scale, setScale] = useState<number>(1)
+  const [rotate, setRotate] = useState<number>(0)
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
     setNumPages(numPages)
@@ -34,8 +31,12 @@ export const PdfViewerModal = () => {
     }
   }
 
+  const handleRotation = () => {
+    setRotate((prev) => Math.min(prev + 90))
+  }
+
   return (
-    <div className="w-[90vw] 2lg:max-w-[45vw] overflow-x-clip  p-6 bg-white">
+    <div className="w-[90vw] 2lg:max-w-[45vw] overflow-x-clip  p-6 bg-white 2lg:min-h-[860px] ">
       <div className="bg-background px-3 py-[17px] shadow z-10 relative flex items-center justify-between gap-x-3">
         <span className="text-heading text-[14px] leading-6 font-medium">
           assessment
@@ -69,6 +70,7 @@ export const PdfViewerModal = () => {
             </span>
           </div>
           <Image
+            onClick={handleRotation}
             src={'/downloads/rotate-icon.svg'}
             width={20}
             height={20}
@@ -92,7 +94,7 @@ export const PdfViewerModal = () => {
         onMouseEnter={() => SetMouseOver(true)}
         onMouseLeave={() => SetMouseOver(false)}
         onMouseOver={() => SetMouseOver(true)}
-        className=" p-6  w-full max-h-[80vh] overflow-y-scroll flex flex-col items-center relative rounded pt-6 bg-grayBackground z-0"
+        className="p-6  w-full max-h-[80vh] overflow-y-auto pdf-scrollbar flex flex-col items-center relative rounded pt-6 bg-grayBackground z-0"
       >
         <Document
           file={'/downloads/sample-1.pdf'}
@@ -100,11 +102,13 @@ export const PdfViewerModal = () => {
           className={''}
           renderMode="canvas"
           loading={<PdfLoader />}
+          rotate={rotate}
         >
           <Page
             pageNumber={pageNumber}
             scale={scale}
             className={'text-center'}
+            loading={<PdfLoader />}
           />
         </Document>
         <NavigatePdfUi

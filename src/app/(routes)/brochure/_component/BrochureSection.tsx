@@ -1,3 +1,4 @@
+'use client'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import React from 'react'
