@@ -5,6 +5,7 @@ import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import Image from 'next/image'
 import { HeroImageSection } from './HeroImageSection'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
+import Link from 'next/link'
 
 export const HeroSection = () => {
   return (
@@ -31,8 +32,13 @@ export const HeroSection = () => {
                   Lalitpur.
                 </p>
                 <div className="flex flex-col md:flex-row gap-y-4 justify-center 2lg:justify-start w-full mt-[32px]  md:gap-x-4">
-                  <Button className="">Apply Now</Button>
-                  <button className=" bg-white pr-6 pl-[10px] py-1 rounded-[8px] text-primary leading-4 font-medium flex items-center justify-center 2lg:justify-start gap-x-1">
+                  <Link href={'/apply'}>
+                    <Button className="">Apply Now</Button>
+                  </Link>
+                  <Link
+                    href={'/academics'}
+                    className=" bg-white pr-6 pl-[10px] py-1 rounded-[8px] text-primary leading-4 font-medium flex items-center justify-center 2lg:justify-start gap-x-1"
+                  >
                     <Image
                       width={40}
                       height={40}
@@ -40,7 +46,7 @@ export const HeroSection = () => {
                       src="/home/btn-animation.gif"
                     />
                     Admission Open
-                  </button>
+                  </Link>
                 </div>
               </div>
               <div className=" items-center gap-x-3 hidden  2lg:flex">

@@ -29,7 +29,7 @@ export const NavHeaderLink = () => {
       </Link>
 
       <Link href={'/result'} className="">
-        <span className="flex gap-x-[6.67px]  items-center font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading cursor-default hover:text-primary transition-all duration-500">
+        <span className="flex gap-x-[6.67px]  items-center font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading cursor-default hover:text-primary transition-all duration-500 font-workSans">
           Result
           <Image
             width={6}

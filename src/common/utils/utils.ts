@@ -12,9 +12,7 @@ export const byteToMb = (bytes: number) => (bytes / (1024 * 1024)).toFixed(2)
  * @returns A string indicating the type of file ('image', 'pdf', or 'other').
  */
 export const checkFileType = (fileType: string): 'image' | 'pdf' | 'other' => {
-  if (fileType.startsWith('image/')) {
-    return 'image'
-  } else if (fileType === 'application/pdf') {
+  if (fileType === 'application/pdf') {
     return 'pdf'
   } else {
     return 'other'

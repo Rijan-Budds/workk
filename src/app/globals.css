@@ -64,3 +64,27 @@
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
+
+.pdf-scrollbar::-webkit-scrollbar {
+  width: 4px; 
+  height: 12px; 
+}
+
+.pdf-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #5d5f69; 
+  border-radius: 10px; 
+}
+
+/* Style the thumb on hover */
+.pdf-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #555; 
+  padding-top: 30px;
+}
+
+.pdf-scrollbar::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
+}

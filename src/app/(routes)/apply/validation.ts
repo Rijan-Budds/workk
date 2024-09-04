@@ -132,11 +132,11 @@ export const fileValidation = Yup.array()
     Yup.mixed()
       .test('fileSize', 'File size should be less than 10 MB', (value) => {
         if (value && (value as File).size) {
-          return (value as File).size <= 1
+          return (value as File).size <= 10
         }
         return true
       })
-      .test('fileType', 'Only images and PDFs are allowed', (value) => {
+      .test('fileType', 'Only PDFs are allowed', (value) => {
         if (value && (value as File).type) {
           return allowedFileypes.includes((value as File).type)
         }

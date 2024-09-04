@@ -12,7 +12,7 @@ export const MobileNavHeader = () => {
 
   return (
     <>
-      <div className="p-4 bg-background flex justify-between items-center py-4">
+      <div className="p-4 bg-background/85 backdrop-blur-xl flex justify-between items-center py-4 shadow">
         <div className="flex items-center gap-x-3">
           <Link href={'/'}>
             <Image

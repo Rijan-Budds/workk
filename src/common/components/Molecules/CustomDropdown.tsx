@@ -9,6 +9,7 @@ import {
 } from '../ui/select'
 import { ErrorComponent } from '../Atom/Input'
 import { IDropdownList } from '@/common/interface/type'
+import { cn } from '@/lib/utils'
 
 interface ICustomDropdownProps {
   setFieldValue?: (field: string, value: string) => void
@@ -20,6 +21,7 @@ interface ICustomDropdownProps {
   field: string
   isRequired: boolean
   value: string
+  classNameLabel?: string
 }
 
 export const CustomDropdown = ({
@@ -32,12 +34,16 @@ export const CustomDropdown = ({
   field,
   isRequired,
   value,
+  classNameLabel,
 }: ICustomDropdownProps) => {
   return (
     <div className="flex flex-col gap-y-2 w-full">
       <label
         htmlFor={label}
-        className="text-body font-normal text-[14px] leading-4 font-workSans"
+        className={cn(
+          'text-body font-normal text-[14px] leading-4 font-workSans',
+          classNameLabel
+        )}
       >
         {label} {isRequired && '*'}
       </label>
@@ -47,16 +53,17 @@ export const CustomDropdown = ({
           setFieldValue && setFieldValue(field, value)
         }
       >
-        <SelectTrigger className="rounded-lg p-4 text-body">
-          <SelectValue
-            placeholder={placeHolder}
-            className="text-body text-[14px] leading-4 font-workSans"
-          />
+        <SelectTrigger className="rounded-lg p-4 ">
+          <SelectValue placeholder={placeHolder} />
         </SelectTrigger>
-        <SelectContent className="border-b-2 border-border">
+        <SelectContent className="border-b-2 brder-border">
           <SelectGroup>
             {list.map((d) => (
-              <SelectItem key={d.value} value={d.value} className="">
+              <SelectItem
+                key={d.value}
+                value={d.value}
+                className="font-poppins text-body"
+              >
                 {d.title}
               </SelectItem>
             ))}

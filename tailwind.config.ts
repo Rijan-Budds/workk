@@ -33,6 +33,7 @@ const config = {
         error: '#B91C1C',
         success: '#166534',
         successBg: '#DCFCE7',
+        grayBackground: '#F8F8FA',
       },
       screens: {
         '2lg': '1270px',
