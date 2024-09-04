@@ -25,7 +25,7 @@ export const ContactSection = () => {
       className={`${isContactPage ? 'pt-6' : 'pt-[40px]  md:pt-[112px]'}`}
     >
       <div className="flex flex-col gap-y-8">
-        <div className="flex flex-col-reverse lg:flex-row gap-y-6 md:gap-x-6 justify-center">
+        <div className="flex flex-col-reverse  lg:flex-row gap-y-6 md:gap-x-6 justify-center">
           <ContactLocation />
           <ContactForm />
         </div>
