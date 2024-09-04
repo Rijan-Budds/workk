@@ -75,9 +75,9 @@ export const GalleryCard = ({
 
       <div
         className={cn(
-          'bg-white absolute -bottom-20 left-1/2 -translate-x-1/2 rounded-[12px] text-nowrap group-hover:bottom-6 transition-all duration-500 will-change-transform ',
+          'bg-white absolute 2lg:-bottom-20 left-1/2 -translate-x-1/2 rounded-[12px] text-nowrap bottom-6 2lg:group-hover:bottom-6 transition-all duration-500 will-change-transform ',
           {
-            'group-hover:bottom-20': gallery.type === 'video',
+            '2lg:group-hover:bottom-20': gallery.type === 'video',
           }
         )}
       >

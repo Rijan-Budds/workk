@@ -69,9 +69,9 @@ const FooterLinks = () => {
               {data.title}
             </h1>
 
-            <div className="mt-6 space-y-4 text-base leading-4 text-white font-workSans font-light">
+            <div className="mt-6 space-y-4 text-sm leading-4 text-white font-workSans font-light">
               {data.content.map((content, index) => (
-                <div key={index}>
+                <div key={index} className="hover:underline cursor-pointer">
                   {'subtitle' in content && (
                     <span className="font-medium">{content.subtitle} : </span>
                   )}

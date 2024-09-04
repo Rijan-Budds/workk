@@ -6,7 +6,7 @@ export const NavHeaderLink = () => {
   return (
     <div className="flex gap-x-6  pr-6 border-r-[1px] border-border">
       <Link href={'/brochure'}>
-        <span className="flex gap-x-[6.67px] items-center font-medium text-[12px] leading-4 tracking-wide uppercase text-heading  hover:text-primary transition-all duration-500">
+        <span className="flex gap-x-[6.67px] items-center font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading  hover:text-primary transition-all duration-500">
           Brochure
           <Image
             width={6}
@@ -17,7 +17,7 @@ export const NavHeaderLink = () => {
         </span>
       </Link>
       <Link href={'/apply'} className="">
-        <span className="flex gap-x-[6.67px]  items-center cursor-pointer font-medium text-[12px] leading-4 tracking-wide uppercase text-heading  hover:text-primary transition-all duration-500">
+        <span className="flex gap-x-[6.67px]  items-center cursor-pointer font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading  hover:text-primary transition-all duration-500">
           Apply now
           <Image
             width={6}
@@ -29,7 +29,7 @@ export const NavHeaderLink = () => {
       </Link>
 
       <Link href={'/result'} className="">
-        <span className="flex gap-x-[6.67px]  items-center font-medium text-[12px] leading-4 tracking-wide uppercase text-heading cursor-default hover:text-primary transition-all duration-500">
+        <span className="flex gap-x-[6.67px]  items-center font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading cursor-default hover:text-primary transition-all duration-500">
           Result
           <Image
             width={6}

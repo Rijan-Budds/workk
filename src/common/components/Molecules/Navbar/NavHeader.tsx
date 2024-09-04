@@ -44,30 +44,34 @@ export const NavHeader = () => {
 
 export const NavHeaderSocialMedia = () => {
   return (
-    <div className="flex gap-x-4 items-center">
+    <div className="flex gap-x-6 2lg:gap-x-4 items-center">
       <Image
         width={14}
         height={14}
         src={'/home/twitter.svg'}
         alt="Twitter logo"
+        className="w-6 h-6 2lg:w-[14px] 2lg:h-[14px]"
       />
       <Image
         width={8}
         height={14}
         src={'/home/facebook.svg'}
         alt="Twitter logo"
+        className="w-6 h-6 2lg:w-[14px] 2lg:h-[14px]"
       />
       <Image
         width={14}
         height={14}
         src={'/home/instagram.svg'}
         alt="Twitter logo"
+        className="w-6 h-6 2lg:w-[14px] 2lg:h-[14px]"
       />
       <Image
         width={14}
         height={14}
         src={'/home/youtube.svg'}
         alt="Twitter logo"
+        className="w-6 h-6 2lg:w-[14px] 2lg:h-[14px]"
       />
     </div>
   )

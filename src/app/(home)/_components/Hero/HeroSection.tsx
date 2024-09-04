@@ -13,8 +13,10 @@ export const HeroSection = () => {
         <div className="flex items-center flex-col  2lg:flex-row  w-full  ">
           <div className="flex justify-start items-center w-full  ">
             <div className="flex flex-col gap-y-24 2lg:mt-16">
-              <div className="flex flex-col gap-y-2  items-start">
-                <MiniHeading>Welcome to Pawan prakriti school</MiniHeading>
+              <div className="flex flex-col gap-y-2 items-center 2lg:items-start">
+                <MiniHeading isMd className="text-center">
+                  Welcome to Pawan prakriti school
+                </MiniHeading>
 
                 <h1 className="text-[32px] md:text-[42px] leading-[41.6px] md:leading-[54.6px] text-center 2lg:text-left font-medium md:font-semibold text-white font-poppins">
                   Be An Achiever With Good
