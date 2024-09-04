@@ -47,16 +47,17 @@ export const CustomDropdown = ({
           setFieldValue && setFieldValue(field, value)
         }
       >
-        <SelectTrigger className="rounded-lg p-4 text-body">
-          <SelectValue
-            placeholder={placeHolder}
-            className="text-body text-[16px] leading-4 font-workSans"
-          />
+        <SelectTrigger className="rounded-lg p-4 ">
+          <SelectValue placeholder={placeHolder} />
         </SelectTrigger>
-        <SelectContent className="border-b-2 border-border">
+        <SelectContent className="border-b-2 brder-border">
           <SelectGroup>
             {list.map((d) => (
-              <SelectItem key={d.value} value={d.value} className="">
+              <SelectItem
+                key={d.value}
+                value={d.value}
+                className="font-poppins text-body"
+              >
                 {d.title}
               </SelectItem>
             ))}

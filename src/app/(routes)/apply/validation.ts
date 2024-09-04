@@ -136,7 +136,7 @@ export const fileValidation = Yup.array()
         }
         return true
       })
-      .test('fileType', 'Only images and PDFs are allowed', (value) => {
+      .test('fileType', 'Only PDFs are allowed', (value) => {
         if (value && (value as File).type) {
           return allowedFileypes.includes((value as File).type)
         }

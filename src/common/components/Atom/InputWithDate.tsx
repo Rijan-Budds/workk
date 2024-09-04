@@ -45,9 +45,15 @@ export const InputWithDate = ({
               }
             )}
           >
-            <span className="text-body ">
-              {selectedDate && value ? <>{value}</> : 'Pick a date'}
-            </span>
+            {selectedDate && value ? (
+              <span className="text-black text-[16px] font-workSans">
+                <>{value}</>
+              </span>
+            ) : (
+              <span className="text-body font-workSans font-normal text-[14px] leading-4">
+                Your D.O.B
+              </span>
+            )}
             <Image
               src={'/admission/calender.svg'}
               width={16}
