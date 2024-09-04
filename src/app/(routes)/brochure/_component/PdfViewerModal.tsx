@@ -2,7 +2,7 @@
 
 import { cn } from '@/common/utils/utils'
 import Image from 'next/image'
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { Document, Page, pdfjs } from 'react-pdf'
 import { PdfLoader } from './PdfLoader'
@@ -10,15 +10,20 @@ import { CloseButton } from '@/common/components/Atom/CloseButton'
 
 type IScaleProps = 'plus' | 'minus'
 
-export const PdfViewerModal = ({setOpen, src}: {setOpen: Dispatch<SetStateAction<boolean>>; src: string | null}) => {
-  pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
-
+export const PdfViewerModal = ({
+  setOpen,
+  src,
+}: {
+  setOpen: Dispatch<SetStateAction<boolean>>
+  src: string | null
+}) => {
+  pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`
 
   const [numPages, setNumPages] = useState<number | null>(null)
   const [pageNumber, setPageNumber] = useState<number>(1)
   const [onMouseOver, SetMouseOver] = useState<boolean>(false)
   const [scale, setScale] = useState<number>(1)
-  const [rotate, setRotate] = useState<number>(0)
+  // const [rotate, setRotate] = useState<number>(0)
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
     setNumPages(numPages)
@@ -32,41 +37,71 @@ export const PdfViewerModal = ({setOpen, src}: {setOpen: Dispatch<SetStateAction
     }
   }
 
-  const handleRotation = () => {
-    setRotate((prev) => Math.min(prev + 90))
-  }
+  // const handleRotation = () => {
+  //   setRotate((prev) => Math.min(prev + 90))
+  // }
 
   const handleDownload = () => {
     const link = document.createElement('a')
     link.href = '/downloads/threejs.pdf'
-    link.download = 'threejs.pdf' 
+    link.download = 'threejs.pdf'
     link.click()
   }
 
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth
+
+      if (width < 441) {
+        setScale(0.4)
+      } else if (width < 510) {
+        setScale(0.5)
+      } else if (width < 600) {
+        setScale(0.6)
+      } else if (width < 710) {
+        setScale(0.7) // Default scale
+      } else if (width < 800) {
+        setScale(0.8)
+      } else {
+        setScale(1)
+      }
+    }
+
+    // Set the initial scale
+    handleResize()
+
+    // Attach the event listener
+    window.addEventListener('resize', handleResize)
+
+    // Clean up the event listener
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   return (
-    <div className="w-[90vw] 2lg:max-w-[45vw] overflow-x-clip  p-6 bg-white 2lg:min-h-[80vh]">
-      <CloseButton handleClick={() => setOpen(false) } />
+    <div className="w-[90vw]  2lg:max-w-[45vw] overflow-x-clip  p-6 bg-white 2lg:min-h-[80vh]">
+      <CloseButton handleClick={() => setOpen(false)} />
       <div className="bg-background px-3 py-[17px] shadow z-10 relative flex items-center justify-between gap-x-3">
         <span className="text-heading text-[14px] leading-6 font-medium">
           Assessment
         </span>
         <div className="flex gap-x-4 items-center">
           <div className="flex gap-x-2 items-center">
-            {numPages &&
-            <>
-              <div className="bg-primary px-[15px] py-[5px] text-[14px] leading-6 font-workSans font-medium w-fit rounded text-white ">
-              {pageNumber}
-            </div>
-            /
-            <div className=" py-[5px] text-[14px] leading-6 font-workSans font-medium w-fit rounded text-black ">
-              {numPages}
-            </div>
-            </>
-            }
-          
+            {numPages && (
+              <>
+                <div className="bg-primary px-[15px] py-[5px] text-[14px] leading-6 font-workSans font-medium w-fit rounded text-white ">
+                  {pageNumber}
+                </div>
+                /
+                <div className=" py-[5px] text-[14px] leading-6 font-workSans font-medium w-fit rounded text-black ">
+                  {numPages}
+                </div>
+              </>
+            )}
           </div>
           {/* zoom ui */}
-          <div className="flex items-center gap-x-4 font-workSans selection:bg-none ">
+          <div className="items-center gap-x-4 font-workSans selection:bg-none hidden 2lg:flex ">
             <span
               onClick={() => handleZoom('minus')}
               className="font-workSans font-medium text-[16px] leading-[20px] text-heading size-8 cursor-pointer  flex justify-center items-center"
@@ -83,26 +118,26 @@ export const PdfViewerModal = ({setOpen, src}: {setOpen: Dispatch<SetStateAction
               +
             </span>
           </div>
-          <Image
+          {/* <Image
             onClick={handleRotation}
             src={'/downloads/rotate-icon.svg'}
             width={20}
             height={20}
             alt="rotate icon"
             className="ml-6"
-          />
+          /> */}
         </div>
 
         {/* right container */}
         <div className="flex gap-x-4">
           {/* download pdf icon */}
           <Image
-          onClick={handleDownload}
+            onClick={handleDownload}
             src={'/downloads/download.svg'}
             width={20}
             height={20}
-            alt="rotate icon"
-            className='cursor-pointer'
+            alt="pdf icon"
+            className="cursor-pointer"
           />
         </div>
       </div>
@@ -111,37 +146,32 @@ export const PdfViewerModal = ({setOpen, src}: {setOpen: Dispatch<SetStateAction
         onMouseEnter={() => SetMouseOver(true)}
         onMouseLeave={() => SetMouseOver(false)}
         onMouseOver={() => SetMouseOver(true)}
-        className="p-6  w-full h-[80vh] overflow-y-auto flex  pdf-scrollbar flex-col items-center relative rounded pt-6 bg-grayBackground z-0"
+        className="p-1 lg:p-6  w-full h-[68vh] lg:h-[80vh] overflow-y-scroll flex  pdf-scrollbar flex-col items-center relative rounded pt-6 bg-grayBackground"
       >
-        {src &&
-        <>
-           <Document
-             file={src}
-             onLoadSuccess={onDocumentLoadSuccess}
-             className={'w-fit '}
-             renderMode="canvas"
-             loading={<PdfLoader />}
-             rotate={rotate}
-             
-           >
-             <Page
-               pageNumber={pageNumber}
-               scale={scale}
-               className={'text-center'}
-               loading={<PdfLoader />}
-             />
-           </Document>
-             <NavigatePdfUi
-             pageNumber={pageNumber}
-             totalPage={numPages ? numPages : 1}
-             isMouseOver={onMouseOver}
-             setPageNumber={setPageNumber}
-           />
-        </>
-          
-        }
-   
-      
+        {src && (
+          <>
+            <Document
+              file={src}
+              onLoadSuccess={onDocumentLoadSuccess}
+              className={'w-fit h-fit '}
+              renderMode="canvas"
+              loading={<PdfLoader />}
+            >
+              <Page
+                pageNumber={pageNumber}
+                scale={scale}
+                className={'text-center'}
+                loading={<PdfLoader />}
+              />
+            </Document>
+            <NavigatePdfUi
+              pageNumber={pageNumber}
+              totalPage={numPages ? numPages : 1}
+              isMouseOver={onMouseOver}
+              setPageNumber={setPageNumber}
+            />
+          </>
+        )}
       </div>
     </div>
   )
@@ -180,14 +210,14 @@ const NavigatePdfUi = ({
     >
       <IoIosArrowBack
         onClick={handlePreviousPage}
-        className="size-3 cursor-pointer"
+        className=" size-4 lg:size-3 cursor-pointer"
       />
       <p className="font-workSans">
         {pageNumber} of {totalPage}
       </p>
       <IoIosArrowForward
         onClick={handleNextPage}
-        className="size-3 cursor-pointer"
+        className=" size-4 lg:size-3 cursor-pointer"
       />
     </div>
   )

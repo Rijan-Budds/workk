@@ -4,7 +4,7 @@ export const NoticeCardData = [
     title: 'Admission opens',
     date: 'July 19, 2024',
     src: '/home/gallery-1.png',
-    pdfSrc: '/downloads/threejs.pdf',
+    pdfSrc: '/downloads/sample-1.pdf',
   },
   {
     id: '2',
