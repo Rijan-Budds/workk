@@ -3,4 +3,5 @@ export interface INotice {
   title: string
   date: string
   src: string
+  pdfSrc: string
 }
