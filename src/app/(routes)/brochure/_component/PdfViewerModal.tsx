@@ -7,6 +7,10 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { Document, Page, pdfjs } from 'react-pdf'
 import { PdfLoader } from './PdfLoader'
 import { CloseButton } from '@/common/components/Atom/CloseButton'
+import 'react-pdf/dist/Page/AnnotationLayer.css'
+import 'react-pdf/dist/Page/AnnotationLayer.css'
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.mjs`
 
 type IScaleProps = 'plus' | 'minus'
 
@@ -17,8 +21,6 @@ export const PdfViewerModal = ({
   setOpen: Dispatch<SetStateAction<boolean>>
   src: string | null
 }) => {
-  pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`
-
   const [numPages, setNumPages] = useState<number | null>(null)
   const [pageNumber, setPageNumber] = useState<number>(1)
   const [onMouseOver, SetMouseOver] = useState<boolean>(false)
@@ -37,10 +39,12 @@ export const PdfViewerModal = ({
   }
 
   const handleDownload = () => {
-    const link = document.createElement('a')
-    link.href = '/downloads/threejs.pdf'
-    link.download = 'threejs.pdf'
-    link.click()
+    if (src) {
+      const link = document.createElement('a')
+      link.href = src
+      link.download = 'brochure.pdf'
+      link.click()
+    }
   }
 
   useEffect(() => {
@@ -48,7 +52,7 @@ export const PdfViewerModal = ({
       const width = window.innerWidth
 
       if (width < 441) {
-        setScale(0.4)
+        setScale(0.5)
       } else if (width < 510) {
         setScale(0.5)
       } else if (width < 600) {
@@ -79,7 +83,7 @@ export const PdfViewerModal = ({
       onMouseEnter={() => SetMouseOver(true)}
       onMouseLeave={() => SetMouseOver(false)}
       onMouseOver={() => SetMouseOver(true)}
-      className="w-[90vw]  2lg:max-w-[45vw] overflow-x-clip  p-6 bg-white 2lg:min-h-[80vh] bdr"
+      className="w-[90vw]   2lg:max-w-[50vw] overflow-x-clip  p-6 bg-white 2lg:min-h-[80vh]"
     >
       <CloseButton handleClick={() => setOpen(false)} />
       <div className="bg-background px-3 py-[17px] shadow z-10 relative flex items-center justify-between gap-x-3">
@@ -142,20 +146,19 @@ export const PdfViewerModal = ({
         </div>
       </div>
 
-      <div className="p-1 lg:p-6  w-full h-[68vh] lg:h-[80vh] overflow-y-scroll flex  pdf-scrollbar flex-col items-center relative rounded pt-6 ">
+      <div className="lg:p-6  w-full h-[68vh] lg:h-[80vh] overflow-auto  pdf-scrollbar  rounded pt-6 ">
         {src && (
           <>
             <Document
               file={src}
               onLoadSuccess={onDocumentLoadSuccess}
-              className={'w-fit h-fit '}
               renderMode="canvas"
               loading={<PdfLoader />}
             >
               <Page
                 pageNumber={pageNumber}
                 scale={scale}
-                className={'text-center'}
+                className={'w-full flex flex-col items-center justify-center'}
                 loading={<PdfLoader />}
               />
             </Document>
@@ -197,9 +200,9 @@ const NavigatePdfUi = ({
   return (
     <div
       className={cn(
-        'flex items-center gap-x-4 opacity-100 2lg:opacity-0 w-fit  bottom-[2.5rem] bg-white/80 backdrop-blur-xl shadow-xl rounded p-2 fixed transition-all duration-300  selection:bg-transparent',
+        'flex items-center gap-x-4 opacity-100 2lg:opacity-0 w-fit  bottom-[2.5rem] bg-white/80 backdrop-blur-xl shadow-xl rounded p-2 fixed left-1/2 -translate-x-1/2 transition-all duration-300  selection:bg-transparent',
         {
-          '2lg:opacity-100 2lg:bottom-0': isMouseOver,
+          '2lg:opacity-100 2lg:bottom-[2.5rem]': isMouseOver,
         }
       )}
     >

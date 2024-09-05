@@ -18,7 +18,7 @@ export const NoticeCardData = [
     title: 'Admission opens for academy',
     date: 'July 19, 2024',
     src: '/home/gallery-3.png',
-    pdfSrc: '/downloads/threejs.pdf',
+    pdfSrc: '/downloads/sample-2.pdf',
   },
   {
     id: '1',

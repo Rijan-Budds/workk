@@ -11,6 +11,7 @@ import {
   ValidationSchemas,
 } from '../constant/data'
 import { Button } from '@/common/components/Atom/Button'
+import axios from 'axios'
 
 interface IPlusTwoFormProps {
   onFormChange: (isDirty: boolean) => void
@@ -32,12 +33,31 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
     setCurrentStep((prev) => Math.max(prev - 1, 0))
   }
 
-  const handleSubmit = (values: FormikValues) => {
+  const handleSubmit = async (values: FormikValues) => {
     if (currentStep < StepComponentPlusTwo.length - 1) {
       handleNext()
     } else {
       console.info('Final Values:', values)
-      // Submit final form data here
+
+      const formData = new FormData()
+      Object.keys(values).forEach((key) => {
+        formData.append(key, values[key])
+      })
+
+      try {
+        const response = await axios.post(
+          'http://192.168.110.52:3000/api/v1/application/register',
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        )
+        console.info('Response:', response.data)
+      } catch (error) {
+        console.error('Error submitting form:', error)
+      }
     }
   }
 
