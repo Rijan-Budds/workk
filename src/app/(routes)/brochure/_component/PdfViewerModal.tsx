@@ -23,7 +23,6 @@ export const PdfViewerModal = ({
   const [pageNumber, setPageNumber] = useState<number>(1)
   const [onMouseOver, SetMouseOver] = useState<boolean>(false)
   const [scale, setScale] = useState<number>(1)
-  // const [rotate, setRotate] = useState<number>(0)
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
     setNumPages(numPages)
@@ -33,13 +32,9 @@ export const PdfViewerModal = ({
     if (direction === 'plus') {
       setScale((prevScale) => Math.min(prevScale + 0.1, 2))
     } else if (direction === 'minus') {
-      setScale((prevScale) => Math.max(prevScale - 0.1, 0.5))
+      setScale((prevScale) => Math.max(prevScale - 0.1, 0.7))
     }
   }
-
-  // const handleRotation = () => {
-  //   setRotate((prev) => Math.min(prev + 90))
-  // }
 
   const handleDownload = () => {
     const link = document.createElement('a')
@@ -80,7 +75,12 @@ export const PdfViewerModal = ({
   }, [])
 
   return (
-    <div className="w-[90vw]  2lg:max-w-[45vw] overflow-x-clip  p-6 bg-white 2lg:min-h-[80vh]">
+    <div
+      onMouseEnter={() => SetMouseOver(true)}
+      onMouseLeave={() => SetMouseOver(false)}
+      onMouseOver={() => SetMouseOver(true)}
+      className="w-[90vw]  2lg:max-w-[45vw] overflow-x-clip  p-6 bg-white 2lg:min-h-[80vh] bdr"
+    >
       <CloseButton handleClick={() => setOpen(false)} />
       <div className="bg-background px-3 py-[17px] shadow z-10 relative flex items-center justify-between gap-x-3">
         <span className="text-heading text-[14px] leading-6 font-medium">
@@ -142,12 +142,7 @@ export const PdfViewerModal = ({
         </div>
       </div>
 
-      <div
-        onMouseEnter={() => SetMouseOver(true)}
-        onMouseLeave={() => SetMouseOver(false)}
-        onMouseOver={() => SetMouseOver(true)}
-        className="p-1 lg:p-6  w-full h-[68vh] lg:h-[80vh] overflow-y-scroll flex  pdf-scrollbar flex-col items-center relative rounded pt-6 bg-grayBackground"
-      >
+      <div className="p-1 lg:p-6  w-full h-[68vh] lg:h-[80vh] overflow-y-scroll flex  pdf-scrollbar flex-col items-center relative rounded pt-6 ">
         {src && (
           <>
             <Document
@@ -202,7 +197,7 @@ const NavigatePdfUi = ({
   return (
     <div
       className={cn(
-        'flex items-center gap-x-4 opacity-100 2lg:opacity-0 w-fit  -bottom-2 bg-white/80 backdrop-blur-xl shadow-xl rounded p-2 sticky transition-all duration-300 2lg:-bottom-12 selection:bg-transparent',
+        'flex items-center gap-x-4 opacity-100 2lg:opacity-0 w-fit  bottom-[2.5rem] bg-white/80 backdrop-blur-xl shadow-xl rounded p-2 fixed transition-all duration-300  selection:bg-transparent',
         {
           '2lg:opacity-100 2lg:bottom-0': isMouseOver,
         }
