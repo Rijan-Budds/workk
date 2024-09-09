@@ -13,14 +13,20 @@ export const MobileNavHeader = () => {
   return (
     <>
       <div className="p-4 bg-background/85 backdrop-blur-xl flex justify-between items-center py-4 shadow">
-        <Link href={'/'}>
-          <Image
-            width={48}
-            height={48}
-            src={'/home/logo.svg'}
-            alt="pawan prakriti logo"
-          />
-        </Link>
+        <div className="flex items-center gap-x-3">
+          <Link href={'/'}>
+            <Image
+              width={56}
+              height={56}
+              src={'/home/logo.svg'}
+              alt="School logo"
+            />
+          </Link>
+
+          <h2 className="font-poppins font-medium text-[18px] leading-6 text-heading">
+            Pawan Prakriti <br /> School.
+          </h2>
+        </div>
 
         <button onClick={() => setIsMenuOpen((prev) => !prev)}>
           <IoMenu className="size-6" />

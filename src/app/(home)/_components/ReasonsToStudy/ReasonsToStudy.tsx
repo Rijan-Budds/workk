@@ -29,7 +29,7 @@ export const ReasonsToStudy = () => {
     <HomeWrapper>
       <div className="flex flex-col">
         <div className="flex flex-col 2lg:flex-row justify-between items-center md:items-start 2lg:items-center gap-y-6">
-          <SectionHeading isMd>
+          <SectionHeading isMd className="text-center">
             Your Overall Great
             <br />
             Academic Organization

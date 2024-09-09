@@ -1,5 +1,5 @@
-import { CloseButton } from '@/common/components/Atom/CloseButton'
 import { CustomVideo } from '@/common/components/Atom/CustomVideo'
+import { Button } from '@/common/components/ui/button'
 import { cn } from '@/common/utils/utils'
 import Image from 'next/image'
 import React, { Dispatch, SetStateAction } from 'react'
@@ -34,31 +34,32 @@ export const GalleryModal = ({
     }
   }
 
-  return (
-    <div className=" flex flex-col justify-center items-center 2lg:items-start relative rounded-xl overflow-hidden 2lg:w-full h-[90vh]">
-      <div className="flex justify-end w-full p-6 rounded-xl">
-        <CloseButton
-          className="absolute mb-2 right-4 top-0"
-          handleClick={() => {
-            if (setSrc && setActiveImage) {
-              setSrc('')
-              setActiveImage(null)
-            }
+  const handleClose = () => {
+    if (setSrc && setActiveImage) {
+      setSrc('')
+      setActiveImage(null)
+    }
+    setModalOpen(false)
+  }
 
-            if (setModalOpen) {
-              setModalOpen(false)
-            }
-          }}
-        />
+  return (
+    <div className=" flex flex-col justify-center items-center 2lg:items-start relative rounded-xl overflow-hidden 2lg:w-full lg:h-[100vh]">
+      <div className="flex justify-end w-full p-6 pb-0 2lg:pb-6 rounded-xl">
+        <div
+          onClick={handleClose}
+          className="absolute mb-2 lg:right-10 top-16 lg:top-10"
+        >
+          <Button variant="secondary">Close</Button>
+        </div>
       </div>
-      <div className="w-[100vw] p-6 rounded-xl">
+      <div className="w-[100vw] p-6 rounded-xl relative">
         {type === 'photo' ? (
           <Image
             src={src}
             alt="zoom gallery image"
             width={1280}
             height={854}
-            className="object-cover pointer-events-none selection:bg-transparent transition-all duration-1000 mx-auto w-[1053px] h-[610px] rounded-xl"
+            className="object-contain pointer-events-none selection:bg-transparent transition-all duration-1000 mx-auto w-[90vw] h-[100vh] lg:h-[610px] rounded-xl"
           />
         ) : (
           <>
@@ -79,11 +80,11 @@ export const GalleryModal = ({
         <>
           <SwipeArrow
             onClick={() => handleSwipe('next')}
-            className="bg-white rounded-full size-[40px] p-2 right-12  cursor-pointer  absolute top-[60%] -translate-y-1/2 "
+            className="bg-white rounded-full size-[40px] p-2 right-2 2lg:right-12 2xl_md:right-[169px] cursor-pointer  absolute top-[53%] 2lg:top-[50%] -translate-y-1/2 transition-all duration-1000 "
           />
           <SwipeArrow
             onClick={() => handleSwipe('prev')}
-            className="bg-white rounded-full size-[40px] p-2 left-12  rotate-180 absolute top-[60%] -translate-y-1/2 cursor-pointer "
+            className="bg-white rounded-full size-[40px] p-2 left-2 2lg:left-12 2xl_md:left-[169px]  rotate-180 absolute top-[53%] 2lg:top-[50%] -translate-y-1/2 cursor-pointer transition-all duration-1000"
           />
         </>
       )}

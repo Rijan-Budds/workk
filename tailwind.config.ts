@@ -37,6 +37,7 @@ const config = {
       },
       screens: {
         '2lg': '1270px',
+        '2xl_md': '1400px',
         '2xl_lg': '1700px',
         '3xl': '1800px',
         '4xl': '1900px',
