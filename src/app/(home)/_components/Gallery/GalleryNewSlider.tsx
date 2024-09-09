@@ -49,7 +49,7 @@ export const GallerySlider = () => {
 
 export const GalleryMobileSlider = () => {
   return (
-    <div className="flex justify-center items-center w-full  2lg:hidden">
+    <div className="flex justify-center items-center w-full 2lg:hidden">
       <Swiper
         breakpoints={{
           400: {
@@ -72,7 +72,7 @@ export const GalleryMobileSlider = () => {
           </SwiperSlide>
         ))}
 
-        <div className="flex justify-center mt-10 gap-x-4">
+        <div className="flex justify-center mt-20 gap-x-4">
           <SwiperButtonPrevious>
             <IoIosArrowRoundBack className="text-body text-2xl font-light " />
           </SwiperButtonPrevious>
