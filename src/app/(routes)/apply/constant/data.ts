@@ -32,13 +32,13 @@ import {
 } from '../validation'
 
 export const provinces = [
-  { title: 'Koshi Province', value: 'koshi-province' },
-  { title: 'Madhesh Province', value: 'madhesh-province' },
-  { title: 'Bagmati Province', value: 'bagmati-province' },
-  { title: 'Gandaki Province', value: 'gandaki-province' },
-  { title: 'Lumbini Province', value: 'lumbini-province' },
-  { title: 'Karnali Province', value: 'karnali-province' },
-  { title: 'Sudurpashchim Province', value: 'sudurpashchim-province' },
+  { title: 'Koshi Province', value: 'KOSHI_PROVINCE' },
+  { title: 'Madhesh Province', value: 'MADHESH_PROVINCE' },
+  { title: 'Bagmati Province', value: 'BAGMATI_PROVINCE' },
+  { title: 'Gandaki Province', value: 'GANDAKI_PROVINCE' },
+  { title: 'Lumbini Province', value: 'LUMBINI_PROVINCE' },
+  { title: 'Karnali Province', value: 'KARNALI_PROVINCE' },
+  { title: 'Sudurpashchim Province', value: 'SUDURPASCHIM_PROVINCE' },
 ]
 
 export const StepComponentPlusTwo = [StepOne, StepTwo, StepThree, StepFour]

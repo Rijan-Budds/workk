@@ -67,7 +67,7 @@
 
 .pdf-scrollbar::-webkit-scrollbar {
   width: 4px;
-  height: 12px;
+  height: 4px;
 }
 
 .pdf-scrollbar::-webkit-scrollbar-thumb {
