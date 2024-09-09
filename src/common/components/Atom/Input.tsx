@@ -78,23 +78,20 @@ export { Input }
 export const ErrorComponent = ({ error }: { error: string }) => {
   const pathname = usePathname()
 
-  const isContactPage = pathname === '/contact'
   const isAdmission = pathname === '/apply'
-
-  console.log('isContactPage', pathname)
 
   return (
     <div className="flex items-center gap-x-1">
       <CircleAlert
         className={cn('size-4 text-white', {
-          'text-red-500': isContactPage || isAdmission,
+          'text-red-500': isAdmission,
         })}
       />
       <span
         className={cn(
           'font-workSans font-normal text-[14px] leading-4 text-white ',
           {
-            'text-red-500': isContactPage || isAdmission,
+            'text-red-500': isAdmission,
           }
         )}
       >
