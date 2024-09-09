@@ -123,6 +123,14 @@ const NavLinksUi = ({
   handleSublinkClick: (id: number) => void
   pathname: string
 }) => {
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    dropdown: boolean
+  ) => {
+    if (dropdown) {
+      e.preventDefault()
+    }
+  }
   return (
     <div
       className="flex items-center gap-x-2 group relative"
@@ -133,6 +141,7 @@ const NavLinksUi = ({
         <Link
           href={link || '/'}
           className="text-[14px] leading-4 font-workSans font-medium group-hover:text-primary transition-all duration-500 "
+          onClick={(e) => handleLinkClick(e, isDropdown && !!sublinks)}
         >
           {links}
         </Link>
@@ -163,7 +172,7 @@ const NavLinksUi = ({
                       </div>
                     </Link>
                     {sublink.subsublink && activeSublink === sublink.id && (
-                      <div className="absolute top-[0px] left-full mt-0 bg-white shadow-md rounded-md p-2 z-50 w-[240px]">
+                      <div className="absolute top-[0px] left-[205px] mt-0 bg-white shadow-md rounded-md p-2 z-50 w-[240px]">
                         <div className="flex flex-col py-2 px-4 space-y-7">
                           {sublink.subsublink.map((subsublink) => (
                             <Link
