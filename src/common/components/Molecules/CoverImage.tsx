@@ -37,13 +37,13 @@ export const CoverImage = ({
         <SectionHeading className="text-center text-white">
           {title}
         </SectionHeading>
-        {list && <CustomBreadCrumb />}
+        {list && <CustomBreadCrumb list={list} />}
       </div>
     </div>
   )
 }
 
-const CustomBreadCrumb = () => {
+const CustomBreadCrumb = ({ list }: { list: IBreadCrumbList[] }) => {
   const pathname = usePathname()
 
   // Split the pathname into segments and filter out empty segments
@@ -78,24 +78,43 @@ const CustomBreadCrumb = () => {
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        {breadcrumbItems.map((item, index) => (
-          <React.Fragment key={item.link}>
-            <BreadcrumbSeparator className="text-white [&>svg]:size-4" />
-            <BreadcrumbItem>
-              {index !== breadcrumbItems.length - 1 ? (
-                <Link href={item.link}>
-                  <span className="font-workSans text-white font-medium text-[14px] leading-4 capitalize">
-                    {item.title}
-                  </span>
-                </Link>
-              ) : (
-                <span className="font-workSans text-white font-medium text-[14px] leading-4 capitalize">
-                  {item.title}
-                </span>
-              )}
-            </BreadcrumbItem>
-          </React.Fragment>
-        ))}
+        {list
+          ? list.map((link) => (
+              <>
+                <BreadcrumbSeparator className="text-white  [&>svg]:size-4" />
+                <BreadcrumbItem>
+                  {link.link ? (
+                    <Link href={link.link}>
+                      <span className="font-workSans text-white font-medium text-[14px] leading-4 capitalize">
+                        {link.title}
+                      </span>
+                    </Link>
+                  ) : (
+                    <span className="font-workSans text-white font-medium text-[14px] leading-4 capitalize">
+                      {link.title}
+                    </span>
+                  )}
+                </BreadcrumbItem>
+              </>
+            ))
+          : breadcrumbItems.map((item, index) => (
+              <React.Fragment key={item.link}>
+                <BreadcrumbSeparator className="text-white [&>svg]:size-4" />
+                <BreadcrumbItem>
+                  {index !== breadcrumbItems.length - 1 ? (
+                    <Link href={item.link}>
+                      <span className="font-workSans text-white font-medium text-[14px] leading-4 capitalize">
+                        {item.title}
+                      </span>
+                    </Link>
+                  ) : (
+                    <span className="font-workSans text-white font-medium text-[14px] leading-4 capitalize">
+                      {item.title}
+                    </span>
+                  )}
+                </BreadcrumbItem>
+              </React.Fragment>
+            ))}
       </BreadcrumbList>
     </Breadcrumb>
   )
