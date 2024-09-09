@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { BrochureCardUi } from './BrochureCardUi'
-import { NoticeCardData } from '../../events/constant/data'
+import { NoticeCardData } from '../../notice/constant/data'
 import { PdfViewerModal } from './PdfViewerModal'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 

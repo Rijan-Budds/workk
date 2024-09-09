@@ -2,20 +2,31 @@
 
 import { newsandevent } from '@/app/(home)/_components/News/NewsCard'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
+import { TabSwitch } from '@/common/components/Atom/TabSwitch'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { GoArrowRight } from 'react-icons/go'
+import { NoticeClientSection } from '../../notice/_component/NoticeClientSection'
 
 export const NewsSection = () => {
-  return (
-    <>
-      <CoverImage
-        title="News & Events"
-        list={[{ link: null, title: 'News & Events' }]}
-      />
-      <HomeWrapper className="2lg:pb-32">
+  const tabs = [
+    {
+      key: 'news',
+      title: 'News',
+    },
+    {
+      key: 'notice',
+      title: 'Notices',
+    },
+  ]
+
+  const [active, setActiveTab] = useState<string>(tabs[0]?.key)
+
+  const renderNewsNoticeUi = () => {
+    if (active === 'news') {
+      return (
         <div className="flex flex-row flex-wrap justify-center md:justify-between  gap-x-4 gap-y-28  ">
           {newsandevent.map((news) => (
             <Link href={`/news/ffff`} key={news.id}>
@@ -50,6 +61,29 @@ export const NewsSection = () => {
             </Link>
           ))}
         </div>
+      )
+    } else if (active === 'notice') {
+      return <NoticeClientSection />
+    }
+  }
+
+  return (
+    <>
+      <CoverImage
+        title="News & Events"
+        list={[{ link: null, title: 'News & Events' }]}
+      />
+      <HomeWrapper className="2lg:pb-32">
+        <div className="flex justify-center mb-10">
+          <TabSwitch
+            tabs={tabs}
+            activeTab={active}
+            setActive={setActiveTab}
+            className="w-fit text-sm"
+            handleDynamicData={(key) => setActiveTab(key)}
+          />
+        </div>
+        {renderNewsNoticeUi()}
       </HomeWrapper>
     </>
   )
