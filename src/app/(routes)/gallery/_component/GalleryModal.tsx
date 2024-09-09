@@ -1,4 +1,3 @@
-import { CustomVideo } from '@/common/components/Atom/CustomVideo'
 import { Button } from '@/common/components/ui/button'
 import { cn } from '@/common/utils/utils'
 import Image from 'next/image'
@@ -7,7 +6,6 @@ import { IconBaseProps } from 'react-icons'
 import { BsArrowRight } from 'react-icons/bs'
 
 type IDirection = 'next' | 'prev'
-type IType = 'photo' | 'video'
 
 export const GalleryModal = ({
   src,
@@ -15,7 +13,6 @@ export const GalleryModal = ({
   setSrc,
   setActiveImage,
   length,
-  type,
   showSwipe,
 }: {
   src: string
@@ -23,7 +20,6 @@ export const GalleryModal = ({
   setSrc?: Dispatch<SetStateAction<string>>
   setActiveImage?: Dispatch<SetStateAction<number | null>>
   length: number
-  type: IType
   showSwipe: boolean
 }) => {
   const handleSwipe = (direction: IDirection) => {
@@ -47,33 +43,19 @@ export const GalleryModal = ({
       <div className="flex justify-end w-full p-6 pb-0 2lg:pb-6 rounded-xl">
         <div
           onClick={handleClose}
-          className="absolute mb-2 lg:right-10 top-16 lg:top-10"
+          className="absolute mb-2 lg:right-10 top-16 lg:top-10 z-50"
         >
           <Button variant="secondary">Close</Button>
         </div>
       </div>
       <div className="w-[100vw] p-6 rounded-xl relative">
-        {type === 'photo' ? (
-          <Image
-            src={src}
-            alt="zoom gallery image"
-            width={1280}
-            height={854}
-            className="object-contain pointer-events-none selection:bg-transparent transition-all duration-1000 mx-auto w-[90vw] h-[100vh] lg:h-[610px] rounded-xl"
-          />
-        ) : (
-          <>
-            <CustomVideo
-              width="1280"
-              height="853"
-              src={src}
-              className="w-full h-full object-cover rounded-[12px] 2lg:max-h-[70vh]"
-              autoPlay={true}
-              controls={true}
-              fallbackThumb="/home/gallery-5.png"
-            />
-          </>
-        )}
+        <Image
+          src={src}
+          alt="zoom gallery image"
+          width={1280}
+          height={854}
+          className="object-contain pointer-events-none selection:bg-transparent transition-all duration-1000 mx-auto w-[90vw] h-[100vh] lg:h-[610px] rounded-xl"
+        />
       </div>
 
       {showSwipe && (
