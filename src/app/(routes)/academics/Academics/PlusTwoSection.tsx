@@ -32,14 +32,19 @@ const PlusTwoSection = () => {
           </ul>
         </div>
       </div>
-      <div className="rounded-xl w-full md:w-[50%] z-50">
+      <div className="rounded-xl w-full md:w-[50%] z-50 relative">
         <Image
           src="/home/academic1.png"
           width={610}
           height={405}
           alt="academic1 "
-          className="rounded-xl w-full md:max-w-full h-auto md:mt-14"
+          className="rounded-xl w-full md:max-w-full h-auto md:mt-14 relative"
         />
+        <div className="absolute w-[206px] h-[75px] bottom-0 left-0 bg-white rounded-tr-xl flex justify-center items-center rounded-bl-xl">
+          <h2 className="text-lg leading-7 font-workSans font-medium text-heading">
+            Take A Warm Tour
+          </h2>
+        </div>
       </div>
     </div>
   )

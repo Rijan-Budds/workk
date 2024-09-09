@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import React from 'react'
 import { SectionHeading } from '../Atom/SectionHeading'
@@ -9,6 +10,7 @@ import {
   BreadcrumbSeparator,
 } from '../ui/breadcrumb'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 interface IBreadCrumbList {
   title: string
@@ -35,13 +37,34 @@ export const CoverImage = ({
         <SectionHeading className="text-center text-white">
           {title}
         </SectionHeading>
-        {list && <CustomBreadCrumb list={list} />}
+        {list && <CustomBreadCrumb />}
       </div>
     </div>
   )
 }
 
-const CustomBreadCrumb = ({ list }: { list: IBreadCrumbList[] }) => {
+const CustomBreadCrumb = () => {
+  const pathname = usePathname()
+
+  // Split the pathname into segments and filter out empty segments
+  const pathSegments = pathname.split('/').filter((segment) => segment)
+
+  // Generate breadcrumb items from the path segments
+  const breadcrumbItems = pathSegments.map((segment, index) => {
+    // Build the path for the current segment
+    const href = '/' + pathSegments.slice(0, index + 1).join('/')
+
+    // Capitalize the segment name
+    const title = segment
+      .replace(/-/g, ' ')
+      .replace(/^\w/, (c) => c.toUpperCase())
+
+    return {
+      title,
+      link: href,
+    }
+  })
+
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -55,23 +78,23 @@ const CustomBreadCrumb = ({ list }: { list: IBreadCrumbList[] }) => {
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        {list.map((link) => (
-          <>
-            <BreadcrumbSeparator className="text-white  [&>svg]:size-4" />
-            <BreadcrumbItem key={link.link}>
-              {link.link ? (
-                <Link href={link.link}>
+        {breadcrumbItems.map((item, index) => (
+          <React.Fragment key={item.link}>
+            <BreadcrumbSeparator className="text-white [&>svg]:size-4" />
+            <BreadcrumbItem>
+              {index !== breadcrumbItems.length - 1 ? (
+                <Link href={item.link}>
                   <span className="font-workSans text-white font-medium text-[14px] leading-4 capitalize">
-                    {link.title}
+                    {item.title}
                   </span>
                 </Link>
               ) : (
                 <span className="font-workSans text-white font-medium text-[14px] leading-4 capitalize">
-                  {link.title}
+                  {item.title}
                 </span>
               )}
             </BreadcrumbItem>
-          </>
+          </React.Fragment>
         ))}
       </BreadcrumbList>
     </Breadcrumb>
