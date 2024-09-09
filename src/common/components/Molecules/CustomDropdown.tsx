@@ -53,7 +53,7 @@ export const CustomDropdown = ({
           setFieldValue && setFieldValue(field, value)
         }
       >
-        <SelectTrigger className="rounded-lg p-4 ">
+        <SelectTrigger className="rounded-lg p-4 text-body leading-4 text-[14px] font-workSans ">
           <SelectValue placeholder={placeHolder} />
         </SelectTrigger>
         <SelectContent className="border-b-2 border-border">
