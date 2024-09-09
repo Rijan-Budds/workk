@@ -82,7 +82,6 @@ export const VideoSection = () => {
             setModalOpen={setModalOpen}
             showSwipe={false}
             src="/home/video/school-promo.mov"
-            type="video"
           />
         </CustomModal>
       )}
