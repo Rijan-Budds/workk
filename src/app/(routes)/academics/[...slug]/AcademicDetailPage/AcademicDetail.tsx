@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import AcademicDetailSection from './AcademicDetailSection'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'

@@ -39,7 +39,7 @@ export const navLinks = [
           {
             id: 1,
             title: 'Management',
-            link: '/academics/management',
+            link: '/academics/plustwo/management',
           },
           {
             id: 2,
@@ -61,7 +61,7 @@ export const navLinks = [
           {
             id: 1,
             title: 'Management',
-            link: '/',
+            link: '/academics/school/hello',
           },
           {
             id: 2,
