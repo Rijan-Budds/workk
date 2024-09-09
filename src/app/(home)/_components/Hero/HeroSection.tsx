@@ -33,7 +33,7 @@ export const HeroSection = () => {
                 </p>
                 <div className="flex flex-col md:flex-row gap-y-4 justify-center 2lg:justify-start w-full mt-[32px]  md:gap-x-4">
                   <Link href={'/apply'}>
-                    <Button className="">Apply Now</Button>
+                    <Button className="w-full">Apply Now</Button>
                   </Link>
                   <Link
                     href={'/academics'}

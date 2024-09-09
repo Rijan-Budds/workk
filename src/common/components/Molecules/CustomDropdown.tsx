@@ -56,7 +56,7 @@ export const CustomDropdown = ({
         <SelectTrigger className="rounded-lg p-4 ">
           <SelectValue placeholder={placeHolder} />
         </SelectTrigger>
-        <SelectContent className="border-b-2 brder-border">
+        <SelectContent className="border-b-2 border-border">
           <SelectGroup>
             {list.map((d) => (
               <SelectItem
