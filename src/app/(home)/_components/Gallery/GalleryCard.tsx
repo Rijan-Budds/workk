@@ -23,7 +23,7 @@ export const GalleryCard = ({
     >
       <div
         className={cn(
-          ' rounded-[8px] gallery-card w-[292px] h-[235px]  relative  transition-all duration-500 clip-image mx-auto 2lg:mx-0',
+          ' rounded-[8px] gallery-card w-[343px] h-[257px] 2lg:w-[292px] 2lg:h-[235px]  relative  transition-all duration-500 clip-image mx-auto 2lg:mx-0',
           {
             'rounded xl:scale-x-[1.8] xl:scale-y-[1.7]  3xl:scale-x-[1.982] 3xl:scale-y-[1.840] transition-all duration-500':
               isActive,
@@ -41,13 +41,22 @@ export const GalleryCard = ({
           />
         ) : (
           <Image
-            width={292}
-            height={235}
+            width={343}
+            height={257}
             src={data.src}
             alt="gallery carousel"
             className="rounded-[8px]  w-full h-full object-cover"
           />
         )}
+        <div className="2lg:hidden flex justify-center my-4 ">
+          <p className="font-workSans font-normal text-[16px] leading-[16px] text-[#313131]">
+            <span className="font-poppins font-medium text-[20px] leading-[26px] text-center text-[#187EC0]">
+              {data.serialNo}
+              {'   '}
+            </span>
+            {data.title}
+          </p>
+        </div>
       </div>
       {isActive && (
         <>
