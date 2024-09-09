@@ -5,7 +5,7 @@ import { navLinks } from '@/common/constant/data'
 import { Button } from '../../Atom/Button'
 import { NavHeaderLink } from './NavHeaderLink'
 import { NavHeaderSocialMedia } from './NavHeader'
-import { INavSubLink } from '@/common/interface/type'
+import { INavLink, INavSubLink } from '@/common/interface/type'
 import Link from 'next/link'
 
 export const SidebarContainer = ({
@@ -21,6 +21,19 @@ export const SidebarContainer = ({
       setNavDropDown([])
     }
   }, [openDropDown])
+
+  const handleLinkClick = (
+    link: INavLink,
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    if (link.isDropDown) {
+      event.preventDefault()
+      setNavDropDown(link.sublink || [])
+      setOpenDropdown(true)
+    } else {
+      setOpenMainSidebar(false)
+    }
+  }
 
   return (
     <div className="mt-8  w-full">
@@ -38,9 +51,7 @@ export const SidebarContainer = ({
           >
             <Link
               href={link.link || '/'} // Provide a default fallback
-              onClick={() => {
-                setOpenMainSidebar(false)
-              }}
+              onClick={(event) => handleLinkClick(link, event)}
             >
               <span className="font-workSans font-medium text-[16px] leading-4 text-heading">
                 {link.title}
@@ -84,7 +95,7 @@ const NavDropDown = ({
   setClose: Dispatch<SetStateAction<boolean>>
 }) => {
   return (
-    <Link href={link.link} onClick={() => setClose(false)}>
+    <Link href={link.link || '/'} onClick={() => setClose(false)}>
       <span className="font-workSans font-medium text-[14px] leading-4">
         {link.title}
       </span>

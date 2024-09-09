@@ -13,7 +13,7 @@ export const SectionHeading = ({
   return (
     <span
       className={cn(
-        'font-poppins text-[28px]  2lg:text-[38px] leading-[36.4px]  2lg:leading-[49.4px] font-medium text-left',
+        'font-poppins text-[28px]  2lg:text-[38px] leading-[36.4px]  2lg:leading-[49.4px] font-medium text-left text-heading',
         className,
         {
           'md:text-left md:text-[38px] md:leading-[49.4px]': isMd,
