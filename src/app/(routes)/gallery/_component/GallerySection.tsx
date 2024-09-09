@@ -10,6 +10,7 @@ import { GalleryModal } from './GalleryModal'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import { usePathname } from 'next/navigation'
 import { useBreadCrumbPath } from '@/common/hook/useBreadCrumbPath'
+import { VideoModal } from './VideoModal'
 
 type IType = 'photo' | 'video'
 
@@ -20,6 +21,9 @@ export const GallerySection = () => {
   const filterImageData = galleriesCarouselData.filter(
     (d) => d.type === 'image'
   )
+  // const filterVideoData = galleriesCarouselData.filter(
+  //   (d) => d.type === 'video'
+  // )
 
   const [src, setSrc] = useState<string>('')
   const [isModalOpen, setModalOpen] = useState<boolean>(false)
@@ -67,19 +71,34 @@ export const GallerySection = () => {
       </HomeWrapper>
       {src.length > 0 && (
         <CustomModal isOpen={isModalOpen}>
-          <GalleryModal
-            src={
-              activeImage
-                ? dynamicCardsData[activeImage].src
-                : dynamicCardsData[0].src
-            }
-            setModalOpen={setModalOpen}
-            setSrc={setSrc}
-            setActiveImage={setActiveImage}
-            length={dynamicCardsData.length - 1}
-            type={type}
-            showSwipe={dynamicCardsData.length > 1}
-          />
+          {type === 'photo' ? (
+            <GalleryModal
+              src={
+                activeImage !== null
+                  ? dynamicCardsData[activeImage].src
+                  : dynamicCardsData[0].src
+              }
+              setModalOpen={setModalOpen}
+              setSrc={setSrc}
+              setActiveImage={setActiveImage}
+              length={dynamicCardsData.length}
+              showSwipe={dynamicCardsData.length > 1}
+            />
+          ) : (
+            <VideoModal
+              src={
+                activeImage !== null
+                  ? dynamicCardsData[activeImage].src
+                  : dynamicCardsData[0].src
+              }
+              setModalOpen={setModalOpen}
+              setSrc={setSrc}
+              setActiveImage={setActiveImage}
+              length={dynamicCardsData.length}
+              type={type}
+              showSwipe={dynamicCardsData.length > 1}
+            />
+          )}
         </CustomModal>
       )}
     </>
