@@ -60,18 +60,23 @@ export const navLinks = [
         subsublink: [
           {
             id: 1,
-            title: 'Management',
-            link: '/academics/school/hello',
+            title: 'Pre-School (Kindergarden)',
+            link: '/academics/school/preschool',
           },
           {
             id: 2,
-            title: 'Humanities',
-            link: '/',
+            title: 'Primary Level (One - Five)',
+            link: '/academics/school/primary',
           },
           {
             id: 3,
-            title: 'Law',
-            link: '/',
+            title: 'Basic Level (Six - Eight)',
+            link: '/academics/school/basic',
+          },
+          {
+            id: 4,
+            title: 'Senior Level (Nine - Ten)',
+            link: '/academics/school/Senior',
           },
         ],
       },

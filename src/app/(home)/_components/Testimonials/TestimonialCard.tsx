@@ -1,13 +1,20 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
+import { usePathname } from 'next/navigation'
 import './testimonial.css'
 import { ITestimonialData } from '@/app/(routes)/testimonials/_interface/testimonial'
 
 export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
+  const pathname = usePathname()
+  const isHomePage = pathname === '/'
   return (
     <>
-      <div className="bg-white max-w-[397px] rounded-[12px] relative mx-auto">
+      <div
+        className={`max-w-[397px] rounded-[12px] relative mx-auto ${
+          isHomePage ? 'bg-white' : 'bg-background'
+        }`}
+      >
         <Image
           src="/home/quote.svg"
           width={60}

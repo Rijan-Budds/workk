@@ -1,3 +1,7 @@
+import {
+  DownloadUi,
+  ForInquiry,
+} from '@/app/(routes)/news/_component/DownloadUi'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -19,19 +23,8 @@ const AcademicSideBar = () => {
           </button>
         </div>
       </div>
-      <div className="bg-background p-6 rounded-xl">
-        <div className="p-6 border-2 border-border rounded-lg">
-          <h2 className="text-heading text-xl leading-[26px] font-poppins font-medium">
-            For Inquiries
-          </h2>
-          <p className="text-body font-workSans font-normal text-base leading-7 mt-6">
-            01-5007259
-          </p>
-          <p className="text-body font-workSans font-normal text-base leading-7 mt-4">
-            pawanprakritie2048@gmail.com
-          </p>
-        </div>
-      </div>
+      <DownloadUi />
+      <ForInquiry />
       <div className="">
         <Image
           src="/home/admission.svg"
