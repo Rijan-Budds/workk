@@ -64,7 +64,7 @@ const AdmissionForm = () => {
                   className="bg-white w-full "
                   error={errors.fullName!}
                   isError={!!errors.fullName && touched.fullName}
-                  labelColor={'text-black'}
+                  labelClass="text-body font-normal"
                 />
                 <Input
                   type="text"
@@ -75,7 +75,7 @@ const AdmissionForm = () => {
                   className="bg-white w-full "
                   error={errors.email!}
                   isError={!!errors.email && touched.email}
-                  labelColor={'text-black'}
+                  labelClass="text-body font-normal"
                 />
                 <Input
                   type="text"
@@ -86,12 +86,14 @@ const AdmissionForm = () => {
                   className="bg-white w-full "
                   error={errors.phone!}
                   isError={!!errors.phone && touched.phone}
-                  labelColor={'text-black'}
+                  labelClass="text-body font-normal"
                 />
                 <ContactDropdown
+                  label="Level"
                   setFieldValue={setFieldValue}
                   error={errors.level!}
                   isError={!!errors.level}
+                  className="text-body"
                 />
                 <Input
                   isMessage
@@ -104,7 +106,7 @@ const AdmissionForm = () => {
                   className="bg-white w-full "
                   error={errors.message!}
                   isError={!!errors.message && touched.message}
-                  labelColor={'text-black'}
+                  labelClass="text-body font-normal"
                 />
                 <Button
                   type="submit"
