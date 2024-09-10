@@ -70,8 +70,8 @@ export const NewsSection = () => {
   return (
     <>
       <CoverImage
-        title="News & Events"
-        list={[{ link: null, title: 'News & Events' }]}
+        title="News & Notices"
+        list={[{ link: null, title: 'News & Notices' }]}
       />
       <HomeWrapper className="2lg:pb-32">
         <div className="flex justify-center mb-10">
