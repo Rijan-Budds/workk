@@ -4,13 +4,15 @@ import Image from 'next/image'
 import React, { useRef, useState } from 'react'
 import { VideoHeader, VideoHeaderMobile } from './VideoHeader'
 import { CustomVideo } from '@/common/components/Atom/CustomVideo'
-import { GalleryModal } from '@/app/(routes)/gallery/_component/GalleryModal'
+
 import { CustomModal } from '@/common/components/Molecules/Modal'
+import { VideoModal } from '@/app/(routes)/gallery/_component/VideoModal'
 
 export const VideoSection = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [isPlaying, setIsPlaying] = useState(true)
   const [isOpen, setModalOpen] = useState<boolean>(false)
+  const [src, setSrc] = useState('/home/video/school-promo.mov') // New state for src
 
   const handlePlayPause = (): void => {
     if (videoRef && videoRef?.current!.paused) {
@@ -77,11 +79,13 @@ export const VideoSection = () => {
 
       {isOpen && (
         <CustomModal isOpen={isOpen}>
-          <GalleryModal
+          <VideoModal
             length={1}
             setModalOpen={setModalOpen}
             showSwipe={false}
-            src="/home/video/school-promo.mov"
+            src={src}
+            setSrc={setSrc}
+            type="video" // Assuming it's a video type
           />
         </CustomModal>
       )}
