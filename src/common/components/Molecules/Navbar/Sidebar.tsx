@@ -21,7 +21,7 @@ export const Sidebar = ({
   const handleSidebarClose = () => {
     gsap.to(sideBarRef.current, {
       x: '-100%',
-      duration: 0.8,
+      duration: 0.5,
       onComplete: () => setOpen(false),
     })
   }
@@ -31,7 +31,7 @@ export const Sidebar = ({
       if (isOpen) {
         gsap.from(sideBarRef.current, {
           x: '-100%',
-          duration: 1,
+          duration: 0.5,
           ease: 'power2.inOut',
         })
       }

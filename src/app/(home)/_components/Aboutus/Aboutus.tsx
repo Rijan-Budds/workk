@@ -12,7 +12,9 @@ const Aboutus = () => {
     <HomeWrapper>
       <div className="flex flex-col lg:flex-row gap-[40px] justify-between 2lg:gap-[80px]">
         <div className="w-full 2lg:max-w-[503px] flex flex-col justify-center mx-auto">
-          <MiniHeading className="text-start">about pawan prakriti</MiniHeading>
+          <MiniHeading isMd className="text-start  w-fit">
+            about pawan prakriti
+          </MiniHeading>
           <SectionHeading isMd className="mt-2 text-start">
             Skilled Teachers And Support Staff
           </SectionHeading>
@@ -34,7 +36,7 @@ const Aboutus = () => {
           </div>
           <div className="mt-[40px]">
             <Link href={'/about'}>
-              <Button className="w-full md:w-auto">About us</Button>
+              <Button className="w-full 2lg:w-fit">About us</Button>
             </Link>
           </div>
         </div>

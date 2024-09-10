@@ -11,7 +11,7 @@ import Link from 'next/link'
 export const AcademicSection = () => {
   return (
     <HomeWrapper isBg className=" ">
-      <div className="pt-[9.6rem] 2lg:pt-0  flex flex-col  2lg:flex-row justify-between gap-x-6">
+      <div className="pt-[7.2rem] 2lg:pt-0  flex flex-col  2lg:flex-row justify-between gap-x-6">
         <div className="flex flex-col gap-y-2">
           <MiniHeading isMd>Program</MiniHeading>
           <SectionHeading isMd className="text-center">

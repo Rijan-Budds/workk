@@ -10,8 +10,8 @@ import Link from 'next/link'
 export const HeroSection = () => {
   return (
     <HeroBgWrapper>
-      <HomeWrapper className="py-[35px]  2lg:py-[97px]">
-        <div className="flex items-center flex-col  2lg:flex-row  w-full  ">
+      <HomeWrapper className="2lg:py-[97px]">
+        <div className="flex items-center flex-col  2lg:flex-row  w-full ">
           <div className="flex justify-start items-center w-full  ">
             <div className="flex flex-col gap-y-24 2lg:mt-16">
               <div className="flex flex-col gap-y-2 items-center 2lg:items-start">
