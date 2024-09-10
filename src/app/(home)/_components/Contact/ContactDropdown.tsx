@@ -17,12 +17,16 @@ interface IContactDropDownProps {
   setFieldValue: (field: string, value: string) => void
   error: string
   isError: boolean
+  label: string
+  className?: string
 }
 
 export const ContactDropdown = ({
   setFieldValue,
   error,
   isError,
+  label,
+  className,
 }: IContactDropDownProps) => {
   const dropDownList = [
     {
@@ -39,6 +43,15 @@ export const ContactDropdown = ({
 
   return (
     <div className="flex flex-col gap-y-2">
+      <label
+        htmlFor={label}
+        className={cn(
+          'text-white font-normal text-[14px] leading-4 font-workSans',
+          className
+        )}
+      >
+        {label}
+      </label>
       <Select
         open={open}
         onOpenChange={() => setOpen((prev) => !prev)}
