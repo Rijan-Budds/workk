@@ -1,5 +1,19 @@
 import { IResultData } from '../_interface/Reslut'
 
+export type ITitle = 'Plus Two' | 'School Level'
+export type ICategory = string
+
+export const categoriesByTitle = [
+  {
+    title: 'Plus Two',
+    categories: ['All', 'Management', 'Humanities'],
+  },
+  {
+    title: 'School Level',
+    categories: ['All', 'Science', 'Arts'],
+  },
+]
+
 export const ResultData: IResultData[] = [
   {
     id: 1,
@@ -56,5 +70,21 @@ export const ResultData: IResultData[] = [
     type: 'Plus Two',
     category: 'Humanities',
     pdfUrl: 'https://example.com/sample1.pdf',
+  },
+  {
+    id: 8,
+    heading: 'Class 10 (Sec A) Result',
+    date: 'July 19, 2024',
+    type: 'School Level',
+    category: 'Science',
+    pdfUrl: 'https://example.com/sample2.pdf',
+  },
+  {
+    id: 9,
+    heading: 'Class 9 (Sec A) Result',
+    date: 'July 19, 2024',
+    type: 'School Level',
+    category: 'Arts',
+    pdfUrl: 'https://example.com/sample3.pdf',
   },
 ]

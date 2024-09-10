@@ -5,10 +5,17 @@ import ResultSection from './ResultSection'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import { IResultData } from '../_interface/Reslut'
-import { ResultData } from '../_constants/data'
+import {
+  categoriesByTitle,
+  ICategory,
+  ITitle,
+  ResultData,
+} from '../_constants/data'
 
-type ITitle = 'Plus Two' | 'School Level'
-type ICategory = 'All' | 'Management' | 'Humanities'
+const getCategoriesByTitle = (title: ITitle): ICategory[] => {
+  const result = categoriesByTitle.find((item) => item.title === title)
+  return result ? (result.categories as ICategory[]) : []
+}
 
 const ResultUi = () => {
   const [title, setTitle] = useState<ITitle>('Plus Two')
@@ -31,6 +38,7 @@ const ResultUi = () => {
 
   const handleDynamicData = (type: ITitle) => {
     setTitle(type)
+    setCategory('All') // Reset category to 'All' when switching tabs
   }
 
   const handleCategoryChange = (selectedCategory: ICategory) => {
@@ -49,6 +57,7 @@ const ResultUi = () => {
           <ResultSection
             teams={filteredTeams}
             title={title}
+            categories={getCategoriesByTitle(title)}
             handleCategoryChange={handleCategoryChange}
           />
         </div>
