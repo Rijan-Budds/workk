@@ -21,7 +21,7 @@ export const AcademicCards = ({
       <span className="text-primary font-poppins font-semibold text-[20px] leading-[26px] z-10">
         {title}
       </span>
-      <p className="font-workSans font-normal text-[16px] leading-[27.2px] max-w-[333px] z-10">
+      <p className="font-workSans font-normal text-[16px] leading-[27.2px] max-w-[333px] z-10 text-body">
         {description}
       </p>
       <div className="mt-4 flex flex-col gap-y-8 z-10">
@@ -41,9 +41,9 @@ const AcademicList = ({ title, index }: { title: string; index: number }) => {
     <div className="flex items-center gap-x-2  group cursor-default ">
       <span
         className={cn(
-          'font-workSans font-normal text-[16px] leading-4  transition-all duration-500 ',
+          'font-workSans font-normal text-[16px] leading-4  transition-all duration-500 text-heading ',
           {
-            'text-primary group-hover:text-black':
+            'text-primary group-hover:text-heading':
               index === 0 && title === 'Management',
           }
         )}
@@ -51,8 +51,8 @@ const AcademicList = ({ title, index }: { title: string; index: number }) => {
         {title}
       </span>
       <GoArrowRight
-        className={cn(' transition-all duration-500 w-4', {
-          'text-primary group-hover:text-black':
+        className={cn(' transition-all duration-500 w-4 text-heading', {
+          'text-primary group-hover:text-heading':
             index === 0 && title === 'Management',
         })}
       />

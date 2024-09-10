@@ -35,7 +35,7 @@ export const ReasonsToStudy = () => {
             Academic Organization
           </SectionHeading>
 
-          <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center md:text-start 2lg:text-center">
+          <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center md:text-start 2lg:text-center text-heading">
             As you begin to consider your career goals choices may
             <br className="hidden 2lg:block" />
             appear confusing. Go with Modern Technology. Through the

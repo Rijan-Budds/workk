@@ -13,6 +13,7 @@ import {
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
 import './notice.css'
+import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 
 export const swiperParams = {
   navigation: {
@@ -28,9 +29,9 @@ const NewsSection = () => {
         <div className="flex justify-center md:justify-between items-center relative">
           <div className="">
             <MiniHeading isMd>News and Events</MiniHeading>
-            <h1 className="font-poppins font-medium text-[28px] leading-[36.4px] mt-2 text-center md:text-left">
+            <SectionHeading className="mt-2 text-center md:text-left">
               News and Events
-            </h1>
+            </SectionHeading>
           </div>
           <div
             id="testimonial"

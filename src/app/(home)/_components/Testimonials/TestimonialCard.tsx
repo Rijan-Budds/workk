@@ -22,7 +22,7 @@ export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
           alt="quote"
           className="absolute w-[60px] h-[51px] top-[18.33px] left-[13.51px]"
         />
-        <p className="p-[40px] font-workSans font-[400] text-base leading-[27.2px] tracking-tight">
+        <p className="p-[40px] font-workSans font-[400] text-base leading-[27.2px] tracking-tight text-heading">
           {card.desc}
         </p>
         <div className="px-10 py-6 flex gap-4 border-border-2 border-t-[1px]">
