@@ -117,7 +117,7 @@ export const ContactForm = () => {
                 />
                 <Button
                   type="submit"
-                  className="w-fit mt-[8px]"
+                  className="w-full md:w-fit mt-[8px]"
                   onClick={() => setMessage('Form Submitted Successfully !')}
                 >
                   Submit

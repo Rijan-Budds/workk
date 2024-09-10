@@ -1,14 +1,8 @@
 'use client'
-import React, { ReactNode } from 'react'
-
-import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
-
-import './testimonial.css'
-import { TestimonialCard } from './TestimonialCard'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
-import { SectionHeading } from '@/common/components/Atom/SectionHeading'
-import { cardData } from '@/app/(routes)/testimonials/_constants/data'
-
+import React, { ReactNode } from 'react'
+import { newsandevent, NewsCard } from './NewsCard'
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -18,7 +12,8 @@ import {
   SwiperButtonNext,
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
-import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
+import './notice.css'
+import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 
 export const swiperParams = {
   navigation: {
@@ -27,15 +22,15 @@ export const swiperParams = {
   },
 }
 
-const TestimonialsSection = () => {
+const NewsSection = () => {
   return (
-    <HomeWrapper isBg>
+    <>
       <div className="relative">
         <div className="flex justify-center md:justify-between items-center relative">
           <div className="">
-            <MiniHeading isMd>Testimonials</MiniHeading>
-            <SectionHeading isMd className="mt-2">
-              Our Happy Students
+            <MiniHeading isMd>News and Events</MiniHeading>
+            <SectionHeading className="mt-2 text-center md:text-left">
+              News and Events
             </SectionHeading>
           </div>
           <div
@@ -51,40 +46,39 @@ const TestimonialsSection = () => {
           </div>
         </div>
         <SwiperWrapper>
-          {cardData.map((card) => (
-            <SwiperSlide key={card.id} className="!mt-[40px] mx-auto">
-              <TestimonialCard card={card} />
+          {newsandevent.map((news) => (
+            <SwiperSlide key={news.id} className="mt-10 mx-auto">
+              <NewsCard news={news} />
             </SwiperSlide>
           ))}
-          <div className="flex justify-center gap-x-4 mt-10 md:hidden">
+          <div className="md:hidden flex justify-center mt-10 gap-x-4 absolute bottom-0 left-1/2 -translate-x-1/2 z-50 w-fit h-fit">
             <SwiperButtonPrevious>
-              <IoIosArrowRoundBack className="text-body text-2xl font-light " />
+              <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full size-8 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
             </SwiperButtonPrevious>
-
             <SwiperButtonNext>
-              <IoIosArrowRoundForward className="text-body text-2xl font-light" />
+              <IoIosArrowRoundForward className="text-body 2lg:bg-white rounded-full size-8 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
             </SwiperButtonNext>
           </div>
         </SwiperWrapper>
       </div>
-    </HomeWrapper>
+    </>
   )
 }
 
 const SwiperWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <Swiper
-      id="testimonial"
+      id="news"
       breakpoints={{
         528: { slidesPerView: 1 },
         728: { slidesPerView: 2 },
         992: { slidesPerView: 2, spaceBetween: 10 },
-        1200: { slidesPerView: 3 },
       }}
+      spaceBetween={25}
       slidesPerView={1}
-      spaceBetween={65}
       modules={[Pagination, Navigation]}
-      loop={true}
+      loop
+      className="!h-[475px] sm:h-auto relative"
       {...swiperParams}
     >
       {children}
@@ -92,4 +86,4 @@ const SwiperWrapper = ({ children }: { children: ReactNode }) => {
   )
 }
 
-export default TestimonialsSection
+export default NewsSection

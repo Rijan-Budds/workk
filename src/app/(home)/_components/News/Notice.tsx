@@ -59,10 +59,10 @@ const notices = [
 const Notice = () => {
   return (
     <>
-      <div className="  bg-white rounded-xl w-full md:w-[80%] 2lg:min-w-[320px] 2xl_lg:w-[396px]   2lg:max-w-[396px] 2lg:h-[465px] overflow-hidden  ">
+      <div className="bg-white rounded-xl w-full md:w-[80%] 2lg:min-w-[320px] 2xl_lg:w-[396px]   2lg:max-w-[396px] 2lg:h-[465px] overflow-hidden  ">
         <div className="py-8 pb-2 w-full">
           <div className="flex justify-between  px-8 pb-6 items-center">
-            <h1 className="text-xl font-poppins font-medium leading-6 ">
+            <h1 className="text-xl font-poppins font-medium leading-6 text-heading">
               Notices
             </h1>
             <Link
