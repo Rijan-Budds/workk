@@ -65,7 +65,7 @@ const VoiceOfDirector = () => {
                     <h2 className="font-workSans font-medium text-lg leading-6 mt-6">
                       {voice.name}
                     </h2>
-                    <p className="font-inter font-normal text-base leading-4 mt-2">
+                    <p className="font-poppins font-normal text-base leading-4 mt-2">
                       {voice.position}
                     </p>
                   </div>

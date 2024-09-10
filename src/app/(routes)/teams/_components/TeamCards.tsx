@@ -99,7 +99,7 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
               <h1 className="font-poppins font-medium text-xl leading-6">
                 {team.name}
               </h1>
-              <p className="font-inter font-normal text-base leading-4">
+              <p className="font-poppins font-normal text-base leading-4">
                 {team.position}
               </p>
             </div>
