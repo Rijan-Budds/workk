@@ -1,5 +1,5 @@
 import React from 'react'
-import AcademicDetail from './AcademicDetailPage/AcademicDetail'
+import AcademicDetail from '../_components/AcademicDetail'
 
 const page = () => {
   return (
