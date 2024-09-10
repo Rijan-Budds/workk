@@ -4,6 +4,7 @@ import React from 'react'
 import { recentPostData } from '../constant/newsdata'
 import { cn } from '@/common/utils/utils'
 import { CircleCardWrapper } from '@/common/components/Atom/CircleCardWrapper'
+import { inquiriesData } from '../../academics/constants/data'
 
 export const DownloadUi = () => {
   return (
@@ -90,6 +91,34 @@ const RecentPostCard = ({
           {post.date}
         </span>
       </div>
+    </div>
+  )
+}
+
+export const ForInquiry = () => {
+  return (
+    <CircleCardWrapper className="bg-cover">
+      <div className=" border border-border rounded-lg p-6 flex flex-col gap-y-6 md:w-[349px] lg:w-full">
+        <h3 className="font-poppins text-[20px] leading-[26px] font-medium text-heading">
+          For Inquiries
+        </h3>
+        <InquiriesUi />
+      </div>
+    </CircleCardWrapper>
+  )
+}
+
+export const InquiriesUi = () => {
+  return (
+    <div className="space-y-4">
+      {inquiriesData.map((inquiry, idx) => (
+        <div className="flex justify-start items-center gap-x-3" key={idx}>
+          <Image src={inquiry.image} width={20} height={20} alt="alt inquiry" />
+          <div className="text-body font-workSans font-normal text-base leading-7">
+            {inquiry.title}
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

@@ -18,7 +18,7 @@ import { TestimonialCard } from '@/app/(home)/_components/Testimonials/Testimoni
 
 const AcademicDetailSection = () => {
   return (
-    <div>
+    <div className="max-w-[787px]">
       <MiniHeading className="text-left">Management</MiniHeading>
       <SectionHeading>Are you prepared to advance your career?</SectionHeading>
       <p className="mt-6 font-workSans font-normal text-base leading-7 text-body">

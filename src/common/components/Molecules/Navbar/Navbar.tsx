@@ -163,8 +163,8 @@ const NavLinksUi = ({
                       </div>
                     </Link>
                     {sublink.subsublink && activeSublink === sublink.id && (
-                      <div className="absolute -top-[50px] left-full mt-0 bg-white shadow-md rounded-md p-2 z-50 w-[240px]">
-                        <div className="flex flex-col py-2 px-4 space-y-3">
+                      <div className="absolute top-[0px] left-full mt-0 bg-white shadow-md rounded-md p-2 z-50 w-[240px]">
+                        <div className="flex flex-col py-2 px-4 space-y-7">
                           {sublink.subsublink.map((subsublink) => (
                             <Link
                               key={subsublink.id}
