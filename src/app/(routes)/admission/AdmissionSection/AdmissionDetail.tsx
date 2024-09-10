@@ -1,3 +1,4 @@
+import { Button } from '@/common/components/Atom/Button'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import Image from 'next/image'
@@ -6,7 +7,7 @@ import React from 'react'
 const AdmissionDetail = () => {
   return (
     <div className="max-w-[787px]">
-      <MiniHeading className="text-left">Management</MiniHeading>
+      <MiniHeading className="text-left text-secondary">Management</MiniHeading>
       <SectionHeading>We consider each application with care.</SectionHeading>
       <p className="mt-6 font-workSans font-normal text-base leading-7 text-body">
         When reading an application, we get to know the person behind the
@@ -58,12 +59,58 @@ const AdmissionDetail = () => {
         boundaries are strictly prohibited and are considered against the law.
         The availability of seats is limited. The application process includes:
       </p>
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+      <ul className="mt-6 space-y-4">
+        <li className="flex items-center gap-x-[9px]">
+          <Image
+            src={'/admission/check.png'}
+            alt="check icon"
+            width={16}
+            height={16}
+            className="size-4 aspect-square "
+          />
+          <span className="font-workSans font-normal text-[16px] leading-[27.2px] text-heading">
+            Submit an inquiry form through our website
+          </span>
+        </li>
+        <li className="flex items-center gap-x-[9px]">
+          <Image
+            src={'/admission/check.png'}
+            alt="check icon"
+            width={16}
+            height={16}
+            className="size-4 aspect-square "
+          />
+          <span className="font-workSans font-normal text-[16px] leading-[27.2px] text-heading">
+            Complete the application form and provide the required documents
+          </span>
+        </li>
+        <li className="flex items-center gap-x-[9px]">
+          <Image
+            src={'/admission/check.png'}
+            alt="check icon"
+            width={16}
+            height={16}
+            className="size-4 aspect-square "
+          />
+          <span className="font-workSans font-normal text-[16px] leading-[27.2px] text-heading">
+            For certain age groups, o student assessment may be conducted
+          </span>
+        </li>
+        <li className="flex items-center gap-x-[9px]">
+          <Image
+            src={'/admission/check.png'}
+            alt="check icon"
+            width={16}
+            height={16}
+            className="size-4 aspect-square "
+          />
+          <span className="font-workSans font-normal text-[16px] leading-[27.2px] text-heading">
+            Once the admission process is complete, you will receive an offcial
+            acceptance letter.
+          </span>
+        </li>
       </ul>
+      <Button className="mt-10">Download Form</Button>
     </div>
   )
 }
