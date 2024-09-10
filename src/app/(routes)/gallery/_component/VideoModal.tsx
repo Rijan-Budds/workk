@@ -20,16 +20,20 @@ export const VideoModal = ({
   src: string
   setModalOpen: Dispatch<SetStateAction<boolean>>
   setSrc: Dispatch<SetStateAction<string>>
-  setActiveImage: Dispatch<SetStateAction<number | null>>
+  setActiveImage?: Dispatch<SetStateAction<number | null>>
   length: number
   type: IType
   showSwipe: boolean
 }) => {
   const handleSwipe = (direction: IDirection) => {
-    if (direction === 'next') {
-      setActiveImage((prev) => (prev! + 1) % length)
-    } else {
-      setActiveImage((prev) => (prev! - 1 + length) % length)
+    if (setActiveImage) {
+      // Only call setActiveImage if it's defined
+      setActiveImage((prev) => {
+        if (prev === null) return 0 // Handle null case appropriately
+        return direction === 'next'
+          ? (prev + 1) % length
+          : (prev - 1 + length) % length
+      })
     }
   }
   return (
@@ -53,7 +57,10 @@ export const VideoModal = ({
         handleClick={() => {
           setModalOpen(false)
           setSrc('')
-          setActiveImage(null)
+          if (setActiveImage) {
+            // Only call if setActiveImage is provided
+            setActiveImage(null)
+          }
         }}
       />
 
