@@ -12,18 +12,18 @@
   background: #e7eef8;
   border-radius: 10px;
 }
-#news .swiper-button-prev {
-  background-image: url('/home/buttonleft.svg') !important;
+#news .swiper-button-prev-news {
+  /* background-image: url('/home/buttonleft.svg') !important; */
   width: 40px !important;
   height: 40px !important;
 }
-#news .swiper-button-next {
-  background-image: url('/home/buttonright.svg') !important;
+#news .swiper-button-next-news {
+  /* background-image: url('/home/buttonright.svg') !important; */
   width: 40px !important;
   height: 40px !important;
 }
 
-#news .swiper-button-next::after,
-#news .swiper-button-prev::after {
+#news .swiper-button-next-news::after,
+#news .swiper-button-prev-news::after {
   content: '' !important;
 }
