@@ -38,10 +38,8 @@ export const AcademicSection = () => {
               </p>
             </div>
           </div>
-          <Link href={'/contact'}>
-            <Button className="mt-6 w-full  md:w-fit mx-auto md:mx-0">
-              Contact Us
-            </Button>
+          <Link href={'/contact'} className="w-full  md:w-fit">
+            <Button className="mt-6  mx-auto md:mx-0">Contact Us</Button>
           </Link>
         </div>
         <div className="hidden 2lg:flex   flex-row  gap-x-4  ">
