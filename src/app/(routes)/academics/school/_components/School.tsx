@@ -4,7 +4,11 @@ import React from 'react'
 import SchoolSection from './SchoolSection'
 import SchoolStickySidebar from './SchoolStickySidebar'
 
-const School = () => {
+interface SchoolProps {
+  slug: string
+}
+
+const School: React.FC<SchoolProps> = ({ slug }) => {
   return (
     <div>
       <CoverImage
@@ -12,7 +16,7 @@ const School = () => {
         list={[
           { link: '', title: 'Academics' },
           { link: '', title: 'School' },
-          { link: '', title: 'Pre-School' },
+          { link: '', title: slug },
         ]}
       />
 
