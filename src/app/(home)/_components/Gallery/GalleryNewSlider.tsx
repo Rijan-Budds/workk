@@ -56,9 +56,9 @@ export const GalleryMobileSlider = () => {
             slidesPerView: 1,
           },
           736: {
-            slidesPerView: 2,
+            slidesPerView: 1,
           },
-          1170: {
+          1280: {
             slidesPerView: 3,
           },
         }}

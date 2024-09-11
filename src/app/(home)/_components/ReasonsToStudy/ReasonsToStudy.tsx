@@ -74,12 +74,12 @@ const MissionTimeline = ({
   showLine: boolean
 }) => {
   return (
-    <div className="flex gap-x-6">
+    <div className="flex gap-x-6 items-center md:items-start">
       <div className="flex flex-col  items-center">
         <Image
           width={64}
           height={64}
-          className="size-24 2lg:size-16"
+          className="size-24 md:size-16"
           src={src}
           alt="timeline icon"
         />
@@ -93,11 +93,11 @@ const MissionTimeline = ({
           />
         )}
       </div>
-      <div>
+      <div className="">
         <span className="text-[20px] leading-[26px] font-poppins text-heading font-medium">
           {title}
         </span>
-        <p className="font-workSans text-[14px] leading-[21px] text-body max-w-[285px]">
+        <p className="font-workSans text-[14px] leading-[21px] text-body max-w-[560px] 2lg:max-w-[285px]">
           {description}
         </p>
       </div>

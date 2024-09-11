@@ -11,7 +11,7 @@ import Link from 'next/link'
 export const AcademicSection = () => {
   return (
     <HomeWrapper isBg className=" ">
-      <div className="pt-[7.2rem] 2lg:pt-0  flex flex-col  2lg:flex-row justify-between gap-x-6">
+      <div className="pt-[7.2rem] md:pt-[12rem] 2lg:pt-0  flex flex-col  2lg:flex-row justify-between gap-x-6">
         <div className="flex flex-col gap-y-2">
           <MiniHeading isMd>Program</MiniHeading>
           <SectionHeading isMd className="text-center">
@@ -19,7 +19,7 @@ export const AcademicSection = () => {
           </SectionHeading>
           <p className="font-normal text-[16px] font-workSans mt-2 text-heading text-center md:text-left">
             As you begin to consider your career goals
-            <br />
+            <br className="hidden 2lg:block" />
             choices may appear confusing.
           </p>
           <div className="flex items-center justify-center md:justify-start gap-x-2 mt-2">
@@ -39,10 +39,10 @@ export const AcademicSection = () => {
             </div>
           </div>
           <Link href={'/contact'} className="w-full  md:w-fit">
-            <Button className="mt-6  mx-auto md:mx-0">Contact Us</Button>
+            <Button className="mt-6 w-full  mx-auto md:mx-0">Contact Us</Button>
           </Link>
         </div>
-        <div className="hidden 2lg:flex   flex-row  gap-x-4  ">
+        <div className="hidden md:flex   flex-row  gap-x-4 mt-10">
           <AcademicCards
             title={'Plus Two'}
             description={
