@@ -44,12 +44,12 @@ export const navLinks = [
           {
             id: 2,
             title: 'Humanities',
-            link: '/academics/humanities',
+            link: '/academics/plustwo/humanities',
           },
           {
             id: 3,
             title: 'Law',
-            link: '/academics/law',
+            link: '/academics/plustwo/law',
           },
         ],
       },

@@ -2,6 +2,7 @@ export interface INavSubLink {
   id: number
   title: string
   link: string
+  subsublink?: INavSubLink[]
 }
 
 export interface INavLink {

@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
-import AcademicDetailSection from './AcademicDetailSection'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
+import AcademicDetailSection from './AcademicDetailSection'
 import StickyAcademicSide from './StickyAcademicSide'
 
 const AcademicDetail = () => {
@@ -13,7 +13,7 @@ const AcademicDetail = () => {
         list={[
           { link: 'academic', title: 'Academic' },
           { link: '', title: 'PLus Two' },
-          { link: '', title: 'Management' },
+          { link: '', title: 'Manafffgement' },
         ]}
       />
       <HomeWrapper>
