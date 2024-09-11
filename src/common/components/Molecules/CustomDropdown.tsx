@@ -40,7 +40,6 @@ export const CustomDropdown = ({
   classNameLabel,
 }: ICustomDropdownProps) => {
   const [open, setOpen] = useState<boolean>(false)
-
   return (
     <div className="flex flex-col gap-y-2 w-full">
       <label
@@ -60,7 +59,14 @@ export const CustomDropdown = ({
           setFieldValue && setFieldValue(field, value)
         }
       >
-        <SelectTrigger className="rounded-lg p-4 text-body leading-4 text-[14px] font-workSans ">
+        <SelectTrigger
+          className={cn(
+            'rounded-lg p-4 text-body leading-4 text-[14px] font-workSans ',
+            {
+              'text-black text-[16px]': value.length,
+            }
+          )}
+        >
           <SelectValue placeholder={placeHolder} />
           <ChevronDown
             className={cn('h-4 w-4 text-body transition-all duration-500', {

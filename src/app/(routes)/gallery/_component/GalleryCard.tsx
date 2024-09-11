@@ -77,7 +77,7 @@ export const GalleryCard = ({
         className={cn(
           'bg-white absolute 2lg:-bottom-20 left-1/2 -translate-x-1/2 rounded-[12px] text-nowrap bottom-6 2lg:group-hover:bottom-6 transition-all duration-500 will-change-transform ',
           {
-            '2lg:group-hover:bottom-20': gallery.type === 'video',
+            '2lg:group-hover:bottom-24': gallery.type === 'video',
           }
         )}
       >
