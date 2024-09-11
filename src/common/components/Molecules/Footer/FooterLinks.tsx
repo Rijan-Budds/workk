@@ -62,7 +62,7 @@ const FooterLinksData: FooterLink[] = [
 const FooterLinks = () => {
   return (
     <HomeWrapper className="py-14">
-      <div className="grid sm:grid-cols-2 mx-auto lg:flex lg:justify-between space-y-11 lg:space-y-0">
+      <div className="grid sm:grid-cols-2 mx-auto lg:flex lg:justify-between gap-11 lg:space-y-0">
         {FooterLinksData.map((data, index) => (
           <div key={index}>
             <h1 className="font-poppins text-xl font-medium leading-[26px] text-white">

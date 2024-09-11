@@ -5,7 +5,11 @@ import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import AcademicDetailSection from './AcademicDetailSection'
 import StickyAcademicSide from './StickyAcademicSide'
 
-const AcademicDetail = () => {
+interface AcademicDetailProps {
+  slug: string
+}
+
+const AcademicDetail: React.FC<AcademicDetailProps> = ({ slug }) => {
   return (
     <>
       <CoverImage
@@ -13,7 +17,7 @@ const AcademicDetail = () => {
         list={[
           { link: 'academic', title: 'Academic' },
           { link: '', title: 'PLus Two' },
-          { link: '', title: 'Manafffgement' },
+          { link: '', title: slug },
         ]}
       />
       <HomeWrapper>
