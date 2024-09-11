@@ -23,7 +23,7 @@ export const GalleryCard = ({
     >
       <div
         className={cn(
-          ' rounded-[8px] gallery-card w-[343px] h-[257px] 2lg:w-[292px] 2lg:h-[235px]  relative  transition-all duration-500 clip-image mx-auto 2lg:mx-0',
+          ' rounded-[8px] gallery-card w-[343px] h-[257px] md:w-[672px] md:h-[456px] 2lg:w-[292px] 2lg:h-[235px]  relative  transition-all duration-500 clip-image mx-auto 2lg:mx-0',
           {
             'rounded xl:scale-x-[1.8] xl:scale-y-[1.7]  3xl:scale-x-[1.982] 3xl:scale-y-[1.840] transition-all duration-500':
               isActive,
@@ -36,7 +36,7 @@ export const GalleryCard = ({
             height="827"
             width="578"
             src={data.src}
-            className="object-cover h-full rounded-[8px]"
+            className="object-cover  rounded-[8px] w-[343px] h-[257px] md:w-[672px] md:h-[456px] 2lg:w-[292px] 2lg:h-[235px]"
             fallbackThumb="/home/video-thumb.png"
           />
         ) : (
