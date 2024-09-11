@@ -28,7 +28,7 @@ const NewsSection = () => {
       <div className="relative">
         <div className="flex justify-center md:justify-between items-center relative">
           <div className="">
-            <MiniHeading isMd>News and Events</MiniHeading>
+            <MiniHeading className="md:text-start">News and Events</MiniHeading>
             <SectionHeading className="mt-2 text-center md:text-left">
               News and Events
             </SectionHeading>

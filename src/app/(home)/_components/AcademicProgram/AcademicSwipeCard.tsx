@@ -10,12 +10,12 @@ import {
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
-import { SwiperWrapper } from '@/common/components/Atom/SwiperWrapper'
+import { SwiperWrapperAcademicProgram } from '@/common/components/Atom/SwiperWrapper'
 
 export const AcademicSwipeCard = () => {
   return (
-    <div className="block 2lg:hidden mt-10">
-      <SwiperWrapper>
+    <div className="block md:hidden mt-10">
+      <SwiperWrapperAcademicProgram>
         <SwiperSlide className="">
           <AcademicCards
             title={'Plus Two'}
@@ -37,7 +37,7 @@ export const AcademicSwipeCard = () => {
             list={academicCardsDataTwo}
           />
         </SwiperSlide>
-        <div className="flex justify-center mt-10 gap-x-4">
+        <div className="flex justify-center mt-10 gap-x-4 ">
           <SwiperButtonPrevious>
             <IoIosArrowRoundBack className="text-body text-2xl font-light " />
           </SwiperButtonPrevious>
@@ -46,7 +46,7 @@ export const AcademicSwipeCard = () => {
             <IoIosArrowRoundForward className="text-body text-2xl font-light" />
           </SwiperButtonNext>
         </div>
-      </SwiperWrapper>
+      </SwiperWrapperAcademicProgram>
     </div>
   )
 }

@@ -22,8 +22,8 @@ const Aboutus = () => {
             As you begin to consider your career goals choices may appear
             confusing. Go with Modern Technology.
           </p>
-          <div className="flex flex-col sm:flex-row gap-y-[16px] gap-2 2lg:gap-[24px]">
-            <ul className="custom-list text-heading font-normal text-[16px] leading-[27.2px] space-y-[16px]">
+          <div className="flex flex-col sm:flex-row gap-y-[16px] md:gap-x-20  gap-8 2lg:gap-[24px]">
+            <ul className="custom-list text-heading font-normal font-workSans text-[16px] leading-[27.2px] space-y-[16px]">
               <li>Popular Online Courses</li>
               <li>Guaranted Career Security</li>
               <li>Books and Library</li>
