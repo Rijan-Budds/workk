@@ -1,10 +1,10 @@
 import React from 'react'
-import Facilities from './_component/Facilities'
+import { FacilitesSection } from '../_component/FacilitesSection'
 
 const page = () => {
   return (
     <div>
-      <Facilities />
+      <FacilitesSection />
     </div>
   )
 }
