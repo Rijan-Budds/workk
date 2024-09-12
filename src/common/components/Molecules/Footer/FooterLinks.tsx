@@ -64,7 +64,7 @@ const FooterLinks = () => {
     <HomeWrapper className="py-14">
       <div className="grid sm:grid-cols-2 mx-auto lg:flex lg:justify-between gap-11 lg:space-y-0">
         {FooterLinksData.map((data, index) => (
-          <div key={index}>
+          <div key={index} className="">
             <h1 className="font-poppins text-xl font-medium leading-[26px] text-white">
               {data.title}
             </h1>

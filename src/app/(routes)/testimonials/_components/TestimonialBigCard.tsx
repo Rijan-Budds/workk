@@ -29,7 +29,7 @@ export const TestimonailBigCard = ({ card }: { card: ITestimonialData }) => {
             className="rounded-full w-14 h-14 object-cover"
           />
           <div className="flex flex-col justify-center space-y-[8px]">
-            <h1 className="font-inter font-medium text-base leading-4 text-heading">
+            <h1 className="font-poppins  font-medium text-base leading-4 text-heading">
               {card.name}
             </h1>
             <p className="text-sm font-workSans font-[400] text-body leading-4">

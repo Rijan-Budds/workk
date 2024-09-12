@@ -54,7 +54,7 @@ export const ShareModal = ({
 
   return (
     <div className="bg-white rounded-xl p-6 flex flex-col gap-y-6  relative">
-      <span className="font-poppins text-[20px] leading-6  font-medium">
+      <span className="font-poppins text-[20px] leading-6  font-semibold">
         Share
       </span>
       <div className="flex gap-x-6 lg:gap-x-11">

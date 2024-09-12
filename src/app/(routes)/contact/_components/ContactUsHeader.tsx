@@ -50,7 +50,7 @@ const ContactUsHeader = () => {
               </h1>
               {contact.title === 'Phone' ? (
                 <>
-                  <ul className="mt-6 font-inter text-base font-normal text-body flex gap-2">
+                  <ul className="mt-6 font-poppins text-base font-normal text-body flex gap-2">
                     {contact.desc.map((phone, idx) => (
                       <li key={idx}>
                         <Link href={`tel:${phone}`} key={idx} className="flex">
@@ -60,7 +60,7 @@ const ContactUsHeader = () => {
                     ))}
                   </ul>
 
-                  <ul className="mt-4 font-inter text-base font-normal text-body flex justify-center items-center gap-2">
+                  <ul className="mt-4 font-poppins text-base font-normal text-body flex justify-center items-center gap-2">
                     {contact.secondDesc.map((phone, idx) => (
                       <Link href={`tel:${phone}`} key={`second-${idx}`}>
                         {phone}
@@ -71,13 +71,13 @@ const ContactUsHeader = () => {
               ) : (
                 <>
                   <Link href={contact.redirect}>
-                    <p className="mt-6 font-inter text-base font-normal text-body">
+                    <p className="mt-6 font-poppins text-base font-normal text-body">
                       {contact.desc[0]}
                     </p>
                   </Link>
                   {contact.secondDesc[0] && (
                     <p
-                      className={`mt-4 font-inter text-base font-normal text-body ${
+                      className={`mt-4 font-poppins text-base font-normal text-body ${
                         contact.secondDesc[0] === 'Sat Closed'
                           ? 'text-red-500'
                           : ''

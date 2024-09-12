@@ -22,3 +22,25 @@ export const SwiperWrapper = ({ children }: { children: ReactNode }) => {
     </Swiper>
   )
 }
+export const SwiperWrapperAcademicProgram = ({
+  children,
+}: {
+  children: ReactNode
+}) => {
+  return (
+    <Swiper
+      breakpoints={{
+        400: {
+          slidesPerView: 1,
+        },
+        1000: {
+          slidesPerView: 3,
+        },
+      }}
+      spaceBetween={15}
+      slidesPerView={1}
+    >
+      {children}
+    </Swiper>
+  )
+}
