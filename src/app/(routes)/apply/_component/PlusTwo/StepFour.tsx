@@ -47,6 +47,7 @@ export const StepFour = ({
           field={'hostel'}
           isRequired
           value={values!.hostel}
+          isBoolean
         />
         <CustomDropdown
           setFieldValue={setFieldValue}
@@ -58,6 +59,7 @@ export const StepFour = ({
           field={'transportation'}
           isRequired
           value={values!.transportation}
+          isBoolean
         />
       </div>
     </div>

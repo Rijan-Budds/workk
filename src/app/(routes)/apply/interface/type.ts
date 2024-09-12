@@ -16,13 +16,13 @@ export interface IStepOneError {
   fatherName: string
   fatherProfession: string
   fatherMobileNumber: string
-  localGuardainName: string
+  localGuardianName: string
   localGuardianProfession: string
   localGuardianPhoneNumber: string
   schoolName: string
   schoolAddress: string
   schoolBoard: string
-  seeSybmolNum: string
+  seeSymbolNum: string
   seeGpaPoint: string
   seeGpaGrade: string
   stream: string
@@ -45,13 +45,13 @@ export interface IStepFields {
   fatherName: string
   fatherProfession: string
   fatherMobileNumber: string
-  localGuardainName: string
+  localGuardianName: string
   localGuardianProfession: string
   localGuardianPhoneNumber: string
   schoolName: string
   schoolAddress: string
   schoolBoard: string
-  seeSybmolNum: string
+  seeSymbolNum: string
   seeGpaPoint: string
   seeGpaGrade: string
   stream: string
@@ -75,13 +75,13 @@ export interface IStepOneTouched {
   fatherName: boolean
   fatherProfession: boolean
   fatherMobileNumber: boolean
-  localGuardainName: boolean
+  localGuardianName: boolean
   localGuardianProfession: boolean
   localGuardianPhoneNumber: boolean
   schoolName: boolean
   schoolAddress: boolean
   schoolBoard: boolean
-  seeSybmolNum: boolean
+  seeSymbolNum: boolean
   seeGpaPoint: boolean
   seeGpaGrade: boolean
   stream: boolean
@@ -96,7 +96,7 @@ export interface InputStyle {
 }
 
 export interface IStepProps {
-  setFieldValue(field: string, value: string | IFileMetadata[]): void
+  setFieldValue(field: string, value: string | IFileMetadata[] | boolean): void
   errors: FormikErrors<IStepOneError>
   touched: FormikTouched<IStepOneTouched>
   setFieldError?: (field: string, message: string | undefined) => void

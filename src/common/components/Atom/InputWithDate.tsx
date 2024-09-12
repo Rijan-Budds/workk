@@ -72,7 +72,7 @@ export const InputWithDate = ({
             onSelect={(date: Date | undefined) => {
               if (date) {
                 setSelectDate(date)
-                setValue('dateOfBirth', format(date, 'PPP'))
+                setValue('dateOfBirth', format(date, 'MMMM d, yyyy'))
                 setOpen((prev) => !prev)
               }
             }}

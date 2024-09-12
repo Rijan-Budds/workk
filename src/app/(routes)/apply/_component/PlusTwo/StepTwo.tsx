@@ -43,10 +43,10 @@ export const StepTwo = ({ errors, inputStyle, touched }: IStepProps) => {
           label="Local Guardian's Name"
           labelClass={inputStyle.label}
           placeholder="Your local guardian's name"
-          name="localGuardainName"
-          error={errors!.localGuardainName}
+          name="localGuardianName"
+          error={errors!.localGuardianName}
           className={inputStyle.input}
-          isError={!!errors!.localGuardainName && touched.localGuardainName}
+          isError={!!errors!.localGuardianName && touched.localGuardianName}
         />
         <Input
           label="Local Guardian's Profession"
