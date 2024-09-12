@@ -5,6 +5,9 @@ import { MultipleSteps } from './StepUi'
 import { Form, Formik, FormikValues } from 'formik'
 import * as Yup from 'yup'
 import {
+  applicationCourseDetailSchema,
+  applicationFamilyDetailSchema,
+  applicationPreviousSchoolDetailSchema,
   initialValues,
   MultiStepFormInputStyle,
   StepComponentPlusTwo,
@@ -12,6 +15,7 @@ import {
 } from '../constant/data'
 import { Button } from '@/common/components/Atom/Button'
 import axios from 'axios'
+import { postPlusTwoForm } from '@/common/constant/route'
 
 interface IPlusTwoFormProps {
   onFormChange: (isDirty: boolean) => void
@@ -40,13 +44,45 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
       console.info('Final Values:', values)
 
       const formData = new FormData()
+      handleNext()
+      const applicationFamilyDetail: { [key: string]: string } = {}
+      const applicationPreviousSchoolDetail: { [key: string]: string } = {}
+      const applicationCourseDetail: { [key: string]: string } = {}
+
       Object.keys(values).forEach((key) => {
-        formData.append(key, values[key])
+        if (
+          values[key] !== '' &&
+          values[key] !== undefined &&
+          values[key] !== null
+        ) {
+          if (applicationFamilyDetailSchema.includes(key)) {
+            applicationFamilyDetail[key] = values[key]
+          } else if (applicationPreviousSchoolDetailSchema.includes(key)) {
+            applicationPreviousSchoolDetail[key] = values[key]
+          } else if (applicationCourseDetailSchema.includes(key)) {
+            applicationCourseDetail[key] = values[key]
+          } else {
+            formData.append(key, values[key])
+          }
+        }
       })
+      formData.append('applicationFor', 'PLUS_TWO')
+      formData.append(
+        'applicationFamilyDetail',
+        JSON.stringify(applicationFamilyDetail)
+      )
+      formData.append(
+        'applicationPreviousSchoolDetail',
+        JSON.stringify(applicationPreviousSchoolDetail)
+      )
+      formData.append(
+        'applicationCourseDetail',
+        JSON.stringify(applicationCourseDetail)
+      )
 
       try {
         const response = await axios.post(
-          'http://192.168.110.52:3000/api/v1/application/register',
+          `${process.env.NEXT_PUBLIC_BASE_URL}/${postPlusTwoForm}`,
           formData,
           {
             headers: {
@@ -87,6 +123,8 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
           const StepComponentsPlusTwo = StepComponentPlusTwo[currentStep]
 
           onFormChange(dirty)
+
+          console.log('values :::', values)
           return (
             <Form>
               <StepComponentsPlusTwo

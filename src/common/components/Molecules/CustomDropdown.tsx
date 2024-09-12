@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils'
 import { ChevronDown } from 'lucide-react'
 
 interface ICustomDropdownProps {
-  setFieldValue?: (field: string, value: string) => void
+  setFieldValue?: (field: string, value: boolean | string) => void
   error: string | undefined
   isError: boolean | undefined
   list: IDropdownList[]
@@ -25,6 +25,7 @@ interface ICustomDropdownProps {
   isRequired: boolean
   value: string
   classNameLabel?: string
+  isBoolean?: boolean
 }
 
 export const CustomDropdown = ({
@@ -38,6 +39,7 @@ export const CustomDropdown = ({
   isRequired,
   value,
   classNameLabel,
+  isBoolean = false,
 }: ICustomDropdownProps) => {
   const [open, setOpen] = useState<boolean>(false)
   return (
@@ -55,9 +57,19 @@ export const CustomDropdown = ({
         open={open}
         value={value}
         onOpenChange={() => setOpen((prev) => !prev)}
-        onValueChange={(value: string) =>
-          setFieldValue && setFieldValue(field, value)
-        }
+        onValueChange={(value) => {
+          if (isBoolean) {
+            if (value === 'TRUE' && setFieldValue) {
+              setFieldValue(field, true)
+            } else if (value === 'FALSE' && setFieldValue) {
+              setFieldValue(field, false)
+            }
+          } else {
+            if (setFieldValue) {
+              setFieldValue(field, value)
+            }
+          }
+        }}
       >
         <SelectTrigger
           className={cn(

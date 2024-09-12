@@ -63,13 +63,13 @@ export const initialValues = {
   fatherName: '',
   fatherProfession: '',
   fatherMobileNumber: '',
-  localGuardainName: '',
+  localGuardianName: '',
   localGuardianProfession: '',
   localGuardianPhoneNumber: '',
   schoolName: '',
   schoolAddress: '',
   schoolBoard: '',
-  seeSybmolNum: '',
+  seeSymbolNum: '',
   seeGpaPoint: '',
   seeGpaGrade: '',
   stream: '',
@@ -96,7 +96,7 @@ export const stepTwoValidationSchema = {
   fatherName: fatherNameValidation,
   fatherProfession: fatherProfessionValidation,
   fatherMobileNumber: mobileNumberValidation,
-  localGuardainName: localGuardianNameValidation,
+  localGuardianName: localGuardianNameValidation,
   localGuardianProfession: guardianProfessionValidation,
   localGuardianPhoneNumber: gurdianMobileNumber,
 }
@@ -105,7 +105,7 @@ const stepThreeValidationSchema = {
   schoolName: schoolNameValidation,
   schoolAddress: schoolAddressValidation,
   schoolBoard: schoolBoardValidation,
-  seeSybmolNum: seeSymbolNumberValidation,
+  seeSymbolNum: seeSymbolNumberValidation,
   seeGpaPoint: seeGpaPointValidation,
   seeGpaGrade: seeGpaGradeValidation,
 }
@@ -153,11 +153,36 @@ export const shiftList = [
 ]
 
 export const hostelList = [
-  { title: 'yes', value: 'YES' },
-  { title: 'no', value: 'NO' },
+  { title: 'yes', value: 'TRUE' },
+  { title: 'no', value: 'FALSE' },
 ]
 
 export const transportationList = [
-  { title: 'yes', value: 'YES' },
-  { title: 'no', value: 'NO' },
+  { title: 'yes', value: 'TRUE' },
+  { title: 'no', value: 'FALSE' },
+]
+
+export const applicationFamilyDetailSchema = [
+  'fatherName',
+  'fatherProfession',
+  'fatherMobileNumber',
+  'localGuardianName',
+  'localGuardianProfession',
+  'localGuardianPhoneNumber',
+]
+
+export const applicationPreviousSchoolDetailSchema = [
+  'schoolName',
+  'schoolAddress',
+  'schoolBoard',
+  'seeSymbolNum',
+  'seeGpaPoint',
+  'seeGpaGrade',
+]
+
+export const applicationCourseDetailSchema = [
+  'stream',
+  'shift',
+  'hostel',
+  'transportation',
 ]
