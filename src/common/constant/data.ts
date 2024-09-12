@@ -90,43 +90,49 @@ export const navLinks = [
   {
     id: 3,
     title: 'Our facilities',
-    link: '/facilities',
+    link: '',
     isDropDown: true,
     sublink: [
       {
+        id: 0,
+        title: 'Overview',
+        link: '/facilities',
+      },
+
+      {
         id: 1,
         title: 'Science Lab',
-        link: '/facilities',
+        link: '/facilities/science',
       },
       {
         id: 2,
         title: 'School Canteen',
-        link: '/facilities',
+        link: '/facilities/canteen',
       },
       {
         id: 3,
         title: 'Library',
-        link: '/facilities',
+        link: '/facilities/library',
       },
       {
         id: 4,
         title: 'Computer Lab',
-        link: '/facilities',
+        link: '/facilities/computer',
       },
       {
         id: 5,
         title: 'Transportation',
-        link: '/facilities',
+        link: '/facilities/transportation',
       },
       {
         id: 6,
         title: 'School-Hostel',
-        link: '/facilities',
+        link: '/facilities/hostel',
       },
       {
         id: 7,
         title: 'Sports',
-        link: '/facilities',
+        link: '/facilities/sports',
       },
     ],
   },
