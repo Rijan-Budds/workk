@@ -42,7 +42,7 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
 
   const handleSubmit = async (
     values: FormikValues,
-    resetForm: FormikHelpers<IPlusTwoFormProps>['resetForm']
+    resetForm: FormikHelpers<typeof initialValues>['resetForm']
   ) => {
     if (currentStep < StepComponentPlusTwo.length - 1) {
       handleNext()
