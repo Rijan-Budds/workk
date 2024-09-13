@@ -41,8 +41,6 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
     if (currentStep < StepComponentPlusTwo.length - 1) {
       handleNext()
     } else {
-      console.info('Final Values:', values)
-
       const formData = new FormData()
       handleNext()
       const applicationFamilyDetail: { [key: string]: string } = {}
@@ -123,8 +121,6 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
           const StepComponentsPlusTwo = StepComponentPlusTwo[currentStep]
 
           onFormChange(dirty)
-
-          console.log('values :::', values)
           return (
             <Form>
               <StepComponentsPlusTwo
