@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { MultipleSteps } from './StepUi'
-import { Form, Formik, FormikValues } from 'formik'
+import { Form, Formik, FormikHelpers, FormikValues } from 'formik'
 import * as Yup from 'yup'
 import {
   applicationCourseDetailSchema,
@@ -14,8 +14,11 @@ import {
   ValidationSchemas,
 } from '../constant/data'
 import { Button } from '@/common/components/Atom/Button'
-import axios from 'axios'
 import { postPlusTwoForm } from '@/common/constant/route'
+import { toast } from '@/common/hook/use-toast'
+import { ToastClose } from '@/common/components/ui/toast'
+import Image from 'next/image'
+import Axios from '@/common/utils/Axios'
 
 interface IPlusTwoFormProps {
   onFormChange: (isDirty: boolean) => void
@@ -23,7 +26,7 @@ interface IPlusTwoFormProps {
 
 export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
   const [currentStep, setCurrentStep] = useState<number>(0)
-  const [completedSteps] = useState<number[]>([])
+  const [completedSteps, setCompletedStep] = useState<number[]>([])
 
   const handleNext = () => {
     completedSteps.push(currentStep)
@@ -37,7 +40,10 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
     setCurrentStep((prev) => Math.max(prev - 1, 0))
   }
 
-  const handleSubmit = async (values: FormikValues) => {
+  const handleSubmit = async (
+    values: FormikValues,
+    resetForm: FormikHelpers<typeof initialValues>['resetForm']
+  ) => {
     if (currentStep < StepComponentPlusTwo.length - 1) {
       handleNext()
     } else {
@@ -79,7 +85,7 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
       )
 
       try {
-        const response = await axios.post(
+        const response = await Axios.post(
           `${process.env.NEXT_PUBLIC_BASE_URL}/${postPlusTwoForm}`,
           formData,
           {
@@ -88,7 +94,30 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
             },
           }
         )
-        console.info('Response:', response.data)
+        if (response.data) {
+          toast({
+            title: response.data.message,
+            action: (
+              <ToastClose>
+                <Image
+                  src={'/admission/toast-close.svg'}
+                  width={20}
+                  height={20}
+                  alt="close icon"
+                  className="size-5"
+                />
+              </ToastClose>
+            ),
+            className:
+              'bg-successBg py-[18px] px-4 text-success font-workSans text-[16px] leading-4  font-medium',
+          })
+          setTimeout(() => {
+            resetForm()
+            setCurrentStep(0)
+            setCompletedStep([])
+          }, 500)
+        } else {
+        }
       } catch (error) {
         console.error('Error submitting form:', error)
       }
@@ -105,7 +134,7 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
 
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => handleSubmit(values)}
+        onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
         validationSchema={Yup.object().shape(ValidationSchemas[currentStep])}
       >
         {(formik) => {

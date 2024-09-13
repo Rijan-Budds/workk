@@ -31,6 +31,7 @@ const config = {
         secondaryLighter: '#FDF6F0',
         shadowBorder: '#FAFAFA',
         error: '#B91C1C',
+        errorLighter: '#FEEEEC',
         success: '#166534',
         successBg: '#DCFCE7',
         grayBackground: '#F8F8FA',

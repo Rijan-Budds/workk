@@ -1,5 +1,6 @@
 import { inter, poppins, workSans } from '@/common/utils/font'
 import './globals.css'
+import { Toaster } from '@/common/components/ui/toaster'
 export default function RootLayout({
   children,
 }: {
@@ -11,8 +12,10 @@ export default function RootLayout({
       className={`${workSans.variable} ${poppins.variable} ${inter.variable}`}
     >
       <title>Pawan Prakriti</title>
-
-      <body className="overflow-x-hidden overflow-y-hidden">{children}</body>
+      <body className="overflow-x-hidden overflow-y-hidden">
+        <Toaster />
+        {children}
+      </body>
     </html>
   )
 }
