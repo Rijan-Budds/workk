@@ -88,6 +88,7 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
             },
           }
         )
+        console.info('Response:', response.data)
       } catch (error) {
         console.error('Error submitting form:', error)
       }
