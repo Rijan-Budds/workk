@@ -41,7 +41,7 @@ export interface IStepFields {
   dateOfBirth: Date | undefined
   mobileNumber: string
   province: string
-  document?: IFileMetadata[]
+  document?: File[]
   fatherName: string
   fatherProfession: string
   fatherMobileNumber: string

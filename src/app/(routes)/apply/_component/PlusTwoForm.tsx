@@ -52,7 +52,6 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
       const applicationFamilyDetail: { [key: string]: string } = {}
       const applicationPreviousSchoolDetail: { [key: string]: string } = {}
       const applicationCourseDetail: { [key: string]: string } = {}
-
       Object.keys(values).forEach((key) => {
         if (
           values[key] !== '' &&
@@ -65,6 +64,10 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
             applicationPreviousSchoolDetail[key] = values[key]
           } else if (applicationCourseDetailSchema.includes(key)) {
             applicationCourseDetail[key] = values[key]
+          } else if (key === 'document') {
+            for (let i = 0; i < values['document'].length; i++) {
+              formData.append('document', values['document'][i])
+            }
           } else {
             formData.append(key, values[key])
           }
@@ -87,12 +90,7 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
       try {
         const response = await Axios.post(
           `${process.env.NEXT_PUBLIC_BASE_URL}/${postPlusTwoForm}`,
-          formData,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          }
+          formData
         )
         if (response.data) {
           toast({
