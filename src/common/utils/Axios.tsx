@@ -11,7 +11,7 @@ interface ValidationErrorDetail {
 }
 
 const Axios = axios.create({
-  baseURL: `${process.env.NEXT_PULIC_BASE_URL}`,
+  baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}`,
 })
 
 // Response interceptor to handle errors

@@ -48,7 +48,6 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
       handleNext()
     } else {
       const formData = new FormData()
-      handleNext()
       const applicationFamilyDetail: { [key: string]: string } = {}
       const applicationPreviousSchoolDetail: { [key: string]: string } = {}
       const applicationCourseDetail: { [key: string]: string } = {}
@@ -88,10 +87,7 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
       )
 
       try {
-        const response = await Axios.post(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/${postPlusTwoForm}`,
-          formData
-        )
+        const response = await Axios.post(`/${postPlusTwoForm}`, formData)
         if (response.data) {
           toast({
             title: response.data.message,
