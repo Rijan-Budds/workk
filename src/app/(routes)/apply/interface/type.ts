@@ -41,7 +41,7 @@ export interface IStepFields {
   dateOfBirth: Date | undefined
   mobileNumber: string
   province: string
-  document?: IFileMetadata[]
+  document?: File[]
   fatherName: string
   fatherProfession: string
   fatherMobileNumber: string
@@ -96,7 +96,10 @@ export interface InputStyle {
 }
 
 export interface IStepProps {
-  setFieldValue(field: string, value: string | IFileMetadata[] | boolean): void
+  setFieldValue(
+    field: string,
+    value: string | IFileMetadata[] | boolean | File[]
+  ): void
   errors: FormikErrors<IStepOneError>
   touched: FormikTouched<IStepOneTouched>
   setFieldError?: (field: string, message: string | undefined) => void

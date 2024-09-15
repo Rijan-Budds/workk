@@ -1,12 +1,6 @@
 'use client'
 
-import { IFileMetadata } from '@/common/interface/type'
-import {
-  byteToMb,
-  checkFileType,
-  cn,
-  convertFileToSrc,
-} from '@/common/utils/utils'
+import { byteToMb, cn } from '@/common/utils/utils'
 import React, { useState } from 'react'
 import { ErrorComponent } from '../Atom/Input'
 import { FormikErrors } from 'formik'
@@ -16,7 +10,7 @@ import { UploadedFileUi } from './UploadFileUi'
 interface IDropZoneProps {
   isError: boolean | undefined
   error: string | string[] | FormikErrors<File>[] | undefined
-  setValue: (field: string, value: IFileMetadata[]) => void
+  setValue: (field: string, value: File[]) => void
   setError?: (field: string, message: string | undefined) => void
   values: IStepFields | undefined
 }
@@ -32,16 +26,16 @@ export const ImageDropZone = ({
 
   const handleMetaData = (files: File[]) => {
     if (files) {
-      const filterMetaData = files.map((file) => {
-        return {
-          name: file.name,
-          size: byteToMb(file.size),
-          type: checkFileType(file.type),
-          src: convertFileToSrc(file),
-        }
-      })
+      // const filterMetaData = files.map((file) => {
+      //   return {
+      //     name: file.name,
+      //     size: byteToMb(file.size),
+      //     type: checkFileType(file.type),
+      //     src: convertFileToSrc(file),
+      //   }
+      // })
       if (files.length < 6) {
-        setValue('document', filterMetaData)
+        setValue('document', files)
       } else {
         if (setError) {
           setError('document', 'You can upload a maximum of 5 files')
@@ -134,9 +128,7 @@ export const ImageDropZone = ({
               <UploadedFileUi
                 key={index}
                 name={file.name}
-                size={file.size}
-                type={file.type}
-                src={file.src}
+                size={byteToMb(file.size)}
                 index={index}
                 onDelete={() => handleDelete(index)}
                 isError={!!error[index]}

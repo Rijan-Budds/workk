@@ -8,8 +8,6 @@ import { ActionToolTips } from '../Atom/CustomToolTip'
 export const UploadedFileUi = ({
   name,
   size,
-  type,
-  src,
   onDelete,
   isError,
   message,
@@ -29,22 +27,12 @@ export const UploadedFileUi = ({
       )}
     >
       <div className="flex gap-x-4 items-center">
-        {type === 'image' ? (
-          <Image
-            src={src}
-            width={40}
-            height={40}
-            alt="pdf icon"
-            className="size-10 object-cover rounded"
-          />
-        ) : (
-          <Image
-            src={'/admission/pdf.png'}
-            width={32}
-            height={32}
-            alt="pdf icon"
-          />
-        )}
+        <Image
+          src={'/admission/pdf.png'}
+          width={32}
+          height={32}
+          alt="pdf icon"
+        />
         <div className="flex flex-col gap-y-1 ">
           <span className="font-workSans font-medium text-[14px] leading-4 text-heading line-clamp-1 break-all   max-w-[140px] 2lg:max-w-[245px] ">
             {name}
