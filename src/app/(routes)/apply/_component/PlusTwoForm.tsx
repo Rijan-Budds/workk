@@ -25,7 +25,7 @@ interface IPlusTwoFormProps {
 }
 
 export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
-  const [currentStep, setCurrentStep] = useState<number>(0)
+  const [currentStep, setCurrentStep] = useState<number>(2)
   const [completedSteps, setCompletedStep] = useState<number[]>([])
 
   const handleNext = () => {

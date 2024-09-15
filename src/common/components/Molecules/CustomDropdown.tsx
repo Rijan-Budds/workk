@@ -43,8 +43,6 @@ export const CustomDropdown = ({
 }: ICustomDropdownProps) => {
   const [open, setOpen] = useState<boolean>(false)
 
-  console.log('value:::', value)
-
   return (
     <div className="flex flex-col gap-y-2 w-full">
       <label
@@ -76,10 +74,11 @@ export const CustomDropdown = ({
       >
         <SelectTrigger
           className={cn(
-            'rounded-lg p-4  leading-4 text-[14px] font-workSans ',
+            'rounded-lg p-4 text-body  leading-4 text-[14px] font-workSans ',
             {
               'text-black text-[16px] ':
                 value.length || typeof value === 'boolean',
+              'border border-error': isError,
             }
           )}
         >
