@@ -11,6 +11,7 @@ import { NoticeClientSection } from '../../notice/_component/NoticeClientSection
 import { INewsItem } from '../interface/newsType'
 import { format } from 'date-fns'
 import { cn } from '@/common/utils/utils'
+import { Pagination } from '@/common/components/Pagination'
 
 export const NewsSection = ({
   newsData,
@@ -82,6 +83,14 @@ export const NewsSection = ({
                 </Link>
               )
             })}
+          <div className="w-full flex justify-center mt-4">
+            <Pagination
+              currentPage={1}
+              pageSize={12}
+              totalCount={100}
+              onPageChange={() => console.log('hii')}
+            />
+          </div>
         </div>
       )
     } else if (active === 'notice') {
