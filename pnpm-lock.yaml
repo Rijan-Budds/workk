@@ -50,6 +50,9 @@ dependencies:
   date-fns:
     specifier: ^3.6.0
     version: 3.6.0
+  dompurify:
+    specifier: ^3.1.6
+    version: 3.1.6
   formik:
     specifier: ^2.4.6
     version: 2.4.6(react@18.3.1)
@@ -112,6 +115,9 @@ devDependencies:
   '@ianvs/prettier-plugin-sort-imports':
     specifier: ^4.2.1
     version: 4.3.1(prettier@3.3.3)
+  '@types/dompurify':
+    specifier: ^3.0.5
+    version: 3.0.5
   '@types/node':
     specifier: ^20
     version: 20.16.3
@@ -1866,6 +1872,12 @@ packages:
       tslib: 2.7.0
     dev: false
 
+  /@types/dompurify@3.0.5:
+    resolution: {integrity: sha512-1Wg0g3BtQF7sSb27fJQAKck1HECM6zV1EB66j8JH9i3LCjYabJa0FSdiSgsD5K/RbrsR0SiraKacLB+T8ZVYAg==}
+    dependencies:
+      '@types/trusted-types': 2.0.7
+    dev: true
+
   /@types/hoist-non-react-statics@3.3.5:
     resolution: {integrity: sha512-SbcrWzkKBw2cdwRTwQAswfpB9g9LJWfjtUeW/jvNwbhC8cpmmNYVePa+ncbUe0rGTQ7G3Ff6mYUN2VMfLVr+Sg==}
     dependencies:
@@ -1930,6 +1942,10 @@ packages:
   /@types/semver@7.5.8:
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
     dev: false
+
+  /@types/trusted-types@2.0.7:
+    resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
+    dev: true
 
   /@typescript-eslint/eslint-plugin@6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.5.4):
     resolution: {integrity: sha512-oy9+hTPCUFpngkEZUSzbf9MxI65wbKFoQYsgPdILTfbUldp5ovUuphZVe4i30emU9M/kP+T64Di0mxl7dSw3MA==}
@@ -2850,6 +2866,10 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: 2.0.3
+
+  /dompurify@3.1.6:
+    resolution: {integrity: sha512-cTOAhc36AalkjtBpfG6O8JimdTMWNXjiePT2xQH/ppBGi/4uIpmj8eKyIkMJErXWARyINV/sB38yf8JCLF5pbQ==}
+    dev: false
 
   /dot-prop@5.3.0:
     resolution: {integrity: sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==}

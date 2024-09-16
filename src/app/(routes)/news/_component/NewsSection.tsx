@@ -42,7 +42,7 @@ export const NewsSection = ({
             newsData.map((news) => {
               return (
                 <Link
-                  href={`/news/ffff`}
+                  href={`/news/${news.id}`}
                   key={news.id}
                   className={cn('mb-0', {
                     'mb-8 2lg:mb-0': news.title.length > 40,
