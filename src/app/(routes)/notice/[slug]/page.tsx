@@ -7,7 +7,9 @@ const page = async ({ params }: { params: { slug: string } }) => {
   const noticeDetail: INoticeResponse | undefined = await UseServerFetch(
     `/api/v1/news-and-notice/${params.slug}`
   )
-  return <NoticeDetail detail={noticeDetail?.data} />
+  return (
+    <NoticeDetail detail={noticeDetail?.data ? noticeDetail.data : undefined} />
+  )
 }
 
 export default page

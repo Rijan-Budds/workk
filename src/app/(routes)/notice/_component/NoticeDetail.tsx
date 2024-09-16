@@ -6,7 +6,11 @@ import { NoticeDetailSection } from './NoticeDetailSection'
 import { MobileSidebar } from '../../news/_component/MobileSidebar'
 import { INoticeData } from '../_interface/type'
 
-export const NoticeDetail = ({ detail }: { detail: INoticeData }) => {
+export const NoticeDetail = ({
+  detail,
+}: {
+  detail: INoticeData | undefined
+}) => {
   return (
     <div className="overflow-x-hidden  2lg:overflow-visible">
       <CoverImage
@@ -15,7 +19,7 @@ export const NoticeDetail = ({ detail }: { detail: INoticeData }) => {
       />
       <HomeWrapper>
         <div className="flex flex-col gap-y-20 2lg:gap-y-0  2lg:flex-row justify-between gap-x-12">
-          <NoticeDetailSection detail={detail} />
+          {detail && <NoticeDetailSection detail={detail} />}
           <StickySidebar />
           <MobileSidebar />
         </div>

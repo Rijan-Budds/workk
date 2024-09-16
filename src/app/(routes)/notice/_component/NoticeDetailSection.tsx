@@ -8,12 +8,12 @@ import { format } from 'date-fns'
 import DOMPurify from 'dompurify'
 
 export const NoticeDetailSection = ({ detail }: { detail: INoticeData }) => {
-  const cleanHtml = DOMPurify.sanitize(detail.description)
+  const cleanHtml = detail && DOMPurify.sanitize(detail.description)
 
   return (
     <div className="flex flex-col items-start gap-y-2 md:max-w-[672px]  2lg:max-w-[787px]">
       <MiniHeading className="font-semibold leading-4 tracking-widest text-secondary">
-        {format(detail.createdAt, 'MMMM d, yyyy')}
+        {format(detail?.createdAt, 'MMMM d, yyyy')}
       </MiniHeading>
       <SectionHeading>{detail.title}</SectionHeading>
       <div
