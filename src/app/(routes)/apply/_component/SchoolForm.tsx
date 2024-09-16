@@ -19,6 +19,7 @@ import { postPlusTwoForm } from '@/common/constant/route'
 import { toast } from '@/common/hook/use-toast'
 import { ToastClose } from '@/common/components/ui/toast'
 import Image from 'next/image'
+import { cn } from '@/common/utils/utils'
 
 interface IPlusTwoFormProps {
   onFormChange: (isDirty: boolean) => void
@@ -27,6 +28,7 @@ interface IPlusTwoFormProps {
 export const SchoolForm = ({ onFormChange }: IPlusTwoFormProps) => {
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [completedSteps, setCompletedStep] = useState<number[]>([])
+  const [loading, setLoading] = useState<boolean>(false)
 
   const handleNext = () => {
     completedSteps.push(currentStep)
@@ -77,6 +79,7 @@ export const SchoolForm = ({ onFormChange }: IPlusTwoFormProps) => {
     )
 
     try {
+      setLoading(true)
       const response = await Axios.post(`${postPlusTwoForm}`, formData)
       if (response.data) {
         toast({
@@ -104,6 +107,8 @@ export const SchoolForm = ({ onFormChange }: IPlusTwoFormProps) => {
       }
     } catch (error) {
       console.error('Error submitting form:', error)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -117,6 +122,9 @@ export const SchoolForm = ({ onFormChange }: IPlusTwoFormProps) => {
       handleFinalSubmit(values, resetForm)
     }
   }
+
+  const isSubmit = currentStep < StepComponentSchool.length - 1
+
   return (
     <div className=" bg-background w-full rounded-xl p-6 flex flex-col gap-y-10">
       <MultipleSteps
@@ -164,10 +172,27 @@ export const SchoolForm = ({ onFormChange }: IPlusTwoFormProps) => {
                     Previous
                   </Button>
                 )}
-                <Button type="submit" className="w-fit">
-                  {currentStep < StepComponentSchool.length - 1
-                    ? 'Next'
-                    : 'Submit'}
+                <Button disabled={loading} type="submit" className="w-fit">
+                  {isSubmit ? (
+                    'Next'
+                  ) : (
+                    <div className="flex  items-center gap-x-1">
+                      <Image
+                        src={'/admission/button-loader.svg'}
+                        alt="button loader"
+                        width={20}
+                        height={20}
+                        className={cn(
+                          'animate-spin transition-all duration-700 size-0',
+                          {
+                            'opacity-100 size-5': loading,
+                          }
+                        )}
+                      />
+
+                      <span>Submit</span>
+                    </div>
+                  )}
                 </Button>
               </div>
             </Form>
