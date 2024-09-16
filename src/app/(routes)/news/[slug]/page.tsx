@@ -7,7 +7,6 @@ const page = async ({ params }: { params: { slug: string } }) => {
   const newsDetail: INewsResponseData | undefined = await UseServerFetch(
     `/api/v1/news-and-notice/${params.slug}`
   )
-  console.log('news detail::', newsDetail)
   return (
     <NewsDetailUi
       slug={params.slug}

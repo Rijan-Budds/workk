@@ -11,7 +11,7 @@ export const NewsDetailUi = ({
   data,
 }: {
   slug: string
-  data: INewsItem
+  data: INewsItem[] | undefined
 }) => {
   const BreadCrumbList = [
     {
@@ -28,7 +28,7 @@ export const NewsDetailUi = ({
       <CoverImage title="News & Events" list={BreadCrumbList} />
       <HomeWrapper>
         <div className="flex flex-col gap-y-20 2lg:gap-y-0  2lg:flex-row justify-between gap-x-12">
-          <NewsDetailSection data={data} />
+          {data && <NewsDetailSection data={data} />}
           <StickySidebar />
           <MobileSidebar />
         </div>
