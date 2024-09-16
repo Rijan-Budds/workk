@@ -1,12 +1,16 @@
 'use client'
 
 import React, { useState } from 'react'
-import { NoticeCardData } from '../constant/data'
 import { NoticeCard } from './NoticeCard'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { ShareModal } from './ShareModal'
+import { INewsItem } from '../../news/interface/newsType'
 
-export const NoticeClientSection = () => {
+export const NoticeClientSection = ({
+  notice,
+}: {
+  notice: INewsItem[] | undefined
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   return (
@@ -17,9 +21,10 @@ export const NoticeClientSection = () => {
         other event stories.
       </p>
       <div className="grid  2lg:grid-cols-3 gap-6">
-        {NoticeCardData.map((notice) => (
-          <NoticeCard key={notice.id} notice={notice} setOpen={setIsOpen} />
-        ))}
+        {notice &&
+          notice.map((d) => (
+            <NoticeCard key={d.id} notice={d} setOpen={setIsOpen} />
+          ))}
       </div>
 
       {isOpen && (

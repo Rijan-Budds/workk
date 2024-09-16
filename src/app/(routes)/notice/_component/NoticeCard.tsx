@@ -3,14 +3,15 @@
 import Image from 'next/image'
 import React, { Dispatch, SetStateAction } from 'react'
 import { IoMdShare } from 'react-icons/io'
-import { INotice } from '../_interface/type'
 import { useRouter } from 'next/navigation'
+import { INewsItem } from '../../news/interface/newsType'
+import { format } from 'date-fns'
 
 export const NoticeCard = ({
   notice,
   setOpen,
 }: {
-  notice: INotice
+  notice: INewsItem | undefined
   setOpen: Dispatch<SetStateAction<boolean>>
 }) => {
   const router = useRouter()
@@ -22,11 +23,11 @@ export const NoticeCard = ({
 
   return (
     <div
-      onClick={() => router.push('/notice/detail')}
+      onClick={() => router.push(`notice/${notice?.id}`)}
       className="p-5 rounded-xl bg-white flex items-center justify-between gap-4  border-b-[4px] border-r-[4px] border-shadowBorder group hover:bg-primary transition-all duration-500 cursor-pointer 2lg:max-w-[397px] 2lg:max-h-[104px]"
     >
       <Image
-        src={notice.src}
+        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${notice?.images.key}`}
         width={56}
         height={56}
         alt="notice image"
@@ -34,11 +35,13 @@ export const NoticeCard = ({
       />
       <div className=" w-full ">
         <p className="font-workSans font-medium text-[16px] leading-[27.2px] text-heading group-hover:text-white transition-all duration-500">
-          {notice.title}
+          {notice?.title}
         </p>
-        <span className="font-workSans font-normal text-[14px] leading-4 text-body group-hover:text-white transition-all duration-500 ">
-          {notice.date}
-        </span>
+        {notice?.createdAt && (
+          <span className="font-workSans font-normal text-[14px] leading-4 text-body group-hover:text-white transition-all duration-500 ">
+            {format(notice?.createdAt, 'MMMM d, yyyy')}
+          </span>
+        )}
       </div>
       <IoMdShare
         onClick={handleShareButtonClick}
