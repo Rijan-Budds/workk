@@ -30,6 +30,9 @@ export const NewsSection = ({
 
   const [active, setActiveTab] = useState<string>(tabs[0]?.key)
 
+  const filterNews = newsData && newsData?.filter((d) => d.type === 'NEWS')
+  // const filterNotice = newsData && newsData?.filter((d) => d.type === 'NOTICE')
+
   const renderNewsNoticeUi = () => {
     if (active === 'news') {
       return (
@@ -38,8 +41,8 @@ export const NewsSection = ({
             'flex flex-row flex-wrap justify-center md:justify-between  gap-x-4 gap-y-28 pb-16 2lg:pb-1 '
           )}
         >
-          {newsData &&
-            newsData.map((news) => {
+          {filterNews &&
+            filterNews.map((news) => {
               return (
                 <Link
                   href={`/news/${news.id}`}
