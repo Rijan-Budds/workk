@@ -11,7 +11,7 @@ export const NewsDetailUi = ({
   data,
 }: {
   slug: string
-  data: INewsItem[] | undefined
+  data: INewsItem | undefined
 }) => {
   const BreadCrumbList = [
     {

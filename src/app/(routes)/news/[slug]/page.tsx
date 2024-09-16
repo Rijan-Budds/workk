@@ -1,10 +1,10 @@
 import React from 'react'
 import { NewsDetailUi } from '../_component/NewsDetailUi'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
-import { INewsResponseData } from '../interface/newsType'
+import { INewsDetailResponse } from '../interface/newsType'
 
 const page = async ({ params }: { params: { slug: string } }) => {
-  const newsDetail: INewsResponseData | undefined = await UseServerFetch(
+  const newsDetail: INewsDetailResponse | undefined = await UseServerFetch(
     `/api/v1/news-and-notice/${params.slug}`
   )
   return (

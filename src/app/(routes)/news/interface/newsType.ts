@@ -17,6 +17,12 @@ export interface INewsItem {
   createdAt: string
   updatedAt: string
 }
+export interface INewsDetailResponse {
+  status: number
+  message: string
+  data: INewsItem
+  totalCount: number
+}
 
 interface Images {
   key: string[]
