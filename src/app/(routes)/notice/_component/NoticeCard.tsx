@@ -5,6 +5,7 @@ import React, { Dispatch, SetStateAction } from 'react'
 import { IoMdShare } from 'react-icons/io'
 import { useRouter } from 'next/navigation'
 import { INewsItem } from '../../news/interface/newsType'
+import { format } from 'date-fns'
 
 export const NoticeCard = ({
   notice,
@@ -34,11 +35,13 @@ export const NoticeCard = ({
       />
       <div className=" w-full ">
         <p className="font-workSans font-medium text-[16px] leading-[27.2px] text-heading group-hover:text-white transition-all duration-500">
-          {notice.title}
+          {notice?.title}
         </p>
-        <span className="font-workSans font-normal text-[14px] leading-4 text-body group-hover:text-white transition-all duration-500 ">
-          {notice.date}
-        </span>
+        {notice?.createdAt && (
+          <span className="font-workSans font-normal text-[14px] leading-4 text-body group-hover:text-white transition-all duration-500 ">
+            {format(notice?.createdAt, 'MMMM d, yyyy')}
+          </span>
+        )}
       </div>
       <IoMdShare
         onClick={handleShareButtonClick}
