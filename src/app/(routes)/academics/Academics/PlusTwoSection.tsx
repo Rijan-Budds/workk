@@ -1,6 +1,31 @@
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
+import { FaArrowRight } from 'react-icons/fa6'
+
+const plustwolinks = [
+  {
+    id: 1,
+    title: 'Management',
+    link: '/academics/plustwo/management',
+  },
+  {
+    id: 2,
+    title: 'Humanities',
+    link: '/academics/plustwo/humanities',
+  },
+  {
+    id: 3,
+    title: 'Education',
+    link: '/academics/plustwo/education',
+  },
+  {
+    id: 3,
+    title: 'Law',
+    link: '/academics/plustwo/law',
+  },
+]
 
 const PlusTwoSection = () => {
   return (
@@ -17,18 +42,27 @@ const PlusTwoSection = () => {
             there is no ideal applicant. We look forward to learning more about
             you.
           </p>
+          <hr className="my-6" />
         </div>
 
-        <div className="">
-          <hr className="my-6" />
+        <div className="flex flex-col lg:flex-row gap-[24px] lg:gap-[80px] md:pr-[18%]">
           <h1 className="font-poppins text-heading text-xl leading-6 font-medium">
             Available Programs
           </h1>
-          <ul className="text-heading font-workSans text-lg leading-6 font-normal space-y-8 mt-6">
-            <li>Management</li>
-            <li>Humanities</li>
-            <li>Education</li>
-            <li>Law</li>
+          <ul className="text-heading font-workSans text-lg leading-6 font-normal space-y-8">
+            {plustwolinks.map((links, idx) => (
+              <li key={idx}>
+                <Link
+                  href={links.link}
+                  className="flex justify-start items-center gap-2 hover:text-secondary"
+                >
+                  {links.title}
+                  <span>
+                    <FaArrowRight />
+                  </span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

@@ -1,0 +1,50 @@
+import React from 'react'
+import FacilitiesSwiper from './FacilitiesSwiper'
+import { MiniHeading } from '@/common/components/Atom/MiniHeading'
+import Image from 'next/image'
+import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
+
+const FacilitiesSwiperSection = () => {
+  return (
+    <HomeWrapper
+      className="!px-0 !pl-4 md:!pl-12 lg:!pl-[60px] 2xl_lg:!pl-[240px] 3xl:!pl-[310px] 5xl:!pl-[540px]"
+      isBg
+    >
+      <div className="flex flex-col 2lg:flex-row justify-between overflow-hidden gap-[56px]">
+        <div className="max-w-[397px] mx-auto 2lg:mx-0 flex flex-col justify-center flex-shrink-0">
+          <MiniHeading className="text-center 2lg:text-start">
+            Facilities
+          </MiniHeading>
+          <h2 className="font-poppins text-[28px] 2lg:text-[38px] leading-[36.4px] 2lg:leading-[49.4px] font-medium text-center 2lg:text-left text-heading mt-2">
+            Our facilities
+          </h2>
+          <p className="font-workSans font-normal text-[14px] leading-4 text-heading mt-4">
+            Our College can also attend regular networking events, and benefit
+            from exclusive resources and mentorship programs.
+          </p>
+          <div className="flex items-start justify-center md:justify-start gap-x-2 mt-4">
+            <Image
+              width={112}
+              height={40}
+              src={'/home/image-overlap.png'}
+              alt="list of user profiles"
+            />
+            <div className="flex flex-col gap-y-1">
+              <span className="font-workSans font-semibold text-[14px] leading-4 text-heading">
+                15000 +
+              </span>
+              <p className="font-workSans text-[12px] leading-[18px] text-body">
+                Satisfied Students
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="max-w-[1100px] flex-grow">
+          <FacilitiesSwiper />
+        </div>
+      </div>
+    </HomeWrapper>
+  )
+}
+
+export default FacilitiesSwiperSection

@@ -20,3 +20,31 @@ export const facilitiesCardsData = [
     src: '/facilites/facil-2.png',
   },
 ]
+
+export const facilitiesCard = [
+  {
+    id: 1,
+    title: 'Science Lab',
+    imgSrc: '/home/science.svg',
+  },
+  {
+    id: 2,
+    title: 'School Cantter',
+    imgSrc: '/home/canteen.svg',
+  },
+  {
+    id: 3,
+    title: 'Library',
+    imgSrc: '/home/library.svg',
+  },
+  {
+    id: 4,
+    title: 'Computer Lab',
+    imgSrc: '/home/science.svg',
+  },
+  {
+    id: 5,
+    title: 'Library',
+    imgSrc: '/home/library.svg',
+  },
+]
