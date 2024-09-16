@@ -31,7 +31,7 @@ export const NewsSection = ({
   const [active, setActiveTab] = useState<string>(tabs[0]?.key)
 
   const filterNews = newsData && newsData?.filter((d) => d.type === 'NEWS')
-  // const filterNotice = newsData && newsData?.filter((d) => d.type === 'NOTICE')
+  const filterNotice = newsData && newsData?.filter((d) => d.type === 'NOTICE')
 
   const renderNewsNoticeUi = () => {
     if (active === 'news') {
@@ -85,7 +85,7 @@ export const NewsSection = ({
         </div>
       )
     } else if (active === 'notice') {
-      return <NoticeClientSection />
+      return <NoticeClientSection notice={filterNotice} />
     }
   }
 
