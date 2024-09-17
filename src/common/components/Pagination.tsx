@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react'
 import { Button } from './Atom/Button'
-import { cn } from '../utils/utils'
 
 export const usePagination = ({
   totalCount,
@@ -22,7 +21,7 @@ export const usePagination = ({
     return Array.from({ length }, (_, idx) => idx + start)
   }
 
-  const Dots = '...'
+  const Dots = <DotUi />
   const paginationRange = useMemo(() => {
     const totalPageCount = Math.ceil(totalCount / pageSize)
 
@@ -102,12 +101,13 @@ export const Pagination = ({
   currentPage: number
   pageSize: number
 }) => {
-  const paginationRange: (string | number)[] | undefined = usePagination({
-    currentPage,
-    totalCount,
-    siblingCount,
-    pageSize,
-  })
+  const paginationRange: (React.JSX.Element | number)[] | undefined =
+    usePagination({
+      currentPage,
+      totalCount,
+      siblingCount,
+      pageSize,
+    })
 
   // If there are less than 2 times in pagination range we shall not render the component
   if (currentPage === 0 || (paginationRange && paginationRange.length < 2)) {
@@ -137,53 +137,58 @@ export const Pagination = ({
         variant={'outline'}
         onClick={onPrevious}
         disabled={currentPage === 1 ? true : false}
-        className={cn('p-3 text-heading font-medium leading-4 text-[16px]')}
+        className="hover:bg-primary p-3 rounded-[12px] text-heading font-medium leading-4 text-[16px]"
       >
         Previous Page
       </Button>
-      {/* <button >
-        <BiChevronLeft
-          className={`text-2xl font-bold  ${currentPage === 1 && 'opacity-40'}`}
-        />
-      </button> */}
 
-      <div className="flex items-center gap-1">
-        {paginationRange?.map((pageNumber: string | number) => {
-          // If the pageItem is a DOT, render the DOTS unicode character
-          if (pageNumber === '.') {
-            return <li key={'unique id'}>...</li>
+      <div className="items-center gap-1 hidden lg:flex">
+        {paginationRange?.map(
+          (pageNumber: string | number | React.JSX.Element) => {
+            // If the pageItem is a DOT, render the DOTS unicode character
+            if (pageNumber === '.') {
+              return (
+                <li className="rounded-[12px] p-3 " key={'unique id'}>
+                  ...
+                </li>
+              )
+            }
+
+            // Render our Page Pills
+
+            return (
+              <li
+                key={'unique id'}
+                onClick={() => {
+                  if (typeof pageNumber === 'number') {
+                    onPageChange(pageNumber)
+                  }
+                }}
+                className={`${
+                  currentPage === pageNumber
+                    ? ' text-white  bg-primary'
+                    : 'text-dashboardColorWhite border border-border'
+                } font-medium font-workSans text-[16px] leading-4  flex items-center justify-center size-10 rounded-[12px] cursor-pointer`}
+              >
+                {pageNumber}
+              </li>
+            )
           }
-
-          // Render our Page Pills
-
-          return (
-            <li
-              key={'unique id'}
-              onClick={() => {
-                if (typeof pageNumber === 'number') {
-                  onPageChange(pageNumber)
-                }
-              }}
-              className={`${
-                currentPage === pageNumber
-                  ? ' text-white  bg-primary'
-                  : 'text-dashboardColorWhite'
-              } font-medium font-workSans text-[16px] leading-4  flex items-center justify-center size-10 rounded-[12px] cursor-pointer`}
-            >
-              {pageNumber}
-            </li>
-          )
-        })}
+        )}
       </div>
       {/*  Right Navigation arrow */}
       <Button
         onClick={onNext}
         variant={'outline'}
         disabled={currentPage === lastPage ? true : false}
-        className="hover:bg-primary"
+        className="hover:bg-primary p-3 rounded-[12px] text-heading font-medium leading-4 text-[16px]"
       >
         Next Page
       </Button>
     </ul>
   )
+}
+
+const DotUi = () => {
+  return <span className="rounded-[12px] p-3 border border-border">...</span>
 }
