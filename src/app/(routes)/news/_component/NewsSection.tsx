@@ -3,7 +3,6 @@
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { TabSwitch } from '@/common/components/Atom/TabSwitch'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
-import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { GoArrowRight } from 'react-icons/go'
@@ -13,12 +12,13 @@ import { format } from 'date-fns'
 import { cn } from '@/common/utils/utils'
 import { Pagination } from '@/common/components/Pagination'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 
 export const NewsSection = () => {
   const [newsNotice, setNewsNotice] = useState<INewsItem[] | undefined>(
     undefined
   )
-  const pageSize = 3
+  const pageSize = 6
   const [page, setPage] = useState<number>(1)
   const [totalCount, setTotalCount] = useState<number | undefined>(undefined)
 
@@ -80,13 +80,20 @@ export const NewsSection = () => {
                 >
                   <div className="relative max-w-[397px] group cursor-pointer">
                     <div className="overflow-hidden rounded-xl max-w-[397px]">
-                      <Image
-                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${news.images.key}`}
+                      <ImageWithPlaceholder
+                        src={news.images ? news.images.key : undefined}
                         width={447}
                         height={298}
                         alt="news"
                         className="relative w-[343px] h-[231px] md:w-[324px] md:h-[243px]  2lg:w-[398px] 2lg:h-[298px] object-cover group-hover:scale-110 transition-all duration-500"
                       />
+                      {/* <Image
+                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${news.images.key}`}
+                        width={447}
+                        height={298}
+                        alt="news"
+                        className="relative w-[343px] h-[231px] md:w-[324px] md:h-[243px]  2lg:w-[398px] 2lg:h-[298px] object-cover group-hover:scale-110 transition-all duration-500"
+                      /> */}
                     </div>
                     <div className="absolute w-[94%] max-h-[145px] 2lg:max-h-[120px] bg-white shadow-sm top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">
                       <div className="p-6 z-10 relative flex flex-col gap-y-2">
@@ -109,8 +116,8 @@ export const NewsSection = () => {
                 </Link>
               )
             })}
-          <div className="w-full flex justify-center mt-4">
-            {totalCount && isPagination && (
+          {isPagination && (
+            <div className="w-full flex justify-center mt-4">
               <Pagination
                 currentPage={Number(page)}
                 pageSize={pageSize}
@@ -120,8 +127,8 @@ export const NewsSection = () => {
                 }
                 siblingCount={0}
               />
-            )}
-          </div>
+            </div>
+          )}
         </div>
       )
     } else if (active === 'notice') {

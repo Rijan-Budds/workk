@@ -1,11 +1,11 @@
 'use client'
 
-import Image from 'next/image'
 import React, { Dispatch, SetStateAction } from 'react'
 import { IoMdShare } from 'react-icons/io'
 import { useRouter } from 'next/navigation'
 import { INewsItem } from '../../news/interface/newsType'
 import { format } from 'date-fns'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 
 export const NoticeCard = ({
   notice,
@@ -26,8 +26,8 @@ export const NoticeCard = ({
       onClick={() => router.push(`notice/${notice?.id}`)}
       className="p-5 rounded-xl bg-white flex items-center justify-between gap-4  border-b-[4px] border-r-[4px] border-shadowBorder group hover:bg-primary transition-all duration-500 cursor-pointer 2lg:max-w-[397px] 2lg:max-h-[104px]"
     >
-      <Image
-        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${notice?.images.key}`}
+      <ImageWithPlaceholder
+        src={notice?.images ? notice?.images.key : undefined}
         width={56}
         height={56}
         alt="notice image"
