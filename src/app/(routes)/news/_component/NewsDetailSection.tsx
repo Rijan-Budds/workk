@@ -21,7 +21,7 @@ export const NewsDetailSection = ({ data }: { data: INewsItem }) => {
             width={343}
             height={228}
             alt="student studying on class"
-            className="rounded-[12px] w-[343px] h-[228px] md:w-[671px] md:h-[448px] 2lg:w-[787px] 2lg:h-[525px]"
+            className="rounded-[12px] w-[343px] h-[228px] md:w-[671px] md:h-[448px] 2lg:w-[787px] 2lg:h-[525px] object-cover"
           />
           <div
             dangerouslySetInnerHTML={{ __html: cleanHtml }}

@@ -5,19 +5,23 @@ import { TabSwitch } from '@/common/components/Atom/TabSwitch'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { GoArrowRight } from 'react-icons/go'
 import { NoticeClientSection } from '../../notice/_component/NoticeClientSection'
-import { INewsItem } from '../interface/newsType'
+import { INewsItem, INewsResponseData } from '../interface/newsType'
 import { format } from 'date-fns'
 import { cn } from '@/common/utils/utils'
 import { Pagination } from '@/common/components/Pagination'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
 
-export const NewsSection = ({
-  newsData,
-}: {
-  newsData: INewsItem[] | undefined
-}) => {
+export const NewsSection = () => {
+  const [newsNotice, setNewsNotice] = useState<INewsItem[] | undefined>(
+    undefined
+  )
+  const pageSize = 3
+  const [page, setPage] = useState<number>(1)
+  const [totalCount, setTotalCount] = useState<number | undefined>(undefined)
+
   const tabs = [
     {
       key: 'news',
@@ -28,11 +32,33 @@ export const NewsSection = ({
       title: 'Notices',
     },
   ]
+  const showPagination = () => {
+    if (totalCount && newsNotice && newsNotice?.length < totalCount) {
+      return true
+    } else {
+      return false
+    }
+  }
+  const isPagination = showPagination()
 
   const [active, setActiveTab] = useState<string>(tabs[0]?.key)
 
-  const filterNews = newsData && newsData?.filter((d) => d.type === 'NEWS')
-  const filterNotice = newsData && newsData?.filter((d) => d.type === 'NOTICE')
+  useEffect(() => {
+    const fetchNewsAndNoticeList = async () => {
+      try {
+        const newsNoticeData: INewsResponseData | undefined =
+          await UseServerFetch(
+            `/api/v1/news-and-notice/type/${active.toUpperCase()}?page=${page}&pageSize=${pageSize}`
+          )
+        setNewsNotice(newsNoticeData?.data)
+        setTotalCount(newsNoticeData?.totalCount)
+      } catch (error) {
+        console.error('Error fetching news data:', error)
+      }
+    }
+
+    fetchNewsAndNoticeList()
+  }, [active, page])
 
   const renderNewsNoticeUi = () => {
     if (active === 'news') {
@@ -42,8 +68,8 @@ export const NewsSection = ({
             'flex flex-row flex-wrap justify-center md:justify-between  gap-x-4 gap-y-28 pb-16 2lg:pb-1 '
           )}
         >
-          {filterNews &&
-            filterNews.map((news) => {
+          {newsNotice &&
+            newsNotice.map((news) => {
               return (
                 <Link
                   href={`/news/${news.id}`}
@@ -84,17 +110,39 @@ export const NewsSection = ({
               )
             })}
           <div className="w-full flex justify-center mt-4">
-            <Pagination
-              currentPage={1}
-              pageSize={12}
-              totalCount={100}
-              onPageChange={() => console.log('hii')}
-            />
+            {totalCount && isPagination && (
+              <Pagination
+                currentPage={Number(page)}
+                pageSize={pageSize}
+                totalCount={Number(totalCount)}
+                onPageChange={(page: string | number) =>
+                  setPage(page as number)
+                }
+                siblingCount={0}
+              />
+            )}
           </div>
         </div>
       )
     } else if (active === 'notice') {
-      return <NoticeClientSection notice={filterNotice} />
+      return (
+        <>
+          <NoticeClientSection notice={newsNotice} />
+          <div className="w-full flex justify-center mt-4">
+            {totalCount && isPagination && (
+              <Pagination
+                currentPage={Number(page)}
+                pageSize={pageSize}
+                totalCount={Number(totalCount)}
+                onPageChange={(page: string | number) =>
+                  setPage(page as number)
+                }
+                siblingCount={0}
+              />
+            )}
+          </div>
+        </>
+      )
     }
   }
 
@@ -111,7 +159,10 @@ export const NewsSection = ({
             activeTab={active}
             setActive={setActiveTab}
             className="w-fit text-sm"
-            handleDynamicData={(key) => setActiveTab(key)}
+            handleDynamicData={(key) => {
+              setActiveTab(key)
+              setPage(1)
+            }}
           />
         </div>
         {renderNewsNoticeUi()}
