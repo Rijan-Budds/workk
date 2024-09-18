@@ -1,8 +1,10 @@
+'use client'
+
 import React from 'react'
 import { NewsSection } from './_component/NewsSection'
 
-const page = () => {
+const NewsPage = () => {
   return <NewsSection />
 }
 
-export default page
+export default NewsPage

@@ -28,6 +28,7 @@ export const StepThree = ({
           isError={!!errors!.schoolName && touched.schoolName}
         />
         <Input
+          isRequired
           label="Previous School Address"
           labelClass={inputStyle.label}
           placeholder="Your previous school address"
@@ -53,12 +54,13 @@ export const StepThree = ({
           isRequired
           labelClass={inputStyle.label}
           placeholder="Your SEE symbol no"
-          name="seeSybmolNum"
-          error={errors!.seeSybmolNum}
+          name="seeSymbolNum"
+          error={errors!.seeSymbolNum}
           className={inputStyle.input}
-          isError={!!errors!.seeSybmolNum && touched.seeSybmolNum}
+          isError={!!errors!.seeSymbolNum && touched.seeSymbolNum}
         />
         <Input
+          isRequired
           label="SEE GPA Point"
           labelClass={inputStyle.label}
           placeholder="Your SEE GPA point"

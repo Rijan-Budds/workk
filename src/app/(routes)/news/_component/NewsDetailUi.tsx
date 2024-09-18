@@ -4,8 +4,15 @@ import { StickySidebar } from './StickySidebar'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { MobileSidebar } from './MobileSidebar'
+import { INewsItem } from '../interface/newsType'
 
-export const NewsDetailUi = ({ slug }: { slug: string }) => {
+export const NewsDetailUi = ({
+  slug,
+  data,
+}: {
+  slug: string
+  data: INewsItem | undefined
+}) => {
   const BreadCrumbList = [
     {
       title: 'News & Events',
@@ -21,7 +28,7 @@ export const NewsDetailUi = ({ slug }: { slug: string }) => {
       <CoverImage title="News & Events" list={BreadCrumbList} />
       <HomeWrapper>
         <div className="flex flex-col gap-y-20 2lg:gap-y-0  2lg:flex-row justify-between gap-x-12">
-          <NewsDetailSection />
+          {data && <NewsDetailSection data={data} />}
           <StickySidebar />
           <MobileSidebar />
         </div>

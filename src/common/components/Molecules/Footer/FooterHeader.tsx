@@ -20,7 +20,7 @@ const FooterHeader = () => {
             <h1 className="font-poppins text-white text-[18px]">
               Pawan Prakriti School
             </h1>
-            <p className="font-workSans text-base text-white">
+            <p className="font-workSans  text-white text-[14px] font-normal ">
               Mahalaxmi Municipality-5, Tikathali, Lalitpur
             </p>
           </div>

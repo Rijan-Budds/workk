@@ -4,6 +4,7 @@ import { Button } from '@/common/components/Atom/Button'
 import { CloseButton } from '@/common/components/Atom/CloseButton'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 export const NoticeModal = () => {
@@ -32,7 +33,9 @@ export const NoticeModal = () => {
           alt="notice announce image"
           className="w-full h-[90%]  object-contain"
         />
-        <Button onClick={handleCloseModal}>Online Registration Form</Button>
+        <Link href={'/apply'}>
+          <Button onClick={handleCloseModal}>Online Registration Form</Button>
+        </Link>
       </div>
       <CloseButton handleClick={handleCloseModal} />
     </CustomModal>

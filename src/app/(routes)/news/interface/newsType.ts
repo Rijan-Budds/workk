@@ -1,18 +1,11 @@
-export interface INotice {
-  id: string
-  title: string
-  date: string
-  src: string
-  pdfSrc: string
-}
-
-export interface INoticeResponse {
+export interface INewsResponseData {
   status: number
   message: string
-  data: INoticeData
+  data: INewsItem[]
+  totalCount: number
 }
 
-export interface INoticeData {
+export interface INewsItem {
   id: string
   title: string
   description: string
@@ -23,6 +16,12 @@ export interface INoticeData {
   publishedAt: string | null
   createdAt: string
   updatedAt: string
+}
+export interface INewsDetailResponse {
+  status: number
+  message: string
+  data: INewsItem
+  totalCount: number
 }
 
 interface Images {

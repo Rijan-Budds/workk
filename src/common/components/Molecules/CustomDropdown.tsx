@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils'
 import { ChevronDown } from 'lucide-react'
 
 interface ICustomDropdownProps {
-  setFieldValue?: (field: string, value: string) => void
+  setFieldValue?: (field: string, value: boolean | string) => void
   error: string | undefined
   isError: boolean | undefined
   list: IDropdownList[]
@@ -25,6 +25,7 @@ interface ICustomDropdownProps {
   isRequired: boolean
   value: string
   classNameLabel?: string
+  isBoolean?: boolean
 }
 
 export const CustomDropdown = ({
@@ -38,8 +39,10 @@ export const CustomDropdown = ({
   isRequired,
   value,
   classNameLabel,
+  isBoolean = false,
 }: ICustomDropdownProps) => {
   const [open, setOpen] = useState<boolean>(false)
+
   return (
     <div className="flex flex-col gap-y-2 w-full">
       <label
@@ -53,17 +56,29 @@ export const CustomDropdown = ({
       </label>
       <Select
         open={open}
-        value={value}
+        value={typeof value === 'boolean' ? (value ? 'TRUE' : 'FALSE') : value}
         onOpenChange={() => setOpen((prev) => !prev)}
-        onValueChange={(value: string) =>
-          setFieldValue && setFieldValue(field, value)
-        }
+        onValueChange={(value) => {
+          if (isBoolean) {
+            if (value === 'TRUE' && setFieldValue) {
+              setFieldValue(field, true)
+            } else if (value === 'FALSE' && setFieldValue) {
+              setFieldValue(field, false)
+            }
+          } else {
+            if (setFieldValue) {
+              setFieldValue(field, value)
+            }
+          }
+        }}
       >
         <SelectTrigger
           className={cn(
-            'rounded-lg p-4 text-body leading-4 text-[14px] font-workSans ',
+            'rounded-lg p-4 text-body  leading-4 text-[14px] font-workSans ',
             {
-              'text-black text-[16px]': value.length,
+              'text-black text-[16px] ':
+                value.length || typeof value === 'boolean',
+              'border border-error': isError,
             }
           )}
         >
