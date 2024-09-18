@@ -1,18 +1,20 @@
-'use client'
 import React from 'react'
 import School from '../_components/School'
-import { useParams } from 'next/navigation'
+import { IAcademicsResponse } from '../../_interface/academic'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
 
-const Page = () => {
-  const { slug } = useParams()
+const Page = async ({ params }: { params: { slug: string } }) => {
+  const response: IAcademicsResponse | undefined = await UseServerFetch(
+    `/api/v1/academics/${params.slug}`
+  )
+  if (!response || !response.data) {
+    return <div>No academic details found</div>
+  }
 
-  const slugValue = Array.isArray(slug) ? slug[0] : slug
-
-  if (!slugValue) return <div>Loading...</div>
-
+  const detail = response.data
   return (
     <div>
-      <School slug={slugValue} />
+      <School detail={detail} slug={params.slug} />
     </div>
   )
 }

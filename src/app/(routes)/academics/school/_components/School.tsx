@@ -3,12 +3,9 @@ import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import React from 'react'
 import SchoolSection from './SchoolSection'
 import SchoolStickySidebar from './SchoolStickySidebar'
+import { IAcademicsData } from '../../_interface/academic'
 
-interface SchoolProps {
-  slug: string
-}
-
-const School: React.FC<SchoolProps> = ({ slug }) => {
+const School = ({ detail, slug }: { detail: IAcademicsData; slug: string }) => {
   return (
     <div>
       <CoverImage
@@ -22,7 +19,7 @@ const School: React.FC<SchoolProps> = ({ slug }) => {
 
       <HomeWrapper>
         <div className="flex flex-col lg:flex-row gap-[56px]">
-          <SchoolSection />
+          <SchoolSection detail={detail} />
           <SchoolStickySidebar />
         </div>
       </HomeWrapper>

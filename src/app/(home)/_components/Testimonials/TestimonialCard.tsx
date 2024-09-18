@@ -27,7 +27,7 @@ export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
         </p>
         <div className="px-10 py-6 flex gap-4 border-border-2 border-t-[1px]">
           <Image
-            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${card.image.key}`}
+            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${card.image?.key}`}
             width={56}
             height={56}
             alt="stud"
