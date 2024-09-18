@@ -1,7 +1,7 @@
 'use client'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -11,11 +11,32 @@ import { Pagination, Navigation } from 'swiper/modules'
 
 import SchoolGallery from './SchoolGallery'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
-import { cardData } from '@/app/(routes)/testimonials/_constants/data'
 import { TestimonialCard } from '@/app/(home)/_components/Testimonials/TestimonialCard'
 import { swiperParams } from '@/app/(home)/_components/Testimonials/TestimonialsSection'
+import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/testimonial'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
 
 const SchoolSection = () => {
+  const [response, setResponse] = useState<ITestimonialResponse | null>(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response: ITestimonialResponse | undefined = await UseServerFetch(
+          `/api/v1/testimonial?page=${1}&pageSize=${6}`
+        )
+
+        if (response) {
+          setResponse(response)
+          console.log('Fetched response:', response) // Check the data structure
+        }
+      } catch (error) {
+        console.error('Error fetching testimonials:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
   return (
     <div className="flex flex-col">
       <div className="max-w-[787px]">
@@ -72,7 +93,7 @@ const SchoolSection = () => {
           </div>
         </div>
         <SwiperWrapper>
-          {cardData.map((card) => (
+          {response?.data.map((card) => (
             <SwiperSlide key={card.id} className="!mt-[40px] mx-auto">
               <TestimonialCard card={card} />
             </SwiperSlide>

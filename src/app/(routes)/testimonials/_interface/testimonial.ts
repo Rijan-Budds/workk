@@ -10,7 +10,7 @@ export interface ITestimonialData {
   position: string
   image: Image
   description: string
-  organization: string
+  organization?: string
 }
 
 export interface Image {
