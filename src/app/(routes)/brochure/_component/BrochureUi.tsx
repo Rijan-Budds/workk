@@ -2,11 +2,11 @@
 
 import React, { useState } from 'react'
 import { BrochureCardUi } from './BrochureCardUi'
-import { NoticeCardData } from '../../notice/constant/data'
 import { PdfViewerModal } from './PdfViewerModal'
 import { CustomModal } from '@/common/components/Molecules/Modal'
+import { IBrochureItem } from '../interface/brochureType'
 
-export const BrochureUi = () => {
+export const BrochureUi = ({ data }: { data: IBrochureItem[] | undefined }) => {
   const [openModal, setOpenModal] = useState<boolean>(false)
   const [pdfSrc, setPdfSrc] = useState<string | null>(null)
 
@@ -19,16 +19,19 @@ export const BrochureUi = () => {
           achieve a successful career tudents them to achieve success.
         </p>
         <div className="grid  2lg:grid-cols-3 gap-6">
-          {NoticeCardData.map((notice) => (
-            <BrochureCardUi
-              data={notice}
-              key={notice.id}
-              handleBrochureClick={() => {
-                setOpenModal(true)
-                setPdfSrc(notice.pdfSrc)
-              }}
-            />
-          ))}
+          {data &&
+            data.map((notice) => (
+              <BrochureCardUi
+                data={notice}
+                key={notice.id}
+                handleBrochureClick={() => {
+                  setOpenModal(true)
+                  setPdfSrc(
+                    `${process.env.NEXT_PUBLIC_IMAGE_URL}/${notice.file.key}`
+                  )
+                }}
+              />
+            ))}
         </div>
       </div>
       {openModal && (

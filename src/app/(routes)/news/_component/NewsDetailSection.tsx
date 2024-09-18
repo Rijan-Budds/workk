@@ -2,11 +2,11 @@
 
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
-import Image from 'next/image'
 import React from 'react'
 import { INewsItem } from '../interface/newsType'
 import { format } from 'date-fns'
 import DOMPurify from 'dompurify'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 
 export const NewsDetailSection = ({ data }: { data: INewsItem }) => {
   const cleanHtml = DOMPurify.sanitize(data.description)
@@ -16,8 +16,8 @@ export const NewsDetailSection = ({ data }: { data: INewsItem }) => {
         <MiniHeading>{format(data.createdAt, 'MMMM d, yyyy')}</MiniHeading>
         <SectionHeading isMd>{data.title}</SectionHeading>
         <div className="flex flex-col gap-y-10 mt-8">
-          <Image
-            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${data.images.key}`}
+          <ImageWithPlaceholder
+            src={data.images ? data.images.key : undefined}
             width={343}
             height={228}
             alt="student studying on class"
