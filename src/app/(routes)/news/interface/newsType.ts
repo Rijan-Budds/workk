@@ -7,6 +7,7 @@ export interface INewsResponseData {
 
 export interface INewsItem {
   id: string
+  slug: string
   title: string
   description: string
   images: Images
