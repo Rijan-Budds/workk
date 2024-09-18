@@ -3,8 +3,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/',
-        destination: `${process.env.NEXT_PUBLIC_BASE_URL}/*`,
+        source: '/public/uploads/:path*',
+        destination: 'http://192.168.110.52:4000/public/uploads/:path*',
       },
     ]
   },
