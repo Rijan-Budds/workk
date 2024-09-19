@@ -4,8 +4,8 @@ import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import React, { useState, useEffect } from 'react'
 import TeamCards from './TeamCards'
 import TeamTab from './TeamTab'
-import { ITeamsData } from '../_interface/Teams'
-import { TeamsData } from '../constants/data'
+import { ITeamsData, ITeamsResponse } from '../_interface/Teams'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
 
 type ITitle =
   | 'Our Board Members'
@@ -13,20 +13,45 @@ type ITitle =
   | 'Administration Members'
 
 const TeamSection = () => {
+  const [response, setResponse] = useState<ITeamsResponse | null>(null)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response: ITeamsResponse | undefined = await UseServerFetch(
+          '/api/v1/team'
+        )
+
+        if (response) {
+          setResponse(response)
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
   const [title, setTitle] = useState<ITitle>('Our Board Members')
   const [filteredTeams, setFilteredTeams] = useState<ITeamsData[]>([])
 
   useEffect(() => {
-    let filteredData: ITeamsData[] = []
-    if (title === 'Our Board Members') {
-      filteredData = TeamsData.filter((team) => team.type === 'board')
-    } else if (title === 'Our Expert Instructors') {
-      filteredData = TeamsData.filter((team) => team.type === 'instructor')
-    } else if (title === 'Administration Members') {
-      filteredData = TeamsData.filter((team) => team.type === 'administration')
+    if (response) {
+      // Filter based on title and management level
+      const filteredData = response.data.filter((team: ITeamsData) => {
+        if (title === 'Our Board Members') {
+          return team.managementLevel === 'BOARD_MEMBER'
+        } else if (title === 'Our Expert Instructors') {
+          return team.managementLevel === 'EXPERT_INSTRUCTOR'
+        } else if (title === 'Administration Members') {
+          return team.managementLevel === 'ADMINISTRATION_MEMBER'
+        }
+        return false
+      })
+
+      setFilteredTeams(filteredData)
     }
-    setFilteredTeams(filteredData)
-  }, [title])
+  }, [title, response])
 
   const handleDynamicData = (type: ITitle) => {
     setTitle(type)

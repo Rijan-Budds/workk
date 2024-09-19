@@ -1,46 +1,37 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import { FiFileText } from 'react-icons/fi'
+import { IAdmissionData } from '../_interface/admission'
 
-export const Filter = [
-  {
-    id: 1,
-    title: 'Management',
-  },
-  {
-    id: 2,
-    title: 'Humanities',
-  },
-  {
-    id: 3,
-    title: 'Education',
-  },
-  {
-    id: 4,
-    title: 'Pre-School (Kindergarden)',
-  },
-  {
-    id: 5,
-    title: 'Primary School (One - Five)',
-  },
-  {
-    id: 6,
-    title: 'Basic Level (Six - Eight)',
-  },
-  {
-    id: 7,
-    title: 'Senior Level (Nine - Ten)',
-  },
-]
+interface AdmissionFilterTwoProps {
+  admissions: IAdmissionData[]
+  onFilterChange: (slug: string) => void
+}
 
-const AdmissionFilterTwo = () => {
+const AdmissionFilterTwo: React.FC<AdmissionFilterTwoProps> = ({
+  admissions,
+  onFilterChange,
+}) => {
+  const [activeAdmission, setActiveAdmission] = useState<string>('')
+
+  const handleTabClick = (slug: string) => {
+    setActiveAdmission(slug)
+    onFilterChange(slug)
+  }
+
   return (
     <div className="flex flex-col bg-background rounded-xl">
-      {Filter.map((filter, index) => (
+      {admissions?.map((admission: IAdmissionData, index: number) => (
         <div
           key={index}
-          className="flex justify-between p-6 font-workSans text-base leading-4 font-medium hover:bg-secondary rounded-xl text-heading hover:text-white"
+          className={`flex justify-between p-6 font-workSans text-base leading-4 font-medium rounded-xl cursor-pointer transition-colors duration-200 ${
+            activeAdmission === admission.academics.slug
+              ? 'bg-secondary text-white'
+              : 'bg-transparent text-heading hover:bg-secondary hover:text-white'
+          }`}
+          onClick={() => handleTabClick(admission.academics.slug)}
         >
-          <h2>{filter.title}</h2>
+          <h2>{admission.academics.title}</h2>
           <FiFileText />
         </div>
       ))}

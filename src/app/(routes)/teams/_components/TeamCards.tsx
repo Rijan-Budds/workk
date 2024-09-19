@@ -16,7 +16,7 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
           >
             <div className="pl-[16px]">
               <Image
-                src={team.image}
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${team.image.key}`}
                 width={236}
                 height={236}
                 alt="teams"
@@ -44,7 +44,7 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
             >
               <div className="relative  w-[236px] lg:w-[200px] h-[236px] lg:h-[200px]">
                 <Image
-                  src={team.image}
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${team.image.key}`}
                   width={236}
                   height={236}
                   alt="teams"
@@ -53,7 +53,7 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
                 <div className="absolute inset-0 flex justify-center items-center transition-opacity duration-300 opacity-0 group-hover:opacity-100 bg-primary/[56%] rounded-full bg-opacity-70">
                   <ul className="flex gap-4">
                     <Link
-                      href="/"
+                      href={team.twitter || ''}
                       className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
                     >
                       <Image
@@ -65,7 +65,7 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
                       />
                     </Link>
                     <Link
-                      href="/"
+                      href={team.facebook || ''}
                       className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
                     >
                       <Image
@@ -77,7 +77,7 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
                       />
                     </Link>
                     <Link
-                      href="/"
+                      href={team.instagram || ''}
                       className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
                     >
                       <Image
@@ -96,10 +96,10 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
               </div>
             </div>
             <div className="text-center mt-[25px] space-y-2">
-              <h1 className="font-poppins font-medium text-xl leading-6">
+              <h1 className="font-poppins font-medium text-xl leading-6 text-heading">
                 {team.name}
               </h1>
-              <p className="font-poppins font-normal text-base leading-4">
+              <p className="font-poppins font-normal text-base leading-4 text-body">
                 {team.position}
               </p>
             </div>

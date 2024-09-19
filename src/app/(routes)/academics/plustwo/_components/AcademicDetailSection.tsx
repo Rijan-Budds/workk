@@ -2,8 +2,6 @@
 import { swiperParams } from '@/app/(home)/_components/Testimonials/TestimonialsSection'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 
-import { cardData } from '@/app/(routes)/testimonials/_constants/data'
-
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -12,11 +10,33 @@ import { Pagination, Navigation } from 'swiper/modules'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import { TestimonialCard } from '@/app/(home)/_components/Testimonials/TestimonialCard'
+import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/testimonial'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
 
 const AcademicDetailSection = () => {
+  const [response, setResponse] = useState<ITestimonialResponse | null>(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response: ITestimonialResponse | undefined = await UseServerFetch(
+          `/api/v1/testimonial?page=${1}&pageSize=${6}`
+        )
+
+        if (response) {
+          setResponse(response)
+          console.log('Fetched response:', response) // Check the data structure
+        }
+      } catch (error) {
+        console.error('Error fetching testimonials:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
   return (
     <div className="max-w-[787px]">
       <MiniHeading className="text-left">Management</MiniHeading>
@@ -113,7 +133,7 @@ const AcademicDetailSection = () => {
           </div>
         </div>
         <SwiperWrapper>
-          {cardData.map((card) => (
+          {response?.data.map((card) => (
             <SwiperSlide key={card.id} className="!mt-[40px] mx-auto">
               <TestimonialCard card={card} />
             </SwiperSlide>

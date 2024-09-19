@@ -1,6 +1,4 @@
-import { ITeamsData } from '../_interface/Teams'
-
-export const TeamsData: ITeamsData[] = [
+export const TeamsData = [
   {
     id: 1,
     image: '/home/teams1.jpg',
