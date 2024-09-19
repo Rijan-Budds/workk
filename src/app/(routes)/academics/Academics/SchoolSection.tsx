@@ -8,22 +8,22 @@ const schoollinks = [
   {
     id: 1,
     title: 'Pre-School (Kindergarden)',
-    link: '/academics/school/preschool',
+    link: 'pre-school',
   },
   {
     id: 2,
     title: 'Primary Level (One - Five)',
-    link: '/academics/school/primary',
+    link: 'primary',
   },
   {
     id: 3,
     title: 'Basic Level (Six - Eight)',
-    link: '/academics/school/basic',
+    link: 'basic',
   },
   {
     id: 4,
     title: 'Senior Level (Nine - Ten)',
-    link: '/academics/school/Senior',
+    link: 'senior',
   },
 ]
 
@@ -68,7 +68,7 @@ const SchoolSection = () => {
               {schoollinks.map((links, idx) => (
                 <li key={idx}>
                   <Link
-                    href={links.link}
+                    href={`/academics/school/${links.link}`}
                     className="flex justify-start items-center gap-2 hover:text-secondary"
                   >
                     {links.title}

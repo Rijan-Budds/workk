@@ -3,19 +3,30 @@ import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import Image from 'next/image'
 import React from 'react'
+import { IDetailData } from '../_interface/admission'
+interface AdmissionDetailProps {
+  selectedAdmission: IDetailData | undefined
+}
 
-const AdmissionDetail = () => {
+const AdmissionDetail: React.FC<AdmissionDetailProps> = ({
+  selectedAdmission,
+}) => {
+  if (!selectedAdmission) {
+    return <div>Loading...</div>
+  }
+
   return (
     <div className="max-w-[787px]">
-      <MiniHeading className="text-left text-secondary">Management</MiniHeading>
-      <SectionHeading>We consider each application with care.</SectionHeading>
-      <p className="mt-6 font-workSans font-normal text-base leading-7 text-body">
-        When reading an application, we get to know the person behind the
-        numbers. We take into consideration your academic achievements,
-        extracurricular activities, personal qualities, and life experiences.
-        Just as there is no typical Pawan Prakriti student, there is no ideal
-        applicant. We look forward to learning more about you.
-      </p>
+      <MiniHeading className="text-left text-secondary">
+        {selectedAdmission.academics?.title}
+      </MiniHeading>
+      <SectionHeading>{selectedAdmission.articleTitle}</SectionHeading>
+      <div
+        className="mt-6 font-workSans font-normal text-base leading-7 text-body"
+        dangerouslySetInnerHTML={{
+          __html: selectedAdmission.description,
+        }}
+      ></div>
       <div className="flex gap-x-5 mt-10">
         <div>
           <Image
@@ -42,74 +53,13 @@ const AdmissionDetail = () => {
           />
         </div>
       </div>
-      <p className="my-10 font-workSans font-normal text-base leading-7 text-body">
-        Student should fill up an online admission form which will be available
-        in college’s website after the announcement of the result of grade 10
-        (SEE). Students securing at least CGPA 2.05 and C grade each in
-        Mathematics and English will be eligible to fill up form.
-        <br />
-        Prospectus, Fee structure, model question, Entrance center, entrance
-        symbol number, entrance date and time will be sent to your registered
-        email ID. Along with the application form students should attach
-        recently taken photograph with white background.
-      </p>
       <SectionHeading>Admission Process</SectionHeading>
-      <p className="mt-6 font-workSans font-normal text-base leading-7 text-body">
-        Admissions & Enrolments at Ankuram on religion, race, gender or zonal
-        boundaries are strictly prohibited and are considered against the law.
-        The availability of seats is limited. The application process includes:
-      </p>
-      <ul className="mt-6 space-y-4">
-        <li className="flex items-center gap-x-[9px]">
-          <Image
-            src={'/admission/check.png'}
-            alt="check icon"
-            width={16}
-            height={16}
-            className="size-4 aspect-square "
-          />
-          <span className="font-workSans font-normal text-[16px] leading-[27.2px] text-heading">
-            Submit an inquiry form through our website
-          </span>
-        </li>
-        <li className="flex items-center gap-x-[9px]">
-          <Image
-            src={'/admission/check.png'}
-            alt="check icon"
-            width={16}
-            height={16}
-            className="size-4 aspect-square "
-          />
-          <span className="font-workSans font-normal text-[16px] leading-[27.2px] text-heading">
-            Complete the application form and provide the required documents
-          </span>
-        </li>
-        <li className="flex items-center gap-x-[9px]">
-          <Image
-            src={'/admission/check.png'}
-            alt="check icon"
-            width={16}
-            height={16}
-            className="size-4 aspect-square "
-          />
-          <span className="font-workSans font-normal text-[16px] leading-[27.2px] text-heading">
-            For certain age groups, o student assessment may be conducted
-          </span>
-        </li>
-        <li className="flex items-center gap-x-[9px]">
-          <Image
-            src={'/admission/check.png'}
-            alt="check icon"
-            width={16}
-            height={16}
-            className="size-4 aspect-square "
-          />
-          <span className="font-workSans font-normal text-[16px] leading-[27.2px] text-heading">
-            Once the admission process is complete, you will receive an offcial
-            acceptance letter.
-          </span>
-        </li>
-      </ul>
+      <div
+        className="mt-6 font-workSans font-normal text-base leading-7 text-body"
+        dangerouslySetInnerHTML={{
+          __html: selectedAdmission.process,
+        }}
+      ></div>
       <Button className="mt-10">Download Form</Button>
     </div>
   )

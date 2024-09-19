@@ -7,22 +7,22 @@ import { FaArrowRight } from 'react-icons/fa6'
 const plustwolinks = [
   {
     id: 1,
-    title: 'Management',
+    title: 'management',
     link: '/academics/plustwo/management',
   },
   {
     id: 2,
-    title: 'Humanities',
+    title: 'humanities',
     link: '/academics/plustwo/humanities',
   },
   {
     id: 3,
-    title: 'Education',
+    title: 'education',
     link: '/academics/plustwo/education',
   },
   {
     id: 3,
-    title: 'Law',
+    title: 'law',
     link: '/academics/plustwo/law',
   },
 ]
@@ -53,7 +53,7 @@ const PlusTwoSection = () => {
             {plustwolinks.map((links, idx) => (
               <li key={idx}>
                 <Link
-                  href={links.link}
+                  href={`/academics/plustwo/${links.title}`}
                   className="flex justify-start items-center gap-2 hover:text-secondary"
                 >
                   {links.title}

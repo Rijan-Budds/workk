@@ -1,19 +1,21 @@
-'use client'
 import React from 'react'
-import { useParams } from 'next/navigation'
 import AcademicDetail from '../_components/AcademicDetail'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { IAcademicsResponse } from '../../_interface/academic'
 
-const Page = () => {
-  const { slug } = useParams() // Get the dynamic slug using next/navigation
+const Page = async ({ params }: { params: { slug: string } }) => {
+  const response: IAcademicsResponse | undefined = await UseServerFetch(
+    `/api/v1/academics/${params.slug}`
+  )
+  if (!response || !response.data) {
+    return <div>No academic details found</div>
+  }
 
-  // Handle case where slug is an array or undefined
-  const slugValue = Array.isArray(slug) ? slug[0] : slug
-
-  if (!slugValue) return <div>Loading...</div>
+  const detail = response.data
 
   return (
     <div>
-      <AcademicDetail slug={slugValue} />
+      <AcademicDetail detail={detail} slug={params.slug} />
     </div>
   )
 }
