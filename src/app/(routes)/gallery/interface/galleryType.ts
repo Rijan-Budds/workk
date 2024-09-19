@@ -14,6 +14,7 @@ export interface IGalleryPhotoItem {
 export interface IGalleryVideoItem {
   id: string
   title: string
+  photo: PhotoVideo
   video: PhotoVideo
 }
 
