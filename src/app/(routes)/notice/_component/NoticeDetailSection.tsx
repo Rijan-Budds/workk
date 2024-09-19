@@ -1,11 +1,11 @@
 'use client'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
-import Image from 'next/image'
 import React from 'react'
 import { INoticeData } from '../_interface/type'
 import { format } from 'date-fns'
 import DOMPurify from 'dompurify'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 
 export const NoticeDetailSection = ({ detail }: { detail: INoticeData }) => {
   const cleanHtml = detail && DOMPurify.sanitize(detail.description)
@@ -20,11 +20,11 @@ export const NoticeDetailSection = ({ detail }: { detail: INoticeData }) => {
         dangerouslySetInnerHTML={{ __html: cleanHtml }}
         className="font-workSans mt-10"
       />
-      <Image
+      <ImageWithPlaceholder
         width={343}
         height={485}
         alt="Admission open banner"
-        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${detail.images.key}`}
+        src={detail.images ? detail.images.key : undefined}
         className="md:w-[672px]  2lg:w-[787px]  object-contain aspect-square 2lg:mt-10 "
       />
     </div>
