@@ -12,7 +12,7 @@ export const VideoSection = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [isPlaying, setIsPlaying] = useState(true)
   const [isOpen, setModalOpen] = useState<boolean>(false)
-  const [src, setSrc] = useState('/home/video/school-promo.mov') // New state for src
+  const [src] = useState('/home/video/school-promo.mov') // New state for src
 
   const handlePlayPause = (): void => {
     if (videoRef && videoRef?.current!.paused) {
@@ -84,7 +84,6 @@ export const VideoSection = () => {
             setModalOpen={setModalOpen}
             showSwipe={false}
             src={src}
-            setSrc={setSrc}
             type="video" // Assuming it's a video type
           />
         </CustomModal>

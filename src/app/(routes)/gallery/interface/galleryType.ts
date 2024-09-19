@@ -7,8 +7,8 @@ interface PhotoVideo {
 export interface IGalleryPhotoItem {
   id: string
   title: string
-  photo?: PhotoVideo
-  video?: PhotoVideo
+  photo: PhotoVideo
+  video: PhotoVideo
 }
 
 export interface IGalleryVideoItem {
