@@ -8,15 +8,15 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import { Pagination, Navigation } from 'swiper/modules'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
-import Image from 'next/image'
 import Link from 'next/link'
 import React, { ReactNode, useEffect, useState } from 'react'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import { TestimonialCard } from '@/app/(home)/_components/Testimonials/TestimonialCard'
 import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/testimonial'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { IAcademicsData } from '../../_interface/academic'
 
-const AcademicDetailSection = () => {
+const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
   const [response, setResponse] = useState<ITestimonialResponse | null>(null)
 
   useEffect(() => {
@@ -39,9 +39,9 @@ const AcademicDetailSection = () => {
   }, [])
   return (
     <div className="max-w-[787px]">
-      <MiniHeading className="text-left">Management</MiniHeading>
-      <SectionHeading>Are you prepared to advance your career?</SectionHeading>
-      <p className="mt-6 font-workSans font-normal text-base leading-7 text-body">
+      <MiniHeading className="text-left">{detail.title}</MiniHeading>
+      <SectionHeading>{detail.articleTitle}</SectionHeading>
+      {/* <p className="mt-6 font-workSans font-normal text-base leading-7 text-body">
         The National Examination Board (NEB), Nepal offers +2 programs which has
         been a mile stone to further education after SLC/SEE. The +2 program has
         wide ranges of subject choices to meet the purpose of secondary
@@ -101,7 +101,11 @@ const AcademicDetailSection = () => {
         excellence or performance of the students. The deserving students
         receive many different types of scholarships such as Entrance Toppers,
         Board Examination Toppers, etc.
-      </p>
+      </p> */}
+      <div
+        className="mt-10 font-workSans font-normal text-base leading-7 text-body"
+        dangerouslySetInnerHTML={{ __html: detail.description }}
+      ></div>
       <hr className="border-secondary border-dashed my-10" />
       <SectionHeading className="lg:hidden">Related Course</SectionHeading>
       <div className="flex flex-col md:flex-row gap-6 mt-[30px] lg:hidden">

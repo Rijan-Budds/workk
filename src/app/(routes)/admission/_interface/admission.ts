@@ -49,21 +49,3 @@ export interface Image {
   bucket: string
   mimeType: string
 }
-
-export interface IAcademicsResponse {
-  status: number
-  message: string
-  data: IAcademicsData
-}
-
-export interface IAcademicsData {
-  id: string
-  title: string
-  slug: string
-  articleTitle: string
-  description: string
-  image: Image
-  programType: string
-  createdAt: string
-  updatedAt: string
-}

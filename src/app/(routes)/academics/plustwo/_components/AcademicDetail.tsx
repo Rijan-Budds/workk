@@ -4,12 +4,15 @@ import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import AcademicDetailSection from './AcademicDetailSection'
 import StickyAcademicSide from './StickyAcademicSide'
+import { IAcademicsData } from '../../_interface/academic'
 
-interface AcademicDetailProps {
+const AcademicDetail = ({
+  detail,
+  slug,
+}: {
+  detail: IAcademicsData
   slug: string
-}
-
-const AcademicDetail: React.FC<AcademicDetailProps> = ({ slug }) => {
+}) => {
   return (
     <>
       <CoverImage
@@ -22,7 +25,7 @@ const AcademicDetail: React.FC<AcademicDetailProps> = ({ slug }) => {
       />
       <HomeWrapper>
         <div className="flex flex-col gap-[80px] lg:flex-row 2lg:gap-[56px]">
-          <AcademicDetailSection />
+          <AcademicDetailSection detail={detail} />
           <StickyAcademicSide />
         </div>
       </HomeWrapper>

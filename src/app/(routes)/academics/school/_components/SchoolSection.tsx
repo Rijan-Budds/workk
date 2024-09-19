@@ -15,8 +15,9 @@ import { TestimonialCard } from '@/app/(home)/_components/Testimonials/Testimoni
 import { swiperParams } from '@/app/(home)/_components/Testimonials/TestimonialsSection'
 import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/testimonial'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { IAcademicsData } from '../../_interface/academic'
 
-const SchoolSection = () => {
+const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
   const [response, setResponse] = useState<ITestimonialResponse | null>(null)
 
   useEffect(() => {
@@ -37,42 +38,17 @@ const SchoolSection = () => {
 
     fetchData()
   }, [])
+
   return (
     <div className="flex flex-col">
       <div className="max-w-[787px]">
-        <MiniHeading className="text-left">Pre-School</MiniHeading>
-        <SectionHeading>
-          Are you prepared to advance your career?
-        </SectionHeading>
-        <p className="mt-6 font-workSans font-normal text-base leading-7 text-body">
-          The National Examination Board (NEB), Nepal offers +2 programs which
-          has been a mile stone to further education after SLC/SEE. The +2
-          program has wide ranges of subject choices to meet the purpose of
-          secondary education in Nepal. It has almost every stream including
-          Management, Humanities, Law, education and Science.
-          <br />
-          Pawan Prakriti English Secondary School (PPESS) is on a fascinating
-          path of growth and development adopting different streams for + 2
-          Level. As you are aware, it has already established itself as one of
-          the top colleges in the country. Ever since the inception of this
-          college, we have been striving hard to comprehend the broad
-          significance of education while designing our mode of instruction.{' '}
-        </p>
+        <MiniHeading className="text-left">{detail.title}</MiniHeading>
+        <SectionHeading>{detail.articleTitle}</SectionHeading>
+        <div
+          className="mt-6 font-workSans font-normal text-base leading-7 text-body"
+          dangerouslySetInnerHTML={{ __html: detail.description }}
+        ></div>
         <SchoolGallery />
-        <p className="mt-6 font-workSans font-normal text-base leading-7 text-body">
-          The National Examination Board (NEB), Nepal offers +2 programs which
-          has been a mile stone to further education after SLC/SEE. The +2
-          program has wide ranges of subject choices to meet the purpose of
-          secondary education in Nepal. It has almost every stream including
-          Management, Humanities, Law, education and Science.
-          <br />
-          Pawan Prakriti English Secondary School (PPESS) is on a fascinating
-          path of growth and development adopting different streams for + 2
-          Level. As you are aware, it has already established itself as one of
-          the top colleges in the country. Ever since the inception of this
-          college, we have been striving hard to comprehend the broad
-          significance of education while designing our mode of instruction.{' '}
-        </p>
       </div>
       <hr className="border-secondary border-dashed my-10" />
       <div className="mt-10 relative max-w-[787px] hidden lg:block">
