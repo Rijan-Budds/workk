@@ -1,13 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: '/public/uploads/:path*',
-        destination: 'http://192.168.110.52:4000/public/uploads/:path*',
-      },
-    ]
-  },
   images: {
     remotePatterns: [
       {
@@ -17,6 +9,7 @@ const nextConfig = {
       },
     ],
   },
+
   webpack: (config) => {
     config.resolve.alias.canvas = false
 

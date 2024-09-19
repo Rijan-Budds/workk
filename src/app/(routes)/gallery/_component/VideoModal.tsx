@@ -11,22 +11,20 @@ type IType = 'photo' | 'video'
 export const VideoModal = ({
   src,
   setModalOpen,
-  setSrc,
   setActiveImage,
   length,
   type,
   showSwipe,
 }: {
-  src: string
+  src: string | undefined
   setModalOpen: Dispatch<SetStateAction<boolean>>
-  setSrc: Dispatch<SetStateAction<string>>
   setActiveImage?: Dispatch<SetStateAction<number | null>>
-  length: number
+  length: number | undefined
   type: IType
   showSwipe: boolean
 }) => {
   const handleSwipe = (direction: IDirection) => {
-    if (setActiveImage) {
+    if (setActiveImage && length) {
       // Only call setActiveImage if it's defined
       setActiveImage((prev) => {
         if (prev === null) return 0 // Handle null case appropriately
@@ -36,17 +34,18 @@ export const VideoModal = ({
       })
     }
   }
+
   return (
-    <div className="flex justify-center items-center 2lg:items-start  relative  ">
+    <div className="flex justify-center items-center 2lg:items-start  relative ">
       <>
         <CustomVideo
+          key={src}
           width="1280"
           height="853"
-          src={src}
+          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${src}`}
           className="w-[1024px] object-contain rounded-[12px]"
           autoPlay={true}
           controls={true}
-          fallbackThumb="/home/gallery-5.png"
         />
       </>
 
@@ -56,7 +55,6 @@ export const VideoModal = ({
         })}
         handleClick={() => {
           setModalOpen(false)
-          setSrc('')
           if (setActiveImage) {
             // Only call if setActiveImage is provided
             setActiveImage(null)
