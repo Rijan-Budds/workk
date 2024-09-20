@@ -171,29 +171,29 @@ export const GallerySection = () => {
           <div className="flex flex-row flex-wrap justify-center  gap-6 md:gap-x-5 md:gap-y-6 2lg:gap-6 ">
             {renderGalleryCardsUi()}
           </div>
-          {type === 'video' && !isPaginationVideo ? (
-            <Pagination
-              currentPage={currentGalleryVideoPage}
-              pageSize={pageSize}
-              totalCount={totalCountVideo!}
-              siblingCount={0}
-              onPageChange={(page: string | number) =>
-                setCurrentGalleryVideoPage(page as number)
-              }
-            />
-          ) : (
-            isPaginationPhoto && (
-              <Pagination
-                currentPage={currentGalleryPhotoPage}
-                pageSize={pageSize}
-                totalCount={totalCountPhoto!}
-                siblingCount={0}
-                onPageChange={(page: string | number) =>
-                  setCurrentGalleryPhotoPage(page as number)
-                }
-              />
-            )
-          )}
+          {type === 'video'
+            ? isPaginationVideo && (
+                <Pagination
+                  currentPage={currentGalleryVideoPage}
+                  pageSize={pageSize}
+                  totalCount={totalCountVideo!}
+                  siblingCount={0}
+                  onPageChange={(page: string | number) =>
+                    setCurrentGalleryVideoPage(page as number)
+                  }
+                />
+              )
+            : isPaginationPhoto && (
+                <Pagination
+                  currentPage={currentGalleryPhotoPage}
+                  pageSize={pageSize}
+                  totalCount={totalCountPhoto!}
+                  siblingCount={0}
+                  onPageChange={(page: string | number) =>
+                    setCurrentGalleryPhotoPage(page as number)
+                  }
+                />
+              )}
         </div>
       </HomeWrapper>
       {isModalOpen && (
