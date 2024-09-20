@@ -19,6 +19,7 @@ export const Navbar = () => {
   const [facilites, setFacilities] = useState<INavSubLink[] | undefined>(
     undefined
   )
+  const suffix = 'facilities'
 
   const pathname = usePathname()
 
@@ -61,7 +62,7 @@ export const Navbar = () => {
           return {
             id: index,
             title: d.facilityTitle,
-            link: '/' + d.slug,
+            link: suffix + '/' + d.slug,
           }
         })
       setFacilities(returnFacilitiesNavData)
