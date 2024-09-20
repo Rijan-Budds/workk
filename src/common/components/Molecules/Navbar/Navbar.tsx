@@ -19,7 +19,7 @@ export const Navbar = () => {
   const [facilites, setFacilities] = useState<INavSubLink[] | undefined>(
     undefined
   )
-  const suffix = 'facilities'
+  const suffix = '/facilities'
 
   const pathname = usePathname()
 

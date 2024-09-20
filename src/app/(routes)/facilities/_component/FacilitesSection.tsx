@@ -3,15 +3,18 @@ import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import React from 'react'
 import { FacilitesTabSection } from './FacilitesTabSection'
 
-export const FacilitesSection = () => {
+export const FacilitesSection = ({ slug }: { slug: string }) => {
   return (
     <div className="min-h-screen ">
       <CoverImage
         title="Science Lab"
-        list={[{ link: null, title: 'facilites' }]}
+        list={[
+          { link: '/facilities', title: 'facilites' },
+          { link: null, title: slug },
+        ]}
       />
       <HomeWrapper>
-        <FacilitesTabSection />
+        <FacilitesTabSection slug={slug} />
       </HomeWrapper>
     </div>
   )
