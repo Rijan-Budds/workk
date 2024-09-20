@@ -8,11 +8,18 @@ import { FiChevronDown } from 'react-icons/fi'
 import { navLinks } from '@/common/constant/data'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { IFacilityResponse } from '@/app/(routes)/facilities/interface/facilityInterface'
+import { INavSubLink } from '@/common/interface/type'
 
 export const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [activeSublink, setActiveSublink] = useState<number | null>(null)
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
+  const [facilites, setFacilities] = useState<INavSubLink[] | undefined>(
+    undefined
+  )
+
   const pathname = usePathname()
 
   useEffect(() => {
@@ -41,6 +48,27 @@ export const Navbar = () => {
   const handleSublinkClick = (id: number) => {
     setActiveSublink(activeSublink === id ? null : id)
   }
+
+  useEffect(() => {
+    const fetchFacilities = async () => {
+      const response: IFacilityResponse | undefined = await UseServerFetch(
+        '/api/v1/facility/list'
+      )
+      const facilitiesData = response && response.data
+      const returnFacilitiesNavData =
+        facilitiesData &&
+        facilitiesData.map((d, index) => {
+          return {
+            id: index,
+            title: d.facilityTitle,
+            link: '/' + d.slug,
+          }
+        })
+      setFacilities(returnFacilitiesNavData)
+    }
+
+    fetchFacilities()
+  }, [])
 
   return (
     <div className="py-4 sticky top-0 bg-white/85 backdrop-blur-xl z-[999]  hidden 2lg:block shadow-sm ">
@@ -73,7 +101,11 @@ export const Navbar = () => {
                   links={links.title}
                   isDropdown={links.isDropDown}
                   link={links.link}
-                  sublinks={links.sublink || undefined}
+                  sublinks={
+                    links.title === 'Our facilities'
+                      ? facilites
+                      : links.sublink || undefined
+                  }
                   activeDropdown={activeDropdown}
                   activeSublink={activeSublink}
                   handleMouseEnter={handleMouseEnter}
