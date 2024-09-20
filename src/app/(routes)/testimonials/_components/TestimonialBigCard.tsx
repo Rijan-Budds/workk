@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { ITestimonialData } from '@/app/(routes)/testimonials/_interface/testimonial'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 
 export const TestimonailBigCard = ({ card }: { card: ITestimonialData }) => {
   return (
@@ -21,8 +22,8 @@ export const TestimonailBigCard = ({ card }: { card: ITestimonialData }) => {
           {card.description}
         </p>
         <div className="px-10 py-6 flex gap-4 border-border-2 border-t-[1px]">
-          <Image
-            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${card.image.key}`}
+          <ImageWithPlaceholder
+            src={card.image ? card.image.key : undefined}
             width={56}
             height={56}
             alt="stud"

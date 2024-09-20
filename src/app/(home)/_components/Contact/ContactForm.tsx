@@ -9,14 +9,20 @@ import {
   messageValidation,
   phoneNumberValidation,
 } from '@/common/utils/validation'
-import { Form, Formik } from 'formik'
+import { Form, Formik, FormikHelpers } from 'formik'
 import React, { useEffect, useState } from 'react'
 import * as Yup from 'yup'
 import { ContactDropdown } from './ContactDropdown'
 import { SuccessMessageUi } from '@/common/components/Molecules/SuccessMessageUi'
+import { ToastClose } from '@/common/components/ui/toast'
+import { toast } from '@/common/hook/use-toast'
+import Image from 'next/image'
+import Axios from '@/common/utils/Axios'
+import { contactForm } from '@/common/constant/route'
 
 export const ContactForm = () => {
   const [message, setMessage] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     if (message.length > 1) {
@@ -27,11 +33,49 @@ export const ContactForm = () => {
   }, [message])
 
   const initialValues = {
-    fullName: '',
+    name: '',
     email: '',
-    phone: '',
+    phoneNo: '',
     level: '',
     message: '',
+  }
+
+  const handleSubmit = async (
+    values: typeof initialValues,
+    resetForm: FormikHelpers<typeof initialValues>['resetForm']
+  ) => {
+    try {
+      setLoading(true)
+      const response = await Axios.post(`/${contactForm}`, values)
+
+      if (response.data) {
+        toast({
+          title: response.data.message,
+          action: (
+            <ToastClose>
+              <Image
+                src={'/admission/toast-close.svg'}
+                width={20}
+                height={20}
+                alt="close icon"
+                className="size-5"
+              />
+            </ToastClose>
+          ),
+          className:
+            'bg-successBg py-[18px] px-4 text-success font-workSans text-[16px] leading-4  font-medium',
+        })
+        setTimeout(() => {
+          resetForm()
+        }, 500)
+      } else {
+      }
+    } catch (error) {
+      setLoading(false)
+      console.error('Error submitting form:', error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -49,11 +93,11 @@ export const ContactForm = () => {
       </p>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => console.error(values)}
+        onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
         validationSchema={Yup.object().shape({
-          fullName: fullNameValidation,
+          name: fullNameValidation,
           email: emailValidation,
-          phone: phoneNumberValidation,
+          phoneNo: phoneNumberValidation,
           level: levelValidation,
           message: messageValidation,
         })}
@@ -68,10 +112,10 @@ export const ContactForm = () => {
                   label="Name"
                   isRequired
                   placeholder="Your name"
-                  name="fullName"
+                  name="name"
                   className="bg-white w-full "
-                  error={errors.fullName!}
-                  isError={!!errors.fullName && touched.fullName}
+                  error={errors.name!}
+                  isError={!!errors.name && touched.name}
                   labelColor={'text-white'}
                 />
                 <Input
@@ -90,10 +134,10 @@ export const ContactForm = () => {
                   label="Your Phone"
                   isRequired={false}
                   placeholder="+9779876543213"
-                  name="phone"
+                  name="phoneNo"
                   className="bg-white w-full "
-                  error={errors.phone!}
-                  isError={!!errors.phone && touched.phone}
+                  error={errors.phoneNo!}
+                  isError={!!errors.phoneNo && touched.phoneNo}
                   labelColor={'text-white'}
                 />
                 <ContactDropdown
@@ -116,9 +160,9 @@ export const ContactForm = () => {
                   labelColor={'text-white'}
                 />
                 <Button
+                  disabled={loading}
                   type="submit"
                   className="w-full md:w-fit mt-[8px]"
-                  onClick={() => setMessage('Form Submitted Successfully !')}
                 >
                   Submit
                 </Button>

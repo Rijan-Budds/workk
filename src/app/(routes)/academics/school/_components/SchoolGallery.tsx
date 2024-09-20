@@ -1,8 +1,7 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
-import { schoolGallery } from '../_constants/data'
 import Image from 'next/image'
 import {
   SwiperButtonNext,
@@ -11,16 +10,41 @@ import {
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import { Button } from '@/common/components/ui/button'
 import Link from 'next/link'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import {
+  ISchoolGallery,
+  ISchoolGalleryResponse,
+} from '../../_interface/academic'
 
 const SchoolGallery = () => {
   const [activeSrc, setActiveSrc] = useState<string | null>(null)
+  const [response, setResponse] = useState<ISchoolGalleryResponse | null>(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response: ISchoolGalleryResponse | undefined =
+          await UseServerFetch(`/api/v1/gallery/photos`)
+
+        if (response) {
+          setResponse(response)
+          console.log('Fetched response:', response) // Check the data structure
+        }
+      } catch (error) {
+        console.error('Error fetching testimonials:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
 
   React.useEffect(() => {
-    if (!activeSrc) {
-      setActiveSrc(schoolGallery[0].src)
+    if (response?.data && response.data.length > 0 && !activeSrc) {
+      setActiveSrc(
+        `${process.env.NEXT_PUBLIC_IMAGE_URL}/${response.data[0].photo?.key}`
+      )
     }
-  }, [activeSrc])
-
+  }, [response, activeSrc])
   return (
     <div className="flex justify-between flex-col gap-x-6 gap-y-6">
       {activeSrc && (
@@ -30,13 +54,17 @@ const SchoolGallery = () => {
             alt="Active School Gallery"
             width={787}
             height={524}
-            className="rounded-xl"
+            className="rounded-xl md:w-[787px] md:h-[524px] object-contain"
           />
         </div>
       )}
 
       <div className="mt-6 relative">
-        <ThumbnailSwiper activeSrc={activeSrc} setActiveSrc={setActiveSrc} />
+        <ThumbnailSwiper
+          activeSrc={activeSrc}
+          setActiveSrc={setActiveSrc}
+          galleries={response?.data || []}
+        />
 
         <Link href="/gallery">
           <div className="mt-6">
@@ -56,21 +84,30 @@ const SchoolGallery = () => {
 const ThumbnailSwiper = ({
   activeSrc,
   setActiveSrc,
+  galleries,
 }: {
   activeSrc: string | null
   setActiveSrc: (src: string) => void
+  galleries: ISchoolGallery[]
 }) => {
   return (
     <Swiper spaceBetween={10} slidesPerView={4} className="relative">
-      {schoolGallery.map((gallery, index) => (
+      {galleries.map((gallery, index) => (
         <SwiperSlide key={index}>
           <Image
-            onClick={() => setActiveSrc(gallery.src)} // Set the active image when clicked
-            src={gallery.src}
+            onClick={() =>
+              setActiveSrc(
+                `${process.env.NEXT_PUBLIC_IMAGE_URL}/${gallery.photo?.key}`
+              )
+            }
+            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${gallery.photo?.key}`}
             width={787}
             height={524}
-            className={`rounded-xl cursor-pointer ${
-              activeSrc === gallery.src ? 'border-2 border-primary' : ''
+            className={`rounded-xl cursor-pointer h-[85px] md:h-[152px] object-cover ${
+              activeSrc ===
+              `${process.env.NEXT_PUBLIC_IMAGE_URL}/${gallery.photo?.key}`
+                ? 'border-2 border-primary'
+                : ''
             }`} // Apply a blue border if the image is active
             alt={`Thumbnail ${index + 1}`}
           />

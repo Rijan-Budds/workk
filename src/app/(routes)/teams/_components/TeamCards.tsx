@@ -4,6 +4,7 @@ import React from 'react'
 import './teams.css'
 import { ITeamsData } from '../_interface/Teams'
 import Link from 'next/link'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 
 const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
   return (
@@ -15,8 +16,8 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
             className="flex bg-[#F8FAFD] gap-4 py-[22px] rounded-xl w-full"
           >
             <div className="pl-[16px]">
-              <Image
-                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${team.image.key}`}
+              <ImageWithPlaceholder
+                src={team.image ? team.image.key : undefined}
                 width={236}
                 height={236}
                 alt="teams"
@@ -43,8 +44,8 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
               key={index}
             >
               <div className="relative  w-[236px] lg:w-[200px] h-[236px] lg:h-[200px]">
-                <Image
-                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${team.image.key}`}
+                <ImageWithPlaceholder
+                  src={team.image ? team.image.key : undefined}
                   width={236}
                   height={236}
                   alt="teams"

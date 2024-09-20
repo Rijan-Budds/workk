@@ -27,16 +27,9 @@ const AdmissionSection = () => {
         )
         if (response) {
           setAdmissions(response)
-          // Set 'management' as the default only if there's no active slug
-          if (!activeSlug) {
-            const managementAdmission = response.data.find(
-              (admission) => admission.academics.slug === 'management'
-            )
-            if (managementAdmission) {
-              setActiveSlug('management')
-            } else if (response.data.length > 0) {
-              setActiveSlug(response.data[0].academics.slug)
-            }
+          // Set the default to the first item in the list (index 0)
+          if (!activeSlug && response.data.length > 0) {
+            setActiveSlug(response.data[0].academics.slug)
           }
         }
       } catch (error) {
@@ -67,8 +60,6 @@ const AdmissionSection = () => {
   const handleFilterChange = (slug: string) => {
     setActiveSlug(slug)
   }
-
-  console.log('Admissions in AdmissionSection:', admissions?.data)
 
   return (
     <div>
