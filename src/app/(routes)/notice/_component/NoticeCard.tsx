@@ -10,20 +10,25 @@ import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 export const NoticeCard = ({
   notice,
   setOpen,
+  setActive,
 }: {
   notice: INewsItem | undefined
   setOpen: Dispatch<SetStateAction<boolean>>
+  setActive: Dispatch<SetStateAction<string | undefined>>
 }) => {
   const router = useRouter()
 
   const handleShareButtonClick = (event: React.MouseEvent) => {
     event.stopPropagation()
     setOpen(true)
+    setActive(notice?.slug)
   }
 
   return (
     <div
-      onClick={() => router.push(`notice/${notice?.id}`)}
+      onClick={() => {
+        router.push(`notice/${notice?.slug}`)
+      }}
       className="p-5 rounded-xl bg-white flex items-center justify-between gap-4  border-b-[4px] border-r-[4px] border-shadowBorder group hover:bg-primary transition-all duration-500 cursor-pointer 2lg:max-w-[397px] 2lg:max-h-[104px]"
     >
       <ImageWithPlaceholder
