@@ -1,20 +1,21 @@
 'use client'
-
-import Image from 'next/image'
 import React from 'react'
-import { IGalleryItem } from './interface/Gallery'
+import { IHomeGallery } from './interface/Gallery'
 import { cn } from '@/common/utils/utils'
-import { isVideo } from '@/common/utils/checkIsVideo'
-import { CustomVideo } from '@/common/components/Atom/CustomVideo'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+// import { isVideo } from '@/common/utils/checkIsVideo'
+// import { CustomVideo } from '@/common/components/Atom/CustomVideo'
 
 export const GalleryCard = ({
   data,
   isActive,
+  index,
 }: {
-  data: IGalleryItem
+  data: IHomeGallery
   isActive: boolean
+  index: number
 }) => {
-  const isVideoExists = isVideo(data.src)
+  // const isVideoExists = isVideo(data.src)
   return (
     <div
       className={cn('flex flex-col gap-y-4 will-change-transform ', {
@@ -30,7 +31,7 @@ export const GalleryCard = ({
           }
         )}
       >
-        {isVideoExists ? (
+        {/* {isVideoExists ? (
           <CustomVideo
             autoPlay
             height="827"
@@ -47,11 +48,18 @@ export const GalleryCard = ({
             alt="gallery carousel"
             className="rounded-[8px]  w-full h-full object-cover"
           />
-        )}
+        )} */}
+        <ImageWithPlaceholder
+          width={343}
+          height={257}
+          src={data.photo ? data.photo?.key : undefined}
+          alt="gallery carousel"
+          className="rounded-[8px]  w-full h-full object-cover"
+        />
         <div className="2lg:hidden flex justify-center my-4 ">
           <p className="font-workSans font-normal text-[16px] leading-[16px] text-[#313131]">
             <span className="font-poppins font-medium text-[20px] leading-[26px] text-center text-[#187EC0]">
-              {data.serialNo}
+              {index + 1}
               {'   '}
             </span>
             {data.title}
@@ -63,7 +71,7 @@ export const GalleryCard = ({
           <div className="absolute -left-36 -bottom-48 flex flex-col gap-y-10 w-[578px] ">
             <p className="font-workSans font-normal text-[16px] leading-[16px] text-[#313131]">
               <span className="font-poppins font-medium text-[20px] leading-[26px] text-center text-[#187EC0]">
-                {data.serialNo}
+                {index + 1}
                 {'   '}
               </span>
               {data.title}
