@@ -3,11 +3,11 @@ import FacilitiesSwiper from './FacilitiesSwiper'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import Image from 'next/image'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
-import { IFacilityDetailResponse } from '../interface/facilityInterface'
+import { IFacilityListResponse } from '../interface/facilityInterface'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 
 const FacilitiesSwiperSection = async () => {
-  const response: IFacilityDetailResponse | undefined = await UseServerFetch(
+  const response: IFacilityListResponse | undefined = await UseServerFetch(
     '/api/v1/facility/list'
   )
 
@@ -46,7 +46,7 @@ const FacilitiesSwiperSection = async () => {
           </div>
         </div>
         <div className="max-w-[1100px] flex-grow">
-          <FacilitiesSwiper data={response?.data} />
+          {response?.data && <FacilitiesSwiper data={response?.data} />}
         </div>
       </div>
     </HomeWrapper>

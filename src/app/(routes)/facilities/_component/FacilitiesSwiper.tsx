@@ -11,7 +11,7 @@ import { IFacilityData } from '../interface/facilityInterface'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import Link from 'next/link'
 
-const FacilitiesSwiper = ({ data }: { data: IFacilityData[] }) => {
+const FacilitiesSwiper = ({ data }: { data: IFacilityData[] | undefined }) => {
   return (
     <div className="w-full max-w-full flex-shrink-0">
       <>

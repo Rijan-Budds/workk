@@ -30,3 +30,9 @@ export interface IFacilityDetailResponse {
   message: string
   data: IFacilityData
 }
+
+export interface IFacilityListResponse {
+  status: number
+  message: string
+  data: IFacilityData[]
+}
