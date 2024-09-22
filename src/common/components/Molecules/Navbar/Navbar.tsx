@@ -8,25 +8,15 @@ import { FiChevronDown } from 'react-icons/fi'
 import { navLinks } from '@/common/constant/data'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
-import { IFacilityResponse } from '@/app/(routes)/facilities/interface/facilityInterface'
-import { INavSubLink } from '@/common/interface/type'
+import { useNavLinks } from '@/common/hook/useNavLinks'
 
 export const Navbar = () => {
+  const pathname = usePathname()
+  const { facilites } = useNavLinks()
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [activeSublink, setActiveSublink] = useState<number | null>(null)
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
-  const [facilites, setFacilities] = useState<INavSubLink[] | undefined>(
-    undefined
-  )
-  const suffix = '/facilities'
 
-  const pathname = usePathname()
-  const overviewLink = {
-    id: 111,
-    title: 'Overview',
-    link: '/facilities',
-  }
   useEffect(() => {
     setActiveDropdown(null)
     setActiveSublink(null)
@@ -53,29 +43,6 @@ export const Navbar = () => {
   const handleSublinkClick = (id: number) => {
     setActiveSublink(activeSublink === id ? null : id)
   }
-
-  useEffect(() => {
-    const fetchFacilities = async () => {
-      const response: IFacilityResponse | undefined = await UseServerFetch(
-        '/api/v1/facility/list'
-      )
-      const facilitiesData = response && response.data
-      if (facilitiesData) {
-        const returnFacilitiesNavData = [
-          overviewLink,
-          ...facilitiesData.map((d, index) => ({
-            id: index,
-            title: d.facilityTitle,
-            link: `${suffix}/${d.slug}`,
-          })),
-        ]
-
-        setFacilities(returnFacilitiesNavData)
-      }
-    }
-
-    fetchFacilities()
-  }, [])
 
   return (
     <div className="py-4 sticky top-0 bg-white/85 backdrop-blur-xl z-[999]  hidden 2lg:block shadow-sm ">
