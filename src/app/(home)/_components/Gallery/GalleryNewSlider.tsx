@@ -1,20 +1,41 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 
 import { Autoplay, EffectCoverflow } from 'swiper/modules'
-import { galleriesCarouselData } from './constant/data'
 import { GalleryCard } from './GalleryCard'
 import {
   SwiperButtonNext,
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { IHomeGalleryResponse } from './interface/Gallery'
 
 export const GallerySlider = () => {
+  const [response, setResponse] = useState<IHomeGalleryResponse | null>(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response: IHomeGalleryResponse | undefined = await UseServerFetch(
+          `/api/v1/gallery/photos`
+        )
+
+        if (response) {
+          setResponse(response)
+          console.log('Fetched response:', response) // Check the data structure
+        }
+      } catch (error) {
+        console.error('Error fetching testimonials:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
   return (
     <div className="gallery__slider hidden 2lg:flex 2lg:h-[600px]   justify-center items-center">
       <Swiper
@@ -37,9 +58,11 @@ export const GallerySlider = () => {
         modules={[EffectCoverflow, Autoplay]}
         className="w-full h-full !pt-32"
       >
-        {galleriesCarouselData.map((d, index) => (
+        {response?.data.map((d, index) => (
           <SwiperSlide key={index}>
-            {({ isActive }) => <GalleryCard data={d} isActive={isActive} />}
+            {({ isActive }) => (
+              <GalleryCard data={d} isActive={isActive} index={index} />
+            )}
           </SwiperSlide>
         ))}
       </Swiper>
@@ -48,6 +71,26 @@ export const GallerySlider = () => {
 }
 
 export const GalleryMobileSlider = () => {
+  const [response, setResponse] = useState<IHomeGalleryResponse | null>(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response: IHomeGalleryResponse | undefined = await UseServerFetch(
+          `/api/v1/gallery/photos`
+        )
+
+        if (response) {
+          setResponse(response)
+          console.log('Fetched response:', response) // Check the data structure
+        }
+      } catch (error) {
+        console.error('Error fetching testimonials:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
   return (
     <div className="flex justify-center items-center w-full 2lg:hidden">
       <Swiper
@@ -66,9 +109,11 @@ export const GalleryMobileSlider = () => {
         slidesPerView={1}
         loop
       >
-        {galleriesCarouselData.map((d, index) => (
-          <SwiperSlide key={index} className="">
-            {({ isActive }) => <GalleryCard data={d} isActive={isActive} />}
+        {response?.data.map((d, index) => (
+          <SwiperSlide key={index}>
+            {({ isActive }) => (
+              <GalleryCard data={d} isActive={isActive} index={index} />
+            )}
           </SwiperSlide>
         ))}
 
