@@ -2,11 +2,7 @@ import React from 'react'
 import Facilities from './_component/Facilities'
 
 const page = () => {
-  return (
-    <div>
-      <Facilities />
-    </div>
-  )
+  return <Facilities />
 }
 
 export default page

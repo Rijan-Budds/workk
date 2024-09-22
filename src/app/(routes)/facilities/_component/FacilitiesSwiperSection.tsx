@@ -3,8 +3,14 @@ import FacilitiesSwiper from './FacilitiesSwiper'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import Image from 'next/image'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
+import { IFacilityListResponse } from '../interface/facilityInterface'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
 
-const FacilitiesSwiperSection = () => {
+const FacilitiesSwiperSection = async () => {
+  const response: IFacilityListResponse | undefined = await UseServerFetch(
+    '/api/v1/facility/list'
+  )
+
   return (
     <HomeWrapper
       className="!px-0 !pl-4 md:!pl-12 lg:!pl-[60px] 2xl_lg:!pl-[240px] 3xl:!pl-[310px] 5xl:!pl-[540px]"
@@ -40,7 +46,7 @@ const FacilitiesSwiperSection = () => {
           </div>
         </div>
         <div className="max-w-[1100px] flex-grow">
-          <FacilitiesSwiper />
+          {response?.data && <FacilitiesSwiper data={response?.data} />}
         </div>
       </div>
     </HomeWrapper>
