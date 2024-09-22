@@ -3,14 +3,26 @@
 import { CloseButton } from '@/common/components/Atom/CloseButton'
 import { cn } from '@/common/utils/utils'
 import Image from 'next/image'
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 export const ShareModal = ({
   setOpen,
+  slug,
 }: {
   setOpen: Dispatch<SetStateAction<boolean>>
+  slug: string
 }) => {
+  const [sharelink, setShareLink] = useState<string | undefined>(undefined)
+  const suffix = '/notice'
+
+  useEffect(() => {
+    const currentAddress = window.location.origin + suffix + '/' + slug
+    if (currentAddress) {
+      setShareLink(currentAddress)
+    }
+  }, [slug])
+
   const socialMediaLinks = [
     {
       title: 'Twitter',
@@ -33,9 +45,6 @@ export const ShareModal = ({
   const [copied, setCopied] = useState<boolean>(false)
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
 
-  const link =
-    'https://pawanprakritischool.edu.np/event/Awards%20and%20Achievementss'
-
   const handleCopyClick = () => {
     if (navigator.vibrate) {
       navigator.vibrate(300)
@@ -53,7 +62,7 @@ export const ShareModal = ({
   }
 
   return (
-    <div className="bg-white rounded-xl p-6 flex flex-col gap-y-6  relative">
+    <div className="bg-white rounded-xl p-6 flex flex-col gap-y-6  relative  will-change-transform transition-all duration-700">
       <span className="font-poppins text-[20px] leading-6  font-semibold">
         Share
       </span>
@@ -82,9 +91,9 @@ export const ShareModal = ({
         </span>
         <div className="rounded-lg border-[1px] border-border p-4 flex justify-between items-center gap-x-4">
           <span className="font-workSans font-normal text-[14px] leading-4 text-body  line-clamp-1 break-all w-full md:max-w-[325px] ">
-            {link}
+            {sharelink && sharelink}
           </span>
-          <CopyToClipboard text={link}>
+          <CopyToClipboard text={sharelink ? sharelink : ''}>
             <button onClick={handleCopyClick}>
               <Image
                 width={16}
