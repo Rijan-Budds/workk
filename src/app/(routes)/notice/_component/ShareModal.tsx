@@ -11,7 +11,7 @@ export const ShareModal = ({
   slug,
 }: {
   setOpen: Dispatch<SetStateAction<boolean>>
-  slug: string
+  slug: string | undefined
 }) => {
   const [sharelink, setShareLink] = useState<string | undefined>(undefined)
   const suffix = '/notice'

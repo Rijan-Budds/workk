@@ -14,8 +14,6 @@ export const NoticeClientSection = ({
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [activeSlug, setActiveSlug] = useState<string | undefined>(undefined)
 
-  console.log('active slug::', activeSlug)
-
   return (
     <div className="flex flex-col  gap-y-10 2lg:items-center">
       <p className="text-body font-workSans text-[16px] leading-[27.2px] font-normal text-center 2lg:max-w-[713px] ">
