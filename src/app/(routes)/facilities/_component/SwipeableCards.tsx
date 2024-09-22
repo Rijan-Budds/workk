@@ -1,8 +1,6 @@
 'use client'
 
 import React, { Dispatch, SetStateAction } from 'react'
-import { facilitiesCardsData } from '../constant/data'
-import Image from 'next/image'
 import { SwiperSlide, Swiper } from 'swiper/react'
 import 'swiper/css'
 import {
@@ -10,11 +8,15 @@ import {
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
+import { Images } from '../interface/facilityInterface'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 
 export const SwipeableCards = ({
   setActiveSrc,
+  data,
 }: {
   setActiveSrc: Dispatch<SetStateAction<string | null>>
+  data: Images
 }) => {
   return (
     <div className="2lg:overflow-x-hidden md:max-w-[324px]   2lg:max-w-[503px]  ">
@@ -30,28 +32,32 @@ export const SwipeableCards = ({
         loop
         className="relative "
       >
-        {facilitiesCardsData.map((d) => (
-          <SwiperSlide key={d.id}>
-            <Image
-              onClick={() => setActiveSrc(d.src)}
-              src={d.src}
-              width={152}
-              height={152}
-              className="size-[152px]"
-              alt="facilites school"
-            />
-          </SwiperSlide>
-        ))}
-        <div className="absolute right-[3px] top-1/2 -translate-y-1/2 z-10">
-          <SwiperButtonNext>
-            <IoIosArrowRoundForward className="text-body text-2xl font-light bg-white rounded-full size-7" />
-          </SwiperButtonNext>
-        </div>
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 ">
-          <SwiperButtonPrevious>
-            <IoIosArrowRoundBack className="text-body text-2xl font-light bg-white rounded-full size-7" />
-          </SwiperButtonPrevious>
-        </div>
+        {data &&
+          data.key.map((d, i) => (
+            <SwiperSlide key={i} onClick={() => setActiveSrc(d)}>
+              <ImageWithPlaceholder
+                src={d}
+                width={152}
+                height={152}
+                className="size-[152px] object-cover rounded-[12px]"
+                alt="facilites school"
+              />
+            </SwiperSlide>
+          ))}
+        {data && data.key.length > 2 && (
+          <>
+            <div className="absolute right-[3px] top-1/2 -translate-y-1/2 z-10">
+              <SwiperButtonNext>
+                <IoIosArrowRoundForward className="text-body text-2xl font-light bg-white rounded-full size-7" />
+              </SwiperButtonNext>
+            </div>
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 ">
+              <SwiperButtonPrevious>
+                <IoIosArrowRoundBack className="text-body text-2xl font-light bg-white rounded-full size-7" />
+              </SwiperButtonPrevious>
+            </div>
+          </>
+        )}
       </Swiper>
     </div>
   )

@@ -19,10 +19,14 @@ export const Navbar = () => {
   const [facilites, setFacilities] = useState<INavSubLink[] | undefined>(
     undefined
   )
-  const suffix = 'facilities'
+  const suffix = '/facilities'
 
   const pathname = usePathname()
-
+  const overviewLink = {
+    id: 111,
+    title: 'Overview',
+    link: '/facilities',
+  }
   useEffect(() => {
     setActiveDropdown(null)
     setActiveSublink(null)
@@ -56,16 +60,18 @@ export const Navbar = () => {
         '/api/v1/facility/list'
       )
       const facilitiesData = response && response.data
-      const returnFacilitiesNavData =
-        facilitiesData &&
-        facilitiesData.map((d, index) => {
-          return {
+      if (facilitiesData) {
+        const returnFacilitiesNavData = [
+          overviewLink,
+          ...facilitiesData.map((d, index) => ({
             id: index,
             title: d.facilityTitle,
-            link: suffix + '/' + d.slug,
-          }
-        })
-      setFacilities(returnFacilitiesNavData)
+            link: `${suffix}/${d.slug}`,
+          })),
+        ]
+
+        setFacilities(returnFacilitiesNavData)
+      }
     }
 
     fetchFacilities()
