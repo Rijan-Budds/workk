@@ -54,7 +54,7 @@ const FooterLinksData: FooterLink[] = [
       { text: 'National Examinations Board' },
       { text: 'Ministry of Education' },
       { text: 'Office of the Controller of Examinations' },
-      { text: 'District Education Office, Kathmandu' },
+      { text: 'District Education Office, Lalitpur' },
     ],
   },
 ]
