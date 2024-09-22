@@ -17,12 +17,15 @@ import {
   IGalleryVideoItem,
   IGalleryVideoResponse,
 } from '../interface/galleryType'
+import { Pagination } from '@/common/components/Pagination'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 type IType = 'photo' | 'video'
 
 export const GallerySection = () => {
   const pathname = usePathname()
   const getPaths = useBreadCrumbPath(pathname)
+
   const [galleryPhoto, setGalleryPhoto] = useState<
     IGalleryPhotoItem[] | undefined
   >(undefined)
@@ -30,48 +33,98 @@ export const GallerySection = () => {
     IGalleryVideoItem[] | undefined
   >(undefined)
 
-  const pageSize = 3
+  const [currentGalleryPhotoPage, setCurrentGalleryPhotoPage] =
+    useState<number>(1)
+
+  const [currentGalleryVideoPage, setCurrentGalleryVideoPage] =
+    useState<number>(1)
+
+  const [totalCountPhoto, setTotalCountPhoto] = useState<number | undefined>(
+    undefined
+  )
+  const [totalCountVideo, setTotalCountVideo] = useState<number | undefined>(
+    undefined
+  )
+  const pageSize = 6
   const [isModalOpen, setModalOpen] = useState<boolean>(false)
   const [activeImage, setActiveImage] = useState<number | null>(null)
   const [type, setType] = useState<IType>('photo')
 
   const handleDynamicData = (type: IType) => {
     setType(type)
+    setCurrentGalleryPhotoPage(1)
+    setCurrentGalleryVideoPage(1)
   }
+
+  const showPaginationPhoto = () => {
+    if (
+      totalCountPhoto &&
+      galleryPhoto &&
+      galleryPhoto.length < totalCountPhoto
+    ) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  const showPaginationVideo = () => {
+    if (
+      totalCountVideo &&
+      galleryVideo &&
+      galleryVideo.length < totalCountVideo
+    ) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  const isPaginationVideo = showPaginationVideo()
+
+  const isPaginationPhoto = showPaginationPhoto()
 
   const renderGalleryCardsUi = () => {
     if (type === 'video') {
-      return (
-        galleryVideo &&
-        galleryVideo.map((gallery, index) => {
-          return (
-            <GalleryCard
-              key={gallery.id}
-              gallery={gallery}
-              setModalOpen={setModalOpen}
-              setActiveImage={setActiveImage}
-              index={index}
-              type={'video'}
-            />
-          )
-        })
-      )
+      if (galleryVideo && galleryVideo?.length > 0) {
+        return (
+          galleryVideo &&
+          galleryVideo.map((gallery, index) => {
+            return (
+              <GalleryCard
+                key={gallery.id}
+                gallery={gallery}
+                setModalOpen={setModalOpen}
+                setActiveImage={setActiveImage}
+                index={index}
+                type={'video'}
+              />
+            )
+          })
+        )
+      } else {
+        return <NoDataFound title="No gallery video found" />
+      }
     } else {
-      return (
-        galleryPhoto &&
-        galleryPhoto.map((gallery, index) => {
-          return (
-            <GalleryCard
-              key={gallery.id}
-              gallery={gallery}
-              setModalOpen={setModalOpen}
-              setActiveImage={setActiveImage}
-              index={index}
-              type={'photo'}
-            />
-          )
-        })
-      )
+      if (galleryPhoto && galleryPhoto?.length > 0) {
+        return (
+          galleryPhoto &&
+          galleryPhoto.map((gallery, index) => {
+            return (
+              <GalleryCard
+                key={gallery.id}
+                gallery={gallery}
+                setModalOpen={setModalOpen}
+                setActiveImage={setActiveImage}
+                index={index}
+                type={'photo'}
+              />
+            )
+          })
+        )
+      } else {
+        return <NoDataFound title="No gallery photo found" />
+      }
     }
   }
 
@@ -79,9 +132,10 @@ export const GallerySection = () => {
     try {
       const galleryData: IGalleryPhotoResponse | undefined =
         await UseServerFetch(
-          `/api/v1/gallery/photos?page=${1}&pageSize=${pageSize}`
+          `/api/v1/gallery/photos?page=${currentGalleryPhotoPage}&pageSize=${pageSize}`
         )
       setGalleryPhoto(galleryData?.data)
+      setTotalCountPhoto(galleryData?.totalCount)
     } catch (error) {
       console.error('error fetching gallery photo', error)
     }
@@ -91,9 +145,10 @@ export const GallerySection = () => {
     try {
       const galleryData: IGalleryVideoResponse | undefined =
         await UseServerFetch(
-          `/api/v1/gallery/videos?page=${1}&pageSize=${pageSize}`
+          `/api/v1/gallery/videos?page=${currentGalleryVideoPage}&pageSize=${pageSize}`
         )
       setGalleryVideo(galleryData?.data)
+      setTotalCountVideo(galleryData?.totalCount)
     } catch (error) {
       console.error('error fetching gallery video', error)
     }
@@ -105,7 +160,7 @@ export const GallerySection = () => {
     } else {
       fetchGalleryData()
     }
-  }, [type])
+  }, [type, currentGalleryPhotoPage, currentGalleryVideoPage])
 
   return (
     <>
@@ -116,6 +171,29 @@ export const GallerySection = () => {
           <div className="flex flex-row flex-wrap justify-center  gap-6 md:gap-x-5 md:gap-y-6 2lg:gap-6 ">
             {renderGalleryCardsUi()}
           </div>
+          {type === 'video' && !isPaginationVideo ? (
+            <Pagination
+              currentPage={currentGalleryVideoPage}
+              pageSize={pageSize}
+              totalCount={totalCountVideo!}
+              siblingCount={0}
+              onPageChange={(page: string | number) =>
+                setCurrentGalleryVideoPage(page as number)
+              }
+            />
+          ) : (
+            isPaginationPhoto && (
+              <Pagination
+                currentPage={currentGalleryPhotoPage}
+                pageSize={pageSize}
+                totalCount={totalCountPhoto!}
+                siblingCount={0}
+                onPageChange={(page: string | number) =>
+                  setCurrentGalleryPhotoPage(page as number)
+                }
+              />
+            )
+          )}
         </div>
       </HomeWrapper>
       {isModalOpen && (
