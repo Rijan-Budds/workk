@@ -68,8 +68,6 @@ const AdmissionSection = () => {
     setActiveSlug(slug)
   }
 
-  console.log('Admissions in AdmissionSection:', admissions?.data)
-
   return (
     <div>
       <CoverImage title="Admission" list={[{ link: '', title: 'Admission' }]} />

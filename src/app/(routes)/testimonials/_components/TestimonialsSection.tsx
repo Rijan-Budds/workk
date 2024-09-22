@@ -24,7 +24,6 @@ const TestimonialsSection = () => {
 
         if (response) {
           setResponse(response)
-          console.log('Fetched response:', response) // Check the data structure
           setHasMore(response.data.length === pageSize)
         }
       } catch (error) {
