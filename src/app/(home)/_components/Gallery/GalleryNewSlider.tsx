@@ -27,7 +27,6 @@ export const GallerySlider = () => {
 
         if (response) {
           setResponse(response)
-          console.log('Fetched response:', response) // Check the data structure
         }
       } catch (error) {
         console.error('Error fetching testimonials:', error)
