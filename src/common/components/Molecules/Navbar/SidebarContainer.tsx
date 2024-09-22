@@ -18,9 +18,6 @@ export const SidebarContainer = ({
   const [openDropDown, setOpenDropdown] = useState<boolean>(false)
   const [navDropdown, setNavDropDown] = useState<INavSubLink[] | []>([])
 
-  console.log('nav dropdown:::', navDropdown)
-  console.log('nav dropdown facilities', facilites)
-
   useEffect(() => {
     if (!openDropDown) {
       setNavDropDown([])
