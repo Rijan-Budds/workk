@@ -4,7 +4,7 @@ import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import Image from 'next/image'
 import React from 'react'
 
-const FacilitiesOverview = () => {
+const FacilitiesOverview = async () => {
   return (
     <HomeWrapper>
       <div className="flex flex-col md:flex-row gap-10 md:gap-8 lg:gap-[81px]">

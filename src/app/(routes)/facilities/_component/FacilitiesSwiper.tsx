@@ -7,10 +7,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
-import { facilitiesCard } from '../constant/data'
-import Image from 'next/image'
+import { IFacilityData } from '../interface/facilityInterface'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+import Link from 'next/link'
 
-const FacilitiesSwiper = () => {
+const FacilitiesSwiper = ({ data }: { data: IFacilityData[] }) => {
   return (
     <div className="w-full max-w-full flex-shrink-0">
       <>
@@ -31,22 +32,25 @@ const FacilitiesSwiper = () => {
           //   modules={[Pagination]}
           className="mySwiper"
         >
-          {facilitiesCard.map((facility, index) => (
-            <SwiperSlide key={index} className="flex-shrink-0">
-              <div className="w-[292px] h-[431px] space-y-4 mx-auto">
-                <p className="font-poppins font-medium text-xl leading-[26px] text-heading text-center sm:text-start">
-                  {facility.title}
-                </p>
-                <Image
-                  src={facility.imgSrc}
-                  width={292}
-                  height={389}
-                  alt="card"
-                  className="rounded-xl"
-                />
-              </div>
-            </SwiperSlide>
-          ))}
+          {data &&
+            data.map((facility: IFacilityData) => (
+              <SwiperSlide key={facility.slug} className="flex-shrink-0">
+                <div className="w-[292px] h-[431px] flex flex-col gap-y-4 mx-auto">
+                  <p className="font-poppins font-medium text-xl capitalize leading-[26px] text-heading text-center sm:text-start">
+                    {facility?.facilityTitle}
+                  </p>
+                  <Link href={`/facilities/${facility.slug}`}>
+                    <ImageWithPlaceholder
+                      src={facility.images ? facility.images.key[0] : undefined}
+                      width={292}
+                      height={389}
+                      alt="card"
+                      className="rounded-xl object-cover w-[292px] h-[389px]"
+                    />
+                  </Link>
+                </div>
+              </SwiperSlide>
+            ))}
         </Swiper>
       </>
     </div>
