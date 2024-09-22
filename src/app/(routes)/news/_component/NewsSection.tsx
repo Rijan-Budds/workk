@@ -77,7 +77,7 @@ export const NewsSection = () => {
             newsNotice.map((news) => {
               return (
                 <Link
-                  href={`/news/${news.id}`}
+                  href={`/news/${news.slug}`}
                   key={news.id}
                   className={cn('mb-0', {
                     'mb-8 2lg:mb-0': news.title.length > 40,

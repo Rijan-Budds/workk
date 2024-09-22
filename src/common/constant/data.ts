@@ -61,7 +61,7 @@ export const navLinks = [
           {
             id: 1,
             title: 'Pre-School (Kindergarden)',
-            link: '/academics/school/preschool',
+            link: '/academics/school/pre-school',
           },
           {
             id: 2,
