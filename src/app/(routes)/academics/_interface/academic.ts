@@ -24,7 +24,7 @@ export interface Image {
 export interface ISchoolGalleryResponse {
   status: number
   message: string
-  data: ISchoolGallery
+  data: ISchoolGallery[]
   totalCount: number
 }
 

@@ -12,6 +12,7 @@ import { socialLinks } from '../constants/data'
 import { IVoiceOfManagementResponse } from '../_interface/About'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 
 const VoiceOfDirector = () => {
   const [response, setResponse] = useState<IVoiceOfManagementResponse | null>(
@@ -59,9 +60,12 @@ const VoiceOfDirector = () => {
               <div className="relative justify-between md:gap-[40px] lg:gap-[80px] p-4 w-full flex flex-col md:flex-row-reverse">
                 <div className="relative lg:max-w-[552px]">
                   <div className="absolute bg-[#187EC0] w-[200px] 2lg:w-[289px] h-[226px] right-0 -top-4 rounded-tr-3xl" />
-                  <VoiceImage
-                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${voice.Team.image.key}`}
-                    alt={voice.Team.name}
+                  <ImageWithPlaceholder
+                    src={voice.Team.image ? voice.Team.image.key : undefined}
+                    width={528}
+                    height={693}
+                    alt="Brochure image"
+                    className="w-[95%] h-[382px] md:h-[462px] lg:h-[726px] object-cover rounded-xl relative"
                   />
                   <div className="absolute bottom-8 left-8 bg-secondary rounded-xl">
                     <ul className="flex gap-4 p-4">
@@ -111,27 +115,12 @@ const VoiceOfDirector = () => {
 
 export default VoiceOfDirector
 
-const VoiceImage = ({ src, alt }: { src: string; alt: string }) => {
-  const [imgSrc, setImgSrc] = useState(src)
-
-  return (
-    <Image
-      src={imgSrc}
-      width={528}
-      height={693}
-      alt={alt}
-      className="w-[95%] h-[382px] md:h-[462px] lg:h-[726px] object-cover rounded-xl relative"
-      onError={() => setImgSrc('/home/director 1.png')}
-    />
-  )
-}
-
 const SwiperWrapper = ({
   children,
   className,
   paginationData,
-  activeIndex, // Receive active index
-  setActiveIndex, // Receive function to set active index
+  activeIndex,
+  setActiveIndex,
 }: {
   children: React.ReactNode
   className?: string
@@ -178,7 +167,7 @@ const SwiperWrapper = ({
       </Swiper>
 
       {/* Custom Pagination */}
-      {paginationData && paginationData.length > 4 && (
+      {paginationData && paginationData.length > 0 && (
         <Swiper
           spaceBetween={10}
           slidesPerView={4}
@@ -201,7 +190,7 @@ const SwiperWrapper = ({
                 <Image
                   width={200}
                   height={200}
-                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${slide.Team.image.key}`}
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${slide.Team?.image?.key}`}
                   alt={slide.Team.name}
                   className="custom-card-image"
                 />

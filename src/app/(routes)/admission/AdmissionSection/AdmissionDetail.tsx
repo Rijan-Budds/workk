@@ -1,9 +1,11 @@
+'use client'
 import { Button } from '@/common/components/Atom/Button'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import Image from 'next/image'
 import React from 'react'
 import { IDetailData } from '../_interface/admission'
+import Link from 'next/link'
 interface AdmissionDetailProps {
   selectedAdmission: IDetailData | undefined
 }
@@ -14,6 +16,8 @@ const AdmissionDetail: React.FC<AdmissionDetailProps> = ({
   if (!selectedAdmission) {
     return <div>Loading...</div>
   }
+
+  const downloadUrl = `${process.env.NEXT_PUBLIC_IMAGE_URL}/${selectedAdmission.form?.key}`
 
   return (
     <div className="max-w-[787px]">
@@ -60,7 +64,15 @@ const AdmissionDetail: React.FC<AdmissionDetailProps> = ({
           __html: selectedAdmission.process,
         }}
       ></div>
-      <Button className="mt-10">Download Form</Button>
+
+      <Link
+        href={downloadUrl}
+        download
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button className="mt-10">Download Form</Button>
+      </Link>
     </div>
   )
 }

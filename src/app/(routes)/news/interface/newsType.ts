@@ -17,6 +17,7 @@ export interface INewsItem {
   publishedAt: string | null
   createdAt: string
   updatedAt: string
+  slug: string
 }
 export interface INewsDetailResponse {
   status: number

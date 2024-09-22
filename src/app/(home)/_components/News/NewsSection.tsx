@@ -1,7 +1,7 @@
 'use client'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
-import React, { ReactNode } from 'react'
-import { newsandevent, NewsCard } from './NewsCard'
+import React, { ReactNode, useEffect, useState } from 'react'
+import { NewsCard } from './NewsCard'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -14,6 +14,8 @@ import {
 } from '@/common/components/Atom/SwiperButton'
 import './notice.css'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
+import { INewsResponseData } from '@/app/(routes)/news/interface/newsType'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
 
 export const swiperParams = {
   navigation: {
@@ -23,6 +25,35 @@ export const swiperParams = {
 }
 
 const NewsSection = () => {
+  const [response, setResponse] = useState<INewsResponseData | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchNewsAndNoticeList = async () => {
+      try {
+        const newsNoticeData: INewsResponseData | undefined =
+          await UseServerFetch(`/api/v1/news-and-notice/type/NEWS`)
+        if (newsNoticeData) {
+          setResponse(newsNoticeData)
+        }
+      } catch (error) {
+        console.error('Error fetching news data:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchNewsAndNoticeList()
+  }, [])
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  if (!response || !response.data) {
+    return <div>No news available</div>
+  }
+
   return (
     <>
       <div className="relative">
@@ -46,7 +77,7 @@ const NewsSection = () => {
           </div>
         </div>
         <SwiperWrapper>
-          {newsandevent.map((news) => (
+          {response.data.map((news) => (
             <SwiperSlide key={news.id} className="mt-10 mx-auto">
               <NewsCard news={news} />
             </SwiperSlide>
