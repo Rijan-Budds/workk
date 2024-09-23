@@ -5,6 +5,11 @@ import { cn } from '@/common/utils/utils'
 import Image from 'next/image'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import {
+  TwitterShareButton,
+  FacebookShareButton,
+  EmailShareButton,
+} from 'react-share'
 
 export const ShareModal = ({
   setOpen,
@@ -15,18 +20,22 @@ export const ShareModal = ({
     {
       title: 'Twitter',
       src: '/home/twitter.svg',
+      Component: TwitterShareButton,
     },
     {
       title: 'Facebook',
       src: '/home/facebook.svg',
+      Component: FacebookShareButton,
     },
     {
       title: 'Youtube',
       src: '/home/youtube.svg',
+      Component: EmailShareButton,
     },
     {
       title: 'Instagram',
       src: '/home/instagram.svg',
+      Component: EmailShareButton,
     },
   ]
 
@@ -58,21 +67,23 @@ export const ShareModal = ({
         Share
       </span>
       <div className="flex gap-x-6 lg:gap-x-11">
-        {socialMediaLinks.map((socials) => (
-          <div key={socials.title} className="flex flex-col gap-y-2">
-            <div className="bg-background rounded-full size-10 lg:size-14 flex items-center justify-center">
-              <Image
-                src={socials.src}
-                alt="twitter logo"
-                width={24}
-                height={24}
-                className="size-5 lg:size-6"
-              />
+        {socialMediaLinks.map(({ title, src, Component }) => (
+          <Component key={title} url={link}>
+            <div className="flex flex-col gap-y-2">
+              <div className="bg-background rounded-full size-10 lg:size-14 flex items-center justify-center">
+                <Image
+                  src={src}
+                  alt={`${title} logo`}
+                  width={24}
+                  height={24}
+                  className="size-5 lg:size-6"
+                />
+              </div>
+              <span className="font-workSans font-normal text-[14px] leading-4 text-center text-heading">
+                {title}
+              </span>
             </div>
-            <span className="font-workSans font-normal text-[14px] leading-4 text-center text-heading">
-              {socials.title}
-            </span>
-          </div>
+          </Component>
         ))}
       </div>
 

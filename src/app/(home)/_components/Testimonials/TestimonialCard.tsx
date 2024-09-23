@@ -4,6 +4,7 @@ import React from 'react'
 import { usePathname } from 'next/navigation'
 import './testimonial.css'
 import { ITestimonialData } from '@/app/(routes)/testimonials/_interface/testimonial'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 
 export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
   const pathname = usePathname()
@@ -11,7 +12,7 @@ export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
   return (
     <>
       <div
-        className={`max-w-[397px] rounded-[12px] relative mx-auto ${
+        className={`max-w-[397px] h-[346px] rounded-[12px] relative mx-auto flex flex-col justify-between ${
           isHomePage ? 'bg-white' : 'bg-background'
         }`}
       >
@@ -22,12 +23,13 @@ export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
           alt="quote"
           className="absolute w-[60px] h-[51px] top-[18.33px] left-[13.51px]"
         />
-        <p className="p-[40px] font-workSans font-[400] text-base leading-[27.2px] tracking-tight text-heading">
-          {card.description}
-        </p>
-        <div className="px-10 py-6 flex gap-4 border-border-2 border-t-[1px]">
-          <Image
-            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${card.image?.key}`}
+        <div
+          dangerouslySetInnerHTML={{ __html: card.description }}
+          className="p-[40px] font-workSans font-[400] text-base leading-[27.2px] tracking-tight text-heading"
+        ></div>
+        <div className="px-10 py-6 flex gap-4 border-border-2 border-t-[1px] bottom-0">
+          <ImageWithPlaceholder
+            src={card.image ? card.image.key : undefined}
             width={56}
             height={56}
             alt="stud"

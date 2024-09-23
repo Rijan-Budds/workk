@@ -1,7 +1,19 @@
 export interface IContactInfoData {
-  name: string
-  email: string
-  phoneNo: string
-  level: string
+  key: string
+  value: string
+}
+
+export interface ISocialMediaData {
+  key: string
+  value: string
+}
+export interface ISettingsResponseData {
+  status: number
   message: string
+  data: ISettings
+}
+
+export interface ISettings {
+  data: IContactInfoData[]
+  socialMedia: ISocialMediaData[]
 }
