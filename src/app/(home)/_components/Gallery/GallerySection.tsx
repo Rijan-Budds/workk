@@ -1,3 +1,4 @@
+'use client'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'

@@ -25,7 +25,7 @@ export const NewsDetailSection = ({ data }: { data: INewsItem }) => {
           />
           <div
             dangerouslySetInnerHTML={{ __html: cleanHtml }}
-            className="font-workSans"
+            className="font-workSans break-all"
           />
           {/* <div className="flex flex-col md:flex-row gap-4">
             <Image

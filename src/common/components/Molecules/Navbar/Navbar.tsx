@@ -137,6 +137,9 @@ const NavLinksUi = ({
       e.preventDefault()
     }
   }
+
+  console.log('links :::', links)
+
   return (
     <div
       className="flex items-center gap-x-2 group relative"
@@ -157,7 +160,15 @@ const NavLinksUi = ({
         <>
           <FiChevronDown className="w-[14px] mb-[3px] group-hover:text-primary transition-all duration-500" />
           {activeDropdown === links && (
-            <div className="absolute top-full left-0 mt-1 bg-white shadow-md rounded-md p-2 z-50 w-[240px]">
+            <div
+              className={cn(
+                'absolute top-full left-0 mt-1 bg-white shadow-md rounded-md p-2 z-50 w-[240px]  ',
+                {
+                  'overflow-y-scroll max-h-[170px] pdf-scrollbar':
+                    links === 'Our facilities',
+                }
+              )}
+            >
               <div className="flex flex-col py-4 px-6 space-y-5">
                 {sublinks?.map((sublink) => (
                   <div key={sublink.id} className="relative group">

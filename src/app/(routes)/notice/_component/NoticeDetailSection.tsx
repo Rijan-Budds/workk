@@ -18,7 +18,7 @@ export const NoticeDetailSection = ({ detail }: { detail: INoticeData }) => {
       <SectionHeading>{detail.title}</SectionHeading>
       <div
         dangerouslySetInnerHTML={{ __html: cleanHtml }}
-        className="font-workSans mt-10"
+        className="font-workSans mt-10 break-all"
       />
       <ImageWithPlaceholder
         width={343}

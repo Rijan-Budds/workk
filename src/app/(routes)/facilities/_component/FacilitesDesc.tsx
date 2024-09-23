@@ -10,13 +10,13 @@ export const FacilitesDesc = ({ detail }: { detail: IFacilityData }) => {
   const cleanHtml = detail && DOMPurify.sanitize(detail.description)
 
   return (
-    <div className="flex flex-col items-start gap-y-2">
+    <div className="flex flex-col items-start gap-y-2 ">
       <MiniHeading>{detail?.facilityTitle}</MiniHeading>
       <SectionHeading>{detail?.articleTitle}</SectionHeading>
 
       <p
         dangerouslySetInnerHTML={{ __html: cleanHtml }}
-        className="text-body font-workSans font-normal text-[16px] leading-[27.2px] mt-4"
+        className="text-body font-workSans font-normal text-[16px] leading-[27.2px] mt-4 break-all"
       />
       <Link href={'/apply'}>
         <Button className="mt-8 w-full md:w-fit md:my-8">

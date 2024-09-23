@@ -93,7 +93,7 @@ const VoiceOfDirector = () => {
                     Voice Of Director
                   </h1>
                   <div
-                    className="text-body font-workSans font-normal text-base leading-7 mt-6"
+                    className="text-body font-workSans font-normal text-base leading-7 mt-6 break-all"
                     dangerouslySetInnerHTML={{ __html: voice.description }}
                   />
                   <h2 className="font-workSans font-medium text-lg leading-6 mt-6">

@@ -2,11 +2,7 @@ import React from 'react'
 import ResultUI from './_components/ResultUI'
 
 const page = () => {
-  return (
-    <div>
-      <ResultUI />
-    </div>
-  )
+  return <ResultUI />
 }
 
 export default page

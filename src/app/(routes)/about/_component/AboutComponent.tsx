@@ -48,7 +48,7 @@ const AboutComponent = async () => {
               {introduction.title}
             </SectionHeading>
             <div
-              className="font-workSans text-body font-normal text-[16px] leading-[27.2px] my-6"
+              className="font-workSans text-body font-normal text-[16px] leading-[27.2px] my-6 break-all"
               dangerouslySetInnerHTML={{ __html: introduction.description }}
             ></div>
             <div className="">

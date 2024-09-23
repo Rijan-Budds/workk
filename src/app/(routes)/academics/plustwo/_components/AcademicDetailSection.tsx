@@ -55,7 +55,7 @@ const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
         ))}
       </div>
       <div
-        className="mt-10 font-workSans font-normal text-base leading-7 text-body"
+        className="mt-10 font-workSans font-normal text-base leading-7 text-body break-all"
         dangerouslySetInnerHTML={{ __html: detail.description }}
       ></div>
       <hr className="border-secondary border-dashed my-10" />

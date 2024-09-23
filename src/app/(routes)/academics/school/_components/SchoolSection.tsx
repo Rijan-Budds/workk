@@ -46,7 +46,7 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
         <SectionHeading>{detail.articleTitle}</SectionHeading>
         <SchoolGallery />
         <div
-          className="mt-6 font-workSans font-normal text-base leading-7 text-body"
+          className="mt-6 font-workSans font-normal text-base leading-7 text-body break-all"
           dangerouslySetInnerHTML={{ __html: detail.description }}
         ></div>
       </div>
