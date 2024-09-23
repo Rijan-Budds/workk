@@ -40,7 +40,6 @@ const TestimonialsSection = () => {
 
         if (response) {
           setResponse(response)
-          console.log('Fetched response:', response) // Check the data structure
         }
       } catch (error) {
         console.error('Error fetching testimonials:', error)
@@ -73,7 +72,7 @@ const TestimonialsSection = () => {
         </div>
         <SwiperWrapper>
           {response?.data.map((card) => (
-            <SwiperSlide key={card.id} className="!mt-[40px] mx-auto">
+            <SwiperSlide key={card.id} className="!mt-[40px] !mx-auto">
               <TestimonialCard card={card} />
             </SwiperSlide>
           ))}

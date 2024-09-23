@@ -28,7 +28,6 @@ const SchoolGallery = () => {
 
         if (response) {
           setResponse(response)
-          console.log('Fetched response:', response) // Check the data structure
         }
       } catch (error) {
         console.error('Error fetching testimonials:', error)
@@ -46,7 +45,7 @@ const SchoolGallery = () => {
     }
   }, [response, activeSrc])
   return (
-    <div className="flex justify-between flex-col gap-x-6 gap-y-6">
+    <div className="flex justify-between flex-col gap-x-6 gap-y-6 mt-6">
       {activeSrc && (
         <div className="flex justify-center">
           <Image

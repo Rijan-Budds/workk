@@ -16,9 +16,9 @@ export interface IAcademicsData {
   updatedAt: string
 }
 export interface Image {
-  key: string
-  bucket: string
-  mimeType: string
+  key: string[]
+  bucket: string[]
+  mimeType: string[]
 }
 
 export interface ISchoolGalleryResponse {

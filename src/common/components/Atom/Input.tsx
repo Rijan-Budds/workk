@@ -66,7 +66,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <FiChevronDown className="absolute right-6 -translate-y-1/2 w-4 text-black top-[65%]" />
         )}
 
-        {isError && <ErrorComponent error={error ? error : ''} />}
+        {isError && error && (
+          <div className="text-red-500 text-sm mt-1">{error}</div>
+        )}
       </div>
     )
   }
@@ -88,12 +90,10 @@ export const ErrorComponent = ({ error }: { error: string }) => {
         })}
       />
       <span
-        className={cn(
-          'font-workSans font-normal text-[14px] leading-4 text-white ',
-          {
-            'text-red-500': isAdmission,
-          }
-        )}
+        className={cn('font-workSans font-normal text-[14px] leading-4', {
+          'text-red-500': isAdmission, // Apply red text
+          'text-white': !isAdmission,
+        })}
       >
         {error}
       </span>

@@ -15,17 +15,17 @@ export const GalleryModal = ({
   length,
   showSwipe,
 }: {
-  src: string
+  src: string | undefined
   setModalOpen: Dispatch<SetStateAction<boolean>>
   setSrc?: Dispatch<SetStateAction<string>>
   setActiveImage?: Dispatch<SetStateAction<number | null>>
-  length: number
+  length: number | undefined
   showSwipe: boolean
 }) => {
   const handleSwipe = (direction: IDirection) => {
-    if (direction === 'next' && setActiveImage) {
+    if (direction === 'next' && setActiveImage && length) {
       setActiveImage((prev) => (prev! + 1) % length)
-    } else if (setActiveImage) {
+    } else if (setActiveImage && length) {
       setActiveImage((prev) => (prev! - 1 + length) % length)
     }
   }
@@ -50,7 +50,7 @@ export const GalleryModal = ({
       </div>
       <div className="w-[100vw] p-6 rounded-xl relative">
         <Image
-          src={src}
+          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${src}`}
           alt="zoom gallery image"
           width={1280}
           height={854}

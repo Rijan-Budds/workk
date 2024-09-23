@@ -13,11 +13,13 @@ import { cn } from '@/common/utils/utils'
 import { Pagination } from '@/common/components/Pagination'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 export const NewsSection = () => {
   const [newsNotice, setNewsNotice] = useState<INewsItem[] | undefined>(
     undefined
   )
+
   const pageSize = 6
   const [page, setPage] = useState<number>(1)
   const [totalCount, setTotalCount] = useState<number | undefined>(undefined)
@@ -61,6 +63,9 @@ export const NewsSection = () => {
   }, [active, page])
 
   const renderNewsNoticeUi = () => {
+    if (newsNotice?.length === 0) {
+      return <NoDataFound title={`No ${active} found`} />
+    }
     if (active === 'news') {
       return (
         <div

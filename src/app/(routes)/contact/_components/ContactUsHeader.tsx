@@ -18,10 +18,14 @@ const ContactUsHeader = async () => {
     '/api/v1/settings'
   )
 
+  const filteredSettings = settings?.data.data.filter(
+    (contact) => contact.key !== 'Address'
+  )
+
   return (
     <HomeWrapper className="!pb-0">
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-[24px] justify-center items-center">
-        {settings?.data.data.map((contact, i) => (
+        {filteredSettings?.map((contact, i) => (
           <div
             className="max-w-[398px] h-[240px] bg-background flex flex-col justify-center items-center rounded-xl"
             key={i}

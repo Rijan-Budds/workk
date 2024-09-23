@@ -7,6 +7,7 @@ import { BrochureUi } from './BrochureUi'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { IBrochureApiResponse, IBrochureItem } from '../interface/brochureType'
 import { Pagination } from '@/common/components/Pagination'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 export const BrochureSection = () => {
   const [brochureData, setBrochureData] = useState<IBrochureItem[] | undefined>(
@@ -46,11 +47,19 @@ export const BrochureSection = () => {
     fetchBrochureResponse()
   }, [currentPage])
 
+  const renderBrochureUi = () => {
+    if (brochureData && brochureData?.length > 0) {
+      return <BrochureUi data={brochureData} />
+    } else {
+      return <NoDataFound title="No Brochure Found" />
+    }
+  }
+
   return (
     <div>
       <CoverImage title="Brochure" list={[{ link: null, title: 'brochure' }]} />
       <HomeWrapper>
-        <BrochureUi data={brochureData} />
+        {renderBrochureUi()}
         <div className="w-full flex justify-center mt-10">
           {isPagination && (
             <Pagination

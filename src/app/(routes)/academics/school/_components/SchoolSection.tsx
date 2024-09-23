@@ -29,7 +29,7 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
 
         if (response) {
           setResponse(response)
-          console.log('Fetched response:', response) // Check the data structure
+          console.log('Fetched response:', response)
         }
       } catch (error) {
         console.error('Error fetching testimonials:', error)
@@ -44,11 +44,11 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
       <div className="max-w-[787px]">
         <MiniHeading className="text-left">{detail.title}</MiniHeading>
         <SectionHeading>{detail.articleTitle}</SectionHeading>
+        <SchoolGallery />
         <div
           className="mt-6 font-workSans font-normal text-base leading-7 text-body"
           dangerouslySetInnerHTML={{ __html: detail.description }}
         ></div>
-        <SchoolGallery />
       </div>
       <hr className="border-secondary border-dashed my-10" />
       <div className="mt-10 relative max-w-[787px] hidden lg:block">
@@ -70,7 +70,7 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
         </div>
         <SwiperWrapper>
           {response?.data.map((card) => (
-            <SwiperSlide key={card.id} className="!mt-[40px] mx-auto">
+            <SwiperSlide key={card.id} className="!mt-[40px] !mx-auto">
               <TestimonialCard card={card} />
             </SwiperSlide>
           ))}

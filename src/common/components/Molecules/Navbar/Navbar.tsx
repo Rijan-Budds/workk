@@ -8,12 +8,14 @@ import { FiChevronDown } from 'react-icons/fi'
 import { navLinks } from '@/common/constant/data'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { useNavLinks } from '@/common/hook/useNavLinks'
 
 export const Navbar = () => {
+  const pathname = usePathname()
+  const { facilites } = useNavLinks()
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [activeSublink, setActiveSublink] = useState<number | null>(null)
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
-  const pathname = usePathname()
 
   useEffect(() => {
     setActiveDropdown(null)
@@ -73,7 +75,11 @@ export const Navbar = () => {
                   links={links.title}
                   isDropdown={links.isDropDown}
                   link={links.link}
-                  sublinks={links.sublink || undefined}
+                  sublinks={
+                    links.title === 'Our facilities'
+                      ? facilites
+                      : links.sublink || undefined
+                  }
                   activeDropdown={activeDropdown}
                   activeSublink={activeSublink}
                   handleMouseEnter={handleMouseEnter}

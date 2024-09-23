@@ -86,7 +86,7 @@ const Notice = () => {
       </div>
       {isOpen && (
         <CustomModal isOpen={isOpen}>
-          <ShareModal setOpen={setIsOpen} />
+          <ShareModal setOpen={setIsOpen} slug={undefined} />
         </CustomModal>
       )}
     </>

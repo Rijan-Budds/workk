@@ -7,12 +7,14 @@ import { NavHeaderLink } from './NavHeaderLink'
 import { NavHeaderSocialMedia } from './NavHeader'
 import { INavLink, INavSubLink } from '@/common/interface/type'
 import Link from 'next/link'
+import { useNavLinks } from '@/common/hook/useNavLinks'
 
 export const SidebarContainer = ({
   setOpenMainSidebar,
 }: {
   setOpenMainSidebar: Dispatch<SetStateAction<boolean>>
 }) => {
+  const { facilites } = useNavLinks()
   const [openDropDown, setOpenDropdown] = useState<boolean>(false)
   const [navDropdown, setNavDropDown] = useState<INavSubLink[] | []>([])
 
@@ -43,9 +45,13 @@ export const SidebarContainer = ({
             key={link.id}
             className="flex flex-row items-center gap-x-1"
             onClick={() => {
-              if (link.sublink) {
-                setNavDropDown(link.sublink)
-                setOpenDropdown(true)
+              if (link.title === 'Our facilities' && facilites) {
+                setNavDropDown(facilites)
+              } else {
+                if (link.sublink) {
+                  setNavDropDown(link.sublink)
+                  setOpenDropdown(true)
+                }
               }
             }}
           >
