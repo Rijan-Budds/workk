@@ -26,7 +26,7 @@ const AdmissionDetail: React.FC<AdmissionDetailProps> = ({
       </MiniHeading>
       <SectionHeading>{selectedAdmission.articleTitle}</SectionHeading>
       <div
-        className="mt-6 font-workSans font-normal text-base leading-7 text-body"
+        className="mt-6 font-workSans font-normal text-base leading-7 text-body break-all"
         dangerouslySetInnerHTML={{
           __html: selectedAdmission.description,
         }}
@@ -59,7 +59,7 @@ const AdmissionDetail: React.FC<AdmissionDetailProps> = ({
       </div>
       <SectionHeading>Admission Process</SectionHeading>
       <div
-        className="mt-6 font-workSans font-normal text-base leading-7 text-body"
+        className="mt-6 font-workSans font-normal text-base leading-7 text-body break-all"
         dangerouslySetInnerHTML={{
           __html: selectedAdmission.process,
         }}
