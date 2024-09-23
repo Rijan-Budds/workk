@@ -157,7 +157,7 @@ const NavLinksUi = ({
         <>
           <FiChevronDown className="w-[14px] mb-[3px] group-hover:text-primary transition-all duration-500" />
           {activeDropdown === links && (
-            <div className="absolute top-full left-0 mt-1 bg-white shadow-md rounded-md p-2 z-50 w-[240px]">
+            <div className="absolute top-full left-0 mt-1 bg-white shadow-md rounded-md p-2 z-50 w-[240px] max-h-[170px] pdf-scrollbar overflow-y-auto ">
               <div className="flex flex-col py-4 px-6 space-y-5">
                 {sublinks?.map((sublink) => (
                   <div key={sublink.id} className="relative group">

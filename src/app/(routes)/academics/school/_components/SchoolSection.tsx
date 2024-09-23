@@ -45,7 +45,7 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
         <MiniHeading className="text-left">{detail.title}</MiniHeading>
         <SectionHeading>{detail.articleTitle}</SectionHeading>
         <div
-          className="mt-6 font-workSans font-normal text-base leading-7 text-body"
+          className="mt-6 font-workSans font-normal text-base leading-7 text-body break-all"
           dangerouslySetInnerHTML={{ __html: detail.description }}
         ></div>
         <SchoolGallery />
