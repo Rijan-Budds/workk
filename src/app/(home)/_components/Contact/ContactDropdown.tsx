@@ -50,7 +50,7 @@ export const ContactDropdown = ({
           className
         )}
       >
-        {label}
+        {label} {'*'}
       </label>
       <Select
         open={open}

@@ -132,7 +132,7 @@ export const ContactForm = () => {
                 <Input
                   type="text"
                   label="Your Phone"
-                  isRequired={false}
+                  isRequired
                   placeholder="+9779876543213"
                   name="phoneNo"
                   className="bg-white w-full "

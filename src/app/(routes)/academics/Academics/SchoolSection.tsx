@@ -7,7 +7,7 @@ import { FaArrowRight } from 'react-icons/fa6'
 const schoollinks = [
   {
     id: 1,
-    title: 'Pre-School (Kindergarden)',
+    title: 'Pre-School (Kindergarten)',
     link: 'pre-school',
   },
   {
