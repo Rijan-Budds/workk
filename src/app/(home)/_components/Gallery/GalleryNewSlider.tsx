@@ -37,34 +37,36 @@ export const GallerySlider = () => {
   }, [])
   return (
     <div className="gallery__slider hidden 2lg:flex 2lg:h-[600px]   justify-center items-center">
-      <Swiper
-        spaceBetween={180}
-        slidesPerView={3}
-        effect={'coverflow'}
-        grabCursor={true}
-        centeredSlides={true}
-        coverflowEffect={{
-          rotate: 30,
-          stretch: 0,
-          depth: 100,
-          slideShadows: false,
-        }}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        loop
-        modules={[EffectCoverflow, Autoplay]}
-        className="w-full h-full !pt-32"
-      >
-        {response?.data.map((d, index) => (
-          <SwiperSlide key={index}>
-            {({ isActive }) => (
-              <GalleryCard data={d} isActive={isActive} index={index} />
-            )}
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {response?.data && (
+        <Swiper
+          spaceBetween={180}
+          slidesPerView={3}
+          effect={'coverflow'}
+          grabCursor={true}
+          centeredSlides={true}
+          coverflowEffect={{
+            rotate: 30,
+            stretch: 0,
+            depth: 100,
+            slideShadows: false,
+          }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          loop
+          modules={[EffectCoverflow, Autoplay]}
+          className="w-full h-full !pt-32"
+        >
+          {response?.data.map((d, index) => (
+            <SwiperSlide key={index}>
+              {({ isActive }) => (
+                <GalleryCard data={d} isActive={isActive} index={index} />
+              )}
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
     </div>
   )
 }
