@@ -3,7 +3,7 @@ import React from 'react'
 
 export const NoDataFound = ({ title }: { title: string }) => {
   return (
-    <div className="flex flex-col justify-center items-center gap-y-6 p-12 ">
+    <div className="flex flex-col justify-center items-center gap-y-6 p-12 w-full ">
       <Image
         src={'/downloads/no-data-found.png'}
         width={72}
