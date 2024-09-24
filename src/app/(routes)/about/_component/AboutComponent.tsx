@@ -7,6 +7,7 @@ import { UseServerFetch } from '@/common/hook/useServerFetch'
 import Image from 'next/image'
 import React from 'react'
 import { IAboutResponse } from '../_interface/About'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 const AboutComponent = async () => {
   const response: IAboutResponse | undefined = await UseServerFetch(
@@ -65,7 +66,15 @@ const AboutComponent = async () => {
         </div>
       )
     } else {
-      return <div>No Data</div>
+      return (
+        <div>
+          {' '}
+          <MiniHeading isMd className="text-start">
+            about pawan prakriti
+          </MiniHeading>
+          <NoDataFound title="No About Us Data Found" />
+        </div>
+      )
     }
   }
 

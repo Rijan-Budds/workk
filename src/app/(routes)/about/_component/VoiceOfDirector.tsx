@@ -14,6 +14,7 @@ import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 
 const VoiceOfDirector = () => {
   const [response, setResponse] = useState<IVoiceOfManagementResponse | null>(
@@ -43,6 +44,7 @@ const VoiceOfDirector = () => {
     if (!response || !response.data) {
       return (
         <div className="text-center mt-10">
+          <MiniHeading className="text-start">Voice Of Directors</MiniHeading>
           <NoDataFound title="No Voice of Directors Found" />
         </div>
       )

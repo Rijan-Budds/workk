@@ -51,10 +51,11 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
                   alt="teams"
                   className="rounded-full w-[236px] lg:w-[200px] h-[236px] lg:h-[200px] object-cover border-primaryLight transition duration-300 relative"
                 />
-                <div className="absolute inset-0 flex justify-center items-center transition-opacity duration-300 opacity-0 group-hover:opacity-100 bg-primary/[56%] rounded-full bg-opacity-70">
+                <div className="absolute inset-0 flex justify-center items-center transition-opacity duration-300 opacity-0 group-hover:opacity-100 bg-primary/[56%] rounded-full bg-opacity-70 z-50">
                   <ul className="flex gap-4">
                     <Link
                       href={team.twitter || ''}
+                      target="_blank"
                       className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
                     >
                       <Image

@@ -8,6 +8,7 @@ import { format } from 'date-fns'
 import { IoMdShare } from 'react-icons/io'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { ShareModal } from '@/app/(routes)/notice/_component/ShareModal'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 const Notice = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -33,8 +34,42 @@ const Notice = () => {
     fetchNewsAndNoticeList()
   }, [])
 
-  if (!response || !response.data) {
-    return <div>No news available</div>
+  const renderNoticeUi = () => {
+    if (response?.data) {
+      return (
+        <div className="w-full   overflow-y-auto notice-scrollbar max-h-[376px] px-8  ">
+          {response?.data.map((notice) => (
+            <div
+              className="py-3 flex justify-between border-b-[1px] group"
+              key={notice.title}
+            >
+              <div>
+                <h1
+                  className={`text-sm leading-4 font-medium transition-all duration-500 ${
+                    notice.isHoliday
+                      ? 'text-[#E0240A]'
+                      : 'text-primary group-hover:text-secondary'
+                  }`}
+                >
+                  {notice.title}
+                </h1>
+                <p className="text-[#5D5F69] text-sm font-workSans font-normal">
+                  {notice.createdAt
+                    ? format(new Date(notice.createdAt), 'MMMM dd, yyyy') // Full month, day, and year
+                    : 'N/A'}
+                </p>
+              </div>
+              <IoMdShare
+                onClick={(e) => handleShareButtonClick(e)}
+                className="text-[23px] transition-all duration-500 text-primary"
+              />
+            </div>
+          ))}
+        </div>
+      )
+    } else {
+      return <NoDataFound title="No Notice Data found" />
+    }
   }
 
   return (
@@ -52,36 +87,7 @@ const Notice = () => {
               View All
             </Link>
           </div>
-
-          <div className="w-full   overflow-y-auto notice-scrollbar max-h-[376px] px-8  ">
-            {response.data.map((notice) => (
-              <div
-                className="py-3 flex justify-between border-b-[1px] group"
-                key={notice.title}
-              >
-                <div>
-                  <h1
-                    className={`text-sm leading-4 font-medium transition-all duration-500 ${
-                      notice.isHoliday
-                        ? 'text-[#E0240A]'
-                        : 'text-primary group-hover:text-secondary'
-                    }`}
-                  >
-                    {notice.title}
-                  </h1>
-                  <p className="text-[#5D5F69] text-sm font-workSans font-normal">
-                    {notice.createdAt
-                      ? format(new Date(notice.createdAt), 'MMMM dd, yyyy') // Full month, day, and year
-                      : 'N/A'}
-                  </p>
-                </div>
-                <IoMdShare
-                  onClick={(e) => handleShareButtonClick(e)}
-                  className="text-[23px] transition-all duration-500 text-primary"
-                />
-              </div>
-            ))}
-          </div>
+          {renderNoticeUi()}
         </div>
       </div>
       {isOpen && (

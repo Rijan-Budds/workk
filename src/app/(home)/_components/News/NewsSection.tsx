@@ -16,6 +16,7 @@ import './notice.css'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import { INewsResponseData } from '@/app/(routes)/news/interface/newsType'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 export const swiperParams = {
   navigation: {
@@ -26,7 +27,6 @@ export const swiperParams = {
 
 const NewsSection = () => {
   const [response, setResponse] = useState<INewsResponseData | null>(null)
-  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchNewsAndNoticeList = async () => {
@@ -38,60 +38,70 @@ const NewsSection = () => {
         }
       } catch (error) {
         console.error('Error fetching news data:', error)
-      } finally {
-        setLoading(false)
       }
     }
 
     fetchNewsAndNoticeList()
   }, [])
 
-  if (loading) {
-    return <div>Loading...</div>
-  }
-
-  if (!response || !response.data) {
-    return <div>No news available</div>
+  const renderNewsUi = () => {
+    if (response?.data) {
+      return (
+        <div className="relative">
+          <div className="flex justify-center md:justify-between items-center relative">
+            <div className="">
+              <MiniHeading className="md:text-start">
+                News and Events
+              </MiniHeading>
+              <SectionHeading className="mt-2 text-center md:text-left">
+                News and Events
+              </SectionHeading>
+            </div>
+            <div
+              id="testimonial"
+              className="space-x-3 absolute bottom-0 right-0 w-28 h-8 hidden md:flex "
+            >
+              <div className="swiper-button-prev">
+                <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+              </div>
+              <div className="swiper-button-next">
+                <IoIosArrowRoundForward className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+              </div>
+            </div>
+          </div>
+          <SwiperWrapper>
+            {response.data.map((news) => (
+              <SwiperSlide key={news.id} className="mt-10 mx-auto">
+                <NewsCard news={news} />
+              </SwiperSlide>
+            ))}
+            <div className="md:hidden flex justify-center mt-10 gap-x-4 absolute bottom-0 left-1/2 -translate-x-1/2 z-50 w-fit h-fit">
+              <SwiperButtonPrevious>
+                <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full size-8 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+              </SwiperButtonPrevious>
+              <SwiperButtonNext>
+                <IoIosArrowRoundForward className="text-body 2lg:bg-white rounded-full size-8 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+              </SwiperButtonNext>
+            </div>
+          </SwiperWrapper>
+        </div>
+      )
+    } else {
+      return (
+        <div className="">
+          <MiniHeading className="md:text-start">News and Events</MiniHeading>
+          <SectionHeading className="mt-2 text-center md:text-left">
+            News and Events
+          </SectionHeading>
+          <NoDataFound title="No News Data Found" />
+        </div>
+      )
+    }
   }
 
   return (
     <>
-      <div className="relative">
-        <div className="flex justify-center md:justify-between items-center relative">
-          <div className="">
-            <MiniHeading className="md:text-start">News and Events</MiniHeading>
-            <SectionHeading className="mt-2 text-center md:text-left">
-              News and Events
-            </SectionHeading>
-          </div>
-          <div
-            id="testimonial"
-            className="space-x-3 absolute bottom-0 right-0 w-28 h-8 hidden md:flex "
-          >
-            <div className="swiper-button-prev">
-              <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
-            </div>
-            <div className="swiper-button-next">
-              <IoIosArrowRoundForward className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
-            </div>
-          </div>
-        </div>
-        <SwiperWrapper>
-          {response.data.map((news) => (
-            <SwiperSlide key={news.id} className="mt-10 mx-auto">
-              <NewsCard news={news} />
-            </SwiperSlide>
-          ))}
-          <div className="md:hidden flex justify-center mt-10 gap-x-4 absolute bottom-0 left-1/2 -translate-x-1/2 z-50 w-fit h-fit">
-            <SwiperButtonPrevious>
-              <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full size-8 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
-            </SwiperButtonPrevious>
-            <SwiperButtonNext>
-              <IoIosArrowRoundForward className="text-body 2lg:bg-white rounded-full size-8 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
-            </SwiperButtonNext>
-          </div>
-        </SwiperWrapper>
-      </div>
+      <div>{renderNewsUi()}</div>
     </>
   )
 }
