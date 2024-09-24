@@ -23,7 +23,7 @@ export const VideoModal = ({
   length: number | undefined
   type: IType
   showSwipe: boolean
-  isStatic: boolean
+  isStatic?: boolean
 }) => {
   const handleSwipe = (direction: IDirection) => {
     if (setActiveImage && length) {
