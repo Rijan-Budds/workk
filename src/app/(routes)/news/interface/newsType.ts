@@ -7,16 +7,17 @@ export interface INewsResponseData {
 
 export interface INewsItem {
   id: string
-  slug: string
   title: string
   description: string
   images: Images
   category: string
   type: string
   status: string
-  publishedAt: string | null
+  publishedAt: string
   createdAt: string
   updatedAt: string
+  slug: string
+  isHoliday?: boolean
 }
 export interface INewsDetailResponse {
   status: number

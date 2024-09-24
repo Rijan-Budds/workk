@@ -13,6 +13,7 @@ import { IVoiceOfManagementResponse } from '../_interface/About'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 const VoiceOfDirector = () => {
   const [response, setResponse] = useState<IVoiceOfManagementResponse | null>(
@@ -39,12 +40,12 @@ const VoiceOfDirector = () => {
   }, [])
 
   const RenderVoiceOfDirectorUi = () => {
-    if (!response) {
-      return <div className="text-center mt-10">Loading...</div>
-    }
-
-    if (!response.data) {
-      return <div className="text-center mt-10">No data available</div>
+    if (!response || !response.data) {
+      return (
+        <div className="text-center mt-10">
+          <NoDataFound title="No Voice of Directors Found" />
+        </div>
+      )
     }
 
     return (
@@ -187,10 +188,10 @@ const SwiperWrapper = ({
                 }`}
               >
                 <div className="custom-card-timer"></div>
-                <Image
+                <ImageWithPlaceholder
                   width={200}
                   height={200}
-                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${slide.Team?.image?.key}`}
+                  src={slide.Team.image ? slide.Team.image.key : undefined}
                   alt={slide.Team.name}
                   className="custom-card-image"
                 />

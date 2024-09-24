@@ -72,7 +72,7 @@ const TestimonialsSection = () => {
         </div>
         <SwiperWrapper>
           {response?.data.map((card) => (
-            <SwiperSlide key={card.id} className="!mt-[40px] mx-auto">
+            <SwiperSlide key={card.id} className="!mt-[40px] !mx-auto">
               <TestimonialCard card={card} />
             </SwiperSlide>
           ))}

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { GoArrowRight } from 'react-icons/go'
 import { INewsItem } from '@/app/(routes)/news/interface/newsType'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+import { format } from 'date-fns'
 
 export const NewsCard = ({ news }: { news: INewsItem }) => {
   return (
@@ -21,9 +22,11 @@ export const NewsCard = ({ news }: { news: INewsItem }) => {
             />
           </div>
           <div className="absolute w-[94%] h-[98px] bg-white top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">
-            <div className="p-6 z-10 relative">
+            <div className="p-6 z-10 relative space-y-2">
               <p className="text-body text-sm font-workSans font-normal leading-4 z-20">
-                {news.publishedAt}
+                {news.createdAt
+                  ? format(new Date(news.createdAt), 'MMMM dd, yyyy') // Full month, day, and year
+                  : 'N/A'}
               </p>
               <h2 className="text-primary text-xl font-poppins font-medium leading-7  transition-all duration-500">
                 {news.title}

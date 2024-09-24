@@ -45,7 +45,7 @@ const SchoolGallery = () => {
     }
   }, [response, activeSrc])
   return (
-    <div className="flex justify-between flex-col gap-x-6 gap-y-6">
+    <div className="flex justify-between flex-col gap-x-6 gap-y-6 mt-6">
       {activeSrc && (
         <div className="flex justify-center">
           <Image

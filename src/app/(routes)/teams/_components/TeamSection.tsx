@@ -6,6 +6,7 @@ import TeamCards from './TeamCards'
 import TeamTab from './TeamTab'
 import { ITeamsData, ITeamsResponse } from '../_interface/Teams'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 type ITitle =
   | 'Our Board Members'
@@ -70,7 +71,14 @@ const TeamSection = () => {
             <TeamTab handleDynamicData={handleDynamicData} />
           </div>
           <div>
-            <TeamCards teams={filteredTeams} />
+            {/* Conditional rendering for "No Data Found" */}
+            {filteredTeams.length > 0 ? (
+              <TeamCards teams={filteredTeams} />
+            ) : (
+              <p className="text-center text-lg text-gray-500">
+                <NoDataFound title="No Teams Found" />
+              </p>
+            )}
           </div>
         </div>
       </HomeWrapper>

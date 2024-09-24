@@ -167,3 +167,45 @@ export const navLinks = [
     ],
   },
 ]
+
+export const staticFooterLinksData = [
+  {
+    title: 'Quick Links',
+    content: [
+      { text: 'Introduction', url: '/' },
+      { text: 'Our Success', url: '/testimonials' },
+      { text: 'Our Team', url: '/teams' },
+      { text: 'Gallery', url: '/gallery' },
+      { text: 'Admission', url: '/admission' },
+      { text: 'Contact', url: '/contact' },
+    ],
+  },
+  {
+    title: 'Plus Two',
+    content: [
+      { text: 'Management', url: 'academics/plustwo/management' },
+      { text: 'Humanities', url: 'academics/plustwo/humanities' },
+      { text: 'Education', url: '/academics/plustwo/education' },
+      { text: 'Law', url: '/academics/plustwo/law' },
+    ],
+  },
+  {
+    title: 'Important Links',
+    content: [
+      {
+        text: 'Tribhuvan University',
+        url: 'https://tribhuvan-university.edu.np',
+      },
+      { text: 'National Examinations Board', url: 'https://neb.gov.np' },
+      { text: 'Ministry of Education', url: 'https://moe.gov.np' },
+      {
+        text: 'Office of the Controller of Examinations',
+        url: 'https://oce.gov.np',
+      },
+      {
+        text: 'District Education Office, Kathmandu',
+        url: 'https://deo.kathmandu.gov.np',
+      },
+    ],
+  },
+]

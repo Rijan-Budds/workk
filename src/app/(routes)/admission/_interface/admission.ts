@@ -23,7 +23,11 @@ export interface IDetailData {
   academicId: string
   articleTitle: string
   description: string
-  image: Image
+  image: {
+    key: string[]
+    bucket: string[]
+    mimeType: string[]
+  }
   process: string
   form: {
     key: string
