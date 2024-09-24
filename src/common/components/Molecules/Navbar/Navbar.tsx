@@ -138,8 +138,6 @@ const NavLinksUi = ({
     }
   }
 
-  console.log('links :::', links)
-
   return (
     <div
       className="flex items-center gap-x-2 group relative"
