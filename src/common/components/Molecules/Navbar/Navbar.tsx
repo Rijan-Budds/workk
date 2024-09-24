@@ -162,7 +162,7 @@ const NavLinksUi = ({
           {activeDropdown === links && (
             <div
               className={cn(
-                'absolute top-full left-0 mt-1 bg-white shadow-md rounded-md p-2 z-50 w-[240px]  ',
+                'absolute top-full left-0 mt-1 bg-white shadow-md rounded-[12px] p-2 z-50 w-[240px]  ',
                 {
                   'overflow-y-scroll max-h-[170px] pdf-scrollbar':
                     links === 'Our facilities',
@@ -189,7 +189,7 @@ const NavLinksUi = ({
                       </div>
                     </Link>
                     {sublink.subsublink && activeSublink === sublink.id && (
-                      <div className="absolute top-[0px] left-[205px] mt-0 bg-white shadow-md rounded-md p-2 z-50 w-[240px]">
+                      <div className="absolute top-[0px] left-[205px] mt-0 bg-white shadow-md rounded-[12px] p-2 z-50 w-[240px]">
                         <div className="flex flex-col py-2 px-4 space-y-7">
                           {sublink.subsublink.map((subsublink) => (
                             <Link
