@@ -17,7 +17,7 @@ export const academicCardsDataOne = [
   {
     id: 4,
     title: 'Law',
-    slug: 'laws',
+    slug: 'law',
   },
 ]
 
@@ -25,21 +25,21 @@ export const academicCardsDataTwo = [
   {
     id: 1,
     title: 'Pre-School (Kindergarten)',
-    slug: 'pre-school',
+    slug: 'pre-school-kindergarden',
   },
   {
     id: 2,
     title: 'Primary Level (One - Five)',
-    slug: 'primary-level',
+    slug: 'primary-level-one-five',
   },
   {
     id: 3,
     title: 'Basic Level (Six- Eight)',
-    slug: 'basic-level',
+    slug: 'basic-levl-six-eight',
   },
   {
     id: 4,
     title: 'Senior Level (Nine -Ten)',
-    slug: 'senior-level',
+    slug: 'senior-level-nine-ten',
   },
 ]
