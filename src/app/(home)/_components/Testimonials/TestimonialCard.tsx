@@ -25,7 +25,7 @@ export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
         />
         <div
           dangerouslySetInnerHTML={{ __html: card.description }}
-          className="p-[40px] font-workSans font-[400] text-base leading-[27.2px] tracking-tight text-heading"
+          className="p-[40px] font-workSans font-[400] text-base leading-[27.2px] tracking-tight text-heading line-clamp-[7] mt-1 "
         ></div>
         <div className="px-10 py-6 flex gap-4 border-border-2 border-t-[1px] bottom-0">
           <ImageWithPlaceholder

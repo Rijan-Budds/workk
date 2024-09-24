@@ -39,24 +39,25 @@ const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
   }, [])
   return (
     <div className="max-w-[787px]">
-      <MiniHeading className="text-left">{detail.title}</MiniHeading>
-      <SectionHeading>{detail.articleTitle}</SectionHeading>
+      <MiniHeading className="text-left">{detail?.title}</MiniHeading>
+      <SectionHeading>{detail?.articleTitle}</SectionHeading>
       <div className="flex gap-x-5 my-10">
-        {detail.image?.key.map((imageKey, index) => (
-          <div key={imageKey} className={index === 1 ? 'mt-10' : ''}>
-            <ImageWithPlaceholder
-              src={imageKey ? imageKey : undefined}
-              width={246}
-              height={454}
-              alt={`Image ${index + 1}`}
-              className="h-[191px] md:h-[388px] 2lg:w-[246px] 2lg:h-[454px] rounded-xl object-cover"
-            />
-          </div>
-        ))}
+        {detail &&
+          detail?.image?.key.map((imageKey, index) => (
+            <div key={imageKey} className={index === 1 ? 'mt-10' : ''}>
+              <ImageWithPlaceholder
+                src={imageKey ? imageKey : undefined}
+                width={246}
+                height={454}
+                alt={`Image ${index + 1}`}
+                className="h-[191px] md:h-[388px] 2lg:w-[246px] 2lg:h-[454px] rounded-xl object-cover"
+              />
+            </div>
+          ))}
       </div>
       <div
         className="mt-10 font-workSans font-normal text-base leading-7 text-body break-all"
-        dangerouslySetInnerHTML={{ __html: detail.description }}
+        dangerouslySetInnerHTML={{ __html: detail?.description }}
       ></div>
       <hr className="border-secondary border-dashed my-10" />
       <SectionHeading className="lg:hidden">Related Course</SectionHeading>

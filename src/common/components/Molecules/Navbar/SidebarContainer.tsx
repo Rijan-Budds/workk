@@ -38,7 +38,7 @@ export const SidebarContainer = ({
   }
 
   return (
-    <div className="mt-8  w-full">
+    <div className="mt-8  w-full bdr">
       <div className="flex flex-col gap-y-6  p-4">
         {navLinks.map((link) => (
           <button

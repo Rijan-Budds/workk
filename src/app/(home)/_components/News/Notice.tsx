@@ -8,10 +8,13 @@ import { format } from 'date-fns'
 import { IoMdShare } from 'react-icons/io'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { ShareModal } from '@/app/(routes)/notice/_component/ShareModal'
+import { useRouter } from 'next/navigation'
 
 const Notice = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [response, setResponse] = useState<INewsResponseData | null>(null)
+  const router = useRouter()
+  const [slug, setSlug] = useState<string>('')
 
   const handleShareButtonClick = (event: React.MouseEvent) => {
     event.stopPropagation()
@@ -46,7 +49,7 @@ const Notice = () => {
               Notices
             </h1>
             <Link
-              href={'/notice'}
+              href={'/news'}
               className="text-primary font-workSans font-normal text-[14px] leading-4"
             >
               View All
@@ -56,8 +59,9 @@ const Notice = () => {
           <div className="w-full   overflow-y-auto notice-scrollbar max-h-[376px] px-8  ">
             {response.data.map((notice) => (
               <div
-                className="py-3 flex justify-between border-b-[1px] group"
-                key={notice.title}
+                key={notice.id}
+                onClick={() => router.push(`/notice/${notice.slug}`)}
+                className="py-3 flex justify-between border-b-[1px] group cursor-pointer"
               >
                 <div>
                   <h1
@@ -76,7 +80,10 @@ const Notice = () => {
                   </p>
                 </div>
                 <IoMdShare
-                  onClick={(e) => handleShareButtonClick(e)}
+                  onClick={(e) => {
+                    handleShareButtonClick(e)
+                    setSlug(notice.slug)
+                  }}
                   className="text-[23px] transition-all duration-500 text-primary"
                 />
               </div>
@@ -86,7 +93,7 @@ const Notice = () => {
       </div>
       {isOpen && (
         <CustomModal isOpen={isOpen}>
-          <ShareModal setOpen={setIsOpen} slug={undefined} />
+          <ShareModal setOpen={setIsOpen} slug={slug} />
         </CustomModal>
       )}
     </>

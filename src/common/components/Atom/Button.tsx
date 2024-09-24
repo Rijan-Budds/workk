@@ -17,6 +17,7 @@ const buttonVariants = cva(
           'bg-transparent text-primary  border-2 border-primary  hover:bg-primary hover:text-white  hover:border-transparent hover:transition-all duration-500',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
+        pilled: 'px-4 py-2 rounded-full bg-transparent ',
       },
       size: {
         default: 'px-6 py-4 leading-[16px]',
