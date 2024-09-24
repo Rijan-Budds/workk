@@ -60,7 +60,7 @@ export const navLinks = [
         subsublink: [
           {
             id: 1,
-            title: 'Pre-School (Kindergarden)',
+            title: 'Pre-School (Kindergarten)',
             link: '/academics/school/pre-school',
           },
           {

@@ -11,10 +11,10 @@ export const fullNameValidation = Yup.string()
       return true
     }
   )
-  .max(50, 'Full Name must be at most 50 characters')
-  .min(4, 'Full Name must be at least 4 characters')
+  .max(50, 'Name must be at most 50 characters')
+  .min(4, 'Name must be at least 4 characters')
   .typeError('Please enter a valid name')
-  .required('Full Name is a required field')
+  .required('Name is a required field')
   .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
   .test('spaces', 'Multiple spaces are not allowed', function (value) {
     if (value) {

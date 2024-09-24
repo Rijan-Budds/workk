@@ -8,20 +8,18 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   const response: IAcademicsResponse | undefined = await UseServerFetch(
     `/api/v1/academics/${params.slug}`
   )
-  if (!response || !response.data) {
-    return (
-      <div>
-        <NoDataFound title="No Academic Detail " />
-      </div>
-    )
+  const renderSchoolDetailUi = () => {
+    if (response) {
+      return <School detail={response.data} slug={params.slug} />
+    } else {
+      return (
+        <div className="h-screen flex justify-center items-center">
+          <NoDataFound title="No detail found" />
+        </div>
+      )
+    }
   }
-
-  const detail = response.data
-  return (
-    <div>
-      <School detail={detail} slug={params.slug} />
-    </div>
-  )
+  return renderSchoolDetailUi()
 }
 
 export default Page

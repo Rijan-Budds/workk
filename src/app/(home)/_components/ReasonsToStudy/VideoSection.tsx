@@ -37,7 +37,7 @@ export const VideoSection = () => {
         />
         <button
           onClick={handlePlayPause}
-          className="absolute bottom-[2.5rem] right-[1.5rem] bg-white  rounded-full  size-[32px] flex justify-center items-center"
+          className="absolute bottom-[2.1rem] right-[1.5rem] bg-white  rounded-full  size-[32px] flex justify-center items-center"
         >
           {!isPlaying ? (
             <Image
@@ -62,7 +62,7 @@ export const VideoSection = () => {
             setIsPlaying(false)
             setModalOpen(true)
           }}
-          className="absolute bottom-[2.5rem] right-[4.5rem] bg-white text-white p-2 rounded-full  size-[32px] flex justify-center items-center"
+          className="absolute bottom-[2.1rem] right-[4.5rem] bg-white text-white p-2 rounded-full  size-[32px] flex justify-center items-center"
         >
           <Image
             width={15}
