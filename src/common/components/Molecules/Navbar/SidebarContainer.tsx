@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { FiChevronDown } from 'react-icons/fi'
+import { FiChevronDown, FiChevronRight } from 'react-icons/fi'
 import { Sidebar } from './Sidebar'
 import { navLinks } from '@/common/constant/data'
 import { Button } from '../../Atom/Button'
@@ -100,11 +100,70 @@ const NavDropDown = ({
   link: INavSubLink
   setClose: Dispatch<SetStateAction<boolean>>
 }) => {
+  const [openSubSidebar, setOpenSubSidebar] = useState<boolean>(false)
+  const [subSublinks, setSubSublinks] = useState<INavSubLink[]>([])
+
+  const handleSubLinkClick = (
+    subLinks: INavSubLink[] | undefined,
+    linkUrl: string | undefined,
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    // If the link has sub-sublinks, open the sub-sublink sidebar
+    if (subLinks && subLinks.length > 0) {
+      event.preventDefault() // Prevent default navigation if sub-sublinks exist
+      if (openSubSidebar && subSublinks === subLinks) {
+        setOpenSubSidebar(false)
+        setSubSublinks([])
+      } else {
+        setSubSublinks(subLinks)
+        setOpenSubSidebar(true)
+      }
+    } else if (linkUrl) {
+      // If the link has a valid URL, close the sidebar and navigate
+      setClose(false)
+    } else {
+      event.preventDefault() // Prevent default navigation if no valid link URL
+    }
+  }
+
   return (
-    <Link href={link.link || '/'} onClick={() => setClose(false)}>
-      <span className="font-workSans font-medium text-[14px] leading-4">
-        {link.title}
-      </span>
-    </Link>
+    <>
+      <Link
+        href={link.link || '#'}
+        onClick={(event) =>
+          handleSubLinkClick(link.subsublink, link.link, event)
+        }
+        className="flex flex-row items-center gap-x-1"
+      >
+        <span className="font-workSans font-medium text-[16px] leading-4 text-heading">
+          {link.title}
+        </span>
+        {link.subsublink && !openSubSidebar && (
+          <FiChevronRight className="w-[14px]" />
+        )}
+      </Link>
+
+      {openSubSidebar && (
+        <Sidebar
+          isOpen={openSubSidebar}
+          setOpen={setOpenSubSidebar}
+          isChild={true}
+        >
+          <div className="p-4 flex flex-col gap-y-6 z-50">
+            {subSublinks.map((subLink) => (
+              <Link
+                href={subLink.link || '/'}
+                onClick={() => setClose(false)}
+                key={subLink.id}
+              >
+                <span className="font-workSans font-medium text-[16px] leading-4 text-heading">
+                  {subLink.title}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </Sidebar>
+      )}
+    </>
   )
 }
