@@ -12,13 +12,13 @@ import {
 import { Form, Formik, FormikHelpers } from 'formik'
 import React, { useEffect, useState } from 'react'
 import * as Yup from 'yup'
-import { SuccessMessageUi } from '@/common/components/Molecules/SuccessMessageUi'
 import { ContactDropdown } from '@/app/(home)/_components/Contact/ContactDropdown'
 import Axios from '@/common/utils/Axios'
 import { contactForm } from '@/common/constant/route'
 import { toast } from '@/common/hook/use-toast'
 import { ToastClose } from '@/common/components/ui/toast'
 import Image from 'next/image'
+import { ButtonLoader } from '@/common/components/Atom/ButtonLoader'
 
 const AdmissionForm = () => {
   const [message, setMessage] = useState<string>('')
@@ -157,14 +157,13 @@ const AdmissionForm = () => {
                   disabled={loading}
                   type="submit"
                 >
-                  Submit
+                  <ButtonLoader loading={loading} />
                 </Button>
               </div>
             </Form>
           )
         }}
       </Formik>
-      {message.length > 1 && <SuccessMessageUi showMessage={message} />}
     </div>
   )
 }

@@ -66,9 +66,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <FiChevronDown className="absolute right-6 -translate-y-1/2 w-4 text-black top-[65%]" />
         )}
 
-        {isError && error && (
-          <div className="text-red-500 text-sm mt-1">{error}</div>
-        )}
+        {isError && error && <ErrorComponent error={error} />}
       </div>
     )
   }
@@ -79,21 +77,23 @@ export { Input }
 
 export const ErrorComponent = ({ error }: { error: string }) => {
   const pathname = usePathname()
-
-  const isAdmission = pathname === '/apply'
+  const isApply = pathname === '/apply'
+  const isAdmission = pathname === '/admission'
 
   return (
     <div className="flex items-center gap-x-1">
       <CircleAlert
         className={cn('size-4 text-white', {
-          'text-red-500': isAdmission,
+          'text-red-500': isAdmission || isApply,
         })}
       />
       <span
-        className={cn('font-workSans font-normal text-[14px] leading-4', {
-          'text-red-500': isAdmission, // Apply red text
-          'text-white': !isAdmission,
-        })}
+        className={cn(
+          'font-workSans font-normal text-[14px] leading-4 text-white',
+          {
+            'text-red-500': isAdmission || isApply,
+          }
+        )}
       >
         {error}
       </span>
