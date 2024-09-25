@@ -1,18 +1,32 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import './testimonial.css'
 import { ITestimonialData } from '@/app/(routes)/testimonials/_interface/testimonial'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+import TestimonailModal from './TestimonailModal'
 
 export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   const pathname = usePathname()
   const isHomePage = pathname === '/'
+  const descriptionMaxLength = 189 // Define max characters to show initially
+
+  // Truncate description if it exceeds the max length
+  const truncatedDescription =
+    card.description.length > descriptionMaxLength
+      ? card.description.substring(0, descriptionMaxLength) + '...'
+      : card.description
+
+  const handleContinueReading = (event: React.MouseEvent) => {
+    event.stopPropagation()
+    setIsOpen(true) // Open the modal
+  }
   return (
     <>
       <div
-        className={`max-w-[397px] h-[346px] rounded-[12px] relative mx-auto flex flex-col justify-between ${
+        className={`max-w-[397px] rounded-[12px] relative mx-auto flex flex-col ${
           isHomePage ? 'bg-white' : 'bg-background'
         }`}
       >
@@ -23,10 +37,23 @@ export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
           alt="quote"
           className="absolute w-[60px] h-[51px] top-[18.33px] left-[13.51px]"
         />
-        <div
-          dangerouslySetInnerHTML={{ __html: card.description }}
-          className="p-[40px] font-workSans font-[400] text-base leading-[27.2px] tracking-tight text-heading"
-        ></div>
+        <div className="p-[40px] font-workSans font-[400] text-base leading-[27.2px] tracking-tight text-heading">
+          {/* Show truncated description */}
+          <div
+            dangerouslySetInnerHTML={{
+              __html: truncatedDescription,
+            }}
+          />
+
+          {card.description.length > descriptionMaxLength && (
+            <button
+              onClick={handleContinueReading} // Trigger modal on click
+              className="text-blue-500 mt-2"
+            >
+              Continue Reading
+            </button>
+          )}
+        </div>
         <div className="px-10 py-6 flex gap-4 border-border-2 border-t-[1px] bottom-0">
           <ImageWithPlaceholder
             src={card.image ? card.image.key : undefined}
@@ -45,6 +72,7 @@ export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
           </div>
         </div>
       </div>
+      {isOpen && <TestimonailModal setOpen={setIsOpen} card={card} />}
     </>
   )
 }
