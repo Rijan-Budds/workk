@@ -11,6 +11,7 @@ import {
   IAdmissionResponse,
 } from '../_interface/admission'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 const AdmissionSection = () => {
   const [admissions, setAdmissions] = useState<IAdmissionResponse | null>(null)
@@ -67,15 +68,21 @@ const AdmissionSection = () => {
 
       <HomeWrapper>
         <div className="flex flex-col 2lg:flex-row gap-[80px] 2lg:gap-[56px]">
-          <AdmissionFilter
-            admissions={admissions?.data || []}
-            onFilterChange={handleFilterChange}
-          />
-          <AdmissionDetail selectedAdmission={selectedAdmission?.data} />
-          <AdmissionSideBar
-            admissions={admissions}
-            onFilterChange={handleFilterChange}
-          />
+          {admissions?.data.length ? (
+            <>
+              <AdmissionFilter
+                admissions={admissions?.data || []}
+                onFilterChange={handleFilterChange}
+              />
+              <AdmissionDetail selectedAdmission={selectedAdmission?.data} />
+              <AdmissionSideBar
+                admissions={admissions}
+                onFilterChange={handleFilterChange}
+              />
+            </>
+          ) : (
+            <NoDataFound title="No Admission data found" />
+          )}
         </div>
       </HomeWrapper>
     </div>

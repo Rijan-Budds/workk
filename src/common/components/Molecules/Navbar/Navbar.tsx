@@ -138,8 +138,6 @@ const NavLinksUi = ({
     }
   }
 
-  console.log('links :::', links)
-
   return (
     <div
       className="flex items-center gap-x-2 group relative"
@@ -184,7 +182,7 @@ const NavLinksUi = ({
                       >
                         {sublink.title}
                         {sublink.subsublink && (
-                          <FiChevronDown className="ml-2 w-[14px] mb-[3px] inline-block group-hover:text-primary transition-all duration-500 -rotate-90" />
+                          <FiChevronDown className="ml-2 w-[14px] mb-[3px] inline-block -rotate-90" />
                         )}
                       </div>
                     </Link>

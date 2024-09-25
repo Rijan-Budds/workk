@@ -38,7 +38,7 @@ const SchoolSection = () => {
           alt="academic1 "
           className="rounded-xl w-full md:max-w-full h-auto md:mt-14"
         />
-        <div className="absolute w-[206px] h-[75px] bottom-0 left-0 bg-white rounded-tr-xl flex justify-center items-center rounded-bl-xl">
+        <div className="absolute w-[206px] h-[75px] -bottom-1 left-0 bg-white rounded-tr-xl flex justify-center items-center rounded-bl-xl">
           <h2 className="text-lg leading-7 font-workSans font-medium text-heading">
             Take A Warm Tour
           </h2>

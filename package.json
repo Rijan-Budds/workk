@@ -29,7 +29,9 @@
     "dompurify": "^3.1.6",
     "formik": "^2.4.6",
     "gsap": "^3.12.5",
+    "immer": "^10.1.1",
     "lucide-react": "^0.417.0",
+    "nepali-datetime": "^1.2.1",
     "next": "14.0.4",
     "next-themes": "^0.3.0",
     "react": "^18",
@@ -44,7 +46,8 @@
     "swiper": "^11.1.14",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "zustand": "5.0.0-rc.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.4",

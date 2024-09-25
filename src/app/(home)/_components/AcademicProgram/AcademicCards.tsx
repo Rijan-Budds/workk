@@ -4,6 +4,7 @@ import React from 'react'
 import { GoArrowRight } from 'react-icons/go'
 import { academicCardsDataOne } from './constant/data'
 import { cn } from '@/common/utils/utils'
+import Link from 'next/link'
 
 export const AcademicCards = ({
   title,
@@ -25,8 +26,8 @@ export const AcademicCards = ({
         {description}
       </p>
       <div className="mt-4 flex flex-col gap-y-8 z-10">
-        {list.map((list, index) => (
-          <AcademicList key={list.id} title={list.title} index={index} />
+        {list.map((list) => (
+          <AcademicList key={list.id} title={list.title} slug={list.slug} />
         ))}
       </div>
       <div
@@ -36,26 +37,19 @@ export const AcademicCards = ({
   )
 }
 
-const AcademicList = ({ title, index }: { title: string; index: number }) => {
+const AcademicList = ({ title, slug }: { title: string; slug: string }) => {
   return (
-    <div className="flex items-center gap-x-2  group cursor-default ">
+    <Link href={`/academics/plustwo/${slug}`}>
       <span
         className={cn(
-          'font-workSans font-normal text-[16px] leading-4  transition-all duration-500 text-heading ',
-          {
-            'text-primary group-hover:text-heading':
-              index === 0 && title === 'Management',
-          }
+          'flex items-center gap-x-2 font-workSans font-normal text-[16px] leading-4 transition-all duration-300 text-heading hover:text-primary '
         )}
       >
         {title}
+        <GoArrowRight
+          className={cn(' transition-all duration-500 w-4 text-heading')}
+        />
       </span>
-      <GoArrowRight
-        className={cn(' transition-all duration-500 w-4 text-heading', {
-          'text-primary group-hover:text-heading':
-            index === 0 && title === 'Management',
-        })}
-      />
-    </div>
+    </Link>
   )
 }

@@ -7,7 +7,7 @@ export const NoticeSection = () => {
     <>
       <CoverImage title="Notices" list={[{ link: '', title: 'Notices' }]} />
       <HomeWrapper>
-        <div className="flex flex-col  gap-y-10 2lg:items-center bdr">
+        <div className="flex flex-col  gap-y-10 2lg:items-center">
           {/* <NoticeClientSection /> */}
         </div>
       </HomeWrapper>

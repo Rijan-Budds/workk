@@ -15,6 +15,7 @@ export const VideoModal = ({
   length,
   type,
   showSwipe,
+  isStatic = false,
 }: {
   src: string | undefined
   setModalOpen: Dispatch<SetStateAction<boolean>>
@@ -22,6 +23,7 @@ export const VideoModal = ({
   length: number | undefined
   type: IType
   showSwipe: boolean
+  isStatic?: boolean
 }) => {
   const handleSwipe = (direction: IDirection) => {
     if (setActiveImage && length) {
@@ -37,17 +39,31 @@ export const VideoModal = ({
 
   return (
     <div className="flex justify-center items-center 2lg:items-start  relative ">
-      <>
-        <CustomVideo
-          key={src}
-          width="1280"
-          height="853"
-          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${src}`}
-          className="w-[1024px] object-contain rounded-[12px]"
-          autoPlay={true}
-          controls={true}
-        />
-      </>
+      {isStatic ? (
+        <>
+          <CustomVideo
+            key={src}
+            width="1280"
+            height="853"
+            src={src ? src : '/home/video/school-promo.mov'}
+            className="w-[1024px] object-contain rounded-[12px]"
+            autoPlay={true}
+            controls={true}
+          />
+        </>
+      ) : (
+        <>
+          <CustomVideo
+            key={src}
+            width="1280"
+            height="853"
+            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${src}`}
+            className="w-[1024px] object-contain rounded-[12px]"
+            autoPlay={true}
+            controls={true}
+          />
+        </>
+      )}
 
       <CloseButton
         className={cn('absolute -top-3 -right-4 z-10', {
