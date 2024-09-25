@@ -42,12 +42,12 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
   return (
     <div className="flex flex-col">
       <div className="max-w-[787px]">
-        <MiniHeading className="text-left">{detail.title}</MiniHeading>
-        <SectionHeading>{detail.articleTitle}</SectionHeading>
+        <MiniHeading className="text-left">{detail?.title}</MiniHeading>
+        <SectionHeading>{detail?.articleTitle}</SectionHeading>
         <SchoolGallery />
         <div
           className="mt-6 font-workSans font-normal text-base leading-7 text-body break-all"
-          dangerouslySetInnerHTML={{ __html: detail.description }}
+          dangerouslySetInnerHTML={{ __html: detail?.description }}
         ></div>
       </div>
       <hr className="border-secondary border-dashed my-10" />

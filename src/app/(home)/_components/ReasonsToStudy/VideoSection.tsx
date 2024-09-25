@@ -32,8 +32,8 @@ export const VideoSection = () => {
           width="819"
           className="rounded-[12px] z-[5] w-full 2lg:w-[819px]"
           videoRef={videoRef}
-          src="/home/video/school-promo.mov"
           fallbackThumb="/home/video-thumb.png"
+          src="/home/video/school-promo.mov"
         />
         <button
           onClick={handlePlayPause}
@@ -85,6 +85,7 @@ export const VideoSection = () => {
             showSwipe={false}
             src={src}
             type="video" // Assuming it's a video type
+            isStatic
           />
         </CustomModal>
       )}

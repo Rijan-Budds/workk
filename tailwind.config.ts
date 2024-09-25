@@ -29,12 +29,22 @@ const config = {
         primaryLight: '#CDDFED',
         primaryDark: '#1A86CC',
         secondaryLighter: '#FDF6F0',
+        secondaryLight: '#F7DCC4', // Educational Tour border
         shadowBorder: '#FAFAFA',
         error: '#B91C1C',
+        errorLight: '#FECDC9', //  Holiday border
         errorLighter: '#FEEEEC',
         success: '#166534',
+        successLighter: '#DCFCE7', // Exam Routine background
+        sucessLight: '#7BF4A5',
         successBg: '#DCFCE7',
         grayBackground: '#F8F8FA',
+        grayLighter: '#F5F5F5', // club and sports background
+        grayLight: '#DEDEDE', // club and sports border
+        brown: '#8B5A2F',
+        brownLighter: '#FDF8ED',
+        brownLight: '#F0E1CC',
+        Textgray: '#262829',
       },
       screens: {
         '2lg': '1270px',
