@@ -20,6 +20,7 @@ import {
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/testimonial'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 export const swiperParams = {
   navigation: {
@@ -48,47 +49,66 @@ const TestimonialsSection = () => {
 
     fetchData()
   }, [])
-  return (
-    <HomeWrapper isBg>
-      <div className="relative">
-        <div className="flex justify-center md:justify-between items-center relative">
-          <div className="">
-            <MiniHeading isMd>Testimonials</MiniHeading>
-            <SectionHeading isMd className="mt-2">
-              Our Happy Students
-            </SectionHeading>
-          </div>
-          <div
-            id="testimonial"
-            className="space-x-3 absolute bottom-0 right-0 w-28 h-8 hidden md:flex "
-          >
-            <div className="swiper-button-prev">
-              <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
-            </div>
-            <div className="swiper-button-next">
-              <IoIosArrowRoundForward className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
-            </div>
-          </div>
-        </div>
-        <SwiperWrapper>
-          {response?.data.map((card) => (
-            <SwiperSlide key={card.id} className="!mt-[40px] !mx-auto">
-              <TestimonialCard card={card} />
-            </SwiperSlide>
-          ))}
-          <div className="flex justify-center gap-x-4 mt-10 md:hidden">
-            <SwiperButtonPrevious>
-              <IoIosArrowRoundBack className="text-body text-2xl font-light " />
-            </SwiperButtonPrevious>
 
-            <SwiperButtonNext>
-              <IoIosArrowRoundForward className="text-body text-2xl font-light" />
-            </SwiperButtonNext>
+  const renderTestimonialUi = () => {
+    if (response?.data) {
+      const isSingleCard = response.data.length === 1
+      return (
+        <div className="relative">
+          <div className="flex justify-center md:justify-between items-center relative">
+            <div className="">
+              <MiniHeading isMd>Testimonials</MiniHeading>
+              <SectionHeading isMd className="mt-2">
+                Our Happy Students
+              </SectionHeading>
+            </div>
+            <div
+              id="testimonial"
+              className="space-x-3 absolute bottom-0 right-0 w-28 h-8 hidden md:flex "
+            >
+              <div className="swiper-button-prev">
+                <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+              </div>
+              <div className="swiper-button-next">
+                <IoIosArrowRoundForward className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+              </div>
+            </div>
           </div>
-        </SwiperWrapper>
-      </div>
-    </HomeWrapper>
-  )
+          <SwiperWrapper>
+            {response?.data.map((card) => (
+              <SwiperSlide
+                key={card.id}
+                className={`!mt-[40px] ${isSingleCard ? '!ml-0' : '!ml-auto'}`}
+              >
+                <TestimonialCard card={card} />
+              </SwiperSlide>
+            ))}
+            <div className="flex justify-center gap-x-4 mt-10 md:hidden">
+              <SwiperButtonPrevious>
+                <IoIosArrowRoundBack className="text-body text-2xl font-light " />
+              </SwiperButtonPrevious>
+
+              <SwiperButtonNext>
+                <IoIosArrowRoundForward className="text-body text-2xl font-light" />
+              </SwiperButtonNext>
+            </div>
+          </SwiperWrapper>
+        </div>
+      )
+    } else {
+      return (
+        <div className="">
+          <MiniHeading isMd>Testimonials</MiniHeading>
+          <SectionHeading isMd className="mt-2">
+            Our Happy Students
+          </SectionHeading>
+          <NoDataFound title="No Testimonial Data Found" />
+        </div>
+      )
+    }
+  }
+
+  return <HomeWrapper isBg>{renderTestimonialUi()}</HomeWrapper>
 }
 
 const SwiperWrapper = ({ children }: { children: ReactNode }) => {
