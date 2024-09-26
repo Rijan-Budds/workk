@@ -63,7 +63,7 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
                         width={100}
                         height={100}
                         alt="social"
-                        className="w-4 h-4"
+                        className="w-4 h-4 "
                       />
                     </Link>
                     <Link

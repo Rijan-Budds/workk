@@ -19,7 +19,7 @@ import { toast } from '@/common/hook/use-toast'
 import { ToastClose } from '@/common/components/ui/toast'
 import Image from 'next/image'
 import Axios from '@/common/utils/Axios'
-import { cn } from '@/common/utils/utils'
+import { ButtonLoader } from '@/common/components/Atom/ButtonLoader'
 
 interface IPlusTwoFormProps {
   onFormChange: (isDirty: boolean) => void
@@ -174,26 +174,7 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
                   </Button>
                 )}
                 <Button disabled={loading} type="submit" className="w-fit">
-                  {isSubmit ? (
-                    'Next'
-                  ) : (
-                    <div className="flex  items-center gap-x-1">
-                      <Image
-                        src={'/admission/button-loader.svg'}
-                        alt="button loader"
-                        width={20}
-                        height={20}
-                        className={cn(
-                          'animate-spin transition-all duration-700 size-0',
-                          {
-                            'opacity-100 size-5': loading,
-                          }
-                        )}
-                      />
-
-                      <span>Submit</span>
-                    </div>
-                  )}
+                  {isSubmit ? 'Next' : <ButtonLoader loading={loading} />}
                 </Button>
               </div>
             </Form>

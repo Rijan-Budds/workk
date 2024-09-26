@@ -7,14 +7,17 @@ import TeamTab from './TeamTab'
 import { ITeamsData, ITeamsResponse } from '../_interface/Teams'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
 
-type ITitle =
-  | 'Our Board Members'
-  | 'Our Expert Instructors'
-  | 'Administration Members'
-
+const tabs = [
+  { key: 'Our Board Members', title: 'Our Board Members' },
+  { key: 'Our Expert Instructors', title: 'Our Expert Instructors' },
+  { key: 'Administration Members', title: 'Administration Members' },
+]
 const TeamSection = () => {
   const [response, setResponse] = useState<ITeamsResponse | null>(null)
+  const [active, setActiveTab] = useState<string>(tabs[0]?.key)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -33,18 +36,17 @@ const TeamSection = () => {
     fetchData()
   }, [])
 
-  const [title, setTitle] = useState<ITitle>('Our Board Members')
   const [filteredTeams, setFilteredTeams] = useState<ITeamsData[]>([])
 
   useEffect(() => {
     if (response) {
       // Filter based on title and management level
       const filteredData = response.data.filter((team: ITeamsData) => {
-        if (title === 'Our Board Members') {
+        if (active === 'Our Board Members') {
           return team.managementLevel === 'BOARD_MEMBER'
-        } else if (title === 'Our Expert Instructors') {
+        } else if (active === 'Our Expert Instructors') {
           return team.managementLevel === 'EXPERT_INSTRUCTOR'
-        } else if (title === 'Administration Members') {
+        } else if (active === 'Administration Members') {
           return team.managementLevel === 'ADMINISTRATION_MEMBER'
         }
         return false
@@ -52,10 +54,10 @@ const TeamSection = () => {
 
       setFilteredTeams(filteredData)
     }
-  }, [title, response])
+  }, [active, response])
 
-  const handleDynamicData = (type: ITitle) => {
-    setTitle(type)
+  const handleDynamicData = (key: string) => {
+    setActiveTab(key)
   }
 
   return (
@@ -63,11 +65,18 @@ const TeamSection = () => {
       <CoverImage
         title="Our Team"
         list={[{ link: '', title: 'Our Team' }]}
-        key={title}
+        key={'Our Team'}
       />
       <HomeWrapper>
         <div className="flex flex-col md:items-center gap-y-10 2lg:gap-y-14">
           <div>
+            <TabAnimation
+              activeTab={active}
+              setActive={setActiveTab}
+              tabs={tabs}
+              handleDynamicData={handleDynamicData}
+              className="hidden md:flex"
+            />
             <TeamTab handleDynamicData={handleDynamicData} />
           </div>
           <div>

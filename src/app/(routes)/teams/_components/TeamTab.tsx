@@ -23,28 +23,6 @@ const TeamTab = ({
 
   return (
     <>
-      <div className="hidden bg-primaryLighter md:flex justify-between items-center rounded-[100px] p-2 w-[725px] h-[72px] shadow">
-        {(
-          [
-            'Our Board Members',
-            'Our Expert Instructors',
-            'Administration Members',
-          ] as ITitle[]
-        ).map((title) => (
-          <button
-            key={title}
-            onClick={() => handleTabClick(title)}
-            className={cn(
-              'font-workSans font-normal text-[18px] leading-6 px-4 py-4 bg-transparent text-black rounded-[100px] transition-all duration-700',
-              {
-                'bg-primary text-white': activeTitle === title,
-              }
-            )}
-          >
-            {title}
-          </button>
-        ))}
-      </div>
       <div className="md:hidden relative">
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}

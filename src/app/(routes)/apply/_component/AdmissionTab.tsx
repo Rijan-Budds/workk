@@ -1,12 +1,12 @@
 'use client'
 
-import { TabSwitch } from '@/common/components/Atom/TabSwitch'
 import React, { useEffect, useState } from 'react'
 import { PlusTwoForm } from './PlusTwoForm'
 import { SchoolForm } from './SchoolForm'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { UnSaveChange } from './UnSaveChange'
 import { useSearchParams } from 'next/navigation'
+import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
 
 export const AdmissionTab = () => {
   const params = useSearchParams()
@@ -57,7 +57,7 @@ export const AdmissionTab = () => {
   return (
     <div className="flex flex-col  justify-center items-center gap-y-10">
       <div className="w-fit flex flex-col justify-center items-center gap-y-10">
-        <TabSwitch
+        <TabAnimation
           activeTab={active}
           tabs={tabs}
           setActive={setActiveTab}
