@@ -36,7 +36,7 @@ export const NoticeCard = ({
         width={56}
         height={56}
         alt="notice image"
-        className="rounded-full size-14 object-cover"
+        className="rounded-full size-14 object-cover aspect-square"
       />
       <div className=" w-full ">
         <p className="font-workSans font-medium text-[16px] leading-[27.2px] text-heading group-hover:text-white transition-all duration-500">

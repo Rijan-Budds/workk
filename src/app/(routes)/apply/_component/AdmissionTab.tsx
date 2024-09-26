@@ -6,7 +6,7 @@ import { SchoolForm } from './SchoolForm'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { UnSaveChange } from './UnSaveChange'
 import { useSearchParams } from 'next/navigation'
-import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
+import { TabSwitch } from '@/common/components/Atom/TabSwitch'
 
 export const AdmissionTab = () => {
   const params = useSearchParams()
@@ -57,7 +57,7 @@ export const AdmissionTab = () => {
   return (
     <div className="flex flex-col  justify-center items-center gap-y-10">
       <div className="w-fit flex flex-col justify-center items-center gap-y-10">
-        <TabAnimation
+        <TabSwitch
           activeTab={active}
           tabs={tabs}
           setActive={setActiveTab}
@@ -65,6 +65,7 @@ export const AdmissionTab = () => {
           isFieldChange={true}
           handleDynamicData={handleTabClick}
         />
+
         <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center text-body">
           When reading an application, we get to know the person behind the
           numbers. We take into consideration your academic achievements,
