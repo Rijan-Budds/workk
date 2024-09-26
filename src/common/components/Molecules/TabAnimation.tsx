@@ -41,7 +41,7 @@ export const TabAnimation = ({
       Flip.from(state, {
         absolute: true,
         scale: true,
-        duration: 1,
+        duration: 0.6,
         ease: 'back.inOut',
       })
     }
@@ -80,7 +80,7 @@ export const TabAnimation = ({
           >
             <span
               className={cn(
-                'text-black z-10 font-workSans font-medium text-[18px] leading-6',
+                'text-black transition-colors duration-1000 z-10 font-workSans font-medium text-[18px] leading-6',
                 {
                   'text-white transition-colors duration-1000 ':
                     activeTab === tab.key,
