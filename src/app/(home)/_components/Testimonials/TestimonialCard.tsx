@@ -11,7 +11,7 @@ export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const pathname = usePathname()
   const isHomePage = pathname === '/'
-  const descriptionMaxLength = 189 // Define max characters to show initially
+  const descriptionMaxLength = isHomePage ? 190 : 150 // Define max characters to show initially
 
   // Truncate description if it exceeds the max length
   const truncatedDescription =
@@ -37,7 +37,7 @@ export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
           alt="quote"
           className="absolute w-[60px] h-[51px] top-[18.33px] left-[13.51px]"
         />
-        <div className="p-[40px] font-workSans font-[400] text-base leading-[27.2px] tracking-tight text-heading">
+        <div className="p-[40px] font-workSans font-[400] text-base leading-[27.2px] tracking-tight text-heading  h-[240px] ">
           {/* Show truncated description */}
           <div
             dangerouslySetInnerHTML={{

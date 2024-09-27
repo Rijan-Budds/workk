@@ -1,61 +1,73 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import ResultCard from './ResultCard'
-import { IResultData } from '../_interface/Reslut'
+import { IResult } from '../_interface/result'
 import { CustomDropdown } from '@/common/components/Molecules/CustomDropdown'
-import { ICategory, ITitle } from '../_constants/data'
+import {
+  ICategory,
+  PlusTwoDropdownList,
+  SchoolLevelDropdownList,
+} from '../_constants/data'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 const ResultSection = ({
-  teams,
-  title,
-  categories,
-  handleCategoryChange,
+  results,
+  active,
+  setProgram,
+  program,
 }: {
-  teams: IResultData[]
-  title: ITitle
-  categories: ICategory[]
-  handleCategoryChange: (category: ICategory) => void
+  results: IResult[]
+  active: string
+  setProgram: Dispatch<SetStateAction<string>>
+  program: string
 }) => {
-  const [activeCategory, setActiveCategory] = useState<ICategory>('All')
-
-  useEffect(() => {
-    setActiveCategory('All')
-  }, [title])
-
   const handleCategoryClick = (category: ICategory) => {
-    setActiveCategory(category)
-    handleCategoryChange(category)
+    setProgram(category)
+  }
+
+  const returnDropDownList = () => {
+    if (active === 'PLUS_TWO') {
+      return PlusTwoDropdownList
+    } else {
+      return SchoolLevelDropdownList
+    }
   }
 
   return (
     <div className="md:bg-background p-4 mt-10">
       <div className="flex justify-between items-center">
         <h1 className="text-heading font-poppins font-medium text-xl leading-6 hidden md:block">
-          Result of {title}
+          Result of {active === 'PLUS_TWO' ? 'Plus Two' : 'School'}
         </h1>
         <div className="relative w-full md:max-w-[380px]">
           <CustomDropdown
-            list={categories.map((category) => ({
-              value: category,
-              title: category,
-            }))}
+            list={returnDropDownList()}
             placeHolder="Select Category"
             label=""
             field="category"
             error=""
             isError={false}
             isRequired={false}
-            value={activeCategory}
+            isBoolean={false}
+            value={program}
             setFieldValue={(field, value) =>
               handleCategoryClick(value as ICategory)
             }
           />
         </div>
       </div>
-      <div className="grid 2lg:grid-cols-3 gap-6 mt-10">
-        {teams.map((result) => (
-          <ResultCard data={result} key={result.id} />
-        ))}
+      <div className=" mt-10">
+        {results && results.length ? (
+          <div className="grid 2lg:grid-cols-3 gap-6">
+            {results.map((result) => (
+              <ResultCard data={result} key={result.id} />
+            ))}
+          </div>
+        ) : (
+          <div className="flex justify-center items-center w-full ">
+            <NoDataFound title="No Data found" />
+          </div>
+        )}
       </div>
     </div>
   )

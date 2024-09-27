@@ -1,4 +1,4 @@
-import { IResultData } from '../_interface/Reslut'
+import { IResultData } from '../_interface/result'
 
 export type ITitle = 'Plus Two' | 'School Level'
 export type ICategory = string
@@ -86,5 +86,62 @@ export const ResultData: IResultData[] = [
     type: 'School Level',
     category: 'Arts',
     pdfUrl: 'https://example.com/sample3.pdf',
+  },
+]
+
+export const resultTab = [
+  {
+    title: 'Plus Two',
+    key: 'PLUS_TWO',
+  },
+  {
+    title: 'School Level',
+    key: 'SCHOOL',
+  },
+]
+
+export const PlusTwoDropdownList = [
+  {
+    title: 'All',
+    value: 'all',
+  },
+  {
+    title: 'Management',
+    value: 'management',
+  },
+  {
+    title: 'Humanities',
+    value: 'humanities',
+  },
+  {
+    title: 'Law',
+    value: 'law',
+  },
+  {
+    title: 'Education',
+    value: 'education',
+  },
+]
+
+export const SchoolLevelDropdownList = [
+  {
+    title: 'All',
+    value: 'all',
+  },
+  {
+    title: 'Pre-School (Kindergarten)',
+    value: 'pre-school-kindergarden',
+  },
+  {
+    title: 'Primary Level (One - Five)',
+    value: 'primary-level-one-five',
+  },
+  {
+    title: 'Basic Level (Six - Eight)',
+    value: 'basic-levl-six-eight',
+  },
+  {
+    title: 'Senior Level (Nine - Ten)',
+    value: 'senior-level-nine-ten',
   },
 ]

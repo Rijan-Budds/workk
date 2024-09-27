@@ -30,19 +30,22 @@ const AdmissionDetail: React.FC<AdmissionDetailProps> = ({
         {selectedAdmission.academics?.title}
       </MiniHeading>
       <SectionHeading>{selectedAdmission.articleTitle}</SectionHeading>
-      <div className="flex gap-x-5 my-10">
-        {selectedAdmission.image?.key.map((imageKey, index) => (
-          <div key={imageKey} className={index === 1 ? 'mt-10' : ''}>
-            <ImageWithPlaceholder
-              src={imageKey ? imageKey : undefined}
-              width={246}
-              height={454}
-              alt={`Image ${index + 1}`}
-              className="h-[191px] md:h-[388px] 2lg:w-[246px] 2lg:h-[454px] rounded-xl object-cover"
-            />
-          </div>
-        ))}
-      </div>
+      {selectedAdmission?.image?.key.length && (
+        <div className="flex gap-x-5 my-10">
+          {selectedAdmission.image?.key.map((imageKey, index) => (
+            <div key={imageKey} className={index === 1 ? 'mt-10' : ''}>
+              <ImageWithPlaceholder
+                src={imageKey ? imageKey : undefined}
+                width={246}
+                height={454}
+                alt={`Image ${index + 1}`}
+                className="h-[191px] md:h-[388px] 2lg:w-[246px] 2lg:h-[454px] rounded-xl object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      )}
+
       <div
         className="my-6 font-workSans font-normal text-base leading-7 text-body"
         dangerouslySetInnerHTML={{
