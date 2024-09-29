@@ -62,7 +62,7 @@ export const TabAnimation = ({
   return (
     <div
       className={cn(
-        'tabs bg-primaryLighter flex justify-between items-center rounded-[100px] shadow ',
+        'tabs bg-primaryLighter flex  items-center p-2 rounded-[100px] shadow ',
         className
       )}
     >
@@ -74,7 +74,7 @@ export const TabAnimation = ({
             ref={(el) => {
               tabRefs.current[index] = el
             }}
-            className={`tab-item py-4 flex justify-center items-center relative m-4  px-6 cursor-pointer  ${
+            className={`tab-item py-4 flex justify-center items-center relative  px-6 cursor-pointer ${
               activeTab === tab.key ? 'active' : ''
             }`}
           >
