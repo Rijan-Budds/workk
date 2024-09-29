@@ -1,5 +1,4 @@
 'use client'
-import React from 'react'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -7,9 +6,9 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
-import { IFacilityData } from '../interface/facilityInterface'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import Link from 'next/link'
+import { IFacilityData } from '../interface/facilityInterface'
 
 const FacilitiesSwiper = ({ data }: { data: IFacilityData[] | undefined }) => {
   return (
@@ -26,7 +25,7 @@ const FacilitiesSwiper = ({ data }: { data: IFacilityData[] | undefined }) => {
           breakpoints={{
             300: { slidesPerView: 1, spaceBetween: 20 },
             600: { slidesPerView: 2, spaceBetween: 20 },
-            768: { slidesPerView: 2.5, spaceBetween: 20 },
+            768: { slidesPerView: 2.5, spaceBetween: 40 },
             1280: { slidesPerView: 3.5, spaceBetween: 20 }, // 3 and a half slides at desktop width
           }}
           //   modules={[Pagination]}

@@ -16,14 +16,14 @@ const FacilitiesSwiperSection = async () => {
       isBg
     >
       <div className="flex flex-col 2lg:flex-row justify-between overflow-hidden gap-[47px]">
-        <div className="max-w-[397px] mx-auto 2lg:mx-0 flex flex-col justify-center flex-shrink-0">
-          <MiniHeading className="text-center 2lg:text-start">
+        <div className="max-w-[397px] mx-auto md:mx-0 2lg:mx-0 flex flex-col justify-center flex-shrink-0">
+          <MiniHeading className="text-center md:text-start 2lg:text-start">
             Facilities
           </MiniHeading>
-          <h2 className="font-poppins text-[28px] 2lg:text-[38px] leading-[36.4px] 2lg:leading-[49.4px] font-medium text-center 2lg:text-left text-heading mt-2">
+          <h2 className="font-poppins text-[28px] 2lg:text-[38px] leading-[36.4px] 2lg:leading-[49.4px] font-medium text-center md:text-left 2lg:text-left text-heading mt-2">
             Our facilities
           </h2>
-          <p className="font-workSans text-center 2lg:text-start font-normal text-[16px] leading-7 text-heading mt-4">
+          <p className="font-workSans text-center md:text-start 2lg:text-start font-normal text-[16px] leading-7 text-heading mt-4">
             Our College can also attend regular networking events, and benefit
             from exclusive resources and mentorship programs.
           </p>
