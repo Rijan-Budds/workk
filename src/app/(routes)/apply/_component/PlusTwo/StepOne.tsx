@@ -1,9 +1,9 @@
 import { Input } from '@/common/components/Atom/Input'
 import { CustomDropdown } from '@/common/components/Molecules/CustomDropdown'
 import { ImageDropZone } from '@/common/components/Molecules/ImageDropZone'
-import { IStepProps } from '../../interface/type'
 import { genderList, provinces } from '../../constant/data'
 import { InputWithDate } from '@/common/components/Atom/InputWithDate'
+import { IStepProps } from '../../interface/type'
 
 export const StepOne = ({
   setFieldValue,
