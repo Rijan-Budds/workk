@@ -29,7 +29,6 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
 
         if (response) {
           setResponse(response)
-          console.log('Fetched response:', response)
         }
       } catch (error) {
         console.error('Error fetching testimonials:', error)
