@@ -39,7 +39,7 @@ export interface IResult {
   level: Level
 }
 interface FileDetails {
-  key: string[]
+  key: string
   bucket: string[]
   mimeType: string[]
 }
