@@ -1,14 +1,14 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import { HomeWrapper } from '../../Atom/HomeWrapper'
-import Image from 'next/image'
-import { Button } from '../../Atom/Button'
-import Link from 'next/link'
-import { FiChevronDown } from 'react-icons/fi'
 import { navLinks } from '@/common/constant/data'
-import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
 import { useNavLinks } from '@/common/hook/useNavLinks'
+import { cn } from '@/lib/utils'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
+import { FiChevronDown } from 'react-icons/fi'
+import { Button } from '../../Atom/Button'
+import { HomeWrapper } from '../../Atom/HomeWrapper'
 
 export const Navbar = () => {
   const pathname = usePathname()
@@ -169,11 +169,11 @@ const NavLinksUi = ({
             >
               <div className="flex flex-col py-4 px-6 space-y-5">
                 {sublinks?.map((sublink) => (
-                  <div key={sublink.id} className="relative group">
+                  <div key={sublink.id} className="relative  group">
                     <Link href={sublink.link}>
                       <div
                         className={cn(
-                          'text-[14px] leading-4 font-workSans font-medium hover:text-primary transition-all duration-500 cursor-pointer',
+                          'text-[14px] group/item leading-4 font-workSans font-medium hover:text-primary transition-all duration-500 cursor-pointer',
                           pathname === sublink.link
                             ? 'text-primary'
                             : 'text-black'
@@ -184,8 +184,10 @@ const NavLinksUi = ({
                         {sublink.subsublink && (
                           <FiChevronDown className="ml-2 w-[14px] mb-[3px] inline-block -rotate-90" />
                         )}
+                        <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-primary transition-all duration-500 group-hover/item:w-1/6" />
                       </div>
                     </Link>
+
                     {sublink.subsublink && activeSublink === sublink.id && (
                       <div className="absolute top-[0px] left-[205px] mt-0 bg-white shadow-md rounded-[12px] p-2 z-50 w-[240px]">
                         <div className="flex flex-col py-2 px-4 space-y-7">
@@ -193,9 +195,10 @@ const NavLinksUi = ({
                             <Link
                               key={subsublink.id}
                               href={subsublink.link}
-                              className="text-[14px] leading-4 font-workSans font-medium hover:text-primary transition-all duration-500"
+                              className="group/subitem text-[14px] leading-4 font-workSans font-medium hover:text-primary transition-all duration-500"
                             >
                               {subsublink.title}
+                              <span className="block mt-[1px] h-[1px] w-0 bg-primary transition-all duration-500 group-hover/subitem:w-1/6" />
                             </Link>
                           ))}
                         </div>
