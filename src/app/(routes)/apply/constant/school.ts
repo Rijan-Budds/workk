@@ -2,10 +2,11 @@ import { SchoolStepOne } from '../_component/School/SchoolStepOne'
 import { SchoolStepThree } from '../_component/School/SchoolStepThree'
 import { SchoolStepTwo } from '../_component/School/SchoolStepTwo'
 import {
-  stepFourValidationSchema,
-  stepOneValidationSchema,
-  stepTwoValidationSchema,
-} from './data'
+  hostelValidation,
+  schoolLevelValidation,
+  transportationValidation,
+} from '../validation'
+import { stepOneValidationSchema, stepTwoValidationSchema } from './data'
 
 export const StepComponentSchool = [
   SchoolStepOne,
@@ -37,14 +38,19 @@ export const schoolInitialValues = {
   seeSymbolNum: '',
   seeGpaPoint: '',
   seeGpaGrade: '',
-  stream: '',
-  shift: '',
+  level: '',
   hostel: '',
   transportation: '',
+}
+
+export const stepThreeSchoolValidation = {
+  level: schoolLevelValidation,
+  hostel: hostelValidation,
+  transportation: transportationValidation,
 }
 
 export const ValidationSchemasSchool = [
   stepOneValidationSchema,
   stepTwoValidationSchema,
-  stepFourValidationSchema,
+  stepThreeSchoolValidation,
 ]

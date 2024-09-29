@@ -4,7 +4,10 @@ import { byteToMb, cn } from '@/common/utils/utils'
 import React, { useState } from 'react'
 import { ErrorComponent } from '../Atom/Input'
 import { FormikErrors } from 'formik'
-import { IStepFields } from '@/app/(routes)/apply/interface/type'
+import {
+  ISchoolStepFields,
+  IStepFields,
+} from '@/app/(routes)/apply/interface/type'
 import { UploadedFileUi } from './UploadFileUi'
 
 interface IDropZoneProps {
@@ -12,7 +15,7 @@ interface IDropZoneProps {
   error: string | string[] | FormikErrors<File>[] | undefined
   setValue: (field: string, value: File[]) => void
   setError?: (field: string, message: string | undefined) => void
-  values: IStepFields | undefined
+  values: IStepFields | ISchoolStepFields | undefined
 }
 
 export const ImageDropZone = ({
