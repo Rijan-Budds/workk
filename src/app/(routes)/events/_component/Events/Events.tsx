@@ -1,4 +1,4 @@
-'use state'
+'use client'
 import { cn } from '@/lib/utils'
 
 import Image from 'next/image'
@@ -7,16 +7,18 @@ import React, {
   ForwardedRef,
   forwardRef,
   SetStateAction,
+  useEffect,
+  useState,
 } from 'react'
 import EventDialog from '../EventDialog/EventsDialog'
 
-import EventsTab from '../ui/EventsTab'
-import { Month, Year } from '../../types/NepaliDates'
-import { useEventStore } from '../../store/EventStore'
-import { NepaliDateTime } from '../../plugins/nepaliDateTime'
 import { filteredPeriod } from '@/common/constant/eventFilterConstants'
-import { formattedDate } from '../../utils/formattedDate'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { NepaliDateTime } from '../../plugins/nepaliDateTime'
+import { EventData, EventResponse, Month, Year } from '../../types/NepaliDates'
 import { getEventStyles } from '../../utils/classUtils'
+import { formattedDate } from '../../utils/formattedDate'
+import EventsTab from '../ui/EventsTab'
 
 type EventsProps = {
   nextMonth: number
@@ -43,63 +45,48 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
   },
   ref
 ) {
-  const { nepaliEvents, isLoading } = useEventStore()
+  const [nepaliEvents, setNepaliEvents] = useState<EventData[] | undefined>([])
+  const [isLoading, setIsLoading] = useState(false)
 
   function getTodayDate() {
     const currentDate = new NepaliDateTime()
     return `${currentDate.getYear()}-${currentDate.getMonth()}-${currentDate.getDate()}`
   }
-  // function getDayEn() {
-  //   const dayEn = new NepaliDateTime()
-  //   return dayEn.
-  // }
+
   const todayDate = getTodayDate()
   const [todayYear, todayMonth, todayDay] = todayDate.split('-').map(Number)
   const improvedTodayDate = `${todayYear}-${todayMonth + 1}-${todayDay}`
   const improvedTommorowDay = `${todayYear}-${todayMonth + 1}-${todayDay + 1}`
+  const improvedSelectedMonth = (selectedMonth.value + 1)
+    .toString()
+    .padStart(2, '0')
 
-  function filteredEvents() {
-    switch (activeTab) {
-      case 1:
-        return nepaliEvents.filter((event) => {
-          const [year, month, day] = event.dateInBS.split('-').map(Number)
-          return (
-            year === todayYear &&
-            month === todayMonth + 1 &&
-            day === todayDay &&
-            year == selectedYear.value &&
-            month == selectedMonth.value + 1
-          )
-        })
-
-      case 2:
-        return nepaliEvents.filter((event) => {
-          const [year, month, day] = event.dateInBS.split('-').map(Number)
-          if (month == todayMonth + 1) {
-            const currentDate = new NepaliDateTime()
-            const getDay = currentDate.getDay()
-            const startDayDiff = getDay - 1
-            const endDayDiff = 6 - startDayDiff
-            const weekStartDay = currentDate.getDay() - startDayDiff
-            const weekEndDay = currentDate.getDay() + endDayDiff
-            return (
-              day >= weekStartDay &&
-              day <= weekEndDay &&
-              year == selectedYear.value &&
-              month == selectedMonth.value + 1
-            )
-          }
-        })
-
-      case 3:
-        return nepaliEvents.filter((event) => {
-          const [year, month] = event.dateInBS.split('-').map(Number)
-          return (
-            year === selectedYear.value && month === selectedMonth.value + 1
-          )
-        })
+  const fetchEvents = async (filter: string | null) => {
+    setIsLoading(true)
+    try {
+      const response: EventResponse | undefined = await UseServerFetch(
+        `/api/v1/event${filter ? `?filter=${filter}` : ''}`
+      )
+      const data = response?.data
+      setNepaliEvents(data)
+    } catch (error) {
+      console.error('Error fetching events:', error)
+    } finally {
+      setIsLoading(false)
     }
   }
+
+  useEffect(() => {
+    const filter =
+      activeTab === 1
+        ? 'daily'
+        : activeTab === 2
+        ? 'weekly'
+        : activeTab === 3
+        ? `monthly&year=${selectedYear.value}&month=${improvedSelectedMonth}`
+        : null
+    fetchEvents(filter)
+  }, [activeTab, improvedSelectedMonth, selectedYear])
 
   return (
     <>
@@ -135,7 +122,7 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
               </ul>
             ))}
           </>
-        ) : filteredEvents()?.length === 0 ? (
+        ) : nepaliEvents?.length === 0 ? (
           <div className="flex flex-col items-center mx-auto space-y-4 mt-24">
             <Image
               src="/calendar/noEvents/union.png"
@@ -149,7 +136,7 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
             </div>
           </div>
         ) : (
-          filteredEvents()?.map((event, index) => {
+          nepaliEvents?.map((event, index) => {
             let renderedDay = false
 
             return (
@@ -161,7 +148,7 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
                   dialogTriggerContent={event.eventDetail.map(
                     (eventItem, idx) => {
                       return (
-                        <>
+                        <React.Fragment key={idx}>
                           {formattedDate(event.dateInBS) ===
                             improvedTodayDate &&
                             !renderedDay && (
@@ -309,7 +296,7 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
                                 </div>
                               </ul>
                             )}
-                        </>
+                        </React.Fragment>
                       )
                     }
                   )}
