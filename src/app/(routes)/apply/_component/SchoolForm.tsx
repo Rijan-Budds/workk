@@ -9,7 +9,6 @@ import { Form, Formik, FormikHelpers, FormikValues } from 'formik'
 import {
   applicationCourseDetailSchema,
   applicationFamilyDetailSchema,
-  initialValues,
   MultiStepFormInputStyle,
 } from '../constant/data'
 import { Button } from '@/common/components/Atom/Button'
@@ -42,7 +41,7 @@ export const SchoolForm = ({ onFormChange }: IPlusTwoFormProps) => {
 
   const handleFinalSubmit = async (
     values: FormikValues,
-    resetForm: FormikHelpers<typeof initialValues>['resetForm']
+    resetForm: FormikHelpers<typeof schoolInitialValues>['resetForm']
   ) => {
     const formData = new FormData()
     const applicationFamilyDetail: { [key: string]: string } = {}
@@ -114,7 +113,7 @@ export const SchoolForm = ({ onFormChange }: IPlusTwoFormProps) => {
 
   const handleSubmit = (
     values: FormikValues,
-    resetForm: FormikHelpers<typeof initialValues>['resetForm']
+    resetForm: FormikHelpers<typeof schoolInitialValues>['resetForm']
   ) => {
     if (currentStep < StepComponentSchool.length - 1) {
       handleNext()

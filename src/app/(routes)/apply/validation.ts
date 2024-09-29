@@ -312,6 +312,10 @@ export const seeGpaGradeValidation = Yup.string()
   )
 export const streamValidation = Yup.string().required('Please select stream.')
 
+export const schoolLevelValidation = Yup.string().required(
+  'Please select level'
+)
+
 export const shiftValidation = Yup.string().required(
   'Please select one option.'
 )
