@@ -19,7 +19,7 @@ export const AcademicCards = ({
   description: string
   list: typeof academicCardsDataOne
   color: string
-  type: IType
+  type?: IType
 }) => {
   return (
     <div className="bg-white p-8 rounded-[12px] flex flex-col gap-y-4 relative group overflow-hidden">
@@ -35,7 +35,7 @@ export const AcademicCards = ({
             key={list.id}
             title={list.title}
             slug={list.slug}
-            type={type}
+            type={type ? type : 'PLUS_TWO'}
           />
         ))}
       </div>
