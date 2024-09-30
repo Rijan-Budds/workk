@@ -36,11 +36,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
+    const pathname = usePathname()
+    const isAdmission = pathname === '/admission'
+
     return (
       <div className="flex flex-col  items-start gap-y-[6px] w-full relative">
         <label
           className={cn(
-            `font-medium text-[14px] leading-4 ${labelColor}`,
+            `font-light text-[14px] leading-4 ${labelColor}`,
             labelClass
           )}
           htmlFor={label}
@@ -52,7 +55,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           name={props.name}
           type={type}
           className={cn(
-            'flex min-h-[48px] text-black bg-white text-[16px] max-h-[200px] w-full rounded-[8px] border-stone-100 px-4 py-3 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-body focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 font-workSans placeholder:font-workSans',
+            'flex min-h-[48px] text-black bg-white text-[14px] max-h-[200px] w-full rounded-[8px] border-stone-100 px-4 py-3 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-body focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 font-workSans placeholder:font-workSans',
             className,
             {
               'border-error': isError,
@@ -67,7 +70,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
 
         {isError && error && (
-          <div className="text-red-500 text-sm mt-1">{error}</div>
+          <div
+            className={cn('text-sm mt-1', {
+              'text-red-500': isAdmission, // Red text only on /admission
+              'text-white': !isAdmission, // Default black text
+            })}
+          >
+            {error}
+          </div>
         )}
       </div>
     )
@@ -80,7 +90,7 @@ export { Input }
 export const ErrorComponent = ({ error }: { error: string }) => {
   const pathname = usePathname()
 
-  const isAdmission = pathname === '/apply'
+  const isAdmission = pathname === '/admission' // Changed to /admission
 
   return (
     <div className="flex items-center gap-x-1">
@@ -91,7 +101,7 @@ export const ErrorComponent = ({ error }: { error: string }) => {
       />
       <span
         className={cn('font-workSans font-normal text-[14px] leading-4', {
-          'text-red-500': isAdmission, // Apply red text
+          'text-red-500': isAdmission, // Apply red text on /admission
           'text-white': !isAdmission,
         })}
       >

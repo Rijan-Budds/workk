@@ -35,7 +35,7 @@ const TeamTab = ({
             key={title}
             onClick={() => handleTabClick(title)}
             className={cn(
-              'font-workSans font-normal text-[18px] leading-6 px-4 py-4 bg-transparent text-black rounded-[100px] transition-all duration-700',
+              'font-workSans font-medium text-[18px] leading-6 px-4 py-4 bg-transparent text-heading rounded-[100px] transition-all duration-700',
               {
                 'bg-primary text-white': activeTitle === title,
               }
@@ -52,7 +52,7 @@ const TeamTab = ({
         >
           {activeTitle}
           <svg
-            className={cn('w-6 h-6 transition-transform', {
+            className={cn('w-4 h-4 transition-transform text-body', {
               'transform rotate-180': isDropdownOpen,
             })}
             fill="none"

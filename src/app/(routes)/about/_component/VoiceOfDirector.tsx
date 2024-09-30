@@ -51,26 +51,31 @@ const VoiceOfDirector = () => {
     }
 
     return (
-      <div className="mt-[56px] max-w-[1230px] mx-auto">
+      <div className="max-w-[1230px] mx-auto relative">
         <SwiperWrapper
           className="flex flex-col-reverse md:flex-col gap-[40px]"
           paginationData={response.data}
-          activeIndex={activeIndex} // Pass active index
+          activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
         >
           {response.data.map((voice, index) => (
             <SwiperSlide key={index}>
               <div className="relative justify-between md:gap-[40px] lg:gap-[80px] p-4 w-full flex flex-col md:flex-row-reverse">
-                <div className="relative lg:max-w-[552px]">
-                  <div className="absolute bg-[#187EC0] w-[200px] 2lg:w-[289px] h-[226px] right-0 -top-4 rounded-tr-3xl" />
+                <div className="relative lg:max-w-[552px] md:mt-[18px] h-[382px] md:h-[462px] lg:h-[726px]">
+                  {/* Background shape */}
+                  <div className="absolute bg-[#187EC0] w-[200px] 2lg:w-[289px] h-[226px] 2lg:h-[389px] right-0 -top-4 rounded-tr-3xl" />
+
+                  {/* Image */}
                   <ImageWithPlaceholder
                     src={voice.Team.image ? voice.Team.image.key : undefined}
                     width={528}
                     height={693}
                     alt="Brochure image"
-                    className="w-[95%] h-[382px] md:h-[462px] lg:h-[726px] object-cover rounded-xl relative"
+                    className="w-[97%] md:w-[95%] 2lg:w-[97%] h-[382px] md:h-[462px] lg:h-[726px] object-cover rounded-xl relative"
                   />
-                  <div className="absolute bottom-8 left-8 bg-secondary rounded-xl">
+
+                  {/* Social icons container */}
+                  <div className="absolute bottom-8 left-8 bg-secondary rounded-xl z-10">
                     <ul className="flex gap-4 p-4">
                       {socialLinks.map((link, index) => (
                         <Link
@@ -91,7 +96,7 @@ const VoiceOfDirector = () => {
                   </div>
                 </div>
                 <div className="md:max-w-[304px] lg:max-w-[500px] 2lg:max-w-[608px]">
-                  <h1 className="font-poppins text-[28px] lg:text-[38px] font-medium mt-11 leading-[49px]">
+                  <h1 className="font-poppins text-[28px] lg:text-[38px] font-medium mt-11 md:mt-0 2lg:mt-11 leading-[49px]">
                     Voice Of Director
                   </h1>
                   <div
@@ -154,37 +159,29 @@ const SwiperWrapper = ({
 
   return (
     <>
-      <Swiper
-        id="director"
-        breakpoints={{ 528: { slidesPerView: 1 } }}
-        spaceBetween={25}
-        slidesPerView={1}
-        modules={[Autoplay]}
-        autoplay={{ delay: 2000, disableOnInteraction: true }}
-        pagination={false} // Disable default pagination
-        onSwiper={(swiper) => (mainSwiperRef.current = swiper)}
-        onSlideChange={handleSlideChange} // Handle slide change
-        className={`w-full ${className} !flex`}
-      >
-        {children}
-      </Swiper>
-
-      {/* Custom Pagination */}
-      {paginationData && paginationData.length > 0 && (
+      <div className="flex flex-col-reverse gap-14 md:gap-0 md:flex-col">
         <Swiper
-          spaceBetween={10}
-          slidesPerView={4}
-          modules={[Pagination]}
-          onSwiper={(swiper) => (paginationSwiperRef.current = swiper)} // Get pagination swiper reference
-          className="custom-pagination-swiper"
+          id="director"
+          breakpoints={{ 528: { slidesPerView: 1 } }}
+          spaceBetween={25}
+          slidesPerView={1}
+          modules={[Autoplay]}
+          autoplay={{ delay: 2000, disableOnInteraction: true }}
+          pagination={false} // Disable default pagination
+          onSwiper={(swiper) => (mainSwiperRef.current = swiper)}
+          onSlideChange={handleSlideChange} // Handle slide change
+          className={`w-full ${className} !flex`}
         >
-          {paginationData?.map((slide, index) => (
-            <SwiperSlide
-              key={index}
-              onClick={() => handlePaginationClick(index)}
-              className={activeIndex === index ? 'active' : ''} // Add active class
-            >
+          {children}
+        </Swiper>
+
+        {/* Custom Pagination */}
+        {paginationData && paginationData.length > 0 && (
+          <div className="pagination-wrapper flex gap-4 mt-6 flex-wrap md:absolute z-50 -bottom-[14%] ">
+            {paginationData?.slice(0, 4).map((slide, index) => (
               <div
+                key={index}
+                onClick={() => handlePaginationClick(index)}
                 className={`custom-card ${
                   activeIndex === index ? 'active' : ''
                 }`}
@@ -202,10 +199,10 @@ const SwiperWrapper = ({
                   <p>{slide.Team.position}</p>
                 </div>
               </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </>
   )
 }

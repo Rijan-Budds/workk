@@ -54,7 +54,7 @@ const AdmissionFilterTwo: React.FC<AdmissionFilterTwoProps> = ({
   }
 
   return (
-    <div className="flex flex-col bg-background rounded-xl cursor-pointer">
+    <div className="2lg:flex flex-col bg-background rounded-xl cursor-pointer hidden">
       {admissions?.map((admission: IAdmissionData, index: number) => (
         <div
           key={index}

@@ -25,20 +25,20 @@ const AdmissionDetail: React.FC<AdmissionDetailProps> = ({
   const downloadUrl = `${process.env.NEXT_PUBLIC_IMAGE_URL}/${selectedAdmission.form?.key}`
 
   return (
-    <div className="max-w-[787px]">
+    <div className="max-w-full 2lg:max-w-[787px]">
       <MiniHeading className="text-left text-secondary">
         {selectedAdmission.academics?.title}
       </MiniHeading>
       <SectionHeading>{selectedAdmission.articleTitle}</SectionHeading>
-      <div className="flex gap-x-5 my-10">
+      <div className="flex gap-x-5 my-10 justify-center">
         {selectedAdmission.image?.key.map((imageKey, index) => (
-          <div key={imageKey} className={index === 1 ? 'mt-10' : ''}>
+          <div key={imageKey} className={index === 1 ? 'mt-10 md:mt-28' : ''}>
             <ImageWithPlaceholder
               src={imageKey ? imageKey : undefined}
               width={246}
               height={454}
               alt={`Image ${index + 1}`}
-              className="h-[191px] md:h-[388px] 2lg:w-[246px] 2lg:h-[454px] rounded-xl object-cover"
+              className="h-[192px] sm:h-[388px] 2lg:w-[246px] 2lg:h-[454px] rounded-xl object-cover"
             />
           </div>
         ))}
@@ -64,7 +64,7 @@ const AdmissionDetail: React.FC<AdmissionDetailProps> = ({
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Button className="mt-10">Download Form</Button>
+        <Button className="mt-10 w-full md:w-fit">Download Form</Button>
       </Link>
     </div>
   )

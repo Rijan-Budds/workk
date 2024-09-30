@@ -5,6 +5,9 @@ import './teams.css'
 import { ITeamsData } from '../_interface/Teams'
 import Link from 'next/link'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+import { FaXTwitter } from 'react-icons/fa6'
+import { FaFacebookF } from 'react-icons/fa'
+import { AiFillInstagram } from 'react-icons/ai'
 
 const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
   return (
@@ -13,7 +16,7 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
         {teams.map((team, index) => (
           <div
             key={index}
-            className="flex bg-[#F8FAFD] gap-4 py-[22px] rounded-xl w-full"
+            className="flex bg-[#F8FAFD] gap-4 py-[22px] rounded-xl w-full justify-start items-center"
           >
             <div className="pl-[16px]">
               <ImageWithPlaceholder
@@ -25,10 +28,23 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
               />
             </div>
             <div>
-              <h1 className="font-poppins text-[18px] font-medium leading-6">
+              <h1 className="font-poppins text-[18px] font-medium leading-6 text-heading">
                 {team.name}
               </h1>
-              <p>{team.position}</p>
+              <p className="font-inter font-normal text-[16px] text-body">
+                {team.position}
+              </p>
+              <ul className="flex gap-4 text-body justify-start items-center mt-3">
+                <Link href={team.twitter || ''} target="_blank">
+                  <FaXTwitter className="w-3 h-3" />
+                </Link>
+                <Link href={team.facebook || ''}>
+                  <FaFacebookF className="w-3 h-3" />
+                </Link>
+                <Link href={team.instagram || ''}>
+                  <AiFillInstagram className="w-[16px] h-[16px]" />
+                </Link>
+              </ul>
             </div>
           </div>
         ))}
@@ -56,39 +72,21 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
                     <Link
                       href={team.twitter || ''}
                       target="_blank"
-                      className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
+                      className="bg-white hover:bg-primary w-7 h-7 rounded-full flex justify-center items-center transition-all duration-300 text-primary hover:text-white"
                     >
-                      <Image
-                        src="/home/ftwitter.svg"
-                        width={100}
-                        height={100}
-                        alt="social"
-                        className="w-4 h-4"
-                      />
+                      <FaXTwitter className="w-3 h-3 " />
                     </Link>
                     <Link
                       href={team.facebook || ''}
-                      className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
+                      className="bg-white hover:bg-primary w-7 h-7 rounded-full flex justify-center items-center transition-all duration-300 text-primary hover:text-white"
                     >
-                      <Image
-                        src="/home/ffacebook.svg"
-                        width={100}
-                        height={100}
-                        alt="social"
-                        className="w-4 h-4"
-                      />
+                      <FaFacebookF className="w-3 h-3 " />
                     </Link>
                     <Link
                       href={team.instagram || ''}
-                      className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
+                      className="bg-white hover:bg-primary w-7 h-7 rounded-full flex justify-center items-center transition-all duration-300 text-primary hover:text-white"
                     >
-                      <Image
-                        src="/home/finstagram.svg"
-                        width={100}
-                        height={100}
-                        alt="social"
-                        className="w-4 h-4"
-                      />
+                      <AiFillInstagram className="w-5 h-5 " />
                     </Link>
                   </ul>
                 </div>
