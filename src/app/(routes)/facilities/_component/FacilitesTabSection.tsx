@@ -1,14 +1,14 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
-import { ActiveImage } from './ActiveImage'
-import { SwipeableCards } from './SwipeableCards'
-import { FacilitesDesc } from './FacilitesDesc'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { useEffect, useState } from 'react'
 import {
   IFacilityData,
   IFacilityDetailResponse,
 } from '../interface/facilityInterface'
+import { ActiveImage } from './ActiveImage'
+import { FacilitesDesc } from './FacilitesDesc'
+import { SwipeableCards } from './SwipeableCards'
 
 export const FacilitesTabSection = ({ slug }: { slug: string }) => {
   const [activeSrc, setActiveSrc] = useState<string | null>(null)
@@ -29,7 +29,7 @@ export const FacilitesTabSection = ({ slug }: { slug: string }) => {
   }, [])
 
   return (
-    <div className="flex justify-between flex-col md:flex-row gap-x-6  2lg:flex-row gap-y-6 2lg:gap-y-0 ">
+    <div className="flex justify-around 2xl:justify-between flex-col gap-y-6 gap-x-6 md:flex-row 2lg:gap-x-4 2xl_md:gap-x-4 2xl:gap-x-3 2xl_lg:gap-x-3 3xl:gap-x-1">
       {activeSrc && <ActiveImage src={activeSrc} />}
       <div className="flex flex-col md:flex-col-reverse gap-y-3  2lg:max-w-[503px]  ">
         {facility?.images && (
