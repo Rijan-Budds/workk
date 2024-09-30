@@ -13,7 +13,7 @@ export const HomeWrapper = ({
   return (
     <div
       className={cn(
-        'w-full px-4 md:px-12 lg:px-[60px] 2xl:[200px] 2xl_lg:px-[240px]  3xl:px-[310px]  5xl:px-[540px]  py-[56px] ',
+        'w-full px-4 md:px-12 lg:px-[60px] 2xl:px-[200px] 2xl_lg:px-[240px]  3xl:px-[310px]  5xl:px-[540px]  py-[56px] ',
         className,
         {
           'bg-background py-[56px]  md:py-[80px]': isBg,

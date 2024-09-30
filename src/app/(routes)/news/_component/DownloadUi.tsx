@@ -5,6 +5,10 @@ import { recentPostData } from '../constant/newsdata'
 import { cn } from '@/common/utils/utils'
 import { CircleCardWrapper } from '@/common/components/Atom/CircleCardWrapper'
 import { inquiriesData } from '../../academics/constants/data'
+import { INewsItem } from '../interface/newsType'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+import { format } from 'date-fns'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 export const DownloadUi = () => {
   return (
@@ -36,7 +40,25 @@ const DownloadListUi = () => {
   )
 }
 
-export const RecentPostUi = () => {
+export const RecentPostUi = ({ recentData }: { recentData: INewsItem[] }) => {
+  const renderRecentPostUi = () => {
+    if (recentData) {
+      return (
+        recentData &&
+        recentData.map((post, index) => {
+          return (
+            <RecentPostCard
+              key={post.id}
+              post={post}
+              hideBorder={index === recentPostData.length - 1}
+            />
+          )
+        })
+      )
+    } else {
+      return <NoDataFound title="No recent post found" />
+    }
+  }
   return (
     <CircleCardWrapper className="bg-contain md:bg-cover">
       <div className="flex flex-col gap-y-6">
@@ -46,15 +68,7 @@ export const RecentPostUi = () => {
         >
           Recent Post
         </h1>
-        {recentPostData.map((post, index) => {
-          return (
-            <RecentPostCard
-              key={post.id}
-              post={post}
-              hideBorder={index === recentPostData.length - 1}
-            />
-          )
-        })}
+        {renderRecentPostUi()}
       </div>
     </CircleCardWrapper>
   )
@@ -64,7 +78,7 @@ const RecentPostCard = ({
   post,
   hideBorder,
 }: {
-  post: (typeof recentPostData)[0]
+  post: INewsItem
   hideBorder: boolean
 }) => {
   return (
@@ -76,19 +90,19 @@ const RecentPostCard = ({
         }
       )}
     >
-      <Image
-        src={post.src}
+      <ImageWithPlaceholder
+        src={post.images.key ? post.images.key : undefined}
         width={56}
         height={56}
-        className="rounded-full size-[56px] object-cover"
+        className="rounded-full size-[56px] object-cover aspect-square"
         alt="recent post image"
       />
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-y-1">
         <h2 className="font-workSans font-medium text-[16px] leading-[20.8px] text-heading">
           {post.title}
         </h2>
-        <span className="text-body font-workSans text-[14px] leading-4">
-          {post.date}
+        <span className="text-body font-workSans text-[14px] leading-4 ">
+          {format(post?.createdAt, 'MMMM d, yyyy')}
         </span>
       </div>
     </div>
