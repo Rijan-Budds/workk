@@ -17,7 +17,7 @@ const SchoolSidebar = () => {
             Opportunities are like sunrises. lf you wait too long, you miss
             them.
           </p>
-          <Link href={'/apply'}>
+          <Link href={'/apply?form=school'}>
             <button className="mt-6 w-full bg-secondary h-12 rounded-lg font-workSans text-white font-medium leading-4">
               Apply Now
             </button>

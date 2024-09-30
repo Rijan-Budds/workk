@@ -45,7 +45,7 @@ const Notice = () => {
               Notices
             </h1>
             <Link
-              href={'/news'}
+              href={'/news?type=notice'}
               className="text-primary font-workSans font-normal text-[14px] leading-4"
             >
               View All

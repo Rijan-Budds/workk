@@ -14,8 +14,11 @@ import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { NoDataFound } from '@/common/components/NoDataFound'
 import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
+import { useSearchParams } from 'next/navigation'
 
 export const NewsSection = () => {
+  const params = useSearchParams()
+
   const [newsNotice, setNewsNotice] = useState<INewsItem[] | undefined>(
     undefined
   )
@@ -158,6 +161,17 @@ export const NewsSection = () => {
       return <NoDataFound title={`No ${active} found`} />
     }
   }
+
+  useEffect(() => {
+    const getNewsOrNotice = params.get('type')
+    if (getNewsOrNotice) {
+      if (getNewsOrNotice === 'notice') {
+        setActiveTab('notice')
+      } else {
+        setActiveTab('news')
+      }
+    }
+  }, [params])
 
   return (
     <>

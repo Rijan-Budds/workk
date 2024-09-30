@@ -6,7 +6,7 @@ import { SchoolForm } from './SchoolForm'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { UnSaveChange } from './UnSaveChange'
 import { useSearchParams } from 'next/navigation'
-import { TabSwitch } from '@/common/components/Atom/TabSwitch'
+import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
 
 export const AdmissionTab = () => {
   const params = useSearchParams()
@@ -50,14 +50,18 @@ export const AdmissionTab = () => {
   useEffect(() => {
     const getFormType = params.get('form')
     if (getFormType) {
-      setActiveTab(getFormType)
+      if (getFormType === 'school') {
+        setActiveTab('school')
+      } else {
+        setActiveTab('plus-two')
+      }
     }
   }, [params])
 
   return (
     <div className="flex flex-col  justify-center items-center gap-y-10">
       <div className="w-fit flex flex-col justify-center items-center gap-y-10">
-        <TabSwitch
+        <TabAnimation
           activeTab={active}
           tabs={tabs}
           setActive={setActiveTab}
