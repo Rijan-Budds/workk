@@ -1,22 +1,22 @@
 'use client'
+import { INewsResponseData } from '@/app/(routes)/news/interface/newsType'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
-import React, { ReactNode, useEffect, useState } from 'react'
-import { NewsCard } from './NewsCard'
-import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
-import { Pagination, Navigation } from 'swiper/modules'
+import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import {
   SwiperButtonNext,
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
-import './notice.css'
-import { SectionHeading } from '@/common/components/Atom/SectionHeading'
-import { INewsResponseData } from '@/app/(routes)/news/interface/newsType'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { ReactNode, useEffect, useState } from 'react'
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import { Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { NewsCard } from './NewsCard'
+import './notice.css'
 
 export const swiperParams = {
   navigation: {
@@ -53,7 +53,7 @@ const NewsSection = () => {
               <MiniHeading className="md:text-start">
                 News and Events
               </MiniHeading>
-              <SectionHeading className="mt-2 text-center md:text-left">
+              <SectionHeading className="mt-2 text-center md:text-left !text-[28px]">
                 News and Events
               </SectionHeading>
             </div>
