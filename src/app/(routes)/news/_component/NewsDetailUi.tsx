@@ -30,7 +30,7 @@ export const NewsDetailUi = ({
         <div className="flex flex-col gap-y-20 2lg:gap-y-0  2lg:flex-row justify-between gap-x-12">
           {data && <NewsDetailSection data={data} />}
           <StickySidebar type={'NEWS'} />
-          <MobileSidebar />
+          <MobileSidebar type={'NEWS'} />
         </div>
       </HomeWrapper>
     </div>

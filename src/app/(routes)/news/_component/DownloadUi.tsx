@@ -40,7 +40,11 @@ const DownloadListUi = () => {
   )
 }
 
-export const RecentPostUi = ({ recentData }: { recentData: INewsItem[] }) => {
+export const RecentPostUi = ({
+  recentData,
+}: {
+  recentData: INewsItem[] | undefined
+}) => {
   const renderRecentPostUi = () => {
     if (recentData) {
       return (
@@ -81,8 +85,12 @@ const RecentPostCard = ({
   post: INewsItem
   hideBorder: boolean
 }) => {
+  const type = post.type
   return (
-    <div
+    <Link
+      href={`${
+        type === 'NEWS' ? '/news/' + post.slug : '/notice/' + post.slug
+      }`}
       className={cn(
         'flex items-center gap-x-3 2lg:gap-x-6 pb-6 border-b border-border',
         {
@@ -105,7 +113,7 @@ const RecentPostCard = ({
           {format(post?.createdAt, 'MMMM d, yyyy')}
         </span>
       </div>
-    </div>
+    </Link>
   )
 }
 

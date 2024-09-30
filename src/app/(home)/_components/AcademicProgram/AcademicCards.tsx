@@ -6,16 +6,20 @@ import { academicCardsDataOne } from './constant/data'
 import { cn } from '@/common/utils/utils'
 import Link from 'next/link'
 
+type IType = 'PLUS_TWO' | 'SCHOOL'
+
 export const AcademicCards = ({
   title,
   description,
   list,
   color,
+  type,
 }: {
   title: string
   description: string
   list: typeof academicCardsDataOne
   color: string
+  type: IType
 }) => {
   return (
     <div className="bg-white p-8 rounded-[12px] flex flex-col gap-y-4 relative group overflow-hidden">
@@ -27,7 +31,12 @@ export const AcademicCards = ({
       </p>
       <div className="mt-4 flex flex-col gap-y-8 z-10">
         {list.map((list) => (
-          <AcademicList key={list.id} title={list.title} slug={list.slug} />
+          <AcademicList
+            key={list.id}
+            title={list.title}
+            slug={list.slug}
+            type={type}
+          />
         ))}
       </div>
       <div
@@ -37,9 +46,19 @@ export const AcademicCards = ({
   )
 }
 
-const AcademicList = ({ title, slug }: { title: string; slug: string }) => {
+const AcademicList = ({
+  title,
+  slug,
+  type,
+}: {
+  title: string
+  slug: string
+  type: IType
+}) => {
   return (
-    <Link href={`/academics/plustwo/${slug}`}>
+    <Link
+      href={`/academics/${type === 'PLUS_TWO' ? 'plustwo' : 'school'}/${slug}`}
+    >
       <span
         className={cn(
           'flex items-center gap-x-2 font-workSans font-normal text-[16px] leading-4 transition-all duration-300 text-heading hover:text-primary '
