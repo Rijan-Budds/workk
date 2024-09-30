@@ -1,15 +1,29 @@
+'use client'
+
 import React from 'react'
 import { HomeWrapper } from '../../Atom/HomeWrapper'
 import Image from 'next/image'
 import { NavHeaderLink } from './NavHeaderLink'
+import { useRouter } from 'next/navigation'
 
 export const NavHeader = () => {
+  const router = useRouter()
+  const handleMailClick = (mail: string) => {
+    router.push(`mailto:${mail}`)
+  }
+
+  const handleRedirectContact = (contact: string) => {
+    router.push(`tel:${contact}`)
+  }
   return (
     <div className="py-3 bg-background border-b-[1px] border-border hidden 2lg:block ">
       <HomeWrapper className="py-0">
         <div className="flex justify-between">
           <div className="flex gap-x-8 ">
-            <div className="flex items-center gap-x-2">
+            <div
+              onClick={() => handleMailClick('pawanprakriti2048@gmail.com')}
+              className="flex items-center gap-x-2 cursor-pointer"
+            >
               <Image
                 width={11.67}
                 height={9.33}
@@ -20,7 +34,10 @@ export const NavHeader = () => {
                 pawanprakriti2048@gmail.com
               </span>
             </div>
-            <div className="flex items-center gap-x-2">
+            <div
+              onClick={() => handleRedirectContact('9843589375')}
+              className="flex items-center gap-x-2 cursor-pointer"
+            >
               <Image
                 width={11.67}
                 height={9.33}
