@@ -83,18 +83,25 @@ export const streetValidation = Yup.string()
       return true
     }
   )
-  .max(50, 'Street must be at most 30 characters')
+  .max(50, 'Street must be at most 50 characters')
   .min(4, 'Street must be at least 4 characters')
   .typeError('Please enter a valid name')
   .required('Street is a required field')
-  .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
-  .test('spaces', 'Spaces are not allowed', function (value) {
-    if (value) {
-      const multipleSpacesPattern = /\s{1,}/
-      return !multipleSpacesPattern.test(value)
+  .matches(
+    /^[A-Za-z0-9\s.]+$/,
+    'Must contain only letters, numbers, and spaces'
+  )
+  .test(
+    'no-multiple-spaces',
+    'Multiple spaces are not allowed',
+    function (value) {
+      if (value) {
+        const multipleSpacesPattern = /\s{2,}/
+        return !multipleSpacesPattern.test(value)
+      }
+      return true
     }
-    return true
-  })
+  )
 
 export const cityValidation = Yup.string()
   .test(
@@ -112,13 +119,17 @@ export const cityValidation = Yup.string()
   .typeError('Please enter a valid name')
   .required('City is a required field')
   .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
-  .test('spaces', 'Spaces are not allowed', function (value) {
-    if (value) {
-      const multipleSpacesPattern = /\s{1,}/
-      return !multipleSpacesPattern.test(value)
+  .test(
+    'no-multiple-spaces',
+    'Multiple spaces are not allowed',
+    function (value) {
+      if (value) {
+        const multipleSpacesPattern = /\s{2,}/
+        return !multipleSpacesPattern.test(value)
+      }
+      return true
     }
-    return true
-  })
+  )
 
 export const provinceNumberValidation = Yup.string().required(
   'Province is a required field'
@@ -311,6 +322,10 @@ export const seeGpaGradeValidation = Yup.string()
     'SEE GPA Grade must be one of the predefined grades'
   )
 export const streamValidation = Yup.string().required('Please select stream.')
+
+export const schoolLevelValidation = Yup.string().required(
+  'Please select level'
+)
 
 export const shiftValidation = Yup.string().required(
   'Please select one option.'

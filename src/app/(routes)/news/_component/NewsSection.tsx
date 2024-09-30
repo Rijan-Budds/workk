@@ -1,7 +1,6 @@
 'use client'
 
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
-import { TabSwitch } from '@/common/components/Atom/TabSwitch'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -14,6 +13,7 @@ import { Pagination } from '@/common/components/Pagination'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
 
 export const NewsSection = () => {
   const [newsNotice, setNewsNotice] = useState<INewsItem[] | undefined>(
@@ -167,7 +167,7 @@ export const NewsSection = () => {
       />
       <HomeWrapper className="2lg:pb-32">
         <div className="flex justify-center mb-10">
-          <TabSwitch
+          <TabAnimation
             tabs={tabs}
             activeTab={active}
             setActive={setActiveTab}

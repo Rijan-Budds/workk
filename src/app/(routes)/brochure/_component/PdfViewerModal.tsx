@@ -42,6 +42,7 @@ export const PdfViewerModal = ({
     if (src) {
       const link = document.createElement('a')
       link.href = src
+      link.target = '_blank'
       link.download = 'brochure.pdf'
       link.click()
     }
@@ -122,14 +123,6 @@ export const PdfViewerModal = ({
               +
             </span>
           </div>
-          {/* <Image
-            onClick={handleRotation}
-            src={'/downloads/rotate-icon.svg'}
-            width={20}
-            height={20}
-            alt="rotate icon"
-            className="ml-6"
-          /> */}
         </div>
 
         {/* right container */}

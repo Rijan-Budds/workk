@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { GalleryTab } from './GalleryTab'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { GalleryCard } from './GalleryCard'
 import { CustomModal } from '@/common/components/Molecules/Modal'
@@ -19,10 +18,23 @@ import {
 } from '../interface/galleryType'
 import { Pagination } from '@/common/components/Pagination'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
 
 type IType = 'photo' | 'video'
 
 export const GallerySection = () => {
+  const galleryTabs = [
+    {
+      title: 'Photos',
+      key: 'photo',
+    },
+    {
+      title: 'Videos',
+      key: 'video',
+    },
+  ]
+
+  const [galleryTab, setGalleryTab] = useState<string>(galleryTabs[0].key)
   const pathname = usePathname()
   const getPaths = useBreadCrumbPath(pathname)
 
@@ -154,6 +166,16 @@ export const GallerySection = () => {
     }
   }
 
+  const handleTabClick = (title: string) => {
+    if (title === 'photo') {
+      handleDynamicData('photo')
+      setGalleryTab('photo')
+    } else {
+      setGalleryTab('video')
+      handleDynamicData('video')
+    }
+  }
+
   useEffect(() => {
     if (type === 'video') {
       fetchGalleryVideoData()
@@ -167,7 +189,12 @@ export const GallerySection = () => {
       <CoverImage title="Gallery" list={getPaths} />
       <HomeWrapper>
         <div className="flex flex-col items-center gap-y-10 2lg:gap-y-14">
-          <GalleryTab handleDynamicData={handleDynamicData} />
+          <TabAnimation
+            activeTab={galleryTab}
+            handleDynamicData={handleTabClick}
+            setActive={setGalleryTab}
+            tabs={galleryTabs}
+          />
           <div className="flex flex-row flex-wrap justify-center  gap-6 md:gap-x-5 md:gap-y-6 2lg:gap-6 ">
             {renderGalleryCardsUi()}
           </div>

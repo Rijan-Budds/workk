@@ -3,11 +3,11 @@ import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
+import { NoDataFound } from '@/common/components/NoDataFound'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import Image from 'next/image'
-import React from 'react'
+import Link from 'next/link'
 import { IAboutResponse } from '../_interface/About'
-import { NoDataFound } from '@/common/components/NoDataFound'
 
 const AboutComponent = async () => {
   const response: IAboutResponse | undefined = await UseServerFetch(
@@ -60,7 +60,9 @@ const AboutComponent = async () => {
               </ul>
             </div>
             <div className="mt-[40px]">
-              <Button>Apply Admission</Button>
+              <Link href={'/apply'}>
+                <Button>Apply Admission</Button>
+              </Link>
             </div>
           </div>
         </div>

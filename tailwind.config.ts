@@ -73,6 +73,9 @@ const config = {
         poppins: ['var(--font-poppins)'],
         inter: ['var(--font-inter)'],
       },
+      transitionDuration: {
+        '1500': '1500ms',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

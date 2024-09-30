@@ -1,10 +1,9 @@
-import React from 'react'
-import FacilitiesSwiper from './FacilitiesSwiper'
-import { MiniHeading } from '@/common/components/Atom/MiniHeading'
-import Image from 'next/image'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
-import { IFacilityListResponse } from '../interface/facilityInterface'
+import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
+import Image from 'next/image'
+import { IFacilityListResponse } from '../interface/facilityInterface'
+import FacilitiesSwiper from './FacilitiesSwiper'
 
 const FacilitiesSwiperSection = async () => {
   const response: IFacilityListResponse | undefined = await UseServerFetch(
@@ -16,15 +15,15 @@ const FacilitiesSwiperSection = async () => {
       className="!px-0 !pl-4 md:!pl-12 lg:!pl-[60px] 2xl_lg:!pl-[240px] 3xl:!pl-[310px] 5xl:!pl-[540px]"
       isBg
     >
-      <div className="flex flex-col 2lg:flex-row justify-between overflow-hidden gap-[56px]">
-        <div className="max-w-[397px] mx-auto 2lg:mx-0 flex flex-col justify-center flex-shrink-0">
-          <MiniHeading className="text-center 2lg:text-start">
+      <div className="flex flex-col 2lg:flex-row justify-between overflow-hidden gap-[47px]">
+        <div className="max-w-[397px] mx-auto md:mx-0 2lg:mx-0 flex flex-col justify-center flex-shrink-0">
+          <MiniHeading className="text-center md:text-start 2lg:text-start">
             Facilities
           </MiniHeading>
-          <h2 className="font-poppins text-[28px] 2lg:text-[38px] leading-[36.4px] 2lg:leading-[49.4px] font-medium text-center 2lg:text-left text-heading mt-2">
+          <h2 className="font-poppins text-[28px] 2lg:text-[38px] leading-[36.4px] 2lg:leading-[49.4px] font-medium text-center md:text-left 2lg:text-left text-heading mt-2">
             Our facilities
           </h2>
-          <p className="font-workSans font-normal text-[14px] leading-4 text-heading mt-4">
+          <p className="font-workSans text-center md:text-start 2lg:text-start font-normal text-[16px] leading-7 text-heading mt-4">
             Our College can also attend regular networking events, and benefit
             from exclusive resources and mentorship programs.
           </p>

@@ -1,12 +1,12 @@
 'use client'
 
-import { TabSwitch } from '@/common/components/Atom/TabSwitch'
 import React, { useEffect, useState } from 'react'
 import { PlusTwoForm } from './PlusTwoForm'
 import { SchoolForm } from './SchoolForm'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { UnSaveChange } from './UnSaveChange'
 import { useSearchParams } from 'next/navigation'
+import { TabSwitch } from '@/common/components/Atom/TabSwitch'
 
 export const AdmissionTab = () => {
   const params = useSearchParams()
@@ -65,6 +65,7 @@ export const AdmissionTab = () => {
           isFieldChange={true}
           handleDynamicData={handleTabClick}
         />
+
         <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center text-body">
           When reading an application, we get to know the person behind the
           numbers. We take into consideration your academic achievements,

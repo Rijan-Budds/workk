@@ -19,6 +19,7 @@ import { toast } from '@/common/hook/use-toast'
 import Image from 'next/image'
 import Axios from '@/common/utils/Axios'
 import { contactForm } from '@/common/constant/route'
+import { ButtonLoader } from '@/common/components/Atom/ButtonLoader'
 
 export const ContactForm = () => {
   const [message, setMessage] = useState<string>('')
@@ -164,7 +165,7 @@ export const ContactForm = () => {
                   type="submit"
                   className="w-full md:w-fit mt-[8px]"
                 >
-                  Submit
+                  <ButtonLoader loading={loading} />
                 </Button>
               </div>
             </Form>
