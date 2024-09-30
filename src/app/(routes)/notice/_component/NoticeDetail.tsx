@@ -20,8 +20,8 @@ export const NoticeDetail = ({
       <HomeWrapper>
         <div className="flex flex-col gap-y-20 2lg:gap-y-0  2lg:flex-row justify-between gap-x-12">
           {detail && <NoticeDetailSection detail={detail} />}
-          <StickySidebar />
-          <MobileSidebar />
+          <StickySidebar type="NOTICE" />
+          <MobileSidebar type="NOTICE" />
         </div>
       </HomeWrapper>
     </div>

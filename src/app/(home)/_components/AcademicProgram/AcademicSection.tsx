@@ -50,6 +50,7 @@ export const AcademicSection = () => {
             }
             color={'bg-primaryLighter'}
             list={academicCardsDataOne}
+            type={'PLUS_TWO'}
           />
           <AcademicCards
             title={'School'}
@@ -58,6 +59,7 @@ export const AcademicSection = () => {
             }
             color={'bg-secondaryLighter'}
             list={academicCardsDataTwo}
+            type={'SCHOOL'}
           />
         </div>
         <AcademicSwipeCard />
