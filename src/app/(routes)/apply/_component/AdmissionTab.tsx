@@ -50,7 +50,11 @@ export const AdmissionTab = () => {
   useEffect(() => {
     const getFormType = params.get('form')
     if (getFormType) {
-      setActiveTab(getFormType)
+      if (getFormType === 'school') {
+        setActiveTab('school')
+      } else {
+        setActiveTab('plus-two')
+      }
     }
   }, [params])
 
