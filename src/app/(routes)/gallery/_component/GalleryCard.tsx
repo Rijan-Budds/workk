@@ -4,7 +4,7 @@ import { CustomVideo } from '@/common/components/Atom/CustomVideo'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { cn } from '@/common/utils/utils'
 import Image from 'next/image'
-import React, { Dispatch, useRef } from 'react'
+import { Dispatch, useRef } from 'react'
 import { IGalleryPhotoItem } from '../interface/galleryType'
 
 export const GalleryCard = ({
@@ -43,7 +43,8 @@ export const GalleryCard = ({
             autoPlay={false}
             fallbackThumb=""
           />
-          <button className="absolute bottom-4 md:bottom-[1.5rem] right-4 md:right-[1.5rem] bg-white  rounded-full  size-[32px] flex justify-center items-center">
+
+          <button className="absolute bottom-[1.5rem] right-2 md:right-[1rem] bg-white  rounded-full  size-[32px] flex justify-center items-center">
             <Image
               width={10}
               height={11}
@@ -52,7 +53,7 @@ export const GalleryCard = ({
             />
           </button>
 
-          <button className="absolute bottom-4 md:bottom-[1.5rem] right-14 md:right-[4.5rem] bg-white text-white p-2 rounded-full  size-[32px] flex justify-center items-center">
+          <button className="absolute bottom-[1.5rem] right-12 md:right-[3.5rem] bg-white text-white p-2 rounded-full  size-[32px] flex justify-center items-center">
             <Image
               width={15}
               height={12}

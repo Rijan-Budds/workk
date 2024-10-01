@@ -1,7 +1,8 @@
+'use client'
 import { Button } from '@/common/components/ui/button'
 import { cn } from '@/common/utils/utils'
 import Image from 'next/image'
-import React, { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { IconBaseProps } from 'react-icons'
 import { BsArrowRight } from 'react-icons/bs'
 
@@ -9,6 +10,7 @@ type IDirection = 'next' | 'prev'
 
 export const GalleryModal = ({
   src,
+  title,
   setModalOpen,
   setSrc,
   setActiveImage,
@@ -16,6 +18,7 @@ export const GalleryModal = ({
   showSwipe,
 }: {
   src: string | undefined
+  title: string | undefined
   setModalOpen: Dispatch<SetStateAction<boolean>>
   setSrc?: Dispatch<SetStateAction<string>>
   setActiveImage?: Dispatch<SetStateAction<number | null>>
@@ -56,6 +59,9 @@ export const GalleryModal = ({
           height={854}
           className="object-contain pointer-events-none selection:bg-transparent transition-all duration-1000 mx-auto w-[90vw] h-[100vh] lg:h-[610px] rounded-xl"
         />
+        <p className="absolute transform bottom-14 md:-bottom-20  left-[15%] right-[15%] md:right-[40%] md:left-[40%] text-xl text-white font-poppins md:font-medium text-center p-4">
+          {title}
+        </p>
       </div>
 
       {showSwipe && (
@@ -66,7 +72,7 @@ export const GalleryModal = ({
           />
           <SwipeArrow
             onClick={() => handleSwipe('prev')}
-            className="bg-white rounded-full size-[40px] p-2 left-2 2lg:left-12 2xl_md:left-[169px]  rotate-180 absolute top-[53%] 2lg:top-[50%] -translate-y-1/2 cursor-pointer transition-all duration-1000"
+            className="bg-white t rounded-full size-[40px] p-2 left-2 2lg:left-12 2xl_md:left-[169px]  rotate-180 absolute top-[53%] 2lg:top-[50%] -translate-y-1/2 cursor-pointer transition-all duration-1000"
           />
         </>
       )}
