@@ -1,24 +1,24 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
-import { GalleryCard } from './GalleryCard'
-import { CustomModal } from '@/common/components/Molecules/Modal'
-import { GalleryModal } from './GalleryModal'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
-import { usePathname } from 'next/navigation'
+import { CustomModal } from '@/common/components/Molecules/Modal'
+import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
+import { NoDataFound } from '@/common/components/NoDataFound'
+import { Pagination } from '@/common/components/Pagination'
 import { useBreadCrumbPath } from '@/common/hook/useBreadCrumbPath'
-import { VideoModal } from './VideoModal'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import {
   IGalleryPhotoItem,
   IGalleryPhotoResponse,
   IGalleryVideoItem,
   IGalleryVideoResponse,
 } from '../interface/galleryType'
-import { Pagination } from '@/common/components/Pagination'
-import { NoDataFound } from '@/common/components/NoDataFound'
-import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
+import { GalleryCard } from './GalleryCard'
+import { GalleryModal } from './GalleryModal'
+import { VideoModal } from './VideoModal'
 
 type IType = 'photo' | 'video'
 
@@ -232,6 +232,11 @@ export const GallerySection = () => {
                   ? galleryPhoto[activeImage].photo.key
                   : galleryPhoto && galleryPhoto.length > 0
                   ? galleryPhoto[0].photo.key
+                  : undefined
+              }
+              title={
+                galleryPhoto && galleryPhoto.length > 0 && activeImage !== null
+                  ? galleryPhoto[activeImage].title
                   : undefined
               }
               setModalOpen={setModalOpen}
