@@ -1,7 +1,7 @@
 'use client'
 
 import { useGSAP } from '@gsap/react'
-import React, { Dispatch, SetStateAction, useRef } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { Flip } from 'gsap/Flip'
 import { cn } from '@/common/utils/utils'
@@ -29,6 +29,21 @@ export const TabAnimation = ({
 }: TabSwitchProps) => {
   const activeBarRef = useRef<HTMLDivElement | null>(null)
   const tabRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    const setInitialActiveTab = () => {
+      const initialIndex = tabs.findIndex((tab) => tab.key === activeTab)
+      if (
+        initialIndex >= 0 &&
+        tabRefs.current[initialIndex] &&
+        activeBarRef.current
+      ) {
+        tabRefs.current[initialIndex]?.appendChild(activeBarRef.current)
+      }
+    }
+
+    setInitialActiveTab()
+  }, [activeTab, tabs])
 
   useGSAP(() => {
     const handleTabClick = (index: number) => {

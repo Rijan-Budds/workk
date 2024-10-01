@@ -5,24 +5,28 @@ import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import { NoDataFound } from '@/common/components/NoDataFound'
 import { format } from 'date-fns'
+import './terms.css'
 
 const TearmsAndCondition = async () => {
   const response: ITermsResponse | undefined = await UseServerFetch(
-    '/api/v1/introduction'
+    '/api/v1/terms-and-conditions'
   )
+  console.log(response?.data[0]?.createdAt)
 
   const renderTermsUi = () => {
-    if (response?.data) {
+    if (response?.data && response.data.length > 0) {
+      const terms = response.data[0]
       return (
         <div>
-          <div>
+          <div className="font-workSans font-normal text-[14px] leading-4 text-body">
             Last Update:{' '}
-            {response.data.updatedAt
-              ? format(new Date(response.data.updatedAt), 'MMMM dd, yyyy') // Full month, day, and year
+            {terms.updatedAt
+              ? format(new Date(terms.updatedAt), 'MMMM dd, yyyy')
               : 'N/A'}
           </div>
           <div
-            dangerouslySetInnerHTML={{ __html: response?.data.description }}
+            className="terms-content"
+            dangerouslySetInnerHTML={{ __html: terms.description }}
           ></div>
         </div>
       )

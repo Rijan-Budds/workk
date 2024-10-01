@@ -25,7 +25,7 @@ export const NewsDetailUi = ({
   ]
   return (
     <div className="overflow-x-hidden  2lg:overflow-visible">
-      <CoverImage title="News & Events" list={BreadCrumbList} />
+      <CoverImage title="News" list={BreadCrumbList} />
       <HomeWrapper>
         <div className="flex flex-col gap-y-20 2lg:gap-y-0  2lg:flex-row justify-between gap-x-12">
           {data && <NewsDetailSection data={data} />}

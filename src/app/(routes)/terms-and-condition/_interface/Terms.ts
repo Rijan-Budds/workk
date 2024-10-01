@@ -1,7 +1,7 @@
 export interface ITermsResponse {
   status: number
   message: string
-  data: TermsData
+  data: TermsData[]
 }
 
 export interface TermsData {

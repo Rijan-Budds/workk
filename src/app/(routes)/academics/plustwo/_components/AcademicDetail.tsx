@@ -18,9 +18,9 @@ const AcademicDetail = ({
       <CoverImage
         title={slug}
         list={[
-          { link: 'academic', title: 'Academic' },
-          { link: '', title: 'PLus Two' },
-          { link: '', title: slug },
+          { link: '/academics', title: 'Academic' },
+          { link: null, title: 'PLus Two' },
+          { link: null, title: slug },
         ]}
       />
       <HomeWrapper>

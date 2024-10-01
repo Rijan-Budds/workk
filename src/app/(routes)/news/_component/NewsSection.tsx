@@ -19,7 +19,6 @@ export const NewsSection = () => {
   const [newsNotice, setNewsNotice] = useState<INewsItem[] | undefined>(
     undefined
   )
-
   const pageSize = 6
   const [page, setPage] = useState<number>(1)
   const [totalCount, setTotalCount] = useState<number | undefined>(undefined)
@@ -44,6 +43,16 @@ export const NewsSection = () => {
   const isPagination = showPagination()
 
   const [active, setActiveTab] = useState<string>(tabs[0]?.key)
+
+  useEffect(() => {
+    // Check if tab query parameter exists
+    const params = new URLSearchParams(window.location.search)
+    const tab = params.get('tab')
+
+    if (tab && tabs.some((t) => t.key === tab)) {
+      setActiveTab(tab)
+    }
+  }, [])
 
   useEffect(() => {
     const fetchNewsAndNoticeList = async () => {
@@ -90,13 +99,6 @@ export const NewsSection = () => {
                           alt="news"
                           className="relative w-[343px] h-[231px] md:w-[324px] md:h-[243px]  2lg:w-[398px] 2lg:h-[298px] object-cover group-hover:scale-110 transition-all duration-500"
                         />
-                        {/* <Image
-                          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${news.images.key}`}
-                          width={447}
-                          height={298}
-                          alt="news"
-                          className="relative w-[343px] h-[231px] md:w-[324px] md:h-[243px]  2lg:w-[398px] 2lg:h-[298px] object-cover group-hover:scale-110 transition-all duration-500"
-                        /> */}
                       </div>
                       <div className="absolute w-[94%] max-h-[145px] 2lg:max-h-[120px] bg-white shadow-sm top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">
                         <div className="p-6 z-10 relative flex flex-col gap-y-2">
