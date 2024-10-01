@@ -3,8 +3,13 @@ import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import Image from 'next/image'
 import React from 'react'
 import { VideoSection } from './VideoSection'
+import { IHomepageItem } from '@/app/(routes)/contact/_interface/Contact'
 
-export const ReasonsToStudy = () => {
+export const ReasonsToStudy = ({
+  settings,
+}: {
+  settings: IHomepageItem[] | undefined
+}) => {
   const missionData = [
     {
       title: 'Mission',
@@ -25,6 +30,7 @@ export const ReasonsToStudy = () => {
       icon: '/home/goal.svg',
     },
   ]
+
   return (
     <HomeWrapper>
       <div className="flex flex-col">
@@ -55,7 +61,7 @@ export const ReasonsToStudy = () => {
               />
             ))}
           </div>
-          <VideoSection />
+          <VideoSection settings={settings} />
         </div>
       </div>
     </HomeWrapper>

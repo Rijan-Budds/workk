@@ -7,8 +7,13 @@ import { CustomVideo } from '@/common/components/Atom/CustomVideo'
 
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { VideoModal } from '@/app/(routes)/gallery/_component/VideoModal'
+import { IHomepageItem } from '@/app/(routes)/contact/_interface/Contact'
 
-export const VideoSection = () => {
+export const VideoSection = ({
+  settings,
+}: {
+  settings: IHomepageItem[] | undefined
+}) => {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [isPlaying, setIsPlaying] = useState(true)
   const [isOpen, setModalOpen] = useState<boolean>(false)
@@ -72,7 +77,7 @@ export const VideoSection = () => {
           />
         </button>
         <div className="absolute -top-[3.5rem]  2lg:-top-[5.25rem] right-[1.75rem]">
-          <VideoHeader />
+          <VideoHeader settings={settings} />
           <VideoHeaderMobile />
         </div>
       </div>

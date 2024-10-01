@@ -3,42 +3,54 @@ import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import { Autoplay } from 'swiper/modules'
+import { IHomepageItem } from '@/app/(routes)/contact/_interface/Contact'
 
-export const VideoHeader = () => {
+export const VideoHeader = ({
+  settings,
+}: {
+  settings: IHomepageItem[] | undefined
+}) => {
+  const filterStats = settings?.filter((d) =>
+    ['Trending Courses', 'Qualified Teachers'].includes(d.key)
+  )
+
   return (
     <div className="hidden md:flex p-6 bg-primary items-center gap-x-6  rounded-[8px]">
-      <div className="flex items-center gap-x-6">
-        <Image
-          src={'/home/course.svg'}
-          width={64}
-          height={64}
-          alt="Trending course icon"
-        />
-        <div className="flex flex-col  w-[166px]">
-          <span className="font-workSans text-[20px] font-semibold leading-[30px] text-white">
-            400 +
-          </span>
-          <p className="text-[14px] leading-[21px] font-normal font-workSans text-white">
-            Trending Courses
-          </p>
-        </div>
-      </div>
-      <div className="flex items-center gap-x-6">
-        <Image
-          src={'/home/teachers.svg'}
-          width={64}
-          height={64}
-          alt="Trending course icon"
-        />
-        <div className="flex flex-col w-[166px]">
-          <span className="font-workSans text-[20px] leading-[30px] text-white">
-            800 +
-          </span>
-          <p className="text-[14px] leading-[21px] font-normal font-workSans text-white">
-            Qualified Teachers
-          </p>
-        </div>
-      </div>
+      {filterStats &&
+        filterStats.map((d) => {
+          const isTrendingCourse = d.key === 'Trending Courses'
+
+          return (
+            <>
+              <div className="flex items-center gap-x-6">
+                {isTrendingCourse ? (
+                  <Image
+                    src={'/home/course.svg'}
+                    width={64}
+                    height={64}
+                    alt="Trending course icon"
+                  />
+                ) : (
+                  <Image
+                    src={'/home/teachers.svg'}
+                    width={64}
+                    height={64}
+                    alt="Trending course icon"
+                  />
+                )}
+
+                <div className="flex flex-col  w-[166px]">
+                  <span className="font-workSans text-[20px] font-semibold leading-[30px] text-white">
+                    {d.value}
+                  </span>
+                  <p className="text-[14px] leading-[21px] font-normal font-workSans text-white">
+                    {d.key}
+                  </p>
+                </div>
+              </div>
+            </>
+          )
+        })}
     </div>
   )
 }
