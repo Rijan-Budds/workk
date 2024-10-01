@@ -15,7 +15,7 @@ const AdmissionSideBar: React.FC<AdmissionSideBarProps> = ({
   onFilterChange,
 }) => {
   return (
-    <div className="2lg:flex flex-col gap-6 w-full hidden">
+    <div className="md:flex flex-col gap-6 w-full hidden">
       <AdmissionFilterTwo
         admissions={admissions?.data || []}
         onFilterChange={onFilterChange}

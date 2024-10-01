@@ -43,7 +43,7 @@ export const GalleryCard = ({
             autoPlay={false}
             fallbackThumb=""
           />
-          <button className="absolute bottom-[1.5rem] right-[1.5rem] bg-white  rounded-full  size-[32px] flex justify-center items-center">
+          <button className="absolute bottom-4 md:bottom-[1.5rem] right-4 md:right-[1.5rem] bg-white  rounded-full  size-[32px] flex justify-center items-center">
             <Image
               width={10}
               height={11}
@@ -52,7 +52,7 @@ export const GalleryCard = ({
             />
           </button>
 
-          <button className="absolute bottom-[1.5rem] right-[4.5rem] bg-white text-white p-2 rounded-full  size-[32px] flex justify-center items-center">
+          <button className="absolute bottom-4 md:bottom-[1.5rem] right-14 md:right-[4.5rem] bg-white text-white p-2 rounded-full  size-[32px] flex justify-center items-center">
             <Image
               width={15}
               height={12}
@@ -75,9 +75,9 @@ export const GalleryCard = ({
 
       <div
         className={cn(
-          'bg-white absolute 2lg:-bottom-20 left-1/2 -translate-x-1/2 rounded-[12px] text-nowrap bottom-6 2lg:group-hover:bottom-6 transition-all duration-500 will-change-transform ',
+          'bg-white absolute md:-bottom-20 left-4 md:left-1/2 md:-translate-x-1/2 rounded-[12px] text-nowrap bottom-4 md:group-hover:bottom-6 transition-all duration-500 will-change-transform ',
           {
-            '2lg:group-hover:bottom-24': type === 'video',
+            'md:group-hover:bottom-24': type === 'video',
           }
         )}
       >

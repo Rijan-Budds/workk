@@ -16,15 +16,15 @@ const AcademicDetail = ({
   return (
     <>
       <CoverImage
-        title="Academics"
+        title={slug}
         list={[
-          { link: 'academic', title: 'Academic' },
-          { link: '', title: 'PLus Two' },
-          { link: '', title: slug },
+          { link: '/academics', title: 'Academic' },
+          { link: null, title: 'PLus Two' },
+          { link: null, title: slug },
         ]}
       />
       <HomeWrapper>
-        <div className="flex flex-col gap-[80px] lg:flex-row 2lg:gap-[56px]">
+        <div className="flex flex-col 2lg:flex-row gap-[80px] 2lg:gap-[56px]">
           <AcademicDetailSection detail={detail} />
           <StickyAcademicSide />
         </div>

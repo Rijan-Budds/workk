@@ -29,10 +29,6 @@
   gap: 16px;
 }
 
-/* .custom-card.active {
-  border-bottom: 2px solid #007aff;
-} */
-
 .custom-card-timer {
   position: absolute;
   bottom: 0;
@@ -41,11 +37,11 @@
   width: 0;
   background: #007aff;
   border-radius: 2px;
-  transition: width 2s linear; /* Ensure transition matches animation */
+  transition: width 2s linear;
 }
 
 .custom-card.active .custom-card-timer {
-  animation: fill 2s linear forwards; /* Animate when card is active */
+  animation: fill 2s linear forwards;
 }
 
 @keyframes fill {
@@ -57,7 +53,6 @@
   }
 }
 
-/* Adding the blue border style */
 .custom-card .swiper-pagination-bullet-active {
   border-bottom: 2px solid #007aff;
 }
@@ -67,19 +62,6 @@
   border-bottom: #e7eef8 2px solid;
 }
 
-/* #director .swiper-pagination-bullet-active .custom-card-timer {
-  animation: fill 2s linear forwards;
-  border-bottom: transparent;
-}
-
-@keyframes fill {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
-} */
 .custom-card-image {
   width: 50px;
   height: 50px;
@@ -104,10 +86,6 @@
   font-weight: 400;
   color: #5d5f69;
 }
-
-/* .custom-card.swiper-pagination-bullet-active {
-  border-bottom: 2px solid #007aff;
-} */
 
 @media screen and (max-width: 768px) {
   .custom-pagination {

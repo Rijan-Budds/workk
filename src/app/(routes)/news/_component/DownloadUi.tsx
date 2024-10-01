@@ -136,7 +136,7 @@ export const InquiriesUi = () => {
       {inquiriesData.map((inquiry, idx) => (
         <div className="flex justify-start items-center gap-x-3" key={idx}>
           <Image src={inquiry.image} width={20} height={20} alt="alt inquiry" />
-          <div className="text-body font-workSans font-normal text-base leading-7">
+          <div className="text-body font-workSans font-medium text-base leading-7">
             {inquiry.title}
           </div>
         </div>

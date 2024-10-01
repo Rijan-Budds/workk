@@ -1,5 +1,6 @@
 import React from 'react'
 import { HomeWrapper } from '../../Atom/HomeWrapper'
+import Link from 'next/link'
 
 const Copywright = () => {
   return (
@@ -11,9 +12,10 @@ const Copywright = () => {
           <br className="hidden md:block 2lg:hidden" />
           by AITC International
         </h2>
-        <p className="font-workSans font-light text-[14px]  leading-[21px]  text-white">
-          Terms and Conditions {'\u00A0\u00A0'} / {'\u00A0\u00A0'} privacy
-        </p>
+        <div className="font-workSans font-light text-[14px]  leading-[21px]  text-white">
+          <Link href="/terms-and-condition">Terms and Conditions</Link>
+          {'\u00A0\u00A0'} / {'\u00A0\u00A0'} privacy
+        </div>
       </div>
     </HomeWrapper>
   )
