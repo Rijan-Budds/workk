@@ -1,17 +1,23 @@
 import { ReactNode } from 'react'
 import { NavSection } from '../(home)/_components/NavSection'
 import Footer from '@/common/components/Molecules/Footer/Footer'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { ISettingsResponseData } from './contact/_interface/Contact'
 
-export default async function HomeLayout({
+export default async function RouteLayout({
   children,
 }: {
   children: ReactNode
 }) {
+  const settingsData: ISettingsResponseData | undefined = await UseServerFetch(
+    '/api/v1/settings'
+  )
+
   return (
     <div className="h-screen overflow-y-scroll">
-      <NavSection />
+      <NavSection settings={settingsData} />
       {children}
-      <Footer />
+      <Footer settings={settingsData} />
     </div>
   )
 }
