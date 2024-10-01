@@ -6,8 +6,13 @@ import { IoMenu } from 'react-icons/io5'
 import { Sidebar } from './Sidebar'
 import { SidebarContainer } from './SidebarContainer'
 import Link from 'next/link'
+import { ISocialMediaData } from '@/app/(routes)/contact/_interface/Contact'
 
-export const MobileNavHeader = () => {
+export const MobileNavHeader = ({
+  socialLinks,
+}: {
+  socialLinks: ISocialMediaData[] | undefined
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
   return (
@@ -34,7 +39,10 @@ export const MobileNavHeader = () => {
       </div>
       {isMenuOpen && (
         <Sidebar isOpen={isMenuOpen} setOpen={setIsMenuOpen}>
-          <SidebarContainer setOpenMainSidebar={setIsMenuOpen} />
+          <SidebarContainer
+            setOpenMainSidebar={setIsMenuOpen}
+            socialLinks={socialLinks}
+          />
         </Sidebar>
       )}
     </>

@@ -8,13 +8,20 @@ import { GallerySection } from './_components/Gallery/GallerySection'
 import TestimonialsSection from './_components/Testimonials/TestimonialsSection'
 import { NoticeModal } from './_components/Notice/NoticeModal'
 import NewsAndEvents from './_components/News/NewsAndEvents'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { ISettingsResponseData } from '../(routes)/contact/_interface/Contact'
 
-export default function Home() {
+export default async function Home() {
+  const settingResponse: ISettingsResponseData | undefined =
+    await UseServerFetch('/api/v1/settings')
+
+  const settingData = settingResponse && settingResponse?.data.homepage
+
   return (
     <>
-      <HeroSection />
-      <AcademicSection />
-      <ReasonsToStudy />
+      <HeroSection settings={settingData} />
+      <AcademicSection settings={settingData} />
+      <ReasonsToStudy settings={settingData} />
       <ProcessSection />
       <AboutusWrapper />
       <TestimonialsSection />

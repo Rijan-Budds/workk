@@ -6,8 +6,17 @@ import Image from 'next/image'
 import { HeroImageSection } from './HeroImageSection'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import Link from 'next/link'
+import { IHomepageItem } from '@/app/(routes)/contact/_interface/Contact'
 
-export const HeroSection = () => {
+export const HeroSection = ({
+  settings,
+}: {
+  settings: IHomepageItem[] | undefined
+}) => {
+  const filterRewardsNumber = settings?.filter(
+    (d) => d.key === 'Honor and Awards Won'
+  )
+
   return (
     <HeroBgWrapper>
       <HomeWrapper className="2lg:py-[97px]">
@@ -58,7 +67,7 @@ export const HeroSection = () => {
                 />
                 <div className="flex flex-col ">
                   <h2 className="text-[28px] leading-[36.4px] font-semibold font-poppins text-white">
-                    200+
+                    {filterRewardsNumber && filterRewardsNumber[0].value}
                   </h2>
                   <p className="font-medium text-[16px] leading-4 font-workSans text-white">
                     Honor & Award Win
