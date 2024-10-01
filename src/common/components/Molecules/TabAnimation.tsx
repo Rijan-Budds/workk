@@ -30,39 +30,37 @@ export const TabAnimation = ({
   const activeBarRef = useRef<HTMLDivElement | null>(null)
   const tabRefs = useRef<(HTMLDivElement | null)[]>([])
 
-  useGSAP(() => {
-    const handleTabClick = (index: number) => {
-      if (!activeBarRef.current || !tabRefs.current[index]) return
+  const getActiveIndex = (tabs: Tab[], activeTab: string) => {
+    return tabs.findIndex((tab) => tab.key === activeTab)
+  }
 
-      const state = Flip.getState(activeBarRef.current)
+  const activeIndex = getActiveIndex(tabs, activeTab)
 
-      tabRefs.current[index]?.appendChild(activeBarRef.current)
+  useGSAP(
+    () => {
+      const handleTabClick = (index: number) => {
+        if (!activeBarRef.current || !tabRefs.current[index]) return
 
-      Flip.from(state, {
-        absolute: true,
-        scale: true,
-        duration: 0.6,
-        ease: 'back.inOut',
-      })
-    }
+        const state = Flip.getState(activeBarRef.current)
 
-    // Attach click handlers to each tab
-    tabRefs.current.forEach((tab, index) => {
-      tab?.addEventListener('click', () => handleTabClick(index))
-    })
+        tabRefs.current[index]?.appendChild(activeBarRef.current)
 
-    // Clean up the event listeners on component unmount
-    return () => {
-      tabRefs.current.forEach((tab, index) => {
-        tab?.removeEventListener('click', () => handleTabClick(index))
-      })
-    }
-  })
+        Flip.from(state, {
+          absolute: true,
+          scale: true,
+          duration: 0.6,
+          ease: 'back.inOut',
+        })
+      }
+      handleTabClick(activeIndex)
+    },
+    { dependencies: [activeTab] }
+  )
 
   return (
     <div
       className={cn(
-        'tabs bg-primaryLighter flex justify-between items-center rounded-[100px] shadow ',
+        'tabs bg-primaryLighter flex  items-center p-2 rounded-[100px] shadow ',
         className
       )}
     >
@@ -74,7 +72,7 @@ export const TabAnimation = ({
             ref={(el) => {
               tabRefs.current[index] = el
             }}
-            className={`tab-item py-4 flex justify-center items-center relative m-4  px-6 cursor-pointer  ${
+            className={`tab-item py-4 flex justify-center items-center relative  px-6 cursor-pointer ${
               activeTab === tab.key ? 'active' : ''
             }`}
           >

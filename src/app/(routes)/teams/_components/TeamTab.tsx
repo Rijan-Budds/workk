@@ -30,7 +30,7 @@ const TeamTab = ({
         >
           {activeTitle}
           <svg
-            className={cn('w-6 h-6 transition-transform', {
+            className={cn('w-4 h-4 transition-transform text-body', {
               'transform rotate-180': isDropdownOpen,
             })}
             fill="none"

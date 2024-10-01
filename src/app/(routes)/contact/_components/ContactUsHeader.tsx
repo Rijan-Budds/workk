@@ -24,10 +24,10 @@ const ContactUsHeader = async () => {
 
   return (
     <HomeWrapper className="!pb-0">
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-[24px] justify-center items-center">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[24px] justify-center items-center">
         {filteredSettings?.map((contact, i) => (
           <div
-            className="max-w-[398px] h-[240px] bg-background flex flex-col justify-center items-center rounded-xl"
+            className="!max-w-[398px] h-[240px] bg-background flex flex-col justify-center items-center rounded-xl"
             key={i}
           >
             <div>
@@ -61,8 +61,15 @@ const ContactUsHeader = async () => {
                 >
                   {contact.value}
                 </Link>
+              ) : contact.key === 'College Time' ? (
+                <div className="mt-6 font-poppins text-base font-normal text-body w-[295px]">
+                  {/* Split by 'Sat Closed' and handle the formatting */}
+                  {contact.value.replace('Sat Closed', '').trim()}
+                  <br />
+                  <span className="text-red-500">Sat Closed</span>
+                </div>
               ) : (
-                <p className="mt-6 font-poppins text-base font-normal text-body">
+                <p className="mt-6 font-poppins text-base font-normal text-body ">
                   {contact.value}
                 </p>
               )}

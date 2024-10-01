@@ -25,11 +25,11 @@ type IType = 'photo' | 'video'
 export const GallerySection = () => {
   const galleryTabs = [
     {
-      title: 'photo',
+      title: 'Photos',
       key: 'photo',
     },
     {
-      title: 'video',
+      title: 'Videos',
       key: 'video',
     },
   ]

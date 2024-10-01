@@ -4,11 +4,20 @@ import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import Image from 'next/image'
 import Link from 'next/link'
+import { IHomepageItem } from '@/app/(routes)/contact/_interface/Contact'
 import { AcademicCards } from './AcademicCards'
 import { AcademicSwipeCard } from './AcademicSwipeCard'
 import { academicCardsDataOne, academicCardsDataTwo } from './constant/data'
 
-export const AcademicSection = () => {
+export const AcademicSection = ({
+  settings,
+}: {
+  settings: IHomepageItem[] | undefined
+}) => {
+  const filterAcademicStudentNum = settings?.filter(
+    (d) => d.key === 'Satisfied Students'
+  )
+
   return (
     <HomeWrapper isBg className=" ">
       <div className="pt-[7.2rem] md:pt-[12rem] 2lg:pt-0  flex flex-col  2lg:flex-row justify-between gap-x-6">
@@ -31,7 +40,7 @@ export const AcademicSection = () => {
             />
             <div className="flex flex-col gap-y-1">
               <span className="font-workSans font-semibold text-[14px] leading-4 text-heading">
-                15000 +
+                {filterAcademicStudentNum && filterAcademicStudentNum[0].value}
               </span>
               <p className="font-workSans text-[12px] leading-[18px] text-body">
                 Satisfied Students
@@ -50,6 +59,7 @@ export const AcademicSection = () => {
             }
             color={'bg-primaryLighter'}
             list={academicCardsDataOne}
+            type={'PLUS_TWO'}
           />
           <AcademicCards
             title={'School'}
@@ -58,6 +68,7 @@ export const AcademicSection = () => {
             }
             color={'bg-secondaryLighter'}
             list={academicCardsDataTwo}
+            type={'SCHOOL'}
           />
         </div>
         <AcademicSwipeCard />

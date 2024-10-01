@@ -13,7 +13,25 @@ export interface ISettingsResponseData {
   data: ISettings
 }
 
+interface IPhoneNumberItem {
+  key: string
+  value: string
+}
+
+interface ITelephoneItem {
+  key: string
+  value: string
+}
+
+export interface IHomepageItem {
+  key: string
+  value: string
+}
+
 export interface ISettings {
   data: IContactInfoData[]
   socialMedia: ISocialMediaData[]
+  phoneNumber: IPhoneNumberItem[]
+  telephone: ITelephoneItem[]
+  homepage: IHomepageItem[]
 }

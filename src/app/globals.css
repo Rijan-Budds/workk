@@ -87,3 +87,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.react-pdf__Page__textContent {
+  display: none;
+}

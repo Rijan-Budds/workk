@@ -1,8 +1,8 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { FiFileText } from 'react-icons/fi'
 import { IAdmissionData } from '../_interface/admission'
 import { cn } from '@/common/utils/utils'
+import { ChevronRight } from 'lucide-react'
 
 interface AdmissionFilterTwoProps {
   admissions: IAdmissionData[]
@@ -54,7 +54,7 @@ const AdmissionFilterTwo: React.FC<AdmissionFilterTwoProps> = ({
   }
 
   return (
-    <div className="flex flex-col bg-background rounded-xl cursor-pointer">
+    <div className="2lg:flex flex-col bg-background rounded-xl cursor-pointer hidden">
       {admissions?.map((admission: IAdmissionData, index: number) => (
         <div
           key={index}
@@ -70,7 +70,7 @@ const AdmissionFilterTwo: React.FC<AdmissionFilterTwoProps> = ({
           onClick={() => handleTabClick(admission.academics.slug)}
         >
           <h2>{admission.academics.title}</h2>
-          <FiFileText />
+          <ChevronRight className="w-5 h-5" />
         </div>
       ))}
     </div>

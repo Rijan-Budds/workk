@@ -8,11 +8,14 @@ import { NavHeaderSocialMedia } from './NavHeader'
 import { INavLink, INavSubLink } from '@/common/interface/type'
 import Link from 'next/link'
 import { useNavLinks } from '@/common/hook/useNavLinks'
+import { ISocialMediaData } from '@/app/(routes)/contact/_interface/Contact'
 
 export const SidebarContainer = ({
   setOpenMainSidebar,
+  socialLinks,
 }: {
   setOpenMainSidebar: Dispatch<SetStateAction<boolean>>
+  socialLinks: ISocialMediaData[] | undefined
 }) => {
   const { facilites } = useNavLinks()
   const [openDropDown, setOpenDropdown] = useState<boolean>(false)
@@ -70,9 +73,11 @@ export const SidebarContainer = ({
           </button>
         ))}
 
-        <Button className="w-fit mt-2">Contact Us</Button>
+        <Link href={'/contact'}>
+          <Button className="w-fit mt-2">Contact Us</Button>
+        </Link>
         <NavHeaderLink setOpenSidebar={setOpenMainSidebar} />
-        <NavHeaderSocialMedia />
+        <NavHeaderSocialMedia links={socialLinks} />
       </div>
 
       {openDropDown && (

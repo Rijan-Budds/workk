@@ -1,5 +1,5 @@
 import React from 'react'
-import { IStepProps } from '../../interface/type'
+import { ISchoolStepProps } from '../../interface/type'
 import { StepOne } from '../PlusTwo/StepOne'
 
 export const SchoolStepOne = ({
@@ -9,7 +9,7 @@ export const SchoolStepOne = ({
   setFieldValue,
   touched,
   values,
-}: IStepProps) => {
+}: ISchoolStepProps) => {
   return (
     <StepOne
       errors={errors}

@@ -34,7 +34,7 @@ export const CoverImage = ({
         className={`w-full h-full object-cover `}
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-y-1">
-        <SectionHeading className="text-center text-white">
+        <SectionHeading className="text-center text-white capitalize">
           {title}
         </SectionHeading>
         {list && <CustomBreadCrumb list={list} />}

@@ -1,9 +1,9 @@
 import { Input } from '@/common/components/Atom/Input'
 import { CustomDropdown } from '@/common/components/Molecules/CustomDropdown'
 import { ImageDropZone } from '@/common/components/Molecules/ImageDropZone'
-import { IStepProps } from '../../interface/type'
 import { genderList, provinces } from '../../constant/data'
 import { InputWithDate } from '@/common/components/Atom/InputWithDate'
+import { ISchoolStepProps, IStepProps } from '../../interface/type'
 
 export const StepOne = ({
   setFieldValue,
@@ -12,7 +12,7 @@ export const StepOne = ({
   inputStyle,
   values,
   touched,
-}: IStepProps) => {
+}: IStepProps | ISchoolStepProps) => {
   return (
     <div className="flex flex-col gap-6 ">
       <h1 className="text-heading font-poppins text-[20px] leading-[26px] font-medium">

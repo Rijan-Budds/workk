@@ -186,3 +186,58 @@ export const applicationCourseDetailSchema = [
   'hostel',
   'transportation',
 ]
+
+export const schoolLevelList = [
+  {
+    title: 'P.G',
+    value: 'P.G',
+  },
+  {
+    title: 'Nursery',
+    value: 'Nursery',
+  },
+  {
+    title: 'L.K.G',
+    value: 'L.K.G',
+  },
+  {
+    title: 'U.K.G',
+    value: 'U.K.G',
+  },
+  {
+    title: 'One',
+    value: 'One',
+  },
+  {
+    title: 'Two',
+    value: 'Two',
+  },
+  {
+    title: 'Three',
+    value: 'Three',
+  },
+  {
+    title: 'Four',
+    value: 'Four',
+  },
+  {
+    title: 'Five',
+    value: 'Five',
+  },
+  {
+    title: 'Six',
+    value: 'Six',
+  },
+  {
+    title: 'Seven',
+    value: 'Seven',
+  },
+  {
+    title: 'Eight',
+    value: 'Eight',
+  },
+  {
+    title: 'Nine',
+    value: 'Nine',
+  },
+]

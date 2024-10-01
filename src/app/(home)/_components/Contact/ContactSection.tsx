@@ -20,8 +20,13 @@ export const ContactSection = () => {
   const pathname = usePathname()
 
   const isContactPage = pathname === '/contact'
+  const isAboutPage = pathname === '/about'
   return (
-    <HomeWrapper className={`${isContactPage ? 'pt-6' : ''}`}>
+    <HomeWrapper
+      className={`${isContactPage ? 'pt-6' : ''} ${
+        isAboutPage ? 'pt-[96px]' : ''
+      }`}
+    >
       <div className="flex flex-col gap-y-8">
         <div className="flex flex-col-reverse lg:flex-row gap-y-6 md:gap-x-6 justify-center">
           <ContactLocation />
