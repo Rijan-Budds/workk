@@ -78,7 +78,7 @@ export const VideoSection = ({
         </button>
         <div className="absolute -top-[3.5rem]  2lg:-top-[5.25rem] right-[1.75rem]">
           <VideoHeader settings={settings} />
-          <VideoHeaderMobile />
+          <VideoHeaderMobile settings={settings} />
         </div>
       </div>
 
