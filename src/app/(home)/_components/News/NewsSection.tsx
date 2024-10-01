@@ -45,7 +45,7 @@ const NewsSection = () => {
   }, [])
 
   const renderNewsUi = () => {
-    if (response?.data) {
+    if (response?.data && response.data.length > 0) {
       return (
         <div className="relative">
           <div className="flex justify-center md:justify-between items-center relative">
