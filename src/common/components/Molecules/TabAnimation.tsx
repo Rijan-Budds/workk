@@ -1,7 +1,7 @@
 'use client'
 
 import { useGSAP } from '@gsap/react'
-import React, { Dispatch, SetStateAction, useEffect, useRef } from 'react'
+import React, { Dispatch, SetStateAction, useRef } from 'react'
 import gsap from 'gsap'
 import { Flip } from 'gsap/Flip'
 import { cn } from '@/common/utils/utils'
@@ -30,49 +30,32 @@ export const TabAnimation = ({
   const activeBarRef = useRef<HTMLDivElement | null>(null)
   const tabRefs = useRef<(HTMLDivElement | null)[]>([])
 
-  useEffect(() => {
-    const setInitialActiveTab = () => {
-      const initialIndex = tabs.findIndex((tab) => tab.key === activeTab)
-      if (
-        initialIndex >= 0 &&
-        tabRefs.current[initialIndex] &&
-        activeBarRef.current
-      ) {
-        tabRefs.current[initialIndex]?.appendChild(activeBarRef.current)
+  const getActiveIndex = (tabs: Tab[], activeTab: string) => {
+    return tabs.findIndex((tab) => tab.key === activeTab)
+  }
+
+  const activeIndex = getActiveIndex(tabs, activeTab)
+
+  useGSAP(
+    () => {
+      const handleTabClick = (index: number) => {
+        if (!activeBarRef.current || !tabRefs.current[index]) return
+
+        const state = Flip.getState(activeBarRef.current)
+
+        tabRefs.current[index]?.appendChild(activeBarRef.current)
+
+        Flip.from(state, {
+          absolute: true,
+          scale: true,
+          duration: 0.6,
+          ease: 'back.inOut',
+        })
       }
-    }
-
-    setInitialActiveTab()
-  }, [activeTab, tabs])
-
-  useGSAP(() => {
-    const handleTabClick = (index: number) => {
-      if (!activeBarRef.current || !tabRefs.current[index]) return
-
-      const state = Flip.getState(activeBarRef.current)
-
-      tabRefs.current[index]?.appendChild(activeBarRef.current)
-
-      Flip.from(state, {
-        absolute: true,
-        scale: true,
-        duration: 0.6,
-        ease: 'back.inOut',
-      })
-    }
-
-    // Attach click handlers to each tab
-    tabRefs.current.forEach((tab, index) => {
-      tab?.addEventListener('click', () => handleTabClick(index))
-    })
-
-    // Clean up the event listeners on component unmount
-    return () => {
-      tabRefs.current.forEach((tab, index) => {
-        tab?.removeEventListener('click', () => handleTabClick(index))
-      })
-    }
-  })
+      handleTabClick(activeIndex)
+    },
+    { dependencies: [activeTab] }
+  )
 
   return (
     <div

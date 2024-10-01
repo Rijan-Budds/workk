@@ -24,6 +24,7 @@ export const AcademicSwipeCard = () => {
             }
             color={'bg-primaryLighter'}
             list={academicCardsDataOne}
+            type="PLUS_TWO"
           />
         </SwiperSlide>
 
@@ -35,6 +36,7 @@ export const AcademicSwipeCard = () => {
             }
             color={'bg-secondaryLighter'}
             list={academicCardsDataTwo}
+            type="SCHOOL"
           />
         </SwiperSlide>
         <div className="flex justify-center mt-10 gap-x-4 ">

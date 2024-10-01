@@ -18,8 +18,8 @@ const SchoolSidebar = () => {
             Opportunities are like sunrises. lf you wait too long, you miss
             them.
           </p>
-          <Link href={'/apply'}>
-            <Button className="mt-6 w-full bg-secondary hover:bg-primary h-12 rounded-lg font-workSans text-white font-medium leading-4">
+          <Link href={'/apply?form=school'}>
+            <Button className="mt-6 w-full bg-secondary h-12 rounded-lg font-workSans text-white font-medium leading-4">
               Apply Now
             </Button>
           </Link>
