@@ -1,13 +1,13 @@
 import { Button } from '@/common/components/Atom/Button'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
-import Image from 'next/image'
-import { AcademicCards } from './AcademicCards'
-import { academicCardsDataOne, academicCardsDataTwo } from './constant/data'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
-import { AcademicSwipeCard } from './AcademicSwipeCard'
+import Image from 'next/image'
 import Link from 'next/link'
 import { IHomepageItem } from '@/app/(routes)/contact/_interface/Contact'
+import { AcademicCards } from './AcademicCards'
+import { AcademicSwipeCard } from './AcademicSwipeCard'
+import { academicCardsDataOne, academicCardsDataTwo } from './constant/data'
 
 export const AcademicSection = ({
   settings,
@@ -21,7 +21,7 @@ export const AcademicSection = ({
   return (
     <HomeWrapper isBg className=" ">
       <div className="pt-[7.2rem] md:pt-[12rem] 2lg:pt-0  flex flex-col  2lg:flex-row justify-between gap-x-6">
-        <div className="flex flex-col gap-y-2">
+        <div className="flex flex-col gap-y-2 xl:my-[68.5px] 2xl_md:my-[68.5px] max-h-[279px]">
           <MiniHeading isMd>Program</MiniHeading>
           <SectionHeading isMd className="text-center">
             Academic Program
@@ -51,7 +51,7 @@ export const AcademicSection = ({
             <Button className="mt-6 w-full  mx-auto md:mx-0">Contact Us</Button>
           </Link>
         </div>
-        <div className="hidden md:flex   flex-row  gap-x-4 mt-10">
+        <div className="hidden md:flex flex-row  gap-x-4 mt-10">
           <AcademicCards
             title={'Plus Two'}
             description={

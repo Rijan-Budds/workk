@@ -73,7 +73,9 @@ export const SidebarContainer = ({
           </button>
         ))}
 
-        <Button className="w-fit mt-2">Contact Us</Button>
+        <Link href={'/contact'}>
+          <Button className="w-fit mt-2">Contact Us</Button>
+        </Link>
         <NavHeaderLink setOpenSidebar={setOpenMainSidebar} />
         <NavHeaderSocialMedia links={socialLinks} />
       </div>

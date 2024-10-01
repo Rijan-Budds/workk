@@ -9,6 +9,7 @@ import { IoMdShare } from 'react-icons/io'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { ShareModal } from '@/app/(routes)/notice/_component/ShareModal'
 import { useRouter } from 'next/navigation'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 const Notice = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -36,6 +37,49 @@ const Notice = () => {
     fetchNewsAndNoticeList()
   }, [])
 
+  const renderNoticeUi = () => {
+    if (response?.data && response.data.length > 0) {
+      return (
+        <div className="w-full   overflow-y-auto notice-scrollbar max-h-[376px] px-8  ">
+          {response &&
+            response.data.map((notice) => (
+              <div
+                key={notice.id}
+                onClick={() => router.push(`/notice/${notice.slug}`)}
+                className="py-3 flex justify-between border-b-[1px] group cursor-pointer"
+              >
+                <div>
+                  <h1
+                    className={`text-sm leading-4 font-medium transition-all duration-500 ${
+                      notice.isHoliday
+                        ? 'text-[#E0240A]'
+                        : 'text-primary group-hover:text-secondary'
+                    }`}
+                  >
+                    {notice.title}
+                  </h1>
+                  <p className="text-[#5D5F69] text-sm font-workSans font-normal">
+                    {notice.createdAt
+                      ? format(new Date(notice.createdAt), 'MMMM dd, yyyy') // Full month, day, and year
+                      : 'N/A'}
+                  </p>
+                </div>
+                <IoMdShare
+                  onClick={(e) => {
+                    handleShareButtonClick(e)
+                    setSlug(notice.slug)
+                  }}
+                  className="text-[23px] transition-all duration-500 text-primary"
+                />
+              </div>
+            ))}
+        </div>
+      )
+    } else {
+      return <NoDataFound title="No Notice Data Found" />
+    }
+  }
+
   return (
     <>
       <div className="bg-white rounded-xl  w-full md:w-[672px] lg:w-[80%] 2lg:min-w-[320px] 2xl_lg:w-[396px]   2lg:max-w-[396px] 2lg:h-[465px] overflow-hidden  ">
@@ -51,42 +95,8 @@ const Notice = () => {
               View All
             </Link>
           </div>
-
-          <div className="w-full   overflow-y-auto notice-scrollbar max-h-[376px] px-8  ">
-            {response &&
-              response.data.map((notice) => (
-                <div
-                  key={notice.id}
-                  onClick={() => router.push(`/notice/${notice.slug}`)}
-                  className="py-3 flex justify-between border-b-[1px] group cursor-pointer"
-                >
-                  <div>
-                    <h1
-                      className={`text-sm leading-4 font-medium transition-all duration-500 ${
-                        notice.isHoliday
-                          ? 'text-[#E0240A]'
-                          : 'text-primary group-hover:text-secondary'
-                      }`}
-                    >
-                      {notice.title}
-                    </h1>
-                    <p className="text-[#5D5F69] text-sm font-workSans font-normal">
-                      {notice.createdAt
-                        ? format(new Date(notice.createdAt), 'MMMM dd, yyyy') // Full month, day, and year
-                        : 'N/A'}
-                    </p>
-                  </div>
-                  <IoMdShare
-                    onClick={(e) => {
-                      handleShareButtonClick(e)
-                      setSlug(notice.slug)
-                    }}
-                    className="text-[23px] transition-all duration-500 text-primary"
-                  />
-                </div>
-              ))}
-          </div>
         </div>
+        {renderNoticeUi()}
       </div>
       {isOpen && (
         <CustomModal isOpen={isOpen}>

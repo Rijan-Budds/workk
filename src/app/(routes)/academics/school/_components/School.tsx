@@ -9,11 +9,11 @@ const School = ({ detail, slug }: { detail: IAcademicsData; slug: string }) => {
   return (
     <div>
       <CoverImage
-        title="Pre-School"
+        title={slug}
         list={[
-          { link: '', title: 'Academics' },
-          { link: '', title: 'School' },
-          { link: '', title: slug },
+          { link: '/academics', title: 'Academics' },
+          { link: null, title: 'School' },
+          { link: null, title: slug },
         ]}
       />
 

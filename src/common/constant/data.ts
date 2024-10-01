@@ -199,13 +199,16 @@ export const staticFooterLinksData = [
     content: [
       {
         text: 'Tribhuvan University',
-        url: 'https://tribhuvan-university.edu.np',
+        url: 'https://tu.edu.np/',
       },
       { text: 'National Examinations Board', url: 'https://neb.gov.np' },
-      { text: 'Ministry of Education', url: 'https://moe.gov.np' },
+      {
+        text: 'Ministry of Education',
+        url: 'https://moest.gov.np/',
+      },
       {
         text: 'Office of the Controller of Examinations',
-        url: 'https://oce.gov.np',
+        url: 'https://www.see.gov.np/',
       },
       {
         text: 'District Education Office, Kathmandu',

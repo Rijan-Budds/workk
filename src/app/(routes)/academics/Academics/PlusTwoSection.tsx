@@ -30,8 +30,15 @@ const plustwolinks = [
 const PlusTwoSection = () => {
   return (
     <div className="relative space-y-6 max-w-[77.5rem] flex flex-col md:flex-row items-start justify-center flex-wrap mx-auto">
-      <div className="bg-background rounded-xl p-6 relative flex-1 md:w-[53%] lg:w-[50%] lg:ml-[3%] md:mr-[-6%]">
-        <div className="md:pr-[18%]">
+      <div className="bg-background rounded-xl p-6 relative flex-1 md:w-[53%] lg:w-[50%] lg:ml-[3%] md:mr-[-6%] overflow-hidden">
+        <Image
+          src="/home/Ellipse 2.svg"
+          width={282}
+          height={282}
+          alt="a"
+          className="hidden md:block md:absolute -bottom-14 -left-14 z-0"
+        />
+        <div className="md:pr-[18%] ">
           <SectionHeading>Plus Two</SectionHeading>
           <hr className="my-6" />
           <p className="font-workSans text-base leading-7 font-normal text-body">
@@ -45,11 +52,11 @@ const PlusTwoSection = () => {
           <hr className="my-6" />
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-[24px] lg:gap-[80px] md:pr-[18%]">
+        <div className="flex flex-col lg:flex-row gap-[24px] lg:gap-[80px] md:pr-[18%] z-50">
           <h1 className="font-poppins text-heading text-xl leading-6 font-medium">
             Available Programs
           </h1>
-          <ul className="text-heading font-workSans text-lg leading-6 font-normal space-y-8">
+          <ul className="text-heading font-workSans text-lg leading-6 font-normal space-y-8 z-50">
             {plustwolinks.map((links, idx) => (
               <li key={idx}>
                 <Link

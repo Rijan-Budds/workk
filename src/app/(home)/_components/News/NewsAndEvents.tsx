@@ -1,14 +1,13 @@
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
-import React from 'react'
 
+import NewsSection from './NewsSection'
 import Notice from './Notice'
 import './notice.css'
-import NewsSection from './NewsSection'
 
 const NewsAndEvents = () => {
   return (
     <HomeWrapper isBg>
-      <div className="flex flex-col  2lg:flex-row gap-6 2lg:justify-between  3xl:gap-6  ">
+      <div className="flex flex-col  2lg:flex-row gap-6 2lg:justify-around 2xl:gap-x-6  3xl:gap-6  ">
         <div className="2lg:max-w-[820px] ">
           <NewsSection />
         </div>
