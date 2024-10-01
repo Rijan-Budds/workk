@@ -1,17 +1,19 @@
 'use client'
-import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import {
   SwiperButtonNext,
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
-import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import { Button } from '@/common/components/ui/button'
-import Link from 'next/link'
 import { IAcademicsImage } from '../../_interface/academic'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { cn } from '@/common/utils/utils'
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
+import { MdOutlineChevronRight } from 'react-icons/md'
+import 'swiper/css'
 
 const SchoolGallery = ({ gallery }: { gallery: IAcademicsImage }) => {
   const [activeSrc, setActiveSrc] = useState<string | null>(
@@ -41,9 +43,14 @@ const SchoolGallery = ({ gallery }: { gallery: IAcademicsImage }) => {
           <div className="mt-6">
             <Button
               variant="secondary"
-              className="w-full font-workSans text-heading text-lg font-medium"
+              className="group w-full flex items-center gap-4 font-workSans text-heading text-lg font-medium transition-all duration-500"
             >
               View Our Gallery
+              <MdOutlineChevronRight
+                width={24}
+                height={24}
+                className="group-hover:rotate-90 transition-all duration-500"
+              />
             </Button>
           </div>
         </Link>
@@ -61,8 +68,39 @@ const ThumbnailSwiper = ({
   setActiveSrc: (src: string) => void
   galleries: IAcademicsImage
 }) => {
+  const [isBeginning, setIsBeginning] = useState(true)
+  const [isEnd, setIsEnd] = useState(false)
+  useEffect(() => {
+    setIsEnd(false)
+  }, [])
   return (
-    <Swiper spaceBetween={10} slidesPerView={4} className="relative">
+    <Swiper
+      breakpoints={{
+        360: {
+          spaceBetween: 10,
+          slidesPerView: 3.5,
+        },
+        400: {
+          spaceBetween: 10,
+          slidesPerView: 4,
+        },
+        736: {
+          spaceBetween: 14,
+          slidesPerView: 4.5,
+        },
+        1280: {
+          spaceBetween: 20,
+          slidesPerView: 4.5,
+        },
+      }}
+      onReachBeginning={() => setIsBeginning(true)}
+      onReachEnd={() => setIsEnd(true)}
+      onFromEdge={() => {
+        setIsBeginning(false)
+        setIsEnd(false)
+      }}
+      className="relative"
+    >
       {galleries &&
         galleries.key &&
         galleries.key.map((gallery, index) => (
@@ -85,12 +123,20 @@ const ThumbnailSwiper = ({
         <>
           <div className="absolute right-[3px] top-1/2 -translate-y-1/2 z-10">
             <SwiperButtonNext>
-              <IoIosArrowRoundForward className="text-body text-2xl font-light bg-white rounded-full size-7" />
+              <IoIosArrowRoundForward
+                className={`text-body text-2xl font-light bg-white rounded-full size-7 ${
+                  isEnd ? 'opacity-25 cursor-not-allowed' : ''
+                }`}
+              />
             </SwiperButtonNext>
           </div>
           <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
             <SwiperButtonPrevious>
-              <IoIosArrowRoundBack className="text-body text-2xl font-light bg-white rounded-full size-7" />
+              <IoIosArrowRoundBack
+                className={`text-body text-2xl font-light bg-white rounded-full size-7 ${
+                  isBeginning ? 'opacity-25 cursor-not-allowed' : ''
+                }`}
+              />
             </SwiperButtonPrevious>
           </div>
         </>
