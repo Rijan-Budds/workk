@@ -33,7 +33,7 @@ const AcademicSideBar = () => {
       <ForInquiry />
       <div className="">
         <Image
-          src="/home/admission.svg"
+          src="/news/banner-ad.png"
           width={397}
           height={397}
           alt="admission"

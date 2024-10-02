@@ -2,7 +2,7 @@ import {
   DownloadUi,
   ForInquiry,
 } from '@/app/(routes)/news/_component/DownloadUi'
-import { Button } from '@/common/components/ui/button'
+import { Button } from '@/common/components/Atom/Button'
 import Link from 'next/link'
 import React from 'react'
 
@@ -19,7 +19,7 @@ const SchoolSidebar = () => {
             them.
           </p>
           <Link href={'/apply?form=school'}>
-            <Button className="mt-6 w-full bg-secondary h-12 rounded-lg font-workSans text-white font-medium leading-4">
+            <Button variant={'default'} className="mt-6 w-full">
               Apply Now
             </Button>
           </Link>

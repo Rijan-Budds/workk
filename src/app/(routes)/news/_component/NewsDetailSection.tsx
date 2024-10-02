@@ -10,11 +10,12 @@ import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 
 export const NewsDetailSection = ({ data }: { data: INewsItem }) => {
   const cleanHtml = DOMPurify.sanitize(data.description)
+
   return (
     <>
       <div className="flex flex-col gap-y-2  items-start   2lg:max-w-[787px]">
-        <MiniHeading>{format(data.createdAt, 'MMMM d, yyyy')}</MiniHeading>
-        <SectionHeading isMd>{data.title}</SectionHeading>
+        <MiniHeading>{format(data?.createdAt, 'MMMM d, yyyy')}</MiniHeading>
+        <SectionHeading isMd>{data?.title}</SectionHeading>
         <div className="flex flex-col gap-y-10 mt-8">
           <ImageWithPlaceholder
             src={data.images ? data.images.key : undefined}

@@ -17,7 +17,7 @@ import 'swiper/css'
 
 const SchoolGallery = ({ gallery }: { gallery: IAcademicsImage }) => {
   const [activeSrc, setActiveSrc] = useState<string | null>(
-    gallery && gallery?.key[0]
+    gallery?.key?.length ? gallery?.key[0] : null
   )
 
   return (
