@@ -23,7 +23,7 @@ export interface INewsItem {
 interface IBanner {
   id: string
   title: string
-  image: Images[]
+  image: Images
   link: string
   isEnabled: boolean
   type: string
@@ -42,7 +42,7 @@ export interface INewsDetailResponse {
 }
 
 interface Images {
-  key: string[]
-  bucket: string[]
-  mimeType: string[]
+  key: string
+  bucket: string
+  mimeType: string
 }
