@@ -1,15 +1,16 @@
 'use client'
-import React from 'react'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
+import { IAcademicBanner, IAcademicsData } from '../../_interface/academic'
 import AcademicDetailSection from './AcademicDetailSection'
 import StickyAcademicSide from './StickyAcademicSide'
-import { IAcademicsData } from '../../_interface/academic'
 
 const AcademicDetail = ({
+  bannerDetail,
   detail,
   slug,
 }: {
+  bannerDetail: IAcademicBanner
   detail: IAcademicsData
   slug: string
 }) => {
@@ -26,7 +27,7 @@ const AcademicDetail = ({
       <HomeWrapper>
         <div className="flex flex-col 2lg:flex-row gap-[80px] 2lg:gap-[56px]">
           <AcademicDetailSection detail={detail} />
-          <StickyAcademicSide />
+          <StickyAcademicSide bannerDetail={bannerDetail} />
         </div>
       </HomeWrapper>
     </>

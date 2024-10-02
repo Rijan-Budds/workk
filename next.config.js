@@ -7,6 +7,10 @@ const nextConfig = {
         hostname: '192.168.110.52',
         port: '4000',
       },
+      {
+        protocol: 'https',
+        hostname: process.env.NEXT_PUBLIC_IMAGE_CONFIG,
+      },
     ],
   },
 

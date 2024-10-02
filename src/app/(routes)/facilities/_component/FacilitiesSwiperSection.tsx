@@ -31,8 +31,9 @@ const FacilitiesSwiperSection = async () => {
             <Image
               width={112}
               height={40}
-              src={'/home/image-overlap.png'}
+              src={'/home/default-users.svg'}
               alt="list of user profiles"
+              className="pointer-events-none"
             />
             <div className="flex flex-col gap-y-1">
               <span className="font-workSans font-semibold text-[14px] leading-4 text-heading">

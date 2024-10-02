@@ -1,8 +1,7 @@
-import React from 'react'
-import { NewsDetailUi } from '../_component/NewsDetailUi'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
-import { INewsDetailResponse } from '../interface/newsType'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { NewsDetailUi } from '../_component/NewsDetailUi'
+import { INewsDetailResponse } from '../interface/newsType'
 
 const page = async ({ params }: { params: { slug: string } }) => {
   const newsDetail: INewsDetailResponse | undefined = await UseServerFetch(
@@ -10,7 +9,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
   )
 
   const renderNewsNoticeUi = () => {
-    if (newsDetail) {
+    if (newsDetail && newsDetail.data) {
       return (
         <NewsDetailUi
           slug={params.slug}

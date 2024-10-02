@@ -45,7 +45,7 @@ const TestimonialsSection = () => {
   }, [currentPage])
 
   const renderTestimonialUi = () => {
-    if (response) {
+    if (response && response.data && response?.data.length > 0) {
       return (
         <div className="grid md:grid-cols-2 gap-6">
           {response?.data.map((card) => (
