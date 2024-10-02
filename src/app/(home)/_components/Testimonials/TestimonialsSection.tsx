@@ -51,7 +51,7 @@ const TestimonialsSection = () => {
   }, [])
 
   const renderTestimonialUi = () => {
-    if (response?.data) {
+    if (response?.data.length) {
       const isSingleCard = response.data.length === 1
       return (
         <div className="relative">
@@ -75,7 +75,7 @@ const TestimonialsSection = () => {
             </div>
           </div>
           <SwiperWrapper>
-            {response?.data.map((card) => (
+            {response?.data.slice(0, 10).map((card) => (
               <SwiperSlide
                 key={card.id}
                 className={`!mt-[40px] ${isSingleCard ? '!ml-0' : '!ml-auto'}`}

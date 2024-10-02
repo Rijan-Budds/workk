@@ -10,7 +10,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
   )
 
   const renderNewsNoticeUi = () => {
-    if (newsDetail) {
+    if (newsDetail && newsDetail.data) {
       return (
         <NewsDetailUi
           slug={params.slug}

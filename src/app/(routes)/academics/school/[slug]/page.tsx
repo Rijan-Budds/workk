@@ -7,7 +7,6 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   const response: IAcademicsResponse | undefined = await UseServerFetch(
     `/api/v1/academics/${params.slug}`
   )
-
   const renderSchoolDetailUi = () => {
     if (response) {
       return (

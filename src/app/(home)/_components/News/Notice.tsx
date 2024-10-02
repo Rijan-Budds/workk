@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import './notice.css'
-import Link from 'next/link'
 import { INewsResponseData } from '@/app/(routes)/news/interface/newsType'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { format } from 'date-fns'
@@ -10,6 +9,7 @@ import { CustomModal } from '@/common/components/Molecules/Modal'
 import { ShareModal } from '@/app/(routes)/notice/_component/ShareModal'
 import { useRouter } from 'next/navigation'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { cn } from '@/common/utils/utils'
 
 const Notice = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -21,6 +21,8 @@ const Notice = () => {
     event.stopPropagation()
     setIsOpen(true)
   }
+
+  const isDisableViewAll = response && response.data && response.data.length < 6
 
   useEffect(() => {
     const fetchNewsAndNoticeList = async () => {
@@ -88,12 +90,18 @@ const Notice = () => {
             <h1 className="text-xl font-poppins font-medium leading-6 text-heading">
               Notices
             </h1>
-            <Link
-              href={'/news?type=notice'}
-              className="text-primary font-workSans font-normal text-[14px] leading-4"
+            <button
+              disabled={isDisableViewAll!}
+              onClick={() => router.push('/news?type=notice')}
+              className={cn(
+                'text-primary font-workSans font-normal text-[14px] leading-4',
+                {
+                  'opacity-70 cursor-not-allowed': isDisableViewAll,
+                }
+              )}
             >
               View All
-            </Link>
+            </button>
           </div>
         </div>
         {renderNoticeUi()}

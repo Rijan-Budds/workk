@@ -19,10 +19,25 @@ export interface INewsItem {
   slug: string
   isHoliday?: boolean
 }
+
+interface IBanner {
+  id: string
+  title: string
+  image: Images[]
+  link: string
+  isEnabled: boolean
+  type: string
+  createdAt: string
+  updatedAt: string
+}
+export interface INewsData {
+  data: INewsItem
+  banner: IBanner
+}
 export interface INewsDetailResponse {
   status: number
   message: string
-  data: INewsItem
+  data: INewsData
   totalCount: number
 }
 

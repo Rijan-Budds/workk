@@ -38,7 +38,7 @@ export const GallerySlider = () => {
   }, [])
 
   const renderGallerySliider = () => {
-    if (response?.data) {
+    if (response?.data.length) {
       return (
         <div className="gallery__slider hidden 2lg:flex 2lg:h-[600px]   justify-center items-center">
           {response?.data && (
