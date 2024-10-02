@@ -8,7 +8,7 @@ export const StickySidebar = async ({
   data,
 }: {
   type: 'NEWS' | 'NOTICE'
-  data: INewsData
+  data?: INewsData
 }) => {
   const response: INewsResponseData | undefined = await UseServerFetch(
     `/api/v1/news-and-notice/type/${type}`
