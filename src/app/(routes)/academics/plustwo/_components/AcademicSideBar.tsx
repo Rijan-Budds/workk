@@ -37,7 +37,7 @@ const AcademicSideBar = ({
       <ForInquiry />
 
       <div className="cursor-pointer">
-        {bannerDetail ? (
+        {bannerDetail && (
           <Link href={bannerDetail.link} target="_blank">
             <ImageWithPlaceholder
               src={bannerDetail.image.key}
@@ -46,7 +46,7 @@ const AcademicSideBar = ({
               alt="admission"
             />
           </Link>
-        ) : null}
+        )}
       </div>
     </div>
   )
