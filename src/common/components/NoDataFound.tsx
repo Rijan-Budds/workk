@@ -9,7 +9,7 @@ export const NoDataFound = ({ title }: { title: string }) => {
         width={72}
         height={72}
         alt="No data found"
-        className="size-[72px]"
+        className="size-[72px] pointer-events-none"
       />
       <span className="font-workSans font-medium text-[16px] leading-4 text-center text-heading">
         {title}
