@@ -14,7 +14,6 @@ const Copywright = () => {
         </h2>
         <div className="font-workSans font-light text-[14px]  leading-[21px]  text-white">
           <Link href="/terms-and-condition">Terms and Conditions</Link>
-          {'\u00A0\u00A0'} / {'\u00A0\u00A0'} privacy
         </div>
       </div>
     </HomeWrapper>

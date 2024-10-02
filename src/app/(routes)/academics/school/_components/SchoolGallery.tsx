@@ -46,11 +46,7 @@ const SchoolGallery = ({ gallery }: { gallery: IAcademicsImage }) => {
               className="group w-full flex items-center gap-4 font-workSans text-heading text-lg font-medium transition-all duration-500"
             >
               View Our Gallery
-              <MdOutlineChevronRight
-                width={24}
-                height={24}
-                className="group-hover:rotate-90 transition-all duration-500"
-              />
+              <MdOutlineChevronRight width={24} height={24} />
             </Button>
           </div>
         </Link>

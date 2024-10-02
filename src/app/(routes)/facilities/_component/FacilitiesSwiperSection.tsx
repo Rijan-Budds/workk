@@ -4,6 +4,7 @@ import { UseServerFetch } from '@/common/hook/useServerFetch'
 import Image from 'next/image'
 import { IFacilityListResponse } from '../interface/facilityInterface'
 import FacilitiesSwiper from './FacilitiesSwiper'
+import { NoDataFound } from '@/common/components/NoDataFound'
 
 const FacilitiesSwiperSection = async () => {
   const response: IFacilityListResponse | undefined = await UseServerFetch(
@@ -46,7 +47,11 @@ const FacilitiesSwiperSection = async () => {
           </div>
         </div>
         <div className="max-w-[1100px] flex-grow">
-          {response?.data && <FacilitiesSwiper data={response?.data} />}
+          {response && response?.data.length > 0 ? (
+            <FacilitiesSwiper data={response?.data} />
+          ) : (
+            <NoDataFound title="No facilities found" />
+          )}
         </div>
       </div>
     </HomeWrapper>
