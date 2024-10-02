@@ -1,17 +1,17 @@
 'use client'
+import { Button } from '@/common/components/Atom/Button'
+import { filteredPeriod } from '@/common/constant/eventFilterConstants'
 import { cn } from '@/lib/utils'
 import { useEffect, useRef, useState } from 'react'
-import { useEventStore } from '../../store/EventStore'
 import useNepaliCalendar from '../../hooks/useNepaliCalendar'
-import { filteredPeriod } from '@/common/constant/eventFilterConstants'
 import { NepaliDateTime } from '../../plugins/nepaliDateTime'
+import { useEventStore } from '../../store/EventStore'
+import { Language } from '../../types/Language'
+import { Day, NepaliDate } from '../../types/NepaliDates'
+import { getTableTdClassName } from '../../utils/classUtils'
 import CalendarHeader from '../CalendarHeader/CalendarHeader'
 import CalendarTable from '../CalendarTable/CalendarTable'
-import { getTableTdClassName } from '../../utils/classUtils'
 import { Events } from '../Events/Events'
-import { Day, NepaliDate } from '../../types/NepaliDates'
-import { Language } from '../../types/Language'
-import { Button } from '@/common/components/Atom/Button'
 
 export interface CalendarProps {
   className?: string
@@ -56,8 +56,8 @@ const CalendarEvent = ({
   const [nextYear, setNextYear] = useState<number>(selectedYear.value)
   const [prevMonth, setPrevMonth] = useState<number>(selectedMonth.value)
   const [prevYear, setPrevYear] = useState<number>(selectedMonth.value)
-  const [activeTab, setActiveTab] = useState(filteredPeriod[0].id)
-  const [disabledTab, setDisabledTab] = useState<number[]>([])
+  const [activeTab, setActiveTab] = useState(filteredPeriod[0].key)
+  const [disabledTab, setDisabledTab] = useState<string[]>([])
   const [highlightedEventIndex, setHighlightedEventsIndex] = useState<
     number | null
   >(null)
@@ -112,11 +112,11 @@ const CalendarEvent = ({
     setPrevYear(foundPrevYear.value - 1)
 
     if (currentDate.getMonth() == foundPrevMonth.value) {
-      setActiveTab(1)
+      setActiveTab('today')
       setDisabledTab([])
     } else {
-      setActiveTab(3)
-      setDisabledTab([1, 2])
+      setActiveTab('month')
+      setDisabledTab(['today', 'week'])
     }
   }
 
@@ -143,11 +143,11 @@ const CalendarEvent = ({
     setNextMonth(foundNextMonth.value + 1)
 
     if (currentDate.getMonth() == foundNextMonth.value) {
-      setActiveTab(1)
+      setActiveTab('today')
       setDisabledTab([])
     } else {
-      setActiveTab(3)
-      setDisabledTab([1, 2])
+      setActiveTab('month')
+      setDisabledTab(['today', 'week'])
     }
   }
 

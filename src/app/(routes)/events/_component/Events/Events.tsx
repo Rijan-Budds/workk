@@ -12,23 +12,23 @@ import React, {
 } from 'react'
 import EventDialog from '../EventDialog/EventsDialog'
 
+import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
 import { filteredPeriod } from '@/common/constant/eventFilterConstants'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { NepaliDateTime } from '../../plugins/nepaliDateTime'
 import { EventData, EventResponse, Month, Year } from '../../types/NepaliDates'
 import { getEventStyles } from '../../utils/classUtils'
 import { formattedDate } from '../../utils/formattedDate'
-import EventsTab from '../ui/EventsTab'
 
 type EventsProps = {
   nextMonth: number
   nextYear: number
   prevMonth: number
   prevYear: number
-  activeTab: number
-  disabledTabs: number[]
+  activeTab: string
+  disabledTabs: string[]
   highlightedEventIndex: number | null
-  setActiveTab: Dispatch<SetStateAction<number>>
+  setActiveTab: Dispatch<SetStateAction<string>>
   ref: ForwardedRef<HTMLDivElement>
   selectedMonth: Month
   selectedYear: Year
@@ -78,24 +78,30 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
 
   useEffect(() => {
     const filter =
-      activeTab === 1
+      activeTab === 'today'
         ? 'daily'
-        : activeTab === 2
+        : activeTab === 'week'
         ? 'weekly'
-        : activeTab === 3
+        : activeTab === 'month'
         ? `monthly&year=${selectedYear.value}&month=${improvedSelectedMonth}`
         : null
     fetchEvents(filter)
   }, [activeTab, improvedSelectedMonth, selectedYear])
 
+  function handleTabClick(key: string) {
+    if (disabledTabs.includes(key)) return
+    setActiveTab(key)
+  }
+
   return (
     <>
       <div className="flex items-center justify-center md:items-end md:justify-end 2lg:items-end 2lg:justify-end">
-        <EventsTab
-          eventPeriods={filteredPeriod}
+        <TabAnimation
           activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          disabledTabs={disabledTabs}
+          handleDynamicData={handleTabClick}
+          setActive={setActiveTab}
+          tabs={filteredPeriod}
+          disabledTab={disabledTabs}
         />
       </div>
 

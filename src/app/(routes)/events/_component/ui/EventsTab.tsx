@@ -36,10 +36,6 @@ const EventsTab: React.FC<EventsTabProps> = ({
     }
   }, [activeTab, eventPeriods])
 
-  function handleTabClick(id: number) {
-    if (disabledTabs.includes(id)) return
-    setActiveTab(id)
-  }
   return (
     <div
       className={cn(
