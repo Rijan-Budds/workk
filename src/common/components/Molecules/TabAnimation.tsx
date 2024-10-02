@@ -1,10 +1,10 @@
 'use client'
 
+import { cn } from '@/common/utils/utils'
 import { useGSAP } from '@gsap/react'
-import React, { Dispatch, SetStateAction, useRef } from 'react'
 import gsap from 'gsap'
 import { Flip } from 'gsap/Flip'
-import { cn } from '@/common/utils/utils'
+import { Dispatch, SetStateAction, useRef } from 'react'
 
 gsap.registerPlugin(Flip)
 type Tab = {
@@ -19,6 +19,7 @@ interface TabSwitchProps {
   setActive: Dispatch<SetStateAction<string>>
   isFieldChange?: boolean
   activeTab: string
+  disabledTab?: string[]
 }
 
 export const TabAnimation = ({
@@ -26,6 +27,7 @@ export const TabAnimation = ({
   handleDynamicData,
   className = '',
   activeTab,
+  disabledTab,
 }: TabSwitchProps) => {
   const activeBarRef = useRef<HTMLDivElement | null>(null)
   const tabRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -57,6 +59,8 @@ export const TabAnimation = ({
     { dependencies: [activeTab] }
   )
 
+  console.log(activeTab)
+
   return (
     <div
       className={cn(
@@ -74,6 +78,8 @@ export const TabAnimation = ({
             }}
             className={`tab-item py-4 flex justify-center items-center relative  px-6 cursor-pointer ${
               activeTab === tab.key ? 'active' : ''
+            } ${
+              disabledTab?.includes(tab.key) && 'opacity-15 cursor-not-allowed '
             }`}
           >
             <span
@@ -90,7 +96,7 @@ export const TabAnimation = ({
             {index === 0 && (
               <div
                 ref={activeBarRef}
-                className="tab-active-bar  h-[56px] left-0 right-0 top-1/2 -translate-y-1/2 bg-primary absolute rounded-[100px] z-0"
+                className="tab-active-bar   h-[56px] left-0 right-0 top-1/2 -translate-y-1/2 bg-primary absolute rounded-[100px] z-0"
               />
             )}
           </div>

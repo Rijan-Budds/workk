@@ -1,14 +1,14 @@
 export const filteredPeriod = [
   {
-    id: 1,
-    name: 'Today',
+    title: 'Today',
+    key: 'today',
   },
   {
-    id: 2,
-    name: 'Week',
+    title: 'Week',
+    key: 'week',
   },
   {
-    id: 3,
-    name: 'Month',
+    title: 'Month',
+    key: 'month',
   },
 ]
