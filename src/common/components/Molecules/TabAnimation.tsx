@@ -59,8 +59,6 @@ export const TabAnimation = ({
     { dependencies: [activeTab] }
   )
 
-  console.log(activeTab)
-
   return (
     <div
       className={cn(
@@ -76,11 +74,14 @@ export const TabAnimation = ({
             ref={(el) => {
               tabRefs.current[index] = el
             }}
-            className={`tab-item py-4 flex justify-center items-center relative  px-6 cursor-pointer ${
-              activeTab === tab.key ? 'active' : ''
-            } ${
-              disabledTab?.includes(tab.key) && 'opacity-15 cursor-not-allowed '
-            }`}
+            className={cn(
+              `tab-item py-4 flex justify-center items-center relative  px-6 cursor-pointer ${
+                activeTab === tab.key ? 'active' : ''
+              } ${
+                disabledTab?.includes(tab.key) &&
+                'opacity-15 cursor-not-allowed '
+              }`
+            )}
           >
             <span
               className={cn(
