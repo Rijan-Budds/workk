@@ -2,12 +2,16 @@ import {
   DownloadUi,
   ForInquiry,
 } from '@/app/(routes)/news/_component/DownloadUi'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { Button } from '@/common/components/ui/button'
-import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import { IAcademicBanner } from '../../_interface/academic'
 
-const AcademicSideBar = () => {
+const AcademicSideBar = ({
+  bannerDetail,
+}: {
+  bannerDetail: IAcademicBanner
+}) => {
   return (
     <div className="flex flex-col gap-6">
       <div className="bg-background p-6 rounded-xl">
@@ -31,13 +35,18 @@ const AcademicSideBar = () => {
       </div>
       <DownloadUi />
       <ForInquiry />
-      <div className="">
-        <Image
-          src="/home/admission.svg"
-          width={397}
-          height={397}
-          alt="admission"
-        />
+
+      <div className="cursor-pointer">
+        {bannerDetail ? (
+          <Link href={bannerDetail.link} target="_blank">
+            <ImageWithPlaceholder
+              src={bannerDetail.image.key}
+              width={397}
+              height={397}
+              alt="admission"
+            />
+          </Link>
+        ) : null}
       </div>
     </div>
   )

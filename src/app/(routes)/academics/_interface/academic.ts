@@ -2,6 +2,7 @@ export interface IAcademicsResponse {
   status: number
   message: string
   data: IAcademicsData
+  banner: IAcademicBanner
 }
 
 export interface IAcademicsData {
@@ -12,6 +13,17 @@ export interface IAcademicsData {
   description: string
   image: Image
   programType: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface IAcademicBanner {
+  id: string
+  title: string
+  image: Image
+  link: string
+  isEnabled: boolean
+  type: string
   createdAt: string
   updatedAt: string
 }
