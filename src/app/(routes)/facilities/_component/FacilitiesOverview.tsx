@@ -30,24 +30,26 @@ const FacilitiesOverview = async () => {
         </div>
         <div className="w-full 2lg:max-w-[503px] flex flex-col justify-center mx-auto">
           <MiniHeading isMd className="text-start">
-            ABOUT PAWAN PRAKRITI
+            Pawan Prakriti English Secondary School
           </MiniHeading>
           <SectionHeading isMd className="mt-2 text-center md:text-start">
-            Let Your Spirit Soar
+            Nurturing Tomorrow`&apos;s Leaders
           </SectionHeading>
           <p className="font-workSans text-body font-normal text-[16px] leading-[27.2px] my-6">
-            College is about learning—and not all learning happens in the
-            classroom. Extracurricular activities help you grow your talents and
-            explore new interests. They create unique opportunities to bond with
-            your classmates and develop skills that serve you well throughout
-            your life.
-            <br /> <br /> A dynamic hub designed exclusively for our alumni and
-            senior students to collaborate, innovate, and thrive. Our
-            state-of-the-art facility offers high-speed internet, flexible
-            workstations and comfortable lounge areas, all accessible 24/7
+            At Pawan Prakriti English Secondary School, we recognize that
+            education is not confined to textbooks and classrooms. Our
+            co-curricular activities play a pivotal role in nurturing
+            well-rounded individuals by fostering creativity, leadership, and
+            social responsibility among our students. These activities are
+            carefully integrated into our curriculum, ensuring a balanced
+            development of both academic and personal skills.
             <br /> <br />
-            Our College can also attend regular networking events, and benefit
-            from exclusive resources and mentorship programs.
+            Holistic Development through Diverse Opportunities Our co-curricular
+            programs are designed to complement academic learning by offering
+            students a platform to explore and hone their interests and talents.
+            Whether it’s arts, music, drama, debate, or community service, each
+            activity is an opportunity for students to discover their potential,
+            build confidence, and develop essential life skills.
           </p>
         </div>
       </div>

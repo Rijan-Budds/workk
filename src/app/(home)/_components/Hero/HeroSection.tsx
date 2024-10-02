@@ -20,16 +20,15 @@ export const HeroSection = () => {
                 </MiniHeading>
 
                 <h1 className="text-[32px] md:text-[42px] leading-[41.6px] md:leading-[54.6px] text-center 2lg:text-left font-medium md:font-semibold text-white font-poppins">
-                  Be An Achiever With Good
+                  Empowering Minds, Shaping
                   <br className="hidden md:block" />
-                  Education
+                  Futures.
                 </h1>
                 <p className="font-workSans text-[16px] leading-[27.2px] text-white font-normal mt-2 text-center 2lg:text-left">
-                  Pawan Prakriti English Secondary School (PPESS), one of the
-                  leading
+                  At Pawan Prakriti, we believe in nurturing every
+                  student`&apos;s potential to create
                   <br className="hidden 2lg:block" />
-                  educational and residential school, situated at Tikathali,
-                  Lalitpur.
+                  tomorrow`&apos;s leaders.
                 </p>
                 <div className="flex flex-col md:flex-row gap-y-4 justify-center 2lg:justify-start w-full mt-[32px]  md:gap-x-4">
                   <Link href={'/apply'}>
