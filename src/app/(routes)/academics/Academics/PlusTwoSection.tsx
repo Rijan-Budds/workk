@@ -7,22 +7,22 @@ import { FaArrowRight } from 'react-icons/fa6'
 const plustwolinks = [
   {
     id: 1,
-    title: 'management',
+    title: 'Management',
     link: '/academics/plustwo/management',
   },
   {
     id: 2,
-    title: 'humanities',
+    title: 'Humanities',
     link: '/academics/plustwo/humanities',
   },
   {
     id: 3,
-    title: 'education',
+    title: 'Education',
     link: '/academics/plustwo/education',
   },
   {
     id: 3,
-    title: 'law',
+    title: 'Law',
     link: '/academics/plustwo/law',
   },
 ]
@@ -42,12 +42,12 @@ const PlusTwoSection = () => {
           <SectionHeading>Plus Two</SectionHeading>
           <hr className="my-6" />
           <p className="font-workSans text-base leading-7 font-normal text-body">
-            When reading an application, we get to know the person behind the
-            numbers. We take into consideration your academic achievements,
-            extracurricular activities, personal qualities, and life
-            experiences. Just as there is no typical Pawan Prakriti student,
-            there is no ideal applicant. We look forward to learning more about
-            you.
+            We offer specialized streams to prepare students for higher
+            education and future careers We also have co-curricular activities
+            at PPESS. By participating in these activities, our students not
+            only excel in academics but also acquire the skills and values
+            necessary to become responsible, confident, and dynamic leaders of
+            tomorrow.
           </p>
           <hr className="my-6" />
         </div>

@@ -27,9 +27,9 @@ export const AcademicSection = ({
             Academic Program
           </SectionHeading>
           <p className="font-normal text-[16px] font-workSans mt-2 text-heading text-center md:text-left">
-            As you begin to consider your career goals
+            Our comprehensive programs are designed to provide
             <br className="hidden 2lg:block" />
-            choices may appear confusing.
+            clarity and direction as you consider your future
           </p>
           <div className="flex items-center justify-center md:justify-start gap-x-2 mt-2">
             <Image
@@ -56,7 +56,7 @@ export const AcademicSection = ({
           <AcademicCards
             title={'Plus Two'}
             description={
-              'As you begin to consider your career goals choices may appear confusing.'
+              'Prepare for higher education and specialized careers with our focused streams:'
             }
             color={'bg-primaryLighter'}
             list={academicCardsDataOne}
@@ -64,9 +64,7 @@ export const AcademicSection = ({
           />
           <AcademicCards
             title={'School'}
-            description={
-              'As you begin to consider your career goals choices may appear confusing.'
-            }
+            description={'Build a strong foundation for lifelong learning:'}
             color={'bg-secondaryLighter'}
             list={academicCardsDataTwo}
             type={'SCHOOL'}

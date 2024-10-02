@@ -87,10 +87,10 @@ export const ContactForm = () => {
         Get in touch with Us
       </h1>
       <p className="font-workSans font-light text-[16px] leading-[27.2px] mt-4">
-        You can reach us anytime via{' '}
-        <span className={`underline text-white`}>
+        We`&apos;re here to answer your questions and provide more information.
+        {/* <span className={`underline text-white`}>
           pawanprakriti2048@gmail.com
-        </span>
+        </span> */}
       </p>
       <Formik
         initialValues={initialValues}

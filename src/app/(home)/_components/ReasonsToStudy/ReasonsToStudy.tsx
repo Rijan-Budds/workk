@@ -13,20 +13,19 @@ export const ReasonsToStudy = ({
   const missionData = [
     {
       title: 'Mission',
-      description:
-        'Our mission is to cultivate a love of learning in each student.',
+      description: 'To cultivate a lifelong love of learning in every student.',
       icon: '/home/mission.svg',
     },
     {
       title: 'Vision',
       description:
-        'Our vision is to devote all our efforts to achieving excellence in education.',
+        'To devote all our efforts to achieving excellence in education.',
       icon: '/home/vision.svg',
     },
     {
       title: 'Goal',
       description:
-        'Our goal is to create a transformative educational environment that fosters academic excellence',
+        'To create a transformative educational environment that fosters academic excellence and personal growth.',
       icon: '/home/goal.svg',
     },
   ]
@@ -42,11 +41,11 @@ export const ReasonsToStudy = ({
           </SectionHeading>
 
           <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center md:text-start 2lg:text-center text-heading">
-            As you begin to consider your career goals choices may
+            At Pawan Prakriti, we`&apos;re not just an institution –
             <br className="hidden 2lg:block" />
-            appear confusing. Go with Modern Technology. Through the
+            we`&apos;re your partners in success.
             <br className="hidden 2lg:block" />
-            use of learning management systems.
+            Join us to unlock your full
           </p>
         </div>
         <div className="flex flex-col-reverse 2lg:flex-row justify-between 2lg:items-center mt-4">

@@ -59,7 +59,7 @@ const TestimonialsSection = () => {
             <div className="">
               <MiniHeading isMd>Testimonials</MiniHeading>
               <SectionHeading isMd className="mt-2">
-                Our Happy Students
+                Student`&apos;s Success Stories
               </SectionHeading>
             </div>
             <div
