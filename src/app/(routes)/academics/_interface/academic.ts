@@ -11,7 +11,7 @@ export interface IAcademicsData {
   slug: string
   articleTitle: string
   description: string
-  image: Image
+  image: IAcademicsImage
   programType: string
   createdAt: string
   updatedAt: string
@@ -20,14 +20,15 @@ export interface IAcademicsData {
 export interface IAcademicBanner {
   id: string
   title: string
-  image: Image
+  image: IAcademicsImage
   link: string
   isEnabled: boolean
   type: string
   createdAt: string
   updatedAt: string
 }
-export interface Image {
+
+export interface IAcademicsImage {
   key: string[]
   bucket: string[]
   mimeType: string[]
@@ -43,5 +44,5 @@ export interface ISchoolGalleryResponse {
 export interface ISchoolGallery {
   id?: string
   title?: string
-  photo?: Image
+  photo?: IAcademicsImage
 }
