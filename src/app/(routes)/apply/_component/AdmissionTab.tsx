@@ -9,8 +9,6 @@ import { useSearchParams } from 'next/navigation'
 import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
 
 export const AdmissionTab = () => {
-  const params = useSearchParams()
-
   const tabs = [
     { key: 'plus-two', title: '+2 Registration Form' },
     { key: 'school', title: 'School Registration Form' },
@@ -21,6 +19,7 @@ export const AdmissionTab = () => {
     { key: 'school', title: 'School' },
   ]
 
+  const params = useSearchParams()
   const [reponsiveTab, setReponsiveTab] = useState(tabs)
   const updateResponsiveTabs = () => {
     if (window.innerWidth < 768) {
@@ -29,6 +28,10 @@ export const AdmissionTab = () => {
       setReponsiveTab(tabs)
     }
   }
+  const [active, setActiveTab] = useState<string>(reponsiveTab[0]?.key)
+  const [triggerModal, setTriggerModal] = useState<boolean>(false)
+  const [clickedTab, setClickedTab] = useState<string>('')
+  const [isFieldChange, setIsFieldChange] = useState<boolean>(false)
 
   useEffect(() => {
     updateResponsiveTabs()
@@ -39,11 +42,6 @@ export const AdmissionTab = () => {
       window.removeEventListener('resize', updateResponsiveTabs)
     }
   }, [])
-
-  const [active, setActiveTab] = useState<string>(reponsiveTab[0]?.key)
-  const [triggerModal, setTriggerModal] = useState<boolean>(false)
-  const [clickedTab, setClickedTab] = useState<string>('')
-  const [isFieldChange, setIsFieldChange] = useState<boolean>(false)
 
   const handleConfirm = () => {
     setActiveTab(clickedTab)
@@ -81,6 +79,23 @@ export const AdmissionTab = () => {
       }
     }
   }, [params])
+
+  useEffect(() => {
+    const handleBeforeReload = (event: BeforeUnloadEvent) => {
+      event.preventDefault()
+      return ''
+    }
+
+    window.addEventListener('beforeunload', (e) => {
+      if (isFieldChange) {
+        handleBeforeReload(e)
+      }
+    })
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeReload)
+    }
+  }, [isFieldChange])
 
   return (
     <div className="flex flex-col  justify-center items-center gap-y-10">
