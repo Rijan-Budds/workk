@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 export const NavHeaderLink = ({
   setOpenSidebar,
@@ -17,8 +17,12 @@ export const NavHeaderLink = ({
 
   return (
     <div className="flex gap-x-6  2lg:pr-6 border-r-[1px] border-border">
-      <Link href={'/brochure'} onClick={handleLinkClick}>
-        <span className="flex gap-x-[6.67px] items-center font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading  hover:text-primary transition-all duration-500">
+      <Link
+        href={'/brochure'}
+        className="group relative"
+        onClick={handleLinkClick}
+      >
+        <span className="flex relative gap-x-[6.67px] items-center font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading hover:text-primary transition-all duration-500">
           Brochure
           <Image
             width={6}
@@ -27,8 +31,14 @@ export const NavHeaderLink = ({
             src={'/home/arrow.svg'}
           />
         </span>
+        <span className="absolute left-0 top-4 h-[1px] w-0 bg-primary transition-all duration-500 z-10 group-hover:w-2/4" />
       </Link>
-      <Link href={'/apply'} className="" onClick={handleLinkClick}>
+
+      <Link
+        href={'/apply'}
+        className="group relative"
+        onClick={handleLinkClick}
+      >
         <span className="flex gap-x-[6.67px]  items-center  font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading  hover:text-primary transition-all duration-500">
           Apply now
           <Image
@@ -38,9 +48,14 @@ export const NavHeaderLink = ({
             src={'/home/arrow.svg'}
           />
         </span>
+        <span className="absolute left-0 top-4 h-[1px] w-0 bg-primary transition-all duration-500 z-10 group-hover:w-2/4" />
       </Link>
 
-      <Link href={'/result'} className="" onClick={handleLinkClick}>
+      <Link
+        href={'/result'}
+        className="group relative"
+        onClick={handleLinkClick}
+      >
         <span className="flex gap-x-[6.67px] items-center font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading  hover:text-primary transition-all duration-500 font-workSans">
           Result
           <Image
@@ -50,6 +65,7 @@ export const NavHeaderLink = ({
             src={'/home/arrow.svg'}
           />
         </span>
+        <span className="absolute left-0 top-4 h-[1px] w-0 bg-primary transition-all duration-500 z-10 group-hover:w-2/4" />
       </Link>
     </div>
   )
