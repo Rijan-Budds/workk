@@ -274,6 +274,13 @@ export const guardianProfessionValidation = Yup.string()
   .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
 
 export const gurdianMobileNumber = Yup.string()
+  .test('spaces', 'Spaces are not allowed', function (value) {
+    if (value) {
+      const multipleSpacesPattern = /\s{1,}/
+      return !multipleSpacesPattern.test(value)
+    }
+    return true
+  })
   .matches(/^(?!\s+$)[0-9+ ]+$/, 'Please enter a valid mobile number')
   .min(10, 'Mobile number must be at least 10 characters')
   .max(14, 'Mobile number must be at most 14 characters')
