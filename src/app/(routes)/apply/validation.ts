@@ -88,8 +88,8 @@ export const streetValidation = Yup.string()
   .typeError('Please enter a valid name')
   .required('Street is a required field')
   .matches(
-    /^[A-Za-z0-9\s.]+$/,
-    'Must contain only letters, numbers, and spaces'
+    /^[A-Za-z0-9\s.,'!@#$%^&*()\-+=<>?;:"\[\]{}|\\~`]+$/,
+    'Must contain only letters, numbers, spaces, and special characters'
   )
   .test(
     'no-multiple-spaces',
