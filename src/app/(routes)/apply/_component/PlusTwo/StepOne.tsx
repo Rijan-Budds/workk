@@ -77,7 +77,7 @@ export const StepOne = ({
           isError={!!errors.province && touched.province}
           error={errors.province}
           list={provinces}
-          placeHolder={'Your Province No'}
+          placeHolder={'Select province no'}
           label="Province No"
           field={'province'}
           isRequired

@@ -12,11 +12,11 @@ export const firstNameValidation = Yup.string()
       return true
     }
   )
+  .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
   .max(20, 'First Name must be at most 20 characters')
   .min(3, 'First Name must be at least 3 characters')
   .typeError('Please enter a valid name')
   .required('First Name is a required field')
-  .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
   .test('spaces', 'Multiple spaces are not allowed', function (value) {
     if (value) {
       const multipleSpacesPattern = /\s{2,}/
@@ -36,10 +36,10 @@ export const middleNameValidation = Yup.string()
       return true
     }
   )
+  .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
   .max(20, 'Middle name must be at most 20 characters')
   .min(3, 'Middle name must be at least 3 characters')
   .typeError('Please enter a valid name')
-  .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
   .test('spaces', 'Spaces are not allowed', function (value) {
     if (value) {
       const multipleSpacesPattern = /\s{1,}/
@@ -59,11 +59,11 @@ export const lastNameValidation = Yup.string()
       return true
     }
   )
+  .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
   .max(20, 'Last name must be at most 20 characters')
   .min(3, 'Last name must be at least 3 characters')
   .typeError('Please enter a valid name')
   .required('Last name is a required field')
-  .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
   .test('spaces', 'Spaces are not allowed', function (value) {
     if (value) {
       const multipleSpacesPattern = /\s{1,}/
