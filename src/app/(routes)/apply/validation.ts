@@ -153,11 +153,30 @@ export const mobileNumberValidation = Yup.string()
   .max(14, 'Mobile number must be at most 14 characters')
 
 export const emailValidation = Yup.string()
-  .email('Please enter a valid email')
+  .test(
+    'no-leading-space',
+    'Space at beginning is not allowed',
+    function (value) {
+      if (value) {
+        return !/^\s/.test(value)
+      }
+      return true
+    }
+  )
   .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please enter a valid email')
   .max(50, 'Email must be less than or equal to 50 characters')
   .required('Email is a required field')
-  .trim()
+  .test(
+    'no-multiple-spaces',
+    'Multiple spaces are not allowed',
+    function (value) {
+      if (value) {
+        const multipleSpacesPattern = /\s{2,}/
+        return !multipleSpacesPattern.test(value)
+      }
+      return true
+    }
+  )
 
 export const fileValidation = Yup.array()
   .of(
@@ -261,13 +280,13 @@ export const gurdianMobileNumber = Yup.string()
 
 export const schoolNameValidation = Yup.string()
   .required('Previous school’s name is required')
-  .min(3, 'School name must be at least 3 characters')
-  .max(150, 'School name must be at most 150 characters')
   .test(
     'no-leading-space',
     'Space at beginning is not allowed',
     (value) => !/^\s/.test(value)
   )
+  .min(3, 'School name must be at least 3 characters')
+  .max(150, 'School name must be at most 150 characters')
   .matches(
     /^[A-Za-z0-9\s.-]+$/,
     'School name can only contain letters, numbers, spaces, hyphens, and periods'
@@ -276,6 +295,11 @@ export const schoolNameValidation = Yup.string()
 
 export const schoolAddressValidation = Yup.string()
   .required('Previous school address is required')
+  .test(
+    'no-leading-space',
+    'Space at beginning is not allowed',
+    (value) => !/^\s/.test(value)
+  )
   .min(5, 'School address must be at least 5 characters')
   .max(200, 'School address must be at most 200 characters')
   .matches(
@@ -286,6 +310,11 @@ export const schoolAddressValidation = Yup.string()
 
 export const schoolBoardValidation = Yup.string()
   .required('Previous school board is required')
+  .test(
+    'no-leading-space',
+    'Space at beginning is not allowed',
+    (value) => !/^\s/.test(value)
+  )
   .min(5, 'School board must be at least 5 characters')
   .max(80, 'School board must be at most 80 characters')
   .matches(
@@ -294,6 +323,16 @@ export const schoolBoardValidation = Yup.string()
   )
 
 export const seeSymbolNumberValidation = Yup.string()
+  .test(
+    'no-leading-space',
+    'Space at beginning is not allowed',
+    function (value) {
+      if (value) {
+        return !/^\s/.test(value)
+      }
+      return true
+    }
+  )
   .required('SEE symbol number is required')
   .length(9, 'SEE symbol number must be exactly 9 characters')
   .matches(
