@@ -3,9 +3,9 @@ import {
   ForInquiry,
 } from '@/app/(routes)/news/_component/DownloadUi'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
-import { Button } from '@/common/components/ui/button'
 import Link from 'next/link'
 import { IAcademicBanner } from '../../_interface/academic'
+import { Button } from '@/common/components/Atom/Button'
 
 const SchoolSidebar = ({ bannerDetail }: { bannerDetail: IAcademicBanner }) => {
   return (
