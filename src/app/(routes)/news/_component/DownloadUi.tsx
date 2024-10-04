@@ -49,7 +49,7 @@ export const RecentPostUi = ({
     if (recentData) {
       return (
         recentData &&
-        recentData.map((post, index) => {
+        recentData.slice(0, 3).map((post, index) => {
           return (
             <RecentPostCard
               key={post.id}

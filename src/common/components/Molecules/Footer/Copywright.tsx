@@ -8,7 +8,7 @@ const Copywright = () => {
       <div className="flex flex-col lg:flex-row gap-y-6  md:gap-y-4 lg:gap-y-0 justify-between">
         <h2 className="font-workSans font-light  text-[14px] md:text-[16px] leading-[21px] md:leading-[27.2px] text-white">
           Copyright ©2024. All Rights Reserved by Pawan Prakriti Secondary
-          School | Powered
+          School | Powered by
           <br className="hidden md:block 2lg:hidden" />
           <Link
             href={'https://aitc.ai/'}
@@ -16,7 +16,7 @@ const Copywright = () => {
             className="hover:underline"
           >
             {' '}
-            by AITC International
+            AITC International
           </Link>
         </h2>
         <div className="font-workSans font-light text-[14px]  leading-[21px]  text-white">

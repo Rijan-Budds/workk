@@ -137,7 +137,7 @@ export const Pagination = ({
         variant={'outline'}
         onClick={onPrevious}
         disabled={currentPage === 1 ? true : false}
-        className="hover:bg-primary p-3 rounded-[12px] text-heading font-medium leading-4 text-[16px]"
+        className="hover:bg-primary p-3 rounded-[12px] text-heading font-medium leading-4 text-[16px] disabled:opacity-40 "
       >
         Previous Page
       </Button>
@@ -181,7 +181,7 @@ export const Pagination = ({
         onClick={onNext}
         variant={'outline'}
         disabled={currentPage === lastPage ? true : false}
-        className="hover:bg-primary p-3 rounded-[12px] text-heading font-medium leading-4 text-[16px]"
+        className="hover:bg-primary p-3 rounded-[12px] text-heading font-medium leading-4 text-[16px] disabled:opacity-40"
       >
         Next Page
       </Button>
