@@ -1,7 +1,13 @@
 'use client'
 
 import { Button } from '@/common/components/Atom/Button'
+import { ButtonLoader } from '@/common/components/Atom/ButtonLoader'
 import { Input } from '@/common/components/Atom/Input'
+import { SuccessMessageUi } from '@/common/components/Molecules/SuccessMessageUi'
+import { ToastClose } from '@/common/components/ui/toast'
+import { contactForm } from '@/common/constant/route'
+import { toast } from '@/common/hook/use-toast'
+import Axios from '@/common/utils/Axios'
 import {
   emailValidation,
   fullNameValidation,
@@ -10,16 +16,10 @@ import {
   phoneNumberValidation,
 } from '@/common/utils/validation'
 import { Form, Formik, FormikHelpers } from 'formik'
-import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import * as Yup from 'yup'
 import { ContactDropdown } from './ContactDropdown'
-import { SuccessMessageUi } from '@/common/components/Molecules/SuccessMessageUi'
-import { ToastClose } from '@/common/components/ui/toast'
-import { toast } from '@/common/hook/use-toast'
-import Image from 'next/image'
-import Axios from '@/common/utils/Axios'
-import { contactForm } from '@/common/constant/route'
-import { ButtonLoader } from '@/common/components/Atom/ButtonLoader'
 
 export const ContactForm = () => {
   const [message, setMessage] = useState<string>('')
@@ -87,10 +87,10 @@ export const ContactForm = () => {
         Get in touch with Us
       </h1>
       <p className="font-workSans font-light text-[16px] leading-[27.2px] mt-4">
-        You can reach us anytime via{' '}
-        <span className={`underline text-white`}>
+        We&apos;re here to answer your questions and provide more information.
+        {/* <span className={`underline text-white`}>
           pawanprakriti2048@gmail.com
-        </span>
+        </span> */}
       </p>
       <Formik
         initialValues={initialValues}

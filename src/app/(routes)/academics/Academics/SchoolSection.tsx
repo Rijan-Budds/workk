@@ -11,7 +11,6 @@ const schoollinks = [
     link: 'pre-school',
   },
   {
-    id: 2,
     title: 'Primary Level (One - Five)',
     link: 'primary',
   },
@@ -56,12 +55,9 @@ const SchoolSection = () => {
           <SectionHeading>School Level</SectionHeading>
           <hr className="my-6" />
           <p className="font-workSans text-base leading-7 font-normal text-body">
-            When reading an application, we get to know the person behind the
-            numbers. We take into consideration your academic achievements,
-            extracurricular activities, personal qualities, and life
-            experiences. Just as there is no typical Pawan Prakriti student,
-            there is no ideal applicant. We look forward to learning more about
-            you.
+            Our school-level programs focus on building a strong foundation in
+            core subjects while nurturing creativity and critical thinking
+            skills.
           </p>
         </div>
 

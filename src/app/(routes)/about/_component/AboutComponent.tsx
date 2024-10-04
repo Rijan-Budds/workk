@@ -43,7 +43,7 @@ const AboutComponent = async () => {
           </div>
           <div className="w-full 2lg:max-w-[503px] flex flex-col justify-center mx-auto">
             <MiniHeading isMd className="text-start">
-              about pawan prakriti
+              Pawan Prakriti English Secondary School
             </MiniHeading>
             <SectionHeading isMd className="mt-2 text-start">
               {introduction.title}
@@ -61,7 +61,7 @@ const AboutComponent = async () => {
             </div>
             <div className="mt-[40px]">
               <Link href={'/apply'}>
-                <Button>Apply Admission</Button>
+                <Button>Apply for Admission</Button>
               </Link>
             </div>
           </div>
@@ -72,7 +72,7 @@ const AboutComponent = async () => {
         <div>
           {' '}
           <MiniHeading isMd className="text-start">
-            about pawan prakriti
+            Pawan Prakriti English Secondary School
           </MiniHeading>
           <NoDataFound title="No About Us Data Found" />
         </div>

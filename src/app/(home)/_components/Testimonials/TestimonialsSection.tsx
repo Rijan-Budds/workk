@@ -1,26 +1,26 @@
 'use client'
-import React, { ReactNode, useEffect, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 
-import './testimonial.css'
-import { TestimonialCard } from './TestimonialCard'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
+import './testimonial.css'
+import { TestimonialCard } from './TestimonialCard'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
-import { Pagination, Navigation } from 'swiper/modules'
+import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/testimonial'
 import {
   SwiperButtonNext,
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
-import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
-import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/testimonial'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import { Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 export const swiperParams = {
   navigation: {
@@ -59,7 +59,7 @@ const TestimonialsSection = () => {
             <div className="">
               <MiniHeading isMd>Testimonials</MiniHeading>
               <SectionHeading isMd className="mt-2">
-                Our Happy Students
+                Student&apos;s Success Stories
               </SectionHeading>
             </div>
             <div

@@ -1,10 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
+import { CustomModal } from '@/common/components/Molecules/Modal'
+import { useState } from 'react'
+import { IBrochureItem } from '../interface/brochureType'
 import { BrochureCardUi } from './BrochureCardUi'
 import { PdfViewerModal } from './PdfViewerModal'
-import { CustomModal } from '@/common/components/Molecules/Modal'
-import { IBrochureItem } from '../interface/brochureType'
 
 export const BrochureUi = ({ data }: { data: IBrochureItem[] | undefined }) => {
   const [openModal, setOpenModal] = useState<boolean>(false)
@@ -14,9 +14,12 @@ export const BrochureUi = ({ data }: { data: IBrochureItem[] | undefined }) => {
     <>
       <div className="flex flex-col  gap-y-10 2lg:items-center">
         <p className="text-body font-workSans text-[16px] leading-[27.2px] font-normal text-center 2lg:max-w-[713px] ">
-          Our vision is “Working hard to be always the best”. We, as an
-          institute are aimed to encourage each of our students & Guide them to
-          achieve a successful career tudents them to achieve success.
+          Discover why Pawan Prakriti English Secondary School (PPESS) is the
+          right choice for your child&apos;s education. Our comprehensive
+          brochure provides insights into our academic programs,
+          state-of-the-art facilities, co-curricular activities, and our
+          commitment to nurturing well-rounded individuals. Get all the
+          information you need to make an informed decision.
         </p>
         <div className="grid  2lg:grid-cols-3 gap-6">
           {data &&

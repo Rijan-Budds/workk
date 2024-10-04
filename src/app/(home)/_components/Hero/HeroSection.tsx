@@ -1,12 +1,11 @@
-import { Button } from '@/common/components/Atom/Button'
-import React from 'react'
-import { HeroBgWrapper } from './HeroBgWrapper'
-import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
-import Image from 'next/image'
-import { HeroImageSection } from './HeroImageSection'
-import { MiniHeading } from '@/common/components/Atom/MiniHeading'
-import Link from 'next/link'
 import { IHomepageItem } from '@/app/(routes)/contact/_interface/Contact'
+import { Button } from '@/common/components/Atom/Button'
+import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
+import { MiniHeading } from '@/common/components/Atom/MiniHeading'
+import Image from 'next/image'
+import Link from 'next/link'
+import { HeroBgWrapper } from './HeroBgWrapper'
+import { HeroImageSection } from './HeroImageSection'
 
 export const HeroSection = ({
   settings,
@@ -21,7 +20,7 @@ export const HeroSection = ({
     <HeroBgWrapper>
       <HomeWrapper className="2lg:py-[97px]">
         <div className="flex items-center flex-col  2lg:flex-row  w-full ">
-          <div className="flex justify-start items-center w-full  ">
+          <div className="flex justify-center items-center w-full  ">
             <div className="flex flex-col gap-y-24 2lg:mt-16">
               <div className="flex flex-col gap-y-2 items-center 2lg:items-start">
                 <MiniHeading isMd className="text-center">
@@ -29,16 +28,13 @@ export const HeroSection = ({
                 </MiniHeading>
 
                 <h1 className="text-[32px] md:text-[42px] leading-[41.6px] md:leading-[54.6px] text-center 2lg:text-left font-medium md:font-semibold text-white font-poppins">
-                  Be An Achiever With Good
+                  Empowering Minds, Shaping
                   <br className="hidden md:block" />
-                  Education
+                  Futures.
                 </h1>
                 <p className="font-workSans text-[16px] leading-[27.2px] text-white font-normal mt-2 text-center 2lg:text-left">
-                  Pawan Prakriti English Secondary School (PPESS), one of the
-                  leading
-                  <br className="hidden 2lg:block" />
-                  educational and residential school, situated at Tikathali,
-                  Lalitpur.
+                  At Pawan Prakriti, we believe in nurturing every
+                  student&apos;s potential to create tomorrow&apos;s leaders.
                 </p>
                 <div className="flex flex-col md:flex-row gap-y-4 justify-center 2lg:justify-start w-full mt-[32px]  md:gap-x-4">
                   <Link href={'/apply'}>
