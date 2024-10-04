@@ -10,10 +10,19 @@ const Copywright = () => {
           Copyright ©2024. All Rights Reserved by Pawan Prakriti Secondary
           School | Powered
           <br className="hidden md:block 2lg:hidden" />
-          by AITC International
+          <Link
+            href={'https://aitc.ai/'}
+            target="__blank"
+            className="hover:underline"
+          >
+            {' '}
+            by AITC International
+          </Link>
         </h2>
         <div className="font-workSans font-light text-[14px]  leading-[21px]  text-white">
-          <Link href="/terms-and-condition">Terms and Conditions</Link>
+          <Link href="/terms-and-condition" className="">
+            Terms and Conditions
+          </Link>
         </div>
       </div>
     </HomeWrapper>
