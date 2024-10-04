@@ -162,7 +162,7 @@ const NavLinksUi = ({
               className={cn(
                 'absolute top-full left-0 mt-1 bg-white shadow-md rounded-[12px] p-2 z-50 w-[240px]  ',
                 {
-                  'overflow-y-scroll max-h-[170px] pdf-scrollbar':
+                  'overflow-y-auto max-h-[320px] pdf-scrollbar':
                     links === 'Our facilities',
                 }
               )}
