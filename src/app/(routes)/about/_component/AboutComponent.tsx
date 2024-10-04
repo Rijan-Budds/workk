@@ -72,7 +72,7 @@ const AboutComponent = async () => {
         <div>
           {' '}
           <MiniHeading isMd className="text-start">
-            about pawan prakriti
+            Pawan Prakriti English Secondary School
           </MiniHeading>
           <NoDataFound title="No About Us Data Found" />
         </div>
