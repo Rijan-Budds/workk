@@ -168,8 +168,6 @@ export const GallerySection = () => {
       setTotalCountVideo(galleryData?.totalCount)
     } catch (error) {
       console.error('error fetching gallery video', error)
-    } finally {
-      setLoading(false)
     }
   }
 
