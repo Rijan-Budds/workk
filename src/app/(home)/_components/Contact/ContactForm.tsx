@@ -145,7 +145,7 @@ export const ContactForm = () => {
                   label="Level"
                   setFieldValue={setFieldValue}
                   error={errors.level!}
-                  isError={!!errors.level}
+                  isError={!!errors.level && touched.level}
                 />
                 <Input
                   isMessage
