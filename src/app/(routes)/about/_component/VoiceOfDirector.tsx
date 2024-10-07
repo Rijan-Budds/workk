@@ -171,6 +171,7 @@ const SwiperWrapper = ({
           onSwiper={(swiper) => (mainSwiperRef.current = swiper)}
           onSlideChange={handleSlideChange} // Handle slide change
           className={`w-full ${className} !flex`}
+          loop
         >
           {children}
         </Swiper>

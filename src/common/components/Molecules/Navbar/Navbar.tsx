@@ -90,9 +90,7 @@ export const Navbar = () => {
               ))}
             </div>
             <Link href="/contact">
-              <Button variant={'default'} className="h-fit">
-                Contact Us
-              </Button>
+              <Button className="h-fit">Contact Us</Button>
             </Link>
           </div>
         </div>
@@ -131,9 +129,11 @@ const NavLinksUi = ({
 }) => {
   const handleLinkClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    dropdown: boolean
+    dropdown: boolean,
+    link: string | undefined
   ) => {
-    if (dropdown) {
+    // Prevent default only if the link is empty or '#' and there is a dropdown
+    if (dropdown && (!link || link === '')) {
       e.preventDefault()
     }
   }
@@ -148,7 +148,7 @@ const NavLinksUi = ({
         <Link
           href={link || '/'}
           className="text-[14px] leading-4 font-workSans font-medium group-hover:text-primary transition-all duration-500 "
-          onClick={(e) => handleLinkClick(e, isDropdown && !!sublinks)}
+          onClick={(e) => handleLinkClick(e, isDropdown && !!sublinks, link)}
         >
           {links}
         </Link>
@@ -170,23 +170,35 @@ const NavLinksUi = ({
               <div className="flex flex-col py-4 px-6 space-y-5">
                 {sublinks?.map((sublink) => (
                   <div key={sublink.id} className="relative  group">
-                    <Link href={sublink.link}>
-                      <div
-                        className={cn(
-                          'text-[14px] group/item leading-4 font-workSans font-medium hover:text-primary transition-all duration-500 cursor-pointer',
-                          pathname === sublink.link
-                            ? 'text-primary'
-                            : 'text-black'
-                        )}
+                    {sublink.link ? (
+                      <Link href={sublink.link}>
+                        <div
+                          className={cn(
+                            'text-[14px] group/item leading-4 font-workSans font-medium hover:text-primary transition-all duration-500 cursor-pointer',
+                            pathname === sublink.link
+                              ? 'text-primary'
+                              : 'text-black'
+                          )}
+                          onClick={() => handleSublinkClick(sublink.id)}
+                        >
+                          {sublink.title}
+                          {sublink.subsublink && (
+                            <FiChevronDown className="ml-2 w-[14px] mb-[3px] inline-block -rotate-90" />
+                          )}
+                          <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-primary transition-all duration-500 group-hover/item:w-1/6" />
+                        </div>
+                      </Link>
+                    ) : (
+                      <button
+                        className="text-[14px] leading-4 font-workSans font-medium hover:text-primary transition-all duration-500 cursor-pointer"
                         onClick={() => handleSublinkClick(sublink.id)}
                       >
                         {sublink.title}
                         {sublink.subsublink && (
                           <FiChevronDown className="ml-2 w-[14px] mb-[3px] inline-block -rotate-90" />
                         )}
-                        <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-primary transition-all duration-500 group-hover/item:w-1/6" />
-                      </div>
-                    </Link>
+                      </button>
+                    )}
 
                     {sublink.subsublink && activeSublink === sublink.id && (
                       <div className="absolute top-[0px] left-[205px] mt-0 bg-white shadow-md rounded-[12px] p-2 z-50 w-[240px]">

@@ -2,6 +2,7 @@ import { NoDataFound } from '@/common/components/NoDataFound'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { IAcademicsResponse } from '../../_interface/academic'
 import AcademicDetail from '../_components/AcademicDetail'
+import { redirect } from 'next/navigation'
 
 const Page = async ({ params }: { params: { slug: string } }) => {
   const response: IAcademicsResponse | undefined = await UseServerFetch(
@@ -9,6 +10,10 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   )
 
   const renderAcademicsDetailUi = () => {
+    if (!response?.data) {
+      redirect('/not-found')
+    }
+
     if (response) {
       return (
         <AcademicDetail

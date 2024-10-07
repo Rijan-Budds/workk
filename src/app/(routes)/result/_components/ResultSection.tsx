@@ -29,6 +29,7 @@ const ResultSection = ({
     setProgram(category)
     setPage(1)
   }
+
   const [openModal, setOpenModal] = useState<boolean>(false)
   const [pdfSrc, setPdfSrc] = useState<string | null>(null)
 
@@ -49,7 +50,7 @@ const ResultSection = ({
         <div className="relative w-full md:max-w-[380px]">
           <CustomDropdown
             list={returnDropDownList()}
-            placeHolder="Select Category"
+            placeHolder="Filter by Program"
             label=""
             field="category"
             error=""

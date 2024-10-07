@@ -1,17 +1,43 @@
+'use client'
 import {
   DownloadUi,
   ForInquiry,
 } from '@/app/(routes)/news/_component/DownloadUi'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
-import { Button } from '@/common/components/ui/button'
 import Link from 'next/link'
 import { IAcademicBanner } from '../../_interface/academic'
+import { Button } from '@/common/components/Atom/Button'
+import { useEffect, useState } from 'react'
+import {
+  IBrochureApiResponse,
+  IBrochureItem,
+} from '@/app/(routes)/brochure/interface/brochureType'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
 
 const AcademicSideBar = ({
   bannerDetail,
 }: {
   bannerDetail: IAcademicBanner
 }) => {
+  const [brochureData, setBrochureData] = useState<IBrochureItem[] | undefined>(
+    undefined
+  )
+
+  useEffect(() => {
+    const fetchBrochureResponse = async () => {
+      try {
+        const brochureDataResponse: IBrochureApiResponse | undefined =
+          await UseServerFetch(`/api/v1/brochure`)
+        if (brochureDataResponse) {
+          setBrochureData(brochureDataResponse?.data)
+        }
+      } catch (error) {
+        console.error('Error fetching brochure data:', error)
+      }
+    }
+
+    fetchBrochureResponse()
+  }, [])
   return (
     <div className="flex flex-col gap-6">
       <div className="bg-background p-6 rounded-xl">
@@ -24,16 +50,11 @@ const AcademicSideBar = ({
             them.
           </p>
           <Link href={'/apply'}>
-            <Button
-              variant={'default'}
-              className="mt-6 w-full bg-secondary hover:bg-primary h-12 rounded-lg font-workSans text-white font-medium leading-4"
-            >
-              Apply Now
-            </Button>
+            <Button variant={'default'}>Apply Now</Button>
           </Link>
         </div>
       </div>
-      <DownloadUi />
+      <DownloadUi data={brochureData} />
       <ForInquiry />
 
       <div className="cursor-pointer">

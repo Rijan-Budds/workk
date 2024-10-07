@@ -25,7 +25,7 @@ const TearmsAndCondition = async () => {
               : 'N/A'}
           </div>
           <div
-            className="terms-content"
+            className="terms-content custom-list"
             dangerouslySetInnerHTML={{ __html: terms.description }}
           ></div>
         </div>
