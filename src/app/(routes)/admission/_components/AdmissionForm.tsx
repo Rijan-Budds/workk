@@ -134,6 +134,7 @@ const AdmissionForm = () => {
                 />
                 <ContactDropdown
                   label="Level"
+                  value={values.level}
                   setFieldValue={setFieldValue}
                   error={errors.level!}
                   isError={!!errors.level}

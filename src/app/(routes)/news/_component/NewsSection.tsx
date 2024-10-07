@@ -3,7 +3,7 @@
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GoArrowRight } from 'react-icons/go'
 import { NoticeClientSection } from '../../notice/_component/NoticeClientSection'
 import { INewsItem, INewsResponseData } from '../interface/newsType'
