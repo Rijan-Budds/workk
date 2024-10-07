@@ -54,7 +54,7 @@ const AcademicSideBar = ({
           </Link>
         </div>
       </div>
-      <DownloadUi data={brochureData} />
+      {brochureData && <DownloadUi data={brochureData} />}
       <ForInquiry />
 
       <div className="cursor-pointer">

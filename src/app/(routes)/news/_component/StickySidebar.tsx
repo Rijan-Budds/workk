@@ -1,6 +1,6 @@
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { INewsData, INewsResponseData } from '../interface/newsType'
-import { DownloadUi, RecentPostUi } from './DownloadUi'
+import { RecentPostUi } from './DownloadUi'
 import { SidebarAd } from './SidebarAd'
 
 export const StickySidebar = async ({
@@ -17,7 +17,7 @@ export const StickySidebar = async ({
   return (
     <div className="max-h-[1015px] w-[397px] bg-white  sticky top-24 transition-all duration-700  flex-col gap-y-6 hidden 2lg:flex  ">
       <RecentPostUi recentData={response?.data ? response?.data : undefined} />
-      <DownloadUi />
+      {/* <DownloadUi /> */}
       {data && <SidebarAd data={data} />}
     </div>
   )

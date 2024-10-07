@@ -44,7 +44,7 @@ const AdmissionSideBar: React.FC<AdmissionSideBarProps> = ({
         admissions={admissions?.data || []}
         onFilterChange={onFilterChange}
       />
-      <DownloadUi data={brochureData} />
+      {brochureData && <DownloadUi data={brochureData} />}
       <AdmissionForm />
     </div>
   )
