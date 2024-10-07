@@ -4,7 +4,6 @@ import {
   ForInquiry,
 } from '@/app/(routes)/news/_component/DownloadUi'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
-import { Button } from '@/common/components/ui/button'
 import Link from 'next/link'
 import { IAcademicBanner } from '../../_interface/academic'
 import { useEffect, useState } from 'react'
@@ -13,6 +12,7 @@ import {
   IBrochureItem,
 } from '@/app/(routes)/brochure/interface/brochureType'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { Button } from '@/common/components/Atom/Button'
 
 const SchoolSidebar = ({ bannerDetail }: { bannerDetail: IAcademicBanner }) => {
   const [brochureData, setBrochureData] = useState<IBrochureItem[] | undefined>(

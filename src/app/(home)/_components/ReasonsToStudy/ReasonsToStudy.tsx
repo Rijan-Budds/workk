@@ -1,9 +1,8 @@
+import { IHomepageItem } from '@/app/(routes)/contact/_interface/Contact'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import Image from 'next/image'
-import React from 'react'
 import { VideoSection } from './VideoSection'
-import { IHomepageItem } from '@/app/(routes)/contact/_interface/Contact'
 
 export const ReasonsToStudy = ({
   settings,
@@ -41,9 +40,9 @@ export const ReasonsToStudy = ({
           </SectionHeading>
 
           <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center md:text-start 2lg:text-center text-heading">
-            At Pawan Prakriti, we`&apos;re not just an institution –
+            At Pawan Prakriti, we&apos;re not just an institution –
             <br className="hidden 2lg:block" />
-            we`&apos;re your partners in success.
+            we&apos;re your partners in success.
             <br className="hidden 2lg:block" />
             Join us to unlock your full
           </p>

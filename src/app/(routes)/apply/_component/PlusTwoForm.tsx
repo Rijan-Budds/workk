@@ -2,7 +2,13 @@
 
 import React, { useState } from 'react'
 import { MultipleSteps } from './StepUi'
-import { Form, Formik, FormikHelpers, FormikValues } from 'formik'
+import {
+  Form,
+  Formik,
+  FormikHelpers,
+  FormikTouched,
+  FormikValues,
+} from 'formik'
 import * as Yup from 'yup'
 import {
   applicationCourseDetailSchema,
@@ -29,8 +35,21 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [completedSteps, setCompletedStep] = useState<number[]>([])
   const [loading, setLoading] = useState<boolean>(false)
-  const handleNext = () => {
+  const handleNext = (
+    setTouched: (
+      touched: FormikTouched<FormikValues>,
+      shouldValidate?: boolean
+    ) => void
+  ) => {
+    const currentStepFields = Object.keys(ValidationSchemas[currentStep])
+
+    const touchedFields = currentStepFields.reduce((acc, field) => {
+      acc[field] = true
+      return acc
+    }, {} as Record<string, boolean>)
+
     completedSteps.push(currentStep)
+    setTouched(touchedFields, true)
     setCurrentStep((prev) =>
       Math.min(prev + 1, StepComponentPlusTwo.length - 1)
     )
@@ -43,10 +62,11 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
 
   const handleSubmit = async (
     values: FormikValues,
-    resetForm: FormikHelpers<typeof initialValues>['resetForm']
+    formikHelpers: FormikHelpers<typeof initialValues>
   ) => {
+    const { resetForm, setTouched } = formikHelpers
     if (currentStep < StepComponentPlusTwo.length - 1) {
-      handleNext()
+      handleNext(setTouched)
     } else {
       const formData = new FormData()
       const applicationFamilyDetail: { [key: string]: string } = {}
@@ -135,7 +155,9 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
 
       <Formik
         initialValues={initialValues}
-        onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
+        onSubmit={(values, formikHelpers) =>
+          handleSubmit(values, formikHelpers)
+        }
         validationSchema={Yup.object().shape(ValidationSchemas[currentStep])}
       >
         {(formik) => {
@@ -151,6 +173,7 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
           const StepComponentsPlusTwo = StepComponentPlusTwo[currentStep]
 
           onFormChange(dirty)
+
           return (
             <Form>
               <StepComponentsPlusTwo
@@ -173,7 +196,7 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
                     Previous
                   </Button>
                 )}
-                <Button disabled={loading} type="submit" className="w-fit">
+                <Button disabled={loading} type={'submit'} className="w-fit">
                   {isSubmit ? 'Next' : <ButtonLoader loading={loading} />}
                 </Button>
               </div>

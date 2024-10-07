@@ -2,7 +2,6 @@ import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import Image from 'next/image'
-import React from 'react'
 
 const FacilitiesOverview = async () => {
   return (
@@ -44,12 +43,13 @@ const FacilitiesOverview = async () => {
             carefully integrated into our curriculum, ensuring a balanced
             development of both academic and personal skills.
             <br /> <br />
-            Holistic Development through Diverse Opportunities Our co-curricular
-            programs are designed to complement academic learning by offering
-            students a platform to explore and hone their interests and talents.
-            Whether it’s arts, music, drama, debate, or community service, each
-            activity is an opportunity for students to discover their potential,
-            build confidence, and develop essential life skills.
+            Holistic Development through Diverse Opportunities: Our
+            co-curricular programs are designed to complement academic learning
+            by offering students a platform to explore and hone their interests
+            and talents. Whether it’s arts, music, drama, debate, or community
+            service, each activity is an opportunity for students to discover
+            their potential, build confidence, and develop essential life
+            skills.
           </p>
         </div>
       </div>

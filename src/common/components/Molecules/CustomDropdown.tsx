@@ -1,6 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
+import { IDropdownList } from '@/common/interface/type'
+import { cn } from '@/lib/utils'
+import { ChevronDown } from 'lucide-react'
+import { useState } from 'react'
+import { ErrorComponent } from '../Atom/Input'
 import {
   Select,
   SelectContent,
@@ -9,10 +13,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../ui/select'
-import { ErrorComponent } from '../Atom/Input'
-import { IDropdownList } from '@/common/interface/type'
-import { cn } from '@/lib/utils'
-import { ChevronDown } from 'lucide-react'
 
 interface ICustomDropdownProps {
   setFieldValue?: (field: string, value: boolean | string) => void
@@ -42,6 +42,7 @@ export const CustomDropdown = ({
   isBoolean = false,
 }: ICustomDropdownProps) => {
   const [open, setOpen] = useState<boolean>(false)
+  const [hasSelected, setHasSelected] = useState<boolean>(false)
 
   return (
     <div className="flex flex-col gap-y-2 w-full">
@@ -59,6 +60,7 @@ export const CustomDropdown = ({
         value={typeof value === 'boolean' ? (value ? 'TRUE' : 'FALSE') : value}
         onOpenChange={() => setOpen((prev) => !prev)}
         onValueChange={(value) => {
+          setHasSelected(true)
           if (isBoolean) {
             if (value === 'TRUE' && setFieldValue) {
               setFieldValue(field, true)
@@ -82,7 +84,15 @@ export const CustomDropdown = ({
             }
           )}
         >
-          <SelectValue placeholder={placeHolder} />
+          {value && hasSelected ? (
+            <SelectValue>
+              {value.charAt(0).toUpperCase() + value.slice(1)}
+            </SelectValue>
+          ) : (
+            <span className="text-body font-workSans text-sm">
+              {placeHolder}
+            </span>
+          )}
           <ChevronDown
             className={cn('h-4 w-4 text-body transition-all duration-500', {
               'rotate-180 transition-all duration-500': open,

@@ -1,16 +1,16 @@
 'use client'
-import React, { Dispatch, SetStateAction, useState } from 'react'
-import ResultCard from './ResultCard'
-import { IResult } from '../_interface/result'
 import { CustomDropdown } from '@/common/components/Molecules/CustomDropdown'
+import { CustomModal } from '@/common/components/Molecules/Modal'
+import { NoDataFound } from '@/common/components/NoDataFound'
+import { Dispatch, SetStateAction, useState } from 'react'
+import { PdfViewerModal } from '../../brochure/_component/PdfViewerModal'
 import {
   ICategory,
   PlusTwoDropdownList,
   SchoolLevelDropdownList,
 } from '../_constants/data'
-import { NoDataFound } from '@/common/components/NoDataFound'
-import { CustomModal } from '@/common/components/Molecules/Modal'
-import { PdfViewerModal } from '../../brochure/_component/PdfViewerModal'
+import { IResult } from '../_interface/result'
+import ResultCard from './ResultCard'
 
 const ResultSection = ({
   results,
@@ -50,7 +50,7 @@ const ResultSection = ({
         <div className="relative w-full md:max-w-[380px]">
           <CustomDropdown
             list={returnDropDownList()}
-            placeHolder="Filter by Program"
+            placeHolder="Filter by Programs"
             label=""
             field="category"
             error=""
