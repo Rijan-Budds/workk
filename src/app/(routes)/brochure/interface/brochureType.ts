@@ -6,7 +6,7 @@ export interface IBrochureApiResponse {
 }
 
 interface FileData {
-  key: string[]
+  key: string
   bucket: string[]
   mimeType: string[]
 }

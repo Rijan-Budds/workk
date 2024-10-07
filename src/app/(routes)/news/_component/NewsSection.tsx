@@ -85,7 +85,7 @@ export const NewsSection = () => {
         return (
           <div
             className={cn(
-              'flex flex-row flex-wrap justify-center md:justify-between  gap-x-4 gap-y-28 pb-16 2lg:pb-1 '
+              'flex flex-row flex-wrap justify-center md:justify-evenly  gap-x-4 gap-y-28 pb-16 2lg:pb-1 '
             )}
           >
             {newsNotice &&

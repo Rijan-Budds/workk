@@ -22,6 +22,23 @@ const ContactUsHeader = async () => {
     (contact) => contact.key !== 'Address'
   )
 
+  const phoneNumbers = settings?.data.phoneNumber || []
+  const telephones = settings?.data.telephone || []
+
+  // Combine both phoneNumber and telephone into a single list
+  const allContactNumbers = [...phoneNumbers, ...telephones]
+
+  const formattedNumbers = [
+    allContactNumbers
+      .slice(0, 2)
+      .map((num) => num.value)
+      .join(' / '),
+    allContactNumbers
+      .slice(2, 4)
+      .map((num) => num.value)
+      .join(' / '),
+  ]
+
   return (
     <HomeWrapper className="!pb-0">
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[24px] justify-center items-center">
@@ -32,7 +49,7 @@ const ContactUsHeader = async () => {
           >
             <div>
               <Image
-                src={iconMap[contact.key] || '/home/default-icon.svg'} // Fallback to default icon if key isn't found
+                src={iconMap[contact.key] || '/home/default-icon.svg'}
                 width={40}
                 height={40}
                 alt={`${contact.key}-icon`}
@@ -45,15 +62,12 @@ const ContactUsHeader = async () => {
 
               {/* Display content dynamically based on key */}
               {contact.key === 'Contact Number' ? (
-                <ul className="mt-6 font-poppins text-base font-normal text-body flex flex-col gap-2">
-                  {contact.value.split('/').map((phone, idx) => (
-                    <li key={idx}>
-                      <Link href={`tel:${phone.trim()}`} className="flex">
-                        {phone}
-                      </Link>
-                    </li>
+                <div className="mt-6 font-poppins text-base font-normal text-body">
+                  {/* Display phone numbers in two lines */}
+                  {formattedNumbers.map((line, idx) => (
+                    <p key={idx}>{line}</p>
                   ))}
-                </ul>
+                </div>
               ) : contact.key === 'E-mail' ? (
                 <Link
                   href={`mailto:${contact.value}`}

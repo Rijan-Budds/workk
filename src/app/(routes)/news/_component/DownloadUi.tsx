@@ -9,32 +9,35 @@ import { INewsItem } from '../interface/newsType'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { format } from 'date-fns'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { IBrochureItem } from '../../brochure/interface/brochureType'
 
-export const DownloadUi = () => {
+export const DownloadUi = ({ data }: { data: IBrochureItem[] | undefined }) => {
   return (
     <CircleCardWrapper className="bg-cover">
       <div className=" border border-border rounded-lg p-6 flex flex-col gap-y-6 md:w-[349px] lg:w-full">
         <h3 className="font-poppins text-[20px] leading-[26px] font-medium text-heading">
           Download
         </h3>
-        <DownloadListUi />
-        <DownloadListUi />
+        {data &&
+          data
+            .slice(0, 2)
+            .map((notice) => <DownloadListUi key={notice.id} data={notice} />)}
       </div>
     </CircleCardWrapper>
   )
 }
 
-const DownloadListUi = () => {
+const DownloadListUi = ({ data }: { data: IBrochureItem }) => {
   return (
     <Link
-      href={`/news/sample.pdf`}
-      download={'news-sample.pdf'}
+      href={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${data.file.key}`}
+      download={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${data.file.key}`}
       target="_blank"
       className="flex gap-x-3 items-center "
     >
       <Image src={'/news/pdf-icon.svg'} width={20} height={20} alt="pdf icon" />
       <span className="text-body text-[16px] leading-4 font-workSans text-center font-medium">
-        Prospectus Grade 11, 12
+        {data.title}
       </span>
     </Link>
   )

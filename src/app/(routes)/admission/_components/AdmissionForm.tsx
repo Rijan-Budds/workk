@@ -133,8 +133,8 @@ const AdmissionForm = () => {
                   labelClass="text-body font-normal"
                 />
                 <ContactDropdown
-                  label="Level"
                   value={values.level}
+                  label="Level"
                   setFieldValue={setFieldValue}
                   error={errors.level!}
                   isError={!!errors.level}

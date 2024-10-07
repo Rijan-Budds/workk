@@ -30,6 +30,7 @@ const ResultSection = ({
     setProgram(category)
     setPage(1)
   }
+
   const [openModal, setOpenModal] = useState<boolean>(false)
   const [pdfSrc, setPdfSrc] = useState<string | null>(null)
 
