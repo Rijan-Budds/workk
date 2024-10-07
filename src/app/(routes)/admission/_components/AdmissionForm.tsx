@@ -19,6 +19,7 @@ import { toast } from '@/common/hook/use-toast'
 import { ToastClose } from '@/common/components/ui/toast'
 import Image from 'next/image'
 import { ButtonLoader } from '@/common/components/Atom/ButtonLoader'
+import { Value } from '@radix-ui/react-select'
 
 const AdmissionForm = () => {
   const [message, setMessage] = useState<string>('')
@@ -95,7 +96,7 @@ const AdmissionForm = () => {
         })}
       >
         {(formik) => {
-          const { errors, touched, setFieldValue } = formik
+          const { errors, touched, setFieldValue, values } = formik
           return (
             <Form>
               <div className="flex flex-col gap-y-6  mt-[32px]">
@@ -138,6 +139,7 @@ const AdmissionForm = () => {
                   error={errors.level!}
                   isError={!!errors.level}
                   className="text-body"
+                  value={values.level}
                 />
                 <Input
                   isMessage
