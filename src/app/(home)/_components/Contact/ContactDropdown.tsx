@@ -11,12 +11,12 @@ import {
 } from '@/common/components/ui/select'
 import { cn } from '@/common/utils/utils'
 import { ChevronDown } from 'lucide-react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 interface IContactDropDownProps {
   setFieldValue: (field: string, value: string) => void
   error: string
-  isError: boolean
+  isError: boolean | undefined
   label: string
   className?: string
 }
