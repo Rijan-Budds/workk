@@ -11,7 +11,6 @@ const TearmsAndCondition = async () => {
   const response: ITermsResponse | undefined = await UseServerFetch(
     '/api/v1/terms-and-conditions'
   )
-  console.log(response?.data[0]?.createdAt)
 
   const renderTermsUi = () => {
     if (response?.data && response.data.length > 0) {
