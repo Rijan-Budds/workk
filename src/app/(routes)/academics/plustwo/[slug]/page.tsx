@@ -9,7 +9,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   )
 
   const renderAcademicsDetailUi = () => {
-    if (response) {
+    if (response && response.data) {
       return (
         <AcademicDetail
           bannerDetail={response && response.banner}
@@ -17,7 +17,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
           slug={params.slug}
         />
       )
-    } else {
+    } else if (!response) {
       return (
         <div className="h-screen flex justify-center items-center">
           <NoDataFound title="No detail found" />

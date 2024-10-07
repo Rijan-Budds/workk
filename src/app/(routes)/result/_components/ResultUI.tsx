@@ -13,7 +13,7 @@ const ResultUi = () => {
   const [activeTab, setActiveTab] = useState<string>(resultTab[0].key)
   const [resultData, setResultData] = useState<IResult[] | undefined>(undefined)
 
-  const pageSize = 6
+  const pageSize = 12
   const [program, setProgram] = useState<string>('all')
   const [page, setPage] = useState<number>(1)
   const [totalCount, setTotalCount] = useState<number | undefined>(undefined)
@@ -70,15 +70,13 @@ const ResultUi = () => {
             tabs={resultTab}
           />
           <div className="w-full  p-6  mt-10  md:bg-background">
-            {resultData && (
-              <ResultSection
-                program={program}
-                results={resultData}
-                active={activeTab}
-                setProgram={setProgram}
-                setPage={setPage}
-              />
-            )}
+            <ResultSection
+              program={program}
+              results={resultData ? resultData : undefined}
+              active={activeTab}
+              setProgram={setProgram}
+              setPage={setPage}
+            />
             {isPagination && (
               <div className="mt-10 flex justify-center">
                 <Pagination

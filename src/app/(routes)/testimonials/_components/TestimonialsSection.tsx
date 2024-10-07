@@ -7,6 +7,7 @@ import { ITestimonialResponse } from '../_interface/testimonial'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { NoDataFound } from '@/common/components/NoDataFound'
 import { Pagination } from '@/common/components/Pagination'
+import { UiLoader } from '@/common/components/Atom/UiLoader'
 
 const TestimonialsSection = () => {
   const [response, setResponse] = useState<ITestimonialResponse | null>(null)
@@ -53,8 +54,14 @@ const TestimonialsSection = () => {
           ))}
         </div>
       )
-    } else {
+    } else if (response && response?.data.length === 0) {
       return <NoDataFound title="No Testimonial Found" />
+    } else {
+      return (
+        <div className="min-h-[300px] flex justify-center items-center">
+          <UiLoader />
+        </div>
+      )
     }
   }
 
