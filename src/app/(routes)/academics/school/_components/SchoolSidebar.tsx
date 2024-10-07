@@ -3,6 +3,7 @@ import {
   DownloadUi,
   ForInquiry,
 } from '@/app/(routes)/news/_component/DownloadUi'
+import { Button } from '@/common/components/Atom/Button'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import Link from 'next/link'
 import { IAcademicBanner } from '../../_interface/academic'
@@ -62,6 +63,7 @@ const SchoolSidebar = ({ bannerDetail }: { bannerDetail: IAcademicBanner }) => {
               src={bannerDetail.image.key}
               width={397}
               height={397}
+              className="max-w-[397px] max-h-[397px] object-cover rounded-2xl"
               alt="admission"
             />
           </Link>

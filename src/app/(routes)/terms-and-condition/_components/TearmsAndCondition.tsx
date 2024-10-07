@@ -1,10 +1,9 @@
-import { UseServerFetch } from '@/common/hook/useServerFetch'
-import React from 'react'
-import { ITermsResponse } from '../_interface/Terms'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { format } from 'date-fns'
+import { ITermsResponse } from '../_interface/Terms'
 import './terms.css'
 
 const TearmsAndCondition = async () => {
@@ -42,7 +41,7 @@ const TearmsAndCondition = async () => {
     <div>
       <CoverImage
         title="Terms and Conditions"
-        list={[{ link: 'about', title: 'Terms and Condition' }]}
+        list={[{ link: 'terms-and-condition', title: 'Terms and Condition' }]}
       />
       <HomeWrapper className="!px-[551px]">{renderTermsUi()}</HomeWrapper>
     </div>
