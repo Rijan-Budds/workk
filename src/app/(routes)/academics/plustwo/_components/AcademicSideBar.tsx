@@ -43,6 +43,7 @@ const AcademicSideBar = ({
               src={bannerDetail.image.key}
               width={397}
               height={397}
+              className="max-w-[397px] max-h-[397px] object-cover rounded-2xl"
               alt="admission"
             />
           </Link>
