@@ -19,7 +19,6 @@ import { toast } from '@/common/hook/use-toast'
 import { ToastClose } from '@/common/components/ui/toast'
 import Image from 'next/image'
 import { ButtonLoader } from '@/common/components/Atom/ButtonLoader'
-import { Value } from '@radix-ui/react-select'
 
 const AdmissionForm = () => {
   const [message, setMessage] = useState<string>('')
