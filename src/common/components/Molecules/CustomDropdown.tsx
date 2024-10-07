@@ -84,7 +84,9 @@ export const CustomDropdown = ({
             }
           )}
         >
-          {value && hasSelected ? (
+          {isBoolean ? (
+            <SelectValue placeholder={placeHolder} />
+          ) : value && hasSelected ? (
             <SelectValue>
               {value.charAt(0).toUpperCase() + value.slice(1)}
             </SelectValue>
@@ -93,6 +95,7 @@ export const CustomDropdown = ({
               {placeHolder}
             </span>
           )}
+
           <ChevronDown
             className={cn('h-4 w-4 text-body transition-all duration-500', {
               'rotate-180 transition-all duration-500': open,

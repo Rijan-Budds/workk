@@ -1,14 +1,14 @@
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import Link from 'next/link'
-import { INewsData } from '../interface/newsType'
+import { BannerData } from '../../notice/_interface/type'
 
-export const SidebarAd = ({ data }: { data?: INewsData }) => {
+export const SidebarAd = ({ banner }: { banner?: BannerData }) => {
   return (
     <div draggable={false} className="size-[397px]">
-      {data && data?.banner ? (
-        <Link href={data.banner.link} target="_blank">
+      {banner ? (
+        <Link href={banner.link ? banner.link : ''} target="_blank">
           <ImageWithPlaceholder
-            src={data.banner.image.key}
+            src={banner?.image?.key}
             width={397}
             height={397}
             alt="admission"
