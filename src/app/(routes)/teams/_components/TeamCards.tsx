@@ -1,12 +1,12 @@
 'use client'
-import React from 'react'
-import './teams.css'
-import { ITeamsData } from '../_interface/Teams'
-import Link from 'next/link'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
-import { FaXTwitter } from 'react-icons/fa6'
-import { FaFacebookF } from 'react-icons/fa'
+import { cn } from '@/lib/utils'
+import Link from 'next/link'
 import { AiFillInstagram } from 'react-icons/ai'
+import { FaFacebookF } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
+import { ITeamsData } from '../_interface/Teams'
+import './teams.css'
 
 const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
   return (
@@ -70,20 +70,31 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
                   <ul className="flex gap-4">
                     <Link
                       href={team.twitter || ''}
-                      target="_blank"
-                      className="bg-white hover:bg-primary w-7 h-7 rounded-full flex justify-center items-center transition-all duration-300 text-primary hover:text-white"
+                      target={team.twitter ? '_blank' : ''}
+                      className={cn(
+                        'bg-white hover:bg-primary w-7 h-7 rounded-full flex justify-center items-center transition-all duration-300 text-primary hover:text-white',
+                        team.twitter ? '' : 'cursor-not-allowed'
+                      )}
                     >
                       <FaXTwitter className="w-3 h-3 " />
                     </Link>
                     <Link
                       href={team.facebook || ''}
-                      className="bg-white hover:bg-primary w-7 h-7 rounded-full flex justify-center items-center transition-all duration-300 text-primary hover:text-white"
+                      target={team.facebook ? '_blank' : ''}
+                      className={cn(
+                        'bg-white hover:bg-primary w-7 h-7 rounded-full flex justify-center items-center transition-all duration-300 text-primary hover:text-white',
+                        team.facebook ? '' : 'cursor-not-allowed'
+                      )}
                     >
                       <FaFacebookF className="w-3 h-3 " />
                     </Link>
                     <Link
                       href={team.instagram || ''}
-                      className="bg-white hover:bg-primary w-7 h-7 rounded-full flex justify-center items-center transition-all duration-300 text-primary hover:text-white"
+                      target={team.instagram ? '_blank' : ''}
+                      className={cn(
+                        'bg-white hover:bg-primary w-7 h-7 rounded-full flex justify-center items-center transition-all duration-300 text-primary hover:text-white',
+                        team.instagram ? '' : 'cursor-not-allowed'
+                      )}
                     >
                       <AiFillInstagram className="w-5 h-5 " />
                     </Link>
