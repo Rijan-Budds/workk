@@ -29,17 +29,17 @@ export const academicCardsDataTwo = [
   },
   {
     id: 2,
-    title: 'Primary Level (One - Five)',
+    title: 'Primary Level (Grades 1-5)',
     slug: 'primary-level-one-five',
   },
   {
     id: 3,
-    title: 'Basic Level (Six- Eight)',
+    title: 'Basic Level (Grades 6-8)',
     slug: 'basic-levl-six-eight',
   },
   {
     id: 4,
-    title: 'Senior Level (Nine -Ten)',
+    title: 'Senior Level (Grades 9-10)',
     slug: 'senior-level-nine-ten',
   },
 ]
