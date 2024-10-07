@@ -1,8 +1,9 @@
 'use client'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
-import { INewsData, INewsResponseData } from '../interface/newsType'
+import { INewsResponseData } from '../interface/newsType'
 import { DownloadUi, RecentPostUi } from './DownloadUi'
 import { SidebarAd } from './SidebarAd'
+import { BannerData } from '../../notice/_interface/type'
 import { useEffect, useState } from 'react'
 import {
   IBrochureApiResponse,
@@ -14,7 +15,7 @@ export const StickySidebar = ({
   data,
 }: {
   type: 'NEWS' | 'NOTICE'
-  data?: INewsData
+  data?: BannerData | undefined
 }) => {
   const [brochureData, setBrochureData] = useState<IBrochureItem[] | undefined>(
     undefined
@@ -59,7 +60,7 @@ export const StickySidebar = ({
     <div className="max-h-[1015px] w-[397px] bg-white  sticky top-24 transition-all duration-700  flex-col gap-y-6 hidden 2lg:flex  ">
       <RecentPostUi recentData={response?.data ? response?.data : undefined} />
       {brochureData && <DownloadUi data={brochureData} />}
-      {data && <SidebarAd data={data} />}
+      {data && <SidebarAd banner={data} />}
     </div>
   )
 }

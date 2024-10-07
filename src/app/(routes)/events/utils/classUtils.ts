@@ -33,7 +33,7 @@ export const getEventStyles = (eventType: string) => {
     case 'EDUCATIONAL_TOURS':
       return 'text-secondary bg-secondaryLighter border-primaryLight'
     case 'CEREMONIES':
-      return 'bg-pink-200 text-pink-500 border-pink-300 '
+      return 'bg-pink-100 text-pink-400 border-pink-200 '
     default:
       return 'text-sky-500 bg-primaryLighter border-primaryLight'
   }

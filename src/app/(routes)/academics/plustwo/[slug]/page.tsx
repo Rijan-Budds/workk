@@ -22,7 +22,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
           slug={params.slug}
         />
       )
-    } else {
+    } else if (!response) {
       return (
         <div className="h-screen flex justify-center items-center">
           <NoDataFound title="No detail found" />

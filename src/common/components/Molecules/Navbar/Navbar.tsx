@@ -17,9 +17,19 @@ export const Navbar = () => {
   const [activeSublink, setActiveSublink] = useState<number | null>(null)
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
 
+  const scrollToTop = () => {
+    const getHomeLayout = document?.querySelector('.route-layout-container')
+
+    getHomeLayout?.scroll({
+      behavior: 'smooth',
+      top: 0,
+    })
+  }
+
   useEffect(() => {
     setActiveDropdown(null)
     setActiveSublink(null)
+    scrollToTop()
   }, [pathname])
 
   const handleMouseEnter = (label: string) => {

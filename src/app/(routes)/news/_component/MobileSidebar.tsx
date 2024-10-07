@@ -8,8 +8,15 @@ import {
   IBrochureApiResponse,
   IBrochureItem,
 } from '../../brochure/interface/brochureType'
+import { BannerData } from '../../notice/_interface/type'
 
-export const MobileSidebar = ({ type }: { type: 'NEWS' | 'NOTICE' }) => {
+export const MobileSidebar = ({
+  type,
+  data,
+}: {
+  type: 'NEWS' | 'NOTICE'
+  data: BannerData | undefined
+}) => {
   const [brochureData, setBrochureData] = useState<IBrochureItem[] | undefined>(
     undefined
   )
@@ -53,7 +60,7 @@ export const MobileSidebar = ({ type }: { type: 'NEWS' | 'NOTICE' }) => {
     <div className="flex flex-col 2lg:hidden gap-y-6">
       <RecentPostUi recentData={response?.data ? response?.data : undefined} />
       {brochureData && <DownloadUi data={brochureData} />}
-      <SidebarAd />
+      {data && <SidebarAd banner={data} />}
     </div>
   )
 }

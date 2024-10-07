@@ -8,13 +8,14 @@ import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { IBrochureApiResponse, IBrochureItem } from '../interface/brochureType'
 import { Pagination } from '@/common/components/Pagination'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { UiLoader } from '@/common/components/Atom/UiLoader'
 
 export const BrochureSection = () => {
   const [brochureData, setBrochureData] = useState<IBrochureItem[] | undefined>(
     undefined
   )
 
-  const pageSize = 6
+  const pageSize = 9
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [totalCount, setTotalCount] = useState<number | undefined>(undefined)
 
@@ -50,8 +51,14 @@ export const BrochureSection = () => {
   const renderBrochureUi = () => {
     if (brochureData && brochureData?.length > 0) {
       return <BrochureUi data={brochureData} />
-    } else {
+    } else if (brochureData && brochureData.length === 0) {
       return <NoDataFound title="No Brochure Found" />
+    } else {
+      return (
+        <div className="min-h-[300px] flex justify-center items-center">
+          <UiLoader />
+        </div>
+      )
     }
   }
 

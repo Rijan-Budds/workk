@@ -1,7 +1,7 @@
 'use client'
 import { cn } from '@/lib/utils'
-import EventDialog from '../EventDialog/EventsDialog'
 import { Day } from '../../types/NepaliDates'
+import EventDialog from '../EventDialog/EventsDialog'
 
 const CalendarTable = ({
   selectedLocalisedDates,
@@ -89,7 +89,7 @@ const CalendarTable = ({
                             'EDUCATIONAL_TOURS'
                           ? 'text-secondary bg-secondaryLighter border-primaryLight'
                           : date.event.eventDetail[0].eventType === 'CEREMONIES'
-                          ? 'bg-pink-200 text-pink-500 border-pink-300 '
+                          ? 'bg-pink-100 text-pink-400 border-pink-200'
                           : 'text-primary bg-primaryLighter border-primaryLight',
                         'tracking-normal'
                       )}

@@ -84,10 +84,11 @@ export const ContactForm = () => {
       className={`relative z-10 w-full bg-cover p-8 rounded-[12px] bg-[url('/home/contact-bg.svg')] text-white`}
     >
       <h1 className="font-poppins font-medium text-[28px] leading-[36.4px]">
-        Get in touch with Us
+        Get in touch
       </h1>
       <p className="font-workSans font-light text-[16px] leading-[27.2px] mt-4">
-        We&apos;re here to answer your questions and provide more information.
+        We&apos;re here to answer your questions and provide more information
+        about our programs.
         {/* <span className={`underline text-white`}>
           pawanprakriti2048@gmail.com
         </span> */}
