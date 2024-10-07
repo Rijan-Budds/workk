@@ -8,6 +8,7 @@ import { ITeamsData, ITeamsResponse } from '../_interface/Teams'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { NoDataFound } from '@/common/components/NoDataFound'
 import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
+import { UiLoader } from '@/common/components/Atom/UiLoader'
 
 const tabs = [
   { key: 'Our Board Members', title: 'Our Board Members' },
@@ -36,7 +37,7 @@ const TeamSection = () => {
     fetchData()
   }, [])
 
-  const [filteredTeams, setFilteredTeams] = useState<ITeamsData[]>([])
+  const [filteredTeams, setFilteredTeams] = useState<ITeamsData[] | null>(null)
 
   useEffect(() => {
     if (response) {
@@ -60,6 +61,20 @@ const TeamSection = () => {
     setActiveTab(key)
   }
 
+  const renderTeamsUi = () => {
+    if (filteredTeams && filteredTeams.length > 0) {
+      return <TeamCards teams={filteredTeams} />
+    } else if (filteredTeams && filteredTeams.length === 0) {
+      return <NoDataFound title="No data found" />
+    } else {
+      return (
+        <div className="min-h-[200px] flex justify-center items-center">
+          <UiLoader />
+        </div>
+      )
+    }
+  }
+
   return (
     <>
       <CoverImage
@@ -79,16 +94,7 @@ const TeamSection = () => {
             />
             <TeamTab handleDynamicData={handleDynamicData} />
           </div>
-          <div>
-            {/* Conditional rendering for "No Data Found" */}
-            {filteredTeams.length > 0 ? (
-              <TeamCards teams={filteredTeams} />
-            ) : (
-              <p className="text-center text-lg text-gray-500">
-                <NoDataFound title="No Teams Found" />
-              </p>
-            )}
-          </div>
+          <div>{renderTeamsUi()}</div>
         </div>
       </HomeWrapper>
     </>

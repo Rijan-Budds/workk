@@ -11,6 +11,7 @@ import {
 } from '../_constants/data'
 import { IResult } from '../_interface/result'
 import ResultCard from './ResultCard'
+import { UiLoader } from '@/common/components/Atom/UiLoader'
 
 const ResultSection = ({
   results,
@@ -19,7 +20,7 @@ const ResultSection = ({
   program,
   setPage,
 }: {
-  results: IResult[]
+  results: IResult[] | undefined
   active: string
   setProgram: Dispatch<SetStateAction<string>>
   program: string
@@ -37,6 +38,35 @@ const ResultSection = ({
       return PlusTwoDropdownList
     } else {
       return SchoolLevelDropdownList
+    }
+  }
+
+  const renderResultUi = () => {
+    if (results && results.length > 0) {
+      return (
+        <div className="grid 2lg:grid-cols-3 gap-6">
+          {results.map((result) => (
+            <ResultCard
+              data={result}
+              key={result.id}
+              setPdfSrc={setPdfSrc}
+              setOpen={setOpenModal}
+            />
+          ))}
+        </div>
+      )
+    } else if (results && results.length === 0) {
+      return (
+        <div className="flex justify-center items-center w-full ">
+          <NoDataFound title="No Data found" />
+        </div>
+      )
+    } else {
+      return (
+        <div className="min-h-[300px] flex justify-center items-center">
+          <UiLoader />
+        </div>
+      )
     }
   }
 
@@ -63,24 +93,7 @@ const ResultSection = ({
           />
         </div>
       </div>
-      <div className=" mt-10">
-        {results && results.length ? (
-          <div className="grid 2lg:grid-cols-3 gap-6">
-            {results.map((result) => (
-              <ResultCard
-                data={result}
-                key={result.id}
-                setPdfSrc={setPdfSrc}
-                setOpen={setOpenModal}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="flex justify-center items-center w-full ">
-            <NoDataFound title="No Data found" />
-          </div>
-        )}
-      </div>
+      <div className=" mt-10">{renderResultUi()}</div>
       {openModal && (
         <CustomModal isOpen={openModal}>
           <PdfViewerModal setOpen={setOpenModal} src={pdfSrc} />

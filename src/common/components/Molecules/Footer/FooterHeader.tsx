@@ -30,12 +30,13 @@ const FooterHeader = ({ footer }: { footer: ISettings | undefined }) => {
         <div>
           <ul className="flex gap-4">
             {footer?.socialMedia.map((item, indx) => (
-              <li
-                key={indx}
-                className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
-              >
+              <li key={indx} className=" flex justify-center items-center">
                 {item.key === 'Facebook' && (
-                  <Link href={item.value} target="_blank">
+                  <Link
+                    href={item.value}
+                    target="_blank"
+                    className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
+                  >
                     <Image
                       src="/home/ffacebook.svg"
                       width={100}
@@ -46,7 +47,11 @@ const FooterHeader = ({ footer }: { footer: ISettings | undefined }) => {
                   </Link>
                 )}
                 {item.key === 'X' && (
-                  <Link href={item.value} target="_blank">
+                  <Link
+                    href={item.value}
+                    target="_blank"
+                    className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
+                  >
                     <Image
                       src="/home/ftwitter.svg"
                       width={100}
@@ -57,7 +62,11 @@ const FooterHeader = ({ footer }: { footer: ISettings | undefined }) => {
                   </Link>
                 )}
                 {item.key === 'Instagram' && (
-                  <Link href={item.value} target="_blank">
+                  <Link
+                    href={item.value}
+                    target="_blank"
+                    className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
+                  >
                     <Image
                       src="/home/finstagram.svg"
                       width={100}
@@ -68,7 +77,11 @@ const FooterHeader = ({ footer }: { footer: ISettings | undefined }) => {
                   </Link>
                 )}
                 {item.key === 'YouTube' && (
-                  <Link href={item.value} target="_blank">
+                  <Link
+                    href={item.value}
+                    target="_blank"
+                    className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
+                  >
                     <Image
                       src="/home/fyoutube.svg"
                       width={100}
