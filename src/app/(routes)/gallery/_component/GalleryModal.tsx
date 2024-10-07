@@ -59,7 +59,7 @@ export const GalleryModal = ({
           height={854}
           className="object-contain pointer-events-none selection:bg-transparent transition-all duration-1000 mx-auto w-[90vw] h-[100vh] lg:h-[610px] rounded-xl"
         />
-        <p className="absolute transform bottom-14 md:-bottom-20  left-[15%] right-[15%] md:right-[40%] md:left-[40%] text-xl text-white font-poppins md:font-medium text-center p-4">
+        <p className="absolute transform bottom-14 md:-bottom-20  left-[15%] right-[15%] md:right-[40%] md:left-[40%] text-xl text-white font-poppins md:font-medium text-center p-4 selection:bg-transparent">
           {title}
         </p>
       </div>
