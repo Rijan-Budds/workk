@@ -1,11 +1,10 @@
 'use client'
 
-import React from 'react'
-import Link from 'next/link'
-import { GoArrowRight } from 'react-icons/go'
 import { INewsItem } from '@/app/(routes)/news/interface/newsType'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { format } from 'date-fns'
+import Link from 'next/link'
+import { GoArrowRight } from 'react-icons/go'
 
 export const NewsCard = ({ news }: { news: INewsItem }) => {
   return (
@@ -21,7 +20,7 @@ export const NewsCard = ({ news }: { news: INewsItem }) => {
               className="relative max-w-[397px] h-[298px] object-cover group-hover:scale-110 transition-all duration-500"
             />
           </div>
-          <div className="absolute w-[94%] h-[98px] bg-white top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">
+          <div className="absolute w-[94%] max-h-[145px] 2lg:max-h-[120px] bg-white shadow-sm top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">
             <div className="p-6 z-10 relative space-y-2">
               <p className="text-body text-sm font-workSans font-normal leading-4 z-20">
                 {news.createdAt
