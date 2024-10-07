@@ -174,9 +174,17 @@ const CalendarEvent = ({
     })
 
     if (eventIndex !== -1 && eventsRef.current) {
-      const eventElement = eventsRef.current.children[eventIndex]
+      const eventElement = eventsRef.current.children[eventIndex] as HTMLElement
       if (eventElement) {
-        eventElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        const containerHeight = eventsRef.current.clientHeight
+        const eventElementHeight = eventElement.clientHeight
+        const scrollPosition =
+          eventElement.offsetTop - containerHeight / 2 + eventElementHeight / 2
+        eventsRef.current.scrollTo({
+          top: scrollPosition,
+          behavior: 'smooth',
+        })
+        // eventElement.scrollIntoView({ behavior: 'smooth' })
         setHighlightedEventsIndex(eventIndex)
       }
     }
@@ -228,7 +236,7 @@ const CalendarEvent = ({
           showYearSelector={showYearSelector}
         />
         {!showYearSelector && (
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-4">
             <div className="grid grid-cols-7 py-4 px-6 mt-2 bg-background gap-8 rounded-full justify-items-start text-sm md:text-base font-medium">
               {days.map((day) => (
                 <span className="font-poppins" key={day.value}>

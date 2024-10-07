@@ -104,11 +104,10 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
           disabledTab={disabledTabs}
         />
       </div>
-
       <div
         ref={ref}
         className={cn(
-          'flex flex-col items-start  px-6 py-6  w-full  bg-background h-[calc(100vh-20rem)] md:h-[calc(100vh-10rem)]  2lg:h-[calc(100vh-5rem)] overflow-y-auto cursor-pointer pdf-scrollbar'
+          'flex flex-col items-start px-6 py-6 w-full rounded-lg bg-background h-[calc(100vh-20rem)] md:h-[calc(100vh-13rem)] 2lg:h-[calc(100vh-13rem)] overflow-y-auto cursor-pointer pdf-scrollbar'
         )}
       >
         {isLoading ? (
@@ -173,26 +172,27 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
                                 'flex justify-between  rounded-md border-l-8 py-4 px-6 mb-4',
                                 getEventStyles(eventItem.eventType),
                                 highlightedEventIndex === index &&
-                                  'border-2 border-primary'
+                                  'border-2 border-l-8 border-primary'
                               )}
                             >
                               <div className="flex flex-col gap-2 items-start">
                                 <React.Fragment key={idx}>
                                   <li
-                                    className={cn(
-                                      'text-lg font-medium mt-2',
-                                      !event.isSchoolEvent && 'text-error'
-                                    )}
+                                    className={cn('text-lg font-medium mt-2')}
                                   >
                                     {eventItem.title}
                                   </li>
-                                  <li className="text-xs text-gray-500">
-                                    {eventItem.fromTime}
-                                  </li>
+                                  {eventItem.allDay == 'true' ? (
+                                    <li>All Day</li>
+                                  ) : (
+                                    <li className="text-sm text-gray-500">
+                                      {eventItem.fromTime} - {eventItem.toTime}
+                                    </li>
+                                  )}
                                 </React.Fragment>
                               </div>
                               <div>
-                                <li className="text-gray-700">
+                                <li className="text-heading font-medium">
                                   {event.dateInBS.split('-')[2]}
                                 </li>
                               </div>
@@ -218,29 +218,30 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
                                 'flex justify-between rounded-md border-l-8 py-4 px-6 mb-4',
                                 getEventStyles(eventItem.eventType),
                                 highlightedEventIndex === index &&
-                                  'border-2 border-primary'
+                                  'border-2 border-l-8 border-primary'
                               )}
                             >
                               <div className="flex flex-col gap-2 items-start">
                                 <React.Fragment key={idx}>
                                   <li
                                     className={cn(
-                                      'text-lg font-medium mt-2',
-                                      !event.isSchoolEvent && 'text-error'
+                                      'text-lg font-medium mt-2'
+                                      // !event.isSchoolEvent && 'text-error'
                                     )}
                                   >
                                     {eventItem.title}
                                   </li>
-                                  <li className="text-xs text-gray-500">
-                                    {eventItem.fromTime}
-                                  </li>
-                                  <li className="text-xs text-gray-500">
-                                    {eventItem.toTime}
-                                  </li>
+                                  {eventItem.allDay == 'true' ? (
+                                    <li>All Day</li>
+                                  ) : (
+                                    <li className="text-sm text-gray-500">
+                                      {eventItem.fromTime} - {eventItem.toTime}
+                                    </li>
+                                  )}
                                 </React.Fragment>
                               </div>
                               <div>
-                                <li className="text-gray-700">
+                                <li className="text-heading font-medium">
                                   {event.dateInBS.split('-')[2]}
                                 </li>
                               </div>
@@ -271,15 +272,15 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
                                   'flex justify-between rounded-md border-l-8 py-4 px-6 mb-4',
                                   getEventStyles(eventItem.eventType),
                                   highlightedEventIndex === index &&
-                                    'border-2 border-primary'
+                                    'border-2 border-l-8 border-primary'
                                 )}
                               >
                                 <div className="flex flex-col gap-2 items-start">
                                   <React.Fragment key={idx}>
                                     <li
                                       className={cn(
-                                        'text-lg font-medium mt-2',
-                                        !event.isSchoolEvent && 'text-red-500'
+                                        'text-lg font-medium mt-2'
+                                        // !event.isSchoolEvent && 'text-red-500'
                                       )}
                                     >
                                       {eventItem.title}
@@ -296,7 +297,7 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
                                   </React.Fragment>
                                 </div>
                                 <div>
-                                  <li className="text-gray-700">
+                                  <li className="text-heading font-medium">
                                     {event.dateInBS.split('-')[2]}
                                   </li>
                                 </div>
