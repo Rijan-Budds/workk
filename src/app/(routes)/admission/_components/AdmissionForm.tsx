@@ -95,7 +95,7 @@ const AdmissionForm = () => {
         })}
       >
         {(formik) => {
-          const { errors, touched, setFieldValue } = formik
+          const { errors, touched, setFieldValue, values } = formik
           return (
             <Form>
               <div className="flex flex-col gap-y-6  mt-[32px]">
@@ -133,6 +133,7 @@ const AdmissionForm = () => {
                   labelClass="text-body font-normal"
                 />
                 <ContactDropdown
+                  value={values.level}
                   label="Level"
                   setFieldValue={setFieldValue}
                   error={errors.level!}
