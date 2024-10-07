@@ -139,7 +139,6 @@ const AdmissionForm = () => {
                   error={errors.level!}
                   isError={!!errors.level}
                   className="text-body"
-                  value={values.level}
                 />
                 <Input
                   isMessage
