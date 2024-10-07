@@ -15,6 +15,7 @@ import { useState } from 'react'
 
 interface IContactDropDownProps {
   setFieldValue: (field: string, value: string) => void
+  value: string
   error: string
   isError: boolean | undefined
   label: string
@@ -23,6 +24,7 @@ interface IContactDropDownProps {
 
 export const ContactDropdown = ({
   setFieldValue,
+  value,
   error,
   isError,
   label,
@@ -56,6 +58,7 @@ export const ContactDropdown = ({
         open={open}
         onOpenChange={() => setOpen((prev) => !prev)}
         onValueChange={(value: string) => setFieldValue('level', value)}
+        value={value}
       >
         <SelectTrigger className="rounded-lg p-4 text-body">
           <SelectValue placeholder="Select level" />

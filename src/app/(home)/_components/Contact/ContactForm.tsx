@@ -143,6 +143,7 @@ export const ContactForm = () => {
                 />
                 <ContactDropdown
                   label="Level"
+                  value={formik.values.level}
                   setFieldValue={setFieldValue}
                   error={errors.level!}
                   isError={!!errors.level && touched.level}
