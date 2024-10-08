@@ -347,17 +347,22 @@ export const seeSymbolNumberValidation = Yup.string()
     'SEE symbol number can only contain letters and numbers'
   )
 
-export const seeGpaPointValidation = Yup.number()
+export const seeGpaPointValidation = Yup.string()
   .required('SEE GPA point is required')
-  .min(0, 'SEE GPA point must be at least 0.0')
-  .max(4, 'SEE GPA point must be at most 4.0')
-  .typeError('SEE GPA point must be a numeric value')
+  .matches(
+    /^\d+(\.\d{1,2})?$/,
+    'SEE GPA point must be a numeric value with up to 2 decimal places'
+  )
+  .test('range', 'SEE GPA point must be between 3.0 and 4.0', (value) => {
+    const numValue = parseFloat(value)
+    return numValue >= 3 && numValue <= 4
+  })
   .test(
-    'decimalPlaces',
-    'SEE GPA point must have exactly 2 decimal places',
+    'length',
+    'SEE GPA point must be between 3 and 4 characters',
     (value) => {
       if (value == null) return false
-      return /^\d+(\.\d{2})?$/.test(value.toString())
+      return value.length >= 3 && value.length <= 4
     }
   )
 
