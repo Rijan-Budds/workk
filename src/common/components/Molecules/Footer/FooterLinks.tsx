@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { HomeWrapper } from '../../Atom/HomeWrapper'
 import { ISettings } from '@/app/(routes)/contact/_interface/Contact'
@@ -8,32 +10,76 @@ interface FooterLinksProps {
   footer: ISettings | undefined
 }
 
-const FooterLinks = async ({ footer }: FooterLinksProps) => {
-  const contactData = footer?.data || []
+const FooterLinks = ({ footer }: FooterLinksProps) => {
+  const filterEmail = footer && footer.data.filter((d) => d.key === 'Email')
+  const collegeTime =
+    footer && footer.data.filter((d) => d.key === 'College Time')
 
-  const contactInfoSection = {
-    title: 'Contact Information',
-    content: contactData.map((item) => ({
-      subtitle: item.key,
-      text: item.value,
-      url:
-        item.key === 'Email'
-          ? `mailto:${item.value}`
-          : item.key === 'Contact Number'
-          ? `tel:${item.value}`
-          : undefined,
-    })),
+  const handleClick = (type: 'tel' | 'mailto', value: string) => {
+    if (type === 'tel') {
+      window.location.href = `tel:${value}`
+    } else if (type === 'mailto') {
+      window.location.href = `mailto:${value}`
+    }
   }
 
-  const allFooterLinksData = [contactInfoSection, ...staticFooterLinksData]
   return (
-    <HomeWrapper className="py-14">
+    <HomeWrapper className="py-14 ">
       <div className="grid sm:grid-cols-2 mx-auto lg:flex lg:justify-between gap-11 lg:space-y-0">
-        {allFooterLinksData.map((data, sectionIndex) => (
+        <div>
+          <h1 className="font-poppins text-xl font-medium leading-[26px] text-white">
+            Contact Information
+          </h1>
+          <div className="mt-6 space-y-4  text-sm leading-4 text-white font-workSans font-semibold">
+            Mobile:
+            <span
+              className="font-light cursor-pointer"
+              onClick={() => {
+                if (footer?.phoneNumber[0].value) {
+                  handleClick('tel', footer?.phoneNumber[0].value)
+                }
+              }}
+            >
+              {' '}
+              {footer?.phoneNumber[0].key === 'Number1' &&
+                footer?.phoneNumber[0].value}{' '}
+            </span>
+            <span className="font-light cursor-pointer">
+              {footer?.phoneNumber[1].key === 'Number2' &&
+                `/ ${footer?.phoneNumber[1].value}`}
+            </span>
+          </div>
+          <div className="mt-6 space-y-4  text-sm leading-4 text-white font-workSans font-semibold">
+            Telephone:{' '}
+            <span className="font-light cursor-pointer">
+              {footer?.telephone[0].key === 'Telephone1' &&
+                footer?.telephone[0].value}{' '}
+            </span>
+            <span className="font-light cursor-pointer">
+              {footer?.telephone[1].key === 'Telephone2' &&
+                `/ ${footer?.phoneNumber[1].value}`}
+            </span>
+          </div>
+          <div className="mt-6 space-y-4  text-sm leading-4 text-white font-workSans font-semibold">
+            Email:{' '}
+            <span className="font-light">
+              {filterEmail && filterEmail[0].value}{' '}
+            </span>
+          </div>
+          <div className="mt-6 space-y-4  text-sm leading-4 text-white font-workSans font-semibold">
+            Time:
+            <span className="font-light">
+              {' '}
+              {collegeTime && collegeTime[0].value}
+            </span>
+          </div>
+        </div>
+
+        {staticFooterLinksData.map((data, sectionIndex) => (
           <div key={sectionIndex} className="">
-            <h1 className="font-poppins text-xl font-medium leading-[26px] text-white">
+            <h2 className="font-poppins text-xl font-medium leading-[26px] text-white">
               {data.title}
-            </h1>
+            </h2>
 
             <div className="mt-6 space-y-4 text-sm leading-4 text-white font-workSans font-light">
               {data.content.map((content, index) => (
@@ -46,7 +92,9 @@ const FooterLinks = async ({ footer }: FooterLinksProps) => {
                   }
                 >
                   {'subtitle' in content && (
-                    <span className="font-medium">{content.subtitle} : </span>
+                    <span className="font-medium">
+                      <>{content.subtitle}</>:{' '}
+                    </span>
                   )}
                   {content.url ? (
                     <Link

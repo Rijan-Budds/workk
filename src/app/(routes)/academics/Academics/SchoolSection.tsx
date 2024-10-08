@@ -8,21 +8,21 @@ const schoollinks = [
   {
     id: 1,
     title: 'Pre-School (Kindergarten)',
-    link: 'pre-school',
+    link: 'pre-school-kindergarden',
   },
   {
     title: 'Primary Level (One - Five)',
-    link: 'primary',
+    link: 'primary-level-one-five',
   },
   {
     id: 3,
     title: 'Basic Level (Six - Eight)',
-    link: 'basic',
+    link: 'basic-levl-six-eight',
   },
   {
     id: 4,
     title: 'Senior Level (Nine - Ten)',
-    link: 'senior',
+    link: 'senior-level-nine-ten',
   },
 ]
 

@@ -60,7 +60,7 @@ const PlusTwoSection = () => {
             {plustwolinks.map((links, idx) => (
               <li key={idx}>
                 <Link
-                  href={`/academics/plustwo/${links.title}`}
+                  href={links.link}
                   className="flex justify-start items-center gap-2 hover:text-secondary"
                 >
                   {links.title}
