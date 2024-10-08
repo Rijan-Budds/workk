@@ -19,6 +19,7 @@ import {
 import { GalleryCard } from './GalleryCard'
 import { GalleryModal } from './GalleryModal'
 import { VideoModal } from './VideoModal'
+import { UiLoader } from '@/common/components/Atom/UiLoader'
 
 type IType = 'photo' | 'video'
 
@@ -114,8 +115,10 @@ export const GallerySection = () => {
             )
           })
         )
-      } else {
+      } else if (galleryVideo?.length === 0) {
         return <NoDataFound title="No gallery video found" />
+      } else {
+        return <UiLoader className="min-h-[200px]" />
       }
     } else {
       if (galleryPhoto && galleryPhoto?.length > 0) {
@@ -134,8 +137,10 @@ export const GallerySection = () => {
             )
           })
         )
-      } else {
+      } else if (galleryPhoto?.length === 0) {
         return <NoDataFound title="No gallery photo found" />
+      } else {
+        return <UiLoader className="min-h-[200px]" />
       }
     }
   }

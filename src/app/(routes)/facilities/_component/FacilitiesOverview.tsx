@@ -32,7 +32,7 @@ const FacilitiesOverview = async () => {
             Pawan Prakriti English Secondary School
           </MiniHeading>
           <SectionHeading isMd className="mt-2 text-center md:text-start">
-            Nurturing Tomorrow`&apos;s Leaders
+            Nurturing Tomorrow &apos;s Leaders
           </SectionHeading>
           <p className="font-workSans text-body font-normal text-[16px] leading-[27.2px] my-6">
             At Pawan Prakriti English Secondary School, we recognize that

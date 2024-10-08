@@ -49,7 +49,17 @@ const FooterLinks = async ({ footer }: FooterLinksProps) => {
                     <span className="font-medium">{content.subtitle} : </span>
                   )}
                   {content.url ? (
-                    <Link href={content.url} rel="noopener noreferrer">
+                    <Link
+                      href={content.url}
+                      target={
+                        data.title === 'Important Links' ? '_blank' : undefined
+                      }
+                      rel={
+                        data.title === 'Important Links'
+                          ? 'noopener noreferrer'
+                          : undefined
+                      }
+                    >
                       {content.text}
                     </Link>
                   ) : (

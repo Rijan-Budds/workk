@@ -17,7 +17,7 @@ export const NewsCard = ({ news }: { news: INewsItem }) => {
               width={447}
               height={298}
               alt="news"
-              className="relative max-w-[397px] h-[298px] object-cover group-hover:scale-110 transition-all duration-500"
+              className="relative max-w-[397px] h-[298px] object-cover group-hover:scale-110 transition-all duration-500 selection:bg-transparent"
             />
           </div>
           <div className="absolute w-[94%] max-h-[145px] 2lg:max-h-[120px] bg-white shadow-sm top-[87%] z-50 rounded-tl-none rounded-xl overflow-hidden">

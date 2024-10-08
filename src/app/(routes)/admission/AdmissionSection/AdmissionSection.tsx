@@ -12,6 +12,7 @@ import {
 } from '../_interface/admission'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { UiLoader } from '@/common/components/Atom/UiLoader'
 
 const AdmissionSection = () => {
   const [admissions, setAdmissions] = useState<IAdmissionResponse | null>(null)
@@ -62,27 +63,39 @@ const AdmissionSection = () => {
     setActiveSlug(slug)
   }
 
+  const renderAdmissionUi = () => {
+    if (admissions && admissions?.data && admissions?.data.length > 0) {
+      return (
+        <>
+          <AdmissionFilter
+            admissions={admissions?.data || []}
+            onFilterChange={handleFilterChange}
+          />
+          <AdmissionDetail selectedAdmission={selectedAdmission?.data} />
+          <AdmissionSideBar
+            admissions={admissions}
+            onFilterChange={handleFilterChange}
+          />
+        </>
+      )
+    } else if (admissions?.data.length === 0) {
+      return <NoDataFound title="No Admission data found" />
+    } else {
+      return (
+        <div className="min-h-[300px] flex justify-center items-center w-full">
+          <UiLoader />
+        </div>
+      )
+    }
+  }
+
   return (
     <div>
       <CoverImage title="Admission" list={[{ link: '', title: 'Admission' }]} />
 
       <HomeWrapper>
         <div className="flex flex-col 2lg:flex-row gap-[80px] 2lg:gap-[56px]">
-          {admissions?.data.length ? (
-            <>
-              <AdmissionFilter
-                admissions={admissions?.data || []}
-                onFilterChange={handleFilterChange}
-              />
-              <AdmissionDetail selectedAdmission={selectedAdmission?.data} />
-              <AdmissionSideBar
-                admissions={admissions}
-                onFilterChange={handleFilterChange}
-              />
-            </>
-          ) : (
-            <NoDataFound title="No Admission data found" />
-          )}
+          {renderAdmissionUi()}
         </div>
       </HomeWrapper>
     </div>

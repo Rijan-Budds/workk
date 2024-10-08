@@ -1,3 +1,5 @@
+import { BannerData } from '../../notice/_interface/type'
+
 export interface INewsResponseData {
   status: number
   message: string
@@ -20,19 +22,9 @@ export interface INewsItem {
   isHoliday?: boolean
 }
 
-interface IBanner {
-  id: string
-  title: string
-  image: Images
-  link: string
-  isEnabled: boolean
-  type: string
-  createdAt: string
-  updatedAt: string
-}
 export interface INewsData {
   data: INewsItem
-  banner: IBanner
+  banner: BannerData
 }
 export interface INewsDetailResponse {
   status: number

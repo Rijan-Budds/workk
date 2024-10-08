@@ -1,3 +1,7 @@
+import {
+  emailValidation,
+  phoneNumberValidation,
+} from '@/common/utils/validation'
 import { StepFour } from '../_component/PlusTwo/StepFour'
 import { StepOne } from '../_component/PlusTwo/StepOne'
 import { StepThree } from '../_component/PlusTwo/StepThree'
@@ -5,7 +9,6 @@ import { StepTwo } from '../_component/PlusTwo/StepTwo'
 import {
   cityValidation,
   dateOfBirthValidation,
-  emailValidation,
   fatherNameValidation,
   fatherProfessionValidation,
   fileValidation,
@@ -17,7 +20,6 @@ import {
   lastNameValidation,
   localGuardianNameValidation,
   middleNameValidation,
-  mobileNumberValidation,
   provinceNumberValidation,
   schoolAddressValidation,
   schoolBoardValidation,
@@ -87,7 +89,7 @@ export const stepOneValidationSchema = {
   province: provinceNumberValidation,
   gender: genderValidation,
   dateOfBirth: dateOfBirthValidation,
-  mobileNumber: mobileNumberValidation,
+  mobileNumber: phoneNumberValidation,
   email: emailValidation,
   document: fileValidation,
 }
@@ -95,7 +97,7 @@ export const stepOneValidationSchema = {
 export const stepTwoValidationSchema = {
   fatherName: fatherNameValidation,
   fatherProfession: fatherProfessionValidation,
-  fatherMobileNumber: mobileNumberValidation,
+  fatherMobileNumber: phoneNumberValidation,
   localGuardianName: localGuardianNameValidation,
   localGuardianProfession: guardianProfessionValidation,
   localGuardianPhoneNumber: gurdianMobileNumber,

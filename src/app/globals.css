@@ -91,3 +91,10 @@
 .react-pdf__Page__textContent {
   display: none;
 }
+footer {
+  background-image: url('/home/Footer.png');
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  position: relative;
+}

@@ -14,7 +14,7 @@ export default async function HomeLayout({
   )
 
   return (
-    <div className="h-screen overflow-y-scroll">
+    <div className="h-screen overflow-y-scroll home-layout-container">
       <NavSection settings={settingsData} />
       {children}
       <Footer settings={settingsData} />

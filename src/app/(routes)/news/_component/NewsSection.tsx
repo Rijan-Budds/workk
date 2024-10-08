@@ -1,20 +1,21 @@
 'use client'
 
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
-import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
-import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
-import { NoDataFound } from '@/common/components/NoDataFound'
-import { Pagination } from '@/common/components/Pagination'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
-import { cn } from '@/common/utils/utils'
-import { format } from 'date-fns'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { GoArrowRight } from 'react-icons/go'
 import { NoticeClientSection } from '../../notice/_component/NoticeClientSection'
 import { INewsItem, INewsResponseData } from '../interface/newsType'
+import { format } from 'date-fns'
+import { cn } from '@/common/utils/utils'
+import { Pagination } from '@/common/components/Pagination'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+import { NoDataFound } from '@/common/components/NoDataFound'
+import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
+import { useSearchParams } from 'next/navigation'
+import { UiLoader } from '@/common/components/Atom/UiLoader'
 
 export const NewsSection = () => {
   const params = useSearchParams()
@@ -25,6 +26,7 @@ export const NewsSection = () => {
   const pageSize = 6
   const [page, setPage] = useState<number>(1)
   const [totalCount, setTotalCount] = useState<number | undefined>(undefined)
+  const [loading, setLoading] = useState<boolean>(true)
 
   const tabs = [
     {
@@ -60,6 +62,7 @@ export const NewsSection = () => {
   useEffect(() => {
     const fetchNewsAndNoticeList = async () => {
       try {
+        setLoading(true)
         const newsNoticeData: INewsResponseData | undefined =
           await UseServerFetch(
             `/api/v1/news-and-notice/type/${active.toUpperCase()}?page=${page}&pageSize=${pageSize}`
@@ -68,6 +71,8 @@ export const NewsSection = () => {
         setTotalCount(newsNoticeData?.totalCount)
       } catch (error) {
         console.error('Error fetching news data:', error)
+      } finally {
+        setLoading(false)
       }
     }
 
@@ -75,12 +80,12 @@ export const NewsSection = () => {
   }, [active, page])
 
   const renderNewsNoticeUi = () => {
-    if (newsNotice && newsNotice?.length > 0) {
+    if (newsNotice && newsNotice?.length > 0 && !loading) {
       if (active === 'news') {
         return (
           <div
             className={cn(
-              'flex flex-row flex-wrap justify-center md:justify-between  gap-x-4 gap-y-28 pb-16 2lg:pb-1 '
+              'flex flex-row flex-wrap justify-center md:justify-evenly  gap-x-4 gap-y-28 pb-16 2lg:pb-1 '
             )}
           >
             {newsNotice &&
@@ -141,26 +146,30 @@ export const NewsSection = () => {
         )
       } else if (active === 'notice') {
         return (
-          <>
-            <NoticeClientSection notice={newsNotice} />
-            <div className="w-full flex justify-center mt-4">
-              {totalCount && isPagination && (
-                <Pagination
-                  currentPage={Number(page)}
-                  pageSize={pageSize}
-                  totalCount={Number(totalCount)}
-                  onPageChange={(page: string | number) =>
-                    setPage(page as number)
-                  }
-                  siblingCount={0}
-                />
-              )}
-            </div>
-          </>
+          !loading && (
+            <>
+              <NoticeClientSection notice={newsNotice} />
+              <div className="w-full flex justify-center mt-4">
+                {totalCount && isPagination && (
+                  <Pagination
+                    currentPage={Number(page)}
+                    pageSize={pageSize}
+                    totalCount={Number(totalCount)}
+                    onPageChange={(page: string | number) =>
+                      setPage(page as number)
+                    }
+                    siblingCount={0}
+                  />
+                )}
+              </div>
+            </>
+          )
         )
       }
-    } else {
+    } else if (newsNotice?.length === 0) {
       return <NoDataFound title={`No ${active} found`} />
+    } else {
+      return <UiLoader className="min-h-[200px]" />
     }
   }
 

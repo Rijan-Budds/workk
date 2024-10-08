@@ -98,7 +98,7 @@ const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
           )}
         </div>
       )
-    } else {
+    } else if (response?.data.length === 0) {
       return <NoDataFound title="No Data Found" />
     }
   }

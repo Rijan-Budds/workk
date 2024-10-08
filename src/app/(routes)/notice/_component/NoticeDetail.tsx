@@ -4,12 +4,12 @@ import React from 'react'
 import { StickySidebar } from '../../news/_component/StickySidebar'
 import { NoticeDetailSection } from './NoticeDetailSection'
 import { MobileSidebar } from '../../news/_component/MobileSidebar'
-import { INoticeData } from '../_interface/type'
+import { INoticeResponseData } from '../_interface/type'
 
 export const NoticeDetail = ({
   detail,
 }: {
-  detail: INoticeData | undefined
+  detail: INoticeResponseData | undefined
 }) => {
   return (
     <div className="overflow-x-hidden  2lg:overflow-visible">
@@ -19,9 +19,9 @@ export const NoticeDetail = ({
       />
       <HomeWrapper>
         <div className="flex flex-col gap-y-20 2lg:gap-y-0  2lg:flex-row justify-between gap-x-12">
-          {detail && <NoticeDetailSection detail={detail} />}
-          <StickySidebar type="NOTICE" />
-          <MobileSidebar type="NOTICE" />
+          {detail && <NoticeDetailSection detail={detail.data} />}
+          <StickySidebar type="NOTICE" data={detail?.banner} />
+          <MobileSidebar data={detail?.banner} type="NOTICE" />
         </div>
       </HomeWrapper>
     </div>
