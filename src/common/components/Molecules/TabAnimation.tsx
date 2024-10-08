@@ -76,7 +76,7 @@ export const TabAnimation = ({
             }}
             className={cn(
               `tab-item py-4 flex justify-center items-center relative  px-6 cursor-pointer ${
-                activeTab === tab.key ? 'active' : ''
+                activeTab === tab.key ? 'active pointer-events-none' : ''
               } ${
                 disabledTab?.includes(tab.key) &&
                 'opacity-15 cursor-not-allowed '
@@ -87,7 +87,7 @@ export const TabAnimation = ({
               className={cn(
                 'text-black transition-colors duration-1000 z-10 font-workSans font-medium text-[18px] leading-6',
                 {
-                  'text-white transition-colors duration-1000 ':
+                  'text-white transition-colors duration-1000 pointer-events-none':
                     activeTab === tab.key,
                 }
               )}
