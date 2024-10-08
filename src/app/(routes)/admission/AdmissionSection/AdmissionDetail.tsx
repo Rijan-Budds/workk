@@ -26,7 +26,7 @@ const AdmissionDetail: React.FC<AdmissionDetailProps> = ({
 
   return (
     <div className="max-w-full 2lg:max-w-[787px]">
-      <MiniHeading className="text-left text-secondary">
+      <MiniHeading className="text-left text-secondary mb-1">
         {selectedAdmission.academics?.title}
       </MiniHeading>
       <SectionHeading>{selectedAdmission.articleTitle}</SectionHeading>

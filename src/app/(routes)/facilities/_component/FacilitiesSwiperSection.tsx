@@ -17,7 +17,7 @@ const FacilitiesSwiperSection = async () => {
       isBg
     >
       <div className="flex flex-col 2lg:flex-row justify-between overflow-hidden gap-[47px]">
-        <div className="max-w-[397px] mx-auto md:mx-0 2lg:mx-0 flex flex-col justify-center flex-shrink-0">
+        <div className="max-w-[397px] mx-5 md:mx-0 2lg:mx-0 flex flex-col justify-center flex-shrink-0">
           <MiniHeading className="text-center md:text-start 2lg:text-start">
             Facilities
           </MiniHeading>

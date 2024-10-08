@@ -4,7 +4,7 @@ import { BannerData } from '../../notice/_interface/type'
 
 export const SidebarAd = ({ banner }: { banner?: BannerData }) => {
   return (
-    <div draggable={false} className="size-[397px]">
+    <div draggable={false} className="md:size-[397px]">
       {banner ? (
         <Link href={banner.link ? banner.link : ''} target="_blank">
           <ImageWithPlaceholder

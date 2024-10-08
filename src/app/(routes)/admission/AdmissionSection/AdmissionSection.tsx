@@ -94,7 +94,7 @@ const AdmissionSection = () => {
       <CoverImage title="Admission" list={[{ link: '', title: 'Admission' }]} />
 
       <HomeWrapper>
-        <div className="flex flex-col 2lg:flex-row gap-[80px] 2lg:gap-[56px]">
+        <div className="flex flex-col 2lg:flex-row gap-[50px] lg:gap-[80px] 2lg:gap-[56px]">
           {renderAdmissionUi()}
         </div>
       </HomeWrapper>
