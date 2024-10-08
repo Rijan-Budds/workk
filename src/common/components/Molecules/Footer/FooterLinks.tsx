@@ -84,7 +84,7 @@ const FooterLinks = ({ footer }: FooterLinksProps) => {
           <div className="mt-6 space-y-4  text-sm leading-4 text-white font-workSans font-semibold">
             Email:{' '}
             <span
-              className="font-light"
+              className="font-light cursor-pointer"
               onClick={() => {
                 if (filterEmail && filterEmail[0]?.value) {
                   handleClick('mailto', filterEmail[0].value)
@@ -114,9 +114,7 @@ const FooterLinks = ({ footer }: FooterLinksProps) => {
                 <div
                   key={index}
                   className={
-                    sectionIndex === 0
-                      ? 'cursor-pointer' // No hover effect for contact information
-                      : 'hover:underline cursor-pointer'
+                    'cursor-pointer hover:underline' // No hover effect for contact information
                   }
                 >
                   {'subtitle' in content && (
