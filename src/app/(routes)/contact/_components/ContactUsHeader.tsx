@@ -1,8 +1,10 @@
+'use client'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ISettingsResponseData } from '../_interface/Contact'
+import { useEffect, useState } from 'react'
+import { IContactInfoData, ISettingsResponseData } from '../_interface/Contact'
 
 // Dynamically map icons to keys
 const iconMap: { [key: string]: string } = {
@@ -12,19 +14,33 @@ const iconMap: { [key: string]: string } = {
   Address: '/home/location.svg', // Add other mappings as needed
 }
 
-const ContactUsHeader = async () => {
-  const settings: ISettingsResponseData | undefined = await UseServerFetch(
-    '/api/v1/settings'
-  )
+const ContactUsHeader = () => {
+  const [settings, setSettings] = useState<IContactInfoData[] | undefined>([])
+  const handlePhone = (phone: string) => {
+    window.location.href = `tel:${phone.trim()}`
+  }
 
-  const filteredSettings = settings?.data.data.filter(
-    (contact) => contact.key !== 'Address'
-  )
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const settings: ISettingsResponseData | undefined =
+          await UseServerFetch('/api/v1/settings')
+        const filteredSettings = settings?.data.data.filter(
+          (contact) => contact.key !== 'Address'
+        )
+        setSettings(filteredSettings)
+      } catch (error) {
+        console.error('Error fetching settings:', error)
+      }
+    }
+
+    fetchSettings()
+  }, [])
 
   return (
     <HomeWrapper className="!pb-0">
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[24px] justify-center items-center">
-        {filteredSettings?.map((contact, i) => (
+        {settings?.map((contact, i) => (
           <div
             className="!max-w-[398px] h-[240px] bg-background flex flex-col justify-center items-center rounded-xl"
             key={i}
@@ -46,10 +62,8 @@ const ContactUsHeader = async () => {
               {contact.key === 'Contact Number' ? (
                 <ul className="mt-6 font-poppins text-base font-normal text-body flex flex-col gap-2">
                   {contact.value.split('/').map((phone, idx) => (
-                    <li key={idx}>
-                      <Link href={`tel:${phone.trim()}`} className="flex">
-                        {phone}
-                      </Link>
+                    <li key={idx} onClick={() => handlePhone(phone)}>
+                      {phone}
                     </li>
                   ))}
                 </ul>
