@@ -22,7 +22,7 @@ export const NavHeaderLink = ({
         className="group relative"
         onClick={handleLinkClick}
       >
-        <span className="flex relative gap-x-[6.67px] items-center font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading hover:text-primary transition-all duration-500">
+        <span className="flex font-workSans relative gap-x-[6.67px] items-center font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading hover:text-primary transition-all duration-500">
           Brochure
           <Image
             width={6}
@@ -39,7 +39,7 @@ export const NavHeaderLink = ({
         className="group relative"
         onClick={handleLinkClick}
       >
-        <span className="flex gap-x-[6.67px]  items-center  font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading  hover:text-primary transition-all duration-500">
+        <span className="flex font-workSans gap-x-[6.67px]  items-center  font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading  hover:text-primary transition-all duration-500">
           Apply now
           <Image
             width={6}
@@ -56,7 +56,7 @@ export const NavHeaderLink = ({
         className="group relative"
         onClick={handleLinkClick}
       >
-        <span className="flex gap-x-[6.67px] items-center font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading  hover:text-primary transition-all duration-500 font-workSans">
+        <span className="flex font-workSans gap-x-[6.67px] items-center font-medium text-[16px] 2lg:text-[12px] leading-4 tracking-wide uppercase text-heading  hover:text-primary transition-all duration-500">
           Result
           <Image
             width={6}

@@ -41,7 +41,7 @@
 }
 
 .custom-card.active .custom-card-timer {
-  animation: fill 2s linear forwards;
+  animation: fill 10s linear forwards;
 }
 
 @keyframes fill {

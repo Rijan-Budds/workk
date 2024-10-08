@@ -11,7 +11,7 @@ const AcademicsSection = () => {
     <>
       <CoverImage
         title="Academics"
-        list={[{ link: 'academics', title: 'Academic' }]}
+        list={[{ link: null, title: 'Academic' }]}
         key={title}
       />
       <HomeWrapper>

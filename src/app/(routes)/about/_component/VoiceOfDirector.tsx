@@ -166,12 +166,12 @@ const SwiperWrapper = ({
           spaceBetween={25}
           slidesPerView={1}
           modules={[Autoplay]}
-          autoplay={{ delay: 2000, disableOnInteraction: true }}
+          autoplay={{ delay: 10000, disableOnInteraction: true }}
           pagination={false} // Disable default pagination
           onSwiper={(swiper) => (mainSwiperRef.current = swiper)}
           onSlideChange={handleSlideChange} // Handle slide change
           className={`w-full ${className} !flex`}
-          loop
+          // loop
         >
           {children}
         </Swiper>
@@ -179,7 +179,7 @@ const SwiperWrapper = ({
         {/* Custom Pagination */}
         {paginationData && paginationData.length > 0 && (
           <div className="pagination-wrapper flex gap-4 mt-6 flex-wrap md:absolute z-50 -bottom-[14%] ">
-            {paginationData?.slice(0, 4).map((slide, index) => (
+            {paginationData?.map((slide, index) => (
               <div
                 key={index}
                 onClick={() => handlePaginationClick(index)}

@@ -24,7 +24,7 @@ export const TestimonailBigCard = ({ card }: { card: ITestimonialData }) => {
   return (
     <>
       <div
-        className="bg-background max-w-[608px] h-[292px] rounded-[12px] relative mx-auto"
+        className="bg-background max-w-[608px] min-h-[292px] rounded-[12px] relative mx-auto"
         style={{ boxShadow: '4px 4px 0 0 #FAFAFA' }}
       >
         <Image

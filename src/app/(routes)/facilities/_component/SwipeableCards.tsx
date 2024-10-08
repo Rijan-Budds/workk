@@ -39,7 +39,7 @@ export const SwipeableCards = ({
                 src={d}
                 width={152}
                 height={152}
-                className="size-[152px] object-cover rounded-[12px]"
+                className="size-[152px] object-cover rounded-[12px] cursor-pointer"
                 alt="facilites school"
               />
             </SwiperSlide>

@@ -28,14 +28,20 @@ const School = ({
     }
   }
 
+  const truncateTitle = (title: string, maxLength: number) => {
+    return title.length > maxLength
+      ? `${title.substring(0, maxLength)}...`
+      : title
+  }
+
   return (
     <div>
       <CoverImage
-        title={getBreadcrumbTitle(slug)}
+        title={truncateTitle(getBreadcrumbTitle(slug), 20)} // Truncate the main title
         list={[
-          { link: '/academics', title: 'Academics' },
-          { link: null, title: 'School' },
-          { link: null, title: getBreadcrumbTitle(slug) },
+          { link: '/academics', title: truncateTitle('Academics', 15) },
+          { link: null, title: truncateTitle('School', 15) },
+          { link: null, title: truncateTitle(getBreadcrumbTitle(slug), 5) }, // Truncate breadcrumb titles
         ]}
       />
 

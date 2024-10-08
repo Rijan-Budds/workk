@@ -41,7 +41,7 @@ const TearmsAndCondition = async () => {
     <div>
       <CoverImage
         title="Terms and Conditions"
-        list={[{ link: 'terms-and-condition', title: 'Terms and Condition' }]}
+        list={[{ link: null, title: 'Terms and Condition' }]}
       />
       <HomeWrapper className="!px-[551px]">{renderTermsUi()}</HomeWrapper>
     </div>

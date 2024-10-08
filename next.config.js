@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: process.env.NEXT_PUBLIC_IMAGE_CONFIG,
       },
+      {
+        protocol: 'https',
+        hostname: 'd1r4bqac11v6zn.cloudfront.net',
+      },
     ],
   },
 

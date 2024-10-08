@@ -54,7 +54,7 @@ export const GalleryCard = ({
           height={257}
           src={data.photo ? data.photo?.key : undefined}
           alt="gallery carousel"
-          className="rounded-[8px]  w-full h-full object-cover"
+          className="rounded-[8px] w-full h-full object-cover"
         />
         <div className="2lg:hidden flex justify-center my-4 ">
           <p className="font-workSans font-normal text-[16px] leading-[16px] text-[#313131]">
