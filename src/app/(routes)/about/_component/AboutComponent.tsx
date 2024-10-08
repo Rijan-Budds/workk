@@ -82,10 +82,7 @@ const AboutComponent = async () => {
 
   return (
     <>
-      <CoverImage
-        title="About Us"
-        list={[{ link: 'about', title: 'About us' }]}
-      />
+      <CoverImage title="About Us" list={[{ link: null, title: 'About us' }]} />
       <HomeWrapper>{renderAboutDataUi()}</HomeWrapper>
     </>
   )

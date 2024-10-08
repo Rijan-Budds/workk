@@ -6,9 +6,7 @@ import { CustomModal } from '@/common/components/Molecules/Modal'
 import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
 import { NoDataFound } from '@/common/components/NoDataFound'
 import { Pagination } from '@/common/components/Pagination'
-import { useBreadCrumbPath } from '@/common/hook/useBreadCrumbPath'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
-import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import {
   IGalleryPhotoItem,
@@ -36,8 +34,6 @@ export const GallerySection = () => {
   ]
 
   const [galleryTab, setGalleryTab] = useState<string>(galleryTabs[0].key)
-  const pathname = usePathname()
-  const getPaths = useBreadCrumbPath(pathname)
 
   const [galleryPhoto, setGalleryPhoto] = useState<
     IGalleryPhotoItem[] | undefined
@@ -191,7 +187,7 @@ export const GallerySection = () => {
 
   return (
     <>
-      <CoverImage title="Gallery" list={getPaths} />
+      <CoverImage title="Gallery" list={[{ link: null, title: 'Gallery' }]} />
       <HomeWrapper>
         <div className="flex flex-col items-center gap-y-10 2lg:gap-y-14">
           <TabAnimation

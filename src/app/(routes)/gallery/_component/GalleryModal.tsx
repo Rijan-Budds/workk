@@ -1,5 +1,6 @@
 'use client'
 import { Button } from '@/common/components/ui/button'
+import { CheckIsIos } from '@/common/hook/useIos'
 import { cn } from '@/common/utils/utils'
 import Image from 'next/image'
 import { Dispatch, SetStateAction } from 'react'
@@ -25,6 +26,8 @@ export const GalleryModal = ({
   length: number | undefined
   showSwipe: boolean
 }) => {
+  const isIos = CheckIsIos()
+
   const handleSwipe = (direction: IDirection) => {
     if (direction === 'next' && setActiveImage && length) {
       setActiveImage((prev) => (prev! + 1) % length)
@@ -46,7 +49,10 @@ export const GalleryModal = ({
       <div className="flex justify-end w-full p-6 pb-0 2lg:pb-6 rounded-xl">
         <div
           onClick={handleClose}
-          className="absolute mb-2 lg:right-10 top-16 lg:top-10 z-50"
+          className={cn(
+            'absolute mb-2 lg:right-10 top-16 lg:top-10 z-50',
+            isIos ? 'top-24' : 'top-16'
+          )}
         >
           <Button variant="secondary">Close</Button>
         </div>
@@ -59,7 +65,7 @@ export const GalleryModal = ({
           height={854}
           className="object-contain pointer-events-none selection:bg-transparent transition-all duration-1000 mx-auto w-[90vw] h-[100vh] lg:h-[610px] rounded-xl"
         />
-        <p className="absolute transform bottom-14 md:-bottom-20  left-[15%] right-[15%] md:right-[40%] md:left-[40%] text-xl text-white font-poppins md:font-medium text-center p-4 selection:bg-transparent">
+        <p className="absolute transform bottom-24 lg:-bottom-20  left-[15%] right-[15%] md:right-[40%] md:left-[40%] text-xl text-white font-poppins md:font-medium text-center p-4 selection:bg-transparent">
           {title}
         </p>
       </div>
