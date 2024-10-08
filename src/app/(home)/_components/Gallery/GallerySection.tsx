@@ -9,7 +9,7 @@ export const GallerySection = () => {
   return (
     <div className="bg-[url('/home/gallery-bg.svg')]">
       <HomeWrapper className=" 2lg:py-[112px]">
-        <div className="flex flex-col gap-y-10  2lg:gap-y-10 overflow-hidden ">
+        <div className="flex flex-col gap-y-7  lg:gap-y-10  2lg:gap-y-10 overflow-hidden ">
           <div className="flex flex-col justify-center items-center gap-y-2 ">
             <MiniHeading className="text-secondary ">galleries</MiniHeading>
             <SectionHeading className="md:text-[38px]">
