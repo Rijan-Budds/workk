@@ -72,6 +72,13 @@ const CalendarEvent = ({
     }
     setSelectedYear(() => selectedYear)
     setShowYearSelector(() => false)
+    if (currentDate.getYear() == selectedYear.value) {
+      setActiveTab('today')
+      setDisabledTab([])
+    } else {
+      setActiveTab('month')
+      setDisabledTab(['today', 'week'])
+    }
   }
 
   const handleOnPrevClick = () => {

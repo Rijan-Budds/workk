@@ -1,9 +1,8 @@
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 import { ISettingsResponseData } from '../_interface/Contact'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
 
 // Dynamically map icons to keys
 const iconMap: { [key: string]: string } = {
