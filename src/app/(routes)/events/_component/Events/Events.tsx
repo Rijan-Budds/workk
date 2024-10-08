@@ -107,7 +107,7 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
       <div
         ref={ref}
         className={cn(
-          'flex flex-col items-start px-6 py-6 w-full rounded-lg bg-background h-[calc(100vh-20rem)] md:h-[calc(100vh-13rem)] 2lg:h-[calc(100vh-13rem)] overflow-y-auto cursor-pointer pdf-scrollbar'
+          'flex flex-col items-start px-6 py-6 w-full rounded-lg bg-background h-[calc(100vh-20rem)] md:h-[calc(100vh-10rem)] 2lg:h-[calc(100vh-10rem)] overflow-y-auto cursor-pointer pdf-scrollbar'
         )}
       >
         {isLoading ? (

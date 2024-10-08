@@ -13,12 +13,12 @@ export interface ISettingsResponseData {
   data: ISettings
 }
 
-interface IPhoneNumberItem {
+export interface IPhoneNumberItem {
   key: string
   value: string
 }
 
-interface ITelephoneItem {
+export interface ITelephoneItem {
   key: string
   value: string
 }
