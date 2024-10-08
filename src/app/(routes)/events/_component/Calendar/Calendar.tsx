@@ -184,13 +184,20 @@ const CalendarEvent = ({
       const eventElement = eventsRef.current.children[eventIndex] as HTMLElement
       if (eventElement) {
         const containerHeight = eventsRef.current.clientHeight
+
         const eventElementHeight = eventElement.clientHeight
         const scrollPosition =
-          eventElement.offsetTop - containerHeight / 2 + eventElementHeight / 2
-        eventsRef.current.scrollTo({
-          top: scrollPosition,
-          behavior: 'smooth',
-        })
+          eventElement.offsetTop - containerHeight + eventElementHeight
+        if (window.innerWidth <= 786) {
+          eventsRef.current.scrollIntoView({
+            behavior: 'smooth',
+          })
+        } else {
+          eventsRef.current.scrollTo({
+            top: scrollPosition,
+            behavior: 'smooth',
+          })
+        }
         // eventElement.scrollIntoView({ behavior: 'smooth' })
         setHighlightedEventsIndex(eventIndex)
       }
