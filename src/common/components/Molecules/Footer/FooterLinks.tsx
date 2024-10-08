@@ -44,25 +44,53 @@ const FooterLinks = ({ footer }: FooterLinksProps) => {
               {footer?.phoneNumber[0].key === 'Number1' &&
                 footer?.phoneNumber[0].value}{' '}
             </span>
-            <span className="font-light cursor-pointer">
+            <span
+              className="font-light cursor-pointer"
+              onClick={() => {
+                if (footer?.phoneNumber[1].value) {
+                  handleClick('tel', footer?.phoneNumber[1].value)
+                }
+              }}
+            >
               {footer?.phoneNumber[1].key === 'Number2' &&
                 `/ ${footer?.phoneNumber[1].value}`}
             </span>
           </div>
           <div className="mt-6 space-y-4  text-sm leading-4 text-white font-workSans font-semibold">
             Telephone:{' '}
-            <span className="font-light cursor-pointer">
+            <span
+              className="font-light cursor-pointer"
+              onClick={() => {
+                if (footer?.telephone[0].value) {
+                  handleClick('tel', footer?.telephone[0].value)
+                }
+              }}
+            >
               {footer?.telephone[0].key === 'Telephone1' &&
                 footer?.telephone[0].value}{' '}
             </span>
-            <span className="font-light cursor-pointer">
+            <span
+              onClick={() => {
+                if (footer?.telephone[1].value) {
+                  handleClick('tel', footer?.telephone[1].value)
+                }
+              }}
+              className="font-light cursor-pointer"
+            >
               {footer?.telephone[1].key === 'Telephone2' &&
                 `/ ${footer?.phoneNumber[1].value}`}
             </span>
           </div>
           <div className="mt-6 space-y-4  text-sm leading-4 text-white font-workSans font-semibold">
             Email:{' '}
-            <span className="font-light">
+            <span
+              className="font-light"
+              onClick={() => {
+                if (filterEmail && filterEmail[0]?.value) {
+                  handleClick('mailto', filterEmail[0].value)
+                }
+              }}
+            >
               {filterEmail && filterEmail[0].value}{' '}
             </span>
           </div>

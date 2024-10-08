@@ -5,13 +5,16 @@ import { HomeWrapper } from '../../Atom/HomeWrapper'
 import Image from 'next/image'
 import { NavHeaderLink } from './NavHeaderLink'
 import { useRouter } from 'next/navigation'
-import { ISocialMediaData } from '@/app/(routes)/contact/_interface/Contact'
+import {
+  ISettings,
+  ISocialMediaData,
+} from '@/app/(routes)/contact/_interface/Contact'
 import Link from 'next/link'
 
 export const NavHeader = ({
   socialLinks,
 }: {
-  socialLinks: ISocialMediaData[] | undefined
+  socialLinks: ISettings | undefined
 }) => {
   const router = useRouter()
   const handleMailClick = (mail: string) => {
@@ -22,43 +25,50 @@ export const NavHeader = ({
     router.push(`tel:${contact}`)
   }
 
+  const getMail = socialLinks?.data.filter((d) => d.key === 'Email')
+  const getPhone = socialLinks?.data.filter((d) => d.key === 'Contact Number')
+
   return (
     <div className="py-3 bg-background border-b-[1px] border-border hidden 2lg:block ">
       <HomeWrapper className="py-0">
         <div className="flex justify-between">
           <div className="flex gap-x-8 ">
-            <div
-              onClick={() => handleMailClick('pawanprakriti2048@gmail.com')}
-              className="flex items-center gap-x-2 cursor-pointer"
-            >
-              <Image
-                width={11.67}
-                height={9.33}
-                src="/home/mail.svg"
-                alt="mail icon"
-              />
-              <span className="font-workSans text-[14px] leading-[16px] font-normal">
-                pawanprakriti2048@gmail.com
-              </span>
-            </div>
-            <div
-              onClick={() => handleRedirectContact('9843589375')}
-              className="flex items-center gap-x-2 cursor-pointer"
-            >
-              <Image
-                width={11.67}
-                height={9.33}
-                src="/home/call.svg"
-                alt="call icon"
-              />
-              <span className="font-workSans text-[14px] leading-[16px] font-normal">
-                9843589375
-              </span>
-            </div>
+            {getMail && getMail[0].value && (
+              <div
+                onClick={() => handleMailClick(getMail[0].value)}
+                className="flex items-center gap-x-2 cursor-pointer"
+              >
+                <Image
+                  width={11.67}
+                  height={9.33}
+                  src="/home/mail.svg"
+                  alt="mail icon"
+                />
+                <span className="font-workSans text-[14px] leading-[16px] font-normal">
+                  {getMail[0].value}
+                </span>
+              </div>
+            )}
+            {getPhone && getPhone[0].value && (
+              <div
+                onClick={() => handleRedirectContact(getPhone[0].value)}
+                className="flex items-center gap-x-2 cursor-pointer"
+              >
+                <Image
+                  width={11.67}
+                  height={9.33}
+                  src="/home/call.svg"
+                  alt="call icon"
+                />
+                <span className="font-workSans text-[14px] leading-[16px] font-normal">
+                  {getPhone[0].value}
+                </span>
+              </div>
+            )}
           </div>
           <div className="flex items-center gap-x-6 justify-between">
             <NavHeaderLink />
-            <NavHeaderSocialMedia links={socialLinks} />
+            <NavHeaderSocialMedia links={socialLinks?.socialMedia} />
           </div>
         </div>
       </HomeWrapper>
