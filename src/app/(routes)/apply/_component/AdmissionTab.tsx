@@ -80,23 +80,6 @@ export const AdmissionTab = () => {
     }
   }, [params])
 
-  useEffect(() => {
-    const handleBeforeReload = (event: BeforeUnloadEvent) => {
-      event.preventDefault()
-      return ''
-    }
-
-    window.addEventListener('beforeunload', (e) => {
-      if (isFieldChange) {
-        handleBeforeReload(e)
-      }
-    })
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeReload)
-    }
-  }, [isFieldChange])
-
   return (
     <div className="flex flex-col  justify-center items-center gap-y-10">
       <div className="w-fit flex flex-col justify-center items-center gap-y-10">
