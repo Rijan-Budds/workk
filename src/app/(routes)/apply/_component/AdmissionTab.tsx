@@ -83,14 +83,26 @@ export const AdmissionTab = () => {
   return (
     <div className="flex flex-col  justify-center items-center gap-y-10">
       <div className="w-fit flex flex-col justify-center items-center gap-y-10">
-        <TabAnimation
-          activeTab={active}
-          tabs={reponsiveTab}
-          setActive={setActiveTab}
-          className="w-fit text-sm"
-          isFieldChange={true}
-          handleDynamicData={handleTabClick}
-        />
+        <div className="md:block hidden">
+          <TabAnimation
+            activeTab={active}
+            tabs={tabs}
+            setActive={setActiveTab}
+            className="w-fit text-sm"
+            isFieldChange={true}
+            handleDynamicData={handleTabClick}
+          />
+        </div>
+        <div className="md:hidden block">
+          <TabAnimation
+            activeTab={active}
+            tabs={mobileTab}
+            setActive={setActiveTab}
+            className="w-fit text-sm"
+            isFieldChange={true}
+            handleDynamicData={handleTabClick}
+          />
+        </div>
 
         <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center text-body">
           When reading an application, we get to know the person behind the
