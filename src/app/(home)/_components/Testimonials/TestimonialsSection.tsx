@@ -58,7 +58,7 @@ const TestimonialsSection = () => {
           <div className="flex justify-center md:justify-between items-center relative">
             <div className="">
               <MiniHeading isMd>Testimonials</MiniHeading>
-              <SectionHeading isMd className="mt-2">
+              <SectionHeading className="!text-center !md:text-start">
                 Student&apos;s Success Stories
               </SectionHeading>
             </div>

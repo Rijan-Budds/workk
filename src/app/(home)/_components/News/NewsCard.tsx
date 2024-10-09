@@ -10,7 +10,7 @@ export const NewsCard = ({ news }: { news: INewsItem }) => {
   return (
     <div className="relative">
       <Link href={`/news/${news.slug}`}>
-        <div className="relative  group cursor-pointer mx-auto ">
+        <div className="relative  group cursor-pointer mx-auto max-w-[397px]">
           <div className="overflow-hidden rounded-xl max-w-[397px]">
             <ImageWithPlaceholder
               src={news.images ? news.images.key : undefined}

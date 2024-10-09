@@ -47,7 +47,7 @@ const AdmissionDetail: React.FC<AdmissionDetailProps> = ({
       )}
 
       <div
-        className="my-6 font-workSans font-normal text-base leading-7 text-body"
+        className="my-6 font-workSans font-normal text-base leading-7 text-body custom-list "
         dangerouslySetInnerHTML={{
           __html: selectedAdmission.description,
         }}
