@@ -1,14 +1,14 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { FiChevronDown, FiChevronRight } from 'react-icons/fi'
-import { Sidebar } from './Sidebar'
+import { ISocialMediaData } from '@/app/(routes)/contact/_interface/Contact'
 import { navLinks } from '@/common/constant/data'
-import { Button } from '../../Atom/Button'
-import { NavHeaderLink } from './NavHeaderLink'
-import { NavHeaderSocialMedia } from './NavHeader'
+import { useNavLinks } from '@/common/hook/useNavLinks'
 import { INavLink, INavSubLink } from '@/common/interface/type'
 import Link from 'next/link'
-import { useNavLinks } from '@/common/hook/useNavLinks'
-import { ISocialMediaData } from '@/app/(routes)/contact/_interface/Contact'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { FiChevronDown, FiChevronRight } from 'react-icons/fi'
+import { Button } from '../../Atom/Button'
+import { NavHeaderSocialMedia } from './NavHeader'
+import { NavHeaderLink } from './NavHeaderLink'
+import { Sidebar } from './Sidebar'
 
 export const SidebarContainer = ({
   setOpenMainSidebar,
@@ -74,7 +74,12 @@ export const SidebarContainer = ({
         ))}
 
         <Link href={'/contact'}>
-          <Button className="w-fit mt-2">Contact Us</Button>
+          <Button
+            onClick={() => setOpenMainSidebar(false)}
+            className="w-fit mt-2"
+          >
+            Contact Us
+          </Button>
         </Link>
         <NavHeaderLink setOpenSidebar={setOpenMainSidebar} />
         <NavHeaderSocialMedia links={socialLinks} />

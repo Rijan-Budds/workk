@@ -12,6 +12,7 @@ export const SidebarAd = ({ banner }: { banner?: BannerData }) => {
             width={397}
             height={397}
             alt="admission"
+            className="size-[300px] lg:size-[397px]"
           />
         </Link>
       ) : null}

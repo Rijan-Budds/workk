@@ -44,6 +44,8 @@ export const CustomDropdown = ({
   const [open, setOpen] = useState<boolean>(false)
   const [hasSelected, setHasSelected] = useState<boolean>(false)
 
+  console.info(hasSelected)
+
   return (
     <div className="flex flex-col gap-y-2 w-full">
       <label
@@ -84,18 +86,7 @@ export const CustomDropdown = ({
             }
           )}
         >
-          {isBoolean ? (
-            <SelectValue placeholder={placeHolder} />
-          ) : value && hasSelected ? (
-            <SelectValue>
-              {value.charAt(0).toUpperCase() + value.slice(1)}
-            </SelectValue>
-          ) : (
-            <span className="text-body font-workSans text-sm">
-              {placeHolder}
-            </span>
-          )}
-
+          <SelectValue placeholder={placeHolder} />
           <ChevronDown
             className={cn('h-4 w-4 text-body transition-all duration-500', {
               'rotate-180 transition-all duration-500': open,
