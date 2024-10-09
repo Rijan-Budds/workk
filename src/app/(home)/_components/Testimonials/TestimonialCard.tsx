@@ -37,7 +37,7 @@ export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
           alt="quote"
           className="absolute w-[60px] h-[51px] top-[18.33px] left-[13.51px] selection:bg-transparent"
         />
-        <div className="p-[40px] font-workSans font-[400] text-base leading-[27.2px] tracking-tight text-heading  h-[240px] ">
+        <div className="p-[40px] font-workSans font-[400] text-base leading-[27.2px] tracking-tight text-heading min-h-[290px] sm:min-h-[240px] ">
           {/* Show truncated description */}
           <div
             dangerouslySetInnerHTML={{

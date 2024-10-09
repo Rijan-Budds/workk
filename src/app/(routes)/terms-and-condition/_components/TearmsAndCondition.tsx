@@ -1,4 +1,3 @@
-import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import { NoDataFound } from '@/common/components/NoDataFound'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
@@ -43,7 +42,9 @@ const TearmsAndCondition = async () => {
         title="Terms and Conditions"
         list={[{ link: null, title: 'Terms and Condition' }]}
       />
-      <HomeWrapper className="!px-[551px]">{renderTermsUi()}</HomeWrapper>
+      <div className="w-full px-4 md:px-12 lg:px-[60px] 2xl:px-[200px] 2xl_lg:px-[240px]  3xl:px-[540px]  py-[56px] ">
+        {renderTermsUi()}
+      </div>
     </div>
   )
 }

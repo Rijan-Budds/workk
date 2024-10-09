@@ -7,7 +7,7 @@ export const FacilitesSection = ({ slug }: { slug: string }) => {
   return (
     <div className="min-h-screen ">
       <CoverImage
-        title="Science Lab"
+        title={slug}
         list={[
           { link: '/facilities', title: 'facilites' },
           { link: null, title: slug },
