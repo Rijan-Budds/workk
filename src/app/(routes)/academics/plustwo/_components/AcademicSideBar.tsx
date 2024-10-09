@@ -50,7 +50,9 @@ const AcademicSideBar = ({
             them.
           </p>
           <Link href={'/apply'}>
-            <Button variant={'default'}>Apply Now</Button>
+            <Button variant={'default'} className="w-full mt-6">
+              Apply Now
+            </Button>
           </Link>
         </div>
       </div>
