@@ -78,7 +78,7 @@ const FooterLinks = ({ footer }: FooterLinksProps) => {
               className="font-light cursor-pointer"
             >
               {footer?.telephone[1].key === 'Telephone2' &&
-                `/ ${footer?.phoneNumber[1].value}`}
+                `/ ${footer?.telephone[1].value}`}
             </span>
           </div>
           <div className="mt-6 space-y-4  text-sm leading-4 text-white font-workSans font-semibold">
