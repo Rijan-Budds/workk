@@ -8,25 +8,27 @@ const FooterHeader = ({ footer }: { footer: ISettings | undefined }) => {
   return (
     <HomeWrapper className="py-8">
       <div className="flex justify-between items-center">
-        <div className="flex justify-start items-center gap-x-6">
-          <div className="bg-white w-[80px] h-[80px] rounded-full flex justify-center items-center">
-            <Image
-              src="/home/footerlogo.svg"
-              width={800}
-              height={890}
-              alt="logo "
-              className="w-[56px] h-[56px]"
-            />
+        <Link href={'/'}>
+          <div className="flex justify-start items-center gap-x-6">
+            <div className="bg-white w-[80px] h-[80px] rounded-full flex justify-center items-center">
+              <Image
+                src="/home/footerlogo.svg"
+                width={800}
+                height={890}
+                alt="logo "
+                className="w-[56px] h-[56px]"
+              />
+            </div>
+            <div className="hidden lg:block">
+              <h1 className="font-poppins text-white text-[18px]">
+                Pawan Prakriti School
+              </h1>
+              <p className="font-workSans  text-white text-[14px] font-normal ">
+                Mahalaxmi Municipality-5, Tikathali, Lalitpur
+              </p>
+            </div>
           </div>
-          <div className="hidden lg:block">
-            <h1 className="font-poppins text-white text-[18px]">
-              Pawan Prakriti School
-            </h1>
-            <p className="font-workSans  text-white text-[14px] font-normal ">
-              Mahalaxmi Municipality-5, Tikathali, Lalitpur
-            </p>
-          </div>
-        </div>
+        </Link>
         <div>
           <ul className="flex gap-4">
             {footer?.socialMedia.map((item, indx) => (

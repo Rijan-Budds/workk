@@ -24,12 +24,11 @@ export const HeroSection = ({
             <div className="flex flex-col gap-y-24 2lg:mt-16">
               <div className="flex flex-col gap-y-2 items-center 2lg:items-start">
                 <MiniHeading isMd className="text-center">
-                  Welcome to Pawan prakriti school
+                  Welcome to Pawan prakriti English Secondary School
                 </MiniHeading>
 
                 <h1 className="text-[32px] md:text-[42px] leading-[41.6px] md:leading-[54.6px] text-center 2lg:text-left font-medium md:font-semibold text-white font-poppins">
-                  Empowering Minds, Shaping
-                  <br className="hidden md:block" />
+                  Empowering Minds, Shaping <br className="hidden md:block" />{' '}
                   Futures.
                 </h1>
                 <p className="font-workSans text-[16px] leading-[27.2px] text-white font-normal mt-2 text-center 2lg:text-left">

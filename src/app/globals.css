@@ -34,7 +34,9 @@
 
 .custom-list li {
   position: relative;
-  padding-left: 24px; /* Adjust this based on the width of your icon */
+  padding-left: 24px;
+  display: flex;
+  align-items: center;
 }
 
 .custom-list li::before {

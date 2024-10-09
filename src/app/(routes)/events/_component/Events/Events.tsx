@@ -136,8 +136,7 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
               height={54}
             />
             <div className="flex flex-col items-center text-xs gap-1">
-              <p className="font-medium">No Event</p>
-              <p>No Event this month</p>
+              <p className="font-medium">No Events Found</p>
             </div>
           </div>
         ) : (

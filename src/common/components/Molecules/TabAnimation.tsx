@@ -69,7 +69,11 @@ export const TabAnimation = ({
       {tabs &&
         tabs.map((tab, index) => (
           <div
-            onClick={() => handleDynamicData(tab.key)}
+            onClick={() => {
+              if (tab.key !== activeTab && !disabledTab?.includes(tab.key)) {
+                handleDynamicData(tab.key)
+              }
+            }}
             key={tab.key}
             ref={(el) => {
               tabRefs.current[index] = el
