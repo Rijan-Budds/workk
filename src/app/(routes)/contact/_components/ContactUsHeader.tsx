@@ -23,34 +23,19 @@ const ContactUsHeader = () => {
   const [phoneNumber, setPhoneNumbers] = useState<
     IPhoneNumberItem[] | undefined
   >([])
+
   const [telePhoneNumber, setTelephoneNumbers] = useState<
     ITelephoneItem[] | undefined
   >([])
 
-  const phoneNumbers = phoneNumber || []
-  const telephones = telePhoneNumber || []
-
-  const allContactNumbers = [...phoneNumbers, ...telephones]
-
-  const formattedNumbers = [
-    allContactNumbers
-      .slice(0, 2)
-      .map((num) => num.value)
-      .join(' / '),
-    allContactNumbers
-      .slice(2, 4)
-      .map((num) => num.value)
-      .join(' / '),
-  ]
-
-  const handlePhone = (phone: string) => {
-    console.log(phone)
-    window.location.href = `tel:${phone.trim()}`
+  const handleClick = (type: 'tel' | 'mailto', value: string) => {
+    if (type === 'tel') {
+      window.location.href = `tel:${value}`
+    } else if (type === 'mailto') {
+      window.location.href = `mailto:${value}`
+    }
   }
 
-  const handleEmail = (email: string) => {
-    window.location.href = `mailto:${email}`
-  }
   useEffect(() => {
     const fetchSettings = async () => {
       try {
@@ -96,17 +81,46 @@ const ContactUsHeader = () => {
               {/* Display content dynamically based on key */}
               {contact.key === 'Contact Number' ? (
                 <ul className="mt-6 font-poppins text-base font-normal text-body flex flex-col gap-2">
-                  <li>
+                  <li className="cursor-pointer">
                     {/* Display phone numbers in two lines */}
-                    {formattedNumbers.map((line, idx) => (
-                      <p
-                        onClick={() => handlePhone(line)}
-                        key={idx}
-                        className="cursor-pointer"
-                      >
-                        {line}
-                      </p>
-                    ))}
+                    <span
+                      onClick={() => {
+                        if (phoneNumber && phoneNumber[0].value) {
+                          handleClick('tel', phoneNumber[0].value)
+                        }
+                      }}
+                    >
+                      {phoneNumber && phoneNumber[0].value}
+                    </span>{' '}
+                    <span
+                      onClick={() => {
+                        if (phoneNumber && phoneNumber[1].value) {
+                          handleClick('tel', phoneNumber[1].value)
+                        }
+                      }}
+                    >
+                      / {phoneNumber && phoneNumber[1].value}
+                    </span>
+                  </li>
+                  <li className="cursor-pointer">
+                    <span
+                      onClick={() => {
+                        if (telePhoneNumber && telePhoneNumber[0].value) {
+                          handleClick('tel', telePhoneNumber[0].value)
+                        }
+                      }}
+                    >
+                      {telePhoneNumber && telePhoneNumber[0].value}
+                    </span>{' '}
+                    <span
+                      onClick={() => {
+                        if (telePhoneNumber && telePhoneNumber[1].value) {
+                          handleClick('tel', telePhoneNumber[1].value)
+                        }
+                      }}
+                    >
+                      / {telePhoneNumber && telePhoneNumber[1].value}
+                    </span>
                   </li>
                 </ul>
               ) : contact.key === 'E-mail' ? (
@@ -122,7 +136,9 @@ const ContactUsHeader = () => {
                 </div>
               ) : (
                 <p
-                  onClick={() => handleEmail(contact.value)}
+                  onClick={() => {
+                    handleClick('mailto', contact.value)
+                  }}
                   className="mt-6 font-poppins text-base font-normal text-body cursor-pointer"
                 >
                   {contact.value}
