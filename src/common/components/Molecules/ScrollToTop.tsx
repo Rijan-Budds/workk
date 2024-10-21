@@ -8,8 +8,6 @@ export const ScrollToTopUi = ({ layout }: { layout: string }) => {
   const [showScrollButton, setShowScrollButton] = useState<boolean>(false)
   const [scrollProgress, setScrollProgress] = useState<number>(0)
 
-  console.log('scroll progress: ', scrollProgress)
-
   useEffect(() => {
     const getHomeLayout = document?.querySelector(layout)
     const handleScroll = () => {
