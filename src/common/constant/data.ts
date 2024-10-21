@@ -211,7 +211,7 @@ export const staticFooterLinksData = [
         url: 'https://www.see.gov.np/',
       },
       {
-        text: 'District Education Office, Kathmandu',
+        text: 'District Education Office, Lalitpur',
         url: 'https://daolalitpur.moha.gov.np/en',
       },
     ],
