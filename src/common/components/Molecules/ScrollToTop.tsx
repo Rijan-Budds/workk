@@ -39,8 +39,8 @@ export const ScrollToTopUi = ({ layout }: { layout: string }) => {
     })
   }
 
-  const radius = 22 // Circle radius
-  const circumference = 2 * Math.PI * radius // Circumference of the circle
+  const radius = 19.5
+  const circumference = 2 * Math.PI * radius
   const strokeDashoffset =
     circumference - circumference * (scrollProgress / 100)
 
