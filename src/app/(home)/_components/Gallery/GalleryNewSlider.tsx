@@ -40,7 +40,7 @@ export const GallerySlider = () => {
   const renderGallerySliider = () => {
     if (response?.data.length) {
       return (
-        <div className="gallery__slider hidden 2lg:flex 2lg:h-[600px]   justify-center items-center">
+        <div className="gallery__slider hidden 2lg:flex 2lg:h-[600px] justify-center items-center">
           {response?.data && (
             <Swiper
               spaceBetween={180}
@@ -49,14 +49,14 @@ export const GallerySlider = () => {
               grabCursor={true}
               centeredSlides={true}
               coverflowEffect={{
-                rotate: 30,
+                rotate: 20,
                 stretch: 0,
                 depth: 100,
                 slideShadows: false,
               }}
               autoplay={{
                 delay: 3000,
-                disableOnInteraction: false,
+                disableOnInteraction: true,
               }}
               loop
               modules={[EffectCoverflow, Autoplay]}
