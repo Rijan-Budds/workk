@@ -15,10 +15,7 @@ export default async function RouteLayout({
   )
 
   return (
-    <div
-      id="homeLayout"
-      className="h-screen overflow-y-scroll route-layout-container"
-    >
+    <div className="h-screen overflow-y-scroll route-layout-container">
       <NavSection settings={settingsData} />
       {children}
       <ScrollToTopUi layout=".route-layout-container" />

@@ -31,7 +31,7 @@ export const NavHeaderLink = ({
             src={'/home/arrow.svg'}
           />
         </span>
-        <span className="absolute left-0 top-4 h-[1px] w-0 bg-primary transition-all duration-500 z-10 group-hover:w-2/4" />
+        <span className="absolute left-0 top-4 h-[1px] w-0 bg-primary transition-all duration-500 z-10 group-hover:w-1/3" />
       </Link>
 
       <Link
@@ -48,7 +48,7 @@ export const NavHeaderLink = ({
             src={'/home/arrow.svg'}
           />
         </span>
-        <span className="absolute left-0 top-4 h-[1px] w-0 bg-primary transition-all duration-500 z-10 group-hover:w-2/4" />
+        <span className="absolute left-0 top-4 h-[1px] w-0 bg-primary transition-all duration-500 z-10 group-hover:w-1/3" />
       </Link>
 
       <Link
@@ -65,7 +65,7 @@ export const NavHeaderLink = ({
             src={'/home/arrow.svg'}
           />
         </span>
-        <span className="absolute left-0 top-4 h-[1px] w-0 bg-primary transition-all duration-500 z-10 group-hover:w-2/4" />
+        <span className="absolute left-0 top-4 h-[1px] w-0 bg-primary transition-all duration-500 z-10 group-hover:w-1/3" />
       </Link>
     </div>
   )
