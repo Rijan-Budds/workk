@@ -1,10 +1,10 @@
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
+import { NoDataFound } from '@/common/components/NoDataFound'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import Image from 'next/image'
 import { IFacilityListResponse } from '../interface/facilityInterface'
 import FacilitiesSwiper from './FacilitiesSwiper'
-import { NoDataFound } from '@/common/components/NoDataFound'
 
 const FacilitiesSwiperSection = async () => {
   const response: IFacilityListResponse | undefined = await UseServerFetch(
@@ -17,7 +17,7 @@ const FacilitiesSwiperSection = async () => {
       isBg
     >
       <div className="flex flex-col 2lg:flex-row justify-between overflow-hidden gap-[47px]">
-        <div className="max-w-[397px] mx-5 md:mx-0 2lg:mx-0 flex flex-col justify-center flex-shrink-0">
+        <div className="md:max-w-full lg:max-w-[397px] mx-5 md:mx-0 2lg:mx-0 flex flex-col justify-center flex-shrink-0">
           <MiniHeading className="text-center md:text-start 2lg:text-start">
             Facilities
           </MiniHeading>
