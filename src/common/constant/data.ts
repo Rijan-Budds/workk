@@ -212,7 +212,7 @@ export const staticFooterLinksData = [
       },
       {
         text: 'District Education Office, Kathmandu',
-        url: 'https://deo.kathmandu.gov.np',
+        url: 'https://daolalitpur.moha.gov.np/en',
       },
     ],
   },
