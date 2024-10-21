@@ -137,11 +137,36 @@ const NavLinksUi = ({
   handleSublinkClick: (id: number) => void
   pathname: string
 }) => {
+  const handleBodyScroll = (disableScroll: boolean) => {
+    const homeLayoutScroll = document.querySelector(
+      '#homeLayout'
+    ) as HTMLElement
+
+    if (disableScroll) {
+      if (homeLayoutScroll) {
+        homeLayoutScroll.style.overflow = 'hidden'
+        homeLayoutScroll.style.position = 'relative'
+        homeLayoutScroll.style.scrollbarGutter = 'stable'
+      }
+    } else {
+      if (homeLayoutScroll) {
+        homeLayoutScroll.style.overflow = 'scroll'
+        homeLayoutScroll.style.position = ''
+        homeLayoutScroll.style.paddingRight = ''
+      }
+    }
+  }
+
+  handleSublinkClick = () => {
+    handleBodyScroll(false)
+  }
+
   const handleLinkClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     dropdown: boolean,
     link: string | undefined
   ) => {
+    handleBodyScroll(false)
     // Prevent default only if the link is empty or '#' and there is a dropdown
     if (dropdown && (!link || link === '')) {
       e.preventDefault()
@@ -172,10 +197,12 @@ const NavLinksUi = ({
               className={cn(
                 'absolute top-full left-0 mt-1 bg-white shadow-md rounded-[12px] p-2 z-50 w-[240px]  ',
                 {
-                  'overflow-y-auto max-h-[320px] pdf-scrollbar':
+                  'overflow-y-auto max-h-[200px] pdf-scrollbar':
                     links === 'Our facilities',
                 }
               )}
+              onMouseEnter={() => isDropdown && handleBodyScroll(true)}
+              onMouseLeave={() => isDropdown && handleBodyScroll(false)}
             >
               <div className="flex flex-col py-4 px-6 space-y-5">
                 {sublinks?.map((sublink) => (

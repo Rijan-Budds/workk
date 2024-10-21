@@ -1,7 +1,7 @@
-import { ReactNode } from 'react'
-import { NavSection } from '../(home)/_components/NavSection'
 import Footer from '@/common/components/Molecules/Footer/Footer'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { ReactNode } from 'react'
+import { NavSection } from '../(home)/_components/NavSection'
 import { ISettingsResponseData } from './contact/_interface/Contact'
 
 export default async function RouteLayout({
@@ -14,7 +14,10 @@ export default async function RouteLayout({
   )
 
   return (
-    <div className="h-screen overflow-y-scroll route-layout-container">
+    <div
+      id="homeLayout"
+      className="h-screen overflow-y-scroll route-layout-container"
+    >
       <NavSection settings={settingsData} />
       {children}
       <Footer settings={settingsData} />
