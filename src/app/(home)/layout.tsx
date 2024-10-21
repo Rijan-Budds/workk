@@ -15,10 +15,10 @@ export default async function HomeLayout({
   )
 
   return (
-    <div className="lg:h-screen lg:overflow-y-scroll home-layout-container">
+    <div className="lg:h-screen lg:overflow-y-scroll home-layout-container ">
       <NavSection settings={settingsData} />
       {children}
-      <ScrollToTopUi />
+      <ScrollToTopUi layout=".home-layout-container" />
       <Footer settings={settingsData} />
     </div>
   )

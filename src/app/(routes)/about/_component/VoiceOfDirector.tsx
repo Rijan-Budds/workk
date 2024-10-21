@@ -97,7 +97,7 @@ const VoiceOfDirector = () => {
                 </div>
                 <div className="md:max-w-[304px] lg:max-w-[500px] 2lg:max-w-[608px]">
                   <h1 className="font-poppins text-[28px] lg:text-[38px] font-medium mt-11 md:mt-0 2lg:mt-11 leading-[49px]">
-                    Voice Of Director
+                    Voice Of {voice?.Team?.position}
                   </h1>
                   <div
                     className="text-body font-workSans font-normal text-base leading-7 mt-6 break-all"
