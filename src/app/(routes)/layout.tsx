@@ -14,7 +14,7 @@ export default async function RouteLayout({
   )
 
   return (
-    <div className="h-screen overflow-y-scroll route-layout-container">
+    <div className="lg:h-screen lg:overflow-y-scroll route-layout-container">
       <NavSection settings={settingsData} />
       {children}
       <Footer settings={settingsData} />

@@ -76,7 +76,7 @@ export const navLinks = [
           {
             id: 3,
             title: 'Basic Level (Six - Eight)',
-            link: '/academics/school/basic-levl-six-eight',
+            link: '/academics/school/basic-level-six-eight',
           },
           {
             id: 4,

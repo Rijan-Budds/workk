@@ -17,7 +17,7 @@ const schoollinks = [
   {
     id: 3,
     title: 'Basic Level (Six - Eight)',
-    link: 'basic-levl-six-eight',
+    link: 'basic-level-six-eight',
   },
   {
     id: 4,
