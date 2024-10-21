@@ -35,7 +35,7 @@ export const academicCardsDataTwo = [
   {
     id: 3,
     title: 'Basic Level (Grades 6-8)',
-    slug: 'basic-levl-six-eight',
+    slug: 'basic-level-six-eight',
   },
   {
     id: 4,

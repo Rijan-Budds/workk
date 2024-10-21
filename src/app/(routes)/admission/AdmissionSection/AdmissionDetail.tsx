@@ -47,7 +47,7 @@ const AdmissionDetail: React.FC<AdmissionDetailProps> = ({
       )}
 
       <div
-        className="my-6 font-workSans font-normal text-base leading-7 text-body"
+        className="my-6 font-workSans font-normal text-base leading-7 text-body custom-list "
         dangerouslySetInnerHTML={{
           __html: selectedAdmission.description,
         }}
@@ -60,15 +60,16 @@ const AdmissionDetail: React.FC<AdmissionDetailProps> = ({
           __html: selectedAdmission.process,
         }}
       ></div>
-
-      <Link
-        href={downloadUrl}
-        download
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button className="mt-10 w-full md:w-fit">Download Form</Button>
-      </Link>
+      {selectedAdmission && selectedAdmission?.form?.key && (
+        <Link
+          href={downloadUrl}
+          download
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button className="mt-10 w-full md:w-fit">Download Form</Button>
+        </Link>
+      )}
     </div>
   )
 }

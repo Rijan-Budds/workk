@@ -57,7 +57,7 @@ const NewsSection = () => {
                 News and Events
               </SectionHeading>
             </div>
-            {response && response.data.length >= 3 && (
+            {response && response.data.length >= 2 && (
               <>
                 <div
                   id="testimonial"
@@ -80,6 +80,7 @@ const NewsSection = () => {
                   <NewsCard news={news} />
                 </SwiperSlide>
               ))}
+
               <div className="md:hidden flex justify-center mt-10 gap-x-4 absolute bottom-0 left-1/2 -translate-x-1/2 z-50 w-fit h-fit">
                 <SwiperButtonPrevious>
                   <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full size-8 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
@@ -92,7 +93,7 @@ const NewsSection = () => {
           ) : (
             response &&
             response.data.map((news) => (
-              <div className="mt-10" key={news.id}>
+              <div className="mt-10 h-[465px]" key={news.id}>
                 <NewsCard news={news} />
               </div>
             ))

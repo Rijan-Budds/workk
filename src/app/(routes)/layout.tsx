@@ -1,4 +1,5 @@
 import Footer from '@/common/components/Molecules/Footer/Footer'
+import { ScrollToTopUi } from '@/common/components/Molecules/ScrollToTop'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { ReactNode } from 'react'
 import { NavSection } from '../(home)/_components/NavSection'
@@ -20,6 +21,7 @@ export default async function RouteLayout({
     >
       <NavSection settings={settingsData} />
       {children}
+      <ScrollToTopUi layout=".route-layout-container" />
       <Footer settings={settingsData} />
     </div>
   )
