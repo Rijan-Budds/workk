@@ -36,15 +36,26 @@ const School = ({
 
   return (
     <div>
-      <CoverImage
-        title={truncateTitle(getBreadcrumbTitle(slug), 20)} // Truncate the main title
-        list={[
-          { link: '/academics', title: truncateTitle('Academics', 15) },
-          { link: null, title: truncateTitle('School', 15) },
-          { link: null, title: truncateTitle(getBreadcrumbTitle(slug), 5) }, // Truncate breadcrumb titles
-        ]}
-      />
-
+      <div className="hidden 2lg:block">
+        <CoverImage
+          title={getBreadcrumbTitle(slug)}
+          list={[
+            { link: '/academics', title: truncateTitle('Academics', 15) },
+            { link: null, title: truncateTitle('School', 15) },
+            { link: null, title: getBreadcrumbTitle(slug) },
+          ]}
+        />
+      </div>
+      <div className="2lg:hidden">
+        <CoverImage
+          title={truncateTitle(getBreadcrumbTitle(slug), 20)} // Truncate the main title
+          list={[
+            { link: '/academics', title: truncateTitle('Academics', 15) },
+            { link: null, title: truncateTitle('School', 15) },
+            { link: null, title: truncateTitle(getBreadcrumbTitle(slug), 5) }, // Truncate breadcrumb titles
+          ]}
+        />
+      </div>
       <HomeWrapper>
         <div className="flex flex-col lg:flex-row gap-[56px]">
           <SchoolSection detail={detail} />
