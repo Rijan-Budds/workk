@@ -3,6 +3,7 @@
 import { Button } from '@/common/components/Atom/Button'
 import { CloseButton } from '@/common/components/Atom/CloseButton'
 import { CustomModal } from '@/common/components/Molecules/Modal'
+import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -16,7 +17,13 @@ export const NoticeModal = () => {
     if (isModalAlreadyShown) {
       setOpenModal(false)
     }
-  }, [])
+
+    if (openModal) {
+      document.body.style.overflowY = 'hidden'
+    } else {
+      document.body.style.overflowY = ''
+    }
+  }, [openModal])
 
   const handleCloseModal = () => {
     setOpenModal(false)
@@ -25,7 +32,11 @@ export const NoticeModal = () => {
 
   return (
     <CustomModal isOpen={openModal}>
-      <div className="bg-white p-6 md:w-[45vw] md:h-[90vw] lg:w-[45vw] lg:h-[94vh] xl:w-[45vw] xl:h-[94vh]  2xl:h-[90vh] 2xl:w-[29vw] 5xl:min-w-full 5xl:min-h-full  flex flex-col items-center justify-center gap-y-6 rounded-[12px] relative ">
+      <div
+        className={cn(
+          'bg-white p-6 md:w-[45vw] md:h-[80vw] lg:w-[45vw] lg:h-[50vh] xl:w-[42vw] xl:h-[94vh] 2xl:h-[94vh] 2xl:w-[29vw] flex 2xl_md:w-[45vw] 2xl_md:h-[94vh] 5xl:w-[45vw] 5xl:h-[94vh] flex-col items-center justify-center gap-y-6 rounded-[12px] relative'
+        )}
+      >
         <Image
           width={552}
           height={764}
