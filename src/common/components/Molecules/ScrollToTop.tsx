@@ -46,7 +46,7 @@ export const ScrollToTopUi = ({ layout }: { layout: string }) => {
     <button
       onClick={scrollToTop}
       className={cn(
-        'rounded-full fixed bottom-[0%] right-12 z-[999] size-10 opacity-0  pointer-events-none  transition-all duration-300',
+        'rounded-full fixed bottom-[0%] right-12 z-[999] size-10 opacity-0  pointer-events-none  transition-all duration-100',
         {
           'opacity-100 bottom-[5%] pointer-events-auto ': showScrollButton,
         }
@@ -70,7 +70,7 @@ export const ScrollToTopUi = ({ layout }: { layout: string }) => {
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
             style={{
-              transition: 'stroke-dashoffset 0.4s linear',
+              transition: 'stroke-dashoffset 0s linear',
             }}
           />
         </svg>

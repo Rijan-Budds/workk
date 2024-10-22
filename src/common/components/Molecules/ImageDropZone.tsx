@@ -29,14 +29,6 @@ export const ImageDropZone = ({
 
   const handleMetaData = (files: File[]) => {
     if (files) {
-      // const filterMetaData = files.map((file) => {
-      //   return {
-      //     name: file.name,
-      //     size: byteToMb(file.size),
-      //     type: checkFileType(file.type),
-      //     src: convertFileToSrc(file),
-      //   }
-      // })
       if (files.length < 6) {
         setValue('document', files)
       } else {
