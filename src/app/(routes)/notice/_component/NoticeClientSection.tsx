@@ -11,8 +11,10 @@ export const NoticeClientSection = ({
 }: {
   notice: INewsItem[] | undefined
 }) => {
+  console.log('notice', notice)
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [activeSlug, setActiveSlug] = useState<string | undefined>(undefined)
+  const filterNotice = notice?.filter((d) => d.type === 'NOTICE')
 
   return (
     <div className="flex flex-col  gap-y-10 2lg:items-center">
@@ -22,10 +24,10 @@ export const NoticeClientSection = ({
         other event stories.
       </p>
       <div className="grid  2lg:grid-cols-3 gap-6">
-        {notice &&
-          notice.map((d) => (
+        {filterNotice &&
+          filterNotice.map((d) => (
             <NoticeCard
-              key={d.id}
+              key={d.slug}
               notice={d}
               setOpen={setIsOpen}
               setActive={setActiveSlug}

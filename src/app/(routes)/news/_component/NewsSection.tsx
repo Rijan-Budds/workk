@@ -18,16 +18,6 @@ import { useSearchParams } from 'next/navigation'
 import { UiLoader } from '@/common/components/Atom/UiLoader'
 
 export const NewsSection = () => {
-  const params = useSearchParams()
-
-  const [newsNotice, setNewsNotice] = useState<INewsItem[] | undefined>(
-    undefined
-  )
-  const pageSize = 6
-  const [page, setPage] = useState<number>(1)
-  const [totalCount, setTotalCount] = useState<number | undefined>(undefined)
-  const [loading, setLoading] = useState<boolean>(true)
-
   const tabs = [
     {
       key: 'news',
@@ -38,6 +28,18 @@ export const NewsSection = () => {
       title: 'Notices',
     },
   ]
+  const [active, setActiveTab] = useState<string>(tabs[1]?.key)
+
+  const params = useSearchParams()
+
+  const [newsNotice, setNewsNotice] = useState<INewsItem[] | undefined>(
+    undefined
+  )
+  const pageSize = 6
+  const [page, setPage] = useState<number>(1)
+  const [totalCount, setTotalCount] = useState<number | undefined>(undefined)
+  const [loading, setLoading] = useState<boolean>(false)
+
   const showPagination = () => {
     if (totalCount && newsNotice && newsNotice?.length < totalCount) {
       return true
@@ -47,37 +49,37 @@ export const NewsSection = () => {
   }
   const isPagination = showPagination()
 
-  const [active, setActiveTab] = useState<string>(tabs[0]?.key)
-
   useEffect(() => {
-    // Check if tab query parameter exists
-    const params = new URLSearchParams(window.location.search)
-    const tab = params.get('tab')
-
-    if (tab && tabs.some((t) => t.key === tab)) {
-      setActiveTab(tab)
-    }
+    const initialTab = params.get('type') === 'news' ? 'news' : 'notice'
+    setActiveTab(initialTab)
+    setPage(1) // Reset to the first page when changing the tab
   }, [])
-
-  useEffect(() => {
-    const fetchNewsAndNoticeList = async () => {
+  const fetchNewsAndNoticeList = async () => {
+    if (!loading)
       try {
         setLoading(true)
         const newsNoticeData: INewsResponseData | undefined =
           await UseServerFetch(
             `/api/v1/news-and-notice/type/${active.toUpperCase()}?page=${page}&pageSize=${pageSize}`
           )
-        setNewsNotice(newsNoticeData?.data)
+        const filteredData = newsNoticeData?.data.filter(
+          (d) => d.type === active.toUpperCase()
+        )
+
+        setNewsNotice(filteredData)
+
         setTotalCount(newsNoticeData?.totalCount)
+        setLoading(false)
       } catch (error) {
+        setLoading(false)
         console.error('Error fetching news data:', error)
       } finally {
         setLoading(false)
       }
-    }
-
+  }
+  useEffect(() => {
     fetchNewsAndNoticeList()
-  }, [active, page])
+  }, [active, page, params])
 
   const renderNewsNoticeUi = () => {
     if (newsNotice && newsNotice?.length > 0 && !loading) {
@@ -93,7 +95,7 @@ export const NewsSection = () => {
                 return (
                   <Link
                     href={`/news/${news.slug}`}
-                    key={news.id}
+                    key={news.slug}
                     className={cn('mb-0', {
                       'mb-8 2lg:mb-0': news.title.length > 40,
                     })}
@@ -176,10 +178,10 @@ export const NewsSection = () => {
   useEffect(() => {
     const getNewsOrNotice = params.get('type')
     if (getNewsOrNotice) {
-      if (getNewsOrNotice === 'notice') {
-        setActiveTab('notice')
-      } else {
+      if (getNewsOrNotice === 'news') {
         setActiveTab('news')
+      } else {
+        setActiveTab('notice')
       }
     }
   }, [params])
