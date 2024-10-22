@@ -1,15 +1,15 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import './notice.css'
 import { INewsResponseData } from '@/app/(routes)/news/interface/newsType'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
-import { format } from 'date-fns'
-import { IoMdShare } from 'react-icons/io'
-import { CustomModal } from '@/common/components/Molecules/Modal'
 import { ShareModal } from '@/app/(routes)/notice/_component/ShareModal'
-import { useRouter } from 'next/navigation'
+import { CustomModal } from '@/common/components/Molecules/Modal'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { cn } from '@/common/utils/utils'
+import { format } from 'date-fns'
+import { useRouter } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
+import { IoMdShare } from 'react-icons/io'
+import './notice.css'
 
 const Notice = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -42,7 +42,7 @@ const Notice = () => {
   const renderNoticeUi = () => {
     if (response?.data && response.data.length > 0) {
       return (
-        <div className="w-full   overflow-y-auto notice-scrollbar max-h-[376px] px-8  ">
+        <div className="w-full overflow-y-auto notice-scrollbar max-h-[376px] px-8">
           {response &&
             response.data.map((notice) => (
               <div
