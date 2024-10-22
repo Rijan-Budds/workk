@@ -74,7 +74,7 @@ const NewsSection = () => {
           {response.data.length > 1 ? (
             <SwiperWrapper>
               {response.data.map((news) => (
-                <SwiperSlide key={news.id} className="mt-10 mx-auto">
+                <SwiperSlide key={news.id} className="mt-10 mx-auto max-h-4">
                   <NewsCard news={news} />
                 </SwiperSlide>
               ))}

@@ -51,7 +51,7 @@ export const GalleryModal = ({
           onClick={handleClose}
           className={cn(
             'absolute mb-2 lg:right-10 top-16 lg:top-10 z-50',
-            isIos ? 'top-24' : 'top-16'
+            isIos ? 'top-24' : 'top-20'
           )}
         >
           <Button variant="secondary">Close</Button>

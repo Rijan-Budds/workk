@@ -137,9 +137,9 @@ const NavLinksUi = ({
   handleSublinkClick: (id: number) => void
   pathname: string
 }) => {
-  const handleBodyScroll = (disableScroll: boolean) => {
+  const handleHomeScroll = (disableScroll: boolean) => {
     const homeLayoutScroll = document.querySelector(
-      '.route-layout-container'
+      '.home-layout-container'
     ) as HTMLElement
 
     if (disableScroll) {
@@ -150,9 +150,31 @@ const NavLinksUi = ({
       }
     } else {
       if (homeLayoutScroll) {
-        homeLayoutScroll.style.overflow = 'scroll'
+        homeLayoutScroll.style.overflowY = 'scroll'
+        homeLayoutScroll.style.overflowX = 'hidden'
         homeLayoutScroll.style.position = ''
         homeLayoutScroll.style.paddingRight = ''
+      }
+    }
+  }
+
+  const handleRouteScroll = (disableScroll: boolean) => {
+    const routeLayoutScroll = document.querySelector(
+      '.route-layout-container'
+    ) as HTMLElement
+
+    if (disableScroll) {
+      if (routeLayoutScroll) {
+        routeLayoutScroll.style.overflow = 'hidden'
+        routeLayoutScroll.style.position = 'relative'
+        routeLayoutScroll.style.scrollbarGutter = 'stable'
+      }
+    } else {
+      if (routeLayoutScroll) {
+        routeLayoutScroll.style.overflowY = 'scroll'
+        routeLayoutScroll.style.overflowX = 'hidden'
+        routeLayoutScroll.style.position = ''
+        routeLayoutScroll.style.paddingRight = ''
       }
     }
   }
@@ -178,7 +200,7 @@ const NavLinksUi = ({
           href={link || '/'}
           className="text-[14px] leading-4 font-workSans font-medium group-hover:text-primary transition-all duration-500 "
           onClick={(e) => {
-            handleBodyScroll(false)
+            handleHomeScroll(false)
             handleLinkClick(e, isDropdown && !!sublinks, link)
           }}
         >
@@ -198,8 +220,14 @@ const NavLinksUi = ({
                     links === 'Our facilities',
                 }
               )}
-              onMouseEnter={() => handleBodyScroll(true)}
-              onMouseLeave={() => handleBodyScroll(false)}
+              onMouseEnter={() => {
+                handleHomeScroll(true)
+                handleRouteScroll(true)
+              }}
+              onMouseLeave={() => {
+                handleHomeScroll(false)
+                handleRouteScroll(false)
+              }}
             >
               <div className="flex flex-col py-4 px-6 space-y-5">
                 {sublinks?.map((sublink) => (
@@ -214,7 +242,8 @@ const NavLinksUi = ({
                               : 'text-black'
                           )}
                           onClick={() => {
-                            handleBodyScroll(false)
+                            handleHomeScroll(false)
+                            handleRouteScroll(false)
                             handleSublinkClick(sublink.id)
                           }}
                         >
@@ -229,7 +258,8 @@ const NavLinksUi = ({
                       <button
                         className="text-[14px] leading-4 group/item font-workSans font-medium hover:text-primary transition-all duration-500 cursor-pointer"
                         onClick={() => {
-                          handleBodyScroll(false)
+                          handleHomeScroll(false)
+                          handleRouteScroll(false)
                           handleSublinkClick(sublink.id)
                         }}
                       >
@@ -244,8 +274,14 @@ const NavLinksUi = ({
                     {sublink.subsublink && activeSublink === sublink.id && (
                       <div
                         className="absolute top-[0px] left-[205px] mt-0 bg-white shadow-md rounded-[12px] p-2 z-50 w-[240px]"
-                        onMouseEnter={() => handleBodyScroll(true)}
-                        onMouseLeave={() => handleBodyScroll(false)}
+                        onMouseEnter={() => {
+                          handleHomeScroll(true)
+                          handleRouteScroll(true)
+                        }}
+                        onMouseLeave={() => {
+                          handleHomeScroll(false)
+                          handleRouteScroll(false)
+                        }}
                       >
                         <div className="flex flex-col py-2 px-4 space-y-7">
                           {sublink.subsublink.map((subsublink) => (
@@ -253,6 +289,11 @@ const NavLinksUi = ({
                               key={subsublink.id}
                               href={subsublink.link}
                               className="group/subitem text-[14px] leading-4 font-workSans font-medium hover:text-primary transition-all duration-500"
+                              onClick={() => {
+                                handleHomeScroll(false)
+                                handleRouteScroll(false)
+                                handleSublinkClick(sublink.id)
+                              }}
                             >
                               {subsublink.title}
                               <span className="block mt-[1px] h-[1px] w-0 bg-primary transition-all duration-500 group-hover/subitem:w-[10%]" />
