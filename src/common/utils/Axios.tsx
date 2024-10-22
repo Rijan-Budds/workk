@@ -14,7 +14,6 @@ const Axios = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}`,
 })
 
-// Response interceptor to handle errors
 Axios.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -36,7 +35,8 @@ Axios.interceptors.response.use(
             className:
               'bg-errorLighter py-[18px] px-4 text-error font-workSans text-[16px] leading-4 font-medium',
           })
-          break
+          return
+
         case 412:
           const details = error.response.data.details
             .map(
@@ -59,11 +59,48 @@ Axios.interceptors.response.use(
             className:
               'bg-errorLighter py-[18px] px-4 text-error font-workSans text-[16px] leading-4 font-medium',
           })
+          return
+
+        case 404:
+          const errorMessage = error.response.data.message || 'Not found'
+          console.log('error message: ', errorMessage)
+          toast({
+            title: errorMessage,
+            action: (
+              <ToastClose>
+                <Image
+                  src={'/admission/red-cross-toast.svg'}
+                  width={20}
+                  height={20}
+                  alt="close icon"
+                />
+              </ToastClose>
+            ),
+            className:
+              'bg-errorLighter py-[18px] px-4 text-error font-workSans text-[16px] leading-4 font-medium',
+          })
+          return
+
         default:
-          // Handle other errors
-          break
+          toast({
+            title: 'An unexpected error occurred. Please try again later.',
+            action: (
+              <ToastClose>
+                <Image
+                  src={'/admission/red-cross-toast.svg'}
+                  width={20}
+                  height={20}
+                  alt="close icon"
+                />
+              </ToastClose>
+            ),
+            className:
+              'bg-errorLighter py-[18px] px-4 text-error font-workSans text-[16px] leading-4 font-medium',
+          })
+          return
       }
     }
+
     return Promise.reject(error)
   }
 )
