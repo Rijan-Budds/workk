@@ -25,7 +25,7 @@ export const NoticeModal = () => {
 
   return (
     <CustomModal isOpen={openModal}>
-      <div className="bg-white p-6 w-fit h-fit md:w-[45vw] md:h-[90vw] lg:w-[45vw] lg:h-[94vh] xl:w-[45vw] xl:h-[94vh]  2xl:h-[90vh] 2xl:w-[29vw]  flex flex-col items-center justify-center gap-y-6 rounded-[12px] relative ">
+      <div className="bg-white p-6 md:w-[45vw] md:h-[90vw] lg:w-[45vw] lg:h-[94vh] xl:w-[45vw] xl:h-[94vh]  2xl:h-[90vh] 2xl:w-[29vw] 5xl:min-w-full 5xl:min-h-full  flex flex-col items-center justify-center gap-y-6 rounded-[12px] relative ">
         <Image
           width={552}
           height={764}
