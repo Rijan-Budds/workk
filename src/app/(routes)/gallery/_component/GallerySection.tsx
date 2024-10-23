@@ -217,9 +217,9 @@ export const GallerySection = () => {
                   pageSize={pageSize}
                   totalCount={totalCountPhoto!}
                   siblingCount={0}
-                  onPageChange={(page: string | number) =>
+                  onPageChange={(page: string | number) => {
                     setCurrentGalleryPhotoPage(page as number)
-                  }
+                  }}
                 />
               )}
         </div>
