@@ -57,7 +57,7 @@ const NewsSection = () => {
                 News and Events
               </SectionHeading>
             </div>
-            {response && response.data.length >= 2 && (
+            {response && response.data.length > 1 && (
               <>
                 <div
                   id="testimonial"

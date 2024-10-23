@@ -137,7 +137,7 @@ export const Pagination = ({
         variant={'outline'}
         onClick={onPrevious}
         disabled={currentPage === 1 ? true : false}
-        className="hover:bg-primary p-3 rounded-[12px] text-heading font-medium leading-4 text-[16px] disabled:opacity-40 "
+        className="hover:bg-primary p-3 rounded-[12px] text-heading font-medium leading-4 text-[16px] disabled:opacity-40 h-10 "
       >
         Previous Page
       </Button>
@@ -148,7 +148,7 @@ export const Pagination = ({
             // If the pageItem is a DOT, render the DOTS unicode character
             if (pageNumber === '.') {
               return (
-                <li className="rounded-[12px] p-3 " key={'unique id'}>
+                <li className="rounded-[12px] p-3 h-10" key={'unique id'}>
                   ...
                 </li>
               )
@@ -168,7 +168,7 @@ export const Pagination = ({
                   currentPage === pageNumber
                     ? ' text-white  bg-primary'
                     : 'text-dashboardColorWhite border border-border'
-                } font-medium font-workSans text-[16px] leading-4  flex items-center justify-center size-10 rounded-[12px] cursor-pointer`}
+                } font-medium font-workSans text-[16px] leading-4  flex items-center justify-center size-10 rounded-[12px] cursor-pointer h-10`}
               >
                 {pageNumber}
               </li>
@@ -181,7 +181,7 @@ export const Pagination = ({
         onClick={onNext}
         variant={'outline'}
         disabled={currentPage === lastPage ? true : false}
-        className="hover:bg-primary p-3 rounded-[12px] text-heading font-medium leading-4 text-[16px] disabled:opacity-40"
+        className="hover:bg-primary p-3 rounded-[12px] text-heading font-medium leading-4 text-[16px] disabled:opacity-40 h-10"
       >
         Next Page
       </Button>

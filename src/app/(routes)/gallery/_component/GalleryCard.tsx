@@ -26,6 +26,10 @@ export const GalleryCard = ({
 
   const videoRef = useRef<HTMLVideoElement | null>(null)
 
+  const truncateTitle = (title: string, maxLength: number) => {
+    return title.length > maxLength ? `${title.slice(0, maxLength)}...` : title
+  }
+
   return (
     <div
       onClick={() => handleClick()}
@@ -82,7 +86,7 @@ export const GalleryCard = ({
         )}
       >
         <p className="text-[18px] font-workSans leading-6 font-medium text-heading px-4 py-3">
-          {gallery.title}
+          {truncateTitle(gallery.title, 20)}
         </p>
       </div>
     </div>

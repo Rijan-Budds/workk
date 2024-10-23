@@ -26,7 +26,7 @@ export const NavHeader = ({
   }
 
   const getMail = socialLinks?.data.filter((d) => d.key === 'Email')
-  const getPhone = socialLinks?.data.filter((d) => d.key === 'Contact Number')
+  const getPhone = socialLinks?.phoneNumber.filter((d) => d.key === 'Number1')
 
   return (
     <div className="py-3 bg-background border-b-[1px] border-border hidden 2lg:block ">
@@ -88,7 +88,7 @@ export const NavHeaderSocialMedia = ({
           return (
             <>
               {d.key === 'X' && (
-                <Link href={d.key} target="_blank">
+                <Link href={d.value} target="_blank">
                   <Image
                     width={14}
                     height={14}
@@ -99,7 +99,7 @@ export const NavHeaderSocialMedia = ({
                 </Link>
               )}
               {d.key === 'Facebook' && (
-                <Link href={d.key} target="_blank">
+                <Link href={d.value} target="_blank">
                   <Image
                     width={8}
                     height={14}
@@ -110,7 +110,7 @@ export const NavHeaderSocialMedia = ({
                 </Link>
               )}
               {d.key === 'Instagram' && (
-                <Link href={d.key} target="_blank">
+                <Link href={d.value} target="_blank">
                   <Image
                     width={14}
                     height={14}
@@ -121,7 +121,7 @@ export const NavHeaderSocialMedia = ({
                 </Link>
               )}
               {d.key === 'YouTube' && (
-                <Link href={d.key} target="_blank">
+                <Link href={d.value} target="_blank">
                   <Image
                     width={14}
                     height={14}

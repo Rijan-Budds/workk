@@ -57,7 +57,7 @@ const School = ({
         />
       </div>
       <HomeWrapper>
-        <div className="flex flex-col lg:flex-row gap-[56px]">
+        <div className="flex flex-col 2lg:flex-row gap-[80px] 2lg:gap-[56px]">
           <SchoolSection detail={detail} />
           <SchoolStickySidebar bannerDetail={bannerDetail} />
         </div>
