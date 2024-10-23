@@ -13,10 +13,10 @@ export const firstNameValidation = Yup.string()
     }
   )
   .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
-  .max(20, 'First Name must be at most 20 characters')
-  .min(3, 'First Name must be at least 3 characters')
+  .max(20, 'First name must be at most 20 characters')
+  .min(3, 'First name must be at least 3 characters')
   .typeError('Please enter a valid name')
-  .required('First Name is a required field')
+  .required('First name is a required field')
   .test('spaces', 'Multiple spaces are not allowed', function (value) {
     if (value) {
       const multipleSpacesPattern = /\s{2,}/
@@ -355,7 +355,7 @@ export const seeGpaPointValidation = Yup.string()
   )
   .test('range', 'SEE GPA point must be between 3.0 and 4.0', (value) => {
     const numValue = parseFloat(value)
-    return numValue >= 3 && numValue <= 4
+    return numValue >= 0 && numValue <= 4
   })
   .test(
     'length',

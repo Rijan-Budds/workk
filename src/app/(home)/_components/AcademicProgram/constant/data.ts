@@ -2,22 +2,22 @@ export const academicCardsDataOne = [
   {
     id: 1,
     title: 'Management',
-    slug: 'management',
+    slug: '/management',
   },
   {
     id: 2,
     title: 'Humanities',
-    slug: 'humanities',
+    slug: '/humanities',
   },
   {
     id: 3,
     title: 'Education',
-    slug: 'education',
+    slug: '/education',
   },
   {
     id: 4,
     title: 'Law',
-    slug: 'law',
+    slug: '/law',
   },
 ]
 
@@ -25,21 +25,21 @@ export const academicCardsDataTwo = [
   {
     id: 1,
     title: 'Pre-School (Kindergarten)',
-    slug: 'pre-school-kindergarden',
+    slug: '/pre-school-kindergarten',
   },
   {
     id: 2,
     title: 'Primary Level (Grades 1-5)',
-    slug: 'primary-level-one-five',
+    slug: '/primary-level-one-five',
   },
   {
     id: 3,
     title: 'Basic Level (Grades 6-8)',
-    slug: 'basic-level-six-eight',
+    slug: '/basic-level-six-eight',
   },
   {
     id: 4,
     title: 'Senior Level (Grades 9-10)',
-    slug: 'senior-level-nine-ten',
+    slug: '/senior-level-nine-ten',
   },
 ]

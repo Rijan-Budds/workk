@@ -1,5 +1,5 @@
 import Footer from '@/common/components/Molecules/Footer/Footer'
-import { ScrollToTopUi } from '@/common/components/Molecules/ScrollToTop'
+import { ScrollToTopUi } from '@/common/components/Molecules/ScrollToTopUi'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { ReactNode } from 'react'
 import { NavSection } from '../(home)/_components/NavSection'
@@ -15,7 +15,7 @@ export default async function RouteLayout({
   )
 
   return (
-    <div className="h-screen overflow-y-scroll route-layout-container">
+    <div className="lg:h-screen lg:overflow-y-scroll route-layout-container">
       <NavSection settings={settingsData} />
       {children}
       <ScrollToTopUi layout=".route-layout-container" />

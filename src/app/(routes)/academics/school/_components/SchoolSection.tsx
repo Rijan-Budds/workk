@@ -16,6 +16,10 @@ import { swiperParams } from '@/app/(home)/_components/Testimonials/Testimonials
 import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/testimonial'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { IAcademicsData } from '../../_interface/academic'
+import {
+  SwiperButtonNext,
+  SwiperButtonPrevious,
+} from '@/common/components/Atom/SwiperButton'
 
 const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
   const [response, setResponse] = useState<ITestimonialResponse | null>(null)
@@ -40,7 +44,7 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
 
   return (
     <div className="flex flex-col">
-      <div className="max-w-[787px]">
+      <div className="2lg:w-[787px]">
         <MiniHeading className="text-left">{detail?.title}</MiniHeading>
         <SectionHeading>{detail?.articleTitle}</SectionHeading>
         <SchoolGallery gallery={detail?.image} />
@@ -52,10 +56,10 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
       {response && response?.data.length > 0 && (
         <>
           <hr className="border-secondary border-dashed my-10" />
-          <div className="mt-10 relative max-w-[787px] hidden lg:block">
+          <div className="mt-10 relative 2lg:max-w-[787px]">
             <div className="">
               <h2 className="text-heading text-xl font-poppins font-medium leading-5">
-                What Parents Say About Our School
+                Our Happy Students
               </h2>
             </div>
             <div
@@ -75,6 +79,15 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
                   <TestimonialCard card={card} />
                 </SwiperSlide>
               ))}
+              <div className="flex justify-center gap-x-4 mt-10 md:hidden">
+                <SwiperButtonPrevious>
+                  <IoIosArrowRoundBack className="text-body text-2xl font-light " />
+                </SwiperButtonPrevious>
+
+                <SwiperButtonNext>
+                  <IoIosArrowRoundForward className="text-body text-2xl font-light" />
+                </SwiperButtonNext>
+              </div>
             </SwiperWrapper>
           </div>
         </>

@@ -48,7 +48,7 @@ export const ContactDropdown = ({
       <label
         htmlFor={label}
         className={cn(
-          'text-white font-normal text-[14px] leading-4 font-workSans',
+          'text-white font-normal text-[16px] leading-4 font-workSans',
           className
         )}
       >

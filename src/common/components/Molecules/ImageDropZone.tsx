@@ -28,17 +28,12 @@ export const ImageDropZone = ({
   const [isDragging, setDragging] = useState<boolean>(false)
 
   const handleMetaData = (files: File[]) => {
-    if (files) {
-      // const filterMetaData = files.map((file) => {
-      //   return {
-      //     name: file.name,
-      //     size: byteToMb(file.size),
-      //     type: checkFileType(file.type),
-      //     src: convertFileToSrc(file),
-      //   }
-      // })
-      if (files.length < 6) {
-        setValue('document', files)
+    const prevFiles = values?.document || []
+    const combinedFiles = [...prevFiles, ...files].slice(0, 5)
+
+    if (combinedFiles) {
+      if (combinedFiles.length < 6) {
+        setValue('document', combinedFiles)
       } else {
         if (setError) {
           setError('document', 'You can upload a maximum of 5 files')

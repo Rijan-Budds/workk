@@ -40,7 +40,7 @@ const MiddleBanner = () => {
         <div className="md:w-[608px] flex flex-col md:flex-row gap-6">
           <div className="md:w-[292px] bg-white rounded-xl transition-all duration-500 hover:-translate-y-1">
             <Link href={'/apply?form=plus-two'}>
-              <div className="pt-[56px] pl-[24px] pb-[24px] pr-[94px] leading-7 text-base font-workSans font-normal text-primary">
+              <div className="pt-[56px] pl-[24px] pb-[24px] pr-[94px] leading-7 text-base font-workSans font-medium text-primary">
                 <h1>
                   Apply to <br /> Plus Two Programs{' '}
                   <FaArrowRightLong className="inline" />
