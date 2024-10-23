@@ -1,17 +1,18 @@
 'use client'
 import { cn } from '@/lib/utils'
 import { gsap } from 'gsap'
-import Image from 'next/image'
 import React, { useEffect, useRef } from 'react'
 
 type ModalContainerProps = {
-  isActive: boolean
-  onClose: () => void
+  className?: string
+  isOpen: boolean
+  onClose?: () => void
   children: React.ReactNode
-  className: string
 }
 
 const ModalContainer: React.FC<ModalContainerProps> = ({
+  isOpen,
+
   onClose,
   children,
   className,
@@ -42,13 +43,19 @@ const ModalContainer: React.FC<ModalContainerProps> = ({
         }
       )
     }
+
+    if (isOpen) {
+      document.body.style.overflowY = 'hidden'
+    } else {
+      document.body.style.overflowY = ''
+    }
   }, [])
 
   return (
     <div>
       <div
         ref={overlayRef}
-        className="fixed top-0 left-0 w-full h-full bg-black/40 z-[999]"
+        className="fixed top-0 left-0 w-full h-full bg-black/80 z-[999]"
         onClick={onClose}
       ></div>
 
@@ -56,18 +63,10 @@ const ModalContainer: React.FC<ModalContainerProps> = ({
         ref={modalRef}
         id="modal-container"
         className={cn(
-          'fixed top-[50%] left-[50%]  transform -translate-x-1/2 -translate-y-1/2 rounded-lg z-[1000] bg-white',
+          'absolute top-[50%] left-[50%]  transform -translate-x-1/2 -translate-y-1/2 rounded-lg z-[10000] bg-white',
           className
         )}
       >
-        <Image
-          className="absolute top-5 right-5"
-          src="/calendar/close.svg"
-          alt="close"
-          width={24}
-          height={24}
-          onClick={onClose}
-        />
         {children}
       </div>
     </div>

@@ -20,6 +20,7 @@ interface TabSwitchProps {
   isFieldChange?: boolean
   activeTab: string
   disabledTab?: string[]
+  isEvent?: boolean
 }
 
 export const TabAnimation = ({
@@ -28,6 +29,7 @@ export const TabAnimation = ({
   className = '',
   activeTab,
   disabledTab,
+  isEvent,
 }: TabSwitchProps) => {
   const activeBarRef = useRef<HTMLDivElement | null>(null)
   const tabRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -62,8 +64,9 @@ export const TabAnimation = ({
   return (
     <div
       className={cn(
-        'tabs bg-primaryLighter flex  items-center p-2 rounded-[100px] shadow ',
-        className
+        'tabs bg-primaryLighter flex  items-center  rounded-[100px] shadow ',
+        className,
+        isEvent ? 'px-2 md:p-2' : 'p-2'
       )}
     >
       {tabs &&
@@ -101,7 +104,11 @@ export const TabAnimation = ({
             {index === 0 && (
               <div
                 ref={activeBarRef}
-                className="tab-active-bar   h-[56px] left-0 right-0 top-1/2 -translate-y-1/2 bg-primary absolute rounded-[100px] z-0"
+                className={cn(
+                  'tab-active-bar left-0  right-0 top-1/2 -translate-y-1/2 bg-primary absolute rounded-[100px] z-0',
+                  className,
+                  isEvent ? 'h-10 md:h-[56px]' : 'h-[56px]'
+                )}
               />
             )}
           </div>

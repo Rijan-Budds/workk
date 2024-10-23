@@ -100,7 +100,7 @@ export const resultTab = [
 
 export const PlusTwoDropdownList = [
   {
-    title: 'Select by Program',
+    title: 'All',
     value: 'all',
   },
   {
@@ -123,7 +123,7 @@ export const PlusTwoDropdownList = [
 
 export const SchoolLevelDropdownList = [
   {
-    title: 'Select by Program',
+    title: 'All',
     value: 'all',
   },
   {

@@ -1,21 +1,21 @@
 'use client'
 
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
+import { UiLoader } from '@/common/components/Atom/UiLoader'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
+import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
+import { NoDataFound } from '@/common/components/NoDataFound'
+import { Pagination } from '@/common/components/Pagination'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { cn } from '@/common/utils/utils'
+import { format } from 'date-fns'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { GoArrowRight } from 'react-icons/go'
 import { NoticeClientSection } from '../../notice/_component/NoticeClientSection'
 import { INewsItem, INewsResponseData } from '../interface/newsType'
-import { format } from 'date-fns'
-import { cn } from '@/common/utils/utils'
-import { Pagination } from '@/common/components/Pagination'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
-import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
-import { NoDataFound } from '@/common/components/NoDataFound'
-import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
-import { useSearchParams } from 'next/navigation'
-import { UiLoader } from '@/common/components/Atom/UiLoader'
 
 export const NewsSection = () => {
   const params = useSearchParams()
@@ -196,11 +196,12 @@ export const NewsSection = () => {
             tabs={tabs}
             activeTab={active}
             setActive={setActiveTab}
-            className="w-fit text-sm"
+            className="text-sm"
             handleDynamicData={(key) => {
               setActiveTab(key)
               setPage(1)
             }}
+            isEvent={false}
           />
         </div>
         {renderNewsNoticeUi()}
