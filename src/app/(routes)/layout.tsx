@@ -1,5 +1,5 @@
 import Footer from '@/common/components/Molecules/Footer/Footer'
-import { ScrollToTopUi } from '@/common/components/Molecules/ScrollToTop'
+import { ScrollToTopUi } from '@/common/components/Molecules/ScrollToTopUi'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { ReactNode } from 'react'
 import { NavSection } from '../(home)/_components/NavSection'

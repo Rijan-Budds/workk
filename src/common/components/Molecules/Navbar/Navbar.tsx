@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react'
 import { FiChevronDown } from 'react-icons/fi'
 import { Button } from '../../Atom/Button'
 import { HomeWrapper } from '../../Atom/HomeWrapper'
+import { scrollToTop } from '../../ScrollToTop'
 
 export const Navbar = () => {
   const pathname = usePathname()
@@ -16,15 +17,6 @@ export const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [activeSublink, setActiveSublink] = useState<number | null>(null)
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
-
-  const scrollToTop = () => {
-    const getHomeLayout = document?.querySelector('.route-layout-container')
-
-    getHomeLayout?.scroll({
-      behavior: 'smooth',
-      top: 0,
-    })
-  }
 
   useEffect(() => {
     setActiveDropdown(null)

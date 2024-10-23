@@ -59,7 +59,7 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
           <div className="mt-10 relative 2lg:max-w-[787px]">
             <div className="">
               <h2 className="text-heading text-xl font-poppins font-medium leading-5">
-                What Parents Say About Our School
+                Our Happy Students
               </h2>
             </div>
             <div

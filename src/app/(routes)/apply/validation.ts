@@ -355,7 +355,7 @@ export const seeGpaPointValidation = Yup.string()
   )
   .test('range', 'SEE GPA point must be between 3.0 and 4.0', (value) => {
     const numValue = parseFloat(value)
-    return numValue >= 3 && numValue <= 4
+    return numValue >= 0 && numValue <= 4
   })
   .test(
     'length',
