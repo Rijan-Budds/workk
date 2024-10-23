@@ -61,7 +61,7 @@ const NewsSection = () => {
               <>
                 <div
                   id="testimonial"
-                  className="space-x-3 absolute bottom-0 right-0 w-28 h-8 hidden md:flex "
+                  className="space-x-3 absolute bottom-0 right-0 w-28 h-8 hidden md:flex"
                 >
                   <div className="swiper-button-prev">
                     <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
@@ -76,7 +76,7 @@ const NewsSection = () => {
           {response.data.length > 1 ? (
             <SwiperWrapper>
               {response.data.map((news) => (
-                <SwiperSlide key={news.id} className="mt-10 mx-auto">
+                <SwiperSlide key={news.id} className="mt-10 mx-auto max-h-4">
                   <NewsCard news={news} />
                 </SwiperSlide>
               ))}

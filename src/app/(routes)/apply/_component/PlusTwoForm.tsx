@@ -137,7 +137,6 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
       } catch (error) {
         setLoading(false)
         console.error('Error submitting form:', error)
-        toast({ title: 'Something went wrong', variant: 'destructive' })
       } finally {
         setLoading(false)
       }

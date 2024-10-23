@@ -2,20 +2,20 @@
 import { swiperParams } from '@/app/(home)/_components/Testimonials/TestimonialsSection'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
-import { Pagination, Navigation } from 'swiper/modules'
-import { SectionHeading } from '@/common/components/Atom/SectionHeading'
-import React, { ReactNode, useEffect, useState } from 'react'
-import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import { TestimonialCard } from '@/app/(home)/_components/Testimonials/TestimonialCard'
 import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/testimonial'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
-import { IAcademicsData } from '../../_interface/academic'
+import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { ReactNode, useEffect, useState } from 'react'
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import { Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { IAcademicsData } from '../../_interface/academic'
 
 const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
   const [response, setResponse] = useState<ITestimonialResponse | null>(null)
@@ -44,7 +44,7 @@ const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
         <div className="2lg:w-[787px]">
           <MiniHeading className="text-left">{detail?.title}</MiniHeading>
           <SectionHeading>{detail?.articleTitle}</SectionHeading>
-          <div className="flex gap-x-5 my-10">
+          <div className="flex gap-x-5 my-4">
             {detail &&
               detail.image?.key.map((imageKey, index) => (
                 <div
@@ -62,7 +62,7 @@ const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
               ))}
           </div>
           <div
-            className="mt-10 font-workSans font-normal text-base leading-7 text-body break-all"
+            className="font-workSans font-normal text-base leading-7 text-body break-all"
             dangerouslySetInnerHTML={{ __html: detail?.description }}
           ></div>
           {/* Testimonials  */}

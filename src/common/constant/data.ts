@@ -212,7 +212,7 @@ export const staticFooterLinksData = [
       },
       {
         text: 'District Education Office, Lalitpur',
-        url: 'https://daolalitpur.moha.gov.np',
+        url: 'https://daolalitpur.moha.gov.np/en',
       },
     ],
   },

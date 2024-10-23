@@ -69,7 +69,6 @@ export const ContactForm = () => {
         setTimeout(() => {
           resetForm()
         }, 500)
-      } else {
       }
     } catch (error) {
       setLoading(false)

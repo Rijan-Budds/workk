@@ -1,15 +1,15 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import './notice.css'
 import { INewsResponseData } from '@/app/(routes)/news/interface/newsType'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
-import { format } from 'date-fns'
-import { IoMdShare } from 'react-icons/io'
-import { CustomModal } from '@/common/components/Molecules/Modal'
 import { ShareModal } from '@/app/(routes)/notice/_component/ShareModal'
-import { useRouter } from 'next/navigation'
+import { CustomModal } from '@/common/components/Molecules/Modal'
 import { NoDataFound } from '@/common/components/NoDataFound'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { cn } from '@/common/utils/utils'
+import { format } from 'date-fns'
+import { useRouter } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
+import { IoMdShare } from 'react-icons/io'
+import './notice.css'
 
 const Notice = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -42,7 +42,7 @@ const Notice = () => {
   const renderNoticeUi = () => {
     if (response?.data && response.data.length > 0) {
       return (
-        <div className="w-full   overflow-y-auto notice-scrollbar max-h-[376px] px-8  ">
+        <div className="w-full overflow-y-auto notice-scrollbar max-h-[376px] px-8">
           {response &&
             response.data.map((notice) => (
               <div
@@ -84,7 +84,7 @@ const Notice = () => {
 
   return (
     <>
-      <div className="bg-white rounded-xl  w-full md:w-[672px] lg:w-[80%] 2lg:min-w-[320px] 2xl_lg:w-[396px]   2lg:max-w-[396px] 2lg:h-[465px] overflow-hidden  ">
+      <div className="bg-white rounded-xl  w-full md:w-[672px] lg:w-[80%] 2lg:min-w-[320px] 2xl_lg:w-[396px]   2lg:max-w-[396px] 2lg:h-[465px] overflow-hidden pb-3 ">
         <div className="py-8 pb-2 w-full">
           <div className="flex justify-between  px-8 pb-6 items-center">
             <h1 className="text-xl font-poppins font-medium leading-6 text-heading">

@@ -83,15 +83,17 @@ const TestimonialsSection = () => {
                 <TestimonialCard card={card} />
               </SwiperSlide>
             ))}
-            <div className="flex justify-center gap-x-4 mt-10 md:hidden">
-              <SwiperButtonPrevious>
-                <IoIosArrowRoundBack className="text-body text-2xl font-light " />
-              </SwiperButtonPrevious>
+            {response.data.length > 1 && (
+              <div className="flex justify-center gap-x-4 mt-10 md:hidden">
+                <SwiperButtonPrevious>
+                  <IoIosArrowRoundBack className="text-body text-2xl font-light " />
+                </SwiperButtonPrevious>
 
-              <SwiperButtonNext>
-                <IoIosArrowRoundForward className="text-body text-2xl font-light" />
-              </SwiperButtonNext>
-            </div>
+                <SwiperButtonNext>
+                  <IoIosArrowRoundForward className="text-body text-2xl font-light" />
+                </SwiperButtonNext>
+              </div>
+            )}
           </SwiperWrapper>
         </div>
       )
