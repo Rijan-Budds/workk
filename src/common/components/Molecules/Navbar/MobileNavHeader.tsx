@@ -27,10 +27,11 @@ export const MobileNavHeader = ({
               alt="School logo"
             />
           </Link>
-
-          <h2 className="font-poppins font-medium text-[18px] leading-6 text-heading">
-            Pawan Prakriti <br /> School.
-          </h2>
+          <Link href={'/'}>
+            <h2 className="font-poppins font-medium text-[18px] leading-6 text-heading">
+              Pawan Prakriti <br /> School.
+            </h2>
+          </Link>
         </div>
 
         <button onClick={() => setIsMenuOpen((prev) => !prev)}>
