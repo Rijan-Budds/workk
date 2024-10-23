@@ -83,7 +83,12 @@ const AboutComponent = async () => {
   return (
     <>
       <CoverImage title="About Us" list={[{ link: null, title: 'About us' }]} />
-      <HomeWrapper>{renderAboutDataUi()}</HomeWrapper>
+      <div className="relative overflow-hidden">
+        <HomeWrapper>
+          {renderAboutDataUi()}
+          <div className="hidden md:block absolute bg-primaryLighter w-[243px] h-[243px] rounded-full left-[218px] -bottom-[80px] -z-10" />
+        </HomeWrapper>
+      </div>
     </>
   )
 }

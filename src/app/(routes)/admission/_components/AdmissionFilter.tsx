@@ -16,9 +16,8 @@ const AdmissionFilter: React.FC<AdmissionFilterProps> = ({
   const [activeAdmission, setActiveAdmission] = useState<string>('')
 
   useEffect(() => {
-    // Set the last admission as the default active admission
     if (!activeAdmission && admissions.length > 0) {
-      const defaultSlug = admissions[admissions.length - 1].academics.slug
+      const defaultSlug = admissions[0].academics.slug // Set first added admission as default
       setActiveAdmission(defaultSlug)
       onFilterChange(defaultSlug)
     }
@@ -39,7 +38,7 @@ const AdmissionFilter: React.FC<AdmissionFilterProps> = ({
         {/* Display the active admission or default to the last admission */}
         {admissions.find(
           (admission) => admission.academics.slug === activeAdmission
-        )?.academics.title || 'Management'}
+        )?.academics.title || admissions[0]?.academics.title}
         <svg
           className={cn('w-6 h-6 transition-transform', {
             'transform rotate-180': isDropdownOpen,
