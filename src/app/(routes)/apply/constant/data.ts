@@ -187,6 +187,7 @@ export const applicationCourseDetailSchema = [
   'shift',
   'hostel',
   'transportation',
+  'level',
 ]
 
 export const schoolLevelList = [
