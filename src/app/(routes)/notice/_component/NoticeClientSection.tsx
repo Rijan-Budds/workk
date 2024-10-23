@@ -11,7 +11,6 @@ export const NoticeClientSection = ({
 }: {
   notice: INewsItem[] | undefined
 }) => {
-  console.log('notice', notice)
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [activeSlug, setActiveSlug] = useState<string | undefined>(undefined)
   const filterNotice = notice?.filter((d) => d.type === 'NOTICE')
