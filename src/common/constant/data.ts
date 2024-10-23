@@ -188,8 +188,8 @@ export const staticFooterLinksData = [
   {
     title: 'Plus Two',
     content: [
-      { text: 'Management', url: 'academics/plustwo/management' },
-      { text: 'Humanities', url: 'academics/plustwo/humanities' },
+      { text: 'Management', url: '/academics/plustwo/management' },
+      { text: 'Humanities', url: '/academics/plustwo/humanities' },
       { text: 'Education', url: '/academics/plustwo/education' },
       { text: 'Law', url: '/academics/plustwo/law' },
     ],

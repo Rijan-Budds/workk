@@ -39,7 +39,7 @@ const AdmissionSideBar: React.FC<AdmissionSideBarProps> = ({
     fetchBrochureResponse()
   }, [])
   return (
-    <div className="md:flex flex-col gap-6 w-full hidden">
+    <div className="flex flex-col gap-6 w-full">
       <AdmissionFilterTwo
         admissions={admissions?.data || []}
         onFilterChange={onFilterChange}

@@ -57,18 +57,20 @@ const NewsSection = () => {
                 News and Events
               </SectionHeading>
             </div>
-            {response && response.data.length >= 2 && (
-              <div
-                id="news"
-                className="space-x-3 absolute bottom-0 right-0 w-28 h-8 hidden md:flex "
-              >
-                <div className="swiper-button-prev">
-                  <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+            {response && response.data.length > 1 && (
+              <>
+                <div
+                  id="testimonial"
+                  className="space-x-3 absolute bottom-0 right-0 w-28 h-8 hidden md:flex"
+                >
+                  <div className="swiper-button-prev">
+                    <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+                  </div>
+                  <div className="swiper-button-next">
+                    <IoIosArrowRoundForward className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+                  </div>
                 </div>
-                <div className="swiper-button-next">
-                  <IoIosArrowRoundForward className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
-                </div>
-              </div>
+              </>
             )}
           </div>
           {response.data.length > 1 ? (

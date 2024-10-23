@@ -40,7 +40,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <div className="flex flex-col  items-start gap-y-[6px] w-full relative">
         <label
           className={cn(
-            `font-light text-[14px] leading-4 ${labelColor}`,
+            `font-light text-[16px] leading-4 ${labelColor}`,
             labelClass
           )}
           htmlFor={label}
@@ -52,7 +52,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           name={props.name}
           type={type}
           className={cn(
-            'flex min-h-[48px] text-black bg-white text-[14px] max-h-[200px] w-full rounded-[8px] border-stone-100 px-4 py-3 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-body focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 font-workSans placeholder:font-workSans',
+            'flex min-h-[48px] text-black bg-white text-[16px] max-h-[200px] w-full rounded-[8px] border-stone-100 px-4 py-3 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-body focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 font-workSans placeholder:font-workSans',
             className,
             {
               'border-error': isError,
