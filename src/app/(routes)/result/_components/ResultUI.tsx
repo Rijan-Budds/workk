@@ -14,7 +14,7 @@ const ResultUi = () => {
   const [resultData, setResultData] = useState<IResult[] | undefined>(undefined)
 
   const pageSize = 12
-  const [program, setProgram] = useState<string>('all')
+  const [program, setProgram] = useState<string>('')
   const [page, setPage] = useState<number>(1)
   const [totalCount, setTotalCount] = useState<number | undefined>(undefined)
 
@@ -22,7 +22,7 @@ const ResultUi = () => {
     try {
       const resultData: IResultApiResponse | undefined = await UseServerFetch(
         `/api/v1/result?page=${page}&pageSize=${pageSize}&type=${activeTab}${
-          program !== 'all' ? `&program=${program}` : ''
+          program.length > 1 ? `&program=${program}` : ''
         }`
       )
       if (resultData) {
@@ -35,7 +35,7 @@ const ResultUi = () => {
   }
 
   const handleDynamicData = (key: string) => {
-    setProgram('all')
+    setProgram('')
     setPage(1)
     setActiveTab(key)
   }

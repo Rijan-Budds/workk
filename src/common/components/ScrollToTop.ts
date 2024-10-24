@@ -1,5 +1,7 @@
-export const scrollToTop = () => {
-  const getHomeLayout = document?.querySelector('.route-layout-container')
+export const scrollToTop = (isWindow?: boolean) => {
+  const getHomeLayout = isWindow
+    ? window
+    : document?.querySelector('.route-layout-container')
 
   getHomeLayout?.scroll({
     behavior: 'smooth',

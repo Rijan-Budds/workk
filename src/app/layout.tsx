@@ -12,7 +12,7 @@ export default function RootLayout({
       className={`${workSans.variable} ${poppins.variable} ${inter.variable}`}
     >
       <title>Pawan Prakriti</title>
-      <body className="overflow-x-hidden lg:overflow-y-hidden">
+      <body className="overflow-x-hidden lg:overflow-y-hidden main-layout-container">
         <Toaster />
         {children}
       </body>

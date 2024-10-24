@@ -128,7 +128,7 @@ export const StepOne = ({
         isError={!!errors.email && touched.email}
       />
       <ImageDropZone
-        isError={!!errors.document && touched.document}
+        isError={!!errors.document}
         error={errors.document}
         setValue={setFieldValue}
         setError={setFieldError}
