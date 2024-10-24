@@ -16,7 +16,6 @@ export default async function Home() {
     await UseServerFetch('/api/v1/settings')
 
   const settingData = settingResponse && settingResponse?.data.homepage
-
   return (
     <>
       <HeroSection settings={settingData} />
