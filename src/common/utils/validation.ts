@@ -25,26 +25,25 @@ export const fullNameValidation = Yup.string()
   })
 
 export const emailValidation = Yup.string()
-  .test(
-    'no-leading-space',
-    'Space at beginning is not allowed',
-    function (value) {
-      if (value) {
-        return !/^\s/.test(value)
-      }
-      return true
-    }
-  )
-  .email('Please enter a valid email')
+
+  .email('Enter valid email')
+
   .matches(
-    /^[a-zA-Z0-9]+([.]?[a-zA-Z0-9]+)*@[^\s@]+\.[^\s@]+$/,
-    'Please enter a valid email'
+    /^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+
+    'Email must be in valid format'
   )
   .max(50, 'Email must be less than or equal to 50 characters')
-  .required('Email is a required field')
+
+  .typeError('Required')
+
+  .required('Required')
 
 export const phoneNumberValidation = Yup.string()
-  .matches(/^\+?[0-9 ]+$/, 'Please enter a valid phone number')
+  .matches(
+    /^\+?[0-9]+$/,
+    'Please enter a valid phone number (no spaces allowed)'
+  )
   .min(10, 'Phone number must be at least 10 characters')
   .required('Phone is a required field')
   .max(14, 'Phone number must be at most 14 characters')

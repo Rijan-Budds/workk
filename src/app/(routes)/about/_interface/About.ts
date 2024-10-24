@@ -26,6 +26,9 @@ export interface TeamMember {
   name: string
   position: string
   image: Image
+  facebook: string
+  instagram: string
+  twitter: string
 }
 
 export interface Image {
