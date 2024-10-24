@@ -26,12 +26,9 @@ export const ImageDropZone = ({
   values,
 }: IDropZoneProps) => {
   const [isDragging, setDragging] = useState<boolean>(false)
-  console.log('is Error', isError)
   const handleMetaData = (files: File[]) => {
     const prevFiles = values?.document || []
     const combinedFiles = [...prevFiles, ...files]
-
-    console.log('combined files', combinedFiles)
 
     if (combinedFiles) {
       if (combinedFiles.length < 6) {
