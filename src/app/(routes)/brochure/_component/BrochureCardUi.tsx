@@ -27,7 +27,7 @@ export const BrochureCardUi = ({
             {data.title}
           </p>
           <span className="font-workSans text-left  font-normal text-[14px] leading-4 text-body group-hover:text-white transition-all duration-500 ">
-            {format(data.createdAt, 'MMMM d, yyyy')}
+            {format(data.publishedAt, 'MMMM d, yyyy')}
           </span>
         </div>
         <MdArrowForwardIos className="text-[25px] text-body group-hover:text-white transition-all duration-500" />

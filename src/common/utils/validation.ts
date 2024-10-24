@@ -35,12 +35,12 @@ export const emailValidation = Yup.string()
       return true
     }
   )
+  .max(50, 'Email must be less than or equal to 50 characters')
   .email('Please enter a valid email')
   .matches(
     /^[a-zA-Z0-9]+([.]?[a-zA-Z0-9]+)*@[^\s@]+\.[^\s@]+$/,
     'Please enter a valid email'
   )
-  .max(50, 'Email must be less than or equal to 50 characters')
   .required('Email is a required field')
 
 export const phoneNumberValidation = Yup.string()
