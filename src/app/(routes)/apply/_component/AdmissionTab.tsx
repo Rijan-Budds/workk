@@ -88,7 +88,7 @@ export const AdmissionTab = () => {
             activeTab={active}
             tabs={tabs}
             setActive={setActiveTab}
-            className="w-fit text-sm"
+            className="text-sm"
             isFieldChange={true}
             handleDynamicData={handleTabClick}
           />
@@ -98,7 +98,7 @@ export const AdmissionTab = () => {
             activeTab={active}
             tabs={mobileTab}
             setActive={setActiveTab}
-            className="w-fit text-sm"
+            className="text-sm"
             isFieldChange={true}
             handleDynamicData={handleTabClick}
           />

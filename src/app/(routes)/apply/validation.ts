@@ -213,7 +213,7 @@ export const fatherNameValidation = Yup.string()
     }
   )
   .max(50, 'Father name must be at most 50 characters')
-  .min(3, 'Father name must be at least 3 characters')
+  .min(2, 'Father name must be at least 2 characters')
   .typeError('Please enter a valid name')
   .required('Father name is a required field')
   .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
@@ -253,7 +253,7 @@ export const localGuardianNameValidation = Yup.string()
     }
   )
   .max(50, 'Guardian name must be at most 50 characters')
-  .min(3, 'Guardian name must be at least 3 characters')
+  .min(2, 'Guardian name must be at least 2 characters')
   .typeError('Please enter a  valid name')
   .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
 
@@ -292,7 +292,7 @@ export const schoolNameValidation = Yup.string()
     'Space at beginning is not allowed',
     (value) => !/^\s/.test(value)
   )
-  .min(3, 'School name must be at least 3 characters')
+  .min(2, 'School name must be at least 2 characters')
   .max(150, 'School name must be at most 150 characters')
   .matches(
     /^[A-Za-z0-9\s.-]+$/,
