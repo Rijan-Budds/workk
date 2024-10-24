@@ -31,8 +31,9 @@ export const emailValidation = Yup.string()
   .matches(
     /^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
 
-    'Email must be in valid format & contain up to 64 chars before @'
+    'Email must be in valid format'
   )
+  .max(50, 'Email must be less than or equal to 50 characters')
 
   .typeError('Required')
 
