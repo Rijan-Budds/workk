@@ -29,7 +29,7 @@ export const AcademicSection = ({
           <p className="font-normal text-[16px] font-workSans mt-2 text-heading text-center md:text-left">
             Our comprehensive programs are designed to provide
             <br className="hidden 2lg:block" />
-            clarity and direction as you consider your future
+            clarity and direction as you consider your future goals.
           </p>
           <div className="flex items-center justify-center md:justify-start gap-x-2 mt-2">
             <Image
