@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Swiper as SwiperClass } from 'swiper/types'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -8,13 +7,14 @@ import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import './about.css'
-import { socialLinks } from '../constants/data'
 import { IVoiceOfManagementResponse } from '../_interface/About'
 import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { NoDataFound } from '@/common/components/NoDataFound'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
+import { FaFacebookF, FaXTwitter } from 'react-icons/fa6'
+import { AiFillInstagram } from 'react-icons/ai'
 
 const VoiceOfDirector = () => {
   const [response, setResponse] = useState<IVoiceOfManagementResponse | null>(
@@ -77,21 +77,33 @@ const VoiceOfDirector = () => {
                   {/* Social icons container */}
                   <div className="absolute bottom-8 left-8 bg-secondary rounded-xl z-10">
                     <ul className="flex gap-4 p-4">
-                      {socialLinks.map((link, index) => (
-                        <Link
-                          href={link.href}
-                          key={index}
-                          className="flex justify-center items-center"
-                        >
-                          <Image
-                            src={link.src}
-                            width={100}
-                            height={100}
-                            alt={link.alt}
-                            className="w-[14px] h-[14px]"
-                          />
-                        </Link>
-                      ))}
+                      <Link
+                        href={voice.Team.twitter || '#'}
+                        target={voice.Team.twitter ? '_blank' : '_self'}
+                        className={`flex justify-center items-center text-white ${
+                          !voice.Team.twitter ? 'cursor-not-allowed' : ''
+                        }`}
+                      >
+                        <FaXTwitter className="w-4 h-4" />
+                      </Link>
+                      <Link
+                        href={voice.Team.facebook || '#'}
+                        target={voice.Team.facebook ? '_blank' : '_self'}
+                        className={`flex justify-center items-center text-white ${
+                          !voice.Team.facebook ? 'cursor-not-allowed' : ''
+                        }`}
+                      >
+                        <FaFacebookF className="w-4 h-4" />
+                      </Link>
+                      <Link
+                        href={voice.Team.instagram || '#'}
+                        target={voice.Team.instagram ? '_blank' : '_self'}
+                        className={`flex justify-center items-center text-white ${
+                          !voice.Team.instagram ? 'cursor-not-allowed' : ''
+                        }`}
+                      >
+                        <AiFillInstagram className="w-[18px] h-[18px]" />
+                      </Link>
                     </ul>
                   </div>
                 </div>

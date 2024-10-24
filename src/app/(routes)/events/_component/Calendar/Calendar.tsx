@@ -59,10 +59,14 @@ const CalendarEvent = ({
   const [activeTab, setActiveTab] = useState(filteredPeriod[0].key)
   const [disabledTab, setDisabledTab] = useState<string[]>([])
   const [highlightedEventIndex, setHighlightedEventsIndex] = useState<
-    number | null
+    string | null
   >(null)
 
   const currentDate = new NepaliDateTime()
+  const Startyears = Array.from({ length: 50 }, (_, i) => ({
+    label: (2048 + i).toString(),
+    value: 2048 + i,
+  }))
 
   const onSelectYear = (year: number) => {
     const selectedYear = years.find((y) => y.value === year)
@@ -118,7 +122,10 @@ const CalendarEvent = ({
     setPrevMonth(foundPrevMonth.value - 1)
     setPrevYear(foundPrevYear.value - 1)
 
-    if (currentDate.getMonth() == foundPrevMonth.value) {
+    if (
+      currentDate.getMonth() == foundPrevMonth.value &&
+      currentDate.getYear() == selectedYear.value
+    ) {
       setActiveTab('today')
       setDisabledTab([])
     } else {
@@ -149,7 +156,10 @@ const CalendarEvent = ({
     setNextYear(foundNextYear.value + 1)
     setNextMonth(foundNextMonth.value + 1)
 
-    if (currentDate.getMonth() == foundNextMonth.value) {
+    if (
+      currentDate.getMonth() == foundNextMonth.value &&
+      currentDate.getYear() == selectedYear.value
+    ) {
       setActiveTab('today')
       setDisabledTab([])
     } else {
@@ -169,7 +179,7 @@ const CalendarEvent = ({
     })
 
     // Find the index in the filtered list
-    const eventIndex = filteredEvents.findIndex((event) => {
+    const selectedEvent = filteredEvents.find((event) => {
       const [eventYear, eventMonth, eventDay] = event.dateInBS
         .split('-')
         .map(Number)
@@ -179,9 +189,11 @@ const CalendarEvent = ({
         eventDay === Number(date.label)
       )
     })
+    if (selectedEvent && eventsRef.current) {
+      const eventElement = eventsRef.current.querySelector(
+        `[data-event-id="${selectedEvent.id}"]`
+      ) as HTMLElement
 
-    if (eventIndex !== -1 && eventsRef.current) {
-      const eventElement = eventsRef.current.children[eventIndex] as HTMLElement
       if (eventElement) {
         const containerHeight = eventsRef.current.clientHeight
 
@@ -199,7 +211,7 @@ const CalendarEvent = ({
           })
         }
         // eventElement.scrollIntoView({ behavior: 'smooth' })
-        setHighlightedEventsIndex(eventIndex)
+        setHighlightedEventsIndex(selectedEvent.id)
       }
     }
   }
@@ -270,8 +282,8 @@ const CalendarEvent = ({
 
         {showYearSelector && (
           <div className="max-h-96 overflow-y-auto pdf-scrollbar">
-            <div className="grid grid-cols-4 gap-2 justify-items-center mt-4 max-h-xs">
-              {years.map((year) => (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 justify-items-center mt-4 max-h-xs">
+              {Startyears.map((year) => (
                 <Button
                   variant={'pilled'}
                   key={year.value}

@@ -27,7 +27,7 @@ type EventsProps = {
   prevYear: number
   activeTab: string
   disabledTabs: string[]
-  highlightedEventIndex: number | null
+  highlightedEventIndex: string | null
   setActiveTab: Dispatch<SetStateAction<string>>
   ref: ForwardedRef<HTMLDivElement>
   selectedMonth: Month
@@ -52,6 +52,21 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
     const currentDate = new NepaliDateTime()
     return `${currentDate.getYear()}-${currentDate.getMonth()}-${currentDate.getDate()}`
   }
+
+  const today = new Date().toISOString().split('T')[0]
+  const tomorrow = new Date(new Date().setDate(new Date().getDate() + 1))
+    .toISOString()
+    .split('T')[0]
+
+  const sortedEvents = nepaliEvents?.sort((a, b) => {
+    if (a.dateInAD === today && b.dateInAD !== today) return -1
+    if (a.dateInAD !== today && b.dateInAD === today) return 1
+
+    if (a.dateInAD === tomorrow && b.dateInAD !== tomorrow) return -1
+    if (a.dateInAD !== tomorrow && b.dateInAD === tomorrow) return 1
+
+    return new Date(a.dateInAD).getTime() - new Date(b.dateInAD).getTime()
+  })
 
   const todayDate = getTodayDate()
   const [todayYear, todayMonth, todayDay] = todayDate.split('-').map(Number)
@@ -102,12 +117,13 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
           setActive={setActiveTab}
           tabs={filteredPeriod}
           disabledTab={disabledTabs}
+          isEvent
         />
       </div>
       <div
         ref={ref}
         className={cn(
-          'flex flex-col items-start px-6 py-6 w-full rounded-lg bg-background h-[calc(100vh-20rem)] md:h-[calc(100vh-10rem)] 2lg:h-[calc(100vh-10rem)] overflow-y-auto cursor-pointer pdf-scrollbar'
+          'flex flex-col items-start px-6 py-6 w-full rounded-lg bg-background h-[calc(100vh-20rem)] md:h-[calc(100vh-12rem)] 2lg:h-[calc(100vh-12rem)]  2xl:h-[calc(100vh-12rem)] 3xl:h-[calc(100vh-10rem)] overflow-y-auto cursor-pointer pdf-scrollbar'
         )}
       >
         {isLoading ? (
@@ -140,9 +156,8 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
             </div>
           </div>
         ) : (
-          nepaliEvents?.map((event, index) => {
+          sortedEvents?.map((event, index) => {
             let renderedDay = false
-
             return (
               <>
                 <EventDialog
@@ -166,11 +181,12 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
                           {formattedDate(event.dateInBS) ==
                             improvedTodayDate && (
                             <ul
-                              key={idx}
+                              key={event.id}
+                              data-event-id={event.id}
                               className={cn(
-                                'flex justify-between  rounded-md border-l-8 py-4 px-6 mb-4',
+                                'flex justify-between rounded-md border-l-8 py-4 px-6 mb-4',
                                 getEventStyles(eventItem.eventType),
-                                highlightedEventIndex === index &&
+                                highlightedEventIndex === event.id &&
                                   'border-2 border-l-8 border-primary'
                               )}
                             >
@@ -212,11 +228,12 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
                           {formattedDate(event.dateInBS) ==
                             improvedTommorowDay && (
                             <ul
-                              key={idx}
+                              key={event.id}
+                              data-event-id={event.id}
                               className={cn(
                                 'flex justify-between rounded-md border-l-8 py-4 px-6 mb-4',
                                 getEventStyles(eventItem.eventType),
-                                highlightedEventIndex === index &&
+                                highlightedEventIndex === event.id &&
                                   'border-2 border-l-8 border-primary'
                               )}
                             >
@@ -266,11 +283,12 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
                             formattedDate(event.dateInBS) !==
                               improvedTommorowDay && (
                               <ul
-                                key={idx}
+                                key={event.id}
+                                data-event-id={event.id}
                                 className={cn(
                                   'flex justify-between rounded-md border-l-8 py-4 px-6 mb-4',
                                   getEventStyles(eventItem.eventType),
-                                  highlightedEventIndex === index &&
+                                  highlightedEventIndex === event.id &&
                                     'border-2 border-l-8 border-primary'
                                 )}
                               >
