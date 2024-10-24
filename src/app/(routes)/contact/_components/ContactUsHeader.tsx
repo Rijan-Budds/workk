@@ -62,7 +62,7 @@ const ContactUsHeader = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[24px] justify-center items-center">
         {settings?.map((contact, i) => (
           <div
-            className="!max-w-[398px] h-[240px] bg-background flex flex-col justify-center items-center rounded-xl"
+            className="!max-w-[398px] h-[240px] bg-background flex flex-col justify-center items-center rounded-xl p-2"
             key={i}
           >
             <div>
