@@ -1,8 +1,8 @@
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { SetStateAction } from 'react'
-import Button from '../ui/Button'
 import { Month, Year } from '../../types/NepaliDates'
+import Button from '../ui/Button'
 
 type CalendarHeaderProps = {
   selectedMonth: Month
@@ -22,7 +22,7 @@ const CalendarHeader = ({
   showYearSelector,
 }: CalendarHeaderProps) => {
   return (
-    <div className="flex flex-row justify-between h-10  font-poppins">
+    <div className="flex flex-row justify-between h-10 font-poppins">
       <div className="flex flex-row gap-2 items-center font-medium text-2xl">
         <span className="">{selectedMonth?.label}</span>
         <span>{selectedYear?.label}</span>

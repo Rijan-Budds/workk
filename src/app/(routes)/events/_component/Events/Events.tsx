@@ -110,7 +110,7 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
 
   return (
     <>
-      <div className="flex items-center justify-center md:items-end md:justify-end 2lg:items-end 2lg:justify-end">
+      <div className="flex items-center font-workSans justify-center md:items-end md:justify-end 2lg:items-end 2lg:justify-end">
         <TabAnimation
           activeTab={activeTab}
           handleDynamicData={handleTabClick}
@@ -123,7 +123,7 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
       <div
         ref={ref}
         className={cn(
-          'flex flex-col items-start px-6 py-6 w-full rounded-lg bg-background h-[calc(100vh-20rem)] md:h-[calc(100vh-12rem)] 2lg:h-[calc(100vh-12rem)]  2xl:h-[calc(100vh-12rem)] 3xl:h-[calc(100vh-10rem)] overflow-y-auto cursor-pointer pdf-scrollbar'
+          'flex flex-col font-workSans items-start px-6 py-6 w-full rounded-lg bg-background h-[calc(100vh-20rem)] md:h-[calc(100vh-12rem)] 2lg:h-[calc(100vh-12rem)]  2xl:h-[calc(100vh-12rem)] 3xl:h-[calc(100vh-10rem)] overflow-y-auto cursor-pointer pdf-scrollbar'
         )}
       >
         {isLoading ? (
@@ -151,7 +151,7 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
               width={54}
               height={54}
             />
-            <div className="flex flex-col items-center text-xs gap-1">
+            <div className="flex flex-col items-center text-base gap-1">
               <p className="font-medium">No Events Found</p>
             </div>
           </div>

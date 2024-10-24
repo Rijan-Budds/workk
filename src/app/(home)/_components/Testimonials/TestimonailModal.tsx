@@ -1,8 +1,8 @@
 'use client'
-import ModalContainer from '@/app/(routes)/events/_component/Modal/Modal'
 import { ITestimonialData } from '@/app/(routes)/testimonials/_interface/testimonial'
 import { CloseButton } from '@/common/components/Atom/CloseButton'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+import { CustomModal } from '@/common/components/Molecules/Modal'
 import { Dispatch, SetStateAction } from 'react'
 
 const TestimonailModal = ({
@@ -17,9 +17,9 @@ const TestimonailModal = ({
   }
 
   return (
-    <ModalContainer className="w-5/6 md:max-w-[800px]" isOpen={true}>
+    <CustomModal isOpen={true}>
       <div>
-        <div className="bg-white flex flex-col relative rounded-xl">
+        <div className="bg-white flex flex-col relative rounded-xl max-w-[800px]">
           <div className="flex justify-between items-center bg-background px-6 py-4 rounded-t-xl">
             <h1 className="font-poppins text-xl font-semibold">{card.name}</h1>
             <CloseButton className="relative" handleClick={handleCloseModal} />
@@ -47,7 +47,7 @@ const TestimonailModal = ({
           </div>
         </div>
       </div>
-    </ModalContainer>
+    </CustomModal>
   )
 }
 
