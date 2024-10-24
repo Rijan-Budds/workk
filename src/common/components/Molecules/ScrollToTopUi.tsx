@@ -46,16 +46,17 @@ export const ScrollToTopUi = ({ layout }: { layout: string }) => {
     <button
       onClick={scrollToTop}
       className={cn(
-        'rounded-full fixed bottom-[0%] right-12 z-[999] size-10 opacity-0  pointer-events-none  transition-all duration-100',
+        'rounded-full fixed bottom-[0%] right-12 z-[999] size-12 opacity-0  pointer-events-none  transition-all duration-300',
         {
-          'opacity-100 bottom-[5%] pointer-events-auto ': showScrollButton,
+          'opacity-100 bottom-[5%] pointer-events-auto duration-300 transition-all ':
+            showScrollButton,
         }
       )}
     >
-      <div className="size-10 flex justify-center items-center  relative rounded-full border border-[#F7DCC4]">
+      <div className="size-12 flex justify-center items-center  relative rounded-full border border-[#F7DCC4] bg-white">
         <svg
-          width="40"
-          height="40"
+          width="48"
+          height="48"
           viewBox="0 0 40 40"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -75,8 +76,8 @@ export const ScrollToTopUi = ({ layout }: { layout: string }) => {
           />
         </svg>
         <Image
-          width={12}
-          height={8}
+          width={16}
+          height={10}
           alt="top arrow"
           className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
           src={'/others/scroll-top-arrow.svg'}

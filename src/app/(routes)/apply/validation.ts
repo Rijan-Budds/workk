@@ -14,7 +14,7 @@ export const firstNameValidation = Yup.string()
   )
   .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
   .max(20, 'First name must be at most 20 characters')
-  .min(3, 'First name must be at least 3 characters')
+  .min(2, 'First name must be at least 2 characters')
   .typeError('Please enter a valid name')
   .required('First name is a required field')
   .test('spaces', 'Multiple spaces are not allowed', function (value) {
