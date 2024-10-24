@@ -26,10 +26,12 @@ export const ImageDropZone = ({
   values,
 }: IDropZoneProps) => {
   const [isDragging, setDragging] = useState<boolean>(false)
-
+  console.log('is Error', isError)
   const handleMetaData = (files: File[]) => {
     const prevFiles = values?.document || []
-    const combinedFiles = [...prevFiles, ...files].slice(0, 5)
+    const combinedFiles = [...prevFiles, ...files]
+
+    console.log('combined files', combinedFiles)
 
     if (combinedFiles) {
       if (combinedFiles.length < 6) {
@@ -116,25 +118,28 @@ export const ImageDropZone = ({
         *Note : Include birth certificate. Character Certificate , Report card
         of last class & Parent Citizenship
       </span>
-      {isError && !Array.isArray(error) && <ErrorComponent error={error} />}
-      <div className="flex w-full flex-wrap gap-4 ">
-        {values &&
-          values.document &&
-          values?.document?.map((file, index) => {
-            const errorMessage = getErrorMessage(index)
-            return (
-              <UploadedFileUi
-                key={index}
-                name={file.name}
-                size={byteToMb(file.size)}
-                index={index}
-                onDelete={() => handleDelete(index)}
-                isError={!!error[index]}
-                message={errorMessage}
-              />
-            )
-          })}
-      </div>
+      {isError && !Array.isArray(error) ? (
+        <ErrorComponent error={error} />
+      ) : (
+        <div className="flex w-full flex-wrap gap-4 ">
+          {values &&
+            values.document &&
+            values?.document?.map((file, index) => {
+              const errorMessage = getErrorMessage(index)
+              return (
+                <UploadedFileUi
+                  key={index}
+                  name={file.name}
+                  size={byteToMb(file.size)}
+                  index={index}
+                  onDelete={() => handleDelete(index)}
+                  isError={!!error[index]}
+                  message={errorMessage}
+                />
+              )
+            })}
+        </div>
+      )}
     </>
   )
 }

@@ -173,6 +173,8 @@ export const PlusTwoForm: React.FC<IPlusTwoFormProps> = ({ onFormChange }) => {
 
           onFormChange(dirty)
 
+          console.log('errors', errors)
+
           return (
             <Form>
               <StepComponentsPlusTwo
