@@ -81,7 +81,7 @@ const NewsSection = () => {
                 </SwiperSlide>
               ))}
 
-              <div className="md:hidden flex justify-center mt-10 gap-x-4 absolute bottom-0 left-1/2 -translate-x-1/2 z-50 w-fit h-fit">
+              <div className="md:hidden flex justify-center mt-10 gap-x-4 absolute bottom-8 left-1/2 -translate-x-1/2 z-50 w-fit h-fit">
                 <SwiperButtonPrevious>
                   <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full size-8 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
                 </SwiperButtonPrevious>
