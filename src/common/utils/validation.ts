@@ -40,7 +40,10 @@ export const emailValidation = Yup.string()
   .required('Required')
 
 export const phoneNumberValidation = Yup.string()
-  .matches(/^\+?[0-9 ]+$/, 'Please enter a valid phone number')
+  .matches(
+    /^\+?[0-9]+$/,
+    'Please enter a valid phone number (no spaces allowed)'
+  )
   .min(10, 'Phone number must be at least 10 characters')
   .required('Phone is a required field')
   .max(14, 'Phone number must be at most 14 characters')
