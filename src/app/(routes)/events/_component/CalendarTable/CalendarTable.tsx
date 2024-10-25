@@ -71,7 +71,7 @@ const CalendarTable = ({
                   {date.currentMonth && date.event?.eventDetail.length === 1 ? (
                     <p
                       className={cn(
-                        'hidden md:flex lg:flex mt-1 text-xs rounded-full py-1 px-2',
+                        'hidden md:flex lg:flex mt-1 text-xs rounded-full py-1 px-2 font-workSans',
                         date.event.eventDetail[0].eventType === 'SCHOOL_HOLIDAY'
                           ? 'text-error border-errorLight bg-errorLighter'
                           : date.event.eventDetail[0].eventType === 'EXAMS'
@@ -117,7 +117,7 @@ const CalendarTable = ({
                   {date.currentMonth &&
                     date.event &&
                     date.event?.eventDetail.length > 1 && (
-                      <p className={cn('flex text-xs flex-col items-start')}>
+                      <p className={cn('flex flex-col items-start')}>
                         <EventDialog
                           event={date.event}
                           dialogTriggerContent={date.event?.eventDetail
@@ -125,7 +125,7 @@ const CalendarTable = ({
                             .map((e, index) => (
                               <p
                                 className={cn(
-                                  'my-1 hidden md:flex lg:flex text-xs rounded-full px-2 text-ellipsis whitespace-nowrap overflow-hidden max-w-[50px] md:max-w-[70px] 2lg:max-w-[100px]',
+                                  'my-1 hidden md:flex text-[12px] lg:flex font-workSans rounded-full px-2 text-ellipsis whitespace-nowrap overflow-hidden max-w-[50px] md:max-w-[70px] 2lg:max-w-[96px]',
                                   e.eventType === 'SCHOOL_HOLIDAY'
                                     ? 'text-error border-errorLight bg-errorLighter'
                                     : e.eventType === 'EXAMS'
@@ -141,13 +141,16 @@ const CalendarTable = ({
                                     : e.eventType === 'CEREMONIES'
                                     ? 'bg-pink-200 text-pink-500 border-pink-300 '
                                     : 'text-primary bg-primaryLighter border-primaryLight',
-                                  'tracking-normal text-gray-950'
+                                  'tracking-normal'
                                 )}
                                 key={index}
                               >
                                 {window.innerWidth < 1270
-                                  ? e.title.split(' ').join(' ').slice(0, 7)
-                                  : e.title.split(' ').join(' ').slice(0, 10)}
+                                  ? e.title.split(' ').join(' ').slice(0, 5)
+                                  : e.title
+                                      .split(' ')
+                                      .join(' ')
+                                      .slice(0, 10)}{' '}
                                 ...
                               </p>
                             ))}

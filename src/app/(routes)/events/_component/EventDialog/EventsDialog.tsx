@@ -1,7 +1,7 @@
 'use client'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { EventData } from '../../types/NepaliDates'
 import { getEventStyles } from '../../utils/classUtils'
 import ModalContainer from '../Modal/Modal'
@@ -23,6 +23,14 @@ const EventDialog: React.FC<EventDialogProps> = ({
   const handleOpenModal = () => setModalActive(true)
   const handleCloseModal = () => setModalActive(false)
 
+  useEffect(() => {
+    if (isModalActive) {
+      document.body.style.overflowY = 'hidden'
+    } else {
+      document.body.style.overflowY = ''
+    }
+  }, [isModalActive])
+
   return (
     <>
       <p
@@ -39,7 +47,6 @@ const EventDialog: React.FC<EventDialogProps> = ({
       {isModalActive && (
         <ModalContainer
           className="w-[90%] h-[60%] md:w-[40%] 2lg:w-[40%]  2lg:h-[50%] p-8 overflow-y-auto rounded-md pdf-scrollbar"
-          isOpen={isModalActive}
           onClose={handleCloseModal}
         >
           <Image
