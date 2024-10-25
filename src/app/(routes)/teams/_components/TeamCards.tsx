@@ -34,13 +34,25 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
                 {team.position}
               </p>
               <ul className="flex gap-4 text-body justify-start items-center mt-3">
-                <Link href={team.twitter || ''} target="_blank">
+                <Link
+                  href={team.twitter || ''}
+                  target={team.twitter ? '_blank' : ''}
+                  className={cn(``, team.twitter ? '' : 'cursor-not-allowed')}
+                >
                   <FaXTwitter className="w-3 h-3" />
                 </Link>
-                <Link href={team.facebook || ''}>
+                <Link
+                  href={team.facebook || ''}
+                  target={team.facebook ? '_blank' : ''}
+                  className={cn(``, team.facebook ? '' : 'cursor-not-allowed')}
+                >
                   <FaFacebookF className="w-3 h-3" />
                 </Link>
-                <Link href={team.instagram || ''}>
+                <Link
+                  href={team.instagram || ''}
+                  target={team.instagram ? '_blank' : ''}
+                  className={cn(``, team.instagram ? '' : 'cursor-not-allowed')}
+                >
                   <AiFillInstagram className="w-[16px] h-[16px]" />
                 </Link>
               </ul>

@@ -13,10 +13,10 @@ const Page = async ({ params }: { params: { slug: string } }) => {
       redirect('/not-found')
     }
 
-    if (response) {
+    if (response?.data) {
       return (
         <School
-          bannerDetail={response && response.banner}
+          bannerDetail={response.banner}
           detail={response.data}
           slug={params.slug}
         />

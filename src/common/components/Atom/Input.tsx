@@ -40,7 +40,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <div className="flex flex-col  items-start gap-y-[6px] w-full relative">
         <label
           className={cn(
-            `font-light text-[16px] leading-4 ${labelColor}`,
+            `font-normal font-workSans text-[16px] leading-4 ${labelColor}`,
             labelClass
           )}
           htmlFor={label}
