@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import { Button } from './Atom/Button'
+import { scrollToTop } from './ScrollToTop'
 
 export const usePagination = ({
   totalCount,
@@ -115,10 +116,17 @@ export const Pagination = ({
   }
 
   const onNext = () => {
+    setTimeout(() => {
+      scrollToTop(window.innerWidth < 1270 ? true : false)
+    }, 100)
+
     onPageChange(currentPage + 1)
   }
 
   const onPrevious = () => {
+    setTimeout(() => {
+      scrollToTop(window.innerWidth < 1270 ? true : false)
+    }, 100)
     onPageChange(currentPage - 1)
   }
 
@@ -130,7 +138,7 @@ export const Pagination = ({
       style={{
         boxShadow: '3px 3.80528px 3.80528px rgba(255, 255, 255, 0.2)',
       }}
-      className="h-[52px] w-fit rounded-[24.73px] bg-dashboardColorPrimaryLight flex items-center justify-center gap-4 px-6"
+      className="h-[52px]  w-fit rounded-[24.73px] bg-dashboardColorPrimaryLight flex items-center justify-center gap-4 px-6"
     >
       {/* Left navigation arrow */}
       <Button
@@ -161,6 +169,7 @@ export const Pagination = ({
                 key={'unique id'}
                 onClick={() => {
                   if (typeof pageNumber === 'number') {
+                    scrollToTop()
                     onPageChange(pageNumber)
                   }
                 }}

@@ -141,11 +141,14 @@ const CalendarTable = ({
                                     : e.eventType === 'CEREMONIES'
                                     ? 'bg-pink-200 text-pink-500 border-pink-300 '
                                     : 'text-primary bg-primaryLighter border-primaryLight',
-                                  'tracking-normal'
+                                  'tracking-normal text-gray-950'
                                 )}
                                 key={index}
                               >
-                                {e.title.split(' ').join(' ').slice(0, 10)}...
+                                {window.innerWidth < 1270
+                                  ? e.title.split(' ').join(' ').slice(0, 7)
+                                  : e.title.split(' ').join(' ').slice(0, 10)}
+                                ...
                               </p>
                             ))}
                         />

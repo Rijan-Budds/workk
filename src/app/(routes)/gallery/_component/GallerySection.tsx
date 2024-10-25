@@ -1,6 +1,7 @@
 'use client'
 
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
+import { UiLoader } from '@/common/components/Atom/UiLoader'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
@@ -17,7 +18,6 @@ import {
 import { GalleryCard } from './GalleryCard'
 import { GalleryModal } from './GalleryModal'
 import { VideoModal } from './VideoModal'
-import { UiLoader } from '@/common/components/Atom/UiLoader'
 
 type IType = 'photo' | 'video'
 
@@ -217,9 +217,9 @@ export const GallerySection = () => {
                   pageSize={pageSize}
                   totalCount={totalCountPhoto!}
                   siblingCount={0}
-                  onPageChange={(page: string | number) =>
+                  onPageChange={(page: string | number) => {
                     setCurrentGalleryPhotoPage(page as number)
-                  }
+                  }}
                 />
               )}
         </div>

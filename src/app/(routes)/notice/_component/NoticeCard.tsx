@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { INewsItem } from '../../news/interface/newsType'
 import { format } from 'date-fns'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+import { cn } from '@/common/utils/utils'
 
 export const NoticeCard = ({
   notice,
@@ -39,7 +40,14 @@ export const NoticeCard = ({
         className="rounded-full size-14 object-cover aspect-square"
       />
       <div className=" w-full ">
-        <p className="font-workSans font-medium text-[16px] leading-[27.2px] text-heading group-hover:text-white transition-all duration-500">
+        <p
+          className={cn(
+            'font-workSans font-medium text-[16px] leading-[27.2px] text-heading group-hover:text-white transition-all duration-500',
+            {
+              'text-[#E0240A]': notice?.isHoliday,
+            }
+          )}
+        >
           {notice?.title}
         </p>
         {notice?.createdAt && (

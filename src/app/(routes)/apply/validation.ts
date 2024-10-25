@@ -14,7 +14,7 @@ export const firstNameValidation = Yup.string()
   )
   .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
   .max(20, 'First name must be at most 20 characters')
-  .min(3, 'First name must be at least 3 characters')
+  .min(2, 'First name must be at least 2 characters')
   .typeError('Please enter a valid name')
   .required('First name is a required field')
   .test('spaces', 'Multiple spaces are not allowed', function (value) {
@@ -114,11 +114,11 @@ export const cityValidation = Yup.string()
       return true
     }
   )
+  .required('City is a required field')
+  .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
   .max(30, 'City must be at most 30 characters')
   .min(4, 'City must be at least 4 characters')
   .typeError('Please enter a valid name')
-  .required('City is a required field')
-  .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
   .test(
     'no-multiple-spaces',
     'Multiple spaces are not allowed',
@@ -212,11 +212,11 @@ export const fatherNameValidation = Yup.string()
       return true
     }
   )
-  .max(50, 'Father name must be at most 50 characters')
-  .min(3, 'Father name must be at least 3 characters')
   .typeError('Please enter a valid name')
-  .required('Father name is a required field')
   .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
+  .max(50, 'Father name must be at most 50 characters')
+  .min(2, 'Father name must be at least 2 characters')
+  .required('Father name is a required field')
   .test('spaces', 'Spaces are not allowed', function (value) {
     if (value) {
       const multipleSpacesPattern = /\s{2,}/
@@ -236,10 +236,10 @@ export const fatherProfessionValidation = Yup.string()
       return true
     }
   )
-  .max(50, 'Father profession must be at most 50 characters')
-  .min(2, 'Father profession must be at least 2 characters')
   .typeError('Please enter a valid profession')
   .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
+  .max(50, 'Father profession must be at most 50 characters')
+  .min(2, 'Father profession must be at least 2 characters')
 
 export const localGuardianNameValidation = Yup.string()
   .test(
@@ -252,10 +252,10 @@ export const localGuardianNameValidation = Yup.string()
       return true
     }
   )
-  .max(50, 'Guardian name must be at most 50 characters')
-  .min(3, 'Guardian name must be at least 3 characters')
   .typeError('Please enter a  valid name')
   .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
+  .max(50, 'Guardian name must be at most 50 characters')
+  .min(2, 'Guardian name must be at least 2 characters')
 
 export const guardianProfessionValidation = Yup.string()
   .test(
@@ -268,10 +268,10 @@ export const guardianProfessionValidation = Yup.string()
       return true
     }
   )
-  .max(50, 'Guardian profession must be at most 50 characters')
-  .min(2, 'Guardian profession must be at least 2 characters')
   .typeError('Please enter a  valid profession')
   .matches(/^[A-Za-z\s.]+$/, 'Must be alphabets only')
+  .max(50, 'Guardian profession must be at most 50 characters')
+  .min(2, 'Guardian profession must be at least 2 characters')
 
 export const gurdianMobileNumber = Yup.string()
   .test('spaces', 'Spaces are not allowed', function (value) {
@@ -292,13 +292,13 @@ export const schoolNameValidation = Yup.string()
     'Space at beginning is not allowed',
     (value) => !/^\s/.test(value)
   )
-  .min(3, 'School name must be at least 3 characters')
+  .typeError('Please enter a valid school name')
+  .min(2, 'School name must be at least 2 characters')
   .max(150, 'School name must be at most 150 characters')
   .matches(
     /^[A-Za-z0-9\s.-]+$/,
     'School name can only contain letters, numbers, spaces, hyphens, and periods'
   )
-  .typeError('Please enter a valid school name')
 
 export const schoolAddressValidation = Yup.string()
   .required('Previous school address is required')
@@ -311,7 +311,7 @@ export const schoolAddressValidation = Yup.string()
   .max(200, 'School address must be at most 200 characters')
   .matches(
     /^[A-Za-z0-9\s,.]+$/,
-    'School address can only contain letters, numbers, spaces, commas, and periods'
+    'School address can only contain letters, numbers, spaces, commas, and periods.'
   )
   .typeError('Please enter a valid school address')
 
@@ -322,12 +322,12 @@ export const schoolBoardValidation = Yup.string()
     'Space at beginning is not allowed',
     (value) => !/^\s/.test(value)
   )
-  .min(5, 'School board must be at least 5 characters')
-  .max(80, 'School board must be at most 80 characters')
   .matches(
     /^[A-Za-z\s.-]+$/,
-    'School board can only contain letters, spaces, hyphens, and periods'
+    'School board can only contain letters, spaces, hyphens, and periods.'
   )
+  .min(5, 'School board must be at least 5 characters')
+  .max(80, 'School board must be at most 80 characters')
 
 export const seeSymbolNumberValidation = Yup.string()
   .test(
@@ -353,9 +353,9 @@ export const seeGpaPointValidation = Yup.string()
     /^\d+(\.\d{1,2})?$/,
     'SEE GPA point must be a numeric value with up to 2 decimal places'
   )
-  .test('range', 'SEE GPA point must be between 3.0 and 4.0', (value) => {
+  .test('range', 'SEE GPA point must be between 0.0 and 4.0', (value) => {
     const numValue = parseFloat(value)
-    return numValue >= 3 && numValue <= 4
+    return numValue >= 0 && numValue <= 4
   })
   .test(
     'length',

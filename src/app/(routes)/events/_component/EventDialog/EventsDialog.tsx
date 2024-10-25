@@ -1,9 +1,10 @@
 'use client'
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
 import React, { useState } from 'react'
-import ModalContainer from '../Modal/Modal'
-import { getEventStyles } from '../../utils/classUtils'
 import { EventData } from '../../types/NepaliDates'
+import { getEventStyles } from '../../utils/classUtils'
+import ModalContainer from '../Modal/Modal'
 
 interface EventDialogProps {
   event: EventData
@@ -37,10 +38,18 @@ const EventDialog: React.FC<EventDialogProps> = ({
 
       {isModalActive && (
         <ModalContainer
-          className="w-5/6 md:w-[40%] 2lg:w-[40%]  h-[40%] 2lg:h-[40%] p-8  overflow-y-auto rounded-md pdf-scrollbar"
-          isActive={isModalActive}
+          className="w-[90%] h-[60%] md:w-[40%] 2lg:w-[40%]  2lg:h-[50%] p-8 overflow-y-auto rounded-md pdf-scrollbar"
+          isOpen={isModalActive}
           onClose={handleCloseModal}
         >
+          <Image
+            className="fixed top-2 right-2"
+            src="/calendar/close.svg"
+            alt="close"
+            width={24}
+            height={24}
+            onClick={handleCloseModal}
+          />
           <div>
             {event.eventDetail.map((e, idx) => (
               <React.Fragment key={idx}>
@@ -52,7 +61,7 @@ const EventDialog: React.FC<EventDialogProps> = ({
                 >
                   {e.title}
                 </div>
-                <div className="flex flex-col gap-6 text-center md:text-start list-none text-base text-body">
+                <div className="flex flex-col gap-6 text-start list-none text-base text-body">
                   <li>{e.description}</li>
 
                   {e.allDay == 'true' ? (

@@ -42,9 +42,6 @@ export const CustomDropdown = ({
   isBoolean = false,
 }: ICustomDropdownProps) => {
   const [open, setOpen] = useState<boolean>(false)
-  const [hasSelected, setHasSelected] = useState<boolean>(false)
-
-  console.info(hasSelected)
 
   return (
     <div className="flex flex-col gap-y-2 w-full">
@@ -62,7 +59,6 @@ export const CustomDropdown = ({
         value={typeof value === 'boolean' ? (value ? 'TRUE' : 'FALSE') : value}
         onOpenChange={() => setOpen((prev) => !prev)}
         onValueChange={(value) => {
-          setHasSelected(true)
           if (isBoolean) {
             if (value === 'TRUE' && setFieldValue) {
               setFieldValue(field, true)
