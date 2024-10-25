@@ -22,7 +22,7 @@ const ResultUi = () => {
     try {
       const resultData: IResultApiResponse | undefined = await UseServerFetch(
         `/api/v1/result?page=${page}&pageSize=${pageSize}&type=${activeTab}${
-          program.length > 1 ? `&program=${program}` : ''
+          program.length > 1 && program !== 'all' ? `&program=${program}` : ''
         }`
       )
       if (resultData) {
