@@ -151,7 +151,7 @@ export const navLinks = [
   {
     id: 5,
     title: 'News & Events',
-    link: '/news',
+    link: '',
     isDropDown: true,
     sublink: [
       {

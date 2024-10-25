@@ -25,7 +25,7 @@ const AdmissionDetail: React.FC<AdmissionDetailProps> = ({
   const downloadUrl = `${process.env.NEXT_PUBLIC_IMAGE_URL}/${selectedAdmission.form?.key}`
 
   return (
-    <div className="max-w-full 2lg:max-w-[787px]">
+    <div className="max-w-full 2lg:max-w-[787px]  ">
       <MiniHeading className="text-left text-secondary mb-1">
         {selectedAdmission.academics?.title}
       </MiniHeading>
