@@ -17,12 +17,6 @@ export const NoticeModal = () => {
     if (isModalAlreadyShown) {
       setOpenModal(false)
     }
-
-    if (openModal) {
-      document.body.style.overflowY = 'hidden'
-    } else {
-      document.body.style.overflowY = ''
-    }
   }, [openModal])
 
   const handleCloseModal = () => {
