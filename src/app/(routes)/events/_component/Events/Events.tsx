@@ -110,199 +110,97 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
 
   return (
     <>
-      <div className="flex items-center font-workSans justify-center md:items-end md:justify-end 2lg:items-end 2lg:justify-end">
-        <TabAnimation
-          activeTab={activeTab}
-          handleDynamicData={handleTabClick}
-          setActive={setActiveTab}
-          tabs={filteredPeriod}
-          disabledTab={disabledTabs}
-          isEvent
-        />
-      </div>
-      <div
-        ref={ref}
-        className={cn(
-          'flex flex-col font-workSans items-start px-6 py-6 w-full rounded-lg bg-background h-[calc(100vh-20rem)] md:h-[calc(100vh-12rem)] 2lg:h-[calc(100vh-12rem)]  2xl:h-[calc(100vh-12rem)] 3xl:h-[calc(100vh-10rem)] overflow-y-auto cursor-pointer pdf-scrollbar'
-        )}
-      >
-        {isLoading ? (
-          <>
-            {[...Array(6)].map((_, idx) => (
-              <ul
-                key={idx}
-                className={cn(
-                  'flex justify-between rounded-md h-10 w-full px-4 py-14 mb-4 border-l-8 bg-gray-100 border-gray-300 animate-pulse '
-                )}
-              >
-                <div className="w-full space-y-4">
-                  <li className="w-1/2 h-2  rounded-md bg-gray-300  animate-pulse "></li>
-                  <li className="w-1/4 h-2  rounded-md bg-gray-300  animate-pulse "></li>
-                </div>
-                <li className="w-4 h-4  rounded-full bg-gray-300  animate-pulse "></li>
-              </ul>
-            ))}
-          </>
-        ) : nepaliEvents?.length === 0 ? (
-          <div className="flex flex-col items-center mx-auto space-y-4 mt-24">
-            <Image
-              src="/calendar/noEvents/union.png"
-              alt="no event"
-              width={54}
-              height={54}
-            />
-            <div className="flex flex-col items-center text-base gap-1">
-              <p className="font-medium">No Events Found</p>
+      <div className="flex flex-col gap-8">
+        <div className="flex items-center font-workSans justify-center md:items-end md:justify-end 2lg:items-end 2lg:justify-end">
+          <TabAnimation
+            activeTab={activeTab}
+            handleDynamicData={handleTabClick}
+            setActive={setActiveTab}
+            tabs={filteredPeriod}
+            disabledTab={disabledTabs}
+            isEvent
+          />
+        </div>
+        <div
+          ref={ref}
+          className={cn(
+            'flex flex-col font-workSans items-start px-6 py-6 w-full rounded-lg bg-background  h-[calc(100vh-20rem)] md:h-[calc(100vh-18rem)] 2lg:h-[calc(100vh-16rem)]  2xl:h-[calc(100vh-16rem)] 3xl:h-[calc(100vh-16rem)] overflow-y-auto pdf-scrollbar'
+          )}
+        >
+          {/* */}
+          {isLoading ? (
+            <>
+              {[...Array(6)].map((_, idx) => (
+                <ul
+                  key={idx}
+                  className={cn(
+                    'flex justify-between rounded-md h-10 w-full px-4 py-14 mb-4 border-l-8 bg-gray-100 border-gray-300 animate-pulse '
+                  )}
+                >
+                  <div className="w-full space-y-4">
+                    <li className="w-1/2 h-2  rounded-md bg-gray-300  animate-pulse "></li>
+                    <li className="w-1/4 h-2  rounded-md bg-gray-300  animate-pulse "></li>
+                  </div>
+                  <li className="w-4 h-4  rounded-full bg-gray-300  animate-pulse "></li>
+                </ul>
+              ))}
+            </>
+          ) : nepaliEvents?.length === 0 ? (
+            <div className="flex flex-col items-center mx-auto space-y-4 mt-24">
+              <Image
+                src="/calendar/noEvents/union.png"
+                alt="no event"
+                width={54}
+                height={54}
+              />
+              <div className="flex flex-col items-center text-base gap-1">
+                <p className="font-medium">No Events Found</p>
+              </div>
             </div>
-          </div>
-        ) : (
-          sortedEvents?.map((event, index) => {
-            let renderedDay = false
-            return (
-              <>
-                <EventDialog
-                  key={index}
-                  event={event}
-                  index={index}
-                  dialogTriggerContent={event.eventDetail.map(
-                    (eventItem, idx) => {
-                      return (
-                        <React.Fragment key={idx}>
-                          {formattedDate(event.dateInBS) ===
-                            improvedTodayDate &&
-                            !renderedDay && (
-                              <>
-                                <div className="flex items-start text-lg font-medium text-heading mb-2">
-                                  <p>Today</p>
-                                </div>
-                                {(renderedDay = true)}{' '}
-                              </>
-                            )}
-                          {formattedDate(event.dateInBS) ==
-                            improvedTodayDate && (
-                            <ul
-                              key={event.id}
-                              data-event-id={event.id}
-                              className={cn(
-                                'flex justify-between rounded-md border-l-8 py-4 px-6 mb-4',
-                                getEventStyles(eventItem.eventType),
-                                highlightedEventIndex === event.id &&
-                                  'border-2 border-l-8 border-primary'
+          ) : (
+            sortedEvents?.map((event, index) => {
+              let renderedDay = false
+              return (
+                <>
+                  <EventDialog
+                    key={index}
+                    event={event}
+                    index={index}
+                    dialogTriggerContent={event.eventDetail.map(
+                      (eventItem, idx) => {
+                        return (
+                          <React.Fragment key={idx}>
+                            {formattedDate(event.dateInBS) ===
+                              improvedTodayDate &&
+                              !renderedDay && (
+                                <>
+                                  <div className="flex items-start text-lg font-medium text-heading mb-2">
+                                    <p>Today</p>
+                                  </div>
+                                  {(renderedDay = true)}{' '}
+                                </>
                               )}
-                            >
-                              <div className="flex flex-col gap-2 items-start">
-                                <React.Fragment key={idx}>
-                                  <li
-                                    className={cn('text-lg font-medium mt-2')}
-                                  >
-                                    {eventItem.title}
-                                  </li>
-                                  {eventItem.allDay == 'true' ? (
-                                    <li>All Day</li>
-                                  ) : (
-                                    <li className="text-sm text-gray-500">
-                                      {eventItem.fromTime} - {eventItem.toTime}
-                                    </li>
-                                  )}
-                                </React.Fragment>
-                              </div>
-                              <div>
-                                <li className="text-heading font-medium">
-                                  {event.dateInBS.split('-')[2]}
-                                </li>
-                              </div>
-                            </ul>
-                          )}
-
-                          {formattedDate(event.dateInBS) ===
-                            improvedTommorowDay &&
-                            !renderedDay && (
-                              <>
-                                <div className="flex items-start text-lg font-medium text-heading mb-2">
-                                  <p>Tomorrow</p>
-                                </div>
-                                {(renderedDay = true)}{' '}
-                              </>
-                            )}
-
-                          {formattedDate(event.dateInBS) ==
-                            improvedTommorowDay && (
-                            <ul
-                              key={event.id}
-                              data-event-id={event.id}
-                              className={cn(
-                                'flex justify-between rounded-md border-l-8 py-4 px-6 mb-4',
-                                getEventStyles(eventItem.eventType),
-                                highlightedEventIndex === event.id &&
-                                  'border-2 border-l-8 border-primary'
-                              )}
-                            >
-                              <div className="flex flex-col gap-2 items-start">
-                                <React.Fragment key={idx}>
-                                  <li
-                                    className={cn(
-                                      'text-lg font-medium mt-2'
-                                      // !event.isSchoolEvent && 'text-error'
-                                    )}
-                                  >
-                                    {eventItem.title}
-                                  </li>
-                                  {eventItem.allDay == 'true' ? (
-                                    <li>All Day</li>
-                                  ) : (
-                                    <li className="text-sm text-gray-500">
-                                      {eventItem.fromTime} - {eventItem.toTime}
-                                    </li>
-                                  )}
-                                </React.Fragment>
-                              </div>
-                              <div>
-                                <li className="text-heading font-medium">
-                                  {event.dateInBS.split('-')[2]}
-                                </li>
-                              </div>
-                            </ul>
-                          )}
-
-                          {formattedDate(event.dateInBS) !==
-                            improvedTodayDate &&
-                            formattedDate(event.dateInBS) !==
-                              improvedTommorowDay &&
-                            !renderedDay && (
-                              <>
-                                <div className="flex items-start text-lg font-medium text-heading mb-2">
-                                  {event.dateInBS.split('-')[2]}th{' '}
-                                  {selectedMonth.label}
-                                </div>
-                                {(renderedDay = true)}{' '}
-                              </>
-                            )}
-
-                          {formattedDate(event.dateInBS) !==
-                            improvedTodayDate &&
-                            formattedDate(event.dateInBS) !==
-                              improvedTommorowDay && (
+                            {formattedDate(event.dateInBS) ==
+                              improvedTodayDate && (
                               <ul
                                 key={event.id}
                                 data-event-id={event.id}
                                 className={cn(
-                                  'flex justify-between rounded-md border-l-8 py-4 px-6 mb-4',
+                                  'flex justify-between rounded-lg border-l-8 py-4 px-6 mb-4 cursor-pointer ',
                                   getEventStyles(eventItem.eventType),
                                   highlightedEventIndex === event.id &&
                                     'border-2 border-l-8 border-primary'
                                 )}
                               >
-                                <div className="flex flex-col gap-2 items-start">
+                                <div className="flex flex-col gap-1 items-start">
                                   <React.Fragment key={idx}>
                                     <li
                                       className={cn(
-                                        'text-lg font-medium mt-2'
-                                        // !event.isSchoolEvent && 'text-red-500'
+                                        'text-base font-medium mt-2'
                                       )}
                                     >
                                       {eventItem.title}
                                     </li>
-
                                     {eventItem.allDay == 'true' ? (
                                       <li>All Day</li>
                                     ) : (
@@ -320,15 +218,124 @@ export const Events = forwardRef<HTMLDivElement, EventsProps>(function Events(
                                 </div>
                               </ul>
                             )}
-                        </React.Fragment>
-                      )
-                    }
-                  )}
-                />
-              </>
-            )
-          })
-        )}
+
+                            {formattedDate(event.dateInBS) ===
+                              improvedTommorowDay &&
+                              !renderedDay && (
+                                <>
+                                  <div className="flex items-start text-lg font-medium text-heading mb-2">
+                                    <p>Tomorrow</p>
+                                  </div>
+                                  {(renderedDay = true)}{' '}
+                                </>
+                              )}
+
+                            {formattedDate(event.dateInBS) ==
+                              improvedTommorowDay && (
+                              <ul
+                                key={event.id}
+                                data-event-id={event.id}
+                                className={cn(
+                                  'flex justify-between rounded-md border-l-8 py-4 px-6 mb-4 cursor-pointer',
+                                  getEventStyles(eventItem.eventType),
+                                  highlightedEventIndex === event.id &&
+                                    'border-2 border-l-8 border-primary'
+                                )}
+                              >
+                                <div className="flex flex-col gap-1 items-start">
+                                  <React.Fragment key={idx}>
+                                    <li
+                                      className={cn(
+                                        'text-base font-medium mt-2'
+                                        // !event.isSchoolEvent && 'text-error'
+                                      )}
+                                    >
+                                      {eventItem.title}
+                                    </li>
+                                    {eventItem.allDay == 'true' ? (
+                                      <li>All Day</li>
+                                    ) : (
+                                      <li className="text-sm text-gray-500">
+                                        {eventItem.fromTime} -{' '}
+                                        {eventItem.toTime}
+                                      </li>
+                                    )}
+                                  </React.Fragment>
+                                </div>
+                                <div>
+                                  <li className="text-heading font-medium">
+                                    {event.dateInBS.split('-')[2]}
+                                  </li>
+                                </div>
+                              </ul>
+                            )}
+
+                            {formattedDate(event.dateInBS) !==
+                              improvedTodayDate &&
+                              formattedDate(event.dateInBS) !==
+                                improvedTommorowDay &&
+                              !renderedDay && (
+                                <>
+                                  <div className="flex items-start text-lg font-medium text-heading mb-2">
+                                    {event.dateInBS.split('-')[2]}th{' '}
+                                    {selectedMonth.label}
+                                  </div>
+                                  {(renderedDay = true)}{' '}
+                                </>
+                              )}
+
+                            {formattedDate(event.dateInBS) !==
+                              improvedTodayDate &&
+                              formattedDate(event.dateInBS) !==
+                                improvedTommorowDay && (
+                                <ul
+                                  key={event.id}
+                                  data-event-id={event.id}
+                                  className={cn(
+                                    'flex justify-between rounded-md border-l-8 py-4 px-6 mb-4 cursor-pointer',
+                                    getEventStyles(eventItem.eventType),
+                                    highlightedEventIndex === event.id &&
+                                      'border-2 border-l-8 border-primary'
+                                  )}
+                                >
+                                  <div className="flex flex-col gap-1 items-start">
+                                    <React.Fragment key={idx}>
+                                      <li
+                                        className={cn(
+                                          'text-base font-medium mt-2'
+                                          // !event.isSchoolEvent && 'text-red-500'
+                                        )}
+                                      >
+                                        {eventItem.title}
+                                      </li>
+
+                                      {eventItem.allDay == 'true' ? (
+                                        <li>All Day</li>
+                                      ) : (
+                                        <li className="text-sm text-gray-500">
+                                          {eventItem.fromTime} -{' '}
+                                          {eventItem.toTime}
+                                        </li>
+                                      )}
+                                    </React.Fragment>
+                                  </div>
+                                  <div>
+                                    <li className="text-heading font-medium">
+                                      {event.dateInBS.split('-')[2]}
+                                    </li>
+                                  </div>
+                                </ul>
+                              )}
+                          </React.Fragment>
+                        )
+                      }
+                    )}
+                  />
+                </>
+              )
+            })
+          )}
+        </div>
       </div>
     </>
   )
