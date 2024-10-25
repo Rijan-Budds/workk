@@ -117,14 +117,15 @@ export const Pagination = ({
 
   const onNext = () => {
     setTimeout(() => {
-      scrollToTop()
+      scrollToTop(window.innerWidth < 1270 ? true : false)
     }, 100)
+
     onPageChange(currentPage + 1)
   }
 
   const onPrevious = () => {
     setTimeout(() => {
-      scrollToTop()
+      scrollToTop(window.innerWidth < 1270 ? true : false)
     }, 100)
     onPageChange(currentPage - 1)
   }
