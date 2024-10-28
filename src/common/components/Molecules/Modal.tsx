@@ -1,6 +1,6 @@
 'use client'
 
-import React, { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 import Modal from 'react-modal'
 
 export const CustomModal = ({
@@ -10,6 +10,13 @@ export const CustomModal = ({
   children: ReactNode
   isOpen: boolean
 }) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflowY = 'hidden'
+    } else {
+      document.body.style.overflowY = ''
+    }
+  }, [isOpen])
   const ModalCustomStyles = {
     content: {
       top: '50%',
