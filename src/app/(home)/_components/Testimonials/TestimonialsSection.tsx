@@ -1,5 +1,5 @@
 'use client'
-import { ReactNode, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 
@@ -19,8 +19,8 @@ import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import { Navigation, Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { SwiperSlide } from 'swiper/react'
+import { SwiperWrapper } from '@/common/components/SwiperWrapper'
 
 export const swiperParams = {
   navigation: {
@@ -54,7 +54,7 @@ const TestimonialsSection = () => {
     if (response?.data.length) {
       const isSingleCard = response.data.length === 1
       return (
-        <div className="relative">
+        <div className="relative selection:bg-transparent">
           <div className="flex justify-center md:justify-between items-center relative">
             <div className="">
               <MiniHeading isMd>Testimonials</MiniHeading>
@@ -62,17 +62,19 @@ const TestimonialsSection = () => {
                 Student&apos;s Success Stories
               </SectionHeading>
             </div>
-            <div
-              id="testimonial"
-              className="space-x-3 absolute bottom-0 right-0 w-28 h-8 hidden md:flex "
-            >
-              <div className="swiper-button-prev">
-                <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+            {response?.data.length > 3 && (
+              <div
+                id="testimonial"
+                className="space-x-3 absolute bottom-0 right-0 w-28 h-8 hidden md:flex "
+              >
+                <div className="swiper-button-prev">
+                  <IoIosArrowRoundBack className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+                </div>
+                <div className="swiper-button-next">
+                  <IoIosArrowRoundForward className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+                </div>
               </div>
-              <div className="swiper-button-next">
-                <IoIosArrowRoundForward className="text-body 2lg:bg-white rounded-full 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
-              </div>
-            </div>
+            )}
           </div>
           <SwiperWrapper>
             {response?.data.slice(0, 10).map((card) => (
@@ -111,27 +113,6 @@ const TestimonialsSection = () => {
   }
 
   return <HomeWrapper isBg>{renderTestimonialUi()}</HomeWrapper>
-}
-
-const SwiperWrapper = ({ children }: { children: ReactNode }) => {
-  return (
-    <Swiper
-      id="testimonial"
-      breakpoints={{
-        528: { slidesPerView: 1 },
-        728: { slidesPerView: 2 },
-        992: { slidesPerView: 2, spaceBetween: 10 },
-        1200: { slidesPerView: 3 },
-      }}
-      slidesPerView={1}
-      spaceBetween={65}
-      modules={[Pagination, Navigation]}
-      loop={true}
-      {...swiperParams}
-    >
-      {children}
-    </Swiper>
-  )
 }
 
 export default TestimonialsSection

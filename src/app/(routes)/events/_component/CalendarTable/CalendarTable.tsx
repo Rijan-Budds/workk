@@ -2,6 +2,7 @@
 import { cn } from '@/lib/utils'
 import { Day } from '../../types/NepaliDates'
 import EventDialog from '../EventDialog/EventsDialog'
+import { CheckIsIos } from '@/common/hook/useIos'
 
 const CalendarTable = ({
   selectedLocalisedDates,
@@ -21,8 +22,14 @@ const CalendarTable = ({
     selectedDate: Day | undefined
   ) => string
 }) => {
+  const isIos = CheckIsIos()
+
   return (
-    <table className="w-full h-full table-fixed font-poppins">
+    <table
+      className={cn('w-full h-full table-fixed font-poppins', {
+        'pb-32': isIos,
+      })}
+    >
       <tbody>
         {selectedLocalisedDates
           .reduce((rows: Array<Array<JSX.Element>>, date, index) => {

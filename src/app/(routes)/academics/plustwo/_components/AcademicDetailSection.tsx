@@ -16,9 +16,12 @@ import 'swiper/css/pagination'
 import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { IAcademicsData } from '../../_interface/academic'
+import { cn } from '@/common/utils/utils'
+import { CheckIsIos } from '@/common/hook/useIos'
 
 const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
   const [response, setResponse] = useState<ITestimonialResponse | null>(null)
+  const isIos = CheckIsIos()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,13 +80,29 @@ const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
                 </div>
                 <div
                   id="testimonial"
-                  className="space-x-3 absolute -top-2 sm:top-0 right-0 w-24 h-12 flex "
+                  className={cn(
+                    'space-x-3 absolute -top-2 sm:top-0 right-0 w-24 h-12 flex'
+                  )}
                 >
                   <div className="swiper-button-prev">
-                    <IoIosArrowRoundBack className="text-body text-2xl font-light 2lg:bg-white rounded-full w-10 h-10 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white shadow-md" />
+                    <IoIosArrowRoundBack
+                      className={cn(
+                        'text-body text-2xl font-light 2lg:bg-white rounded-full w-10 h-10 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white shadow-md',
+                        {
+                          'drop-shadow shadow-none': isIos,
+                        }
+                      )}
+                    />
                   </div>
                   <div className="swiper-button-next">
-                    <IoIosArrowRoundForward className="text-body text-2xl font-light 2lg:bg-white rounded-full w-10 h-10 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white shadow-md" />
+                    <IoIosArrowRoundForward
+                      className={cn(
+                        'text-body text-2xl font-light 2lg:bg-white rounded-full w-10 h-10 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white shadow-md',
+                        {
+                          'drop-shadow shadow-none': isIos,
+                        }
+                      )}
+                    />
                   </div>
                 </div>
                 <SwiperWrapper>
