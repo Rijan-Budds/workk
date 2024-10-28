@@ -1,19 +1,19 @@
 'use client'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
 import {
   SwiperButtonNext,
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
-import { Button } from '@/common/components/ui/button'
-import { IAcademicsImage } from '../../_interface/academic'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+import { Button } from '@/common/components/ui/button'
 import { cn } from '@/common/utils/utils'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import { MdOutlineChevronRight } from 'react-icons/md'
 import 'swiper/css'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper as SwiperType } from 'swiper/types'
+import { IAcademicsImage } from '../../_interface/academic'
 
 const SchoolGallery = ({ gallery }: { gallery: IAcademicsImage }) => {
   const [activeSrc, setActiveSrc] = useState<string | null>(
@@ -66,6 +66,10 @@ const ThumbnailSwiper = ({
 }) => {
   const [isBeginning, setIsBeginning] = useState(true)
   const [isEnd, setIsEnd] = useState(false)
+  const updateBoundaries = (swiper: SwiperType) => {
+    setIsBeginning(swiper.isBeginning)
+    setIsEnd(swiper.isEnd)
+  }
   useEffect(() => {
     setIsEnd(false)
   }, [])
@@ -95,6 +99,7 @@ const ThumbnailSwiper = ({
         setIsBeginning(false)
         setIsEnd(false)
       }}
+      onSlideChange={(swiper) => updateBoundaries(swiper)}
       className="relative"
     >
       {galleries &&
@@ -118,7 +123,7 @@ const ThumbnailSwiper = ({
       {galleries && galleries.key && galleries.key.length > 4 && (
         <>
           <div className="absolute right-[3px] top-1/2 -translate-y-1/2 z-10">
-            <SwiperButtonNext>
+            <SwiperButtonNext isEnd={isEnd}>
               <IoIosArrowRoundForward
                 className={`text-body text-2xl font-light bg-white rounded-full size-7 ${
                   isEnd ? 'opacity-25 cursor-not-allowed' : ''
@@ -127,7 +132,7 @@ const ThumbnailSwiper = ({
             </SwiperButtonNext>
           </div>
           <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
-            <SwiperButtonPrevious>
+            <SwiperButtonPrevious isBeginning={isBeginning}>
               <IoIosArrowRoundBack
                 className={`text-body text-2xl font-light bg-white rounded-full size-7 ${
                   isBeginning ? 'opacity-25 cursor-not-allowed' : ''
