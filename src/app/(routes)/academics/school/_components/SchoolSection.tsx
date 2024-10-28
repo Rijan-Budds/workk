@@ -1,25 +1,25 @@
 'use client'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
-import React, { ReactNode, useEffect, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
-import 'swiper/css/pagination'
 import 'swiper/css/navigation'
-import { Pagination, Navigation } from 'swiper/modules'
+import 'swiper/css/pagination'
+import { Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
-import SchoolGallery from './SchoolGallery'
-import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import { TestimonialCard } from '@/app/(home)/_components/Testimonials/TestimonialCard'
 import { swiperParams } from '@/app/(home)/_components/Testimonials/TestimonialsSection'
 import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/testimonial'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
-import { IAcademicsData } from '../../_interface/academic'
 import {
   SwiperButtonNext,
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
+import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
+import { IAcademicsData } from '../../_interface/academic'
+import SchoolGallery from './SchoolGallery'
 
 const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
   const [response, setResponse] = useState<ITestimonialResponse | null>(null)
@@ -81,7 +81,7 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
               ))}
               <div className="flex justify-center gap-x-4 mt-10 md:hidden">
                 <SwiperButtonPrevious>
-                  <IoIosArrowRoundBack className="text-body text-2xl font-light " />
+                  <IoIosArrowRoundBack className="text-body text-2xl font-light" />
                 </SwiperButtonPrevious>
 
                 <SwiperButtonNext>

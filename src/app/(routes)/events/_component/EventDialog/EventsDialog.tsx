@@ -46,11 +46,11 @@ const EventDialog: React.FC<EventDialogProps> = ({
 
       {isModalActive && (
         <ModalContainer
-          className="w-[90%] h-[60%] md:w-[40%] 2lg:w-[40%]  2lg:h-[50%] p-8 overflow-y-auto rounded-md pdf-scrollbar"
+          className="w-[90%] h-[60%] md:w-[30%] 2lg:w-[30%]  2lg:h-[50%] p-8 overflow-y-auto rounded-md pdf-scrollbar"
           onClose={handleCloseModal}
         >
           <Image
-            className="fixed top-2 right-2"
+            className="fixed top-2 right-2 cursor-pointer"
             src="/calendar/close.svg"
             alt="close"
             width={24}
@@ -72,10 +72,10 @@ const EventDialog: React.FC<EventDialogProps> = ({
                   <li>{e.description}</li>
 
                   {e.allDay == 'true' ? (
-                    <li>All Day</li>
+                    <li className="text-sm">Time: All Day</li>
                   ) : (
-                    <li className="text-sm text-gray-500">
-                      {e.fromTime} - {e.toTime}
+                    <li className="text-sm">
+                      Time: {e.fromTime} - {e.toTime}
                     </li>
                   )}
                 </div>

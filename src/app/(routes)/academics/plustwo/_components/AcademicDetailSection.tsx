@@ -77,7 +77,7 @@ const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
                 </div>
                 <div
                   id="testimonial"
-                  className="space-x-3 absolute top-0 right-0 w-24 h-12 flex "
+                  className="space-x-3 absolute -top-2 sm:top-0 right-0 w-24 h-12 flex "
                 >
                   <div className="swiper-button-prev">
                     <IoIosArrowRoundBack className="text-body text-2xl font-light 2lg:bg-white rounded-full w-10 h-10 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white shadow-md" />
@@ -121,6 +121,7 @@ const SwiperWrapper = ({ children }: { children: ReactNode }) => {
       modules={[Pagination, Navigation]}
       loop={true}
       {...swiperParams}
+      className="!mt-2 sm:!mt-0"
     >
       {children}
     </Swiper>
