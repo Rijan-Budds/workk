@@ -84,7 +84,7 @@ export const PdfViewerModal = ({
       onMouseEnter={() => SetMouseOver(true)}
       onMouseLeave={() => SetMouseOver(false)}
       onMouseOver={() => SetMouseOver(true)}
-      className="w-[90vw]   2lg:max-w-[50vw] overflow-x-clip  p-6 bg-white 2lg:min-h-[80vh]"
+      className="w-[90vw] 2lg:max-w-[50vw] overflow-x-clip  p-6 bg-white 2lg:min-h-[80vh]"
     >
       <CloseButton handleClick={() => setOpen(false)} />
       <div className="bg-background px-3 py-[17px] shadow z-10 relative flex items-center justify-between gap-x-3">

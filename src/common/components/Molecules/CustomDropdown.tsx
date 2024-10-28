@@ -44,11 +44,17 @@ export const CustomDropdown = ({
   const [open, setOpen] = useState<boolean>(false)
 
   return (
-    <div className="flex flex-col gap-y-2 w-full z-50 relative">
+    <div className="flex flex-col gap-y-2 w-full relative">
+      {open && (
+        <div
+          className="fixed inset-0 z-40 bg-transparent"
+          onClick={() => setOpen(false)}
+        />
+      )}
       <label
         htmlFor={label}
         className={cn(
-          'text-body font-normal text-[14px] leading-4 font-workSans',
+          'text-body font-normal text-[14px] leading-4 font-workSans z-50',
           classNameLabel
         )}
       >
@@ -70,11 +76,12 @@ export const CustomDropdown = ({
               setFieldValue(field, value)
             }
           }
+          setOpen(false) // Close dropdown after selecting an option
         }}
       >
         <SelectTrigger
           className={cn(
-            'rounded-lg p-4 text-body  leading-4 text-[14px] font-workSans ',
+            'rounded-lg p-4 text-body leading-4 text-[14px] font-workSans z-50',
             {
               'text-black text-[16px] ':
                 value.length || typeof value === 'boolean',
@@ -89,13 +96,14 @@ export const CustomDropdown = ({
             })}
           />
         </SelectTrigger>
-        <SelectContent className="border-b-2 border-border">
+        <SelectContent className="border-b-2 border-border z-50 relative">
           <SelectGroup>
             {list.map((d) => (
               <SelectItem
                 key={d.value}
                 value={d.value}
                 className="font-poppins text-body"
+                onClick={(event) => event.stopPropagation()}
               >
                 {d.title}
               </SelectItem>
