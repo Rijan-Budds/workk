@@ -11,7 +11,7 @@ const NewsAndEvents = () => {
     <HomeWrapper isBg>
       <div
         className={cn(
-          'flex flex-col 2lg:flex-row gap-6 2xl:gap-x-6 justify-between 3xl:gap-6 max-h-[465px]'
+          'flex flex-col 2lg:flex-row gap-6 2xl:gap-x-6 justify-between 3xl:gap-6 min-h-[465px]'
         )}
       >
         <div className="2lg:max-w-[820px] ">
