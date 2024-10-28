@@ -44,7 +44,7 @@ export const CustomDropdown = ({
   const [open, setOpen] = useState<boolean>(false)
 
   return (
-    <div className="flex flex-col gap-y-2 w-full">
+    <div className="flex flex-col gap-y-2 w-full z-50 relative">
       <label
         htmlFor={label}
         className={cn(

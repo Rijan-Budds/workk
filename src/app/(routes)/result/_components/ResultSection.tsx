@@ -77,7 +77,7 @@ const ResultSection = ({
         <h1 className="text-heading font-poppins font-medium text-xl leading-6 hidden md:block">
           Result of {active === 'PLUS_TWO' ? 'Plus Two' : 'School'}
         </h1>
-        <div className="relative w-full md:max-w-[380px]">
+        <div className="relative w-full md:max-w-[380px] z-50">
           <CustomDropdown
             list={returnDropDownList()}
             placeHolder="Filter by Programs"
@@ -94,8 +94,8 @@ const ResultSection = ({
           />
         </div>
       </div>
-      <div className=" mt-10">{renderResultUi()}</div>
-      {openModal && (
+      <div className="mt-10">{renderResultUi()}</div>
+      {openModal && pdfSrc && (
         <CustomModal isOpen={openModal}>
           <PdfViewerModal setOpen={setOpenModal} src={pdfSrc} />
         </CustomModal>

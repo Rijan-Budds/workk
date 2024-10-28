@@ -128,7 +128,7 @@ export const SchoolLevelDropdownList = [
   },
   {
     title: 'Pre-School (Kindergarten)',
-    value: 'pre-school-kindergarden',
+    value: 'pre-school-kindergarten',
   },
   {
     title: 'Primary Level (One - Five)',
@@ -136,7 +136,7 @@ export const SchoolLevelDropdownList = [
   },
   {
     title: 'Basic Level (Six - Eight)',
-    value: 'basic-levl-six-eight',
+    value: 'basic-level-six-eight',
   },
   {
     title: 'Senior Level (Nine - Ten)',
