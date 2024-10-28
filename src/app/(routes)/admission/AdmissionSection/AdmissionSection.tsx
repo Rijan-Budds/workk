@@ -71,11 +71,13 @@ const AdmissionSection = () => {
             admissions={admissions?.data || []}
             onFilterChange={handleFilterChange}
           />
-          <AdmissionDetail selectedAdmission={selectedAdmission?.data} />
-          <AdmissionSideBar
-            admissions={admissions}
-            onFilterChange={handleFilterChange}
-          />
+          <div className="flex flex-col 2lg:flex-row justify-between w-full">
+            <AdmissionDetail selectedAdmission={selectedAdmission?.data} />
+            <AdmissionSideBar
+              admissions={admissions}
+              onFilterChange={handleFilterChange}
+            />
+          </div>
         </>
       )
     } else if (admissions?.data.length === 0) {

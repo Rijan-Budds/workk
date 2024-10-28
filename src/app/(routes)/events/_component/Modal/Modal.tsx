@@ -5,14 +5,11 @@ import React, { useEffect, useRef } from 'react'
 
 type ModalContainerProps = {
   className?: string
-  isOpen: boolean
   onClose?: () => void
   children: React.ReactNode
 }
 
 const ModalContainer: React.FC<ModalContainerProps> = ({
-  isOpen,
-
   onClose,
   children,
   className,
@@ -43,12 +40,6 @@ const ModalContainer: React.FC<ModalContainerProps> = ({
         }
       )
     }
-
-    if (isOpen) {
-      document.body.style.overflowY = 'hidden'
-    } else {
-      document.body.style.overflowY = ''
-    }
   }, [])
 
   return (
@@ -63,7 +54,7 @@ const ModalContainer: React.FC<ModalContainerProps> = ({
         ref={modalRef}
         id="modal-container"
         className={cn(
-          'absolute top-[50%] left-[50%]  transform -translate-x-1/2 -translate-y-1/2 rounded-lg z-[10000] bg-white',
+          'fixed top-[50%] left-[50%]  transform -translate-x-1/2 -translate-y-1/2 rounded-lg z-[10000] bg-white',
           className
         )}
       >

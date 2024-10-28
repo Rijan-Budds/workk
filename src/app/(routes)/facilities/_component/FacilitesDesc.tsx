@@ -16,7 +16,7 @@ export const FacilitesDesc = ({ detail }: { detail: IFacilityData }) => {
 
       <p
         dangerouslySetInnerHTML={{ __html: cleanHtml }}
-        className="text-body font-workSans font-normal text-[16px] leading-[27.2px] mt-4 break-all"
+        className="text-body font-workSans font-normal text-[16px] leading-[27.2px] mt-4  text-balance"
       />
       <Link href={'/apply'}>
         <Button className="mt-8 w-full md:w-fit md:my-8">
