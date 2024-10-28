@@ -46,7 +46,7 @@ export const ScrollToTopUi = ({ layout }: { layout: string }) => {
     <button
       onClick={scrollToTop}
       className={cn(
-        'rounded-full fixed bottom-[0%] right-12 z-[999] size-12 opacity-0  pointer-events-none  transition-all duration-300',
+        'rounded-full fixed bottom-[0%] right-12 z-[99] size-12 opacity-0  pointer-events-none  transition-all duration-300',
         {
           'opacity-100 bottom-[5%] pointer-events-auto duration-300 transition-all ':
             showScrollButton,

@@ -28,7 +28,7 @@ export const ImageDropZone = ({
   const [isDragging, setDragging] = useState<boolean>(false)
   const handleMetaData = (files: File[]) => {
     const prevFiles = values?.document || []
-    const combinedFiles = [...prevFiles, ...files]
+    const combinedFiles = [...prevFiles, ...files].slice(0, 5)
 
     if (combinedFiles) {
       if (combinedFiles.length < 6) {
@@ -106,9 +106,14 @@ export const ImageDropZone = ({
             />
             <span className="text-secondary font-workSans">browse</span>
           </p>
-          <p className="text-body font-workSans text-[14px] leading-4">
-            Max File 1OMB (.pdf/.doc/.docx)
-          </p>
+          <div className="flex flex-col items-center">
+            <p className="text-body font-workSans text-[14px] leading-4 mb-2">
+              Upload Limit: Maximum 5 files
+            </p>
+            <p className="text-body font-workSans text-[14px] leading-4">
+              File Size: Up to 10MB each (.pdf, .doc, .docx)
+            </p>
+          </div>
         </div>
       </label>
       <span className="font-workSans font-normal text-[14px] leading-4 text-body -mt-4">
