@@ -12,6 +12,7 @@ export const SwiperButtonNext = ({
   isEnd?: boolean
 }) => {
   const swiper = useSwiper()
+
   return (
     <button
       onClick={() => swiper.slideNext()}

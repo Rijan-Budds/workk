@@ -1,7 +1,13 @@
 'use client'
 
+import { ContactDropdown } from '@/app/(home)/_components/Contact/ContactDropdown'
 import { Button } from '@/common/components/Atom/Button'
+import { ButtonLoader } from '@/common/components/Atom/ButtonLoader'
 import { Input } from '@/common/components/Atom/Input'
+import { ToastClose } from '@/common/components/ui/toast'
+import { contactForm } from '@/common/constant/route'
+import { toast } from '@/common/hook/use-toast'
+import Axios from '@/common/utils/Axios'
 import {
   emailValidation,
   fullNameValidation,
@@ -10,15 +16,9 @@ import {
   phoneNumberValidation,
 } from '@/common/utils/validation'
 import { Form, Formik, FormikHelpers } from 'formik'
-import React, { useEffect, useState } from 'react'
-import * as Yup from 'yup'
-import { ContactDropdown } from '@/app/(home)/_components/Contact/ContactDropdown'
-import Axios from '@/common/utils/Axios'
-import { contactForm } from '@/common/constant/route'
-import { toast } from '@/common/hook/use-toast'
-import { ToastClose } from '@/common/components/ui/toast'
 import Image from 'next/image'
-import { ButtonLoader } from '@/common/components/Atom/ButtonLoader'
+import { useEffect, useState } from 'react'
+import * as Yup from 'yup'
 
 const AdmissionForm = () => {
   const [message, setMessage] = useState<string>('')
@@ -137,7 +137,7 @@ const AdmissionForm = () => {
                   label="Level"
                   setFieldValue={setFieldValue}
                   error={errors.level!}
-                  isError={!!errors.level}
+                  isError={!!errors.level && touched.level}
                   className="text-body"
                 />
                 <Input
