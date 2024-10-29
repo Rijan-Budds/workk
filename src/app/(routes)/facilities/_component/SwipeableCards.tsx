@@ -1,15 +1,15 @@
 'use client'
 
-import React, { Dispatch, SetStateAction } from 'react'
-import { SwiperSlide, Swiper } from 'swiper/react'
-import 'swiper/css'
 import {
   SwiperButtonNext,
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
-import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
-import { Images } from '../interface/facilityInterface'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+import { Dispatch, SetStateAction } from 'react'
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
+import 'swiper/css'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Images } from '../interface/facilityInterface'
 
 export const SwipeableCards = ({
   setActiveSrc,
@@ -22,7 +22,7 @@ export const SwipeableCards = ({
     <div className="2lg:overflow-x-hidden md:max-w-[324px]   2lg:max-w-[503px]  ">
       <Swiper
         breakpoints={{
-          300: { slidesPerView: 2, spaceBetween: 10 },
+          300: { slidesPerView: 3, spaceBetween: 20 },
           600: { slidesPerView: 3, spaceBetween: 10 },
           768: { slidesPerView: 2, spaceBetween: 10 },
           1280: { slidesPerView: 3, spaceBetween: 10 },

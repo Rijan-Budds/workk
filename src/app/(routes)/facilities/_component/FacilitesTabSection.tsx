@@ -29,9 +29,9 @@ export const FacilitesTabSection = ({ slug }: { slug: string }) => {
   }, [])
 
   return (
-    <div className="flex justify-around 2xl:justify-between flex-col gap-y-6 gap-x-6 md:flex-row 2lg:gap-x-4 2xl_md:gap-x-4 2xl:gap-x-3 2xl_lg:gap-x-3 3xl:gap-x-1 items-start">
+    <div className="flex justify-around 2xl:justify-between flex-col gap-y-6 gap-x-6 md:flex-row lg:gap-x-10 2lg:gap-x-12 xl:gap-x-10  2xl_md:gap-x-6 2xl:gap-x-3 2xl_lg:gap-x-3 3xl:gap-x-1 items-start">
       {activeSrc && <ActiveImage src={activeSrc} />}
-      <div className="flex flex-col md:flex-col-reverse gap-y-3  2lg:max-w-[503px]  ">
+      <div className="flex flex-col md:flex-col-reverse gap-y-3  2lg:max-w-[503px]">
         {facility?.images && (
           <SwipeableCards setActiveSrc={setActiveSrc} data={facility?.images} />
         )}

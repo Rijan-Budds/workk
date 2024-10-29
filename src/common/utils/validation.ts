@@ -37,7 +37,7 @@ export const emailValidation = Yup.string()
 
   .typeError('Required')
 
-  .required('Required')
+  .required('Email is a required field')
 
 export const phoneNumberValidation = Yup.string()
   .matches(
