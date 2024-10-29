@@ -111,7 +111,7 @@ export const ImageDropZone = ({
               Upload Limit: Maximum 5 files
             </p>
             <p className="text-body font-workSans text-[14px] leading-4">
-              File Size: Up to 10MB each (.pdf, .doc, .docx)
+              File Size: Up to 10MB each (.pdf)
             </p>
           </div>
         </div>

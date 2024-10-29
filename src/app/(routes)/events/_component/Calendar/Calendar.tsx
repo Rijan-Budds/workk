@@ -248,7 +248,7 @@ const CalendarEvent = ({
   ])
 
   return (
-    <div className={cn('2lg:flex justify-between ', className)}>
+    <div className={cn('2lg:flex justify-between', className)}>
       <div
         className={cn('flex flex-col p-2 md:p-4 rounded-md w-full')}
         {...rest}

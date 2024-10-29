@@ -4,7 +4,6 @@ import React from 'react'
 import { HomeWrapper } from '../../Atom/HomeWrapper'
 import Image from 'next/image'
 import { NavHeaderLink } from './NavHeaderLink'
-import { useRouter } from 'next/navigation'
 import {
   ISettings,
   ISocialMediaData,
@@ -16,13 +15,12 @@ export const NavHeader = ({
 }: {
   socialLinks: ISettings | undefined
 }) => {
-  const router = useRouter()
   const handleMailClick = (mail: string) => {
-    router.push(`mailto:${mail}`)
+    window.location.href = `mailto:${mail}`
   }
 
   const handleRedirectContact = (contact: string) => {
-    router.push(`tel:${contact}`)
+    window.location.href = `tel:${contact}`
   }
 
   const getMail = socialLinks?.data.filter((d) => d.key === 'Email')

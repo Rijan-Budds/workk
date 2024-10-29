@@ -14,7 +14,11 @@ export const CustomModal = ({
     if (isOpen) {
       document.body.style.overflowY = 'hidden'
     } else {
-      document.body.style.overflowY = ''
+      document.body.style.overflowY = 'auto'
+    }
+
+    return () => {
+      document.body.style.overflowY = 'auto'
     }
   }, [isOpen])
   const ModalCustomStyles = {
@@ -31,7 +35,7 @@ export const CustomModal = ({
   }
 
   return (
-    <Modal preventScroll={true} style={ModalCustomStyles} isOpen={isOpen}>
+    <Modal style={ModalCustomStyles} isOpen={isOpen} ariaHideApp={false}>
       {children}
     </Modal>
   )

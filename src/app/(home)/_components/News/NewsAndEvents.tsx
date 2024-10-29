@@ -5,8 +5,10 @@ import { cn } from '@/lib/utils'
 import NewsSection from './NewsSection'
 import Notice from './Notice'
 import './notice.css'
+import { CheckIsIos } from '@/common/hook/useIos'
 
 const NewsAndEvents = () => {
+  const isIos = CheckIsIos()
   return (
     <HomeWrapper isBg>
       <div
@@ -17,7 +19,11 @@ const NewsAndEvents = () => {
         <div className="2lg:max-w-[820px] ">
           <NewsSection />
         </div>
-        <div className="flex justify-center 2lg:justify-start ">
+        <div
+          className={cn('flex justify-center 2lg:justify-start ', {
+            '2lg:justify-end w-full': isIos,
+          })}
+        >
           <Notice />
         </div>
       </div>

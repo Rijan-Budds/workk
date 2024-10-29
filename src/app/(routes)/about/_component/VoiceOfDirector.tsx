@@ -15,11 +15,15 @@ import { NoDataFound } from '@/common/components/NoDataFound'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { FaFacebookF, FaXTwitter } from 'react-icons/fa6'
 import { AiFillInstagram } from 'react-icons/ai'
+import { CheckIsIos } from '@/common/hook/useIos'
+import { cn } from '@/common/utils/utils'
 
 const VoiceOfDirector = () => {
   const [response, setResponse] = useState<IVoiceOfManagementResponse | null>(
     null
   )
+
+  const isIos = CheckIsIos()
 
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -60,8 +64,19 @@ const VoiceOfDirector = () => {
         >
           {response.data.map((voice, index) => (
             <SwiperSlide key={index}>
-              <div className="relative justify-between md:gap-[40px] lg:gap-[80px] p-4 w-full flex flex-col md:flex-row-reverse">
-                <div className="relative lg:max-w-[552px] md:mt-[18px] h-[382px] md:h-[462px] lg:h-[726px]">
+              <div
+                className={cn(
+                  'relative justify-between md:gap-[40px] lg:gap-[80px] p-4 w-full flex flex-col md:flex-row-reverse'
+                )}
+              >
+                <div
+                  className={cn(
+                    'relative  lg:max-w-[552px] md:mt-[18px] h-[382px] md:h-[462px] lg:h-[726px]',
+                    {
+                      '2lg:w-[520px]': isIos,
+                    }
+                  )}
+                >
                   {/* Background shape */}
                   <div className="absolute bg-[#187EC0] w-[200px] 2lg:w-[289px] h-[226px] 2lg:h-[389px] right-0 -top-4 rounded-tr-3xl" />
 
