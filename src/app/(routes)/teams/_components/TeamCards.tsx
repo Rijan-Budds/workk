@@ -39,21 +39,21 @@ const TeamCards = ({ teams }: { teams: ITeamsData[] }) => {
                   target={team.twitter ? '_blank' : ''}
                   className={cn(``, team.twitter ? '' : 'cursor-not-allowed')}
                 >
-                  <FaXTwitter className="w-3 h-3" />
+                  <FaXTwitter className="size-4" />
                 </Link>
                 <Link
                   href={team.facebook || ''}
                   target={team.facebook ? '_blank' : ''}
                   className={cn(``, team.facebook ? '' : 'cursor-not-allowed')}
                 >
-                  <FaFacebookF className="w-3 h-3" />
+                  <FaFacebookF className="size-4" />
                 </Link>
                 <Link
                   href={team.instagram || ''}
                   target={team.instagram ? '_blank' : ''}
                   className={cn(``, team.instagram ? '' : 'cursor-not-allowed')}
                 >
-                  <AiFillInstagram className="w-[16px] h-[16px]" />
+                  <AiFillInstagram className="size-5" />
                 </Link>
               </ul>
             </div>

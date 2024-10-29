@@ -36,7 +36,14 @@ export const InputWithDate = ({
         >
           {label} {isRequired && '*'}
         </label>
-        <PopoverTrigger asChild onClick={() => setOpen((prev) => !prev)}>
+        <PopoverTrigger
+          asChild
+          onClick={() => {
+            setTimeout(() => {
+              setOpen((prev) => !prev)
+            }, 100)
+          }}
+        >
           <div
             className={cn(
               'flex justify-between min-h-[48px] text-black bg-white text-[16px] max-h-[200px] w-full rounded-[8px]  px-4 py-3 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 font-workSans placeholder:font-workSans border-[1px] border-border shadow-sm placeholder:text-[14px]',
@@ -79,7 +86,7 @@ export const InputWithDate = ({
             disabled={(date: Date) =>
               date > new Date() || date < new Date('1900-01-01')
             }
-            className="rounded-md   font-workSans "
+            className="rounded-md   font-workSans data-[state=open]:bdr "
           />
         </PopoverContent>
       </Popover>

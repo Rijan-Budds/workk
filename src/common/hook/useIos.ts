@@ -6,8 +6,7 @@ export const CheckIsIos = () => {
   useEffect(() => {
     const IsIos = () => {
       const userAgent = window.navigator.userAgent
-
-      return /iPad|iPhone|iPod |AppleWebKit /.test(userAgent)
+      return /iPad|iPhone|iPod|Macintosh|Mac OS X/.test(userAgent)
     }
 
     setIsIos(IsIos())

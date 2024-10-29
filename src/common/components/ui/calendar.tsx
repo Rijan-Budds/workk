@@ -22,9 +22,9 @@ function Calendar({
       classNames={{
         months: 'flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0',
         month: 'space-y-4',
-        caption: 'flex justify-center pt-1 relative ',
-        caption_label: 'text-sm font-medium hidden ',
-        nav: 'space-x-1 flex items-center  hidden ',
+        caption: 'flex justify-center pt-1 relative',
+        caption_label: 'text-sm font-medium hidden',
+        nav: 'space-x-1 flex items-center hidden',
         nav_button: cn(
           buttonVariants({ variant: 'outline' }),
           'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100'
@@ -45,21 +45,26 @@ function Calendar({
         day_selected: 'bg-secondary text-slate-50',
         day_today: '',
         day_outside:
-          'day-outside text-slate-500 opacity-50  aria-selected:text-slate-500 aria-selected:opacity-30 dark:text-slate-400 dark:aria-selected:bg-slate-800/50 dark:aria-selected:text-slate-400',
+          'day-outside text-slate-500 opacity-50 aria-selected:text-slate-500 aria-selected:opacity-30 dark:text-slate-400 dark:aria-selected:bg-slate-800/50 dark:aria-selected:text-slate-400',
         day_disabled: 'text-slate-500 opacity-50 dark:text-slate-400',
         day_range_middle:
-          ' aria-selected:text-slate-900 dark:aria-selected:bg-slate-800 dark:aria-selected:text-slate-50',
+          'aria-selected:text-slate-900 dark:aria-selected:bg-slate-800 dark:aria-selected:text-slate-50',
         day_hidden: 'invisible',
         ...classNames,
       }}
       components={{
-        IconLeft: () => <ChevronLeft className="h-4 w-4" />,
-        IconRight: () => <ChevronRight className="h-4 w-4" />,
+        IconLeft: () => (
+          <ChevronLeft className="h-4 w-4" aria-label="Previous month" />
+        ),
+        IconRight: () => (
+          <ChevronRight className="h-4 w-4" aria-label="Next month" />
+        ),
       }}
       {...props}
     />
   )
 }
+
 Calendar.displayName = 'Calendar'
 
 export { Calendar }
