@@ -43,6 +43,8 @@ export const CustomDropdown = ({
 }: ICustomDropdownProps) => {
   const [open, setOpen] = useState<boolean>(false)
 
+  const handleToggle = () => setOpen((prev) => !prev)
+
   return (
     <div className="flex flex-col gap-y-2 w-full relative">
       {open && (
@@ -63,7 +65,7 @@ export const CustomDropdown = ({
       <Select
         open={open}
         value={typeof value === 'boolean' ? (value ? 'TRUE' : 'FALSE') : value}
-        onOpenChange={() => setOpen((prev) => !prev)}
+        onOpenChange={(isOpen) => setOpen(isOpen)}
         onValueChange={(value) => {
           if (isBoolean) {
             if (value === 'TRUE' && setFieldValue) {
@@ -76,7 +78,7 @@ export const CustomDropdown = ({
               setFieldValue(field, value)
             }
           }
-          setOpen(false) // Close dropdown after selecting an option
+          setOpen(false)
         }}
       >
         <SelectTrigger
@@ -88,6 +90,7 @@ export const CustomDropdown = ({
               'border border-error': isError,
             }
           )}
+          onClick={handleToggle}
         >
           <SelectValue placeholder={placeHolder} />
           <ChevronDown
@@ -96,14 +99,13 @@ export const CustomDropdown = ({
             })}
           />
         </SelectTrigger>
-        <SelectContent className="border-b-2 border-border z-50 relative">
+        <SelectContent className="border-b-2 border-border  relative z-[999999]">
           <SelectGroup>
             {list.map((d) => (
               <SelectItem
                 key={d.value}
                 value={d.value}
                 className="font-poppins text-body"
-                onClick={(event) => event.stopPropagation()}
               >
                 {d.title}
               </SelectItem>
