@@ -26,7 +26,7 @@ export const TestimonialCard = ({ card }: { card: ITestimonialData }) => {
   return (
     <>
       <div
-        className={`max-w-[397px] 2xl_lg:w-[400px] min-h-[354px] rounded-[12px] relative mx-auto flex flex-col ${
+        className={`max-w-[397px] 2xl_lg:w-[400px] min-h-[354px] rounded-[12px] relative mx-auto flex flex-col selection:bg-transparent ${
           isHomePage ? 'bg-white' : 'bg-background'
         }`}
       >

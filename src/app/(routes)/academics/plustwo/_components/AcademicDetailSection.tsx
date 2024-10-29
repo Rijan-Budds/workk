@@ -1,7 +1,6 @@
 'use client'
 import { swiperParams } from '@/app/(home)/_components/Testimonials/TestimonialsSection'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
-
 import { TestimonialCard } from '@/app/(home)/_components/Testimonials/TestimonialCard'
 import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/testimonial'
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
