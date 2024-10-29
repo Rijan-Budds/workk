@@ -29,7 +29,7 @@ const MiddleBanner = () => {
       />
       <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center gap-6 px-8 lg:px-6">
         <div className="md:w-[608px]">
-          <h1 className="text-white font-poppins text-[32px] font-medium leading-10">
+          <h1 className="text-white font-poppins text-[28px] md:text-[32px] font-medium leading-10">
             Fostering a Community of Learning
           </h1>
           <p className="text-white font-workSans text-base leading-7 font-normal">

@@ -46,17 +46,11 @@ export const CustomDropdown = ({
   const handleToggle = () => setOpen((prev) => !prev)
 
   return (
-    <div className="flex flex-col gap-y-2 w-full relative">
-      {open && (
-        <div
-          className="fixed inset-0 z-40 bg-transparent"
-          onClick={() => setOpen(false)}
-        />
-      )}
+    <div className="flex flex-col gap-y-2 w-full">
       <label
         htmlFor={label}
         className={cn(
-          'text-body font-normal text-[14px] leading-4 font-workSans z-50',
+          'text-body font-normal text-[14px] leading-4 font-workSans',
           classNameLabel
         )}
       >
@@ -83,7 +77,7 @@ export const CustomDropdown = ({
       >
         <SelectTrigger
           className={cn(
-            'rounded-lg p-4 text-body leading-4 text-[14px] font-workSans z-50',
+            'rounded-lg p-4 text-body  leading-4 text-[14px] font-workSans relative',
             {
               'text-black text-[16px] ':
                 value.length || typeof value === 'boolean',
