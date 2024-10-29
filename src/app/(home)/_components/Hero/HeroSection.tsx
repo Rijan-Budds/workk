@@ -33,7 +33,9 @@ export const HeroSection = ({
                 </h1>
                 <p className="font-workSans text-[16px] leading-[27.2px] text-white font-normal mt-2 text-center 2lg:text-left">
                   At Pawan Prakriti, we believe in nurturing every
-                  student&apos;s potential to create tomorrow&apos;s leaders.
+                  student&apos;s potential to create
+                  <br />
+                  tomorrow&apos;s leaders.
                 </p>
                 <div className="flex flex-col md:flex-row gap-y-4 justify-center 2lg:justify-start w-full mt-[32px]  md:gap-x-4">
                   <Link href={'/apply'}>
