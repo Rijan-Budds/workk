@@ -62,7 +62,7 @@ const ResultUi = () => {
         key={'result'}
       />
       <HomeWrapper>
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center ">
           <TabAnimation
             activeTab={activeTab}
             handleDynamicData={handleDynamicData}
