@@ -1,15 +1,14 @@
+import { CircleCardWrapper } from '@/common/components/Atom/CircleCardWrapper'
+import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
+import { NoDataFound } from '@/common/components/NoDataFound'
+import { cn } from '@/common/utils/utils'
+import { format } from 'date-fns'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
-import { recentPostData } from '../constant/newsdata'
-import { cn } from '@/common/utils/utils'
-import { CircleCardWrapper } from '@/common/components/Atom/CircleCardWrapper'
 import { inquiriesData } from '../../academics/constants/data'
-import { INewsItem } from '../interface/newsType'
-import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
-import { format } from 'date-fns'
-import { NoDataFound } from '@/common/components/NoDataFound'
 import { IBrochureItem } from '../../brochure/interface/brochureType'
+import { recentPostData } from '../constant/newsdata'
+import { INewsItem } from '../interface/newsType'
 
 export const DownloadUi = ({ data }: { data: IBrochureItem[] | undefined }) => {
   return (
@@ -139,7 +138,7 @@ export const InquiriesUi = () => {
       {inquiriesData.map((inquiry, idx) => (
         <div className="flex justify-start items-center gap-x-3" key={idx}>
           <Image src={inquiry.image} width={20} height={20} alt="alt inquiry" />
-          <div className="text-body font-workSans font-medium text-base leading-7">
+          <div className="text-body font-workSans font-medium text-sm md:text-base md:leading-7">
             {inquiry.title}
           </div>
         </div>

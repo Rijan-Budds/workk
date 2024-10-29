@@ -46,7 +46,7 @@ const EventDialog: React.FC<EventDialogProps> = ({
 
       {isModalActive && (
         <ModalContainer
-          className="w-[90%] h-[60%] md:w-[30%] 2lg:w-[30%]  2lg:h-[50%] p-8 overflow-y-auto rounded-md pdf-scrollbar"
+          className="w-[90%] h-[60%] md:w-[30%] 2lg:w-[30%]  2lg:h-[30%] p-8 overflow-y-auto rounded-lg pdf-scrollbar"
           onClose={handleCloseModal}
         >
           <Image
