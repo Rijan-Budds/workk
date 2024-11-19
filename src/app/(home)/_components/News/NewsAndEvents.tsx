@@ -20,7 +20,7 @@ const NewsAndEvents = () => {
           <NewsSection />
         </div>
         <div
-          className={cn('flex justify-center 2lg:justify-start ', {
+          className={cn('flex justify-center 2lg:justify-start  w-full', {
             '2lg:justify-end w-full': isIos,
           })}
         >

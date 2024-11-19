@@ -13,7 +13,7 @@ const FacilitiesSwiperSection = async () => {
 
   return (
     <HomeWrapper
-      className="!px-0 !pl-4 md:!pl-12 lg:!pl-[60px] 2xl_lg:!pl-[240px] 3xl:!pl-[310px] 5xl:!pl-[540px]"
+      className="!px-0 md:!pl-12 lg:!pl-[60px] 2xl_lg:!pl-[240px] 3xl:!pl-[310px] 5xl:!pl-[540px]"
       isBg
     >
       <div className="flex flex-col 2lg:flex-row justify-between overflow-hidden gap-[47px]">

@@ -56,7 +56,7 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
       {response && response?.data.length > 0 && (
         <>
           <hr className="border-secondary border-dashed my-10" />
-          <div className="mt-10 relative 2lg:max-w-[787px]">
+          <div className="lg:mt-10 relative 2lg:max-w-[787px]">
             <div className="">
               <h2 className="text-heading text-xl font-poppins font-medium leading-5">
                 Our Happy Students
@@ -67,10 +67,10 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
               className="space-x-3 absolute top-0 right-0 w-28 h-12 hidden md:flex "
             >
               <div className="swiper-button-prev">
-                <IoIosArrowRoundBack className="text-body text-2xl font-light 2lg:bg-white rounded-full w-10 h-10 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+                <IoIosArrowRoundBack className="text-body text-2xl font-light 2lg:bg-white shadow rounded-full w-10 h-10 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
               </div>
               <div className="swiper-button-next">
-                <IoIosArrowRoundForward className="text-body text-2xl font-light 2lg:bg-white rounded-full w-10 h-10 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
+                <IoIosArrowRoundForward className="text-body text-2xl font-light 2lg:bg-white shadow rounded-full w-10 h-10 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white" />
               </div>
             </div>
             <SwiperWrapper>
