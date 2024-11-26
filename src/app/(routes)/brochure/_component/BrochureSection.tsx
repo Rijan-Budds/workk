@@ -33,7 +33,9 @@ export const BrochureSection = () => {
     const fetchBrochureResponse = async () => {
       try {
         const brochureDataResponse: IBrochureApiResponse | undefined =
-          await UseServerFetch(`/api/v1/brochure/`)
+          await UseServerFetch(
+            `/api/v1/brochure?page=${currentPage}&pageSize=${pageSize}`
+          )
         //rember to change this
         if (brochureDataResponse) {
           setBrochureData(brochureDataResponse?.data)
