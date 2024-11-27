@@ -5,6 +5,7 @@ import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { cn } from '@/common/utils/utils'
 import { Dispatch, useRef } from 'react'
 import { IGalleryPhotoItem } from '../interface/galleryType'
+import Image from 'next/image'
 
 export const GalleryCard = ({
   gallery,
@@ -48,20 +49,20 @@ export const GalleryCard = ({
           />
 
           <button className="absolute bottom-[1.5rem] right-2 md:right-[1rem] bg-white  rounded-full  size-[32px] flex justify-center items-center">
-            <ImageWithPlaceholder
+            <Image
               width={10}
               height={11}
               alt="pause icon"
-              src={'/home/pause.svg'}
+              src="/home/pause.svg"
             />
           </button>
 
           <button className="absolute bottom-[1.5rem] right-12 md:right-[3.5rem] bg-white text-white p-2 rounded-full  size-[32px] flex justify-center items-center">
-            <ImageWithPlaceholder
+            <Image
               width={15}
               height={12}
               alt="fullscreen icon"
-              src={'/home/fullscreen.svg'}
+              src="/home/fullscreen.svg"
             />
           </button>
         </div>

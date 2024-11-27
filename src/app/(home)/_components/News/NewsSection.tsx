@@ -27,6 +27,7 @@ export const swiperParams = {
 
 const NewsSection = () => {
   const [response, setResponse] = useState<INewsResponseData | null>(null)
+  const [swiperReady, setSwiperReady] = useState(false)
 
   useEffect(() => {
     const fetchNewsAndNoticeList = async () => {
@@ -35,6 +36,7 @@ const NewsSection = () => {
           await UseServerFetch(`/api/v1/news-and-notice/type/NEWS`)
         if (newsNoticeData) {
           setResponse(newsNoticeData)
+          setSwiperReady(true)
         }
       } catch (error) {
         console.error('Error fetching news data:', error)
@@ -73,7 +75,7 @@ const NewsSection = () => {
               </>
             )}
           </div>
-          {response.data.length > 1 ? (
+          {response.data.length > 1 && swiperReady ? (
             <SwiperWrapper>
               {response.data.map((news) => (
                 <SwiperSlide key={news.id} className="mt-10 mx-auto max-h-4">
