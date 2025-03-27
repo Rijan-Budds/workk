@@ -34,7 +34,7 @@ export const NoticeModal = () => {
         <Image
           width={552}
           height={764}
-          src={'/home/announce.png'}
+          src={'/home/announce.jpg'}
           alt="notice announce image"
           className="w-full h-[90%]  object-contain"
         />
