@@ -27,3 +27,13 @@
 #news .swiper-button-prev::after {
   content: '' !important;
 }
+
+.custom-gaping-news {
+  justify-content: space-between;
+}
+
+@media (min-width: 1320px) and (max-width: 1536px) {
+  .custom-gaping-news {
+    justify-content: center;
+  }
+}
