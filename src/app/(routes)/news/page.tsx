@@ -1,10 +1,14 @@
 'use client'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import { NewsSection } from './_component/NewsSection'
 
 const NewsPage = () => {
-  return <NewsSection />
+  return (
+    <Suspense>
+      <NewsSection />
+    </Suspense>
+  )
 }
 
 export default NewsPage
