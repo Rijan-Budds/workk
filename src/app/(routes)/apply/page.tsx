@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Admission } from './_component/Admission'
 
 const ApplyPage = () => {
-  return <Admission />
+  return (
+    <Suspense>
+      <Admission />
+    </Suspense>
+  )
 }
 
 export default ApplyPage
