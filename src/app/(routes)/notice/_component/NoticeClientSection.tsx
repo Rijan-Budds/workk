@@ -18,9 +18,7 @@ export const NoticeClientSection = ({
   return (
     <div className="flex flex-col  gap-y-10 2lg:items-center">
       <p className="text-body font-workSans text-[16px] leading-[27.2px] font-normal text-center 2lg:max-w-[713px] ">
-        Stay up-to-date with the latest news and events at Pawan Prakriti
-        Secondary School. Discover student achievements, sporting highlights and
-        other event stories.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi libero tenetur commodi, doloremque placeat quo molestias aliquid et saepe fugit beatae repellat rem sit alias distinctio corporis ratione voluptates totam.
       </p>
       <div className="grid  2lg:grid-cols-3 gap-6">
         {filterNotice &&

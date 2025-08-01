@@ -12,7 +12,7 @@ export const GallerySection = () => {
           <div className="flex flex-col justify-center items-center gap-y-2 ">
             <MiniHeading className="text-secondary ">galleries</MiniHeading>
             <SectionHeading className="md:text-[38px]">
-              Life at PPESS
+              lorem
             </SectionHeading>
           </div>
           <GallerySlider />

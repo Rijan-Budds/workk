@@ -31,7 +31,7 @@ const SchoolSection = () => {
     <div className="relative space-y-6 max-w-[77.5rem] flex gap-y-6 flex-col-reverse md:flex-row items-start justify-center flex-wrap mx-auto">
       <div className="rounded-xl w-full md:w-[50%] z-50 relative">
         <Image
-          src="/home/academic1.png"
+          src="/home/about1.1.jpg"
           width={610}
           height={405}
           alt="academic1 "
@@ -55,9 +55,7 @@ const SchoolSection = () => {
           <SectionHeading>School Level</SectionHeading>
           <hr className="my-6" />
           <p className="font-workSans text-base leading-7 font-normal text-body">
-            Our school-level programs focus on building a strong foundation in
-            core subjects while nurturing creativity and critical thinking
-            skills.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium similique, dicta cum placeat cumque odio minima. Error dolorem officia beatae, ex voluptatibus deserunt illum expedita sed doloribus tenetur quaerat quo?
           </p>
         </div>
 

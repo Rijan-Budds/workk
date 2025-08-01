@@ -14,12 +14,7 @@ export const BrochureUi = ({ data }: { data: IBrochureItem[] | undefined }) => {
     <>
       <div className="flex flex-col  gap-y-10 2lg:items-center">
         <p className="text-body font-workSans text-[16px] leading-[27.2px] font-normal text-center 2lg:max-w-[713px] ">
-          Discover why Pawan Prakriti English Secondary School (PPESS) is the
-          right choice for your child&apos;s education. Our comprehensive
-          brochure provides insights into our academic programs,
-          state-of-the-art facilities, co-curricular activities, and our
-          commitment to nurturing well-rounded individuals. Get all the
-          information you need to make an informed decision.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia eum iusto ratione maiores, reprehenderit perspiciatis tempora. Error eos aspernatur deserunt nulla, quas praesentium omnis quos unde eligendi similique blanditiis ullam.
         </p>
         <div className="grid  2lg:grid-cols-3 gap-6">
           {data &&

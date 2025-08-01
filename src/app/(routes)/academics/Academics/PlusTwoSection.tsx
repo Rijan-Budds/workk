@@ -42,12 +42,7 @@ const PlusTwoSection = () => {
           <SectionHeading>Plus Two</SectionHeading>
           <hr className="my-6" />
           <p className="font-workSans text-base leading-7 font-normal text-body">
-            We offer specialized streams to prepare students for higher
-            education and future careers We also have co-curricular activities
-            at PPESS. By participating in these activities, our students not
-            only excel in academics but also acquire the skills and values
-            necessary to become responsible, confident, and dynamic leaders of
-            tomorrow.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur fugiat impedit neque placeat dolores hic repellat libero perspiciatis tempora fugit, numquam illo temporibus eaque unde aperiam quasi, nihil, minima nobis.
           </p>
           <hr className="my-6" />
         </div>
@@ -75,7 +70,7 @@ const PlusTwoSection = () => {
       </div>
       <div className="rounded-xl w-full md:w-[50%] z-50 relative">
         <Image
-          src="/home/academic1.png"
+          src="/home/about1.1.jpg"
           width={610}
           height={405}
           alt="academic1 "

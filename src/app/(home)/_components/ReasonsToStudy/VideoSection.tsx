@@ -37,8 +37,8 @@ export const VideoSection = ({
           width="819"
           className="rounded-[12px] z-[5] w-full 2lg:w-[819px]"
           videoRef={videoRef}
-          fallbackThumb="/home/video-thumb.png"
-          src="/home/video/school-promo.mov"
+          fallbackThumb="/home/videothumb.jpg"
+          src="/home/video/school.mp4"
         />
         <button
           onClick={handlePlayPause}

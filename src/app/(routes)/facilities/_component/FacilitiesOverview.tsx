@@ -29,27 +29,15 @@ const FacilitiesOverview = async () => {
         </div>
         <div className="w-full 2lg:max-w-[503px] flex flex-col justify-center mx-auto">
           <MiniHeading isMd className="text-start">
-            Pawan Prakriti English Secondary School
+          Naulo Jyoti English School
           </MiniHeading>
           <SectionHeading isMd className="mt-2 text-center md:text-start">
             Nurturing Tomorrow &apos;s Leaders
           </SectionHeading>
           <p className="font-workSans text-body font-normal text-[16px] leading-[27.2px] my-6">
-            At Pawan Prakriti English Secondary School, we recognize that
-            education is not confined to textbooks and classrooms. Our
-            co-curricular activities play a pivotal role in nurturing
-            well-rounded individuals by fostering creativity, leadership, and
-            social responsibility among our students. These activities are
-            carefully integrated into our curriculum, ensuring a balanced
-            development of both academic and personal skills.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia cupiditate quod voluptate perspiciatis accusantium ad ipsum aperiam non tenetur dolores aspernatur quaerat odio ex aliquid, doloribus eveniet dolor distinctio recusandae?
             <br /> <br />
-            Holistic Development through Diverse Opportunities: Our
-            co-curricular programs are designed to complement academic learning
-            by offering students a platform to explore and hone their interests
-            and talents. Whether it’s arts, music, drama, debate, or community
-            service, each activity is an opportunity for students to discover
-            their potential, build confidence, and develop essential life
-            skills.
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium assumenda mollitia, blanditiis et deleniti doloremque facilis sunt qui quisquam, dolorem esse labore quis voluptatem quae recusandae dicta totam unde quo.
           </p>
         </div>
       </div>

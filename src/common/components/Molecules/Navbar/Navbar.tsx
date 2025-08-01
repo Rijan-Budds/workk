@@ -55,17 +55,17 @@ export const Navbar = () => {
               <Image
                 width={56}
                 height={56}
-                src={'/home/logo.svg'}
+                src={'/home/footerlog.jpg'}
                 alt="School logo"
               />
             </Link>
 
             <Link href={'/'}>
               <h2 className="font-poppins font-semibold text-[20px] leading-6 text-heading">
-                Pawan Prakriti School
+                Naulo Jyoti English School
               </h2>
               <p className="text-[14px] leading-4 font-workSans font-normal mt-1">
-                Mahalaxmi Municipality-5, Tikathali, Lalitpur
+                Madhyapur Thimi
               </p>
             </Link>
           </div>

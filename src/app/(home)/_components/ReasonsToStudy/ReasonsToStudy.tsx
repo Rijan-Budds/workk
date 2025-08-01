@@ -40,12 +40,11 @@ export const ReasonsToStudy = ({
           </SectionHeading>
 
           <p className="font-workSans font-normal text-[16px] leading-[27.2px] text-center md:text-start 2lg:text-center text-heading">
-            At Pawan Prakriti, we&apos;re not just an institution –
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod laudantium nostrum quos voluptate, iusto quasi, ipsam, debitis delectus ex vero tempora culpa animi laboriosam fugit exercitationem est facere assumenda eum.
             <br className="hidden 2lg:block" />
-            we&apos;re your partners in success.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, voluptatem, ad quaerat adipisci et soluta quis cum ex inventore vel sint exercitationem delectus sed. Iusto molestiae saepe doloremque perferendis eveniet?
             <br className="hidden 2lg:block" />
-            Join us to unlock your full potential and pave the way for a bright
-            future.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos voluptas id exercitationem fuga dignissimos tempora sit qui fugiat voluptatum. Expedita iure nam nisi facilis ipsa facere numquam veritatis dolores esse.
           </p>
         </div>
         <div className="flex flex-col-reverse 2lg:flex-row justify-between 2lg:items-center mt-4">

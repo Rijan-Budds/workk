@@ -24,7 +24,7 @@ export const HeroSection = ({
             <div className="flex flex-col gap-y-24 2lg:mt-16">
               <div className="flex flex-col gap-y-2 items-center 2lg:items-start">
                 <MiniHeading isMd className="text-center">
-                  Welcome to Pawan prakriti English Secondary School
+                    welcome to naulo jyoti english school
                 </MiniHeading>
 
                 <h1 className="text-[32px] md:text-[42px] leading-[41.6px] md:leading-[54.6px] text-center 2lg:text-left font-medium md:font-semibold text-white font-poppins">
@@ -32,17 +32,15 @@ export const HeroSection = ({
                   Futures.
                 </h1>
                 <p className="font-workSans text-[16px] leading-[27.2px] text-white font-normal mt-2 text-center 2lg:text-left">
-                  At Pawan Prakriti, we believe in nurturing every
-                  student&apos;s potential to create
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est aperiam et numquam expedita, labore corporis ratione culpa unde assumenda, libero asperiores aliquam laboriosam alias facilis vel iste. Qui, voluptas doloribus.
                   <br />
-                  tomorrow&apos;s leaders.
                 </p>
                 <div className="flex flex-col md:flex-row gap-y-4 justify-center 2lg:justify-start w-full mt-[32px]  md:gap-x-4">
-                  <Link href={'/apply'}>
+                  <Link href={'/#'}>
                     <Button className="w-full">Apply Now</Button>
                   </Link>
                   <Link
-                    href={'/academics'}
+                    href={'/#'}
                     className=" bg-white pr-6 pl-[10px] py-1 rounded-[8px] text-primary leading-4 font-medium flex items-center justify-center 2lg:justify-start gap-x-1"
                   >
                     <Image

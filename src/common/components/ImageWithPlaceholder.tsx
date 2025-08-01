@@ -16,13 +16,20 @@ export const ImageWithPlaceholder = ({
   height: number
   className?: string
 }) => {
+  const isAbsoluteUrl =
+    typeof src === 'string' &&
+    (src.startsWith('http') || src.startsWith('/'))
+
+  const resolvedSrc =
+    typeof src === 'string'
+      ? isAbsoluteUrl
+        ? src
+        : `${process.env.NEXT_PUBLIC_IMAGE_URL}/${src}`
+      : '/downloads/placeholder.svg'
+
   return (
     <Image
-      src={`${
-        src
-          ? process.env.NEXT_PUBLIC_IMAGE_URL + '/' + src
-          : '/downloads/placeholder.svg'
-      }`}
+      src={resolvedSrc}
       width={width}
       height={height}
       className={cn(className)}

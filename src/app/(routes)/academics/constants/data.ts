@@ -5,6 +5,6 @@ export const inquiriesData = [
   },
   {
     image: '/home/envelop (1).svg',
-    title: 'pawanprakriti2048@gmail.com',
+    title: 'lorem@gmail.com',
   },
 ]
