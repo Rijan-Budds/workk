@@ -20,7 +20,7 @@ const staticGalleryData: IHomeGallery[] = [
     id: '1',
     title: 'Gallery Image 1',
     photo: {
-      key: '/home/user1.jpg',
+      key: '/home/lib1.jpg',
       bucket: '',           // you can leave empty string if unused
       mimeType: 'image/jpeg',
     },
@@ -29,7 +29,7 @@ const staticGalleryData: IHomeGallery[] = [
     id: '2',
     title: 'Gallery Image 2',
     photo: {
-      key: '/home/user1.jpg',
+      key: '/home/kid1.jpg',
       bucket: '',
       mimeType: 'image/jpeg',
     },
@@ -38,7 +38,7 @@ const staticGalleryData: IHomeGallery[] = [
     id: '3',
     title: 'Gallery Image 3',
     photo: {
-      key: '/home/user1.jpg',
+      key: '/home/pri2.jpg',
       bucket: '',
       mimeType: 'image/jpeg',
     },
@@ -47,7 +47,7 @@ const staticGalleryData: IHomeGallery[] = [
     id: '3',
     title: 'Gallery Image 3',
     photo: {
-      key: '/home/user1.jpg',
+      key: '/home/lib3.jpg',
       bucket: '',
       mimeType: 'image/jpeg',
     },
@@ -56,7 +56,7 @@ const staticGalleryData: IHomeGallery[] = [
     id: '4',
     title: 'Gallery Image 4',
     photo: {
-      key: '/home/user1.jpg',
+      key: '/home/kid2.jpg',
       bucket: '',
       mimeType: 'image/jpeg',
     },
@@ -65,7 +65,7 @@ const staticGalleryData: IHomeGallery[] = [
     id: '5',
     title: 'Gallery Image 5',
     photo: {
-      key: '/home/user1.jpg',
+      key: '/home/hi3.jpg',
       bucket: '',
       mimeType: 'image/jpeg',
     },
