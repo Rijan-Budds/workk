@@ -1,80 +1,61 @@
 'use client'
-import { INewsResponseData } from '@/app/(routes)/news/interface/newsType'
 import { ShareModal } from '@/app/(routes)/notice/_component/ShareModal'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { NoDataFound } from '@/common/components/NoDataFound'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { cn } from '@/common/utils/utils'
 import { format } from 'date-fns'
 import { useRouter } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { IoMdShare } from 'react-icons/io'
+import { notices } from '@/data/notices'
 import './notice.css'
 
 const Notice = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [response, setResponse] = useState<INewsResponseData | null>(null)
+  const [isOpen, setIsOpen] = useState(false)
+  const [slug, setSlug] = useState('')
   const router = useRouter()
-  const [slug, setSlug] = useState<string>('')
+
+  const response = {
+    status: 200,
+    message: 'success',
+    data: notices,
+  }
+
+  const isDisableViewAll = response.data.length < 6
 
   const handleShareButtonClick = (event: React.MouseEvent) => {
     event.stopPropagation()
     setIsOpen(true)
   }
 
-  const isDisableViewAll = response && response.data && response.data.length < 6
-
-  useEffect(() => {
-    const fetchNewsAndNoticeList = async () => {
-      try {
-        const newsNoticeData: INewsResponseData | undefined =
-          await UseServerFetch(`/api/v1/news-and-notice/type/NOTICE`)
-        if (newsNoticeData) {
-          setResponse(newsNoticeData)
-        }
-      } catch (error) {
-        console.error('Error fetching news data:', error)
-      }
-    }
-    fetchNewsAndNoticeList()
-  }, [])
-
   const renderNoticeUi = () => {
-    if (response?.data && response.data.length > 0) {
+    if (response.data && response.data.length > 0) {
       return (
         <div className="w-full overflow-y-auto notice-scrollbar max-h-[376px] px-8">
-          {response &&
-            response.data.map((notice) => (
-              <div
-                key={notice.id}
-                onClick={() => router.push(`/notice/${notice.slug}`)}
-                className="py-3 flex justify-between border-b-[1px] group cursor-pointer"
-              >
-                <div>
-                  <h1
-                    className={`text-sm leading-4 font-medium transition-all duration-500 ${
-                      notice.isHoliday
-                        ? 'text-[#E0240A]'
-                        : 'text-primary group-hover:text-secondary'
-                    }`}
-                  >
-                    {notice.title}
-                  </h1>
-                  <p className="text-[#5D5F69] text-sm font-workSans font-normal">
-                    {notice.createdAt
-                      ? format(new Date(notice.createdAt), 'MMMM dd, yyyy') // Full month, day, and year
-                      : 'N/A'}
-                  </p>
-                </div>
-                <IoMdShare
-                  onClick={(e) => {
-                    handleShareButtonClick(e)
-                    setSlug(notice.slug)
-                  }}
-                  className="text-[23px] transition-all duration-500 text-primary"
-                />
+          {response.data.map((notice) => (
+            <div
+              key={notice.id}
+              className="py-3 flex justify-between border-b-[1px]"
+            >
+              <div className="flex-1 mr-4">
+                <h3 className="text-heading font-poppins font-medium text-base mb-1">
+                  {notice.title}
+                </h3>
+                <p className="text-[#5D5F69] text-sm font-workSans font-normal">
+                  {notice.createdAt
+                    ? format(new Date(notice.createdAt), 'MMMM dd, yyyy')
+                    : 'N/A'}
+                </p>
               </div>
-            ))}
+              <IoMdShare
+                onClick={(e) => {
+                  handleShareButtonClick(e)
+                  setSlug(notice.slug)
+                }}
+                className="text-[23px] transition-all duration-500 text-primary cursor-pointer"
+              />
+            </div>
+          ))}
         </div>
       )
     } else {
@@ -84,14 +65,14 @@ const Notice = () => {
 
   return (
     <>
-      <div className="bg-white rounded-xl  w-full md:w-[672px] lg:w-[80%] 2lg:w-[100%] 2lg:min-w-[320px] 2xl_lg:w-[396px]   2lg:max-w-[396px] 2lg:h-[465px] overflow-hidden pb-3 ">
+      <div className="bg-white rounded-xl w-full md:w-[672px] lg:w-[80%] 2lg:w-[100%] 2lg:min-w-[320px] 2xl_lg:w-[396px] 2lg:max-w-[396px] 2lg:h-[465px] overflow-hidden pb-3">
         <div className="py-8 pb-2 w-full">
-          <div className="flex justify-between  px-8 pb-6 items-center">
+          <div className="flex justify-between px-8 pb-6 items-center">
             <h1 className="text-xl font-poppins font-medium leading-6 text-heading">
               Notices
             </h1>
             <button
-              disabled={isDisableViewAll!}
+              disabled={isDisableViewAll}
               onClick={() => router.push('/news?type=notice')}
               className={cn(
                 'text-primary font-workSans font-normal text-[14px] leading-4',

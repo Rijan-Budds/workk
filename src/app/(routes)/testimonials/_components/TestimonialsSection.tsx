@@ -1,67 +1,92 @@
 'use client'
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { TestimonailBigCard } from './TestimonialBigCard'
-import { ITestimonialResponse } from '../_interface/testimonial'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
+import { ITestimonialData } from '../_interface/testimonial'
 import { NoDataFound } from '@/common/components/NoDataFound'
-import { Pagination } from '@/common/components/Pagination'
-import { UiLoader } from '@/common/components/Atom/UiLoader'
+
+const staticTestimonials: ITestimonialData[] = [
+  {
+    id: 1,
+    name: 'John Doe',
+    position: 'Frontend Developer at Google',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    image: {
+      key: '/home/user1.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
+  },
+  {
+    id: 2,
+    name: 'Jane Smith',
+    position: 'Software Engineer at Meta',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    image: {
+      key: '/home/user2.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
+  },
+  {
+    id: 3,
+    name: 'Ali Khan',
+    position: 'Backend Engineer at Amazon',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    image: {
+      key: '/home/user1.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
+  },
+  {
+    id: 4,
+    name: 'Sarah Wilson',
+    position: 'Full Stack Developer at Microsoft',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    image: {
+      key: '/home/user2.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
+  },
+  {
+    id: 5,
+    name: 'Mike Johnson',
+    position: 'DevOps Engineer at Netflix',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    image: {
+      key: '/home/user1.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
+  },
+  {
+    id: 6,
+    name: 'Emily Davis',
+    position: 'UI/UX Designer at Apple',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    image: {
+      key: '/home/user2.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
+  },
+]
 
 const TestimonialsSection = () => {
-  const [response, setResponse] = useState<ITestimonialResponse | null>(null)
-
-  const pageSize = 6
-  const [currentPage, setCurrentPage] = useState<number>(1)
-  const [totalCount, setTotalCount] = useState<number | undefined>(undefined)
-
-  const showPagination = () => {
-    if (totalCount && response && response.data.length < totalCount) {
-      return true
-    } else {
-      return false
-    }
-  }
-
-  const isPagination = showPagination()
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response: ITestimonialResponse | undefined = await UseServerFetch(
-          `/api/v1/testimonial?page=${currentPage}&pageSize=${pageSize}`
-        )
-
-        if (response) {
-          setResponse(response)
-          setTotalCount(response?.totalCount)
-        }
-      } catch (error) {
-        console.error('Error fetching testimonials:', error)
-      }
-    }
-
-    fetchData()
-  }, [currentPage])
-
   const renderTestimonialUi = () => {
-    if (response && response.data && response?.data.length > 0) {
+    if (staticTestimonials && staticTestimonials.length > 0) {
       return (
         <div className="grid md:grid-cols-2 gap-6">
-          {response?.data.map((card) => (
+          {staticTestimonials.map((card) => (
             <TestimonailBigCard card={card} key={card.id} />
           ))}
         </div>
       )
-    } else if (response && response?.data.length === 0) {
-      return <NoDataFound title="No Testimonial Found" />
     } else {
-      return (
-        <div className="min-h-[300px] flex justify-center items-center">
-          <UiLoader />
-        </div>
-      )
+      return <NoDataFound title="No Testimonial Found" />
     }
   }
 
@@ -73,19 +98,6 @@ const TestimonialsSection = () => {
       />
       <HomeWrapper>
         {renderTestimonialUi()}
-        <div className="w-full flex justify-center mt-10">
-          {isPagination && (
-            <Pagination
-              currentPage={Number(currentPage)}
-              pageSize={pageSize}
-              totalCount={Number(totalCount)}
-              onPageChange={(page: string | number) =>
-                setCurrentPage(page as number)
-              }
-              siblingCount={0}
-            />
-          )}
-        </div>
       </HomeWrapper>
     </>
   )

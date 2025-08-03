@@ -1,189 +1,88 @@
 'use client'
 
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
-import { UiLoader } from '@/common/components/Atom/UiLoader'
 import { CoverImage } from '@/common/components/Molecules/CoverImage'
 import { CustomModal } from '@/common/components/Molecules/Modal'
 import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
 import { NoDataFound } from '@/common/components/NoDataFound'
-import { Pagination } from '@/common/components/Pagination'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
-import { useEffect, useState } from 'react'
-import {
-  IGalleryPhotoItem,
-  IGalleryPhotoResponse,
-  IGalleryVideoItem,
-  IGalleryVideoResponse,
-} from '../interface/galleryType'
+import { useState } from 'react'
 import { GalleryCard } from './GalleryCard'
 import { GalleryModal } from './GalleryModal'
-import { VideoModal } from './VideoModal'
 
 type IType = 'photo' | 'video'
 
+// Static image data - only photos now
+const staticPhotos = [
+  {
+    id: 1,
+    title: 'School Building',
+    photo: { key: '/home/building.jpg' }
+  },
+  {
+    id: 2,
+    title: 'Classroom',
+    photo: { key: '/home/classroom.jpg' }
+  },
+  {
+    id: 3,
+    title: 'Transportation',
+    photo: { key: '/home/tran1.jpg' }
+  },
+  {
+    id: 4,
+    title: 'Library',
+    photo: { key: '/home/lib1.jpg' }
+  },
+  {
+    id: 5,
+    title: 'Science Lab',
+    photo: { key: '/home/lab1.jpg' }
+  },
+  {
+    id: 6,
+    title: 'Canteen',
+    photo: { key: '/home/can1.jpg' }
+  }
+]
+
 export const GallerySection = () => {
   const galleryTabs = [
-    {
-      title: 'Photos',
-      key: 'photo',
-    },
-    {
-      title: 'Videos',
-      key: 'video',
-    },
+    { title: 'Photos', key: 'photo' },
+    { title: 'Videos', key: 'video' }
   ]
 
   const [galleryTab, setGalleryTab] = useState<string>(galleryTabs[0].key)
-
-  const [galleryPhoto, setGalleryPhoto] = useState<
-    IGalleryPhotoItem[] | undefined
-  >(undefined)
-  const [galleryVideo, setGalleryVideo] = useState<
-    IGalleryVideoItem[] | undefined
-  >(undefined)
-
-  const [currentGalleryPhotoPage, setCurrentGalleryPhotoPage] =
-    useState<number>(1)
-
-  const [currentGalleryVideoPage, setCurrentGalleryVideoPage] =
-    useState<number>(1)
-
-  const [totalCountPhoto, setTotalCountPhoto] = useState<number | undefined>(
-    undefined
-  )
-  const [totalCountVideo, setTotalCountVideo] = useState<number | undefined>(
-    undefined
-  )
-  const pageSize = 6
   const [isModalOpen, setModalOpen] = useState<boolean>(false)
   const [activeImage, setActiveImage] = useState<number | null>(null)
   const [type, setType] = useState<IType>('photo')
 
-  const handleDynamicData = (type: IType) => {
-    setType(type)
-    setCurrentGalleryPhotoPage(1)
-    setCurrentGalleryVideoPage(1)
+  const handleTabClick = (title: string) => {
+    const newType = title === 'photo' ? 'photo' : 'video'
+    setType(newType)
+    setGalleryTab(title)
   }
-
-  const showPaginationPhoto = () => {
-    if (
-      totalCountPhoto &&
-      galleryPhoto &&
-      galleryPhoto.length < totalCountPhoto
-    ) {
-      return true
-    } else {
-      return false
-    }
-  }
-
-  const showPaginationVideo = () => {
-    if (
-      totalCountVideo &&
-      galleryVideo &&
-      galleryVideo.length < totalCountVideo
-    ) {
-      return true
-    } else {
-      return false
-    }
-  }
-
-  const isPaginationVideo = showPaginationVideo()
-
-  const isPaginationPhoto = showPaginationPhoto()
 
   const renderGalleryCardsUi = () => {
     if (type === 'video') {
-      if (galleryVideo && galleryVideo?.length > 0) {
-        return (
-          galleryVideo &&
-          galleryVideo.map((gallery, index) => {
-            return (
-              <GalleryCard
-                key={gallery.id}
-                gallery={gallery}
-                setModalOpen={setModalOpen}
-                setActiveImage={setActiveImage}
-                index={index}
-                type={'video'}
-              />
-            )
-          })
-        )
-      } else if (galleryVideo?.length === 0) {
-        return <NoDataFound title="No gallery video found" />
-      } else {
-        return <UiLoader className="min-h-[200px]" />
-      }
+      // Always show "No videos found" for video tab
+      return <NoDataFound title="No gallery video found" />
     } else {
-      if (galleryPhoto && galleryPhoto?.length > 0) {
-        return (
-          galleryPhoto &&
-          galleryPhoto.map((gallery, index) => {
-            return (
-              <GalleryCard
-                key={gallery.id}
-                gallery={gallery}
-                setModalOpen={setModalOpen}
-                setActiveImage={setActiveImage}
-                index={index}
-                type={'photo'}
-              />
-            )
-          })
-        )
-      } else if (galleryPhoto?.length === 0) {
-        return <NoDataFound title="No gallery photo found" />
-      } else {
-        return <UiLoader className="min-h-[200px]" />
-      }
+      return staticPhotos.length > 0 ? (
+        staticPhotos.map((gallery, index) => (
+          <GalleryCard
+            key={gallery.id}
+            gallery={gallery}
+            setModalOpen={setModalOpen}
+            setActiveImage={setActiveImage}
+            index={index}
+            type={'photo'}
+          />
+        ))
+      ) : (
+        <NoDataFound title="No gallery photo found" />
+      )
     }
   }
-
-  const fetchGalleryData = async () => {
-    try {
-      const galleryData: IGalleryPhotoResponse | undefined =
-        await UseServerFetch(
-          `/api/v1/gallery/photos?page=${currentGalleryPhotoPage}&pageSize=${pageSize}`
-        )
-      setGalleryPhoto(galleryData?.data)
-      setTotalCountPhoto(galleryData?.totalCount)
-    } catch (error) {
-      console.error('error fetching gallery photo', error)
-    }
-  }
-
-  const fetchGalleryVideoData = async () => {
-    try {
-      const galleryData: IGalleryVideoResponse | undefined =
-        await UseServerFetch(
-          `/api/v1/gallery/videos?page=${currentGalleryVideoPage}&pageSize=${pageSize}`
-        )
-      setGalleryVideo(galleryData?.data)
-      setTotalCountVideo(galleryData?.totalCount)
-    } catch (error) {
-      console.error('error fetching gallery video', error)
-    }
-  }
-
-  const handleTabClick = (title: string) => {
-    if (title === 'photo') {
-      handleDynamicData('photo')
-      setGalleryTab('photo')
-    } else {
-      setGalleryTab('video')
-      handleDynamicData('video')
-    }
-  }
-
-  useEffect(() => {
-    if (type === 'video') {
-      fetchGalleryVideoData()
-    } else {
-      fetchGalleryData()
-    }
-  }, [type, currentGalleryPhotoPage, currentGalleryVideoPage])
 
   return (
     <>
@@ -196,71 +95,29 @@ export const GallerySection = () => {
             setActive={setGalleryTab}
             tabs={galleryTabs}
           />
-          <div className="flex flex-row flex-wrap justify-center  gap-6 md:gap-x-5 md:gap-y-6 2lg:gap-6 ">
+          <div className="flex flex-row flex-wrap justify-center gap-6 md:gap-x-5 md:gap-y-6 2lg:gap-6">
             {renderGalleryCardsUi()}
           </div>
-          {type === 'video'
-            ? isPaginationVideo && (
-                <Pagination
-                  currentPage={currentGalleryVideoPage}
-                  pageSize={pageSize}
-                  totalCount={totalCountVideo!}
-                  siblingCount={0}
-                  onPageChange={(page: string | number) =>
-                    setCurrentGalleryVideoPage(page as number)
-                  }
-                />
-              )
-            : isPaginationPhoto && (
-                <Pagination
-                  currentPage={currentGalleryPhotoPage}
-                  pageSize={pageSize}
-                  totalCount={totalCountPhoto!}
-                  siblingCount={0}
-                  onPageChange={(page: string | number) => {
-                    setCurrentGalleryPhotoPage(page as number)
-                  }}
-                />
-              )}
         </div>
       </HomeWrapper>
-      {isModalOpen && (
+      {isModalOpen && type === 'photo' && (
         <CustomModal isOpen={isModalOpen}>
-          {type === 'photo' ? (
-            <GalleryModal
-              src={
-                galleryPhoto && galleryPhoto.length > 0 && activeImage !== null
-                  ? galleryPhoto[activeImage].photo.key
-                  : galleryPhoto && galleryPhoto.length > 0
-                  ? galleryPhoto[0].photo.key
-                  : undefined
-              }
-              title={
-                galleryPhoto && galleryPhoto.length > 0 && activeImage !== null
-                  ? galleryPhoto[activeImage].title
-                  : undefined
-              }
-              setModalOpen={setModalOpen}
-              setActiveImage={setActiveImage}
-              length={galleryPhoto && galleryPhoto.length}
-              showSwipe={galleryPhoto && galleryPhoto.length > 1 ? true : false}
-            />
-          ) : (
-            <VideoModal
-              src={
-                galleryVideo && galleryVideo.length > 0 && activeImage !== null
-                  ? galleryVideo[activeImage].video.key
-                  : galleryVideo && galleryVideo.length > 0
-                  ? galleryVideo[0].video.key
-                  : undefined
-              }
-              setModalOpen={setModalOpen}
-              setActiveImage={setActiveImage}
-              length={galleryVideo && galleryVideo.length}
-              type={type}
-              showSwipe={galleryVideo && galleryVideo.length > 1 ? true : false}
-            />
-          )}
+          <GalleryModal
+            src={
+              activeImage !== null
+                ? staticPhotos[activeImage].photo.key
+                : staticPhotos[0].photo.key
+            }
+            title={
+              activeImage !== null
+                ? staticPhotos[activeImage].title
+                : staticPhotos[0].title
+            }
+            setModalOpen={setModalOpen}
+            setActiveImage={setActiveImage}
+            length={staticPhotos.length}
+            showSwipe={staticPhotos.length > 1}
+          />
         </CustomModal>
       )}
     </>

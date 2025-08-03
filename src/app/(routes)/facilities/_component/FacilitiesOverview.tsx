@@ -10,7 +10,7 @@ const FacilitiesOverview = async () => {
         <div className="flex gap-6 max-w-[656px]">
           <div className="w-[316px] ">
             <Image
-              src="/home/about3.png"
+              src="/home/about1.2.jpg"
               width={316}
               height={583}
               alt="about"
@@ -19,7 +19,7 @@ const FacilitiesOverview = async () => {
           </div>
           <div className="max-w-[316px]">
             <Image
-              src="/home/about4.png"
+              src="/home/study.jpg"
               width={316}
               height={583}
               alt="about"

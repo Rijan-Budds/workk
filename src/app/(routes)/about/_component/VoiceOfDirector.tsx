@@ -18,15 +18,21 @@ import { cn } from '@/common/utils/utils'
 
 const voices = [
   {
-    image: '/home/hero-image1.jpg',
+    image: '/home/vice.jpg',
     paragraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fermentum, lorem sed sagittis tincidunt, justo augue tincidunt justo, sit amet congue turpis odio at purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-    name: 'lorem',
-    position: 'Director',
+    name: 'Vice-Principal',
+    position: 'Vice-Principal',
   },
   {
-    image: '/home/hero-image2.jpg',
+    image: '/home/director.jpg',
     paragraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-    name: 'lorem',
+    name: 'Managing Director',
+    position: 'Managing Director',
+  },
+  {
+    image: '/home/principal.jpg',
+    paragraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    name: 'Principal',
     position: 'Principal',
   },
 ]

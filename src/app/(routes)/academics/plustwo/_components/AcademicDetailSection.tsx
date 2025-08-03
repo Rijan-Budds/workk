@@ -6,7 +6,6 @@ import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/tes
 import { SectionHeading } from '@/common/components/Atom/SectionHeading'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
 import { NoDataFound } from '@/common/components/NoDataFound'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { ReactNode, useEffect, useState } from 'react'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import 'swiper/css'
@@ -18,26 +17,40 @@ import { IAcademicsData } from '../../_interface/academic'
 import { cn } from '@/common/utils/utils'
 import { CheckIsIos } from '@/common/hook/useIos'
 
+// STATIC DATA - Edit these to change the content
+const STATIC_TESTIMONIALS = {
+  data: [
+    {
+      id: 1,
+      name: "Aarohan Sharma",
+      designation: "Plus Two Graduate",
+      image: {
+        key: "/home/user1.jpg" // Replace with actual image path
+      },
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      rating: 5
+    },
+    {
+      id: 2,
+      name: "Priya Thapa",
+      designation: "Management Student",
+      image: {
+        key: "/home/priya.jpg" // Replace with actual image path
+      },
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      rating: 5
+    }
+  ]
+}
+
 const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
-  const [response, setResponse] = useState<ITestimonialResponse | null>(null)
+  // Use static data instead of API call
+  const [response, setResponse] = useState<ITestimonialResponse | null>(STATIC_TESTIMONIALS)
   const isIos = CheckIsIos()
 
+  // Remove the API call and just set static data
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response: ITestimonialResponse | undefined = await UseServerFetch(
-          `/api/v1/testimonial?page=${1}&pageSize=${6}`
-        )
-
-        if (response) {
-          setResponse(response)
-        }
-      } catch (error) {
-        console.error('Error fetching testimonials:', error)
-      }
-    }
-
-    fetchData()
+    setResponse(STATIC_TESTIMONIALS)
   }, [])
 
   const renderAcademicDetailUi = () => {
@@ -67,7 +80,7 @@ const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
             className="font-workSans font-normal text-base leading-7 text-body break-all"
             dangerouslySetInnerHTML={{ __html: detail?.description }}
           ></div>
-          {/* Testimonials  */}
+          {/* Static Testimonials */}
           {response && response.data.length > 0 && (
             <>
               <hr className="border-secondary border-dashed my-10" />

@@ -61,17 +61,18 @@ const AcademicSideBar = ({
       <ForInquiry />
 
       <div className="cursor-pointer">
-        {bannerDetail && (
-          <Link href={bannerDetail.link} target="_blank">
-            <ImageWithPlaceholder
-              src={bannerDetail.image.key}
-              width={397}
-              height={397}
-              className="size-[320px] mx-auto lg:mx-0 lg:max-w-[397px] lg:max-h-[397px] object-cover rounded-2xl"
-              alt="admission"
-            />
-          </Link>
-        )}
+        {bannerDetail?.image?.key && (
+  <Link href={bannerDetail.link} target="_blank">
+    <ImageWithPlaceholder
+      src={bannerDetail.image.key}
+      width={397}
+      height={397}
+      className="size-[320px] mx-auto lg:mx-0 lg:max-w-[397px] lg:max-h-[397px] object-cover rounded-2xl"
+      alt="admission"
+    />
+  </Link>
+)}
+
       </div>
     </div>
   )

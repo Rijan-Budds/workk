@@ -11,7 +11,7 @@ export interface INewsItem {
   id: string
   title: string
   description: string
-  images: Images
+  images: Images       // not a string, but an object with key, bucket, mimeType
   category: string
   type: string
   status: string

@@ -34,11 +34,7 @@ const FooterHeader = ({ footer }: { footer: ISettings | undefined }) => {
             {footer?.socialMedia.map((item, indx) => (
               <li key={indx} className=" flex justify-center items-center">
                 {item.key === 'Facebook' && (
-                  <Link
-                    href={item.value}
-                    target="_blank"
-                    className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
-                  >
+                  <div className="bg-white w-8 h-8 rounded-full flex justify-center items-center">
                     <Image
                       src="/home/ffacebook.svg"
                       width={100}
@@ -46,14 +42,10 @@ const FooterHeader = ({ footer }: { footer: ISettings | undefined }) => {
                       alt="Facebook"
                       className="w-4 h-4"
                     />
-                  </Link>
+                  </div>
                 )}
                 {item.key === 'X' && (
-                  <Link
-                    href={item.value}
-                    target="_blank"
-                    className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
-                  >
+                  <div className="bg-white w-8 h-8 rounded-full flex justify-center items-center">
                     <Image
                       src="/home/ftwitter.svg"
                       width={100}
@@ -61,14 +53,10 @@ const FooterHeader = ({ footer }: { footer: ISettings | undefined }) => {
                       alt="Twitter"
                       className="w-4 h-4"
                     />
-                  </Link>
+                  </div>
                 )}
                 {item.key === 'Instagram' && (
-                  <Link
-                    href={item.value}
-                    target="_blank"
-                    className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
-                  >
+                  <div className="bg-white w-8 h-8 rounded-full flex justify-center items-center">
                     <Image
                       src="/home/finstagram.svg"
                       width={100}
@@ -76,14 +64,10 @@ const FooterHeader = ({ footer }: { footer: ISettings | undefined }) => {
                       alt="Instagram"
                       className="w-4 h-4"
                     />
-                  </Link>
+                  </div>
                 )}
                 {item.key === 'YouTube' && (
-                  <Link
-                    href={item.value}
-                    target="_blank"
-                    className="bg-white w-8 h-8 rounded-full flex justify-center items-center"
-                  >
+                  <div className="bg-white w-8 h-8 rounded-full flex justify-center items-center">
                     <Image
                       src="/home/fyoutube.svg"
                       width={100}
@@ -91,9 +75,8 @@ const FooterHeader = ({ footer }: { footer: ISettings | undefined }) => {
                       alt="YouTube"
                       className="w-4 h-4"
                     />
-                  </Link>
+                  </div>
                 )}
-                {/* Add more conditionals as needed */}
               </li>
             ))}
           </ul>

@@ -16,30 +16,43 @@ import {
   SwiperButtonNext,
   SwiperButtonPrevious,
 } from '@/common/components/Atom/SwiperButton'
-import { UseServerFetch } from '@/common/hook/useServerFetch'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import { IAcademicsData } from '../../_interface/academic'
 import SchoolGallery from './SchoolGallery'
 
-const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
-  const [response, setResponse] = useState<ITestimonialResponse | null>(null)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response: ITestimonialResponse | undefined = await UseServerFetch(
-          `/api/v1/testimonial?page=${1}&pageSize=${6}`
-        )
-
-        if (response) {
-          setResponse(response)
-        }
-      } catch (error) {
-        console.error('Error fetching testimonials:', error)
-      }
+// STATIC DATA - Edit these to change the content
+const STATIC_TESTIMONIALS = {
+  data: [
+    {
+      id: 1,
+      name: "Ram Tamang",
+      designation: "Plus Two Graduate",
+      image: {
+        key: "/home/ram.jpg" // Replace with actual image path
+      },
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      rating: 5
+    },
+    {
+      id: 2,
+      name: "Shriya Rai",
+      designation: "Management Student",
+      image: {
+        key: "/home/shirya.jpg" // Replace with actual image path
+      },
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      rating: 5
     }
+  ]
+}
 
-    fetchData()
+const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
+  // Use static data instead of API call
+  const [response, setResponse] = useState<ITestimonialResponse | null>(STATIC_TESTIMONIALS)
+
+  // Remove the API call and just set static data
+  useEffect(() => {
+    setResponse(STATIC_TESTIMONIALS)
   }, [])
 
   return (
@@ -53,7 +66,7 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
           dangerouslySetInnerHTML={{ __html: detail?.description }}
         ></div>
       </div>
-      {response && response?.data.length > 0 && (
+      {response && response.data.length > 0 && (
         <>
           <hr className="border-secondary border-dashed my-10" />
           <div className="lg:mt-10 relative 2lg:max-w-[787px]">
@@ -74,7 +87,7 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
               </div>
             </div>
             <SwiperWrapper>
-              {response?.data.map((card) => (
+              {response.data.map((card) => (
                 <SwiperSlide key={card.id} className="!mt-[40px] mx-auto">
                   <TestimonialCard card={card} />
                 </SwiperSlide>
@@ -103,8 +116,6 @@ const SwiperWrapper = ({ children }: { children: ReactNode }) => {
       breakpoints={{
         528: { slidesPerView: 1 },
         728: { slidesPerView: 2 },
-        // 992: { slidesPerView: 2, spaceBetween: 10 },
-        // 1200: { slidesPerView: 3 },
       }}
       slidesPerView={1}
       spaceBetween={65}
