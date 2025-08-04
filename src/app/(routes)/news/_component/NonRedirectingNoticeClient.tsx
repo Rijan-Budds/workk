@@ -25,7 +25,7 @@ export const NonRedirectingNoticeClientSection = ({ notice }: { notice: INewsIte
                 {format(new Date(item.createdAt), 'MMMM d, yyyy')}
               </p>
             </div>
-            <p className="text-body text-sm line-clamp-2">{item.content}</p>
+            <p className="text-body text-sm line-clamp-2">{item.description}</p>
           </div>
         </div>
       ))}
