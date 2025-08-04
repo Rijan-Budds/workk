@@ -24,7 +24,7 @@ const staticNewsData: INewsItem[] = [
     title: 'Academic Excellence Program Launched',
     description: 'New academic excellence program for students...',
     images: {
-      key: '/home/user1.jpg',
+      key: '/home/academic.jpg',
       bucket: '',
       mimeType: 'image/jpeg',
     },
@@ -41,7 +41,7 @@ const staticNewsData: INewsItem[] = [
     title: 'Annual Science Fair 2024',
     description: 'Students showcase their innovative projects...',
     images: {
-      key: '/home/user1.jpg',
+      key: '/home/sins.jpg',
       bucket: '',
       mimeType: 'image/jpeg',
     },
@@ -58,7 +58,7 @@ const staticNewsData: INewsItem[] = [
     title: 'Sports Day Celebration',
     description: 'Annual sports day with various competitions...',
     images: {
-      key: '/home/user1.jpg',
+      key: '/home/sports.jpg',
       bucket: '',
       mimeType: 'image/jpeg',
     },
