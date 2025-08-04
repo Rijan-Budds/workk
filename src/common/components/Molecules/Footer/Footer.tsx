@@ -13,7 +13,7 @@ const Footer = async ({
   return (
     <footer className="h-fit relative">
       <div className="bg-primary w-full">
-        <FooterHeader footer={settings?.data} />
+        <FooterHeader />
       </div>
       <div className="w-full">
         <FooterLinks footer={settings?.data} />
