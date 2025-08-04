@@ -1,10 +1,32 @@
 import React from 'react'
 import Image from 'next/image'
 import { HomeWrapper } from '../../Atom/HomeWrapper'
-import { ISettings } from '@/app/(routes)/contact/_interface/Contact'
 import Link from 'next/link'
 
-const FooterHeader = ({ footer }: { footer: ISettings | undefined }) => {
+const FooterHeader = () => {
+  const socialMediaIcons = [
+    {
+      name: 'Facebook',
+      icon: '/home/ffacebook.svg',
+      href: 'facebook.com'
+    },
+    {
+      name: 'Twitter',
+      icon: '/home/ftwitter.svg',
+      href: 'twitter.com'
+    },
+    {
+      name: 'Instagram',
+      icon: '/home/finstagram.svg',
+      href: 'instagram.com'
+    },
+    {
+      name: 'YouTube',
+      icon: '/home/fyoutube.svg',
+      href: 'youtube.com'
+    }
+  ]
+
   return (
     <HomeWrapper className="py-8">
       <div className="flex justify-between items-center">
@@ -23,7 +45,7 @@ const FooterHeader = ({ footer }: { footer: ISettings | undefined }) => {
               <h1 className="font-poppins text-white text-[18px]">
                 Naulo Jyoti English School
               </h1>
-              <p className="font-workSans  text-white text-[14px] font-normal ">
+              <p className="font-workSans text-white text-[14px] font-normal">
                 Madhyapur Thimi
               </p>
             </div>
@@ -31,52 +53,19 @@ const FooterHeader = ({ footer }: { footer: ISettings | undefined }) => {
         </Link>
         <div>
           <ul className="flex gap-4">
-            {footer?.socialMedia.map((item, indx) => (
-              <li key={indx} className=" flex justify-center items-center">
-                {item.key === 'Facebook' && (
-                  <div className="bg-white w-8 h-8 rounded-full flex justify-center items-center">
+            {socialMediaIcons.map((item, index) => (
+              <li key={index} className="flex justify-center items-center">
+                <Link href={item.href} className="block">
+                  <div className="bg-white w-8 h-8 rounded-full flex justify-center items-center hover:bg-gray-100 transition-colors">
                     <Image
-                      src="/home/ffacebook.svg"
+                      src={item.icon}
                       width={100}
                       height={100}
-                      alt="Facebook"
+                      alt={item.name}
                       className="w-4 h-4"
                     />
                   </div>
-                )}
-                {item.key === 'X' && (
-                  <div className="bg-white w-8 h-8 rounded-full flex justify-center items-center">
-                    <Image
-                      src="/home/ftwitter.svg"
-                      width={100}
-                      height={100}
-                      alt="Twitter"
-                      className="w-4 h-4"
-                    />
-                  </div>
-                )}
-                {item.key === 'Instagram' && (
-                  <div className="bg-white w-8 h-8 rounded-full flex justify-center items-center">
-                    <Image
-                      src="/home/finstagram.svg"
-                      width={100}
-                      height={100}
-                      alt="Instagram"
-                      className="w-4 h-4"
-                    />
-                  </div>
-                )}
-                {item.key === 'YouTube' && (
-                  <div className="bg-white w-8 h-8 rounded-full flex justify-center items-center">
-                    <Image
-                      src="/home/fyoutube.svg"
-                      width={100}
-                      height={100}
-                      alt="YouTube"
-                      className="w-4 h-4"
-                    />
-                  </div>
-                )}
+                </Link>
               </li>
             ))}
           </ul>

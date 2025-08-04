@@ -22,5 +22,21 @@ export const notices = [
     isHoliday: false,
     createdAt: '2025-07-25T09:15:00Z',
     content: 'Please register before the given deadline.'
+  },
+    {
+    id: '4',
+    title: 'Lorem Ipsum Notice',
+    slug: 'semester-registration-deadline',
+    isHoliday: false,
+    createdAt: '2025-07-25T09:15:00Z',
+    content: 'Please register before the given deadline.'
+  },
+    {
+    id: '5',
+    title: 'Deadline for Semester Registration',
+    slug: 'semester-registration-deadline',
+    isHoliday: false,
+    createdAt: '2025-07-25T09:15:00Z',
+    content: 'Please register before the given deadline.'
   }
 ]

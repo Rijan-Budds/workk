@@ -25,7 +25,7 @@ const staticNewsData: INewsItem[] = [
     title: 'Sample News Title 1',
     description: 'This is the description for news 1.',
     images: {
-      key: '/home/user1.jpg',
+      key: '/home/sample1.jpg',
       bucket: '',
       mimeType: 'image/jpeg',
     },
@@ -43,7 +43,7 @@ const staticNewsData: INewsItem[] = [
     title: 'Sample News Title 2',
     description: 'This is the description for news 2.',
     images: {
-      key: '/home/user1.jpg',
+      key: '/home/sample2.jpg',
       bucket: '',
       mimeType: 'image/jpeg',
     },
