@@ -11,7 +11,7 @@ export const NavSection = ({
 }) => {
   return (
     <>
-      <NavHeader socialLinks={settings?.data} />
+      <NavHeader />
       <Navbar />
       <MobileNav socialLinks={settings?.data.socialMedia} />
     </>
