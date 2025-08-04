@@ -5,10 +5,10 @@ interface PhotoVideo {
 }
 
 export interface IGalleryPhotoItem {
-  id: string
+  id: number
   title: string
   photo: PhotoVideo
-  video: PhotoVideo
+  video?: PhotoVideo
 }
 
 export interface IGalleryVideoItem {

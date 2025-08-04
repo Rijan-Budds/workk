@@ -9,46 +9,83 @@ import { useState } from 'react'
 import { GalleryCard } from './GalleryCard'
 import { GalleryModal } from './GalleryModal'
 
+interface PhotoVideo {
+  key: string
+  bucket: string
+  mimeType: string
+}
+
+export interface IGalleryPhotoItem {
+  id: number
+  title: string
+  photo: PhotoVideo
+  video?: PhotoVideo
+}
+
 type IType = 'photo' | 'video'
 
-// Static image data - only photos now
-const staticPhotos = [
+// Static image data - now matches IGalleryPhotoItem shape
+const staticPhotos: IGalleryPhotoItem[] = [
   {
     id: 1,
     title: 'School Building',
-    photo: { key: '/home/building.jpg' }
+    photo: {
+      key: '/home/building.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
   },
   {
     id: 2,
     title: 'Classroom',
-    photo: { key: '/home/classroom.jpg' }
+    photo: {
+      key: '/home/classroom.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
   },
   {
     id: 3,
     title: 'Transportation',
-    photo: { key: '/home/tran1.jpg' }
+    photo: {
+      key: '/home/tran1.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
   },
   {
     id: 4,
     title: 'Library',
-    photo: { key: '/home/lib1.jpg' }
+    photo: {
+      key: '/home/lib1.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
   },
   {
     id: 5,
     title: 'Science Lab',
-    photo: { key: '/home/lab1.jpg' }
+    photo: {
+      key: '/home/lab1.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
   },
   {
     id: 6,
     title: 'Canteen',
-    photo: { key: '/home/can1.jpg' }
-  }
+    photo: {
+      key: '/home/can1.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
+  },
 ]
 
 export const GallerySection = () => {
   const galleryTabs = [
     { title: 'Photos', key: 'photo' },
-    { title: 'Videos', key: 'video' }
+    { title: 'Videos', key: 'video' },
   ]
 
   const [galleryTab, setGalleryTab] = useState<string>(galleryTabs[0].key)
