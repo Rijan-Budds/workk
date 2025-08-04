@@ -12,7 +12,6 @@ import { Sidebar } from './Sidebar'
 
 export const SidebarContainer = ({
   setOpenMainSidebar,
-  socialLinks,
 }: {
   setOpenMainSidebar: Dispatch<SetStateAction<boolean>>
   socialLinks: ISocialMediaData[] | undefined
@@ -82,7 +81,7 @@ export const SidebarContainer = ({
           </Button>
         </Link>
         <NavHeaderLink setOpenSidebar={setOpenMainSidebar} />
-        <NavHeaderSocialMedia links={socialLinks} />
+        <NavHeaderSocialMedia />
       </div>
 
       {openDropDown && (
