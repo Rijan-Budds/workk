@@ -23,7 +23,7 @@ export const MobileNavHeader = ({
             <Image
               width={56}
               height={56}
-              src={'/home/logo.svg'}
+              src={'/home/logo.jpg'}
               alt="School logo"
             />
           </Link>
