@@ -1,10 +1,10 @@
 export const inquiriesData = [
   {
     image: '/home/phone (1).svg',
-    title: ' 01-5007259',
+    title: '01-6211915',
   },
   {
     image: '/home/envelop (1).svg',
-    title: 'lorem@gmail.com',
+    title: 'glory@gloryschool.edu.np',
   },
 ]

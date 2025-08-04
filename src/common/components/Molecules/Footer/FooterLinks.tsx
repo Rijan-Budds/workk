@@ -13,12 +13,11 @@ interface FooterLinksProps {
 const FooterLinks: React.FC<FooterLinksProps> = ({ footer }) => {
   // Use dynamic footer data or fallback to staticFooter
   const phoneNumbers = footer?.phoneNumber ?? [
-    { key: 'Number1', value: '+1234567890' },
-    { key: 'Number2', value: '+0987654321' },
+    { key: 'Number1', value: '+977 9840076969' }
   ]
-  const telephones = footer?.telephone ?? [{ key: 'Telephone1', value: '+01-6630626' }]
+  const telephones = footer?.telephone ?? [{ key: 'Telephone1', value: '+01-6211915' }]
   const otherData = footer?.data ?? [
-    { key: 'Email', value: 'youremail@example.com' },
+    { key: 'Email', value: 'glory@gloryschool.edu.np' },
     { key: 'Time', value: 'Sun-Fri 6:00 AM - 5:00 PM. Sat Closed' },
   ]
 

@@ -7,8 +7,8 @@ import Link from 'next/link'
 
 export const NavHeader = () => {
   // Hardcoded replacement values
-  const displayEmail = "info@naulojyoti.edu.np";
-  const displayPhone = "+977 1-5110000";
+  const displayEmail = "glory@gloryschool.edu.np";
+  const displayPhone = "01-6211915";
   
   return (
     <div className="py-3 bg-background border-b-[1px] border-border hidden 2lg:block ">

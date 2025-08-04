@@ -6,13 +6,11 @@ import { IContactInfoData, IPhoneNumberItem, ITelephoneItem } from '../_interfac
 // Static contact data - CHANGE THESE VALUES AS NEEDED
 const staticContactData = {
   phoneNumbers: [
-    { value: '+977-1-4123456' },
-    { value: '+977-1-4123457' }
+    { value: '+977-9840076969' }
   ] as IPhoneNumberItem[],
   
   telephoneNumbers: [
-    { value: '+977-1-4987654' },
-    { value: '+977-1-4987655' }
+    { value: '01-6211915' }
   ] as ITelephoneItem[],
   
   contactInfo: [
@@ -22,7 +20,7 @@ const staticContactData = {
     },
     {
       key: 'Email',
-      value: 'info@naulojyoti.edu.np' // CHANGE THIS EMAIL
+      value: 'glory@gloryschool.edu.np' // CHANGE THIS EMAIL
     },
     {
       key: 'College Time',

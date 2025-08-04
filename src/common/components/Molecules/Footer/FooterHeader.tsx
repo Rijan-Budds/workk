@@ -34,7 +34,7 @@ const FooterHeader = () => {
           <div className="flex justify-start items-center gap-x-6">
             <div className="bg-white w-[80px] h-[80px] rounded-full flex justify-center items-center">
               <Image
-                src="/home/footerlog.jpg"
+                src="/home/logo.jpg"
                 width={800}
                 height={890}
                 alt="logo "
@@ -43,7 +43,7 @@ const FooterHeader = () => {
             </div>
             <div className="hidden lg:block">
               <h1 className="font-poppins text-white text-[18px]">
-                Naulo Jyoti English School
+                Glory English Secondary School
               </h1>
               <p className="font-workSans text-white text-[14px] font-normal">
                 Madhyapur Thimi

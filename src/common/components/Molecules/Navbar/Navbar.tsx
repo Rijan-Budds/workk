@@ -54,14 +54,14 @@ export const Navbar = () => {
               <Image
                 width={56}
                 height={56}
-                src={'/home/footerlog.jpg'}
+                src={'/home/logo.jpg'}
                 alt="School logo"
               />
             </Link>
 
             <Link href={'/'}>
               <h2 className="font-poppins font-semibold text-[20px] leading-6 text-heading">
-                Naulo Jyoti English School
+                Glory English Secondary School
               </h2>
               <p className="text-[14px] leading-4 font-workSans font-normal mt-1">
                 Madhyapur Thimi
