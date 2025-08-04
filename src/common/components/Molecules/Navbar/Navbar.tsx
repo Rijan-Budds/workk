@@ -61,7 +61,7 @@ export const Navbar = () => {
 
             <Link href={'/'}>
               <h2 className="font-poppins font-semibold text-[20px] leading-6 text-heading">
-                Naulo Jyoti Englsih School
+                Naulo Jyoti English School
               </h2>
               <p className="text-[14px] leading-4 font-workSans font-normal mt-1">
                 Madhyapur Thimi, Bhaktapur
