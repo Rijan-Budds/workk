@@ -6,21 +6,21 @@ import { IContactInfoData, IPhoneNumberItem, ITelephoneItem } from '../_interfac
 // Static contact data - CHANGE THESE VALUES AS NEEDED
 const staticContactData = {
   phoneNumbers: [
-    { value: '+977 984-1755834' }
+    { value: '+977 987654321' }
   ] as IPhoneNumberItem[],
   
   telephoneNumbers: [
-    { value: '01-6630321' }
+    { value: '01-6630626' }
   ] as ITelephoneItem[],
   
   contactInfo: [
     {
       key: 'Contact Number',
-      value: '984-1755834' // This will be handled separately with phone numbers
+      value: '09877654321' // This will be handled separately with phone numbers
     },
     {
       key: 'Email',
-      value: 'adarsha02sec.school@gmail.com' // CHANGE THIS EMAIL
+      value: 'naulojyoti@gmail.com' // CHANGE THIS EMAIL
     },
     {
       key: 'College Time',

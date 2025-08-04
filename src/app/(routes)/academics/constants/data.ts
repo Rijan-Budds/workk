@@ -1,10 +1,10 @@
 export const inquiriesData = [
   {
     image: '/home/phone (1).svg',
-    title: '01-6630321',
+    title: ' 01-6630626',
   },
   {
     image: '/home/envelop (1).svg',
-    title: 'adarsha02sec.school@gmail.com',
+    title: 'naulojyoti@gmail.com',
   },
 ]

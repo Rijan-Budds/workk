@@ -61,10 +61,10 @@ export const Navbar = () => {
 
             <Link href={'/'}>
               <h2 className="font-poppins font-semibold text-[20px] leading-6 text-heading">
-                Adarsha Secondary School
+                Naulo Jyoti Englsih School
               </h2>
               <p className="text-[14px] leading-4 font-workSans font-normal mt-1">
-                Sanothimi
+                Madhyapur Thimi, Bhaktapur
               </p>
             </Link>
           </div>

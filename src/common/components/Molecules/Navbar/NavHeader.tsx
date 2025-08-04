@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 export const NavHeader = () => {
   // Hardcoded replacement values
-  const displayEmail = "adarsha02sec.school@gmail.com";
+  const displayEmail = "naulojyoti@gmail.com";
   const displayPhone = "01-6630321";
   
   return (

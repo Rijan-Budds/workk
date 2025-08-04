@@ -7,7 +7,7 @@ const Copywright = () => {
     <HomeWrapper className="py-4">
       <div className="flex flex-col lg:flex-row gap-y-6  md:gap-y-4 lg:gap-y-0 justify-between">
         <h2 className="font-workSans font-light  text-[14px] md:text-[16px] leading-[21px] md:leading-[27.2px] text-white">
-          Copyright ©2024. All Rights Reserved by Adarsha Secondary School
+          Copyright ©2024. All Rights Reserved by Naulo Jyoti English School
           School | Powered by
           <br className="hidden md:block 2lg:hidden" />
           <Link

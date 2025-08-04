@@ -29,7 +29,7 @@ export const MobileNavHeader = ({
           </Link>
           <Link href={'/'}>
             <h2 className="font-poppins font-medium text-[18px] leading-6 text-heading">
-              Adarsha Secondary <br /> School. 
+              Naulo Jyoti English <br /> School. 
             </h2>
           </Link>
         </div>

@@ -11,7 +11,7 @@ export default function RootLayout({
       lang="en"
       className={`${workSans.variable} ${poppins.variable} ${inter.variable}`}
     >
-      <title>Adarsha Secondary School</title>
+      <title>Naulo Jyoti English School</title>
       <body className="overflow-x-hidden lg:overflow-y-hidden main-layout-container">
         <Toaster />
         {children}
