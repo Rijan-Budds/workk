@@ -3,25 +3,27 @@
 import React from 'react'
 import { HomeWrapper } from '../../Atom/HomeWrapper'
 import Link from 'next/link'
+import { ISettings } from '@/app/(routes)/contact/_interface/Contact'
 import { staticFooterLinksData } from '@/common/constant/data'
 
-const staticFooter = {
-  phoneNumber: [
-    { key: 'Number1', value: '+1234567890' },
-    { key: 'Number2', value: '+0987654321' },
-  ],
-  telephone: [
-    { key: 'Telephone1', value: '+01-6630626' },
-  ],
-  data: [
-    { key: 'Email', value: 'youremail@example.com' },
-    { key: 'Time', value: 'Sun-Fri 6:00 AM - 5:00 PM. Sat Closed' },
-  ],
+interface FooterLinksProps {
+  footer?: ISettings
 }
 
-const FooterLinks = () => {
-  const filterEmail = staticFooter.data.filter((d) => d.key === 'Email')
-  const collegeTime = staticFooter.data.filter((d) => d.key === 'Time')
+const FooterLinks: React.FC<FooterLinksProps> = ({ footer }) => {
+  // Use dynamic footer data or fallback to staticFooter
+  const phoneNumbers = footer?.phoneNumber ?? [
+    { key: 'Number1', value: '+1234567890' },
+    { key: 'Number2', value: '+0987654321' },
+  ]
+  const telephones = footer?.telephone ?? [{ key: 'Telephone1', value: '+01-6630626' }]
+  const otherData = footer?.data ?? [
+    { key: 'Email', value: 'youremail@example.com' },
+    { key: 'Time', value: 'Sun-Fri 6:00 AM - 5:00 PM. Sat Closed' },
+  ]
+
+  const filterEmail = otherData.filter((d) => d.key === 'Email')
+  const collegeTime = otherData.filter((d) => d.key === 'Time')
 
   const handleClick = (type: 'tel' | 'mailto', value: string) => {
     if (type === 'tel') {
@@ -43,22 +45,22 @@ const FooterLinks = () => {
             <span
               className="font-light cursor-pointer"
               onClick={() => {
-                if (staticFooter.phoneNumber[0]?.value) {
-                  handleClick('tel', staticFooter.phoneNumber[0].value)
+                if (phoneNumbers[0]?.value) {
+                  handleClick('tel', phoneNumbers[0].value)
                 }
               }}
             >
               {' '}
-              {staticFooter.phoneNumber[0]?.value}{' '}
+              {phoneNumbers[0]?.value}{' '}
             </span>
-            {staticFooter.phoneNumber[1] && (
+            {phoneNumbers[1] && (
               <span
                 className="font-light cursor-pointer"
                 onClick={() => {
-                  handleClick('tel', staticFooter.phoneNumber[1].value)
+                  handleClick('tel', phoneNumbers[1].value)
                 }}
               >
-                {` / ${staticFooter.phoneNumber[1].value}`}
+                {` / ${phoneNumbers[1].value}`}
               </span>
             )}
           </div>
@@ -67,21 +69,21 @@ const FooterLinks = () => {
             <span
               className="font-light cursor-pointer"
               onClick={() => {
-                if (staticFooter.telephone[0]?.value) {
-                  handleClick('tel', staticFooter.telephone[0].value)
+                if (telephones[0]?.value) {
+                  handleClick('tel', telephones[0].value)
                 }
               }}
             >
-              {staticFooter.telephone[0]?.value}{' '}
+              {telephones[0]?.value}{' '}
             </span>
-            {staticFooter.telephone[1] && (
+            {telephones[1] && (
               <span
                 onClick={() => {
-                  handleClick('tel', staticFooter.telephone[1].value)
+                  handleClick('tel', telephones[1].value)
                 }}
                 className="font-light cursor-pointer"
               >
-                {` / ${staticFooter.telephone[1].value}`}
+                {` / ${telephones[1].value}`}
               </span>
             )}
           </div>
@@ -114,9 +116,7 @@ const FooterLinks = () => {
               {data.content.map((content, index) => (
                 <div
                   key={index}
-                  className={
-                    'cursor-pointer hover:underline' // No hover effect for contact information
-                  }
+                  className={'cursor-pointer hover:underline'}
                 >
                   {'subtitle' in content && (
                     <span className="font-medium">
@@ -126,9 +126,7 @@ const FooterLinks = () => {
                   {content.url ? (
                     <Link
                       href={content.url}
-                      target={
-                        data.title === 'Important Links' ? '_blank' : undefined
-                      }
+                      target={data.title === 'Important Links' ? '_blank' : undefined}
                       rel={
                         data.title === 'Important Links'
                           ? 'noopener noreferrer'
