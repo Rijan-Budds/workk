@@ -121,23 +121,8 @@ export const navLinks = [
       },
       {
         id: 4,
-        title: 'Computer Lab',
-        link: '/facilities/computer',
-      },
-      {
-        id: 5,
         title: 'Transportation',
         link: '/facilities/transportation',
-      },
-      {
-        id: 6,
-        title: 'School-Hostel',
-        link: '/facilities/hostel',
-      },
-      {
-        id: 7,
-        title: 'Sports',
-        link: '/facilities/sports',
       },
     ],
   },

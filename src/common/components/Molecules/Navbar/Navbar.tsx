@@ -1,6 +1,5 @@
 'use client'
 import { navLinks } from '@/common/constant/data'
-import { useNavLinks } from '@/common/hook/useNavLinks'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -13,7 +12,7 @@ import { scrollToTop } from '../../ScrollToTop'
 
 export const Navbar = () => {
   const pathname = usePathname()
-  const { facilites } = useNavLinks()
+  // Removed the useNavLinks hook - we'll use static data instead
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [activeSublink, setActiveSublink] = useState<number | null>(null)
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
@@ -77,11 +76,8 @@ export const Navbar = () => {
                   links={links.title}
                   isDropdown={links.isDropDown}
                   link={links.link}
-                  sublinks={
-                    links.title === 'Our facilities'
-                      ? facilites
-                      : links.sublink || undefined
-                  }
+                  // Use static sublink data for all dropdowns
+                  sublinks={links.sublink || undefined}
                   activeDropdown={activeDropdown}
                   activeSublink={activeSublink}
                   handleMouseEnter={handleMouseEnter}
@@ -170,6 +166,7 @@ const NavLinksUi = ({
       }
     }
   }
+  
   const handleLinkClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     dropdown: boolean,
