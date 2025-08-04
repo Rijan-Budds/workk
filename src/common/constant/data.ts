@@ -107,12 +107,12 @@ export const navLinks = [
       {
         id: 1,
         title: 'Science Lab',
-        link: '/facilities/science',
+        link: '/facilities/science-lab',
       },
       {
         id: 2,
         title: 'School Canteen',
-        link: '/facilities/canteen',
+        link: '/facilities/school-canteen',
       },
       {
         id: 3,
