@@ -46,7 +46,7 @@ const FooterHeader = () => {
                 Adarsha Secondary School
               </h1>
               <p className="font-workSans text-white text-[14px] font-normal">
-                Madhyapur Thimi
+                Sanothimi
               </p>
             </div>
           </div>

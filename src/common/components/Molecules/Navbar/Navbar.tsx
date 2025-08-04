@@ -64,7 +64,7 @@ export const Navbar = () => {
                 Adarsha Secondary School
               </h2>
               <p className="text-[14px] leading-4 font-workSans font-normal mt-1">
-                Madhyapur Thimi
+                Sanothimi
               </p>
             </Link>
           </div>
