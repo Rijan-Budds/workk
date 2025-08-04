@@ -49,7 +49,7 @@ const AboutComponent = () => {
         </div>
         <div className="w-full 2lg:max-w-[503px] flex flex-col justify-center mx-auto">
           <MiniHeading isMd className="text-start">
-            Glory English Secondary School
+            Adarsha Secondary School
           </MiniHeading>
           <SectionHeading isMd className="mt-2 text-start">
             {introduction.title}

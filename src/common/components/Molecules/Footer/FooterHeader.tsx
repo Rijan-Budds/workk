@@ -43,7 +43,7 @@ const FooterHeader = () => {
             </div>
             <div className="hidden lg:block">
               <h1 className="font-poppins text-white text-[18px]">
-                Glory English Secondary School
+                Adarsha Secondary School
               </h1>
               <p className="font-workSans text-white text-[14px] font-normal">
                 Madhyapur Thimi

@@ -44,7 +44,7 @@ const steps = [
     number: '04',
     title: 'Acceptance',
     description:
-      'Once the admission process is complete, you will receive an official acceptance letter from Glory English Secondary School.',
+      'Once the admission process is complete, you will receive an official acceptance letter from Adarsha Secondary School.',
     icon: '/home/awards.svg',
   },
 ]
