@@ -1,8 +1,8 @@
 import { NoDataFound } from '@/common/components/NoDataFound'
 import AcademicDetail from '../_components/AcademicDetail'
 
-// STATIC DATA FOR PROTOTYPE - Edit these to change content
-const STATIC_ACADEMIC_DATA = {
+
+const staticAcademicData = {
   law: {
     banner: {
       id: 1,
@@ -12,11 +12,15 @@ const STATIC_ACADEMIC_DATA = {
       isEnabled: true,
       type: "academic",
       image: {
-        key: "/home/naulo.jpg"
-      }
+        key: ["/home/naulo.jpg"],
+        bucket: [""],
+        mimeType: ["image/jpeg"]
+      },
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     },
     data: {
-      id: 1,
+      id: "1",
       title: "LAW",
       articleTitle: "Empowering Tomorrow's Legal Minds",
       slug: "law",
@@ -24,9 +28,14 @@ const STATIC_ACADEMIC_DATA = {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       description: `
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt nisi in nulla sagittis, a suscipit nunc tristique.</p>
-        <p>Curabitur posuere, lacus at suscipit blandit, magna elit ullamcorper augue, ac laoreet tellus nibh nec lacus.</p>
-      `
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Curabitur posuere, lacus at suscipit blandit.</p>
+      `,
+      image: {
+        key: ["/home/user1.jpg"],
+        bucket: [""],
+        mimeType: ["image/jpeg"]
+      }
     }
   },
   management: {
@@ -38,11 +47,15 @@ const STATIC_ACADEMIC_DATA = {
       isEnabled: true,
       type: "academic",
       image: {
-        key: "/home/naulo.jpg"
-      }
+        key: ["/home/naulo.jpg"],
+        bucket: [""],
+        mimeType: ["image/jpeg"]
+      },
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     },
     data: {
-      id: 2,
+      id: "2",
       title: "MANAGEMENT",
       articleTitle: "We consider each application with care.",
       slug: "management",
@@ -50,9 +63,14 @@ const STATIC_ACADEMIC_DATA = {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       description: `
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus.</p>
-        <p>Donec fringilla, lacus nec viverra faucibus, nisi libero vulputate sapien, et ultrices sapien mauris id libero.</p>
-      `
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.</p>
+        <p>Donec fringilla, lacus nec viverra faucibus, nisi libero vulputate sapien.</p>
+      `,
+      image: {
+        key: ["/home/user2.jpg"],
+        bucket: [""],
+        mimeType: ["image/jpeg"]
+      }
     }
   },
   humanities: {
@@ -63,12 +81,16 @@ const STATIC_ACADEMIC_DATA = {
       link: "/academics/plustwo/humanities",
       isEnabled: true,
       type: "academic",
-        image: {
-        key: "/home/naulo.jpg"
-      }
+      image: {
+        key: ["/home/naulo.jpg"],
+        bucket: [""],
+        mimeType: ["image/jpeg"]
+      },
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     },
     data: {
-      id: 3,
+      id: "3",
       title: "HUMANITIES",
       articleTitle: "Exploring Human Culture and Society",
       slug: "humanities",
@@ -76,9 +98,14 @@ const STATIC_ACADEMIC_DATA = {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       description: `
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at tincidunt ipsum. Maecenas nec gravida risus.</p>
-        <p>Suspendisse potenti. Vivamus ac feugiat risus, nec tincidunt purus. Fusce tempor velit at mauris fermentum rhoncus.</p>
-      `
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Vivamus ac feugiat risus, nec tincidunt purus.</p>
+      `,
+      image: {
+        key: ["/home/user3.jpg"],
+        bucket: [""],
+        mimeType: ["image/jpeg"]
+      }
     }
   },
   education: {
@@ -89,12 +116,16 @@ const STATIC_ACADEMIC_DATA = {
       link: "/academics/plustwo/education",
       isEnabled: true,
       type: "academic",
-            image: {
-        key: "/home/naulo.jpg"
-      }
+      image: {
+        key: ["/home/naulo.jpg"],
+        bucket: [""],
+        mimeType: ["image/jpeg"]
+      },
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     },
     data: {
-      id: 4,
+      id: "4",
       title: "EDUCATION",
       articleTitle: "Shaping Future Educators",
       slug: "education",
@@ -102,18 +133,22 @@ const STATIC_ACADEMIC_DATA = {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       description: `
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec leo non orci suscipit pulvinar vel vel odio.</p>
-        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis dictum sapien sit amet sodales faucibus.</p>
-      `
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Duis dictum sapien sit amet sodales faucibus.</p>
+      `,
+      image: {
+        key: ["/home/user4.jpg"],
+        bucket: [""],
+        mimeType: ["image/jpeg"]
+      }
     }
   }
 }
 
-
 const Page = async ({ params }: { params: { slug: string } }) => {
   // PROTOTYPE: Use static data instead of API call
-  const staticData = STATIC_ACADEMIC_DATA[params.slug as keyof typeof STATIC_ACADEMIC_DATA]
-  
+  const staticData = staticAcademicData[params.slug as keyof typeof staticAcademicData]
+
   // Simulate the API response structure
   const response = staticData ? {
     banner: staticData.banner,

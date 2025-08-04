@@ -5,9 +5,11 @@ import { ActiveImage } from './ActiveImage'
 import { FacilitesDesc } from './FacilitesDesc'
 import { SwipeableCards } from './SwipeableCards'
 
-// Static data for all facilities
-const STATIC_FACILITIES = {
+// Static data for all facilities with required properties
+const staticFacilities = {
   'science-lab': {
+    id: 'science-lab',
+    slug: 'science-lab',
     facilityTitle: "Science Facilities",
     articleTitle: "Modern Science Laboratory",
     description: `
@@ -19,10 +21,14 @@ const STATIC_FACILITIES = {
         '/home/lab1.jpg',
         '/home/lab2.jpg',
         '/home/lab3.jpg'
-      ]
+      ],
+      bucket: ['', '', ''],       // put real buckets if available
+      mimeType: ['image/jpeg', 'image/jpeg', 'image/jpeg']
     }
   },
   'library': {
+    id: 'library',
+    slug: 'library',
     facilityTitle: "Library Services",
     articleTitle: "School Learning Resource Center",
     description: `
@@ -34,10 +40,14 @@ const STATIC_FACILITIES = {
         '/home/lib1.jpg',
         '/home/lib2.jpg',
         '/home/lib3.jpg'
-      ]
+      ],
+      bucket: ['', '', ''],
+      mimeType: ['image/jpeg', 'image/jpeg', 'image/jpeg']
     }
   },
   'transportation': {
+    id: 'transportation',
+    slug: 'transportation',
     facilityTitle: "Transport Services",
     articleTitle: "School Transportation System",
     description: `
@@ -49,10 +59,14 @@ const STATIC_FACILITIES = {
         '/home/tran1.jpg',
         '/home/tran2.jpg',
         '/home/tran3.jpg'
-      ]
+      ],
+      bucket: ['', '', ''],
+      mimeType: ['image/jpeg', 'image/jpeg', 'image/jpeg']
     }
   },
   'school-canteen': {
+    id: 'school-canteen',
+    slug: 'school-canteen',
     facilityTitle: "Food Services",
     articleTitle: "School Canteen & Cafeteria",
     description: `
@@ -64,17 +78,18 @@ const STATIC_FACILITIES = {
         '/home/can1.jpg',
         '/home/can2.jpg',
         '/home/can3.jpg'
-      ]
+      ],
+      bucket: ['', '', ''],
+      mimeType: ['image/jpeg', 'image/jpeg', 'image/jpeg']
     }
   }
 }
 
-type FacilitySlug = keyof typeof STATIC_FACILITIES
+type FacilitySlug = keyof typeof staticFacilities
 
 export const FacilitesTabSection = ({ slug }: { slug: FacilitySlug }) => {
-  // Get the static data for the requested facility
-  const facility = STATIC_FACILITIES[slug]
-  
+  const facility = staticFacilities[slug]
+
   // Set first image as active by default
   const [activeSrc, setActiveSrc] = useState<string | null>(
     facility?.images?.key[0] || null
@@ -97,10 +112,12 @@ export const FacilitesTabSection = ({ slug }: { slug: FacilitySlug }) => {
         {/* Facility description */}
         {facility && (
           <FacilitesDesc detail={{
+            id: facility.id,
+            slug: facility.slug,
             facilityTitle: facility.facilityTitle,
             articleTitle: facility.articleTitle,
             description: facility.description,
-            // Add any other required properties from IFacilityData
+            images: facility.images
           }} />
         )}
       </div>

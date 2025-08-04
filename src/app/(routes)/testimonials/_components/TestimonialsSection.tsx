@@ -11,6 +11,7 @@ const staticTestimonials: ITestimonialData[] = [
     id: 1,
     name: 'John Doe',
     position: 'Frontend Developer at Google',
+        rating: 5,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     image: {
       key: '/home/user1.jpg',
@@ -22,6 +23,7 @@ const staticTestimonials: ITestimonialData[] = [
     id: 2,
     name: 'Jane Smith',
     position: 'Software Engineer at Meta',
+        rating: 5,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     image: {
       key: '/home/user2.jpg',
@@ -33,6 +35,7 @@ const staticTestimonials: ITestimonialData[] = [
     id: 3,
     name: 'Ali Khan',
     position: 'Backend Engineer at Amazon',
+        rating: 5,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     image: {
       key: '/home/user1.jpg',
@@ -44,6 +47,7 @@ const staticTestimonials: ITestimonialData[] = [
     id: 4,
     name: 'Sarah Wilson',
     position: 'Full Stack Developer at Microsoft',
+        rating: 5,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     image: {
       key: '/home/user2.jpg',
@@ -55,6 +59,7 @@ const staticTestimonials: ITestimonialData[] = [
     id: 5,
     name: 'Mike Johnson',
     position: 'DevOps Engineer at Netflix',
+        rating: 5,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     image: {
       key: '/home/user1.jpg',
@@ -66,6 +71,7 @@ const staticTestimonials: ITestimonialData[] = [
     id: 6,
     name: 'Emily Davis',
     position: 'UI/UX Designer at Apple',
+        rating: 5,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     image: {
       key: '/home/user2.jpg',

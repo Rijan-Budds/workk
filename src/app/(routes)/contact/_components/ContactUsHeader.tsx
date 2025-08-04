@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { IContactInfoData, IPhoneNumberItem, ITelephoneItem } from '../_interface/Contact'
 
 // Static contact data - CHANGE THESE VALUES AS NEEDED
-const STATIC_CONTACT_DATA = {
+const staticContactData = {
   phoneNumbers: [
     { value: '+977-1-4123456' },
     { value: '+977-1-4123457' }
@@ -51,7 +51,7 @@ const ContactUsHeader = () => {
   return (
     <HomeWrapper className="!pb-0">
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[24px] justify-center items-center">
-        {STATIC_CONTACT_DATA.contactInfo.map((contact, i) => (
+        {staticContactData.contactInfo.map((contact, i) => (
           <div
             className="!max-w-[398px] h-[240px] bg-background flex flex-col justify-center items-center rounded-xl p-2"
             key={i}
@@ -75,41 +75,41 @@ const ContactUsHeader = () => {
                     {/* Display phone numbers in two lines */}
                     <span
                       onClick={() => {
-                        if (STATIC_CONTACT_DATA.phoneNumbers[0]?.value) {
-                          handleClick('tel', STATIC_CONTACT_DATA.phoneNumbers[0].value)
+                        if (staticContactData.phoneNumbers[0]?.value) {
+                          handleClick('tel', staticContactData.phoneNumbers[0].value)
                         }
                       }}
                     >
-                      {STATIC_CONTACT_DATA.phoneNumbers[0]?.value}
+                      {staticContactData.phoneNumbers[0]?.value}
                     </span>{' '}
                     <span
                       onClick={() => {
-                        if (STATIC_CONTACT_DATA.phoneNumbers[1]?.value) {
-                          handleClick('tel', STATIC_CONTACT_DATA.phoneNumbers[1].value)
+                        if (staticContactData.phoneNumbers[1]?.value) {
+                          handleClick('tel', staticContactData.phoneNumbers[1].value)
                         }
                       }}
                     >
-                      / {STATIC_CONTACT_DATA.phoneNumbers[1]?.value}
+                      / {staticContactData.phoneNumbers[1]?.value}
                     </span>
                   </li>
                   <li className="cursor-pointer">
                     <span
                       onClick={() => {
-                        if (STATIC_CONTACT_DATA.telephoneNumbers[0]?.value) {
-                          handleClick('tel', STATIC_CONTACT_DATA.telephoneNumbers[0].value)
+                        if (staticContactData.telephoneNumbers[0]?.value) {
+                          handleClick('tel', staticContactData.telephoneNumbers[0].value)
                         }
                       }}
                     >
-                      {STATIC_CONTACT_DATA.telephoneNumbers[0]?.value}
+                      {staticContactData.telephoneNumbers[0]?.value}
                     </span>{' '}
                     <span
                       onClick={() => {
-                        if (STATIC_CONTACT_DATA.telephoneNumbers[1]?.value) {
-                          handleClick('tel', STATIC_CONTACT_DATA.telephoneNumbers[1].value)
+                        if (staticContactData.telephoneNumbers[1]?.value) {
+                          handleClick('tel', staticContactData.telephoneNumbers[1].value)
                         }
                       }}
                     >
-                      / {STATIC_CONTACT_DATA.telephoneNumbers[1]?.value}
+                      / {staticContactData.telephoneNumbers[1]?.value}
                     </span>
                   </li>
                 </ul>

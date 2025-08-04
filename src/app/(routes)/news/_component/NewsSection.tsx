@@ -1,5 +1,12 @@
 'use client'
 
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { format } from 'date-fns'
+import { GoArrowRight } from 'react-icons/go'
+
+import { INewsItem } from '../interface/newsType'
+
 import { HomeWrapper } from '@/common/components/Atom/HomeWrapper'
 import { UiLoader } from '@/common/components/Atom/UiLoader'
 import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
@@ -8,114 +15,103 @@ import { TabAnimation } from '@/common/components/Molecules/TabAnimation'
 import { NoDataFound } from '@/common/components/NoDataFound'
 import { Pagination } from '@/common/components/Pagination'
 import { cn } from '@/common/utils/utils'
-import { format } from 'date-fns'
-import { useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import { GoArrowRight } from 'react-icons/go'
-import { INewsItem } from '../interface/newsType'
 
-// Static data
-const STATIC_NEWS_DATA: INewsItem[] = [
+// Combined static news + notice data
+const staticNewsData: INewsItem[] = [
   {
     id: '1',
     slug: 'academic-excellence-program',
     title: 'Academic Excellence Program Launched',
-    images: { key: '/home/user1.jpg' },
-    createdAt: new Date('2024-01-15'),
+    description: 'New academic excellence program for students...',
+    images: {
+      key: '/home/user1.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
+    category: 'Education',
     type: 'NEWS',
-    content: 'New academic excellence program for students...'
+    status: 'published',
+    publishedAt: new Date('2024-01-15').toISOString(),
+    createdAt: new Date('2024-01-15').toISOString(),
+    updatedAt: new Date('2024-01-15').toISOString(),
   },
   {
     id: '2',
     slug: 'science-fair-2024',
     title: 'Annual Science Fair 2024',
-    images: { key: '/home/user1.jpg' },
-    createdAt: new Date('2024-01-10'),
+    description: 'Students showcase their innovative projects...',
+    images: {
+      key: '/home/user1.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
+    category: 'Event',
     type: 'NEWS',
-    content: 'Students showcase their innovative projects...'
+    status: 'published',
+    publishedAt: new Date('2024-01-10').toISOString(),
+    createdAt: new Date('2024-01-10').toISOString(),
+    updatedAt: new Date('2024-01-10').toISOString(),
   },
   {
     id: '3',
     slug: 'sports-day-celebration',
     title: 'Sports Day Celebration',
-    images: { key: '/home/user1.jpg' },
-    createdAt: new Date('2024-01-05'),
+    description: 'Annual sports day with various competitions...',
+    images: {
+      key: '/home/user1.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
+    category: 'Event',
     type: 'NEWS',
-    content: 'Annual sports day with various competitions...'
+    status: 'published',
+    publishedAt: new Date('2024-01-05').toISOString(),
+    createdAt: new Date('2024-01-05').toISOString(),
+    updatedAt: new Date('2024-01-05').toISOString(),
   },
-  {
-    id: '4',
-    slug: 'library-renovation',
-    title: 'Library Renovation Complete',
-    images: { key: '/home/user1.jpg' },
-    createdAt: new Date('2024-01-01'),
-    type: 'NEWS',
-    content: 'Modern library facilities now available...'
-  },
-  {
-    id: '5',
-    slug: 'new-lab-equipment',
-    title: 'New Laboratory Equipment Installed',
-    images: { key: '/home/user1.jpg' },
-    createdAt: new Date('2023-12-28'),
-    type: 'NEWS',
-    content: 'State-of-the-art laboratory equipment...'
-  },
-  {
-    id: '6',
-    slug: 'student-achievement',
-    title: 'Students Win National Competition',
-    images: { key: '/home/user1.jpg' },
-    createdAt: new Date('2023-12-25'),
-    type: 'NEWS',
-    content: 'Our students excel in national level competition...'
-  }
-]
-
-const STATIC_NOTICE_DATA: INewsItem[] = [
   {
     id: '7',
     slug: 'admission-open-2024',
     title: 'Admission Open for Academic Year 2024-25',
-    images: { key: '/home/user2.jpg' },
-    createdAt: new Date('2024-01-20'),
+    description: 'Applications are now open for new admissions...',
+    images: {
+      key: '/home/user2.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
+    category: 'Admission',
     type: 'NOTICE',
-    content: 'Applications are now open for new admissions...'
+    status: 'published',
+    publishedAt: new Date('2024-01-20').toISOString(),
+    createdAt: new Date('2024-01-20').toISOString(),
+    updatedAt: new Date('2024-01-20').toISOString(),
   },
   {
     id: '8',
     slug: 'exam-schedule',
     title: 'Final Examination Schedule',
-    images: { key: '/home/user1.jpg' },
-    createdAt: new Date('2024-01-18'),
+    description: 'Final examination dates and guidelines...',
+    images: {
+      key: '/home/user1.jpg',
+      bucket: '',
+      mimeType: 'image/jpeg',
+    },
+    category: 'Exam',
     type: 'NOTICE',
-    content: 'Final examination dates and guidelines...'
+    status: 'published',
+    publishedAt: new Date('2024-01-18').toISOString(),
+    createdAt: new Date('2024-01-18').toISOString(),
+    updatedAt: new Date('2024-01-18').toISOString(),
   },
-  {
-    id: '9',
-    slug: 'parent-meeting',
-    title: 'Parent-Teacher Meeting',
-    images: { key: '/home/user1.jpg' },
-    createdAt: new Date('2024-01-12'),
-    type: 'NOTICE',
-    content: 'Monthly parent-teacher meeting schedule...'
-  },
-  {
-    id: '10',
-    slug: 'holiday-notice',
-    title: 'Holiday Notice',
-    images: { key: '/home/user2.jpg' },
-    createdAt: new Date('2024-01-08'),
-    type: 'NOTICE',
-    content: 'School holiday schedule for this month...'
-  }
+  // Add more as needed...
 ]
 
+// Non-clickable notice list component
 const NonRedirectingNoticeClientSection = ({ notice }: { notice: INewsItem[] }) => {
   return (
     <div className="flex flex-col gap-y-4 w-full">
       {notice.map((item) => (
-        <div 
+        <div
           key={item.id}
           className={cn(
             'flex flex-col md:flex-row gap-x-4 gap-y-2 p-4 rounded-lg border border-gray-200',
@@ -133,7 +129,7 @@ const NonRedirectingNoticeClientSection = ({ notice }: { notice: INewsItem[] }) 
                   src={item.images.key}
                   width={64}
                   height={64}
-                  alt="Profile"
+                  alt={item.title}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -145,7 +141,7 @@ const NonRedirectingNoticeClientSection = ({ notice }: { notice: INewsItem[] }) 
                   {format(new Date(item.createdAt), 'MMMM d, yyyy')}
                 </p>
               </div>
-              <p className="text-body text-sm line-clamp-2">{item.content}</p>
+              <p className="text-body text-sm line-clamp-2">{item.description}</p>
             </div>
           </div>
         </div>
@@ -156,56 +152,49 @@ const NonRedirectingNoticeClientSection = ({ notice }: { notice: INewsItem[] }) 
 
 export const NewsSection = () => {
   const tabs = [
-    { key: 'news', title: 'News' },
-    { key: 'notice', title: 'Notices' },
+    { key: 'NEWS', title: 'News' },
+    { key: 'NOTICE', title: 'Notices' },
   ]
-  const [active, setActiveTab] = useState<string>(tabs[1]?.key)
+  const [active, setActiveTab] = useState<string>('NOTICE')
   const params = useSearchParams()
 
-  const [newsNotice, setNewsNotice] = useState<INewsItem[] | undefined>(undefined)
+  const [newsNotice, setNewsNotice] = useState<INewsItem[]>([])
   const pageSize = 6
   const [page, setPage] = useState<number>(1)
-  const [totalCount, setTotalCount] = useState<number | undefined>(undefined)
+  const [totalCount, setTotalCount] = useState<number>(staticNewsData.length)
   const [loading, setLoading] = useState<boolean>(false)
 
-  const showPagination = () => totalCount && newsNotice && newsNotice.length < totalCount
-  const isPagination = showPagination()
+  // Determine if pagination is needed
+  const showPagination = totalCount > pageSize
 
+  // Initialize tab from URL query param
   useEffect(() => {
-    const initialTab = params.get('type') === 'news' ? 'news' : 'notice'
-    setActiveTab(initialTab)
-    setPage(1)
-  }, [])
-
-  const fetchNewsAndNoticeList = async () => {
-    try {
-      setLoading(true)
-      const allData = active === 'news' ? STATIC_NEWS_DATA : STATIC_NOTICE_DATA
-      const startIndex = (page - 1) * pageSize
-      const endIndex = startIndex + pageSize
-      const paginatedData = allData.slice(startIndex, endIndex)
-      const filteredData = paginatedData.filter((d) => d.type === active.toUpperCase())
-      setNewsNotice(filteredData)
-      setTotalCount(allData.length)
-      setTimeout(() => setLoading(false), 300)
-    } catch (error) {
-      console.error('Error fetching news data:', error)
-      setLoading(false)
+    const typeParam = params.get('type')?.toUpperCase()
+    if (typeParam === 'NEWS' || typeParam === 'NOTICE') {
+      setActiveTab(typeParam)
     }
-  }
+    setPage(1)
+  }, [params])
 
+  // Fetch data according to active tab and page
   useEffect(() => {
-    fetchNewsAndNoticeList()
-  }, [active, page, params])
+    setLoading(true)
+    const filtered = staticNewsData.filter((item) => item.type === active)
+    const startIndex = (page - 1) * pageSize
+    const paginated = filtered.slice(startIndex, startIndex + pageSize)
+    setNewsNotice(paginated)
+    setTotalCount(filtered.length)
+    setTimeout(() => setLoading(false), 300) // simulate async delay
+  }, [active, page])
 
   const renderNewsNoticeUi = () => {
-    if (loading) {
-      return <UiLoader className="min-h-[200px]" />
-    }
+    if (loading) return <UiLoader className="min-h-[200px]" />
 
-    if (newsNotice && newsNotice.length > 0) {
-      if (active === 'news') {
-        return (
+    if (!newsNotice.length) return <NoDataFound title={`No ${active.toLowerCase()} found`} />
+
+    if (active === 'NEWS') {
+      return (
+        <>
           <div className="flex flex-row flex-wrap justify-center md:justify-evenly gap-x-4 gap-y-28 pb-16 2lg:pb-1">
             {newsNotice.map((news) => (
               <div
@@ -219,7 +208,7 @@ export const NewsSection = () => {
                     src={news.images?.key}
                     width={447}
                     height={298}
-                    alt="news"
+                    alt={news.title}
                     className="relative w-[343px] h-[231px] md:w-[324px] md:h-[243px] 2lg:w-[398px] 2lg:h-[298px] object-cover group-hover:scale-110 transition-all duration-500"
                   />
                 </div>
@@ -239,49 +228,42 @@ export const NewsSection = () => {
                 </div>
               </div>
             ))}
-            {isPagination && (
-              <div className="w-full flex justify-center mt-4">
-                <Pagination
-                  currentPage={Number(page)}
-                  pageSize={pageSize}
-                  totalCount={Number(totalCount)}
-                  onPageChange={(page: string | number) => setPage(page as number)}
-                  siblingCount={0}
-                />
-              </div>
-            )}
           </div>
-        )
-      } else if (active === 'notice') {
-        return (
-          <>
-            <NonRedirectingNoticeClientSection notice={newsNotice} />
+          {showPagination && (
             <div className="w-full flex justify-center mt-4">
-              {isPagination && (
-                <Pagination
-                  currentPage={Number(page)}
-                  pageSize={pageSize}
-                  totalCount={Number(totalCount)}
-                  onPageChange={(page: string | number) => setPage(page as number)}
-                  siblingCount={0}
-                />
-              )}
-            </div>
-          </>
-        )
-      }
-    } else if (newsNotice?.length === 0) {
-      return <NoDataFound title={`No ${active} found`} />
-    }
-    return null
-  }
+          <Pagination
+  currentPage={page}
+  pageSize={pageSize}
+  totalCount={totalCount}
+  onPageChange={(page) => setPage(typeof page === 'string' ? parseInt(page, 10) : page)}
+  siblingCount={0}
+/>
 
-  useEffect(() => {
-    const getNewsOrNotice = params.get('type')
-    if (getNewsOrNotice) {
-      setActiveTab(getNewsOrNotice === 'news' ? 'news' : 'notice')
+            </div>
+          )}
+        </>
+      )
+    } else {
+      // active === 'NOTICE'
+      return (
+        <>
+          <NonRedirectingNoticeClientSection notice={newsNotice} />
+          {showPagination && (
+            <div className="w-full flex justify-center mt-4">
+            <Pagination
+  currentPage={page}
+  pageSize={pageSize}
+  totalCount={totalCount}
+  onPageChange={(page) => setPage(typeof page === 'string' ? parseInt(page, 10) : page)}
+  siblingCount={0}
+/>
+
+            </div>
+          )}
+        </>
+      )
     }
-  }, [params])
+  }
 
   return (
     <>

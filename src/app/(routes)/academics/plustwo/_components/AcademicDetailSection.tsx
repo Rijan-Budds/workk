@@ -1,5 +1,4 @@
 'use client'
-import { swiperParams } from '@/app/(home)/_components/Testimonials/TestimonialsSection'
 import { MiniHeading } from '@/common/components/Atom/MiniHeading'
 import { TestimonialCard } from '@/app/(home)/_components/Testimonials/TestimonialCard'
 import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/testimonial'
@@ -17,44 +16,57 @@ import { IAcademicsData } from '../../_interface/academic'
 import { cn } from '@/common/utils/utils'
 import { CheckIsIos } from '@/common/hook/useIos'
 
-// STATIC DATA - Edit these to change the content
-const STATIC_TESTIMONIALS = {
+// Corrected static testimonial data (PascalCase constant)
+const StaticTestimonials: ITestimonialResponse = {
+  status: "success",
+  message: "Data loaded successfully",
+  totalCount: 2,
   data: [
     {
       id: 1,
       name: "Aarohan Sharma",
-      designation: "Plus Two Graduate",
+      position: "Plus Two Graduate",
       image: {
-        key: "/home/user1.jpg" // Replace with actual image path
+        key: "/home/user1.jpg",
+        bucket: "local",
+        mimeType: "image/jpeg",
       },
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      rating: 5
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      rating: 5,
     },
     {
       id: 2,
       name: "Priya Thapa",
-      designation: "Management Student",
+      position: "Management Student",
       image: {
-        key: "/home/priya.jpg" // Replace with actual image path
+        key: "/home/priya.jpg",
+        bucket: "local",
+        mimeType: "image/jpeg",
       },
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      rating: 5
-    }
-  ]
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      rating: 5,
+    },
+  ],
+}
+
+// Local swiper params
+const swiperParams = {
+  pagination: { clickable: true },
+  navigation: true,
 }
 
 const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
-  // Use static data instead of API call
-  const [response, setResponse] = useState<ITestimonialResponse | null>(STATIC_TESTIMONIALS)
+  const [response, setResponse] = useState<ITestimonialResponse | null>(StaticTestimonials)
   const isIos = CheckIsIos()
 
-  // Remove the API call and just set static data
   useEffect(() => {
-    setResponse(STATIC_TESTIMONIALS)
+    setResponse(StaticTestimonials)
   }, [])
 
   const renderAcademicDetailUi = () => {
-    if (response?.data) {
+    if (response?.data && response.data.length > 0) {
       return (
         <div className="2lg:w-[787px]">
           <MiniHeading className="text-left">{detail?.title}</MiniHeading>
@@ -62,10 +74,7 @@ const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
           <div className="flex gap-x-5 my-4">
             {detail &&
               detail.image?.key.map((imageKey, index) => (
-                <div
-                  key={imageKey}
-                  className={index === 1 ? 'mt-10 md:mt-28' : ''}
-                >
+                <div key={imageKey} className={index === 1 ? 'mt-10 md:mt-28' : ''}>
                   <ImageWithPlaceholder
                     src={imageKey ? imageKey : undefined}
                     width={246}
@@ -79,54 +88,49 @@ const AcademicDetailSection = ({ detail }: { detail: IAcademicsData }) => {
           <div
             className="font-workSans font-normal text-base leading-7 text-body break-all"
             dangerouslySetInnerHTML={{ __html: detail?.description }}
-          ></div>
-          {/* Static Testimonials */}
-          {response && response.data.length > 0 && (
-            <>
-              <hr className="border-secondary border-dashed my-10" />
-              <div className="mt-10 relative 2lg:max-w-[787px]">
-                <div className="">
-                  <h2 className="text-heading text-xl font-poppins font-medium leading-5">
-                    Our Happy Students
-                  </h2>
-                </div>
-                <div
-                  id="testimonial"
+          />
+          <hr className="border-secondary border-dashed my-10" />
+          <div className="mt-10 relative 2lg:max-w-[787px]">
+            <div>
+              <h2 className="text-heading text-xl font-poppins font-medium leading-5">
+                Our Happy Students
+              </h2>
+            </div>
+            <div
+              id="testimonial"
+              className={cn(
+                'space-x-3 absolute -top-2 sm:top-0 right-0 w-24 h-12 flex'
+              )}
+            >
+              <div className="swiper-button-prev">
+                <IoIosArrowRoundBack
                   className={cn(
-                    'space-x-3 absolute -top-2 sm:top-0 right-0 w-24 h-12 flex'
+                    'text-body text-2xl font-light 2lg:bg-white rounded-full w-10 h-10 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white shadow-md',
+                    {
+                      'drop-shadow shadow-none': isIos,
+                    }
                   )}
-                >
-                  <div className="swiper-button-prev">
-                    <IoIosArrowRoundBack
-                      className={cn(
-                        'text-body text-2xl font-light 2lg:bg-white rounded-full w-10 h-10 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white shadow-md',
-                        {
-                          'drop-shadow shadow-none': isIos,
-                        }
-                      )}
-                    />
-                  </div>
-                  <div className="swiper-button-next">
-                    <IoIosArrowRoundForward
-                      className={cn(
-                        'text-body text-2xl font-light 2lg:bg-white rounded-full w-10 h-10 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white shadow-md',
-                        {
-                          'drop-shadow shadow-none': isIos,
-                        }
-                      )}
-                    />
-                  </div>
-                </div>
-                <SwiperWrapper>
-                  {response?.data.map((card) => (
-                    <SwiperSlide key={card.id} className="!mt-[40px] mx-auto">
-                      <TestimonialCard card={card} />
-                    </SwiperSlide>
-                  ))}
-                </SwiperWrapper>
+                />
               </div>
-            </>
-          )}
+              <div className="swiper-button-next">
+                <IoIosArrowRoundForward
+                  className={cn(
+                    'text-body text-2xl font-light 2lg:bg-white rounded-full w-10 h-10 2lg:hover:bg-secondary transition-all duration-300 2lg:hover:text-white shadow-md',
+                    {
+                      'drop-shadow shadow-none': isIos,
+                    }
+                  )}
+                />
+              </div>
+            </div>
+            <SwiperWrapper>
+              {response.data.map((card) => (
+                <SwiperSlide key={card.id} className="!mt-[40px] mx-auto">
+                  <TestimonialCard card={card} />
+                </SwiperSlide>
+              ))}
+            </SwiperWrapper>
+          </div>
         </div>
       )
     } else if (response?.data.length === 0) {
@@ -144,8 +148,6 @@ const SwiperWrapper = ({ children }: { children: ReactNode }) => {
       breakpoints={{
         528: { slidesPerView: 1 },
         728: { slidesPerView: 2 },
-        // 992: { slidesPerView: 2, spaceBetween: 10 },
-        // 1200: { slidesPerView: 3 },
       }}
       slidesPerView={1}
       spaceBetween={65}

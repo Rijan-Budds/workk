@@ -18,7 +18,7 @@ export interface IAcademicsData {
 }
 
 export interface IAcademicBanner {
-  id: string
+  id: number
   title: string
   image: IAcademicsImage
   link: string

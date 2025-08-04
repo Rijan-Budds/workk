@@ -11,6 +11,7 @@ export interface ITestimonialData {
   image: Image
   description: string
   organization?: string
+  rating: number
 }
 
 export interface Image {

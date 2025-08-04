@@ -1,10 +1,7 @@
 'use client'
 import { useState } from 'react'
-import { ImageWithPlaceholder } from '@/common/components/ImageWithPlaceholder'
-import { Button } from '@/common/components/Atom/Button'
-import Link from 'next/link'
 
-const STATIC_ADMISSION_DATA = {
+const staticAdmissionData = {
   'basic-level-six-eight': {
     title: 'Basic Level (Six – Eight)',
     heading: 'We consider each application with care.',
@@ -73,7 +70,7 @@ const STATIC_ADMISSION_DATA = {
 
 const AdmissionSection = () => {
   const [activeSlug, setActiveSlug] = useState('basic-level-six-eight')
-  const activeData = STATIC_ADMISSION_DATA[activeSlug as keyof typeof STATIC_ADMISSION_DATA]
+  const activeData = staticAdmissionData[activeSlug as keyof typeof staticAdmissionData]
 
   const renderDescription = (html: string) => (
     <div
@@ -107,7 +104,7 @@ const AdmissionSection = () => {
 
       {/* Right Sidebar */}
       <div className="w-full 2lg:w-1/4 flex flex-col gap-4">
-        {Object.entries(STATIC_ADMISSION_DATA).map(([slug, { title }]) => (
+        {Object.entries(staticAdmissionData).map(([slug, { title }]) => (
           <div
             key={slug}
             onClick={() => setActiveSlug(slug)}

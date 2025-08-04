@@ -10,7 +10,6 @@ import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { TestimonialCard } from '@/app/(home)/_components/Testimonials/TestimonialCard'
-import { swiperParams } from '@/app/(home)/_components/Testimonials/TestimonialsSection'
 import { ITestimonialResponse } from '@/app/(routes)/testimonials/_interface/testimonial'
 import {
   SwiperButtonNext,
@@ -20,39 +19,53 @@ import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
 import { IAcademicsData } from '../../_interface/academic'
 import SchoolGallery from './SchoolGallery'
 
-// STATIC DATA - Edit these to change the content
-const STATIC_TESTIMONIALS = {
+// STATIC DATA - updated to fully match ITestimonialResponse
+const StaticTestimonials: ITestimonialResponse = {
+  status: "success",
+  message: "Data loaded successfully",
+  totalCount: 2,
   data: [
     {
       id: 1,
       name: "Ram Tamang",
-      designation: "Plus Two Graduate",
+      position: "Plus Two Graduate",   // renamed from designation to position
       image: {
-        key: "/home/ram.jpg" // Replace with actual image path
+        key: "/home/ram.jpg",
+        bucket: "local",          // added to match interface
+        mimeType: "image/jpeg",  // added to match interface
       },
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      rating: 5
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      rating: 5,
     },
     {
       id: 2,
       name: "Shriya Rai",
-      designation: "Management Student",
+      position: "Management Student",
       image: {
-        key: "/home/shirya.jpg" // Replace with actual image path
+        key: "/home/shirya.jpg",
+        bucket: "local",
+        mimeType: "image/jpeg",
       },
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      rating: 5
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      rating: 5,
     }
-  ]
+  ],
+}
+
+// Define swiperParams locally here (no need to import)
+const swiperParams = {
+  pagination: { clickable: true },
+  navigation: true,
 }
 
 const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
   // Use static data instead of API call
-  const [response, setResponse] = useState<ITestimonialResponse | null>(STATIC_TESTIMONIALS)
+  const [response, setResponse] = useState<ITestimonialResponse | null>(null)
 
-  // Remove the API call and just set static data
   useEffect(() => {
-    setResponse(STATIC_TESTIMONIALS)
+    setResponse(StaticTestimonials)
   }, [])
 
   return (
@@ -64,13 +77,14 @@ const SchoolSection = ({ detail }: { detail: IAcademicsData }) => {
         <div
           className="mt-6 font-workSans font-normal text-base leading-7 text-body break-all"
           dangerouslySetInnerHTML={{ __html: detail?.description }}
-        ></div>
+        />
       </div>
+
       {response && response.data.length > 0 && (
         <>
           <hr className="border-secondary border-dashed my-10" />
           <div className="lg:mt-10 relative 2lg:max-w-[787px]">
-            <div className="">
+            <div>
               <h2 className="text-heading text-xl font-poppins font-medium leading-5">
                 Our Happy Students
               </h2>

@@ -1,5 +1,4 @@
 'use client'
-import { swiperParams } from '@/app/(home)/_components/Testimonials/TestimonialsSection'
 import { ReactNode } from 'react'
 import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper } from 'swiper/react'
@@ -18,9 +17,11 @@ export const SwiperWrapper = ({ children }: { children: ReactNode }) => {
       spaceBetween={65}
       modules={[Pagination, Navigation]}
       loop={false}
-      {...swiperParams}
+      pagination={{ clickable: true }}
+      navigation={true}
     >
       {children}
     </Swiper>
   )
 }
+  

@@ -7,7 +7,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
 
-const STATIC_FACILITIES = [
+const staticFacilities = [
   {
     id: 1,
     title: 'Science Lab',
@@ -85,7 +85,7 @@ const FacilitiesSwiperSection = () => {
             pagination={{ clickable: true }}
             modules={[Pagination]}
           >
-            {STATIC_FACILITIES.map((item) => (
+            {staticFacilities.map((item) => (
               <SwiperSlide key={item.id}>
                 <div className="rounded-2xl overflow-hidden bg-white shadow-md border border-border">
                   <Image
